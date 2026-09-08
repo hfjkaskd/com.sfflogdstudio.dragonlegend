@@ -12,6 +12,8 @@ namespace DragonLegend.Whitebox
         public RecoveredCoinReveal Reveal => reveal;
         public RecoveredCoinGlow Glow => glow;
         public event System.Action RevealSoundRequested;
+        public event System.Action<RecoveredCoinStopEffect,Transform> LampFlightRequested;
+        private Transform lampTarget;
         [SerializeField] private float scaleDuration;
         [SerializeField] private float peakScale;
         [SerializeField] private float restingScale;
@@ -19,10 +21,12 @@ namespace DragonLegend.Whitebox
         private float elapsed;
         private int phase;
         public bool IsScaling => phase != 0;
-        private void Awake() { reveal.Revealed += RevealCompleted; }
+        private void Awake() { reveal.Revealed += RevealCompleted; rewardText.PresentationFinished += StartLampFlight; }
+        private void StartLampFlight() { if(lampTarget!=null)LampFlightRequested?.Invoke(this,lampTarget); }
         private void RevealCompleted() => glow.Play();
-        public void PlayRewardReveal(float reward, int languageType)
+        public void PlayRewardReveal(float reward, int languageType, Transform destination)
         {
+            lampTarget=destination;
             glow.gameObject.SetActive(false);
             rewardText.Hide();
             RevealSoundRequested?.Invoke();
@@ -51,6 +55,6 @@ namespace DragonLegend.Whitebox
             else phase=0;
         }
         private void OnDisable(){phase=0;}
-        private void OnDestroy() { if(reveal!=null)reveal.Revealed-=RevealCompleted; }
+        private void OnDestroy() { if(reveal!=null)reveal.Revealed-=RevealCompleted; if(rewardText!=null)rewardText.PresentationFinished-=StartLampFlight; }
     }
 }

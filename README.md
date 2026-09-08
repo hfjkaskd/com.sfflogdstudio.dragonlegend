@@ -343,3 +343,15 @@ CoinStopEffect Prefab 嵌套揭晓和光效资源，开始时隐藏；实际 Spi
 显示文字后独立等待 0.4 秒发出 PresentationFinished，为原来启动灯位飞行与 pcall 的位置保留时序；本轮没有把它错误地当作飞行到达或余额入账。PlayShow 隐藏金额；GM/对象停用取消本组件待处理回调，避免旧版本表现串入新版本。完整飞行、点灯特效、金额汇总/入账与后续 Wild/Jackpot/免费链仍待恢复，SDK 不变。
 
 最终全量 PlayMode 148 项通过、0 失败（Artifacts/coin-text-all-tests.xml）。新增测试验证位图字符 advance（0 为 43，点为 21）、原字体设置、零字号实际渲染、0.2 秒显示/0.6 秒后续事件、1.2 倍峰值及回落、暂停、两种金额格式和隐藏/停用取消；实际 GameEntry 奖励测试也核对原始 reward 对应的显示字符串。已查看最新 current-coin-reward-text.png 及 current-coin-reward-glow.png，入口内揭晓金币呈现绿色金额。主背景和完整生命周期视觉仍有明显缺口，不能据此称为完整 1:1。
+
+## 本轮：原生粒子拖尾、灯位飞行与到达点亮
+
+PoolManager 的 JinBi_Lizi 字段（0x38）指向 sharedassets0.assets 的 GameObject 149：tuowei，并非金币 Sprite。保留原 Prefab 的一个 ParticleSystem/ParticleSystemRenderer 和两条 TrailRenderer、粒子模块、材质、纹理、轨迹宽度与存活时间；xx/wenli 材质使用原 GUID，第三条默认材质仍为 Unity 内置材质。补启用 Unity 官方 com.unity.modules.particlesystem 1.0.0，未引入第三方粒子插件。根节点坐标/缩放按现有金币世界单位换算为原像素值的 0.01；子粒子/轨迹参数不随意放大。
+
+FlyWithPool 0x238ce40 的 ARM 参数明确为 arcHeight=-1、lateralOffset=0、impactForce=0、curve=4。Fly 0x238c74c 将负弧高替换为三维距离×0.3，控制点是起止中点加该高度；回调 0x238d3dc 计算二次贝塞尔。Ease 枚举 4 是 InOutSine，恢复余弦缓动与 0.3 秒持续时间，终点在启动时读取后固定，不能跟随之后移动的目标。没有把控制点高度误当成实际轨迹峰值。
+
+奖励扫描按本次 CollectionCount 取得灯位 Transform，文字展示结束后才读取目标位置并从原父级偏移位置生成飞行对象。无目标时不飞行。UIOrder 原构造 0x23e3744 的增量为 1，开始时将三个 Renderer 排序设为主 Canvas+1；原生 SortingGroup.sortAtRoot 用于脱离现有金币排序组，是当前渲染结构的适配。
+
+RecoveredCoinStopPresenter 使用官方 ObjectPool 回收/复用飞行对象。按到达回调 0x23d9dcc，先发出 exp 音效请求，再回收飞行对象，然后显示目标首个子节点，最后发出点灯特效请求。灯位从这一阶段开始真正点亮，不再在扫描时提前点亮。换圈/GM 解绑会回收所属飞行并取消后续到达。额外 dianliang 骨骼闪光尚未接入，声音实际播放、奖励汇总和余额入账、其他完整分支仍未完成；SDK 不变。
+
+最终全量 PlayMode 149 项通过、0 失败（Artifacts/lamp-flight-all-tests.xml）。验证原粒子/轨迹结构、排序与材质可用性、四个飞行采样位置、三维距离控制点、终点快照、暂停与停用；实际入口验证两枚金币文字结束后起飞、到达前灯位关闭、音效/回收/点亮顺序、同一池对象复用且余额不变。已查看最新 current-lamp-flight.png，实际粒子拖尾位于金币至灯位路径中。主背景、完整布局、完整奖励生命周期等仍有缺口，尚非完整 1:1。

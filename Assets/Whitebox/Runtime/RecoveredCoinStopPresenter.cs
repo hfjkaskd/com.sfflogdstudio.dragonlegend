@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -8,6 +9,17 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredCoinStopPresenter : MonoBehaviour
     {
         [SerializeField] private RecoveredCoinStopEffect effectPrefab;
+        [SerializeField] private RecoveredLampFlight flightPrefab;
+        private RecoveredBonusCollection collection;
+        private int canvasOrder;
+        private Transform newFlightParent;
+        private ObjectPool<RecoveredLampFlight> flightPool;
+        private readonly List<RecoveredLampFlight> flights=new List<RecoveredLampFlight>(3);
+        public int ActiveFlightCount=>flights.Count;
+        public int CreatedFlightCount=>flightPool==null?0:flightPool.CountAll;
+        public RecoveredLampFlight FlightAt(int index)=>flights[index];
+        public event Action ExpSoundRequested;
+        public event Action<Transform> LampLitEffectRequested;
         private RecoveredBaseReelController reels;
         private int language;
         private ObjectPool<RecoveredCoinStopEffect> pool;
@@ -23,19 +35,48 @@ namespace DragonLegend.Whitebox
         {
             var effect=Instantiate(effectPrefab,transform,false);
             effect.RevealSoundRequested+=RevealSound;
+            effect.LampFlightRequested+=StartFlight;
             return effect;
         }
         private void RevealSound()=>CoinRevealSoundRequested?.Invoke();
-        public void PlayRewardReveal(int column,int row,float reward)
+        public void PlayRewardReveal(int column,int row,float reward,int collectionCount)
         {
             // RollReel.PlayBonusAnim only invokes its action for an existing row lookup.
             var effect=lookup[column,row];
-            if(effect!=null)effect.PlayRewardReveal(reward,language);
+            if(effect!=null)effect.PlayRewardReveal(reward,language,collection==null?null:collection.GetUnselectedTarget(column,collectionCount));
         }
         public RecoveredCoinStopEffect CoinAt(int column,int row)=>lookup[column,row];
-        public void Bind(RecoveredBaseReelController controller,int languageType=0)
+        private RecoveredLampFlight CreateFlight()
         {
-            Unbind();reels=controller;language=languageType;
+            var flight=Instantiate(flightPrefab,newFlightParent,false);flight.Arrived+=Arrived;return flight;
+        }
+        private void StartFlight(RecoveredCoinStopEffect owner,Transform target)
+        {
+            newFlightParent=owner.transform;
+            var flight=flightPool.Get();flight.transform.SetParent(owner.transform,false);
+            flight.transform.localPosition=flightPrefab.transform.localPosition;
+            flight.transform.localRotation=flightPrefab.transform.localRotation;
+            flight.transform.localScale=flightPrefab.transform.localScale;
+            flight.gameObject.SetActive(true);flights.Add(flight);flight.Begin(target,canvasOrder);
+        }
+        private void ReleaseFlight(RecoveredLampFlight flight)
+        {
+            flights.Remove(flight);flightPool.Release(flight);
+        }
+        private void Arrived(RecoveredLampFlight flight)
+        {
+            var target=flight.Destination;
+            ExpSoundRequested?.Invoke();
+            ReleaseFlight(flight);
+            target.GetChild(0).gameObject.SetActive(true);
+            LampLitEffectRequested?.Invoke(target);
+        }
+        public void Bind(RecoveredBaseReelController controller,int languageType=0,RecoveredBonusCollection bonusCollection=null,int sortingOrder=0)
+        {
+            Unbind();reels=controller;language=languageType;collection=bonusCollection;canvasOrder=sortingOrder;
+            if(flightPool==null)flightPool=new ObjectPool<RecoveredLampFlight>(CreateFlight,null,
+                flight=>{flight.gameObject.SetActive(false);flight.transform.SetParent(transform,false);},
+                flight=>{if(flight!=null)Destroy(flight.gameObject);},true,1,int.MaxValue);
             if(pool==null)pool=new ObjectPool<RecoveredCoinStopEffect>(
                 CreateEffect,
                 effect=>{effect.transform.localScale=effectPrefab.transform.localScale;effect.gameObject.SetActive(true);},
@@ -64,6 +105,8 @@ namespace DragonLegend.Whitebox
         private void ClearColumn(int column)
         {
             for(int row=0;row<3;row++) {
+                if(active[column,row]!=null)for(int i=flights.Count-1;i>=0;i--)
+                    if(flights[i].transform.parent==active[column,row].transform)ReleaseFlight(flights[i]);
                 if(active[column,row]!=null)pool.Release(active[column,row]);
                 active[column,row]=null;lookup[column,row]=null;
             }
@@ -76,6 +119,6 @@ namespace DragonLegend.Whitebox
             for(int i=0;i<5;i++){reels.ReelAt(i).EffectsClearRequested-=clearHandlers[i];ClearColumn(i);}
             reels=null;
         }
-        private void OnDestroy(){Unbind();pool?.Clear();}
+        private void OnDestroy(){Unbind();pool?.Clear();flightPool?.Clear();}
     }
 }

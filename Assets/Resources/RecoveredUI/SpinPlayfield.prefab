@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier:
   effectPrefab: {fileID: 6263144576445816659, guid: f6c51799273cb0e42a180e6ac24fefda, type: 3}
+  flightPrefab: {fileID: 6955760931351080755, guid: cd4026d579cfa9941ab324d96aa42689, type: 3}
 --- !u!1 &6544434768929315992
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,6 +68,14 @@ public sealed class RecoveredCoinGlowTests
             for (int c = 0; c < 5; c++) { columns[c] = new int[3]; for (int r = 0; r < 3; r++) columns[c][r] = board.GetSymbol(c, r); }
             float balance = entry.PlayerProgress.GreenCount; int presentations = 0, sounds = 0, firstReward = 0;
             field.CoinStops.CoinRevealSoundRequested += () => sounds++;
+            int arrivals=0;
+            field.CoinStops.ExpSoundRequested+=()=>{
+                Assert.AreEqual(1,field.CoinStops.ActiveFlightCount);
+                Assert.IsFalse(field.CoinStops.FlightAt(0).Destination.GetChild(0).gameObject.activeSelf);
+            };
+            field.CoinStops.LampLitEffectRequested+=lamp=>{
+                Assert.AreEqual(0,field.CoinStops.ActiveFlightCount);Assert.IsTrue(lamp.GetChild(0).gameObject.activeSelf);arrivals++;
+            };
             field.BonusCoinPresentationRequested += coin => {
                 if(presentations==0)firstReward=coin.Reward;
                 Assert.AreEqual(presentations == 0 ? 0 : 4, coin.Column); Assert.AreEqual(0, coin.Row);
@@ -90,11 +98,21 @@ public sealed class RecoveredCoinGlowTests
             RenderTexture.active = target; capture = new Texture2D(1080, 1920, TextureFormat.RGB24, false);
             capture.ReadPixels(new Rect(0, 0, 1080, 1920), 0, 0); capture.Apply();
             File.WriteAllBytes(Path.GetFullPath(Path.Combine(Application.dataPath, "../Artifacts/current-coin-reward-glow.png")), capture.EncodeToPNG());
+            for(int i=0;i<20&&field.CoinStops.ActiveFlightCount==0;i++)yield return null;
+            Assert.AreEqual(1,field.CoinStops.ActiveFlightCount);
+            var flying=field.CoinStops.FlightAt(0);
+            Assert.IsFalse(flying.Destination.GetChild(0).gameObject.activeSelf);
+            yield return null;yield return null;
+            Assert.IsTrue(flying.IsFlying);Assert.Greater(Vector3.Distance(flying.StartPoint,flying.transform.position),.1f);
+            RenderPipeline.SubmitRenderRequest(camera,new UniversalRenderPipeline.SingleCameraRequest{destination=target});
+            RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+            File.WriteAllBytes(Path.GetFullPath(Path.Combine(Application.dataPath,"../Artifacts/current-lamp-flight.png")),capture.EncodeToPNG());
             for (int i = 0; i < 80 && (field.BonusCoins.IsRunning || first.Glow.IsPlaying || second.Glow.IsPlaying); i++) yield return null;
             Assert.AreEqual(2, presentations); Assert.AreEqual(2, sounds); Assert.IsNull(field.BonusCoins.Error);
             Assert.IsFalse(first.Glow.gameObject.activeSelf); Assert.IsFalse(second.Glow.gameObject.activeSelf);
             Assert.AreEqual(balance, entry.PlayerProgress.GreenCount, "Reveal must not prematurely credit the missing flight stage.");
-            Assert.IsFalse(field.BonusCollection.GetUnselectedTarget(0, 1).GetChild(0).gameObject.activeSelf);
+            Assert.IsTrue(field.BonusCollection.GetUnselectedTarget(0, 1).GetChild(0).gameObject.activeSelf);
+            Assert.AreEqual(2,arrivals);Assert.AreEqual(1,field.CoinStops.CreatedFlightCount);Assert.AreEqual(0,field.CoinStops.ActiveFlightCount);
             Assert.AreEqual(2, field.CoinStops.CreatedCount);
             first.PlayShow(); Assert.IsFalse(first.Reveal.gameObject.activeSelf); Assert.IsFalse(first.Glow.gameObject.activeSelf);
             Assert.IsFalse(first.RewardText.Label.gameObject.activeSelf);

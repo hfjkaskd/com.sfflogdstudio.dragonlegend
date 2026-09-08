@@ -41,7 +41,7 @@ namespace DragonLegend.Whitebox
             // GameData.Init resets Bet=0; SetBet only assigns list[0] for the normal branch.
             Bet = isA ? 0 : bets[0];
             reels.Initialize(symbols);
-            if(coinStops!=null)coinStops.Bind(reels,languageType);
+            if(coinStops!=null)coinStops.Bind(reels,languageType,bonusCollection,GetComponentInParent<Canvas>().sortingOrder);
             entry.StartVisualsRequested += Started;
             reels.ReelsStopped += Stopped;
             spinButton.Button.onClick.AddListener(Click);
@@ -80,7 +80,7 @@ namespace DragonLegend.Whitebox
         }
         private void PresentBonusCoin(RecoveredBonusCoin coin)
         {
-            if (coinStops != null) coinStops.PlayRewardReveal(coin.Column, coin.Row, coin.Reward);
+            if (coinStops != null) coinStops.PlayRewardReveal(coin.Column, coin.Row, coin.Reward, coin.CollectionCount);
             BonusCoinPresentationRequested?.Invoke(coin);
         }
         // Called by the eventual CheckBaseEnd completion, never by a reel stop callback.

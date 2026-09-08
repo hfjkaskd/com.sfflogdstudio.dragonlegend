@@ -27,7 +27,9 @@ public static class BuildSpinPlayfield
             if(stopPrefab!=null) {
                 var effects=new GameObject("CoinEffects",typeof(RecoveredCoinStopPresenter));effects.layer=5;
                 effects.transform.SetParent(reelRoot.transform,false);coinStops=effects.GetComponent<RecoveredCoinStopPresenter>();
-                var settings=new SerializedObject(coinStops);settings.FindProperty("effectPrefab").objectReferenceValue=stopPrefab;settings.ApplyModifiedPropertiesWithoutUndo();
+                var settings=new SerializedObject(coinStops);settings.FindProperty("effectPrefab").objectReferenceValue=stopPrefab;
+                settings.FindProperty("flightPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredLampFlight>("Assets/Resources/RecoveredSymbols/LampFlight.prefab");
+                settings.ApplyModifiedPropertiesWithoutUndo();
             }
             foreach (var child in reelRoot.GetComponentsInChildren<Transform>(true)) child.gameObject.layer = 5;
             var bottom = Rect("Bottom", root.transform, new Vector2(.5f, 0), new Vector2(.5f, 0),
