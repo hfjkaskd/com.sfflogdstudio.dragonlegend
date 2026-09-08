@@ -73,3 +73,11 @@ Library、Temp、Logs 和本地 Artifacts 不提交。本轮不追加原始逆�
 核对 ClickSpin 的顺序：Bonus 动画、Wild 列动画、奖池、普通中奖动画、Bonus 游戏、免费游戏、基础结束。恢复其中的奖池和免费游戏判断及任务记录变化：所有完整 Wild 列参与奖池计数，3/4/5 列分别对应 minor/major/grand；免费次数直接取 Scatter 索引配置，只有正数才更新任务。GameEntry 提供 RewardBranches 供后续呈现阶段调用，尚未接通奖励弹窗和完整执行链，不代表视觉流程已恢复。
 
 SetTaskData 保留首次固定 count=1、后续增量及上下限、已领取只保存、空列表只保存、未知配置错误等原始行为；任务配置缓存按原顺序构造。新增 8 项边界测试，因此前 Defender 隔离 Unity 程序集，本轮未编译/运行，只完成源码及 ARM64 对照和 git diff 检查。SDK 未改动。
+
+## 本轮：恢复渲染管线和场景显示基础
+
+原版 GraphicsSettings/QualitySettings 使用 URP，而此前复刻工程仍使用内置管线。已从完整恢复的 MonoBehaviour 序列化数据重建六套 PipelineAsset 和六套 ForwardRenderer（普通导出对应文件仅有空壳），保留各质量档的渲染参数及原始档位映射，Android/iPhone 默认 Medium。Shader 按原名绑定官方包，重名蓝噪声纹理再按原尺寸核对；PostProcessData/XRSystemData 引用官方包资产。本机 Unity 2022.3.62f3 自带 URP 14.0.12，依赖已由 Package Manager 解析并保存到 packages-lock.json。[Unity 官方兼容说明](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@14.0/manual/requirements.html)
+
+入口场景恢复原版 UI 基础相机与世界叠加相机、相机栈、UI 根坐标；入口 Prefab 改用相机 Canvas、1080×1920、宽度匹配、原平面距离和 Shader channels，并统一 UI Layer。环境光/烘焙设置及空 LightingData 取自当前逆向场景，LightingData 重绑复刻场景。旧 BuildGameEntry 入口改为打开已保存场景，不再重新生成覆盖布局。
+
+验证：场景 117 处本地引用检查通过；17 个场景/Prefab/渲染配置文件外部 GUID 均可解析。正常 Unity 测试重试仍被 Defender 阻止读取 Whitebox.Runtime.dll；加入官方 URP 后编译后的 IL 处理同样在读取该程序集时被阻止，未发现新的 C# error CS 诊断。当前未完成 Unity 场景导入、运行或最新画面对照验收，不能据静态检查宣称视觉 1:1。主界面 Spine 转换、转轴、弹窗动画和完整玩法接线仍未完成，SDK 未改动。

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1387035704623009881}
   - component: {fileID: 1756440894923288801}
   - component: {fileID: 8422476087570905085}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SelectUS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 2476045388229557051}
   - component: {fileID: 9029490000557543167}
   - component: {fileID: 8486562311230049685}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Scope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 4014296819780104751}
   - component: {fileID: 3167754045128101842}
   - component: {fileID: 6424519227064210290}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SelectAlternative
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 4252945727068400217}
   - component: {fileID: 292291539232702657}
   - component: {fileID: 2790006528216797451}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Caption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +412,7 @@ GameObject:
   - component: {fileID: 6442379025683278346}
   - component: {fileID: 5459547056338437974}
   - component: {fileID: 5330111753305094249}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Caption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 7469864616474979060}
   - component: {fileID: 439506448329930774}
   - component: {fileID: 8394448435524178321}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Status
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 7981747328331711722}
   - component: {fileID: 9093728956673003235}
   - component: {fileID: 8810817293746934227}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameEntry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,23 +605,23 @@ RectTransform:
   m_Pivot: {x: 0, y: 0}
 --- !u!223 &441660419188992466
 Canvas:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8244612601289453793}
   m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 10
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -641,9 +641,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 720, y: 1280}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -662,10 +662,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  m_BlockingObjects: 1
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 32
 --- !u!114 &8810817293746934227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 7878029558423703380}
   - component: {fileID: 3121802260694897823}
   - component: {fileID: 8732485236444643475}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
