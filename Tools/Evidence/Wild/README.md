@@ -1,9 +1,9 @@
 # Three-Wild-column presentation: recovered source contract
 
-The persistent Wild3 prefab is now converted to native world-space meshes and independently
-render-tested (see the implementation section below). The current playfield still stops at
-`WildColumnsCheckRequested`. Its clipped entry light, shake and downstream reward stages
-remain to be connected; the prefab verification does not establish completion of that chain.
+The persistent Wild3 and clipped Wild3Light prefabs are now converted to native world-space
+meshes (see the implementation sections below). The current playfield still stops at
+`WildColumnsCheckRequested`. The presentation, shake and downstream reward stages remain
+to be connected; isolated prefab verification does not establish completion of that chain.
 
 ## Native control flow
 
@@ -39,8 +39,11 @@ null prefab; otherwise pool-spawn under the reel's `+0x70` parent, set world pos
 that disabled child, insert into the dictionary, then invoke the callback. Repeated calls
 for the same result object return without playing again.
 
-Callbacks: `23c226c.c` (spawn/play), `23c24d4.c` (despawn). The exact sound string pointer
-is not resolved in this packet; do not invent a sound key from an asset filename.
+Callbacks: `23c226c.c` (spawn/play), `23c24d4.c` (despawn). The sound key is **`change`**.
+The original ELF `.rela.dyn` has R_AARCH64_RELATIVE (`0x403`) at `0x4f1e4e8` with addend
+`0x505ea78`, which `analysis/script.json` maps to `change`. The animation pointer at
+`0x4f1e4e0` relocates to `0x5064fd8`, mapped to `wild3`. Read relocation records as well
+as file bytes: both pointer locations contain zero in the file before loader relocation.
 
 Shake: `238f144.c`, `238f428.c`, `238f3bc.c`. The original uses a coroutine, subtracts
 deltaTime before evaluating the falloff, and samples PerlinNoise(Time.time * frequency, 0)
@@ -143,7 +146,42 @@ source-number assertions. Reference geometry/UV rules were checked against offic
 [MeshAttachment.cs](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/Attachments/MeshAttachment.cs), and
 [RegionAttachment.cs](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/Attachments/RegionAttachment.cs).
 
-Remaining: Wild3Light clipping, native shake scheduling, reel ownership/pooling and
-actual scan integration, followed by jackpot and the other awaited post-spin branches.
-The runtime intentionally rejects unsupported bone/attachment formats during authoring;
-this conversion must not be used to silently discard the light's clipping attachment.
+Remaining: native shake scheduling, reel ownership/pooling and actual scan integration,
+followed by jackpot and the other awaited post-spin branches. The authoring path explicitly
+rejects unsupported bone/attachment formats instead of silently discarding them.
+
+## Native Wild3Light clipping and one-shot lifecycle
+
+`RecoveredSymbols/Wild3Light.prefab` uses the same world-space renderer with all 38 bones,
+26 slots and 153 attachments from `ef_wild1_3.json`. Its sole mesh and clipping quad each
+keep their original deformation. `RecoveredConvexClipper` clips individual triangles to
+the transformed original quad and interpolates UVs at intersections. Slot 24 is processed
+inside the clipping range, then clipping ends even if that slot's attachment is hidden.
+Slot 25 (`kuang`) remains outside the clip, as in the original renderer.
+
+The source quad and its deformed pose are validated for convexity during authoring.
+This is an exact geometric conversion for the present source; concave, nested and weighted
+clipping are not silently approximated. Transformed geometry and both polygon work buffers
+are retained between frames. Native Mesh vertex/index lists are preallocated for the
+maximum seven-vertex polygon resulting from clipping a triangle against four half-planes.
+
+`RecoveredWildLight.Play` resets the pose, plays the native `wild3` Animation once, and
+emits `Completed` at its independent 24/30-second completion. The owner can return it to
+its pool from that callback. Disabling it cancels the callback and retains mesh buffers
+for reuse. The prefab does not auto-play; the eventual scan callback starts it explicitly.
+Its animation is saved as `wild3.anim`, because Animation clip aliases assigned during
+editor authoring do not persist under a different serialized clip name.
+
+Author it after running `Tools/prepare_wild_mesh.py` with Unity execute method
+`BuildWildWorld.SaveLight`. `Tools/sample_wild_light.py` independently calculates clipped
+coverage and first moments at nine times directly from the original data. Tests compare
+these to the native mesh, check UV interpolation analytically in both windings, reject
+empty masks, and verify one-shot completion, pause, cancellation and mesh reuse.
+Fresh `Artifacts/current-wild-light-clipped.png` shows the real light over the persistent
+Wild. `current-wild-light-unclipped-control.png` is explicitly a same-frame QA control with
+only the clipping disabled; it is not an original-game reference or a desired final frame.
+
+The clipping integration changes the common world renderer, so the full persistent Wild
+numeric/render tests and the existing gameplay PlayMode suite must pass before committing.
+This still does not connect the effect to the actual board scan, add shake, request sound
+or vibration, or execute jackpot/bonus/free-game stages. Those remain active goal work.

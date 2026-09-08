@@ -10,6 +10,8 @@ namespace DragonLegend.Whitebox
         {
             public string name;
             public int slot;
+            public bool clipping;
+            public int endSlot;
             public Vector2[] positions, uv;
             public int[] triangles, counts, boneIndices;
             public float[] weights;

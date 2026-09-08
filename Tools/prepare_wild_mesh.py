@@ -5,7 +5,7 @@ from pathlib import Path
 root = Path(__file__).resolve().parents[1]
 destination = root / 'Artifacts/WildAuthoring'
 destination.mkdir(parents=True, exist_ok=True)
-for name in ('ef_wild3', 'ef_slwin3'):
+for name in ('ef_wild3', 'ef_slwin3', 'ef_wild1_3'):
     data = json.loads((root / ('Tools/Evidence/Wild/' + name + '.json')).read_text(encoding='utf8'))
     for attachment in data['attachments']:
         if attachment.get('weighted'):

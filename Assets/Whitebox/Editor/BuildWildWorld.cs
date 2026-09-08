@@ -11,7 +11,7 @@ public static class BuildWildWorld
 {
     [Serializable] private class Source : BuildCoinAppearance.Data { public new Attachment[] attachments; public new Clip[] animations; }
     [Serializable] private class Attachment : BuildCoinAppearance.Attachment {
-        public int kind; public bool weighted; public string path;
+        public int kind, endSlot; public bool weighted; public string path;
         public float[] vertices, uvs; public int[] counts, triangles; public Influence[] influences;
     }
     [Serializable] private class Influence { public int bone; public float x, y, weight; }
@@ -30,7 +30,20 @@ public static class BuildWildWorld
             PrefabUtility.SaveAsPrefabAsset(root, Folder + ".prefab"); AssetDatabase.SaveAssets();
         } finally { Object.DestroyImmediate(root); }
     }
-    static void Create(Transform parent, string name, string file, string directory)
+    public static void SaveLight()
+    {
+        const string folder="Assets/Resources/RecoveredSymbols/Wild3Light";
+        Directory.CreateDirectory(folder);AssetDatabase.Refresh();
+        var root=Create(null,"Wild3Light","ef_wild1_3","1_3",folder,false);
+        try {
+            var driver=new SerializedObject(root.AddComponent<RecoveredWildLight>());
+            driver.FindProperty("player").objectReferenceValue=root.GetComponent<Animation>();
+            driver.FindProperty("rig").objectReferenceValue=root.GetComponent<RecoveredWorldRig>();
+            driver.FindProperty("clipName").stringValue="wild3";driver.ApplyModifiedPropertiesWithoutUndo();
+            PrefabUtility.SaveAsPrefabAsset(root,folder+".prefab");AssetDatabase.SaveAssets();
+        } finally {Object.DestroyImmediate(root);}
+    }
+    static GameObject Create(Transform parent, string name, string file, string directory,string folder=Folder,bool loop=true)
     {
         var source = JsonUtility.FromJson<Source>(File.ReadAllText("Artifacts/WildAuthoring/" + file + ".json"));
         var data = ScriptableObject.CreateInstance<RecoveredWorldRigData>(); data.name = file;
@@ -75,6 +88,12 @@ public static class BuildWildWorld
                     result.positions=new Vector2[a.vertices.Length/2];
                     for (int p=0;p<result.positions.Length;p++) result.positions[p]=new Vector2(a.vertices[p*2],a.vertices[p*2+1]);
                 }
+            } else if(a.kind==6) {
+                if(a.weighted||a.vertices.Length!=8)throw new InvalidDataException("This light requires an unweighted convex quad");
+                result.clipping=true;result.endSlot=a.endSlot;
+                result.uv=Array.Empty<Vector2>();result.triangles=Array.Empty<int>();result.positions=new Vector2[4];
+                for(int p=0;p<4;p++)result.positions[p]=new Vector2(a.vertices[p*2],a.vertices[p*2+1]);
+                ValidateClip(a.vertices);
             } else throw new InvalidDataException("Attachment needs an explicit native conversion");
             data.attachments[i]=result;
         }
@@ -90,7 +109,8 @@ public static class BuildWildWorld
                 var attachment=data.attachments[ids[t.index+"/"+t.attachment]];
                 attachment.deform=new RecoveredWorldRigData.DeformFrame[t.frames.Length];
                 for(int f=0;f<t.frames.Length;f++) {
-                    var frame=t.frames[f];var converted=new RecoveredWorldRigData.DeformFrame{time=frame.time,values=frame.values};
+                    var frame=t.frames[f];if(attachment.clipping)ValidateClip(frame.values);
+                    var converted=new RecoveredWorldRigData.DeformFrame{time=frame.time,values=frame.values};
                     if(f+1<t.frames.Length)converted.progress=BuildCoinAppearance.Curve(new[] {
                         new BuildCoinAppearance.Frame{time=frame.time,values=new[]{0f},curve=frame.curve,bezier=frame.bezier},
                         new BuildCoinAppearance.Frame{time=t.frames[f+1].time,values=new[]{1f}}},0,0,1);
@@ -113,15 +133,27 @@ public static class BuildWildWorld
                 channels.Add(new RecoveredRigAnimation.Channel{slot=slot,index=t.index,component=component,curve=curve});
             }
         }
-        data.channels=channels.ToArray(); data=SaveAsset(data,Folder+"/"+file+".asset");
+        data.channels=channels.ToArray(); data=SaveAsset(data,folder+"/"+file+".asset");
         var node=new GameObject(name,typeof(MeshFilter),typeof(MeshRenderer),typeof(RecoveredWorldRig),typeof(Animation));node.layer=5;node.transform.SetParent(parent,false);
-        var settings=new SerializedObject(node.GetComponent<RecoveredWorldRig>());settings.FindProperty("dataPath").stringValue="RecoveredSymbols/Wild3/"+file;settings.ApplyModifiedPropertiesWithoutUndo();
-        var material=new Material(Shader.Find("DragonLegend/Recovered PMA World Rig"));material=SaveAsset(material,Folder+"/"+file+".mat");
+        var settings=new SerializedObject(node.GetComponent<RecoveredWorldRig>());settings.FindProperty("dataPath").stringValue=folder.Substring("Assets/Resources/".Length)+"/"+file;settings.ApplyModifiedPropertiesWithoutUndo();
+        var material=new Material(Shader.Find("DragonLegend/Recovered PMA World Rig"));material=SaveAsset(material,folder+"/"+file+".mat");
         var renderer=node.GetComponent<MeshRenderer>();renderer.sharedMaterial=material;renderer.shadowCastingMode=ShadowCastingMode.Off;renderer.receiveShadows=false;
         renderer.sortingOrder=file=="ef_wild3"?0:1;
-        var clock=new AnimationClip{name=animation.name,legacy=true,frameRate=30,wrapMode=WrapMode.Loop};
+        var clock=new AnimationClip{name=animation.name,legacy=true,frameRate=30,wrapMode=loop?WrapMode.Loop:WrapMode.Once};
         clock.SetCurve("",typeof(RecoveredWorldRig),"poseTime",AnimationCurve.Linear(0,0,data.duration,data.duration));
-        clock=SaveAsset(clock,Folder+"/"+file+".anim");var player=node.GetComponent<Animation>();player.AddClip(clock,animation.name);player.clip=clock;player.playAutomatically=true;
+        clock=SaveAsset(clock,folder+"/"+(loop?file:animation.name)+".anim");var player=node.GetComponent<Animation>();player.AddClip(clock,animation.name);player.clip=clock;player.playAutomatically=loop;
+        return node;
+    }
+    static void ValidateClip(float[] vertices)
+    {
+        if(vertices.Length!=8)throw new InvalidDataException("Clip shape changed");
+        float winding=0;
+        for(int i=0;i<4;i++) {
+            int a=i*2,b=((i+1)%4)*2,c=((i+2)%4)*2;
+            float cross=(vertices[b]-vertices[a])*(vertices[c+1]-vertices[b+1])-(vertices[b+1]-vertices[a+1])*(vertices[c]-vertices[b]);
+            if(cross==0||winding*cross<0)throw new InvalidDataException("Non-convex clipping requires polygon decomposition");
+            winding=cross;
+        }
     }
     public static Vector2 MeshUv(BuildCoinAppearance.Region region,Vector2 uv,float width,float height)
     {

@@ -46,7 +46,7 @@ def evaluate(frames,time,component,percent=False):
         if time<=x1:return y0+(y1-y0)*(time-x0)/(x1-x0)
     return p1
 
-def sample(data,time):
+def sample(data,time,geometry=False):
     pose=[b['values'][:5] for b in data['bones']]
     active=[s['attachment'] for s in data['slots']]
     deforms={}
@@ -73,7 +73,7 @@ def sample(data,time):
     matrices=[]
     for b,p in zip(data['bones'],pose):
         matrices.append(matrix([1,0,0,1,0,0] if b['parent']<0 else matrices[b['parent']],b['mode'],p))
-    vertices=[]
+    vertices=[];records=[]
     for slot,key in enumerate(active):
         if key is None:continue
         a=next(a for a in data['attachments'] if a['slot']==slot and a['key']==key)
@@ -99,13 +99,16 @@ def sample(data,time):
             values=a['vertices'] if deformation is None else deformation
             points=[transform(matrices[data['slots'][slot]['bone']],p) for p in zip(values[::2],values[1::2])]
         vertices.extend(v/100 for point in points for v in point)
-    return {'time':time,'vertices':vertices}
+        if geometry:records.append({'slot':slot,'clip':a['kind']==6,'endSlot':a.get('endSlot',-1),'points':[[v/100 for v in p] for p in points],
+                                    'triangles':[0,1,2,2,3,0] if a['kind']==0 else a.get('triangles',[])})
+    return records if geometry else {'time':time,'vertices':vertices}
 
-samples=[]
-for name in ('ef_wild3','ef_slwin3'):
-    data=json.loads((root/('Tools/Evidence/Wild/'+name+'.json')).read_text(encoding='utf8'))
-    times=(0,.173,.73,1.5,2.91,3) if name=='ef_wild3' else (0,.173,.5,.63)
-    samples.append({'name':name,'frames':[sample(data,t) for t in times]})
-destination=root/'Tools/Evidence/wild-world-samples.json'
-destination.write_text(json.dumps({'rigs':samples},indent=2),encoding='utf8')
-print(destination)
+if __name__=='__main__':
+    samples=[]
+    for name in ('ef_wild3','ef_slwin3'):
+        data=json.loads((root/('Tools/Evidence/Wild/'+name+'.json')).read_text(encoding='utf8'))
+        times=(0,.173,.73,1.5,2.91,3) if name=='ef_wild3' else (0,.173,.5,.63)
+        samples.append({'name':name,'frames':[sample(data,t) for t in times]})
+    destination=root/'Tools/Evidence/wild-world-samples.json'
+    destination.write_text(json.dumps({'rigs':samples},indent=2),encoding='utf8')
+    print(destination)

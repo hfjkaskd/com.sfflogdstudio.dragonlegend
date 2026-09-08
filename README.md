@@ -432,3 +432,13 @@ RecoveredRegionRig 使用单个原生 MaskableGraphic/CanvasRenderer，按原 42
 - 本轮完整 PlayMode：`Artifacts/wild-world-all-tests.xml`，156/156 通过。当前截图：`Artifacts/current-wild-world-0.png`、`current-wild-world-1.png` 和重生成的 `current-win-burst.png`。桌面 Editor 中单套龙形网格连续采样 1000 次共 190.44 ms，稳态托管分配 0 字节；这是姿态/网格更新微基准，不代表真机完整帧耗时。
 - 三连 Wild 的持续视觉已完成原生资源转换，但入场裁剪光效、棋盘震动、转轴池归属及实际扫描接线仍待完成，后续奖池/符号/Bonus/Free/BaseEnd 链也未完成。未将这些缺口视为复刻完成，SDK 维持现状。
 - 完整原始链路、资源来源、重建命令与剩余工作见 [三连 Wild 证据与实现记录](Tools/Evidence/Wild/README.md)。
+
+### 三连 Wild 入场裁剪光效（2026-09-08）
+
+- 新增 `RecoveredSymbols/Wild3Light.prefab`，使用原生 MeshRenderer 和单次 Animation，完整转换原版 38 根骨骼、26 个槽位、153 个附件及两条网格/裁剪变形轨道。
+- 按原版四边形进行三角形裁剪并插值 UV，第 24 槽位之后结束裁剪，保留第 25 槽位的独立边框。几何与裁剪缓冲复用，未用矩形 UI Mask 近似原形状。
+- 单次 `wild3` 动画持续 0.8 秒，完成回调可用于回池；暂停、禁用取消、重复使用及 Mesh 复用已验证。修正 Unity 序列化动画名与运行时调用名不一致导致无法播放的问题。
+- 从原始 ARM64 ELF 的重定位记录确认入场音效键为 `change`；目前仅记录原版证据，声音/震动仍等待实际流程接线，SDK 没有改动。
+- 九组源数据独立裁剪面积/一阶矩、两种绕序的 UV 交点、当前叠加画面、无裁剪对照及生命周期检查通过。完整 `Artifacts/wild-light-all-tests.xml` 为 158/158 通过；最终截图 `Artifacts/current-wild-light-clipped.png`。
+- 桌面 Editor 中入场光效连续采样 1000 次共 50.07 ms、托管分配 0 字节；共享渲染器的持续 Wild 回归为 185.55 ms/1000 次、0 字节。这是姿态/网格微基准，不代表真机完整帧耗时。
+- 当前仍未把三连 Wild 展示接到实际扫描回调，棋盘震动、转轴对象池归属和后续奖池/Bonus/Free/BaseEnd 链继续开发，完整生命周期 1:1 尚未完成。

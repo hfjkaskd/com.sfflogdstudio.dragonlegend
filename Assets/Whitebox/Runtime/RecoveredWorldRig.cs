@@ -21,6 +21,9 @@ namespace DragonLegend.Whitebox
         private List<Vector2> uvs;
         private List<Color> colors;
         private List<int> triangles;
+        private Vector3[] transformed;
+        private RecoveredConvexClipper clipper;
+        private int clipEnd=-1;
         public RecoveredWorldRigData Data => data;
         public Mesh CurrentMesh => mesh;
         public Matrix4x4 BoneMatrix(int index) => matrices[index];
@@ -36,10 +39,14 @@ namespace DragonLegend.Whitebox
             if (data == null) throw new InvalidOperationException("Missing world rig data: " + dataPath);
             matrices = new Matrix4x4[data.bones.Length]; local = new float[data.bones.Length * 5];
             attachments = new int[data.slots.Length]; tints = new Color[data.slots.Length];
-            int vertexCapacity = 0, indexCapacity = 0;
+            int vertexCapacity = 0, indexCapacity = 0, largestAttachment=0;bool hasClip=false;
             for (int i = 0; i < data.attachments.Length; i++) {
                 vertexCapacity += data.attachments[i].uv.Length; indexCapacity += data.attachments[i].triangles.Length;
+                var a=data.attachments[i];hasClip|=a.clipping;
+                largestAttachment=Math.Max(largestAttachment,a.clipping?a.positions.Length:a.uv.Length);
             }
+            transformed=new Vector3[largestAttachment];
+            if(hasClip) {clipper=new RecoveredConvexClipper();vertexCapacity=Math.Max(vertexCapacity,indexCapacity/3*7);indexCapacity*=5;}
             vertices = new List<Vector3>(vertexCapacity); uvs = new List<Vector2>(vertexCapacity);
             colors = new List<Color>(vertexCapacity); triangles = new List<int>(indexCapacity);
             mesh = new Mesh { name = data.name + " instance" }; mesh.MarkDynamic();
@@ -70,10 +77,19 @@ namespace DragonLegend.Whitebox
                 matrices[i] = Compose(b.parent < 0 ? Matrix4x4.identity : matrices[b.parent], b.mode,
                     local[p+1], local[p+2], local[p], local[p+3], local[p+4]);
             }
-            vertices.Clear(); uvs.Clear(); colors.Clear(); triangles.Clear();
+            vertices.Clear(); uvs.Clear(); colors.Clear(); triangles.Clear();clipEnd=-1;
             for (int s = 0; s < attachments.Length; s++) {
-                int a = attachments[s]; if (a < 0) continue;
-                Draw(data.attachments[a], s);
+                int a = attachments[s];
+                if(a>=0) {
+                    var attachment=data.attachments[a];
+                    TransformAttachment(attachment,s);
+                    if(attachment.clipping) {
+                        if(clipEnd>=0)throw new InvalidOperationException("Nested clipping needs explicit conversion");
+                        clipper.SetBoundary(transformed,attachment.positions.Length);clipEnd=attachment.endSlot;
+                    } else Draw(attachment,s);
+                }
+                // A hidden end-slot attachment must still terminate the original clipping range.
+                if(s==clipEnd)clipEnd=-1;
             }
             mesh.Clear(); mesh.SetVertices(vertices); mesh.SetUVs(0, uvs); mesh.SetColors(colors);
             mesh.SetTriangles(triangles, 0, true);
@@ -98,18 +114,17 @@ namespace DragonLegend.Whitebox
             matrix.SetColumn(3, new Vector4(position.x, position.y, 0, 1)); return matrix;
         }
 
-        private void Draw(RecoveredWorldRigData.Attachment a, int slotIndex)
+        private void TransformAttachment(RecoveredWorldRigData.Attachment a,int slotIndex)
         {
             var frames = a.deform; int frame = -1; float mix = 0;
             if (frames != null) {
                 for (int f = 0; f < frames.Length && frames[f].time <= poseTime; f++) frame = f;
                 if (frame >= 0 && frame + 1 < frames.Length) mix = frames[frame].progress.Evaluate(poseTime);
             }
-            Color tint = a.tint * tints[slotIndex]; tint.r *= tint.a; tint.g *= tint.a; tint.b *= tint.a;
-            if (data.slots[slotIndex].additive) tint.a = 0;
-            int first = vertices.Count, influence = 0;
+            int influence = 0;
             bool weighted = a.counts.Length != 0;
-            for (int v = 0; v < a.uv.Length; v++) {
+            int vertexCount=a.clipping?a.positions.Length:a.uv.Length;
+            for (int v = 0; v < vertexCount; v++) {
                 Vector3 point = Vector3.zero;
                 int count = weighted ? a.counts[v] : 1;
                 for (int w = 0; w < count; w++, influence++) {
@@ -126,9 +141,27 @@ namespace DragonLegend.Whitebox
                     point += matrices[weighted ? a.boneIndices[influence] : data.slots[slotIndex].bone].MultiplyPoint3x4(value)
                         * (weighted ? a.weights[influence] : 1);
                 }
-                vertices.Add(point / data.pixelsPerUnit); uvs.Add(a.uv[v]); colors.Add(tint);
+                transformed[v]=point/data.pixelsPerUnit;
             }
-            for (int t = 0; t < a.triangles.Length; t++) triangles.Add(first + a.triangles[t]);
+        }
+        private void Draw(RecoveredWorldRigData.Attachment a,int slotIndex)
+        {
+            Color tint=a.tint*tints[slotIndex];tint.r*=tint.a;tint.g*=tint.a;tint.b*=tint.a;
+            if(data.slots[slotIndex].additive)tint.a=0;
+            if(clipEnd<0) {
+                int first=vertices.Count;
+                for(int v=0;v<a.uv.Length;v++) {vertices.Add(transformed[v]);uvs.Add(a.uv[v]);colors.Add(tint);}
+                for(int t=0;t<a.triangles.Length;t++)triangles.Add(first+a.triangles[t]);
+                return;
+            }
+            for(int t=0;t<a.triangles.Length;t+=3) {
+                int a0=a.triangles[t],a1=a.triangles[t+1],a2=a.triangles[t+2];
+                clipper.Clip(new RecoveredConvexClipper.Vertex(transformed[a0],a.uv[a0]),new RecoveredConvexClipper.Vertex(transformed[a1],a.uv[a1]),new RecoveredConvexClipper.Vertex(transformed[a2],a.uv[a2]));
+                if(clipper.Count<3)continue;
+                int first=vertices.Count;
+                for(int v=0;v<clipper.Count;v++) {var value=clipper.At(v);vertices.Add(value.position);uvs.Add(value.uv);colors.Add(tint);}
+                for(int v=1;v+1<clipper.Count;v++) {triangles.Add(first);triangles.Add(first+v);triangles.Add(first+v+1);}
+            }
         }
         private void OnDestroy() { if (mesh != null) Destroy(mesh); }
     }
