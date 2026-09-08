@@ -119,3 +119,8 @@ RewardBranches 提供 CheckBonusGame，供普通中奖动画之后、免费游�
 按 UIMainView.FreeAutoSpin 0x23bf158 及完成回调 0x23bf7d0 恢复：免费次数不足 1 时返回，否则先扣运行时次数，再生成免费结果，完成后请求 AutoFreeSpin 表现。不会扣普通次数、增加经验/银行/奖池，也不保存 PlayerData；生成异常不退款。为保持原版同步生成的串行语义，逐步生成期间拒绝重复开始。GameEntry 创建并清理入口与结果实例。
 
 新增 4 项用例，验证空次数早退、扣次与表现回调顺序、重复调用、普通玩家记录不变及生成失败边界。Unity 2022.3.62f3 PlayMode 全量 87 项通过、0 失败（本地 Artifacts/free-spin-entry-tests.xml）。表现请求仍待绑定转轴 Prefab，奖励、结束弹窗和回到基础游戏的完整循环未完成。已确认原版结束判断是次数等于 0，待后续接入；SDK 未修改。
+## 本轮：免费旋转结束与返回基础模式的控制顺序
+
+恢复 CheckFreeSpinEnd 0x23ca10c：次数恰好为 0 时先将模式改为 Base、暂停音乐，再请求 UIFreeSpinEndView（传入初始免费次数）；等待结束视图完成后请求 transform 音效和转场。按 0x23bf600 的转场事件顺序请求恢复基础界面和初始化转轴，按 0x23bf618 的转场完成顺序请求清除免费结束标记及 normalBg 音乐。非零次数交给 FreeSpinEntry，负值不会打开结束弹窗。GameEntry 管理此控制实例的生命周期。
+
+控制层明确等待实际视图/动画回调，当前未绑定完整 Prefab，不能把请求事件视为视觉实现完成。新增 3 项用例覆盖等待、调用顺序、初始次数传递、正/负次数分支；Unity 2022.3.62f3 全量 PlayMode 90 项通过、0 失败（本地 Artifacts/free-exit-tests.xml）。免费奖励结算、主玩法表现及完整游戏生命周期仍待完成；SDK 保持原处理方式。
