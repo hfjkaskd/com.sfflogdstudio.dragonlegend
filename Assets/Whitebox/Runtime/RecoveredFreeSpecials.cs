@@ -95,6 +95,21 @@ namespace DragonLegend.Whitebox
             stopped.Add(reel,effect);
         }
         public Component StoppedAt(RecoveredReelView reel)=>stopped.TryGetValue(reel,out var effect)?effect:null;
+        public void ShowStoppedEffect(RecoveredReelView reel,Transform resultLayer)
+        {
+            if(!stopped.TryGetValue(reel,out var effect))return;
+            effect.transform.SetParent(resultLayer,false);
+            effect.transform.position=reel.SymbolAt(0).Symbol.transform.position;
+            if(effect is RecoveredFreeCoin coin)coin.Clipping.Bind(null);
+            else if(effect is RecoveredFreeBall ball)ball.Clipping.Bind(null);
+        }
+        public void ResetStoppedPresentation(RecoveredReelView reel)
+        {
+            if(!stopped.TryGetValue(reel,out var effect))return;
+            var slot=reel.SymbolAt(0);effect.transform.SetParent(slot.transform,false);effect.transform.localPosition=slotCenter;
+            if(effect is RecoveredFreeCoin coin)coin.Clipping.Bind(slot.EffectClip);
+            else if(effect is RecoveredFreeBall ball)ball.Clipping.Bind(slot.EffectClip);
+        }
         private void ClearStopped(RecoveredReelView reel)
         {
             if(!stopped.TryGetValue(reel,out var effect))return;
@@ -121,7 +136,7 @@ namespace DragonLegend.Whitebox
                 var slot=reel.SymbolAt(i);
                 if(!coinSlots.TryGetValue(slot,out var list)||list.Count==0)continue;
                 for(int j=0;j<list.Count;j++) {
-                    var coin=list[j];if(coin==null||!coin.gameObject.activeInHierarchy)continue;
+                    var coin=list[j];if(coin==null||!coin.gameObject.activeInHierarchy||coin.transform.parent!=slot.transform)continue;
                     list.RemoveAt(j);coins.Release(coin);slot.Symbol.gameObject.SetActive(true);break;
                 }
             }
@@ -132,7 +147,7 @@ namespace DragonLegend.Whitebox
                 var slot=reel.SymbolAt(i);
                 if(!ballSlots.TryGetValue(slot,out var list)||list.Count==0)continue;
                 for(int j=0;j<list.Count;j++) {
-                    var ball=list[j];if(ball==null||!ball.gameObject.activeInHierarchy)continue;
+                    var ball=list[j];if(ball==null||!ball.gameObject.activeInHierarchy||ball.transform.parent!=slot.transform)continue;
                     list.RemoveAt(j);balls.Release(ball);slot.Symbol.gameObject.SetActive(true);break;
                 }
             }

@@ -40,7 +40,7 @@ Fresh captures are under Artifacts/current-free-clipping-*.png (1200 x 1000).
 The half-cell and labels-only captures were inspected at original resolution.
 This verifies the standalone Free board's effect clipping, not production Free
 mode completion. Independent stop motion is now connected (free-reel-motion.md);
-column coordination, auto-spin/reward/exit, mode UI and production FreeEntry
+column coordination is connected (free-columns.md); auto-spin/reward/exit, mode UI and production FreeEntry
 binding remain unfinished. SDK handling is unchanged.
 
 Validation: final Unity 2022.3.62f3 full PlayMode suite **281/281 passed** in

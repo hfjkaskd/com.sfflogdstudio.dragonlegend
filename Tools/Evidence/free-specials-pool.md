@@ -44,7 +44,8 @@ board preview is Artifacts/current-free-board-specials.png.
 
 Per-mini-reel mesh and label clipping is now connected; see
 free-specials-clipping.md. Independent landing/return motion is connected
-(see free-reel-motion.md). Remaining: column stop coordination, collection/reward motion, complete mode view
+(see free-reel-motion.md). Column stop coordination and result-layer placement
+are connected (free-columns.md). Remaining: collection/reward motion, complete mode view
 switch and production FreeEntry binding after Bonus. The prefab can now
 initialize and refresh actual specials, but this does not establish a working
 production Free lifecycle. Reuse behavior beyond the exercised initial and

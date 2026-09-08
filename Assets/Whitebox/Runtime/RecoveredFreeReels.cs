@@ -10,6 +10,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredFreeSpecials specials;
         [SerializeField] private RecoveredFreeReelMotion[] motions;
         public RecoveredFreeReelMotion MotionAt(int column,int row)=>motions[column*3+row];
+        [SerializeField] private RecoveredFreeColumn[] columns;
+        public RecoveredFreeColumn ColumnAt(int column)=>columns[column];
         public RecoveredFreeSpecials Specials=>specials;
         public bool IsInitialized { get; private set; }
         public RecoveredReelView At(int column, int row) => reels[column * 3 + row];

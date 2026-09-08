@@ -44,18 +44,30 @@ public static class BuildFreeReels
             var settings=new SerializedObject(root.GetComponent<RecoveredFreeReels>());
             var reels=settings.FindProperty("reels");reels.arraySize=15;
             var motions=settings.FindProperty("motions");motions.arraySize=15;
+            var columns=settings.FindProperty("columns");columns.arraySize=5;
+            var resultLayer=new GameObject("FreeResult").transform;resultLayer.SetParent(root.transform,false);
+            BuildFreeSpecials.Attach(root);
             var prefab=AssetDatabase.LoadAssetAtPath<GameObject>(miniPath);
             for(int col=0;col<layout.columns.Length;col++) {
                 var source=layout.columns[col];
-                var column=new GameObject(source.name);column.transform.SetParent(root.transform,false);
+                var column=new GameObject(source.name,typeof(RecoveredFreeColumn));column.transform.SetParent(root.transform,false);
                 column.transform.localPosition=new Vector3(source.x*.01f,source.y*.01f,0);
+                var columnData=new SerializedObject(column.GetComponent<RecoveredFreeColumn>());
+                columnData.FindProperty("column").intValue=col;
+                columnData.FindProperty("stopDelay").floatValue=.5f;columnData.FindProperty("stopDelayPerColumn").floatValue=.15f;
+                columnData.FindProperty("specials").objectReferenceValue=root.GetComponentInChildren<RecoveredFreeSpecials>();
+                columnData.FindProperty("resultLayer").objectReferenceValue=resultLayer;
+                var rows=columnData.FindProperty("rows");rows.arraySize=3;
                 for(int row=0;row<source.reels.Length;row++) {
                     var cell=source.reels[row];
                     var reel=(GameObject)PrefabUtility.InstantiatePrefab(prefab,column.transform);
                     reel.name=cell.name;reel.transform.localPosition=new Vector3(cell.x*.01f,cell.y*.01f,0);
                     reels.GetArrayElementAtIndex(col*3+row).objectReferenceValue=reel.GetComponent<RecoveredReelView>();
                     motions.GetArrayElementAtIndex(col*3+row).objectReferenceValue=reel.GetComponent<RecoveredFreeReelMotion>();
+                    rows.GetArrayElementAtIndex(row).objectReferenceValue=reel.GetComponent<RecoveredFreeReelMotion>();
                 }
+                columnData.ApplyModifiedPropertiesWithoutUndo();
+                columns.GetArrayElementAtIndex(col).objectReferenceValue=column.GetComponent<RecoveredFreeColumn>();
             }
             settings.ApplyModifiedPropertiesWithoutUndo();
             BuildFreeSpecials.Attach(root);

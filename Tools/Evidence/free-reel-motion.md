@@ -42,8 +42,8 @@ definitions, reused coin/ball instances, shared ball-index wrap, OutBack
 overshoot, final flags, next-wrap pool cleanup and paused delayed callbacks.
 
 Scope: the independent mini reel can now spin, land its actual result and return.
-This does not yet implement FreeRoll's three-row callback aggregation, the full
-StarSpin async wrapper, PlayFreeStopAnim, reward collection/flight, FreeAutoSpin,
+FreeRoll three-row callback aggregation and the Free StarSpin async wrapper are
+now connected (see free-columns.md). Still pending: PlayFreeStopAnim, reward collection/flight, FreeAutoSpin,
 mode view switching or production FreeEntry binding. Source Free StarSpin waits
 for !isStop, not !isStartSpin; that unusual startup completion must be preserved
 when integrating the higher-level wrapper. SDK behavior remains unchanged.
