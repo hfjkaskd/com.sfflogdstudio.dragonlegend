@@ -56,7 +56,13 @@ for i in range(var()):
  result['bones'].append(d)
 result['slots']=[]
 for i in range(var()):result['slots'].append({'name':string(),'bone':var(),'color':color(),'dark':color(),'attachment':ref(),'blend':var()})
-for label in ['ik','transform','path']:zero(label)
+zero('ik')
+constraints=[]
+for i in range(var()):
+ d={'name':string(),'order':var(),'skin':u8(),'bones':[var() for _ in range(var())],'target':var(),'local':u8(),'relative':u8(),'offsets':[num() for _ in range(6)],'mix':[num() for _ in range(6)]}
+ constraints.append(d)
+if constraints:result['transformConstraints']=constraints
+zero('path')
 result['attachments']=[]
 for i in range(var()):
  slot=var()
