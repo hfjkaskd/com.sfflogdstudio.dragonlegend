@@ -383,3 +383,12 @@ RecoveredCoinStopPresenter 使用官方 ObjectPool 回收/复用飞行对象。�
 入口初始文案修正后，3 项定向 PlayMode 复测全部通过（Artifacts/down-win-final-tests.xml），包括实际入口初始化 GOOD LUCK 与两金币汇总渲染。
 
 视觉复核补充：全量测试截图中底部 $0.40 完整显示；随后定向测试重生成的 current-down-win.png 出现部分文字/图像被遮挡（含已有 GM 文本和金币），底部 $0.26 也不完整。逻辑和 Prefab 参数验证通过不能证明完整渲染正确；遮挡原因尚未确定，下一轮须继续检查渲染顺序、遮罩和截图渲染路径，不把当前截图作为完美 1:1 证据。
+
+
+## 本轮：纠正整图预览遮挡判断，增加实际像素验证
+
+对当前入口执行独立对照：相同帧重复 SingleCameraRequest、再重复 StandardRequest，三次结果相邻像素差异（R/G 相差超过 10）均为 0，见 Artifacts/render-repeat-tests.xml/log。改变相机剔除/遮罩时的整图预览并不能证明相应游戏系统有缺陷，因此没有修改任何运行时遮罩、排序或渲染设置。
+
+此前整图预览被判断为缺少美元符号和 GM 按钮，但本轮直接用 System.Drawing 解码同一 current-down-win.png：在 x=440..459、y=1670..1749 的美元符号区域有 765 个绿色像素；从文件截取原始局部后，current-down-win-detail.png 完整显示 $0.34，current-gm-detail.png 完整显示两个 GM 按钮。该证据纠正上一节的遮挡判断：当前 PNG 文件没有对应的缺字，不能把整图预览呈现差异当作游戏缺陷。此结论只覆盖本次被怀疑的区域，不代表整套视觉已完成复刻。
+
+实际奖励集成测试增加冻结动画后的连续 8 帧 StandardRequest 渲染，每帧根据 TMP 字符网格边界逐一检查每个可见金额字符的绿色像素，防止仅字符串正确却完全漏绘字符的假阳性。定向测试通过（Artifacts/render-glyph-tests.xml），原 151 项逻辑/结构测试基线保留；本轮仅改变测试，没有更改运行时或 SDK。后续继续恢复飞向底部文本的原粒子和抵达光效，以及完整奖励生命周期。

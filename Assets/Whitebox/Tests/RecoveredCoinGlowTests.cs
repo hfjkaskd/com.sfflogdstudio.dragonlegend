@@ -153,6 +153,29 @@ public sealed class RecoveredCoinGlowTests
             RenderPipeline.SubmitRenderRequest(camera,new UniversalRenderPipeline.SingleCameraRequest{destination=target});
             RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
             File.WriteAllBytes(Path.GetFullPath(Path.Combine(Application.dataPath,"../Artifacts/current-down-win.png")),capture.EncodeToPNG());
+            // Verify every rendered currency glyph over successive frozen frames. String equality
+            // alone misses the partial text loss observed during offscreen rendering.
+            Time.timeScale=0;
+            for(int pass=0;pass<8;pass++) {
+                yield return null;
+                Canvas.ForceUpdateCanvases();
+                RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
+                RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+                File.WriteAllBytes(Path.GetFullPath(Path.Combine(Application.dataPath,"../Artifacts/current-down-win.png")),capture.EncodeToPNG());
+                var rendered=capture.GetPixels32();var label=field.DownWin.Label;
+                for(int character=0;character<label.textInfo.characterCount;character++) {
+                    var info=label.textInfo.characterInfo[character];if(!info.isVisible)continue;
+                    var low=camera.WorldToScreenPoint(label.transform.TransformPoint(info.bottomLeft));
+                    var high=camera.WorldToScreenPoint(label.transform.TransformPoint(info.topRight));
+                    int greenPixels=0;
+                    for(int y=Mathf.Max(0,(int)low.y);y<Mathf.Min(1920,Mathf.CeilToInt(high.y));y++)
+                        for(int x=Mathf.Max(0,(int)low.x);x<Mathf.Min(1080,Mathf.CeilToInt(high.x));x++) {
+                            var pixel=rendered[y*1080+x];if(pixel.g>100&&pixel.g>pixel.r*1.3f)greenPixels++;
+                        }
+                    Assert.Greater(greenPixels,20,"Missing rendered currency glyph "+info.character+" on frozen frame "+pass);
+                }
+            }
+            Time.timeScale=1;
 
             Assert.IsFalse(first.Glow.gameObject.activeSelf); Assert.IsFalse(second.Glow.gameObject.activeSelf);
             Assert.AreEqual(balance, entry.PlayerProgress.GreenCount, "Reveal must not prematurely credit the missing flight stage.");
