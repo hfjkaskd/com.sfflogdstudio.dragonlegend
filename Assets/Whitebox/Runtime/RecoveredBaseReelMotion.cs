@@ -5,7 +5,7 @@ using UnityEngine;
 namespace DragonLegend.Whitebox
 {
     // Base-mode movement from StarSlotSpin, ConstantSpeedRoll, StopSlotRoll.
-    // Free stop presentation and SetStop's outer delay/notification are separate unfinished branches.
+    // Free stop presentation remains a separate unfinished branch.
     public sealed class RecoveredBaseReelMotion : MonoBehaviour
     {
         [SerializeField] private RecoveredReelView reel;
@@ -31,6 +31,9 @@ namespace DragonLegend.Whitebox
             resultProvider = currentColumn ?? throw new ArgumentNullException(nameof(currentColumn));
             StopRequested = true;
         }
+        public RecoveredReelStopOperation SetStop(float seconds, Func<IReadOnlyList<int>> currentColumn,
+            Action<RecoveredReelView> completed = null)
+            => RecoveredReelStopLoop.Schedule(this,reel,seconds,currentColumn,completed);
         private void Update() => AdvanceMotion(Time.deltaTime);
         public void AdvanceMotion(float deltaTime)
         {

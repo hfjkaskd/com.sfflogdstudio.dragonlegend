@@ -189,3 +189,13 @@ StopSlotRoll 0x2375fbc 以 abs(offset)×2/maxSpeed 计算返回时长，使用 O
 免费模式停轴、SetStop 外层延迟及完成通知、主 Spin 按钮与结果生成器的完整绑定尚未恢复，本轮不代表完整主流程或视觉生命周期 1:1。SDK 保持原处理方式。
 
 五列 Prefab 运动后渲染专项 1 项通过（Artifacts/reel-landing-render-tests.xml），已查看本次 current-reels.png：五列经过加速、匀速、停轴等待、真实测试列结果写入和回弹后，三行顺序与目标列一致，窗口裁切正确。该画面是当前组件测试预览，尚不是已接通的游戏主场景。
+
+## 本轮：停轴延迟、条件等待与完成回调
+
+基础运动组件提供 SetStop，按 0x2378388 先等待受 timeScale 影响的延迟，再设置 isStop，随后等待其清除，最后执行可空回调；0x2377818 的谓词明确读取 isStop，而非 isStartSpin。保留创建帧不累计延迟的规则。秒数按原 WaitForSeconds 0x4453908 经 TimeSpan.FromMilliseconds(seconds×1000f) 转换，DelayPromise.MoveNext 0x445a2fc 使用 scaled deltaTime。
+
+采用 Unity 官方 PlayerLoop API，在 Update 的脚本更新前处理等待，替代第三方 UniTask 运行时。返回对象可在 Unity coroutine 中 yield，回调错误通过 GetResult/keepWaiting 传播；多个请求保留各自回调，不以新请求覆盖旧等待。原版 PlayerLoopRunner.RunCore 0x44b32ac 使用尾部任务填补空位，并在当前遍历结束后加入新等待；已恢复这个执行顺序，延迟完成转入条件等待时重新排队，避免普通顺序遍历改变并发回调次序。
+
+Unity 2022.3.62f3 全量 PlayMode 127 项通过、0 失败（Artifacts/reel-stop-order-tests.xml）。新增四项实际 PlayerLoop 测试覆盖暂停、创建帧、回弹标记清除后回调、并发请求、三个不同延迟请求的尾部填补顺序，以及一个回调失败不阻断其他等待。中间普通队列版本的 126 项通过不足以证明并发顺序，已由原生指令核对后的实现和新测试替代。
+
+主 Spin 按钮、五列控制器与生成结果仍待完整接线；免费模式停轴、奖励表现和游戏全生命周期继续未完成。当前工作未宣称完整 1:1，SDK 未改动。
