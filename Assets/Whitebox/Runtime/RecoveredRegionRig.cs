@@ -17,6 +17,7 @@ namespace DragonLegend.Whitebox
         public Bone[] bones;
         public Slot[] slots;
         public Region[] regions;
+        public RecoveredNpcConstraints npcConstraints;
         [SerializeField] private string atlasPath;
         private Texture2D atlas;
         private Matrix4x4[] matrices;
@@ -26,7 +27,9 @@ namespace DragonLegend.Whitebox
         {
             if(bones==null)return;
             if(matrices==null||matrices.Length!=bones.Length)matrices=new Matrix4x4[bones.Length];
-            for(int i=0;i<bones.Length;i++) {
+            if(npcConstraints!=null&&npcConstraints.steps!=null&&npcConstraints.steps.Length>0)
+                npcConstraints.Evaluate(bones,matrices);
+            else for(int i=0;i<bones.Length;i++) {
                 var bone=bones[i];if(bone.mode!=0&&bone.mode!=1&&bone.mode!=3&&bone.mode!=4)throw new InvalidOperationException("Unsupported bone inheritance");var parent=bone.parent<0?Matrix4x4.identity:matrices[bone.parent];
                 var local=Matrix4x4.TRS(new Vector3(bone.x,bone.y,0),Quaternion.Euler(0,0,bone.rotation),new Vector3(bone.scaleX,bone.scaleY,1));
                 if(bone.mode==0)matrices[i]=parent*local;

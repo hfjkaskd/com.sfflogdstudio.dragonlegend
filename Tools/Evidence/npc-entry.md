@@ -63,3 +63,40 @@ do not silently drop the constraints or substitute unconstrained poses. Validate
 against an independent source sampler before authoring the NPC prefab. Baking every
 mesh frame would raise asset size/loading memory and would not preserve arbitrary
 sample times. NPC prefab and actual Bonus entry remain unimplemented at this point.
+
+## Ordered native constraint evaluation
+
+RecoveredNpcConstraints now evaluates the source's absolute-local translation/scale
+and absolute-world translation operations from authored steps. RecoveredRegionRig
+can select this ordered path when supplied with the NPC program; other rigs retain
+their existing path. Animation input bone values remain unchanged between samples.
+The implementation deliberately covers this verified graph, not arbitrary transform
+constraints: offsets for scale, rotation mix and shear mix are all zero here, and
+the only local operation reads previously unconstrained siblings.
+
+Tools/sample_npc_constraints.py independently constructs the update schedule from
+source parents and ordered constraints, following native SortTransformConstraint
+3f9af04 and SortReset 3f9b3e0. It produces 166 operations for 156 bones and six
+constraints. In particular, the final constraint on bone 24 invalidates descendant
+bones 25..28; these are recomputed later from animation input, rather than retaining
+all four earlier hair translations. A simple one-pass apply-all-constraints approach
+would differ. The script rejects unhandled graph/constraint parameters.
+
+32 reference frames cover every matrix of all 156 bones across all four clips.
+The native scale expression is (current + (target-current)*mix)/current when both
+current and mix are nonzero. It is not ordinary scale interpolation. Zero current
+scale skips the division; negative mix is not clamped or skipped. Exact instruction
+evidence from original ELF RVAs 3fb4cd0 and 3fb538c, with ELF SHA256 and first bytes,
+is recorded in npc-constraint-arm64.txt. The upstream format/algorithm comparison
+uses [TransformConstraint 4.1](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/TransformConstraint.cs)
+and [Skeleton 4.1](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/Skeleton.cs).
+
+RecoveredNpcConstraintTests compares 32 complete matrix sets within .003 source
+pixels, checks scale division/zero guard explicitly, and measures allocations after
+warmup. This verifies constraint arithmetic and order, not the NPC's rendered
+attachments, atlas sequences, layout or full Bonus integration. Those still require
+prefab authoring and fresh runtime visual checks.
+
+Validation: Artifacts/npc-constraint-tests.xml passed 224/224 PlayMode tests.
+1000 warmed-up NPC constraint poses took 31.14 ms with 0 allocated managed bytes.
+No NPC visual-equivalence claim is made by this arithmetic-only validation.
