@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace DragonLegend.Whitebox
 {
@@ -12,6 +13,14 @@ namespace DragonLegend.Whitebox
         private readonly bool[,] reserved = new bool[5,3];
         private readonly int[] order = new int[5];
         private readonly int[] keys = new int[5];
+        private static readonly Func<int, int, int> UnityRange = UnityEngine.Random.Range;
+        private readonly List<int> candidateRows = new List<int>(15);
+        private List<int> placementColumns;
+        private int placementRemaining;
+        private int placementSymbol;
+        private bool placementActive;
+        private bool placementAttemptStarted;
+        public bool IsPlacingSingleSymbol => placementActive;
         public int GetSymbol(int column, int row) => symbols[column,row];
         public bool IsReserved(int column, int row) => reserved[column,row];
 
@@ -84,5 +93,53 @@ namespace DragonLegend.Whitebox
             settlement.Evaluate(symbols, bet);
         }
         public int SpeedRoll(int scatterCount) => RecoveredSlotResultRules.SpeedRoll(symbols, scatterCount);
+
+        // CheckSingleSymbol 0x2384d2c. Caller-owned column list is updated by the
+        // original routine; existing entries forbid columns, irrespective of board contents.
+        public void BeginSingleSymbol(int count, List<int> columns, int symbol)
+        {
+            if (placementActive) throw new InvalidOperationException("Finish the current placement first.");
+            placementColumns = columns ?? throw new ArgumentNullException(nameof(columns));
+            placementRemaining = count;
+            placementSymbol = symbol;
+            placementAttemptStarted = false;
+            candidateRows.Clear();
+            placementActive = true;
+        }
+
+        public bool StepSingleSymbol() => StepSingleSymbol(UnityRange);
+
+        // One native column attempt per call. False means complete. The spin driver
+        // can yield between attempts without changing the random sequence or result.
+        public bool StepSingleSymbol(Func<int, int, int> range)
+        {
+            if (!placementActive) return false;
+            if (range == null) throw new ArgumentNullException(nameof(range));
+            if (!placementAttemptStarted)
+            {
+                int reservedCount = 0;
+                for (int c = 0; c < 5; c++) for (int r = 0; r < 3; r++)
+                    if (reserved[c,r]) reservedCount++;
+                if (reservedCount == 15 || placementColumns.Count == 5 || --placementRemaining < 0)
+                {
+                    placementActive = false;
+                    placementColumns = null;
+                    return false;
+                }
+                candidateRows.Clear();
+                placementAttemptStarted = true;
+            }
+            int column = range(0, 5);
+            for (int row = 0; row < 3; row++)
+                if (!reserved[column,row]) candidateRows.Add(row);
+            // Native 0x2384f30 appends on retry: intentionally DO NOT clear here.
+            if (placementColumns.Contains(column) || candidateRows.Count == 0) return true;
+            int selectedRow = candidateRows[range(0, candidateRows.Count)];
+            symbols[column,selectedRow] = placementSymbol;
+            reserved[column,selectedRow] = true;
+            placementColumns.Add(column);
+            placementAttemptStarted = false;
+            return true;
+        }
     }
 }
