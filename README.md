@@ -8,6 +8,11 @@ SDK 模拟测试入口：Assets/Whitebox/Scenes/MockFlow.unity。现有 SDK mock
 
 ## 本轮进展
 
+- 完整玩家记录与六类子记录已按原版字段恢复（7 类共 49 字段），采用原版 JsonUtility + PlayerPrefs、存档键 playerData.d。保留新建/读入/损坏恢复状态 0/1/2，以及初始化回调后保存顺序。
+- GameEntry 加载完整存档，首次/恢复时初始化；RecoveredPlayerProgress 直接操作同一记录，已有外围系统字段随完整记录保存。
+- 新增存档往返、损坏恢复和入口存档保护测试。源码字段核对通过；本轮 C# 编译阶段完成，但 Defender 隔离生成的 Whitebox.Runtime.dll（Trojan:MSIL/Quasar.MG!MTB），Unity 在复制程序集时退出，新增测试尚未运行。未关闭防护、添加排除或恢复隔离文件。此前 47 项通过结果不覆盖本轮新增实现。
+- 主按钮、完整旋转表现及全生命周期仍待接入；存档运行验证待安全检测问题解决后继续。
+
 - 恢复 GameData 的 SpinCount、LevelExpCount、MoreWild 属性语义：次数保存后通知原始请求值，经验超阈值仅升一级并清零、事件报告旧阈值，MoreWild 通知在保存前。存档操作由调用方提供，避免局部字段覆盖完整玩家记录。
 - 恢复最大次数、等级经验需求和评价触发等级 getter。最新 Unity PlayMode 47 项全部通过。
 - 核实实际主旋转在 UIMainView；RunState/StopState 方法原生体只抛出 NotImplementedException，不应作为有效流程移植。按钮与完整存档消费者仍待接入。

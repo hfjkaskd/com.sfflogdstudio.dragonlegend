@@ -36,6 +36,7 @@ namespace DragonLegend.Whitebox
             int index = level >= config.Lgtgl[config.Lgtgl.Count - 1] ? config.NggpGpin.Count - 1 : level - 1;
             return config.NggpGpin[index];
         }
+        public int GetCollectInfoCount() => data.Qollgqr.Ip.Count; // 0x236c644
         public int GetInitGreenCount() => data.Qonrii.InirQoing[0]; // 0x236a570
         public int GetInitSpinCount() => data.Qonrii.InirGping[0]; // 0x236a5d4
         public int GetLines() => data.Gimrol.Lingg[0]; // 0x236b73c

@@ -53,6 +53,8 @@ public sealed class RecoveredRulesTests
     [UnityTest]
     public IEnumerator EntryLoadsDefaultAndSwitchesProfileViaStandardButton()
     {
+        bool hadPlayer = PlayerPrefs.HasKey(RecoveredPlayerStore.OriginalKey);
+        string savedPlayer = PlayerPrefs.GetString(RecoveredPlayerStore.OriginalKey);
         var prefab = Resources.Load<GameObject>("Whitebox/GameEntry");
         Assert.IsNotNull(prefab);
         var go = Object.Instantiate(prefab);
@@ -64,6 +66,8 @@ public sealed class RecoveredRulesTests
             Assert.IsNotNull(entry.Rules);
             Assert.AreEqual("US_Default",entry.CurrentProfile.profileId);
             Assert.IsNotNull(entry.Settlement);
+            Assert.IsNotNull(entry.PlayerStore.Data);
+            Assert.IsNotNull(entry.PlayerProgress);
             var initialSettlement = entry.Settlement;
             Assert.IsTrue(entry.CurrentProfile.advertisementPresentationEnabled);
             int notifications = 0;
@@ -76,12 +80,19 @@ public sealed class RecoveredRulesTests
             while (entry.Rules == null && Time.realtimeSinceStartup < deadline) yield return null;
             Assert.AreEqual("A_Test",entry.CurrentProfile.profileId);
             Assert.IsNotNull(entry.Settlement);
+            Assert.IsNotNull(entry.PlayerStore.Data);
+            Assert.IsNotNull(entry.PlayerProgress);
             Assert.AreNotSame(initialSettlement, entry.Settlement);
             Assert.AreEqual(1,notifications);
             go.SetActive(false);
             Assert.IsNull(entry.Rules);
             Assert.IsNull(entry.Settlement);
         }
-        finally { Object.Destroy(go); }
+        finally {
+            Object.Destroy(go);
+            if (hadPlayer) PlayerPrefs.SetString(RecoveredPlayerStore.OriginalKey,savedPlayer);
+            else PlayerPrefs.DeleteKey(RecoveredPlayerStore.OriginalKey);
+            PlayerPrefs.Save();
+        }
     }
 }

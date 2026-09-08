@@ -19,6 +19,8 @@ namespace DragonLegend.Whitebox
         public RecoveredGameplayRules Rules { get; private set; }
         public RecoveredSlotSettlement Settlement { get; private set; }
         public RecoveredSpinResult SpinResult { get; private set; }
+        public RecoveredPlayerStore PlayerStore { get; private set; }
+        public RecoveredPlayerProgress PlayerProgress { get; private set; }
         public LaunchProfile CurrentProfile { get; private set; }
         public event Action<RecoveredGameplayRules> Ready;
 
@@ -42,7 +44,13 @@ namespace DragonLegend.Whitebox
             Rules = null;
             Settlement = null;
             SpinResult = null;
+            PlayerProgress = null;
+            PlayerStore = null;
             CurrentProfile = null;
+        }
+        private void OnPlayerLoaded(int result)
+        {
+            if (result != 1) PlayerStore.Data.Init(Rules);
         }
         private void SelectDefault() => Select(defaultProfile);
         private void SelectAlternative() => Select(alternativeProfile);
@@ -55,6 +63,8 @@ namespace DragonLegend.Whitebox
             Rules = null;
             Settlement = null;
             SpinResult = null;
+            PlayerProgress = null;
+            PlayerStore = null;
             CurrentProfile = null;
             loading = StartCoroutine(Load(profile));
         }
@@ -87,7 +97,10 @@ namespace DragonLegend.Whitebox
             Rules = new RecoveredGameplayRules(loader.Value);
             Settlement = new RecoveredSlotSettlement(Rules);
             SpinResult = new RecoveredSpinResult(Rules, Settlement);
-            status.text = profile.countryCode + " / " + profile.profileId + "\nSpins: " + Rules.GetInitSpinCount()
+            PlayerStore = new RecoveredPlayerStore();
+            PlayerStore.Load(OnPlayerLoaded);
+            PlayerProgress = new RecoveredPlayerProgress(Rules, PlayerStore.Save, PlayerStore.Data);
+            status.text = profile.countryCode + " / " + profile.profileId + "\nSpins: " + PlayerProgress.SpinCount
                 + "\nLines: " + Rules.GetLines() + "\nCash tiers: " + Rules.GetCashOutCount()
                 + "\n\n" + profile.evidenceNote;
             loading = null;

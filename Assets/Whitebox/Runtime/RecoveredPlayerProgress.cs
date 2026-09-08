@@ -1,4 +1,5 @@
 using System;
+using DragonLegend.Whitebox.Recovered;
 
 namespace DragonLegend.Whitebox
 {
@@ -8,10 +9,11 @@ namespace DragonLegend.Whitebox
     {
         private readonly RecoveredGameplayRules rules;
         private readonly Action save;
-        public int Level { get; private set; }
-        public float Experience { get; private set; }
-        public int SpinCount { get; private set; }
-        public int MoreWild { get; private set; }
+        private readonly PlayerData data;
+        public int Level { get => data.Level; private set => data.Level = value; }
+        public float Experience { get => data.LevelExpCount; private set => data.LevelExpCount = value; }
+        public int SpinCount { get => data.SpinCount; private set => data.SpinCount = value; }
+        public int MoreWild { get => data.MoreWild; private set => data.MoreWild = value; }
         public event Action<int> SpinCountChanged;
         public event Action<int,float,float> LevelExperienceChanged;
         public event Action ReviewRequested;
@@ -19,10 +21,13 @@ namespace DragonLegend.Whitebox
 
         public RecoveredPlayerProgress(RecoveredGameplayRules gameplayRules, Action savePlayer,
             int level, float experience, int spinCount, int moreWild)
+            : this(gameplayRules, savePlayer, new PlayerData {Level=level,LevelExpCount=experience,SpinCount=spinCount,MoreWild=moreWild}) { }
+
+        public RecoveredPlayerProgress(RecoveredGameplayRules gameplayRules, Action savePlayer, PlayerData playerData)
         {
             rules = gameplayRules ?? throw new ArgumentNullException(nameof(gameplayRules));
             save = savePlayer ?? throw new ArgumentNullException(nameof(savePlayer));
-            Level = level; Experience = experience; SpinCount = spinCount; MoreWild = moreWild;
+            data = playerData ?? throw new ArgumentNullException(nameof(playerData));
         }
 
         // 0x236e3c8: persist clamped value, then notify using the UNCLAMPED request.
