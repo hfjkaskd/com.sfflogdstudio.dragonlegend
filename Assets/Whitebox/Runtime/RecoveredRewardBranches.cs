@@ -13,6 +13,8 @@ namespace DragonLegend.Whitebox
     {
         private readonly RecoveredGameplayRules rules;
         private readonly RecoveredPlayerProgress progress;
+        // Original event key 7, handled by UIMainView.RefreshCashOutTask.
+        public event Action<int,int> CashOutTaskRefreshRequested;
         public RecoveredRewardBranches(RecoveredGameplayRules rules, RecoveredPlayerProgress progress)
         {
             this.rules=rules ?? throw new ArgumentNullException(nameof(rules));
@@ -50,7 +52,16 @@ namespace DragonLegend.Whitebox
         public int CheckFreeGame(int scatterCount)
         {
             int count=rules.GetFreeSpins(scatterCount);
-            if (count > 0) progress.SetTaskData(3,1);
+            if (count > 0)
+            {
+                progress.SetTaskData(3,1);
+                CashOutTaskRefreshRequested?.Invoke(5,1);
+                // Runtime GameData writes precede scatter animation and the intro.
+                // No additional player save occurs in the native entry sequence.
+                progress.GameSlotType = RecoveredSlotType.Free;
+                progress.FreeSpinCount = count;
+                progress.TotalFreeSpinWin = 0;
+            }
             return count;
         }
     }

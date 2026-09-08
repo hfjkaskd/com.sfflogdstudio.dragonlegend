@@ -4,6 +4,8 @@ using DragonLegend.Whitebox.Recovered;
 
 namespace DragonLegend.Whitebox
 {
+    public enum RecoveredSlotType { Base = 0, Free = 1 }
+
     // GameData property behavior, backed by the complete original player record.
     public sealed class RecoveredPlayerProgress
     {
@@ -18,6 +20,9 @@ namespace DragonLegend.Whitebox
         public int BankCount => data.BankCount;
         // Original GameData runtime flag; intentionally absent from PlayerData saves.
         public bool IsBonusGame { get; set; }
+        public RecoveredSlotType GameSlotType { get; set; }
+        public int FreeSpinCount { get; set; }
+        public float TotalFreeSpinWin { get; set; }
         public event Action BankReady;
         public event Action BankProgressChanged;
         public event Action<int> SpinCountChanged;

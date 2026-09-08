@@ -65,6 +65,48 @@ public sealed class RecoveredRewardBranchesTests
         Assert.AreEqual(1,saves);
     }
 
+    [Test]
+    public void FreeEntrySavesTaskAndRefreshesBeforeReplacingRuntimeState()
+    {
+        var data = new PlayerData(); var order = new List<string>();
+        var rules = Rules(); RecoveredPlayerProgress progress = null;
+        progress = new RecoveredPlayerProgress(rules, () => {
+            Assert.AreEqual(3, data.PlayerTaskDatas[0].id);
+            Assert.AreEqual(RecoveredSlotType.Base, progress.GameSlotType);
+            Assert.AreEqual(99, progress.FreeSpinCount);
+            Assert.AreEqual(123, progress.TotalFreeSpinWin);
+            order.Add("save");
+        }, data) {FreeSpinCount=99,TotalFreeSpinWin=123};
+        var branches = new RecoveredRewardBranches(rules,progress);
+        branches.CashOutTaskRefreshRequested += (type, amount) => {
+            CollectionAssert.AreEqual(new[]{"save"}, order);
+            Assert.AreEqual(5,type); Assert.AreEqual(1,amount);
+            Assert.AreEqual(RecoveredSlotType.Base,progress.GameSlotType);
+            Assert.AreEqual(99,progress.FreeSpinCount);
+            Assert.AreEqual(123,progress.TotalFreeSpinWin);
+            order.Add("refresh");
+        };
+        Assert.AreEqual(9,branches.CheckFreeGame(4));
+        CollectionAssert.AreEqual(new[]{"save","refresh"}, order);
+        Assert.AreEqual(RecoveredSlotType.Free,progress.GameSlotType);
+        Assert.AreEqual(9,progress.FreeSpinCount);
+        Assert.AreEqual(0,progress.TotalFreeSpinWin);
+    }
+
+    [Test]
+    public void NonTriggeringFreeCheckLeavesActiveRuntimeStateUntouched()
+    {
+        var rules = Rules(); int calls = 0;
+        var progress = new RecoveredPlayerProgress(rules,()=>calls++,new PlayerData()) {
+            GameSlotType=RecoveredSlotType.Free,FreeSpinCount=4,TotalFreeSpinWin=35};
+        var branches = new RecoveredRewardBranches(rules,progress);
+        branches.CashOutTaskRefreshRequested += (type,amount)=>calls++;
+        Assert.AreEqual(0,branches.CheckFreeGame(3));
+        Assert.AreEqual(0,calls);
+        Assert.AreEqual(RecoveredSlotType.Free,progress.GameSlotType);
+        Assert.AreEqual(4,progress.FreeSpinCount);
+        Assert.AreEqual(35,progress.TotalFreeSpinWin);
+    }
     [TestCase(1, false, false)]
     [TestCase(2, false, true)]
     [TestCase(3, false, true)]

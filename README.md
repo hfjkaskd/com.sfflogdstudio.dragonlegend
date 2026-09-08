@@ -102,3 +102,8 @@ RewardBranches 提供 CheckBonusGame，供普通中奖动画之后、免费游�
 补齐 GameData.SetBonusArea 0x236f868：指定列当前值大于 1 时直接返回且不保存，否则递增后保存；保留负值及非法索引的原始边界，不提前设置 Bonus 游戏标记。新增 8 个用例，包含最后一列累积完成后进入 Bonus 分支并重置的串联验证。最新完整 PlayMode 结果 77 项通过、0 失败（本地 Artifacts/bonus-area-tests.xml），不是完整视觉或生命周期验收。
 
 保留官方 URP 首次成功导入生成的全局配置、GraphicsSettings 引用、调试输入轴、ShaderGraph 设置及 MonoImporter 元数据。未修改 SDK；主玩法 Prefab 接线、转轴动画、Bonus 转场和小游戏等仍未完成。
+## 本轮：免费游戏入口运行状态
+
+按 CheckFreeGame 0x23c90bc 补齐任务更新之后的数据顺序：任务 3 保存，发送原事件 7 对应的提现任务刷新参数 (5,1)，随后 GameSlotType=Free、FreeSpinCount=配置次数、TotalFreeSpinWin=0。这些是 GameData 运行时字段，不写入 PlayerData；原顺序不追加保存。未触发时保留已有免费状态。事件消费者名由 UIMainView.OnInit 的监听绑定交叉核对。
+
+新增顺序和未触发保护用例，Unity 2022.3.62f3 PlayMode 全部 79 项通过、0 失败（本地 Artifacts/free-entry-tests.xml）。这仅证明现有规则及入口数据阶段；免费开场弹窗、Scatter 动画、自动旋转及返回基础游戏的生命周期仍未接通。SDK 保持不变，完整 1:1 尚未完成。
