@@ -33,7 +33,6 @@ NPC state 1, its 1-second wait, LongzhuItem.PlayAnim, branch reward selection,
 original-ball reward reveal and dictionary/total writes. The flight API is
 not yet wired into the complete production Free continuation. SDK unchanged.
 
-Additional discrepancy found while checking the enum: JackpotPopup/flight.md
-currently calls ease 4 InQuad and BuildCashFlight authors a t-squared curve.
-That previously implemented cash path needs correction against the verified
-enum and departure call, with its matching regression assertions updated.
+The same enum discrepancy in the cash path is now corrected: see
+JackpotPopup/flight.md. Its departure call passes 4, and the runtime and
+prefab now use InOutSine instead of the previously authored t-squared curve.

@@ -6,10 +6,12 @@ namespace DragonLegend.Whitebox
 {
     public sealed class RecoveredCashFlightItem:MonoBehaviour
     {
+        private enum FlightCurve { InOutSine,InQuad }
         [SerializeField] private Image image;
         [SerializeField] private string spriteA,spriteB;
         [SerializeField] private float scatterDuration,flightDuration,automaticArcRatio;
-        [SerializeField] private AnimationCurve scatterEase,flightEase;
+        [SerializeField] private AnimationCurve scatterEase;
+        [SerializeField] private FlightCurve flightCurve;
         private Transform cachedTransform,destination;
         private Vector3 scatterStart,scatterEnd,start,control,end;
         private float scatterElapsed,delayElapsed,delay,flightElapsed;
@@ -54,7 +56,7 @@ namespace DragonLegend.Whitebox
             }
             if(!flying)return;
             flightElapsed+=Time.deltaTime;float progress=Mathf.Clamp01(flightElapsed/flightDuration);
-            float eased=flightEase.Evaluate(progress),inverse=1-eased;
+            float eased=flightCurve==FlightCurve.InOutSine?(1-Mathf.Cos(Mathf.PI*progress))*.5f:progress*progress,inverse=1-eased;
             cachedTransform.position=start*(inverse*inverse)+control*(2*inverse*eased)+end*(eased*eased);
             if(progress<1)return;
             flying=false;Arrived?.Invoke(this);

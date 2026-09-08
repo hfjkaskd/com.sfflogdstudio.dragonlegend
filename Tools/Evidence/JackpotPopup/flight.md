@@ -30,7 +30,20 @@ TopTitle.CashImg.transform.position, then calls FlyAnimUtils.Fly (`238c74c`). Di
 ARM64 instructions `23c329c..23c32d8` prove duration=.3 (s6), height=-1 (s7), ease=4
 (w2), and zero lateralOffset/impactForce (stack stores at sp and sp+8).
 The utility resolves negative height to distance * .3 and uses the midpoint plus
-Vector3.up * height as the quadratic Bezier control point. Ease 4 is InQuad.
+Vector3.up * height as the quadratic Bezier control point. Ease 4 is InOutSine.
+The current dump includes Unset=0, so InQuad is 5. The earlier interpretation
+omitted that enum entry and incorrectly authored a t-squared flight curve.
+RecoveredCashFlightItem now uses an authored curve selector with the exact
+(1-cos(pi*t))/2 formula, and both BuildCashFlight.Save and SaveFlightCurve
+author InOutSine. The targeted helper updates only FlyCoinItem, preserving
+the already authored collection effect, presenter and entry references.
+RecoveredCashFlightCurveTests samples the actual prefab at each quarter of
+its .3s trajectory against the corrected easing and verifies destination
+snapshot/arrival. Existing A/B full-flow tests retain coverage of timing,
+pause behavior, pool release and balance credit ordering.
+Correction validation: Unity 2022.3.62f3 full PlayMode suite **298/298 passed**
+in `Artifacts/cash-flight-curve-tests.xml`; targeted prefab authoring exited
+successfully in `Artifacts/cash-flight-curve-author.log`.
 The destination is captured at departure, not continually tracked during flight.
 Flight tween updates use scaled time, separately from the unscaled departure delays.
 

@@ -21,7 +21,7 @@ public static class BuildCashFlight
             s.FindProperty("spriteB").stringValue="RecoveredArt/Res/UI/zhujiemian/zjm_hb_b";
             s.FindProperty("scatterDuration").floatValue=.3f;s.FindProperty("flightDuration").floatValue=.3f;s.FindProperty("automaticArcRatio").floatValue=.3f;
             s.FindProperty("scatterEase").animationCurveValue=new AnimationCurve(new Keyframe(0,0,2,2),new Keyframe(1,1,0,0));
-            s.FindProperty("flightEase").animationCurveValue=new AnimationCurve(new Keyframe(0,0,0,0),new Keyframe(1,1,2,2));
+            s.FindProperty("flightCurve").enumValueIndex=0; // Native Ease.InOutSine = 4.
             s.ApplyModifiedPropertiesWithoutUndo();PrefabUtility.SaveAsPrefabAsset(item,Folder+"/FlyCoinItem.prefab");
         } finally{Object.DestroyImmediate(item);}
         var effect=(GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredUI/JackpotPopupArt/ef_slshouji.prefab"));
@@ -56,5 +56,15 @@ public static class BuildCashFlight
             s.ApplyModifiedPropertiesWithoutUndo();PrefabUtility.SaveAsPrefabAsset(entry,entryPath);
         } finally{PrefabUtility.UnloadPrefabContents(entry);}
         AssetDatabase.SaveAssets();
+    }
+    public static void SaveFlightCurve()
+    {
+        const string path=Folder+"/FlyCoinItem.prefab";
+        var root=PrefabUtility.LoadPrefabContents(path);
+        try {
+            var settings=new SerializedObject(root.GetComponent<RecoveredCashFlightItem>());
+            settings.FindProperty("flightCurve").enumValueIndex=0;settings.ApplyModifiedPropertiesWithoutUndo();
+            PrefabUtility.SaveAsPrefabAsset(root,path);AssetDatabase.SaveAssets();
+        } finally {PrefabUtility.UnloadPrefabContents(root);}
     }
 }
