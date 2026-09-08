@@ -27,6 +27,20 @@ namespace DragonLegend.Whitebox
         private RecoveredFreeSpinResult result;
         private Binding[] bindings;
         private int ballIndex;
+        private readonly List<RecoveredFreeBall> flightBalls=new List<RecoveredFreeBall>(2);
+        public int FlightBallCount=>flightBalls.Count;
+        public RecoveredFreeBall FlyBall(RecoveredFreeBall source,Transform target,Action<RecoveredFreeBall,RecoveredFreeBall> completed)
+        {
+            var ball=balls.Get();ball.transform.SetParent(source.transform.parent,false);
+            ball.transform.localScale=Vector3.one*ballScale;ball.transform.position=source.transform.position;
+            ball.gameObject.SetActive(true);ball.Initialize(source.BallType);ball.transform.SetAsLastSibling();ball.Clipping.Bind(null);
+            flightBalls.Add(ball);ball.BeginFlight(source,target,completed);return ball;
+        }
+        public void ReleaseFlightBall(RecoveredFreeBall ball)
+        {
+            if(!flightBalls.Remove(ball))throw new InvalidOperationException("Ball is not a borrowed flight object.");
+            balls.Release(ball);
+        }
         private readonly Dictionary<RecoveredReelView,Component> stopped=new Dictionary<RecoveredReelView,Component>();
         public int BallIndex=>ballIndex;
         public RecoveredFreeCoin CurrentStoppedCoin(RecoveredReelView reel)=>byReel[reel].stoppedCoin;
@@ -180,6 +194,7 @@ namespace DragonLegend.Whitebox
         }
         private void OnDestroy()
         {
+            foreach(var ball in flightBalls)if(ball!=null)Destroy(ball.gameObject);
             if(bindings!=null)foreach(var binding in bindings)binding.Release();
             if(lampFlights!=null)lampFlights.SoundRequested-=ForwardSound;
             coins?.Clear();balls?.Clear();

@@ -12,6 +12,8 @@ public static class BuildFreeBall
         try {
             root.transform.localScale=Vector3.one*.8f;
             var settings=new SerializedObject(root.AddComponent<RecoveredFreeBall>());
+            settings.FindProperty("flightDuration").floatValue=.3f;
+            settings.FindProperty("flightArcRatio").floatValue=.3f;
             var art=(RecoveredWorldAnimation)PrefabUtility.InstantiatePrefab(
                 AssetDatabase.LoadAssetAtPath<RecoveredWorldAnimation>("Assets/Resources/RecoveredSymbols/FreeBallArt.prefab"),root.transform);
             art.name="SkeletonGraphic (ef_longzhu)";

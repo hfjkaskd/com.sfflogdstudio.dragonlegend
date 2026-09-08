@@ -70,6 +70,8 @@ MonoBehaviour:
     start: start_lan
   - idle: idle_lv
     start: start_lv
+  flightDuration: 0.3
+  flightArcRatio: 0.3
 --- !u!114 &8136458049048918595
 MonoBehaviour:
   m_ObjectHideFlags: 0
