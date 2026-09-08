@@ -37,6 +37,8 @@ public static class BuildJackpotIntegration
     static Button CopyButton(Button source,Transform parent,string name,string text,float x)
     {
         var button=Object.Instantiate(source,parent,false);button.name=name;
+        // Copy visual styling without inheriting the version selector's collapsed state.
+        var gmGroup=button.GetComponent<CanvasGroup>();if(gmGroup!=null)Object.DestroyImmediate(gmGroup);
         var rect=(RectTransform)button.transform;rect.anchorMin=rect.anchorMax=rect.pivot=new Vector2(.5f,.5f);rect.anchoredPosition=new Vector2(x,0);rect.sizeDelta=new Vector2(360,80);
         button.GetComponentInChildren<Text>(true).text=text;return button;
     }

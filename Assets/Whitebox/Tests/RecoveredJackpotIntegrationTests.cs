@@ -94,9 +94,11 @@ public sealed class RecoveredJackpotIntegrationTests
             var gm=root.transform.Find("SelectUS");Assert.IsTrue(gm.gameObject.activeInHierarchy);
             Assert.Greater(gm.GetComponent<Canvas>().sortingOrder,field.SymbolAmount.GetComponent<Canvas>().sortingOrder);
             Assert.IsNotNull(gm.GetComponent<GraphicRaycaster>());
+            var gmPanel=root.GetComponent<RecoveredGmPanel>();Assert.IsFalse(gmPanel.IsOpen);gmPanel.ToggleButton.onClick.Invoke();
             Canvas.ForceUpdateCanvases();var hits=new List<RaycastResult>();
             gm.GetComponent<GraphicRaycaster>().Raycast(new PointerEventData(EventSystem.current){position=RectTransformUtility.WorldToScreenPoint(camera,gm.position)},hits);
             Assert.IsTrue(hits.Exists(hit=>hit.gameObject==gm.gameObject),"GM version Button must remain reachable through Unity UI raycasting");
+            gmPanel.ToggleButton.onClick.Invoke();
             Capture(camera,target,capture,"current-jackpot-to-bigwin.png");
             Assert.AreEqual(0,entry.CashFlight.ActiveEffectCount);
             Assert.AreEqual(RecoveredCurrency.Format(beforeBalance+flightAmount,entry.CurrentProfile.languageType),entry.BalancePanel.BalanceText);
