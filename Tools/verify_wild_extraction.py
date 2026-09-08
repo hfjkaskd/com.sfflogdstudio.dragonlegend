@@ -19,6 +19,7 @@ files = list(source.rglob('*.skel.bytes'))
 by_hash = {sha(p): p for p in files}
 goldens = list((project / 'Tools/Evidence/Wild').glob('*.json'))
 goldens += list((project / 'Tools/Evidence/Symbols').glob('*.json'))
+goldens += list((project / 'Tools/Evidence/FreeSymbols').glob('*.json'))
 goldens += [project / 'Tools/Evidence/ef_wintanchuang.json']
 goldens += [project / 'Tools/Evidence/ef_slzhuanchang.json']
 goldens += [project / 'Tools/Evidence/ef_long.json']
