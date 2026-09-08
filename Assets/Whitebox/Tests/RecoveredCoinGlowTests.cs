@@ -76,7 +76,7 @@ public sealed class RecoveredCoinGlowTests
                 Assert.AreEqual(field.DownWin.transform.position,field.WinFlight.FlightAt(0).EndPoint);
                 winFlights++;
             };
-            field.WinFlight.ArrivalEffectRequested+=()=>{Assert.AreEqual(0,field.WinFlight.ActiveCount);winArrivals++;};
+            field.WinFlight.ArrivalEffectRequested+=()=>{Assert.AreEqual(0,field.WinFlight.ActiveCount);Assert.Greater(field.WinFlight.ActiveBurstCount,0);winArrivals++;};
             field.WinFlight.CoinBurstSoundRequested+=()=>{Assert.AreEqual(burstSounds+1,winArrivals);burstSounds++;};
             field.WinFlight.VibrationRequested+=duration=>{Assert.AreEqual(200,duration);Assert.AreEqual(winVibrations+1,burstSounds);winVibrations++;};
             int arrivals=0, winUpdates=0;float displayedReward=0;
@@ -164,9 +164,27 @@ public sealed class RecoveredCoinGlowTests
             Assert.Greater(flashPixels,100,"The arrival flash must add visible pixels beyond the lit lamp itself.");
             foreach(var image in flashImages)image.enabled=true;
 
-            for (int i = 0; i < 80 && (field.BonusCoins.IsRunning || first.Glow.IsPlaying || second.Glow.IsPlaying || field.CoinStops.ActiveFlashCount>0); i++) yield return null;
+            Assert.Greater(field.WinFlight.ActiveBurstCount,0);
+            var burst=field.WinFlight.BurstAt(0);Assert.IsTrue(burst.IsPlaying);
+            Assert.AreEqual(Vector2.zero,((RectTransform)burst.transform).anchoredPosition);
+            Assert.AreSame(field.DownWin.transform.parent,burst.transform.parent);
+            Canvas.ForceUpdateCanvases();
+            RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
+            RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+            File.WriteAllBytes(Path.GetFullPath(Path.Combine(Application.dataPath,"../Artifacts/current-win-burst.png")),capture.EncodeToPNG());
+            var withBurst=capture.GetPixels32();var burstRig=burst.GetComponent<RecoveredRegionRig>();burstRig.enabled=false;
+            Canvas.ForceUpdateCanvases();
+            RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
+            RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+            var withoutBurst=capture.GetPixels32();int burstPixels=0;
+            for(int i=0;i<1080*650;i++)if(System.Math.Abs(withBurst[i].r-withoutBurst[i].r)>10||System.Math.Abs(withBurst[i].g-withoutBurst[i].g)>10)burstPixels++;
+            Assert.Greater(burstPixels,200,"The arrival burst must actually contribute visible pixels.");
+            burstRig.enabled=true;
+
+            for (int i = 0; i < 80 && (field.BonusCoins.IsRunning || first.Glow.IsPlaying || second.Glow.IsPlaying || field.CoinStops.ActiveFlashCount>0 || field.WinFlight.ActiveBurstCount>0); i++) yield return null;
             Assert.AreEqual(2, presentations); Assert.AreEqual(2, sounds); Assert.IsNull(field.BonusCoins.Error);
             Assert.AreEqual(2,winFlights);Assert.AreEqual(2,winArrivals);Assert.AreEqual(2,burstSounds);Assert.AreEqual(2,winVibrations);
+            Assert.AreEqual(0,field.WinFlight.ActiveBurstCount);
             Assert.AreEqual(1,field.WinFlight.CreatedCount);Assert.AreEqual(0,field.WinFlight.ActiveCount);
             Assert.AreEqual(2,winUpdates);Assert.AreEqual(field.BonusCoins.TotalReward,displayedReward);
             Assert.AreEqual(RecoveredCurrency.Format(displayedReward,0),field.DownWin.Label.text);

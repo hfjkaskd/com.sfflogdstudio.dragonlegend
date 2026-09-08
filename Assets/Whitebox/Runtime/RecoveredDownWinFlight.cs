@@ -9,6 +9,12 @@ namespace DragonLegend.Whitebox
     {
         [SerializeField] private RecoveredLampFlight flightPrefab;
         [SerializeField] private Transform destination;
+        [SerializeField] private RecoveredWinBurst burstPrefab;
+        [SerializeField] private RectTransform burstParent;
+        private ObjectPool<RecoveredWinBurst> bursts;
+        private readonly List<RecoveredWinBurst> activeBursts=new List<RecoveredWinBurst>(3);
+        public int ActiveBurstCount=>activeBursts.Count;
+        public RecoveredWinBurst BurstAt(int index)=>activeBursts[index];
         private ObjectPool<RecoveredLampFlight> pool;
         private readonly List<RecoveredLampFlight> active=new List<RecoveredLampFlight>(2);
         private int canvasOrder;
@@ -21,9 +27,13 @@ namespace DragonLegend.Whitebox
         public void Bind(int order)
         {
             Cancel();canvasOrder=order;
+            if(bursts==null)bursts=new ObjectPool<RecoveredWinBurst>(CreateBurst,null,
+                value=>value.gameObject.SetActive(false),value=>{if(value!=null)Destroy(value.gameObject);},true,3,int.MaxValue);
             if(pool==null)pool=new ObjectPool<RecoveredLampFlight>(Create,null,
                 value=>value.gameObject.SetActive(false),value=>{if(value!=null)Destroy(value.gameObject);},true,1,int.MaxValue);
         }
+        private RecoveredWinBurst CreateBurst(){var burst=Instantiate(burstPrefab,burstParent,false);burst.Completed+=ReleaseBurst;return burst;}
+        private void ReleaseBurst(RecoveredWinBurst burst){activeBursts.Remove(burst);bursts.Release(burst);}
         private RecoveredLampFlight Create()
         {
             var flight=Instantiate(flightPrefab,transform,false);flight.Arrived+=Arrived;return flight;
@@ -40,11 +50,13 @@ namespace DragonLegend.Whitebox
         private void Arrived(RecoveredLampFlight flight)
         {
             Release(flight);
+            var burst=bursts.Get();burst.gameObject.SetActive(true);activeBursts.Add(burst);
             ArrivalEffectRequested?.Invoke();
             CoinBurstSoundRequested?.Invoke();VibrationRequested?.Invoke(200);
+            ((RectTransform)burst.transform).anchoredPosition=Vector2.zero;burst.transform.SetAsLastSibling();burst.Play();
         }
-        public void Cancel() {for(int i=active.Count-1;i>=0;i--)Release(active[i]);}
+        public void Cancel() {for(int i=active.Count-1;i>=0;i--)Release(active[i]);for(int i=activeBursts.Count-1;i>=0;i--)ReleaseBurst(activeBursts[i]);}
         private void OnDisable()=>Cancel();
-        private void OnDestroy(){Cancel();pool?.Clear();}
+        private void OnDestroy(){Cancel();pool?.Clear();bursts?.Clear();}
     }
 }

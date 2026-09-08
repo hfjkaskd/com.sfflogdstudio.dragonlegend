@@ -405,3 +405,20 @@ RecoveredCoinStopPresenter 使用官方 ObjectPool 回收/复用飞行对象。�
 全量 PlayMode 152 项通过（Artifacts/win-flight-all-tests.xml）。新增向下轨迹四帧数值 -0.109375/-0.55/-1.659375/-4、目标快照、排序、原粒子结构、暂停与停用测试；真实入口验证两枚金币各启动一次底部飞行、起止位置、同时缩放、同一对象复用、先回收再到达事件及声音/震动请求顺序。底部文字合计正确，顶部余额保持不变。该阶段仍不替代完整奖励结算，Wild/Jackpot/免费模式和全局视觉复刻未完成，SDK 不变。
 
 追加 2 项定向复测通过（Artifacts/win-flight-final-tests.xml），包括在途飞行时调用真实 Playfield.Unbind，活动对象立即回收且后续不再到达。已查看最新 current-win-flight-detail.png 的原图局部，粒子拖尾从金币向底部文本方向延伸。
+
+
+## 本轮：底部 Boom 原生区域骨骼光效与抵达回收
+
+完整读取 ef_sluixiawin.skel.bytes 的 33365 字节，恢复 66 根骨骼（36 根 NoScale）、42 个槽位、384 个区域附件、27 个图集区域，以及 animation 的 177 条时间线，长度 35/30 秒。提取器保留继承模式，不把 NoScale 当成普通父子缩放；原金币数据重新提取后的 SHA-256 与既有 JSON 完全一致。普通层级转换器遇到非普通继承会明确拒绝，防止误用。
+
+RecoveredRegionRig 使用单个原生 MaskableGraphic/CanvasRenderer，按原 42 槽位顺序填充最多 168 个顶点。普通骨骼计算父子仿射变换；NoScale 保留经过父矩阵变换后的方向、位置和反射，去掉父级缩放。数学语义核对官方 Bone.UpdateWorldTransform：https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/Bone.cs。没有导入 Spine 程序集或运行时源码。
+
+原生 Animation 仅驱动时间，359 条标量 AnimationCurve 保存在共享 ScriptableObject 中，更新当前实例的姿态数组，再刷新同一网格；附件更换使用阶梯曲线，延迟首帧之前保留 setup。该方案避免为每个实例建立 108 个动画姿态节点。每次采样处理 359 条曲线和 66 根骨骼，矩阵缓冲只在首次需要时分配，池复用时不再分配；仍需后续真机性能验证，不能把桌面测试当成移动端性能结论。
+
+保留图集裁切偏移、90 度旋转、原附件尺寸和 PMA。普通与加法槽位在同一网格中混合；加法顶点保留 RGB、alpha 为零，材质使用 One/OneMinusSrcAlpha。按原 Boom 的 CanvasRenderer 禁用透明网格剔除，避免纯加法帧被剔除。原 SkeletonData.scale=0.01，SkeletonGraphic 在当前 100 referencePixelsPerUnit 的 Canvas 上将网格放大 100，故转换使用原始像素单位；参考官方网格处理：https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-unity/Assets/Spine/Runtime/spine-unity/Components/SkeletonGraphic.cs。图集纹理按 Resources 路径延迟加载，不在材质内强引用。
+
+按到达回调 0x23c1824，回收飞行后从官方池获取 Boom，父节点为 Bottom；随后发出 coinBrust 和 200ms 震动请求，再将 anchoredPosition 归零、放到同级末尾、播放 animation 一次。原 Prefab 初始 (-7,58) 不被错误地当作抵达位置。完成回调只回收 Boom；版本解绑回收所有活动 Boom。声音和震动实际设备播放仍待接入，SDK 不变。
+
+最终全量 PlayMode 154 项通过、0 失败（Artifacts/win-burst-all-tests.xml）。覆盖 NoScale 的非均匀缩放/反射与位置、原第 15 骨骼关键帧和旋转、动画长度、单 CanvasRenderer、暂停与取消，以及实际入口的父节点、锚点、播放和最终回收。实际画面在同一帧关闭 Boom 后有超过 200 个像素发生明显变化；已查看最新 current-win-burst-detail.png 的原图局部，紫色光圈、闪光与飞散金币真实渲染。
+
+本轮恢复的是金币飞向底部后的抵达光效，完整奖励结算、Wild/Jackpot/免费分支、主背景和全生命周期视觉仍未完成，尚非完整 1:1。

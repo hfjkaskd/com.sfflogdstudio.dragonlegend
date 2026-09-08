@@ -44,6 +44,8 @@ public static class BuildSpinPlayfield
             var transfers=new GameObject("WinFlights",typeof(RecoveredDownWinFlight));transfers.layer=5;transfers.transform.SetParent(reelRoot.transform,false);
             var transferSettings=new SerializedObject(transfers.GetComponent<RecoveredDownWinFlight>());
             transferSettings.FindProperty("flightPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredLampFlight>("Assets/Resources/RecoveredSymbols/DownWinFlight.prefab");
+            transferSettings.FindProperty("burstPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredWinBurst>("Assets/Resources/RecoveredUI/WinBurst.prefab");
+            transferSettings.FindProperty("burstParent").objectReferenceValue=bottom;
             transferSettings.FindProperty("destination").objectReferenceValue=winRoot.transform;transferSettings.ApplyModifiedPropertiesWithoutUndo();
             data.FindProperty("winFlight").objectReferenceValue=transfers.GetComponent<RecoveredDownWinFlight>();
             data.FindProperty("downWin").objectReferenceValue=winRoot.GetComponent<RecoveredDownWinText>();

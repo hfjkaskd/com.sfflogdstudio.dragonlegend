@@ -12,7 +12,7 @@ using Object = UnityEngine.Object;
 public static class BuildCoinAppearance
 {
     [Serializable] public class Data { public Bone[] bones; public Slot[] slots; public Attachment[] attachments; public Clip[] animations; public Region[] regions; }
-    [Serializable] public class Bone { public string name; public int parent; public float[] values; }
+    [Serializable] public class Bone { public string name; public int parent, mode; public float[] values; }
     [Serializable] public class Slot { public string name, attachment; public int bone, blend; public float[] color; }
     [Serializable] public class Attachment { public int slot; public string name, key; public float[] values, color; }
     [Serializable] public class Region { public string name; public int[] bounds, offsets; public int rotate; }
@@ -68,7 +68,7 @@ public static class BuildCoinAppearance
             var bones=new RectTransform[data.bones.Length];
             var ordering=new Dictionary<Transform,int>();
             for(int i=0;i<bones.Length;i++) {
-                var bone=data.bones[i]; var v=bone.values;
+                var bone=data.bones[i]; if(bone.mode!=0)throw new InvalidOperationException("This hierarchy converter requires normal bone inheritance."); var v=bone.values;
                 bones[i]=Rect(bone.name,bone.parent<0?visual:bones[bone.parent]);
                 bones[i].localPosition=new Vector3(v[1],v[2],0);bones[i].localEulerAngles=new Vector3(0,0,v[0]);
                 bones[i].localScale=new Vector3(v[3],v[4],1);

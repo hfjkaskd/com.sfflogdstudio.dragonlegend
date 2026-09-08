@@ -43,7 +43,7 @@ strings=[string() for _ in range(var())]
 result['bones']=[]
 for i in range(var()):
  d={'name':string(),'parent':var() if i else -1,'values':[num() for _ in range(8)],'mode':var(),'skin':u8(),'color':color()}
- assert d['mode']==0 and d['skin']==0 and d['values'][5:7]==[0,0]
+ assert d['mode'] in range(5) and d['skin']==0 and d['values'][5:7]==[0,0], d
  result['bones'].append(d)
 result['slots']=[]
 for i in range(var()):result['slots'].append({'name':string(),'bone':var(),'color':color(),'dark':color(),'attachment':ref(),'blend':var()})

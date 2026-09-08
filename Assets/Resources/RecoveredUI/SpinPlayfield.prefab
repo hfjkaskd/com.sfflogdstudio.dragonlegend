@@ -203,6 +203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   flightPrefab: {fileID: 6524449533108465000, guid: 7190395f66c4a0d43a97b6fb414f08a4, type: 3}
   destination: {fileID: 1724587087816881056}
+  burstPrefab: {fileID: 8242270997481954420, guid: 947282a7aa3b0044896ee657ed7ff8e8, type: 3}
+  burstParent: {fileID: 623233781217720556}
 --- !u!1 &8134780190571838129
 GameObject:
   m_ObjectHideFlags: 0
