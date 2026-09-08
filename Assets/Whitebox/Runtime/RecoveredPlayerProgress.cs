@@ -85,5 +85,31 @@ namespace DragonLegend.Whitebox
             else BankProgressChanged?.Invoke();
             save();
         }
+
+        // 0x236eb10: first occurrence is always 1, regardless of increment.
+        // Claimed records and a null list still save without changing progress.
+        public void SetTaskData(int id, int increment)
+        {
+            var tasks = data.PlayerTaskDatas;
+            if (tasks != null)
+            {
+                PlayerTaskData task = null;
+                for (int i = 0; i < tasks.Count; i++)
+                    if (tasks[i].id == id) { task = tasks[i]; break; }
+                if (task == null) tasks.Add(new PlayerTaskData {id=id,count=1,isRecieve=false});
+                else if (!task.isRecieve)
+                {
+                    task.count = unchecked(task.count + increment);
+                    var infos = rules.GetTaskInfos();
+                    RecoveredTaskInfo info = null;
+                    for (int i = 0; i < infos.Count; i++)
+                        if (infos[i].id == id) { info=infos[i]; break; }
+                    // Original dereferences Find's result; no unknown-ID fallback.
+                    int maximum = info.taskAmount;
+                    task.count = task.count < 0 ? 0 : Math.Min(task.count, maximum);
+                }
+            }
+            save();
+        }
     }
 }

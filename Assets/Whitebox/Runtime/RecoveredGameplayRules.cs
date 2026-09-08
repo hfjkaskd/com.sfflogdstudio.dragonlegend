@@ -11,6 +11,7 @@ namespace DragonLegend.Whitebox
     {
         private readonly GoldenDragonAutoGenConfig data;
         private readonly List<int> winningCoinWeights = new List<int>();
+        private List<RecoveredTaskInfo> taskInfos;
         public RecoveredGameplayRules(GoldenDragonAutoGenConfig configuration)
         {
             data = configuration ?? throw new ArgumentNullException(nameof(configuration));
@@ -79,6 +80,19 @@ namespace DragonLegend.Whitebox
         public int RandomMoreWildSymbol(int reel) => RandomListWeight(ReelWeights(reel, 2)); // 0x236b5ec
         public int RandomWildCount() => RandomListWeight(data.Gimrol.KilpGpinKgiitr); // 0x236b52c; returns INDEX
         public int GetSpinScatterAmount() => RandomListWeight(data.Rrggiomg.GpinGqorrgrRonpom); // 0x236bea8; returns INDEX
+        public int GetFreeSpins(int scatterCount) => data.Rrggiomg.RrggGping[scatterCount]; // 0x236becc
+
+        // 0x236c9f0: constructs once, in configured ID order.
+        public IReadOnlyList<RecoveredTaskInfo> GetTaskInfos()
+        {
+            if (taskInfos != null) return taskInfos;
+            taskInfos = new List<RecoveredTaskInfo>();
+            var config = data.Rogk;
+            for (int i = 0; i < config.Ip.Count; i++)
+                taskInfos.Add(new RecoveredTaskInfo {id=config.Ip[i],taskAmount=config.RogkOmoinr[i],
+                    reward=config.Rgkorp[i],jump=config.Jimp[i]});
+            return taskInfos;
+        }
 
         public IReadOnlyList<int> ReelWeights(int reel, int mode)
         {
