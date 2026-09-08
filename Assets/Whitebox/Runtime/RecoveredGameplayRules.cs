@@ -135,6 +135,7 @@ namespace DragonLegend.Whitebox
             return index == 0 ? 0 : index == 1 ? 1 : 2;
         }
         public int GetFreeSpins(int scatterCount) => data.Rrggiomg.RrggGping[scatterCount]; // 0x236becc
+        public int GetExtraFreeSpins() => data.Rrggiomg.GjrroRrggGping[0]; // 0x236bf34
 
         // 0x236c9f0: constructs once, in configured ID order.
         public IReadOnlyList<RecoveredTaskInfo> GetTaskInfos()

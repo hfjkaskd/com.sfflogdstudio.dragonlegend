@@ -2,8 +2,9 @@
 
 Source: current reverse `reconstruction/mumu-current`, original
 `ReferenceOriginal/Res/ViewPrefabs/UIFreeSpinStart.prefab`, ARM64 methods below.
-This is a prerequisite for the still-pending actual Free entry flow. The window,
-its buttons/count font/finger and the Scatter → Free transition are not yet wired.
+The native FreeStartPopup prefab now includes original layout, count font,
+artwork and working standard Buttons. Its actual Scatter → Free entry consumer,
+finger artwork and shared UIManager lifecycle are still pending.
 
 ## Verified resource identity and native conversion
 
@@ -27,7 +28,7 @@ samples 268 geometry frames, including both sides of every timeline key.
 CanvasRenderer mesh prefabs using the existing native rig. No Spine runtime or
 third-party assembly is introduced. Texture loading remains path-based.
 
-## Next implementation: behavior verified from actual native code
+## Window behavior verified from actual native code
 
 - BeforeShow `23b1478`: fsstart sound; reset isClick=false; read extraCount from
   GetExtraFreeSpins `236bf34` (`Rrggiomg.GjrroRrggGping[0]`); take initial spinCount
@@ -47,11 +48,15 @@ third-party assembly is introduced. Texture loading remains path-based.
   calls BaseWindow.Hide. Getter `23b1b40` returns initial spinCount; setter
   `23b1b48` changes only text. No accumulating increment or save is present.
 - AfterHide `23b1af4` resolves the supplied completion source after BaseAfterHide.
-  Integer tween rounding/default easing and shared window lifetime still need
-  exact confirmation before implementing those parts.
+  Integer tween rounding is verified from IntPlugin 2430d00: interpolate as float,
+  convert to double and round to even. DOTween cctor 241a014 writes default ease
+  enum 6 (OutQuad) at static offset 4c. Both exact ELF disassemblies are recorded
+  in `free-start-integer-tween.txt`. Shared UIManager lifetime still needs its
+  broader recovery.
 - Count font is original `Res/UI/free_game/FreeCountFont.asset`, GUID
   `fdad6d938793c5345a902a4a73582c27`, with custom digit UV/advance data and material
-  `079cd9e8e97f3a647a7c098897b6117f`. Do not substitute a system font.
+  `079cd9e8e97f3a647a7c098897b6117f`. The authoring step copies this Font and native
+  built-in material, referencing original number_spin atlas, without substitution.
 
 The native CheckFreeGame `23c90bc` waits 1.8 seconds after Scatter/NPC/ring,
 then awaits this start window. After its source resolves it initializes the Free
@@ -72,3 +77,39 @@ were inspected at original resolution. Both clips retain looping and scaled
 pause behavior; 1000 warmed pose samples per clip allocate 0 bytes. This does
 not establish complete window layout, color/material parity or full lifecycle
 parity, which require the remaining source UI and flow integration.
+
+## Implemented start popup
+
+`BuildFreeStartPopup.Save` imports the entire source UI hierarchy and serialized
+TMP/layout settings. It replaces the two unavailable SkeletonGraphic components
+with native artwork prefabs, and the original window script with
+`RecoveredFreeStartPopup`. The original invisible EmptyRaycastGraphic is removed;
+START's standard Button is on its visible TMP label, preserving the source hit
+rectangle through raycast padding. All listeners are bound in code.
+
+The popup reads extra count from the first original config list entry, preserves
+the unlocked native click flag, uses the unchanged SDK facade, and resolves its
+callback after the .3-second exit. A successful ad immediately assigns the
+initial+extra count, then independently schedules the .3-second count animation
+and .5-second hide wait. Multiple successful callbacks retain separate jobs and
+do not accumulate additional free counts. There is no credit, save, interstitial
+or cash-flight path in this window. Sound and finger requests are exposed to its
+future entry consumer; actual audio and finger art remain pending.
+
+`RecoveredFreeStartPopupTests` instantiates the actual prefab and exercises its
+Buttons with LocalAdFacade, including failure, plain start, repeated successful
+ads, scaled pause, digit metrics, original scale/position, callback after hide,
+and no save/credit/interstitial. Fresh 1080x1920 captures
+`Artifacts/current-free-start-popup-initial.png` and `...-extra.png` were inspected
+at original resolution. The full regression passed **252/252**
+(`Artifacts/free-start-popup-full-tests.xml`). These isolated window captures do
+not establish the still-pending main-scene Free flow or full lifecycle parity.
+The strengthened completion-timing assertion also passed in the final focused
+run (`Artifacts/free-start-popup-final-tests.xml`): .5-second wait plus .3-second
+exit, with the count tween running concurrently.
+
+Next source dependency: RollReel.PlayScatterAnim `2377260` enumerates its +b0
+ScatterEffect list and invokes `ScatterEffect.IdleAnim(true)` (`23dade0`) on
+each, rather than animating all symbols. Source prefab is
+`ReferenceOriginal/Res/Prefabs/Scatter.prefab`. Its native visual/controller and
+reel attachment must be restored before connecting the actual Free entry.
