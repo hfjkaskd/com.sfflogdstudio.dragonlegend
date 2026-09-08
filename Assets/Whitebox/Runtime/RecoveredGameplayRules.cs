@@ -47,6 +47,7 @@ namespace DragonLegend.Whitebox
         public int RandomReelSymbol(int reel) => RandomListWeight(ReelWeights(reel, 0)); // 0x236b42c
         public int RandomWildSymbol(int reel) => RandomListWeight(ReelWeights(reel, 1)); // 0x236b550
         public int RandomMoreWildSymbol(int reel) => RandomListWeight(ReelWeights(reel, 2)); // 0x236b5ec
+        public int RandomWildCount() => RandomListWeight(data.Gimrol.KilpGpinKgiitr); // 0x236b52c; returns INDEX
         public int GetSpinScatterAmount() => RandomListWeight(data.Rrggiomg.GpinGqorrgrRonpom); // 0x236bea8; returns INDEX
 
         public IReadOnlyList<int> ReelWeights(int reel, int mode)
