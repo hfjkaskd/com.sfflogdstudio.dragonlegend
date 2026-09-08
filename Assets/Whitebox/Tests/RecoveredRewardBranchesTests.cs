@@ -12,6 +12,47 @@ public sealed class RecoveredRewardBranchesTests
         Rrggiomg=new RrggiomgPoro {RrggGping=new List<int>{0,0,7,0,9,12}}
     });
 
+    [Test]
+    public void FlyCoinCreditsLatestBalanceAfterCallerAndTopTitleReset()
+    {
+        var data=new PlayerData {GreenCount=10}; var order=new List<string>();
+        var rules=Rules();
+        var progress=new RecoveredPlayerProgress(rules,()=>order.Add("save"),data);
+        progress.GreenCountChanged+=(oldValue,newValue)=>{
+            Assert.AreEqual(30,oldValue); Assert.AreEqual(35,newValue);
+            order.Add("balance");
+        };
+        var branches=new RecoveredRewardBranches(rules,progress);
+        branches.CompleteFlyCoin(5,()=>{Assert.AreEqual(10,progress.GreenCount); data.GreenCount=20;order.Add("caller");},
+            ()=>{Assert.AreEqual(20,progress.GreenCount);data.GreenCount=30;order.Add("top");});
+        CollectionAssert.AreEqual(new[]{"caller","top","balance","save","save"},order);
+        Assert.AreEqual(35,progress.GreenCount);
+    }
+
+    [TestCase(true)]
+    [TestCase(false)]
+    public void FlyCoinCallbackFailurePreventsCredit(bool failCaller)
+    {
+        var data=new PlayerData {GreenCount=10};int saves=0,resets=0;
+        var rules=Rules();var progress=new RecoveredPlayerProgress(rules,()=>saves++,data);
+        var branches=new RecoveredRewardBranches(rules,progress);
+        Assert.Throws<InvalidOperationException>(()=>branches.CompleteFlyCoin(5,
+            ()=>{if(failCaller)throw new InvalidOperationException();},
+            ()=>{resets++;throw new InvalidOperationException();}));
+        Assert.AreEqual(failCaller?0:1,resets);Assert.AreEqual(10,progress.GreenCount);Assert.AreEqual(0,saves);
+    }
+
+    [TestCase(5f,20f)]
+    [TestCase(-8f,-6f)]
+    public void FlyCoinAllowsNullCallerAndRepeatedCompletionRetainsNativeCredits(float amount,float expected)
+    {
+        var data=new PlayerData {GreenCount=10};int saves=0,resets=0;
+        var rules=Rules();var progress=new RecoveredPlayerProgress(rules,()=>saves++,data);
+        var branches=new RecoveredRewardBranches(rules,progress);
+        branches.CompleteFlyCoin(amount,null,()=>resets++);
+        branches.CompleteFlyCoin(amount,null,()=>resets++);
+        Assert.AreEqual(expected,progress.GreenCount);Assert.AreEqual(2,resets);Assert.AreEqual(4,saves);
+    }
     [TestCase(2,RecoveredJackpotType.None,0)]
     [TestCase(3,RecoveredJackpotType.Minor,1)]
     [TestCase(4,RecoveredJackpotType.Major,1)]

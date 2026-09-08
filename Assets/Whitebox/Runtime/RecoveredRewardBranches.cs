@@ -21,6 +21,14 @@ namespace DragonLegend.Whitebox
             this.progress=progress ?? throw new ArgumentNullException(nameof(progress));
         }
 
+        // PlayFlyCoin completion 0x23c306c. Balance is read AFTER both callbacks:
+        // either callback may change it. The presenter supplies the authored TopTitle reset.
+        public void CompleteFlyCoin(float amount, Action onComplete, Action resetTopTitle)
+        {
+            onComplete?.Invoke();
+            resetTopTitle();
+            progress.SetGreenCount(progress.GreenCount + amount);
+        }
         // CheckWild3 0x23d1520 counts ALL complete Wild columns, including gaps.
         public static int CountWildColumns(RecoveredSlotBoard board)
         {

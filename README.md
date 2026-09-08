@@ -129,3 +129,8 @@ RewardBranches 提供 CheckBonusGame，供普通中奖动画之后、免费游�
 恢复 GameData.set_GreenCount 0x236d788：先通知旧余额/请求值，通知时存储仍是旧值；随后写入余额、检查 GreenCountLog，再执行两次保存（CheckGreenCount 及 setter 各一次）。不钳制负值，每次赋值最多推进一个里程碑，余额不变也仍通知和保存。阈值 20000/40000/60000/80000 从 Dragon Legend 原始 ELF 的 0xdbc73c/0xdbc634/0xdbc5ec/0xdbc740 读取，并核对方法签名字节。保留原生 b.lt 的 NaN 比较边界。SDK Track 不接入，里程碑存档字段保留。
 
 新增 10 项用例，全量 Unity 2022.3.62f3 PlayMode 100 项通过、0 失败（本地 Artifacts/green-balance-tests.xml）。余额写入接口尚待绑定各奖励的原始完成阶段；已核对 PlayFlyCoin 0x23c306c 为先外部回调、再重置顶部、最后入账，后续必须保留。主流程完整奖励表现和 1:1 视觉仍未完成。
+## 本轮：飞币完成后的奖励入账
+
+恢复 PlayFlyCoin 完成回调 0x23c306c：先执行可空外部回调，再调用顶部重置，最后读取当时的余额加上奖励并走 SetGreenCount。不得提前缓存余额；任一回调抛错时不继续入账。保留重复回调重复入账、负奖励不钳制的原始行为，动画消费者负责按实际完成事件调用。
+
+新增 5 项边界与顺序用例，Unity 2022.3.62f3 PlayMode 全量 105 项通过、0 失败（本地 Artifacts/fly-credit-tests.xml）。此入口通过 GameEntry.RewardBranches 可供视图调用，尚未绑定真实飞币 Prefab；飞行路径、数量、时长及完整主流程表现继续待恢复。SDK 不变，完整 1:1 尚未达成。
