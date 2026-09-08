@@ -13,6 +13,10 @@ namespace DragonLegend.Whitebox
         private RecoveredReelStopOperation stop;
         public bool IsCompleted { get; private set; }
         public Exception Error { get; private set; }
+        internal void CancelForProfileChange()
+        {
+            stop?.CancelForProfileChange(); Error = new OperationCanceledException("GM profile changed."); IsCompleted = true;
+        }
         public override bool keepWaiting { get { if (IsCompleted) GetResult(); return !IsCompleted; } }
 
         internal RecoveredReelSpinOperation(RecoveredBaseReelMotion target, RecoveredReelView reel,
@@ -44,6 +48,7 @@ namespace DragonLegend.Whitebox
         }
         bool IRecoveredReelUpdateItem.Step(int frame, float scaledDeltaTime)
         {
+            if (IsCompleted) return false;
             if (motion.StopRequested) return true;
             try { stopped?.Invoke(index); }
             catch (Exception error) { Error = error; }

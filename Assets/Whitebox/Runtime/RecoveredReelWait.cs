@@ -12,6 +12,8 @@ namespace DragonLegend.Whitebox
         private readonly float delay;
         private readonly int initialFrame;
         private float elapsed;
+        private bool cancelled;
+        internal void Cancel() => cancelled = true;
         private RecoveredReelWait(float seconds, Func<bool> condition, Action completed, Action<Exception> error)
         {
             delay = (float)TimeSpan.FromMilliseconds(seconds * 1000f).TotalSeconds;
@@ -19,12 +21,13 @@ namespace DragonLegend.Whitebox
             predicate = condition; continuation = completed; failed = error; initialFrame = Time.frameCount;
             RecoveredReelStopLoop.Requeue(this);
         }
-        internal static void Delay(float seconds, Action completed, Action<Exception> error)
+        internal static RecoveredReelWait Delay(float seconds, Action completed, Action<Exception> error)
             => new RecoveredReelWait(seconds, null, completed, error);
-        internal static void Until(Func<bool> condition, Action completed, Action<Exception> error)
+        internal static RecoveredReelWait Until(Func<bool> condition, Action completed, Action<Exception> error)
             => new RecoveredReelWait(0, condition, completed, error);
         bool IRecoveredReelUpdateItem.Step(int frame, float scaledDeltaTime)
         {
+            if (cancelled) return false;
             try {
                 if (predicate != null) { if (!predicate()) return true; }
                 else {

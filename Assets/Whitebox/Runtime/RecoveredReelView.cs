@@ -36,6 +36,9 @@ namespace DragonLegend.Whitebox
                 symbols = new RecoveredSymbolView[slotCount]; ids = new int[slotCount];
                 for (int i = 0; i < slotCount; i++) {
                     symbols[i] = Instantiate(symbolPrefab, rotationNode, false);
+                    symbols[i].gameObject.layer = gameObject.layer;
+                    symbols[i].Symbol.gameObject.layer = gameObject.layer;
+                    symbols[i].Cover.gameObject.layer = gameObject.layer;
                     symbols[i].transform.localPosition = new Vector3(0, (bottomPixels + itemHeightPixels * i) * unitsPerPixel, 0);
                     symbols[i].Symbol.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
                     symbols[i].Cover.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;

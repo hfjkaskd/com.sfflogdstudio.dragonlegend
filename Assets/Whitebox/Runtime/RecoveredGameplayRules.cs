@@ -49,6 +49,7 @@ namespace DragonLegend.Whitebox
         public int GetInitGreenCount() => data.Qonrii.InirQoing[0]; // 0x236a570
         public int GetInitSpinCount() => data.Qonrii.InirGping[0]; // 0x236a5d4
         public int GetLines() => data.Gimrol.Lingg[0]; // 0x236b73c
+        public string GetConfigType() => data.Qonrii.Ripg[0]; // 0x236a248
         public int GetCashOutCount() => data.Rgpggm.Qogt.Count; // 0x236ccc8
         public float GetCashOutCash(int index) => data.Rgpggm.Qogt[index]; // 0x236cd20; no currency conversion
 

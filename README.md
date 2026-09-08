@@ -235,3 +235,15 @@ BuildSpinButton 使用 UnityEditor 官方 API 保存 SpinButton Prefab、7 个�
 首次 OnEnable 采样早于子 Image.Awake 曾触发 Unity m_DidAwake 断言，已将首次播放放到 Start，所有平台使用同一初始化流程。测试 Canvas 图层也已校正，避免测试相机剔除整个 Canvas。中间通过测试但带竖条的画面不作为视觉完成证据。
 
 最终全量 PlayMode 136 项通过、0 失败（Artifacts/spin-button-pma-tests.xml）。新增测试检查原旋转角、关键帧透明度、点击图层重置、可见底板的真实 GraphicRaycaster 命中、标准 Button 事件及点击后返回循环待机。本次 current-spin-button.png 已检查，竖条消失，底板和叶片/发光可见。按钮 Prefab 尚未接入主 GameEntry 的实际扣次数、生成结果和转轴调用；该主流程接线、奖励流程及完整视觉生命周期继续未完成，SDK 未改动。
+
+## 本轮：主入口实际 Spin 接线与 GM 切换清理
+
+GameEntry 加载配置后实例化已制作好的 SpinPlayfield Prefab，将原生 SpinButton、五列 BaseReels、真实 SpinEntry 和 SpinResult 接通。静态层级恢复原 QiPan (-0.003418,652)、Roll (-1.62,-71)、Bottom 和 SpinBtn (417,-23.793) 的布局；SpriteRenderer 转轴以 100 倍单位换算嵌入 Canvas 对应空间，图层与 UI 相机一致。移开 GM 按钮并隐藏旧白盒说明文字，避免遮挡棋盘。核心符号仍使用 SpriteRenderer，与原 Image 组件类型有明确差异，以遵守本工程禁止 UI 充当核心玩法对象的要求。
+
+GetConfigType 按 0x236a248 读取 Qonrii.Ripg 首项；普通模式按原 SetBet 使用 GetBet 首项，A 测试模式保留 Init 的 Bet=0。A_Test.isA 仅表示本地 GM 对照配置，不证明任何国家的服务端分流规则。
+
+核对 InitGameResult 0x2383290 后，将结果生成恢复为点击调用内同步完成，首列在点击返回前启动；不把原本同步的随机重试拆到多个 Update。实际点击扣一次次数并存档，忙碌和奖励等待阶段拒绝重复扣除。五列停止后发出奖励序列请求，仍保持忙碌锁，只有后续 CheckBaseEnd 完成才能解锁；目前尚未接完奖励链，因此当前实际入口还不能完成连续游戏回合。
+
+GM 切换显式取消旧控制器的启动、延迟、停轴与条件等待，移除按钮订阅，避免旧列对新配置触发完成事件；原独立 SetStop 的默认无自动取消语义不变。
+
+已核对最终 Unity 2022.3.62f3 全量 PlayMode 138 项通过、0 失败（Artifacts/spin-playfield-native-tests.xml）。新增实际 GameEntry Prefab 测试通过可见按钮 GraphicRaycaster 命中触发点击，检查同步结果、首次启动、重复点击、存档、15 个真实落位符号、五列渲染像素，以及 GM 中途切换和无次数点击。最新 current-entry-spin.png 为该实际入口测试生成；主场景背景、外围 UI、停轴特效、奖励和免费回合仍不完整，不能视作完整视觉或生命周期 1:1。SDK 保持原处理方式。

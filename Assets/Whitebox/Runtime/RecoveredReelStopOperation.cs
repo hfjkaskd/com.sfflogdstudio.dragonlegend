@@ -22,6 +22,7 @@ namespace DragonLegend.Whitebox
         private int phase; // delay, flag wait, invoking, complete
         public bool IsCompleted => phase == 3;
         public Exception Error { get; private set; }
+        internal void CancelForProfileChange() { Error = new OperationCanceledException("GM profile changed."); phase = 3; }
         public override bool keepWaiting { get { if (IsCompleted) GetResult(); return !IsCompleted; } }
         internal RecoveredReelStopOperation(RecoveredBaseReelMotion target, RecoveredReelView view,
             float seconds, Func<IReadOnlyList<int>> result, Action<RecoveredReelView> completed, int frame)

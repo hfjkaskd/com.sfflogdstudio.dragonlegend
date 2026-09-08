@@ -1,0 +1,69 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace DragonLegend.Whitebox
+{
+    public sealed class RecoveredSpinPlayfield : MonoBehaviour
+    {
+        [SerializeField] private RecoveredSpinButton spinButton;
+        [SerializeField] private RecoveredBaseReelController reels;
+        [SerializeField] private RecoveredSymbolCatalog symbols;
+        private RecoveredSpinEntry entry;
+        private RecoveredSpinResult result;
+        private RecoveredGameplayRules rules;
+        private readonly List<int> bets = new List<int>(5);
+        private readonly int[][] columns = { new int[3], new int[3], new int[3], new int[3], new int[3] };
+        public int Bet { get; private set; }
+        public bool IsBusy { get; private set; }
+        public bool AwaitingRewards { get; private set; }
+        public RecoveredSpinButton SpinButton => spinButton;
+        public RecoveredBaseReelController Reels => reels;
+        public event Action RewardSequenceRequested;
+        public void Bind(RecoveredSpinEntry spinEntry, RecoveredSpinResult spinResult,
+            RecoveredPlayerProgress progress, RecoveredGameplayRules gameplayRules, bool isA)
+        {
+            Unbind(); entry = spinEntry; result = spinResult; rules = gameplayRules;
+            rules.GetBet(isA, progress.Level, bets);
+            // GameData.Init resets Bet=0; SetBet only assigns list[0] for the normal branch.
+            Bet = isA ? 0 : bets[0];
+            reels.Initialize(symbols);
+            entry.StartVisualsRequested += Started;
+            reels.ReelsStopped += Stopped;
+            spinButton.Button.onClick.AddListener(Click);
+        }
+        private void Click()
+        {
+            if (entry == null) return;
+            if (entry.TryBegin(IsBusy, Bet, rules.GetConfigType(), DateTimeOffset.UtcNow.ToUnixTimeSeconds(), ResultReady)) {
+                // InitGameResult 0x2383290 is synchronous. Preserve all random attempts and
+                // invoke the first reel's startup before this click handler returns.
+                while (result.IsGenerating) result.Step();
+            }
+        }
+        private void Started() { IsBusy = true; AwaitingRewards = false; spinButton.PlayAcceptedClick(); }
+        private void ResultReady(int index) => reels.Begin(index, ReadColumn);
+        private IReadOnlyList<int> ReadColumn(int index)
+        {
+            var column = columns[index];
+            for (int row = 0; row < column.Length; row++) column[row] = result.Board.GetSymbol(index, row);
+            return column;
+        }
+        private void Stopped() { AwaitingRewards = true; RewardSequenceRequested?.Invoke(); }
+        // Called by the eventual CheckBaseEnd completion, never by a reel stop callback.
+        public void CompleteBaseRound()
+        {
+            if (!AwaitingRewards) throw new InvalidOperationException("The reel sequence has not reached rewards.");
+            AwaitingRewards = false; IsBusy = false;
+        }
+        public void Unbind()
+        {
+            spinButton.Button.onClick.RemoveListener(Click);
+            if (entry != null) entry.StartVisualsRequested -= Started;
+            reels.ReelsStopped -= Stopped;
+            reels.AbortForProfileChange();
+            entry = null; result = null; rules = null; IsBusy = false; AwaitingRewards = false;
+        }
+        private void OnDestroy() => Unbind();
+    }
+}

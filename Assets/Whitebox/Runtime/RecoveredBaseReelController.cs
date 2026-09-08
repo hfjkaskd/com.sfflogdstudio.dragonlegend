@@ -16,6 +16,19 @@ namespace DragonLegend.Whitebox
         [SerializeField] private float anticipationStopDelay;
         private Func<int, IReadOnlyList<int>> resultColumn;
         private int nextReel, selectedIndex;
+        private readonly List<RecoveredReelSpinOperation> starts = new List<RecoveredReelSpinOperation>(5);
+        private readonly List<RecoveredReelStopOperation> stops = new List<RecoveredReelStopOperation>(5);
+        private readonly List<RecoveredReelWait> waits = new List<RecoveredReelWait>(16);
+        public void AbortForProfileChange()
+        {
+            foreach (var operation in starts) operation.CancelForProfileChange();
+            foreach (var operation in stops) operation.CancelForProfileChange();
+            foreach (var operation in waits) operation.Cancel();
+            foreach (var motion in motions) motion.AbortForProfileChange();
+            starts.Clear(); stops.Clear(); waits.Clear(); IsRunning = false;
+        }
+        private void Delay(float seconds, Action continuation) => waits.Add(RecoveredReelWait.Delay(seconds, continuation, Fail));
+        private void Until(Func<bool> predicate, Action continuation) => waits.Add(RecoveredReelWait.Until(predicate, continuation, Fail));
         public int ReelCount => reels.Length;
         public int StoppedCount { get; private set; }
         public bool IsRunning { get; private set; }
@@ -40,6 +53,7 @@ namespace DragonLegend.Whitebox
         {
             if (IsRunning) throw new InvalidOperationException("Reel sequence is already running.");
             resultColumn = currentColumn ?? throw new ArgumentNullException(nameof(currentColumn));
+            starts.Clear(); stops.Clear(); waits.Clear();
             selectedIndex = accelerationStartIndex; nextReel = 0; StoppedCount = 0; Error = null; IsRunning = true;
             try {
                 GoodLuckRequested?.Invoke();
@@ -50,16 +64,17 @@ namespace DragonLegend.Whitebox
         private void StartNext()
         {
             if (nextReel == reels.Length) {
-                RecoveredReelWait.Until(() => StoppedCount == reels.Length, Complete, Fail);
+                Until(() => StoppedCount == reels.Length, Complete);
                 return;
             }
             int index = nextReel++;
             bool automatic = selectedIndex == -1 || index < selectedIndex;
             var operation = motions[index].StartBaseSpin(accelerationSeconds, index, () => resultColumn(index),
                 automatic ? null : (Action<int>)BeginAnticipation, automatic ? (Action<int>)NormalStopped : null, selectedIndex);
+            starts.Add(operation);
             if (operation.IsCompleted && operation.Error != null) Fail(operation.Error);
             // Native awaits the interval even after starting the final column.
-            RecoveredReelWait.Delay(startInterval, StartNext, Fail);
+            Delay(startInterval, StartNext);
         }
         private void NormalStopped(int index)
         {
@@ -74,16 +89,17 @@ namespace DragonLegend.Whitebox
             SpeedupSoundRequested?.Invoke();
             AnticipationVisibilityRequested?.Invoke(index, true);
             motions[index].SetMaxSpeed(anticipationSpeed);
-            RecoveredReelWait.Delay(anticipationDelay, () => {
+            Delay(anticipationDelay, () => {
                 var stop = motions[index].SetStop(anticipationStopDelay, () => resultColumn(index));
+                stops.Add(stop);
                 stop.Continuation = () => {
                     try {
                         stop.GetResult();
-                        RecoveredReelWait.Until(() => !motions[index].StopRequested,
-                            () => AnticipationStopped(index), Fail);
+                        Until(() => !motions[index].StopRequested,
+                            () => AnticipationStopped(index));
                     } catch (Exception error) { Fail(error); }
                 };
-            }, Fail);
+            });
         }
         private void AnticipationStopped(int index)
         {

@@ -34,6 +34,7 @@ namespace DragonLegend.Whitebox
             => new RecoveredReelSpinOperation(this, reel, baseSpinSpeed, automaticStopDelay,
                 accelerationSeconds, reelIndex, currentColumn, accelerationCallback, stoppedCallback, selectedIndex);
         public void SetMaxSpeed(float speedPixelsPerSecond) => maxSpeed = speedPixelsPerSecond;
+        internal void AbortForProfileChange() { phase = 0; IsSpinning = false; StopRequested = false; }
         public void RequestStop(Func<IReadOnlyList<int>> currentColumn)
         {
             resultProvider = currentColumn ?? throw new ArgumentNullException(nameof(currentColumn));

@@ -16,6 +16,13 @@ namespace DragonLegend.Whitebox
         [SerializeField] private Text status;
         [SerializeField] private RecoveredBalancePanel balancePanelPrefab;
         private RecoveredBalancePanel balancePanel;
+        [SerializeField] private RecoveredSpinPlayfield playfieldPrefab;
+        public RecoveredSpinPlayfield Playfield { get; private set; }
+        private void ReleasePlayfield()
+        {
+            if (Playfield == null) return;
+            Playfield.Unbind(); Destroy(Playfield.gameObject); Playfield = null;
+        }
         private Coroutine loading;
         private IEnumerator activeLoad;
         public RecoveredGameplayRules Rules { get; private set; }
@@ -49,6 +56,7 @@ namespace DragonLegend.Whitebox
             activeLoad = null;
             loading = null;
             if (balancePanel != null) { balancePanel.Unbind(); Destroy(balancePanel.gameObject); balancePanel = null; }
+            ReleasePlayfield();
             Rules = null;
             Settlement = null;
             SpinResult = null;
@@ -74,6 +82,7 @@ namespace DragonLegend.Whitebox
             (activeLoad as IDisposable)?.Dispose();
             activeLoad = null;
             if (balancePanel != null) { balancePanel.Unbind(); Destroy(balancePanel.gameObject); balancePanel = null; }
+            ReleasePlayfield();
             Rules = null;
             Settlement = null;
             SpinResult = null;
@@ -131,6 +140,10 @@ namespace DragonLegend.Whitebox
             if (balancePanelPrefab != null) {
                 balancePanel = Instantiate(balancePanelPrefab, transform, false);
                 balancePanel.Bind(PlayerProgress, Rules, profile.languageType);
+            }
+            if (playfieldPrefab != null) {
+                Playfield = Instantiate(playfieldPrefab, transform, false);
+                Playfield.Bind(SpinEntry, SpinResult, PlayerProgress, Rules, profile.isA);
             }
             Ready?.Invoke(Rules);
         }

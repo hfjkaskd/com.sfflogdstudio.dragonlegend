@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   profileId: A_Test
   countryCode: US
+  isA: 1
   snapshotPath: RecoveredConfig/Remote/cp_default.json
   cashPresentationEnabled: 0
   advertisementPresentationEnabled: 0
