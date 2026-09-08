@@ -10,11 +10,24 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredGameplayRules
     {
         private readonly GoldenDragonAutoGenConfig data;
+        private readonly List<int> winningCoinWeights = new List<int>();
         public RecoveredGameplayRules(GoldenDragonAutoGenConfig configuration)
         {
             data = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
+        public int GetWildSpinCD() => data.Gimrol.KilpGpinQP[0]; // 0x236b4c8
+        public int GetMinSpin() => data.Ronig.MinGpin[0]; // 0x236b8d8
+        public int GetCoinSpinAmount() => RandomListWeight(data.Ronig.QoinGpinKgiitr);
+        public int GetCoinSpinAmountWin() // 0x236b828; removes first weight, no index +1
+        {
+            if (winningCoinWeights.Count == 0)
+            {
+                winningCoinWeights.AddRange(data.Ronig.QoinGpinKgiitr);
+                winningCoinWeights.RemoveAt(0);
+            }
+            return RandomListWeight(winningCoinWeights);
+        }
         public int GetInitGreenCount() => data.Qonrii.InirQoing[0]; // 0x236a570
         public int GetInitSpinCount() => data.Qonrii.InirGping[0]; // 0x236a5d4
         public int GetLines() => data.Gimrol.Lingg[0]; // 0x236b73c

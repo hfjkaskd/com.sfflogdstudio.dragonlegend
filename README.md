@@ -8,6 +8,11 @@ SDK 模拟测试入口：Assets/Whitebox/Scenes/MockFlow.unity。现有 SDK mock
 
 ## 本轮进展
 
+- 已恢复 Bonus 区域保底，包括候选索引直接作为行号、区域补足禁选列的原版分支。
+- 已串联 InitGameResult：引导/保底 Wild、普通 Wild、Bonus 双次计数与保底、强制免费 Scatter、结算、停轴参数与有序回调。配置入口随配置创建生成器。
+- GetCoinSpinAmountWin 保留移除第一项权重后返回索引、不加一的原版实现。
+- 最新 Unity PlayMode 41 项全部通过，含真实 US 配置连续 12 次生成。结果生成已接通；扣次数、余额入账、原版状态机、可视转轴与奖励窗口仍未接通。
+
 - 恢复 CheckSingleSymbol（0x2384d2c）的 Bonus/Scatter 单符号放置：调用方列列表、占位更新、五列终止和重试时累积候选行的原版行为。保留由旧候选行造成的覆盖结果。
 - 每步只执行一次列抽样，可由后续旋转驱动分帧推进；不改变随机调用顺序。候选列表和随机委托复用；极端连续拒绝仍会增长候选列表，与原版语义一致。
 - 最新 Unity PlayMode：37 项通过，0 失败。完整旋转编排、Bonus 区域保底和视觉入口仍未完成。

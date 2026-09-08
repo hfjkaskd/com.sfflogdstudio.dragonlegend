@@ -15,6 +15,7 @@ namespace DragonLegend.Whitebox
         private readonly int[] keys = new int[5];
         private static readonly Func<int, int, int> UnityRange = UnityEngine.Random.Range;
         private readonly List<int> candidateRows = new List<int>(15);
+        private readonly List<int> bonusExcludedColumns = new List<int>(5);
         private List<int> placementColumns;
         private int placementRemaining;
         private int placementSymbol;
@@ -93,6 +94,42 @@ namespace DragonLegend.Whitebox
             settlement.Evaluate(symbols, bet);
         }
         public int SpeedRoll(int scatterCount) => RecoveredSlotResultRules.SpeedRoll(symbols, scatterCount);
+
+        // CheckBonusBaodI 0x2384430. Follow with StepSingleSymbol while active.
+        public void BeginGuaranteedBonus(int count, IReadOnlyList<int> areaColumns,
+            Random random = null, Func<int, int, int> range = null)
+        {
+            if (placementActive) throw new InvalidOperationException("Finish the current placement first.");
+            if (areaColumns == null) throw new ArgumentNullException(nameof(areaColumns));
+            int occupied = 0;
+            for (int c = 0; c < 5; c++) for (int r = 0; r < 3; r++)
+                if (reserved[c,r]) occupied++;
+            if (count < 1 || occupied == 15) return;
+            range = range ?? UnityRange;
+            SelectRandomOrder(areaColumns.Count, random ?? new Random());
+            int selected = Math.Min(count, areaColumns.Count);
+            for (int i = 0; i < selected; i++)
+            {
+                int col = areaColumns[order[i]];
+                int available = 0;
+                for (int r = 0; r < 3; r++) if (!reserved[col,r]) available++;
+                if (available == 0) continue;
+                // Native uses the index directly, not candidateRows[index].
+                int row = range(0, available);
+                symbols[col,row] = 9;
+                reserved[col,row] = true;
+            }
+            if (count < areaColumns.Count) return;
+            bonusExcludedColumns.Clear();
+            for (int col = 0; col < 5; col++)
+            {
+                bool included = false;
+                for (int i = 0; i < areaColumns.Count; i++)
+                    if (areaColumns[i] == col) { included = true; break; }
+                if (!included) bonusExcludedColumns.Add(col);
+            }
+            BeginSingleSymbol(count - areaColumns.Count, bonusExcludedColumns, 9);
+        }
 
         // CheckSingleSymbol 0x2384d2c. Caller-owned column list is updated by the
         // original routine; existing entries forbid columns, irrespective of board contents.
