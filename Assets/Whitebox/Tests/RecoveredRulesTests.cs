@@ -63,6 +63,8 @@ public sealed class RecoveredRulesTests
             while (entry.Rules == null && Time.realtimeSinceStartup < deadline) yield return null;
             Assert.IsNotNull(entry.Rules);
             Assert.AreEqual("US_Default",entry.CurrentProfile.profileId);
+            Assert.IsNotNull(entry.Settlement);
+            var initialSettlement = entry.Settlement;
             Assert.IsTrue(entry.CurrentProfile.advertisementPresentationEnabled);
             int notifications = 0;
             entry.Ready += _ => notifications++;
@@ -73,9 +75,12 @@ public sealed class RecoveredRulesTests
             deadline = Time.realtimeSinceStartup + 15;
             while (entry.Rules == null && Time.realtimeSinceStartup < deadline) yield return null;
             Assert.AreEqual("A_Test",entry.CurrentProfile.profileId);
+            Assert.IsNotNull(entry.Settlement);
+            Assert.AreNotSame(initialSettlement, entry.Settlement);
             Assert.AreEqual(1,notifications);
             go.SetActive(false);
             Assert.IsNull(entry.Rules);
+            Assert.IsNull(entry.Settlement);
         }
         finally { Object.Destroy(go); }
     }

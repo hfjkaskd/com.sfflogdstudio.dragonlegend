@@ -8,6 +8,11 @@ SDK 模拟测试入口：Assets/Whitebox/Scenes/MockFlow.unity。现有 SDK mock
 
 ## 本轮进展
 
+- 恢复 WinTotalLine 的逐列路径扩展、Wild 替代、已扩展前缀过滤、开头 Wild 赔率覆盖和整数乘法后除线数；保留原版特殊符号列终止边界。输出路径坐标供后续动画消费者使用。
+- GameEntry 随配置创建结算实例，切换与停用时清理旧实例。结算仍待接入结果生成、转轴与奖励界面。
+- 结算缓冲复用，原版 5x3 棋盘最多 363 个中间路径节点、243 条完整路径；避免每次结算动态创建路径对象。
+- 最新 Unity PlayMode 验证：24 项通过、0 失败，含配置切换生命周期检查。
+
 - 新增按 ARM64 指令核对的 SlotGameResult 停轴触发列、连续前缀 Wild 判定与最低正奖励回写规则；保留第零列 sentinel 行为。尚未接入主玩法视图，不代表完整结算已完成。
 - 本轮 Unity 2022.3.62f3 PlayMode 共 18 项测试通过，0 失败（含新增 11 项规则边界测试）。
 - Dragon Legend 主流程以逆向资料 mumu-current 为来源；上层 il2cpp 目录包含另一款 Nut Sort 的导出，不能混用。
