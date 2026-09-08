@@ -9,6 +9,9 @@ output.mkdir(parents=True,exist_ok=True)
 samples=[]
 for name in ('ef_jinbi','ef_longzhu'):
     data=json.loads((root/'Tools/Evidence/FreeSymbols'/f'{name}.json').read_text(encoding='utf8'))
+    if name=='ef_jinbi':
+        # SkeletonGraphic with no startingAnimation displays the authored setup pose.
+        data['animations'].append({'name':'__setup','duration':0,'timelines':[]})
     flattened=copy.deepcopy(data)
     for attachment in flattened['attachments']:
         if attachment.get('weighted'):

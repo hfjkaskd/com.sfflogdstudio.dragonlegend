@@ -21,7 +21,7 @@ premultiplied-alpha pixels are imported without Unity alpha dilation or lossy
 compression, following the existing recovered effect pipeline.
 
 These are animation-art prefabs, not complete JinBiEffectItem or LongzhuItem
-replacements. Their preview defaults are zcjb_idle and idle_lan. Runtime ball
+replacements. Their defaults are idle_chun and idle_lan. Runtime ball
 type selection must explicitly select the correct source clip. Parent scale,
 reward text, clipping within the mini reels, pool lifetime and collection
 motion are still to be authored and bound.
@@ -57,3 +57,9 @@ once and cancellation on disable. Three fresh 2400x1600 contact sheets at
 `Artifacts/current-free-special-clips-0.png` through `-2.png`. Their row-major
 order follows the clip lists above; they are isolated art previews, not game
 flow parity evidence. SDK handling is unchanged.
+
+The subsequent FreeCoin prefab work adds an empty-timeline __setup pose for
+the original glow skeleton's no-animation state and corrects the coin default
+to idle_chun from the actual Jinbi prefab. The current authoring sample set
+therefore contains 944 samples for 22 source clips plus that setup pose. See
+free-coin.md for the latest initial-versus-appearance validation.

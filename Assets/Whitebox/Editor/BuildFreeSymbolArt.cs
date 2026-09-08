@@ -8,14 +8,14 @@ public static class BuildFreeSymbolArt
 {
     public static void Save()
     {
-        Build("ef_jinbi","jinbi","FreeCoinArt","zcjb_idle");
+        Build("ef_jinbi","jinbi","FreeCoinArt","idle_chun");
         Build("ef_longzhu","longzhu","FreeBallArt","idle_lan");
         AssetDatabase.SaveAssets();
     }
     private static void Build(string file,string directory,string name,string initial)
     {
         string folder="Assets/Resources/RecoveredSymbols/"+name;
-        var source=JsonUtility.FromJson<BuildCoinAppearance.Data>(File.ReadAllText("Tools/Evidence/FreeSymbols/"+file+".json"));
+        var source=JsonUtility.FromJson<BuildCoinAppearance.Data>(File.ReadAllText("Artifacts/FreeSymbolAuthoring/"+file+".json"));
         var root=new GameObject(name);root.layer=5;root.SetActive(false);
         try {
             var settings=new SerializedObject(root.AddComponent<RecoveredWorldAnimation>());

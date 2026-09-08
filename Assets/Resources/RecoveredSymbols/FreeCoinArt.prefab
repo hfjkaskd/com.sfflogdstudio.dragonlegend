@@ -74,7 +74,9 @@ MonoBehaviour:
     data: {fileID: 11400000, guid: 54a1b1794d116394687bfe24b115ef43, type: 2}
   - name: zcjb_idle
     data: {fileID: 11400000, guid: 0d475bb183dcc8343b5de4cde9de63c3, type: 2}
-  initialClip: zcjb_idle
+  - name: __setup
+    data: {fileID: 11400000, guid: 62b16850fb7744846b36989a10871b5a, type: 2}
+  initialClip: idle_chun
 --- !u!1 &9006841949736361349
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +200,7 @@ Animation:
   - {fileID: 7400000, guid: 4a7c26e106c3ee0459ae6c09e8202400, type: 2}
   - {fileID: 7400000, guid: c13945eb73383b74aad24e237ed42695, type: 2}
   - {fileID: 7400000, guid: 310426d4b77e9574fb81a07c5bcfdae0, type: 2}
+  - {fileID: 7400000, guid: 6f2238b51d43b83499330e9d0939183f, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0

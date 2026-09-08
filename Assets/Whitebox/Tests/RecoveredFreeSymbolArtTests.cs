@@ -19,7 +19,7 @@ public sealed class RecoveredFreeSymbolArtTests
     [Test]
     public void EveryCoinAndBallClipMatchesSourceGeometryWithoutReplacingItsMesh()
     {
-        var source=Read();Assert.AreEqual(22,source.rigs.Length);
+        var source=Read();Assert.AreEqual(23,source.rigs.Length);
         var coin=Create(true);var ball=Create(false);
         try {
             var coinMesh=coin.Rig.CurrentMesh;var ballMesh=ball.Rig.CurrentMesh;int frames=0;
@@ -40,7 +40,7 @@ public sealed class RecoveredFreeSymbolArtTests
                     frames++;
                 }
             }
-            Assert.AreEqual(942,frames);
+            Assert.AreEqual(944,frames);
             Assert.Throws<ArgumentOutOfRangeException>(()=>coin.Play("missing",true));
         } finally {Object.DestroyImmediate(coin.gameObject);Object.DestroyImmediate(ball.gameObject);}
     }
