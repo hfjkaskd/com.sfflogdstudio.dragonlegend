@@ -21,6 +21,8 @@ namespace DragonLegend.Whitebox
         public float GreenCount => data.GreenCount;
         public IReadOnlyList<int> BonusArea => data.BonusArea;
         public IReadOnlyList<PlayerCashOutData> CashOutRecords => data.PlayerCashOutDatas;
+        public IReadOnlyList<PlayerCollectData> CollectRecords => data.PlayerCollectDatas;
+        public int RandomIndex => data.RandomIndex;
         public event Action<float,float> GreenCountChanged;
         // Original GameData runtime flag; intentionally absent from PlayerData saves.
         public bool IsBonusGame { get; set; }
@@ -155,6 +157,21 @@ namespace DragonLegend.Whitebox
             save();
             return true;
         }
+        // 0x236f48c: first matching ID, new count is always 1. Even ignored writes save.
+        public void SetCollectData(int id, int increment)
+        {
+            var records = data.PlayerCollectDatas;
+            if (records != null)
+            {
+                PlayerCollectData record = null;
+                for (int i = 0; i < records.Count; i++)
+                    if (records[i].id == id) { record = records[i]; break; }
+                if (record == null) records.Add(new PlayerCollectData {id=id,count=1,isRecieve=false});
+                else if (!record.isRecieve) record.count = unchecked(record.count + increment);
+            }
+            save();
+        }
+
         // 0x236eb10: first occurrence is always 1, regardless of increment.
         // Claimed records and a null list still save without changing progress.
         public void SetTaskData(int id, int increment)

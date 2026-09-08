@@ -17,6 +17,7 @@ namespace DragonLegend.Whitebox
         private readonly List<int> freeRewardWeights = new List<int>(4);
         private Dictionary<int,RecoveredWheelType> wheelInfo;
         private List<RecoveredTaskInfo> taskInfos;
+        private List<RecoveredCollectInfo> collectInfos;
         public RecoveredGameplayRules(GoldenDragonAutoGenConfig configuration)
         {
             data = configuration ?? throw new ArgumentNullException(nameof(configuration));
@@ -86,7 +87,23 @@ namespace DragonLegend.Whitebox
             int index = level >= config.Lgtgl[config.Lgtgl.Count - 1] ? config.NggpGpin.Count - 1 : level - 1;
             return config.NggpGpin[index];
         }
-        public int GetCollectInfoCount() => data.Qollgqr.Ip.Count; // 0x236c644
+        public int GetCollectInfoCount() => GetCollectInfos().Count;
+        // 0x236c644: publish the cache before filling it, preserving configured order.
+        public IReadOnlyList<RecoveredCollectInfo> GetCollectInfos()
+        {
+            if (collectInfos != null) return collectInfos;
+            collectInfos = new List<RecoveredCollectInfo>();
+            var config = data.Qollgqr;
+            for (int i = 0; i < config.Ip.Count; i++)
+                collectInfos.Add(new RecoveredCollectInfo {id=config.Ip[i],level=config.Lgtgl[i],
+                    random=config.Ronpom[i],worth=config.Korrt[i]});
+            return collectInfos;
+        }
+        // 0x236c880: the native weights are IDs, not the Ronpom column.
+        public int RandomCollectIndex() => data.Qollgqr.Ip[RandomListWeight(data.Qollgqr.Ip)];
+        public float GetCollectClaim(int index) => data.Qollgqr.QollgqrQloim[index] / 1000f; // 0x236c8fc
+        // 0x236c978 tail-calls FormatCurrency with zero decimal places.
+        public string GetCollectReward(int language) => RecoveredCurrency.Format((float)data.Qollgqr.QollgqrRgkorp[0], language, 0);
         public int GetInitGreenCount() => data.Qonrii.InirQoing[0]; // 0x236a570
         public int GetInitSpinCount() => data.Qonrii.InirGping[0]; // 0x236a5d4
         public int GetLines() => data.Gimrol.Lingg[0]; // 0x236b73c
