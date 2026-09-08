@@ -73,6 +73,10 @@ public sealed class RecoveredJackpotIntegrationTests
             float flightDeadline=Time.realtimeSinceStartup+3;
             while(symbols==0&&Time.realtimeSinceStartup<flightDeadline)yield return null;
             Assert.AreEqual(1,symbols);Assert.IsFalse(field.JackpotSequence.IsRunning);
+            Assert.IsNotNull(field.SymbolWin);
+            Assert.AreEqual(entry.Settlement.GetWinTotalLine()+field.BonusCoins.TotalReward,field.SymbolWin.TotalWin);
+            if(field.SymbolWin.HasReward)
+                Assert.AreEqual(entry.Rules.GetBigWin(field.SymbolWin.TotalWin,field.Bet),field.SymbolWin.BigWin);
             Assert.AreEqual(beforeBalance+flightAmount,entry.PlayerProgress.GreenCount);
             Assert.AreEqual(0,entry.CashFlight.ActiveCashCount);Assert.Greater(entry.CashFlight.ActiveEffectCount,0);
             Assert.AreEqual(2,entry.BalancePanel.transform.GetSiblingIndex());

@@ -23,6 +23,7 @@ namespace DragonLegend.Whitebox
         public RecoveredJackpotPopup JackpotPopup=>jackpotPopup;
         public RecoveredJackpotSequence JackpotSequence {get;private set;}
         public event Action SymbolAnimationsRequested;
+        public RecoveredSymbolWinSelection SymbolWin {get;private set;}
         public event Action PauseMusicRequested,StopSound1Requested,ResumeMusicRequested,HideWheelRequested;
         public event Action<string> SoundRequested,Sound1Requested;
         public event Action<float,Action> FlyCoinRequested;
@@ -60,6 +61,7 @@ namespace DragonLegend.Whitebox
         {
             Unbind(); entry = spinEntry; result = spinResult; rules = gameplayRules;
             player=progress;ads=adFacade??new LocalAdFacade();this.isA=isA;language=languageType;
+            SymbolWin=new RecoveredSymbolWinSelection(rules);
             jackpotPopup.GetComponent<Canvas>().worldCamera=GetComponentInParent<Canvas>().worldCamera;
             JackpotSequence=new RecoveredJackpotSequence(new RecoveredRewardBranches(rules,progress),jackpotDelay);
             JackpotSequence.WinRequested+=PlayJackpotWin;JackpotSequence.PauseMusicRequested+=PauseMusic;
@@ -131,7 +133,12 @@ namespace DragonLegend.Whitebox
         private void BeginJackpot(int count)
         {
             JackpotCheckRequested?.Invoke(count);
-            if(entry!=null)JackpotSequence.Begin(count,ShowJackpot,()=>SymbolAnimationsRequested?.Invoke());
+            if(entry!=null)JackpotSequence.Begin(count,ShowJackpot,BeginSymbolAnimations);
+        }
+        private void BeginSymbolAnimations()
+        {
+            SymbolWin.Capture(result.Settlement,result.Board.GetSymbol,BonusCoins.TotalReward,Bet);
+            SymbolAnimationsRequested?.Invoke();
         }
         private void PlayJackpotWin(RecoveredJackpotType type)
         {
@@ -164,6 +171,7 @@ namespace DragonLegend.Whitebox
         public void Unbind()
         {
             JackpotSequence?.Cancel();JackpotSequence=null;
+            SymbolWin=null;
             if(jackpotPopup!=null) {
                 jackpotPopup.PauseMusicRequested-=PauseMusic;jackpotPopup.StopSound1Requested-=StopSound1;
                 jackpotPopup.ResumeMusicRequested-=ResumeMusic;jackpotPopup.Sound1Requested-=Sound1;jackpotPopup.SoundRequested-=Sound;

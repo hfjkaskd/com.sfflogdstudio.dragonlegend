@@ -18,6 +18,16 @@ namespace DragonLegend.Whitebox
         }
 
         public int GetWildSpinCD() => data.Gimrol.KilpGpinQP[0]; // 0x236b4c8
+        // 236ab70: reverse configured order, signed integer multiply BEFORE float conversion.
+        // A matching extra index returns None immediately instead of falling through.
+        public RecoveredSlotWinType GetBigWin(float amount,int bet)
+        {
+            var thresholds=data.Qonrii.Riikin;
+            for(int i=thresholds.Count-1;i>=0;i--)
+                if((float)unchecked(thresholds[i]*bet)<=amount)
+                    return i<3?(RecoveredSlotWinType)(i+1):RecoveredSlotWinType.None;
+            return RecoveredSlotWinType.None;
+        }
         public int GetMinSpin() => data.Ronig.MinGpin[0]; // 0x236b8d8
         public int GetCoinSpinAmount() => RandomListWeight(data.Ronig.QoinGpinKgiitr);
         public int GetCoinReward() => UnityEngine.Random.Range(data.Ronig.QoinRgkorp[0], unchecked(data.Ronig.QoinRgkorp[1] + 1)); // 0x236b93c, inclusive upper bound
