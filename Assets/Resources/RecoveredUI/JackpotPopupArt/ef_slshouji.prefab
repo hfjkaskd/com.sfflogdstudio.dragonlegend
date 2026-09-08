@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1699564904640773365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8916956812363315690}
+  - component: {fileID: 2977166601899861579}
+  - component: {fileID: 3422119895541159557}
+  - component: {fileID: 5862972926991176974}
+  - component: {fileID: 1173498048017470963}
+  m_Layer: 5
+  m_Name: ef_slshouji
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8916956812363315690
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699564904640773365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2977166601899861579
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699564904640773365}
+  m_CullTransparentMesh: 0
+--- !u!114 &3422119895541159557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699564904640773365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dad06e1c22c15241b8bd93bf1077c3a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_Material: {fileID: 2100000, guid: 601330edf059f894dbfb4541361889cd, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  bones:
+  - name: root
+    parent: -1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: dx
+    parent: 0
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: quan
+    parent: 1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 0.9
+    scaleY: 0.9
+  - name: caihong
+    parent: 1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 0.8
+    scaleY: 0.8
+  - name: qqq
+    parent: 1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 0.9
+    scaleY: 0.9
+  slots:
+  - bone: 2
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 3
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 4
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  regions:
+  - vertices:
+    - {x: -65.731705, y: -55.715446}
+    - {x: -65.731705, y: 55.715446}
+    - {x: 68.23577, y: 55.715446}
+    - {x: 68.23577, y: -55.715446}
+    uv:
+    - {x: 0.990099, y: 0.58076924}
+    - {x: 0.54950494, y: 0.58076924}
+    - {x: 0.54950494, y: 0.99230766}
+    - {x: 0.990099, y: 0.99230766}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -66.80975, y: -66.80975}
+    - {x: -66.80975, y: 66.80976}
+    - {x: 66.80976, y: 66.80976}
+    - {x: 66.80976, y: -66.80975}
+    uv:
+    - {x: 0.00990099, y: 0.58076924}
+    - {x: 0.00990099, y: 0.99230766}
+    - {x: 0.53960395, y: 0.99230766}
+    - {x: 0.53960395, y: 0.58076924}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -91.78536, y: -91.78536}
+    - {x: -91.78536, y: 91.78537}
+    - {x: 91.78537, y: 91.78537}
+    - {x: 91.78537, y: -91.78536}
+    uv:
+    - {x: 0.00990099, y: 0.0076923077}
+    - {x: 0.00990099, y: 0.5730769}
+    - {x: 0.73762375, y: 0.5730769}
+    - {x: 0.73762375, y: 0.0076923077}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  atlasPath: RecoveredArt/Res/Spine/shouji/ef_slshouji
+--- !u!111 &5862972926991176974
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699564904640773365}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 6cb63f7b519a07042b93ca7ee5bec0e7, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 6cb63f7b519a07042b93ca7ee5bec0e7, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &1173498048017470963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699564904640773365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1559611724bab9346874c5930eb40ff4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  player: {fileID: 5862972926991176974}
+  rig: {fileID: 3422119895541159557}
+  poses:
+  - clip: shouji
+    animation: {fileID: 11400000, guid: dc94365d87bd97d4697afc703ef1f422, type: 2}
+  poseTime: 0

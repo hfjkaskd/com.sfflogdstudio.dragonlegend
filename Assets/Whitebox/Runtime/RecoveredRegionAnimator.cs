@@ -11,6 +11,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private Pose[] poses;
         [SerializeField] private float poseTime;
         private int selected;
+        private AnimationState once;
+        private Action completed;
         private float[] bones,attachments;
         private Color[] colors;
         public RecoveredRegionRig Rig=>rig;
@@ -27,9 +29,18 @@ namespace DragonLegend.Whitebox
             for(int i=0;i<rig.slots.Length;i++){rig.slots[i].tint=colors[i];rig.slots[i].attachment=attachments[i];rig.slots[i].sequenceIndex=-1;}
             poses[index].animation.Sample(time,rig);
         }
-        public void Play(int index){selected=index;poseTime=0;Sample(index,0);player.Play(poses[index].clip);}
+        public void Play(int index){once=null;completed=null;selected=index;poseTime=0;Sample(index,0);player[poses[index].clip].wrapMode=WrapMode.Loop;player.Play(poses[index].clip);}
+        public void PlayOnce(int index,Action onComplete)
+        {
+            Play(index);once=player[poses[index].clip];once.wrapMode=WrapMode.ClampForever;completed=onComplete;
+        }
+        private void LateUpdate()
+        {
+            if(once==null||once.time<once.length)return;
+            Sample(selected,once.length);once=null;var callback=completed;completed=null;callback?.Invoke();
+        }
         private void OnDidApplyAnimationProperties()=>Sample(selected,poseTime);
         private void OnEnable()=>Play(0);
-        private void OnDisable(){if(player!=null)player.Stop();}
+        private void OnDisable(){once=null;completed=null;if(player!=null)player.Stop();}
     }
 }

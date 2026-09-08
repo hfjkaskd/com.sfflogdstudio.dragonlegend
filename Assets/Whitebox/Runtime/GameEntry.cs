@@ -18,16 +18,22 @@ namespace DragonLegend.Whitebox
         private RecoveredBalancePanel balancePanel;
         [SerializeField] private RecoveredSpinPlayfield playfieldPrefab;
         [SerializeField] private RecoveredAdSimulationControls adControls;
+        [SerializeField] private RecoveredCashFlightPresenter cashFlightPrefab;
+        public RecoveredCashFlightPresenter CashFlight {get;private set;}
+        public RecoveredBalancePanel BalancePanel=>balancePanel;
         public LocalAdFacade Ads {get;private set;}
         public RecoveredAdSimulationControls AdControls=>adControls;
         public RecoveredSpinPlayfield Playfield { get; private set; }
         private void ReleasePlayfield()
         {
+            if(CashFlight!=null){CashFlight.Unbind();Destroy(CashFlight.gameObject);CashFlight=null;}
             Ads?.Complete(AdOutcome.Cancelled);Ads=null;
             if(adControls!=null)adControls.Bind(null);
             if (Playfield == null) return;
+            Playfield.FlyCoinRequested-=FlyCoin;
             Playfield.Unbind(); Destroy(Playfield.gameObject); Playfield = null;
         }
+        private void FlyCoin(float amount,Action completed)=>CashFlight.Begin(amount,completed,transform,true);
         private Coroutine loading;
         private IEnumerator activeLoad;
         public RecoveredGameplayRules Rules { get; private set; }
@@ -150,6 +156,13 @@ namespace DragonLegend.Whitebox
             if (playfieldPrefab != null) {
                 Playfield = Instantiate(playfieldPrefab, transform, false);
                 Playfield.Bind(SpinEntry, SpinResult, PlayerProgress, Rules, profile.isA, profile.languageType, Ads);
+            }
+            if(cashFlightPrefab!=null) {
+                Canvas.ForceUpdateCanvases();
+                balancePanel.InitializePlacement((RectTransform)transform,GetComponent<Canvas>().worldCamera);
+                CashFlight=Instantiate(cashFlightPrefab,transform,false);
+                CashFlight.Bind(RewardBranches,balancePanel,profile.isA);
+                Playfield.FlyCoinRequested+=FlyCoin;
             }
             Ready?.Invoke(Rules);
         }

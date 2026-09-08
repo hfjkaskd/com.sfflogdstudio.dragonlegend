@@ -1,8 +1,8 @@
 # Native cash-flight continuation
 
 Recovered from the Dragon Legend binary under `reconstruction/mumu-current`, not the
-unrelated Nut Sort dump. This describes the required next presenter; the actual entry
-still has no consumer for `RecoveredSpinPlayfield.FlyCoinRequested`.
+unrelated Nut Sort dump. The actual entry now consumes
+`RecoveredSpinPlayfield.FlyCoinRequested` through RecoveredCashFlightPresenter.
 
 ## Timing and geometry
 
@@ -73,8 +73,9 @@ Unity's official pooling API should replace LeanPool while preserving this behav
 The exported `Res/Prefabs/FlyCoinItem.prefab` has centered anchors/pivot, zero local
 position, scale one, Image and FlyCoinItem components. Its authored size is 73x76.
 FlyCoinItem.Start (`23ae84c`) chooses sprites[0] for GameData.isA=true and sprites[1]
-otherwise, followed by an Image virtual call whose target still needs verification.
-Do not assume the final displayed size remains 73x76 until that call is resolved.
+otherwise, followed by Image.SetNativeSize. Direct `23ae924..23ae930` loads vtable
+offsets 0x410/0x408: `(0x408 - 0x138) / 16 = 45`, the dumped SetNativeSize slot.
+Its final size is 73x76 for A, 92x79 for B, as verified against both original Sprite rects.
 
 Original sprite GUID mappings:
 
@@ -101,12 +102,51 @@ ResetToptitle (`23b960c`) reparents to serialized MainViewNode (+0x30), false,
 restores saved world position (+0x58), then SetSiblingIndex(2). The final index is proven
 by `mov w1,#2` and tail call `4967428` at `23b9660..23b966c`.
 
-## Remaining implementation and verification
+## Native Unity implementation
 
-Resolve the FlyCoinItem Image virtual call and exact pool spawn reset behavior;
-convert the actual ef_slshouji skeleton with the existing offline native-Unity pipeline;
-author the two pooled prefabs and timing parameters; wire the presenter to the real
-entry and balance target. Verify both A/B visuals, pause behavior across stagger/flight,
-overlapping effect lifetimes, cancellation on GM profile changes, callback/reset/credit
-ordering and new actual-entry captures. The existing 187-pass suite covers the jackpot
-boundary only and must not be cited as evidence that this flight has been implemented.
+RecoveredCashFlightPresenter owns official ObjectPool instances, each preloaded with ten
+authored objects. Cash and collection effects have independent lifetimes. Multiple flight
+batches have separate counts and completion callbacks. Profile release cancels queued waits,
+returns active items/effects, and disposes both pools without invoking old credit callbacks.
+The original pool TrySpawn (`3c52af0`) reads its pool Transform's local position, rotation
+and scale on the worldPositionStays=false branch. The native pool roots created by
+InitFlyCoinPool/InitShoujiPool have zero local position, identity rotation and unit scale.
+The new items restore these values on every spawn, including reused objects.
+
+The scatter, flight, automatic arc ratio, curves, random bounds, item count, preload and
+stagger are serialized prefab settings. The initial wait uses the existing recovered
+Update runner. Each cash item separately advances its unscaled departure and scaled
+scatter/flight, snapshots the destination at departure, and returns to its pool at arrival.
+Sprites load by Resources paths once per pooled item and select the profile at creation.
+
+The decoded ef_slshouji has five bones, three slots, three region attachments and ten
+animation tracks over .5 seconds. `ef_slshouji.json` records the source SHA-256 and full
+consumed binary data. BuildJackpotPopupArt.SaveCollectionEffect uses the existing native
+Unity rig conversion. RecoveredRegionAnimator.PlayOnce uses a ClampForever AnimationState
+and completes at the animation length; the callback releases this effect independently
+from cash arrival/credit. Looping popup art continues to use Play with WrapMode.Loop.
+
+GameEntry binds the current balance target and initializes its saved placement via the UI
+camera and MainViewNode plane. The jackpot closes before this request, so the current
+entry supplies its main window. The presenter also accepts an explicit different top window
+and optional source Transform. Full UIManager window-stack discovery remains outstanding.
+Cash sound requests are exposed as events; the game's audio presenter remains outstanding.
+The subsequent SymbolAnimationsRequested boundary still needs the actual symbol, bonus,
+free-spin and CheckBaseEnd stages. Cash arrival does not prematurely release Spin busy state.
+
+RecoveredCashFlightTests exercises both profiles, native sprite sizes, scaled scatter pause,
+unscaled departures while paused, fixed Bezier destination/control, real arrivals, caller
+mutation before credit, pooled replay, effect cleanup and cancellation on profile switch.
+RecoveredJackpotIntegrationTests now waits for the real flight, actual balance credit and
+symbol-boundary callback; it no longer invokes a supplied test flight callback manually.
+Because the test capture clock accelerates scaled frames, mixed-clock completion waits use
+a realtime deadline rather than assuming a fixed number of frames also advances .27 seconds.
+
+Validation: `Artifacts/cash-flight-all-tests-2.xml`, 188/188 PlayMode tests passed.
+The final run's four current images were inspected: `current-cash-flight-a.png`,
+`current-cash-flight-b.png`, `current-jackpot-cash-scatter.png` and
+`current-jackpot-cash-arrival.png`, all under Artifacts. The arrival image intentionally
+captures the balance label during its existing .5-second OutQuad tween; the test also
+waits for and verifies the final displayed balance. These are current project captures,
+not old visual references. Main background, NPC, audio, window stack and later main-flow
+branches are not proved complete by these tests or images.

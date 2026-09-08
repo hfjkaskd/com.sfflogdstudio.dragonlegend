@@ -82,6 +82,11 @@ public static class BuildJackpotPopupArt
             PrefabUtility.SaveAsPrefabAsset(root,folder+".prefab");
         }finally{Object.DestroyImmediate(root);}
     }
+    public static void SaveCollectionEffect()
+    {
+        Create("ef_slshouji","shouji",new Vector2(50,50),new Vector2(.5f,.5f));
+        AssetDatabase.SaveAssets();
+    }
     static Color ColorOf(float[] values)=>new Color(values[0],values[1],values[2],values[3]);
     static T Save<T>(T value,string path) where T:Object
     {

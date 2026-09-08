@@ -143,5 +143,7 @@ BeforeShow resets the latch. No unrequested synthetic close behavior is introduc
 Tests cover all three mock failure outcomes and retry, repeated clicks while pending,
 first-free transitions between show and click, equal-reward count bypass, wheel-before-
 popup hide, and flight callback -> title reset -> actual two-save balance credit ordering.
-These tests validate the claim controller, not the still-unassembled popup layout or the
-remaining jackpot-to-symbol main-flow continuation.
+These domain tests validate the claim controller. The assembled popup, actual Spin branch
+and real flight/credit now have separate integration coverage documented in
+`JackpotPopup/integration.md` and `JackpotPopup/flight.md`. Symbol presentation and later
+main-flow branches remain incomplete.

@@ -4,7 +4,7 @@ from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 folder=root/'Artifacts/JackpotPopupAuthoring'
 folder.mkdir(parents=True,exist_ok=True)
-for name in ('ef_jackpottc','ef_slpenqian','ef_shoucanggl'):
+for name in ('ef_jackpottc','ef_slpenqian','ef_shoucanggl','ef_slshouji'):
     source=root/('Tools/Evidence/JackpotPopup/'+name+'.json')
     data=json.loads(source.read_text(encoding='utf8'))
     meshes=[]

@@ -14,6 +14,24 @@ namespace DragonLegend.Whitebox
         [SerializeField] private TextMeshProUGUI levelText;
         [SerializeField] private TextMeshProUGUI progressText;
         [SerializeField] private Image progressFill;
+        [SerializeField] private Image cashImage;
+        private RectTransform mainViewNode;
+        private Vector3 titlePosition;
+        public Transform CashTarget=>cashImage.transform;
+        public void InitializePlacement(RectTransform mainNode,Camera uiCamera)
+        {
+            mainViewNode=mainNode;
+            Vector2 screen=RectTransformUtility.WorldToScreenPoint(uiCamera,transform.position);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(mainNode,screen,uiCamera,out titlePosition);
+        }
+        public void MoveToWindow(Transform window)
+        {
+            transform.SetParent(window,false);transform.SetAsLastSibling();transform.position=titlePosition;
+        }
+        public void ResetPlacement()
+        {
+            transform.SetParent(mainViewNode,false);transform.position=titlePosition;transform.SetSiblingIndex(2);
+        }
         [SerializeField] private float animationDuration;
         [SerializeField] private AnimationCurve balanceEase;
         private RecoveredPlayerProgress player;

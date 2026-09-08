@@ -50,10 +50,10 @@ Switching profile cancels a pending mock result before releasing its old present
 
 ## Outstanding continuation
 
-The actual popup now opens from Spin and dispatches its flight request after exit.
-The fly-coin presenter is not connected yet; the real flow correctly remains waiting at
-that boundary. The integration test supplies the callback explicitly to verify the next
-stage boundary, and does not claim to test a real flight or credit.
+The actual popup opens from Spin and dispatches its flight request after exit.
+The connected native Unity cash-flight presenter now completes the flight, resets TopTitle
+and credits the balance in the recovered order. The integration test waits for those real
+operations rather than supplying a synthetic flight callback; see `flight.md`.
 PlaySymbolAnim, CheckBonusGame, CheckFreeGame and CheckBaseEnd still require their actual
 presentations and links. Only CheckBaseEnd may clear IsBusy/AwaitingRewards.
 Sound requests are forwarded but the game's actual audio presenter remains outstanding.
@@ -63,16 +63,21 @@ completion = `23c306c`, per-coin departure = `23c3188`, per-coin arrival = `23c3
 collection-effect cleanup = `23c3554`. It spawns ten pooled objects, scatters with two
 integer Random.Range(-150,150) draws each and a .3-second local-position tween, then
 waits .3 scaled seconds before scheduling staggered DOVirtual.DelayedCall departures.
-Those delayed calls explicitly use unscaled time. Each departure invokes FlyAnimUtils
-with duration .3, height -1 and ease 4. Remaining timing, pool prefab, arrival effects,
-TopTitle reparent/reset and complete credit ordering must be recovered before connection.
+Those delayed calls explicitly use unscaled time, with a verified .03-second stagger.
+Each departure invokes FlyAnimUtils with duration .3, height -1 and ease 4. Timing,
+pool prefabs, arrival effects and TopTitle reset are detailed in `flight.md`.
 
 Current actual-entry captures: `Artifacts/current-jackpot-main-flow.png` and
 `Artifacts/current-jackpot-gm-ad.png`. Standalone window screenshots remain separate.
 
-Validation: `Artifacts/jackpot-integration-all-tests-2.xml` passes 187/187 PlayMode tests.
+Initial validation: `Artifacts/jackpot-integration-all-tests-2.xml` passed 187/187 PlayMode tests.
 New tests cover all three jackpot tiers, the scaled delay and ordered events, cancellation
 and stale callbacks, real paid Spin -> Wild -> popup, native counter reset, modal Button,
 and manual GM ad failure/retry/success. Both actual-entry screenshots were inspected.
 Full regression also checks disabling the entry and switching profiles. GM facade release
 does not perform a camera lookup in an inactive parent hierarchy.
+
+With cash flight connected, `Artifacts/cash-flight-all-tests-2.xml` passes 188/188.
+The actual-entry test now verifies arrival, credit, the running balance-label tween,
+TopTitle sibling reset and eventual collection-effect cleanup before checking the symbol
+boundary. It continues to assert Spin stays busy until the still-missing CheckBaseEnd.

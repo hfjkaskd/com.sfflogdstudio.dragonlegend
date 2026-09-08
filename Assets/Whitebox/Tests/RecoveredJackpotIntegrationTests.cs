@@ -67,10 +67,19 @@ public sealed class RecoveredJackpotIntegrationTests
             Assert.AreEqual(expected*entry.Rules.GetJpClaim(0),flightAmount);
             Assert.AreEqual(0,symbols);Assert.IsTrue(field.JackpotSequence.IsRunning);
             Assert.AreEqual(beforeBalance,entry.PlayerProgress.GreenCount);
-            // Host boundary only. The real fly-coin presenter is still to be connected.
-            flight();Assert.AreEqual(0,symbols);
-            for(int i=0;i<3;i++)yield return null;
+            Assert.AreEqual(10,entry.CashFlight.ActiveCashCount);
+            for(int i=0;i<6;i++)yield return null;
+            Capture(camera,target,capture,"current-jackpot-cash-scatter.png");
+            float flightDeadline=Time.realtimeSinceStartup+3;
+            while(symbols==0&&Time.realtimeSinceStartup<flightDeadline)yield return null;
             Assert.AreEqual(1,symbols);Assert.IsFalse(field.JackpotSequence.IsRunning);
+            Assert.AreEqual(beforeBalance+flightAmount,entry.PlayerProgress.GreenCount);
+            Assert.AreEqual(0,entry.CashFlight.ActiveCashCount);Assert.Greater(entry.CashFlight.ActiveEffectCount,0);
+            Assert.AreEqual(2,entry.BalancePanel.transform.GetSiblingIndex());
+            Capture(camera,target,capture,"current-jackpot-cash-arrival.png");
+            for(int i=0;i<20;i++)yield return null;
+            Assert.AreEqual(0,entry.CashFlight.ActiveEffectCount);
+            Assert.AreEqual(RecoveredCurrency.Format(beforeBalance+flightAmount,entry.CurrentProfile.languageType),entry.BalancePanel.BalanceText);
             Assert.IsTrue(field.IsBusy);Assert.IsTrue(field.AwaitingRewards,"Only CheckBaseEnd can release Spin");
         }
         finally
