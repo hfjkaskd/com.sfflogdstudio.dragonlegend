@@ -61,3 +61,9 @@ ReferenceOriginal 中的原始 Prefab 和场景是参考文件，仍有待转换
 动画推荐逐项用 Animator/AnimationClip 和官方 2D Animation 验证。全量高分辨率逐帧烘焙会增大包体、贴图内存及加载峰值，目前未采用。
 
 Library、Temp、Logs 和本地 Artifacts 不提交。本轮不追加原始逆向证据、配置真值表或缓存来源元数据到仓库。
+
+## 本轮：付费旋转入口的数据阶段
+
+按 UIMainView.OnClickButton 0x23bd4e8 恢复次数检查、首次引导推进、LimitSpinCount 与已保存里程碑、扣次数/加经验/奖池/银行的调用及存档顺序、先消耗 MoreWild 再生成结果，以及 default 配置满次数首次消耗时写入恢复时间。GameEntry 加载后创建 SpinEntry 并共享完整玩家记录与结果生成器。银行 setter 保留阈值通知先于保存、重复赋值重复通知且不钳制的行为。
+
+当前 SpinEntry 暴露视图事件，尚未绑定主玩法 Prefab；转轴动画、奖励分支和生命周期闭环仍未完成。SDK 未修改。新增 5 项测试覆盖真实配置下的首次旋转调用顺序、忙碌/次数不足保护与银行边界。本轮仅完成原生指令和源码核对，未运行新增测试：此前 Unity 生成程序集被 Defender 隔离，安全状态尚未解决。上一轮存档测试同样仍未运行；不能把历史 47 项通过视为当前版本通过。

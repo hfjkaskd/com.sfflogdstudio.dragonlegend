@@ -29,6 +29,14 @@ namespace DragonLegend.Whitebox
             return RandomListWeight(winningCoinWeights);
         }
         public int GetMaxSpinCount() => data.Qonrii.MojGping[0]; // 0x236a638
+        public int GetLimitMaxSpinCount() => data.Qonrii.MojGping[1]; // 0x236a69c
+        public int GetBankSpinCD() => data.Qonrii.RonkGpinQP[0]; // 0x236af8c
+        public int GetSpinCD(int level) // 0x236a764
+        {
+            var config = data.Qonrii;
+            int index = level >= config.Lgtgl[config.Lgtgl.Count - 1] ? config.GpinQP.Count - 1 : level - 1;
+            return config.GpinQP[index];
+        }
         public int GetReview() => data.Qonrii.Rgtigk[0]; // 0x236aec4
         public int GetNeedPro(int level) // 0x236adb8
         {

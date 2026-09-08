@@ -3,8 +3,7 @@ using DragonLegend.Whitebox.Recovered;
 
 namespace DragonLegend.Whitebox
 {
-    // GameData property behavior; caller supplies the persistence operation so these
-    // partial fields are never serialized over the full original player record.
+    // GameData property behavior, backed by the complete original player record.
     public sealed class RecoveredPlayerProgress
     {
         private readonly RecoveredGameplayRules rules;
@@ -14,6 +13,10 @@ namespace DragonLegend.Whitebox
         public float Experience { get => data.LevelExpCount; private set => data.LevelExpCount = value; }
         public int SpinCount { get => data.SpinCount; private set => data.SpinCount = value; }
         public int MoreWild { get => data.MoreWild; private set => data.MoreWild = value; }
+        public int JpAddCount => data.JpAddCount;
+        public int BankCount => data.BankCount;
+        public event Action BankReady;
+        public event Action BankProgressChanged;
         public event Action<int> SpinCountChanged;
         public event Action<int,float,float> LevelExperienceChanged;
         public event Action ReviewRequested;
@@ -63,6 +66,23 @@ namespace DragonLegend.Whitebox
         {
             MoreWild = value;
             MoreWildChanged?.Invoke();
+            save();
+        }
+
+        // 0x236e5a8: no clamp or event.
+        public void SetJpAddCount(int value)
+        {
+            data.JpAddCount = value;
+            save();
+        }
+
+        // 0x236e6b0: original event "4" at/above threshold, "5" below.
+        // Notification precedes saving and repeats on every assignment.
+        public void SetBankCount(int value)
+        {
+            data.BankCount = value;
+            if (value >= rules.GetBankSpinCD()) BankReady?.Invoke();
+            else BankProgressChanged?.Invoke();
             save();
         }
     }

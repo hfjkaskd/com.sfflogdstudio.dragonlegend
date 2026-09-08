@@ -21,6 +21,7 @@ namespace DragonLegend.Whitebox
         public RecoveredSpinResult SpinResult { get; private set; }
         public RecoveredPlayerStore PlayerStore { get; private set; }
         public RecoveredPlayerProgress PlayerProgress { get; private set; }
+        public RecoveredSpinEntry SpinEntry { get; private set; }
         public LaunchProfile CurrentProfile { get; private set; }
         public event Action<RecoveredGameplayRules> Ready;
 
@@ -45,6 +46,7 @@ namespace DragonLegend.Whitebox
             Settlement = null;
             SpinResult = null;
             PlayerProgress = null;
+            SpinEntry = null;
             PlayerStore = null;
             CurrentProfile = null;
         }
@@ -64,6 +66,7 @@ namespace DragonLegend.Whitebox
             Settlement = null;
             SpinResult = null;
             PlayerProgress = null;
+            SpinEntry = null;
             PlayerStore = null;
             CurrentProfile = null;
             loading = StartCoroutine(Load(profile));
@@ -100,6 +103,7 @@ namespace DragonLegend.Whitebox
             PlayerStore = new RecoveredPlayerStore();
             PlayerStore.Load(OnPlayerLoaded);
             PlayerProgress = new RecoveredPlayerProgress(Rules, PlayerStore.Save, PlayerStore.Data);
+            SpinEntry = new RecoveredSpinEntry(Rules, PlayerStore.Data, PlayerProgress, SpinResult, PlayerStore.Save);
             status.text = profile.countryCode + " / " + profile.profileId + "\nSpins: " + PlayerProgress.SpinCount
                 + "\nLines: " + Rules.GetLines() + "\nCash tiers: " + Rules.GetCashOutCount()
                 + "\n\n" + profile.evidenceNote;
