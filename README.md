@@ -81,3 +81,11 @@ SetTaskData 保留首次固定 count=1、后续增量及上下限、已领取只
 入口场景恢复原版 UI 基础相机与世界叠加相机、相机栈、UI 根坐标；入口 Prefab 改用相机 Canvas、1080×1920、宽度匹配、原平面距离和 Shader channels，并统一 UI Layer。环境光/烘焙设置及空 LightingData 取自当前逆向场景，LightingData 重绑复刻场景。旧 BuildGameEntry 入口改为打开已保存场景，不再重新生成覆盖布局。
 
 验证：场景 117 处本地引用检查通过；17 个场景/Prefab/渲染配置文件外部 GUID 均可解析。正常 Unity 测试重试仍被 Defender 阻止读取 Whitebox.Runtime.dll；加入官方 URP 后编译后的 IL 处理同样在读取该程序集时被阻止，未发现新的 C# error CS 诊断。当前未完成 Unity 场景导入、运行或最新画面对照验收，不能据静态检查宣称视觉 1:1。主界面 Spine 转换、转轴、弹窗动画和完整玩法接线仍未完成，SDK 未改动。
+
+## 本轮：主界面字体与富文本依赖
+
+接入官方 TextMeshPro 3.0.9（Package Manager 已解析并锁定）。恢复主界面 18 个 TMP 文本所依赖的 Quorum SDF 字体、材质预设、内嵌图标字体；从完整序列化数据恢复普通导出中的空壳 TMP Settings、默认样式表和 cash/free/spin 渐变。资源目录遵循原版运行时查找路径。字体文件的源 GUID 字符串与实际导入 GUID 对齐；官方 TMP Shader 及 includes 从包内 Essential Resources 原样引入，并保留许可文件。[官方资源说明](https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.0/manual/index.html)
+
+修正 Quorum 图集的导入设置为原版 1024×1024、可读、无 mipmap、线性 Alpha8、无压缩。只修改导入参数，没有重画图集。静态核对：85 个字形记录保留；PNG Alpha 通道与原始 Alpha8 数据的 1,048,576 字节在坐标行方向转换后逐字节一致；16 个文本配置/材质文件的外部 GUID 无缺失。
+
+本轮未接入完整主界面 Prefab，也未完成字体在 Unity 中的画面验收。包解析时 Unity 仍因 Defender 阻止读取 Whitebox.Runtime.dll 退出；这不属于测试通过。此前完整玩法、动画和视觉对齐的未完成范围继续有效，SDK 保持不变。
