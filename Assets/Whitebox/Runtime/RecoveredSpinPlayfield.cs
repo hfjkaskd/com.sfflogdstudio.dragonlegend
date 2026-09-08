@@ -183,7 +183,7 @@ namespace DragonLegend.Whitebox
             ordinaryWin.Begin(SymbolWin.TotalWin,ReadBonusAmount,player,SymbolsCompleted);
         }
         private void SymbolsCompleted()=>SymbolSequenceCompleted?.Invoke();
-        private void PlayJackpotWin(RecoveredJackpotType type)
+        public void PlayJackpotWin(RecoveredJackpotType type)
         {
             // JackPotAnim 23bc60c selects Grand/Major/otherwise Mini. Its callback
             // 23bf84c resets the persisted counter before that meter refreshes.

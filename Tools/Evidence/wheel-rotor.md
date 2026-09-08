@@ -78,11 +78,11 @@ evidence that the whole Wheel window or lifecycle is complete.
 ## Remaining Wheel integration
 
 The full window, frame/pointer animation, jackpot meters/events, delayed
-autostart and actual reward popup/cash-flight flow still need implementation and
-production Free routing. `Prepare` and `StartSpin` deliberately remain separate
-entry points so the window can reproduce the original ordering.
+autostart and actual reward popup/cash-flight flow are now implemented and tested
+in `wheel-window.md`. Free entry and production routing remain incomplete.
+`Prepare` and `StartSpin` remain separate entry points for the native ordering.
 
-Native evidence already located for that next work:
+Native evidence used by that window:
 
 * DelaySpin MoveNext `0x23dee54`: wait .5 scaled seconds after OnAfterShow,
   then StartSpin.
