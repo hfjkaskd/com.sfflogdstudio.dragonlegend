@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,12 +7,17 @@ namespace DragonLegend.Whitebox
 {
     public sealed class RecoveredFreeBall : MonoBehaviour
     {
-        [Serializable] private sealed class Clips {public string idle,start;}
+        [Serializable] private sealed class Clips {public string idle,start,activate;}
         [SerializeField] private RecoveredWorldAnimation art;
         [SerializeField] private Text reward;
         [SerializeField] private RecoveredWorldRectClip clipping;
         public RecoveredWorldRectClip Clipping=>clipping;
         [SerializeField] private Clips[] types;
+        [SerializeField] private float activationDelay;
+        [SerializeField] private RecoveredFreeBallReward rewardPresentation;
+        public RecoveredFreeBallReward RewardPresentation=>rewardPresentation;
+        private readonly List<RecoveredReelWait> activationWaits=new List<RecoveredReelWait>(1);
+        public Exception Error {get;private set;}
         [SerializeField] private float flightDuration,flightArcRatio;
         private Vector3 flightStart,flightControl,flightEnd;
         private float flightElapsed;
@@ -32,6 +38,12 @@ namespace DragonLegend.Whitebox
         // 0x23aeb64; completion 0x23aeef8 selects idle using the current stored type.
         public void PlayStart()=>art.Play(Current.start,false,PlayIdle);
         private void PlayIdle()=>art.Play(Current.idle,true);
+        public void PlayActivation(Action<int> completed)
+        {
+            art.Play(Current.activate,false);RecoveredReelWait wait=null;
+            wait=RecoveredReelWait.Delay(activationDelay,()=>{activationWaits.Remove(wait);completed?.Invoke(BallType);},error=>Error=error);
+            activationWaits.Add(wait);
+        }
         // FlyLongZhu 0x23aecdc: .3s InOutSine quadratic Bezier, automatic arc .3 * distance.
         public void BeginFlight(RecoveredFreeBall source,Transform target,Action<RecoveredFreeBall,RecoveredFreeBall> completed)
         {
@@ -51,5 +63,6 @@ namespace DragonLegend.Whitebox
             IsFlying=false;var callback=flightCompleted;flightCompleted=null;callback?.Invoke(this,flightSource);
         }
         private void OnDisable(){IsFlying=false;flightCompleted=null;flightSource=null;}
+        private void OnDestroy(){foreach(var wait in activationWaits)wait.Cancel();}
     }
 }

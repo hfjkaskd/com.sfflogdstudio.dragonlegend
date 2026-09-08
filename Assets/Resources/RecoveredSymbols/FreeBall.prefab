@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5572057161478680434}
   - component: {fileID: 839641768824617837}
   - component: {fileID: 3151763709293107807}
+  - component: {fileID: 2667886883316595068}
   - component: {fileID: 8136458049048918595}
   m_Layer: 5
   m_Name: FreeBall
@@ -66,12 +67,35 @@ MonoBehaviour:
   types:
   - idle: idle_zi
     start: start_zi
+    activate: huo_zi
   - idle: idle_lan
     start: start_lan
+    activate: huo_lan
   - idle: idle_lv
     start: start_lv
+    activate: huo_lv
+  activationDelay: 0.7
+  rewardPresentation: {fileID: 2667886883316595068}
   flightDuration: 0.3
   flightArcRatio: 0.3
+--- !u!114 &2667886883316595068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4371499882536638741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1af29b60aba6d847b62b969d8589fb6, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  label: {fileID: 2901092146955148023}
+  delay: 0.1
+  duration: 0.3
+  scaleDuration: 0.2
+  peakScale: 1.2
+  restingScale: 1
 --- !u!114 &8136458049048918595
 MonoBehaviour:
   m_ObjectHideFlags: 0

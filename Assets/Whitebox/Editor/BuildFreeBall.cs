@@ -14,6 +14,7 @@ public static class BuildFreeBall
             var settings=new SerializedObject(root.AddComponent<RecoveredFreeBall>());
             settings.FindProperty("flightDuration").floatValue=.3f;
             settings.FindProperty("flightArcRatio").floatValue=.3f;
+            settings.FindProperty("activationDelay").floatValue=.7f;
             var art=(RecoveredWorldAnimation)PrefabUtility.InstantiatePrefab(
                 AssetDatabase.LoadAssetAtPath<RecoveredWorldAnimation>("Assets/Resources/RecoveredSymbols/FreeBallArt.prefab"),root.transform);
             art.name="SkeletonGraphic (ef_longzhu)";
@@ -31,7 +32,15 @@ public static class BuildFreeBall
             for(int i=0;i<3;i++) {
                 var type=types.GetArrayElementAtIndex(i);type.FindPropertyRelative("idle").stringValue="idle_"+suffixes[i];
                 type.FindPropertyRelative("start").stringValue="start_"+suffixes[i];
+                type.FindPropertyRelative("activate").stringValue="huo_"+suffixes[i];
             }
+            settings.ApplyModifiedPropertiesWithoutUndo();
+            var presentation=root.AddComponent<RecoveredFreeBallReward>();var rewardSettings=new SerializedObject(presentation);
+            rewardSettings.FindProperty("label").objectReferenceValue=root.GetComponent<RecoveredFreeBall>().Reward;
+            rewardSettings.FindProperty("delay").floatValue=.1f;rewardSettings.FindProperty("duration").floatValue=.3f;
+            rewardSettings.FindProperty("scaleDuration").floatValue=.2f;rewardSettings.FindProperty("peakScale").floatValue=1.2f;
+            rewardSettings.FindProperty("restingScale").floatValue=1;rewardSettings.ApplyModifiedPropertiesWithoutUndo();
+            settings=new SerializedObject(root.GetComponent<RecoveredFreeBall>());settings.FindProperty("rewardPresentation").objectReferenceValue=presentation;
             settings.ApplyModifiedPropertiesWithoutUndo();
             BuildFreeClipping.Configure(root);
             root.SetActive(true);PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredSymbols/FreeBall.prefab");AssetDatabase.SaveAssets();
