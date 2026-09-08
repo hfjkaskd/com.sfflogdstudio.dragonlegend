@@ -149,7 +149,7 @@ public static class BuildCoinAppearance
         foreach(Transform child in parent){int value=Order(child,slots);children.Add(new KeyValuePair<Transform,int>(child,value));own=Math.Min(own,value);}
         children.Sort((a,b)=>a.Value.CompareTo(b.Value));for(int i=0;i<children.Count;i++)children[i].Key.SetSiblingIndex(i);return own;
     }
-    private static AnimationCurve Curve(Frame[] frames,int channel,float offset,float factor) {
+    public static AnimationCurve Curve(Frame[] frames,int channel,float offset,float factor) {
         var keys=new List<Keyframe>();
         for(int i=0;i<frames.Length;i++) {
             var f=frames[i];keys.Add(new Keyframe(f.time,offset+f.values[channel]*factor));

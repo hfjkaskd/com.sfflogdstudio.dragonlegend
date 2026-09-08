@@ -307,3 +307,15 @@ CoinStopPresenter 已通过 Prefab 接入实际 SpinPlayfield，订阅 StopAnima
 当前只连接金币停轮视觉，Scatter 停轮、声音/震动的实际播放、奖励文字、飞行与余额入账尚未连接；金币收集扫描仍通过其独立数据阶段运行。完整视觉及生命周期 1:1 尚未完成，SDK 不变。
 
 最终全量 PlayMode 144 项通过、0 失败（Artifacts/coin-stop-presenter-tests.xml）。新增测试从实际 GameEntry 加载 Prefab，通过五列控制器逐帧停轮展示三枚指定金币，检查静态图隐藏、世界位置一致、每枚五个 SpriteRenderer 且无 Graphic、两段缩放完成、声音/震动请求顺序对应数量、换圈回收与相同对象复用、重复停轮保护和解绑回收。已查看本次 current-coin-stops.png，三枚金币实际渲染在各自停轮位置；该测试使用指定结果列验证接线，不冒充随机完整奖励回合。
+
+## 本轮：奖励揭晓的原生网格变形与金币待机
+
+原 JinBiEffectItem.PlayAnim 状态机 0x23da0c0 将 SkeletonGraphic.timeScale（dump 字段 0x114）设为 3，播放 zcjb_b_chun；完成回调 0x23d9b48 恢复为 1，重新初始化后播放 idle_chun，并另外启动 ef_glow。揭晓动画自身长 2/3 秒，因此视觉揭晓约 2/9 秒；奖励文字另由状态机等待 0.2 秒后显示，不能把骨骼完成与文字等待混为一个计时器。
+
+新增 CoinReveal 原生 Prefab，BuildCoinReveal 从当前完整骨骼 JSON 离线生成 29 根 Transform 骨骼、13 个 SpriteRenderer，以及 slot 1 的 SkinnedMeshRenderer。coin_c 保留原 70 顶点、204 三角索引和图集 UV，三组原始绝对变形顶点转为相对基础网格的独立 blend shape。动画按原线性时间插值分配权重，保留中间帧实际变形；不使用逐帧创建 Mesh、运行时 JSON 或第三方 Spine 程序集。区域附件保持裁切偏移、旋转、PMA 色彩与绘制顺序。
+
+恢复 slot 23 在 1/3 秒才显示的金币正面，以及 idle_chun 的十段闪光和底层辉光；原始首帧延迟前保持 setup 状态，不能让 Unity 默认外推提前显示。RecoveredCoinReveal 以配置的 3 倍速度播放揭晓，完成后重置骨骼、附件和 blend shape，再以 1 倍速度循环待机并发送完成事件。停用会取消本组件待处理的完成事件。
+
+该资源目前是待接入的奖励骨骼视觉部分，尚未接入实际停轮对象。独立 ef_glow（包含另外一份网格）、奖励文字、灯位飞行、余额入账及后续完整分支仍未完成。没有提前点亮灯位或发放收益，SDK 保持不变。
+
+最终全量 PlayMode 145 项通过、0 失败（Artifacts/coin-reveal-all-tests.xml）。新增测试以原始变形顶点数值核对 0、1/6、1/3、1/2、2/3 秒的 BakeMesh 结果，验证延迟附件、无 Graphic、3 倍速、暂停不完成、切入 1 倍待机与停用取消；已查看本次 current-coin-reveal.png，翻转中金币侧面与正面实际渲染。该图为新奖励骨骼组件的当前预览，不代表奖励主链路已经完成。每枚组件目前有 14 个渲染器；接入多金币场景时仍须核对移动端批次数，优先通过共享材质和复用控制开销。
