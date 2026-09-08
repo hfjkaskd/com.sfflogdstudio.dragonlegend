@@ -40,6 +40,7 @@ namespace DragonLegend.Whitebox
         {
             Play(index);once=player[poses[index].clip];once.wrapMode=WrapMode.ClampForever;completed=onComplete;
         }
+        public void Stop(){once=null;completed=null;if(player!=null)player.Stop();}
         private void LateUpdate()
         {
             if(once==null||once.time<once.length)return;
@@ -47,6 +48,6 @@ namespace DragonLegend.Whitebox
         }
         private void OnDidApplyAnimationProperties()=>Sample(selected,poseTime);
         private void OnEnable()=>Play(0);
-        private void OnDisable(){once=null;completed=null;if(player!=null)player.Stop();}
+        private void OnDisable()=>Stop();
     }
 }
