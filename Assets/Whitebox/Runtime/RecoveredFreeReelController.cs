@@ -15,12 +15,13 @@ namespace DragonLegend.Whitebox
         public int StoppedCount {get;private set;}
         public Exception Error {get;private set;}
         public event Action<string> SoundRequested;
-        public event Action ShakeRequested,ReelsStopped;
+        public event Action ShakeRequested,ReelsStopped,RoundStarted;
         public void Begin()
         {
             if(IsRunning)throw new InvalidOperationException("Free reels are already running.");
             IsRunning=true;StoppedCount=0;Error=null;
             try {
+                RoundStarted?.Invoke();
                 for(int col=0;col<5;col++)reels.ColumnAt(col).StartSpin(accelerationSeconds,null,ColumnStopped);
                 wait=RecoveredReelWait.Until(()=>StoppedCount==5,Complete,error=>Error=error);
             } catch(Exception error){Error=error;}

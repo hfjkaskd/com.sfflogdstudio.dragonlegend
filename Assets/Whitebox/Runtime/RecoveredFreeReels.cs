@@ -14,6 +14,8 @@ namespace DragonLegend.Whitebox
         public RecoveredFreeColumn ColumnAt(int column)=>columns[column];
         [SerializeField] private RecoveredFreeReelController controller;
         public RecoveredFreeReelController Controller=>controller;
+        [SerializeField] private RecoveredFreeCoinScan coinScan;
+        public RecoveredFreeCoinScan CoinScan=>coinScan;
         public RecoveredFreeSpecials Specials=>specials;
         public bool IsInitialized { get; private set; }
         public RecoveredReelView At(int column, int row) => reels[column * 3 + row];

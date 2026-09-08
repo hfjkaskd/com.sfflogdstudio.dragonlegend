@@ -34,9 +34,9 @@ The focused visual rerun passed 2/2 in free-coin-reward-visual-tests.xml;
 the fresh 1080x840 arrival capture was inspected at original resolution and
 shows the first collection lamp's flash .1s after arrival.
 
-Still pending: binding this presentation into CheckPlayBonusAnim's complete
-column-major reward scan, FreeSpinRewards accounting, TotalFreeReward, and
-the subsequent bonus/ball/collection/end branches; production FreeEntry and
+The column-major scan, FreeSpinRewards accounting and TotalFreeSpinWin
+accumulation are now connected to the Free reel controller; see free-coin-scan.md.
+Still pending: the subsequent bonus/ball/collection/end branches; production FreeEntry and
 main UI integration; actual sound consumers and sorting against that UI.
 Concurrent replay and inactive pooled-object coroutine/tween lifetimes still
 need source alignment. This verifies the active reward presentation path,

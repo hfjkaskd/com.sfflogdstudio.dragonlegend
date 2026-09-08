@@ -42,6 +42,12 @@ public static class BuildFreeReels
         var root=new GameObject("FreeReels",typeof(RecoveredFreeReels));
         try {
             var settings=new SerializedObject(root.GetComponent<RecoveredFreeReels>());
+            var scan=root.AddComponent<RecoveredFreeCoinScan>();
+            var scanSettings=new SerializedObject(scan);
+            scanSettings.FindProperty("reels").objectReferenceValue=root.GetComponent<RecoveredFreeReels>();
+            scanSettings.FindProperty("coinInterval").floatValue=.5f;
+            scanSettings.ApplyModifiedPropertiesWithoutUndo();
+            settings.FindProperty("coinScan").objectReferenceValue=scan;
             var reels=settings.FindProperty("reels");reels.arraySize=15;
             var motions=settings.FindProperty("motions");motions.arraySize=15;
             var columns=settings.FindProperty("columns");columns.arraySize=5;
