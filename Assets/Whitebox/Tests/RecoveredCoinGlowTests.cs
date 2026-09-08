@@ -66,9 +66,10 @@ public sealed class RecoveredCoinGlowTests
             while (board.IsPlacingSingleSymbol) board.StepSingleSymbol();
             var columns = new int[5][];
             for (int c = 0; c < 5; c++) { columns[c] = new int[3]; for (int r = 0; r < 3; r++) columns[c][r] = board.GetSymbol(c, r); }
-            float balance = entry.PlayerProgress.GreenCount; int presentations = 0, sounds = 0;
+            float balance = entry.PlayerProgress.GreenCount; int presentations = 0, sounds = 0, firstReward = 0;
             field.CoinStops.CoinRevealSoundRequested += () => sounds++;
             field.BonusCoinPresentationRequested += coin => {
+                if(presentations==0)firstReward=coin.Reward;
                 Assert.AreEqual(presentations == 0 ? 0 : 4, coin.Column); Assert.AreEqual(0, coin.Row);
                 Assert.IsTrue(field.CoinStops.CoinAt(coin.Column, coin.Row).Reveal.IsRevealing); presentations++;
             };
@@ -82,6 +83,8 @@ public sealed class RecoveredCoinGlowTests
             for (int i = 0; i < 20 && !first.Glow.IsPlaying; i++) yield return null;
             Assert.IsTrue(first.Glow.IsPlaying); Assert.IsTrue(first.Reveal.GetComponent<Animation>().IsPlaying("idle_chun"));
             yield return null; yield return null;
+            Assert.IsTrue(first.RewardText.Label.gameObject.activeSelf);
+            Assert.AreEqual(RecoveredCurrency.Format(firstReward,0),first.RewardText.Label.text);
             Canvas.ForceUpdateCanvases();
             RenderPipeline.SubmitRenderRequest(camera, new UniversalRenderPipeline.SingleCameraRequest { destination = target });
             RenderTexture.active = target; capture = new Texture2D(1080, 1920, TextureFormat.RGB24, false);
@@ -94,6 +97,7 @@ public sealed class RecoveredCoinGlowTests
             Assert.IsFalse(field.BonusCollection.GetUnselectedTarget(0, 1).GetChild(0).gameObject.activeSelf);
             Assert.AreEqual(2, field.CoinStops.CreatedCount);
             first.PlayShow(); Assert.IsFalse(first.Reveal.gameObject.activeSelf); Assert.IsFalse(first.Glow.gameObject.activeSelf);
+            Assert.IsFalse(first.RewardText.Label.gameObject.activeSelf);
             Assert.AreEqual(5, first.GetComponentsInChildren<SpriteRenderer>().Length);
             field.CoinStops.Unbind(); Assert.AreEqual(0, field.CoinStops.ActiveCount);
         } finally {

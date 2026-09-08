@@ -44,7 +44,9 @@ public sealed class RecoveredCoinStopPresenterTests
                 original.Add(effect);Assert.IsNotNull(effect);
                 Assert.Less(Vector3.Distance(symbol.transform.position,effect.transform.position),.00001f);
                 Assert.IsFalse(effect.IsScaling);Assert.AreEqual(.7f,effect.transform.localScale.x,.0001f);
-                Assert.IsEmpty(effect.GetComponentsInChildren<Graphic>(true));
+                // Only monetary information uses UI; the coin and its effects remain native renderers.
+                Assert.AreEqual(1,effect.GetComponentsInChildren<Graphic>(true).Length);
+                Assert.IsFalse(effect.RewardText.Label.gameObject.activeSelf);
                 Assert.AreEqual(5,effect.GetComponentsInChildren<SpriteRenderer>().Length);
             }
             Canvas.ForceUpdateCanvases();

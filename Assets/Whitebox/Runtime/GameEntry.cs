@@ -143,7 +143,7 @@ namespace DragonLegend.Whitebox
             }
             if (playfieldPrefab != null) {
                 Playfield = Instantiate(playfieldPrefab, transform, false);
-                Playfield.Bind(SpinEntry, SpinResult, PlayerProgress, Rules, profile.isA);
+                Playfield.Bind(SpinEntry, SpinResult, PlayerProgress, Rules, profile.isA, profile.languageType);
             }
             Ready?.Invoke(Rules);
         }

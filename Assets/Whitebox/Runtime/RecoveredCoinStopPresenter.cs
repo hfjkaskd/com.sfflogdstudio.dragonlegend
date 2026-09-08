@@ -9,6 +9,7 @@ namespace DragonLegend.Whitebox
     {
         [SerializeField] private RecoveredCoinStopEffect effectPrefab;
         private RecoveredBaseReelController reels;
+        private int language;
         private ObjectPool<RecoveredCoinStopEffect> pool;
         private readonly RecoveredCoinStopEffect[,] active=new RecoveredCoinStopEffect[5,3];
         private readonly RecoveredCoinStopEffect[,] lookup=new RecoveredCoinStopEffect[5,3];
@@ -25,16 +26,16 @@ namespace DragonLegend.Whitebox
             return effect;
         }
         private void RevealSound()=>CoinRevealSoundRequested?.Invoke();
-        public void PlayRewardReveal(int column,int row)
+        public void PlayRewardReveal(int column,int row,float reward)
         {
             // RollReel.PlayBonusAnim only invokes its action for an existing row lookup.
             var effect=lookup[column,row];
-            if(effect!=null)effect.PlayRewardReveal();
+            if(effect!=null)effect.PlayRewardReveal(reward,language);
         }
         public RecoveredCoinStopEffect CoinAt(int column,int row)=>lookup[column,row];
-        public void Bind(RecoveredBaseReelController controller)
+        public void Bind(RecoveredBaseReelController controller,int languageType=0)
         {
-            Unbind();reels=controller;
+            Unbind();reels=controller;language=languageType;
             if(pool==null)pool=new ObjectPool<RecoveredCoinStopEffect>(
                 CreateEffect,
                 effect=>{effect.transform.localScale=effectPrefab.transform.localScale;effect.gameObject.SetActive(true);},

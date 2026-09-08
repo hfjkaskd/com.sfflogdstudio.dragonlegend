@@ -331,3 +331,15 @@ CoinStopEffect Prefab 嵌套揭晓和光效资源，开始时隐藏；实际 Spi
 这里只接入奖励扫描中的骨骼表现。0.2 秒后显示的奖励文字、0.4 秒文字缩放阶段、0.3 秒飞行、到达灯位及收益入账均未提前替代；Wild/Jackpot/免费等后续完整链路仍未完成。原第三方骨骼组件改为 Unity 原生 Prefab/Animation/渲染组件，组件结构存在这一明确差异。SDK 不变。
 
 最终全量 PlayMode 147 项通过、0 失败（Artifacts/coin-glow-all-tests.xml）。新增测试验证裁切网格 UV、45/186 网格结构、变形中间值、延迟附件、PMA 色彩的实例隔离、暂停与结束隐藏；实际 GameEntry 的两枚确定金币通过五列停轮与奖励扫描触发揭晓，验证逐列顺序、音效请求、待机/光效切换、复用恢复和无提前入账/点灯。已查看本轮 current-coin-reward-glow.png；主背景、完整布局和完整奖励生命周期仍有缺口。
+
+## 本轮：原位图奖励文字与 0.2/0.4 秒展示时序
+
+原 Jinbi.prefab 的 rewardTxt 使用 Unity Legacy Text 和 Green 自定义位图 Font，字号为 0、位置 (0,4.6)、尺寸 (0,0)、居中、横向 Overflow/纵向 Truncate，字符图形与 advance 来自字体资源。保留 Green.asset、Green_Material.mat 及两份原 GUID 元数据，导入前 SHA-256 与当前逆向导出逐一相同；材质继续引用已恢复的 font_b.png 原 GUID。字号 0 对这份静态字体可正常渲染，不能按动态 TTF 的习惯擅改字号或换字体。
+
+新增 CoinRewardText Prefab，以原生 Text 表达金额信息；金币和光效仍由非 UI 渲染组件表达。嵌套 Canvas 负责把原像素坐标转换为现有世界坐标（0.01 缩放），字体字段及排版来自 Prefab，运行时代码不创建静态 UI。该 Canvas 是适配现有原生世界渲染结构的组件差异。
+
+按 JinBiEffectItem.PlayAnim 0x23da0c0，在揭晓开始时隐藏旧文字，等待 0.2 个缩放时间秒后使用 CurrencyUtils.FormatCurrency(reward,2) 显示，两段默认 OutQuad 缩放分别为 0.2 秒到 1.2、0.2 秒回到 1（回落回调 0x23d9cf0）。金额仍按原始值除以 100、EN 使用 $ 与小数点、非 EN 使用 R$ 与小数逗号，不给两位小数金额添加千位分隔。GameEntry 将当前 profile.languageType 传入实际奖励表现。
+
+显示文字后独立等待 0.4 秒发出 PresentationFinished，为原来启动灯位飞行与 pcall 的位置保留时序；本轮没有把它错误地当作飞行到达或余额入账。PlayShow 隐藏金额；GM/对象停用取消本组件待处理回调，避免旧版本表现串入新版本。完整飞行、点灯特效、金额汇总/入账与后续 Wild/Jackpot/免费链仍待恢复，SDK 不变。
+
+最终全量 PlayMode 148 项通过、0 失败（Artifacts/coin-text-all-tests.xml）。新增测试验证位图字符 advance（0 为 43，点为 21）、原字体设置、零字号实际渲染、0.2 秒显示/0.6 秒后续事件、1.2 倍峰值及回落、暂停、两种金额格式和隐藏/停用取消；实际 GameEntry 奖励测试也核对原始 reward 对应的显示字符串。已查看最新 current-coin-reward-text.png 及 current-coin-reward-glow.png，入口内揭晓金币呈现绿色金额。主背景和完整生命周期视觉仍有明显缺口，不能据此称为完整 1:1。

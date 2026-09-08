@@ -36,6 +36,8 @@ public static class BuildCoinStopEffect
             glow.GetComponent<SortingGroup>().sortingOrder=1;
             data.FindProperty("reveal").objectReferenceValue=reveal;
             data.FindProperty("glow").objectReferenceValue=glow;
+            var rewardText=((GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredUI/CoinRewardText.prefab"),root.transform)).GetComponent<RecoveredCoinRewardText>();
+            data.FindProperty("rewardText").objectReferenceValue=rewardText;
             data.FindProperty("scaleDuration").floatValue=.2f;data.FindProperty("peakScale").floatValue=1;
             data.FindProperty("restingScale").floatValue=.7f;data.ApplyModifiedPropertiesWithoutUndo();
             PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredSymbols/CoinStopEffect.prefab");

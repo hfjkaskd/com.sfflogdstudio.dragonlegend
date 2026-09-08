@@ -7,6 +7,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredCoinIdle appearance;
         [SerializeField] private RecoveredCoinReveal reveal;
         [SerializeField] private RecoveredCoinGlow glow;
+        [SerializeField] private RecoveredCoinRewardText rewardText;
+        public RecoveredCoinRewardText RewardText => rewardText;
         public RecoveredCoinReveal Reveal => reveal;
         public RecoveredCoinGlow Glow => glow;
         public event System.Action RevealSoundRequested;
@@ -19,16 +21,19 @@ namespace DragonLegend.Whitebox
         public bool IsScaling => phase != 0;
         private void Awake() { reveal.Revealed += RevealCompleted; }
         private void RevealCompleted() => glow.Play();
-        public void PlayRewardReveal()
+        public void PlayRewardReveal(float reward, int languageType)
         {
             glow.gameObject.SetActive(false);
+            rewardText.Hide();
             RevealSoundRequested?.Invoke();
             appearance.gameObject.SetActive(false);
             reveal.gameObject.SetActive(true);
             reveal.PlayReveal();
+            rewardText.Begin(reward, languageType);
         }
         public void PlayShow()
         {
+            rewardText.Hide();
             reveal.gameObject.SetActive(false); glow.gameObject.SetActive(false);
             appearance.gameObject.SetActive(true);
             appearance.PlayAppearance();
