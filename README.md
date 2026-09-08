@@ -211,3 +211,15 @@ ResetRellShow 0x23750ac 将主符号图归还原槽位父节点并复位 anchore
 Unity 2022.3.62f3 全量 PlayMode 130 项通过、0 失败（Artifacts/reel-start-tests.xml）。新增三个用例覆盖匹配/不匹配的列回调、移出中奖符号的归位、7000 速度加速、0.5 秒停轴和外层额外 Update 等待、回调异常及单次完成。本次生成的 current-reels.png 已检查，基础落位和裁切显示正常，仍属于组件测试预览。
 
 已定位实际 UIMainView.ClickSpin 0x23d1f30 逐列调用 StarSpin 后等待 _delayStartSpinTime，并传入 _accSpinTime；五列主控制器及主按钮还未接通。免费模式启动/停轴和全部奖励视觉仍待实现，本轮不代表完整生命周期 1:1。SDK 未修改。
+
+## 本轮：五列基础转轴控制器与特殊逐列提速分支
+
+新增 BaseReels 嵌套 Prefab，五个 Reel 的局部坐标为 x=-3.8/-1.9/0/1.9/3.8、y=-0.01。BuildBaseReelController 仅使用 UnityEditor 官方 API 制作并保存资产，运行时加载已配置好的五列，不动态生成静态布局。UIMainView 构造指令 0x23bf3ec 将 0x3e19999a3e4ccccd 写入两项 float，确认加速 0.2 秒、启动间隔 0.15 秒，均保存在 Prefab。
+
+RecoveredBaseReelController 恢复 ClickSpin 0x23d1f30 到全部转轴停止等待这一段：先 GOOD LUCK 请求并隐藏五列高亮，逐列启动，每列启动后都等待间隔，包括最后一列。普通列通过 StarSpin 自动停轴，按 PlayStopAnim→Shake→计数加一→reelstop 音效的原顺序通知。全部停止条件严格为计数等于列数。
+
+指定提速起点时，起点前的列仍自动停轴，其余列启动后等待特殊链路。按 0x23c05f4：speedup 音效→当前列高亮→最大速度 10000→延迟 0.5 秒→await SetStop(0.5)→额外 WaitUntil(!isStop)。0x23c03e4 接着停止 speedup、隐藏该列高亮、请求停轴表现和 Shake、请求 200ms 震动，再处理下一列；最后一列直接将计数设为列数。两个 0.5 秒等待不可合并，并保留新等待入队与尾部填补顺序。
+
+新增四个实际 Unity Update 驱动测试，覆盖普通五列和从第 1/3/5 列开始的特殊分支，验证启动间隔、顺序落位、高亮开关顺序、延迟下限、音效/震动请求数量及单次完成。全量 PlayMode 134 项通过、0 失败（Artifacts/base-controller-tests.xml）。已查看本次生成的 current-base-controller.png，五列控制器经过实际逐帧运动后落位与裁切正常。
+
+音效、高亮、震动和停轴特效目前为按原顺序发出的表现请求，尚待绑定对应原生组件；控制器的 ReelsStopped 只代表转轴段结束，不能替代后续奖励序列结束。主 Spin 按钮、生成结果与此 Prefab 的实际场景接线、免费转轴和奖励视觉仍未完成。SDK 处理方式不变，完整生命周期及视觉 1:1 目标继续有效。
