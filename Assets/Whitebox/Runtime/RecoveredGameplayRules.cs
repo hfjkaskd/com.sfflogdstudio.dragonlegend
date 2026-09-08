@@ -64,6 +64,7 @@ namespace DragonLegend.Whitebox
         public IReadOnlyList<int> GetJackPot() => data.Qonrii.Joqkpor; // 0x236ad18
         public int GetJpAdd() => data.Qonrii.JpOpp[0]; // 0x236af28
         public float GetJpClaim(int index) => data.Qonrii.JpQloim[index] / 1000f; // 0x236ad3c
+        public float GetBigWinClaim(int index) => data.Qonrii.RiikinQloim[index] / 1000f; // 0x236ac9c
 
         // JackPot.RefreshRewardValue 0x23983ac and PlayRewardAnim 0x2398660:
         // native multiplies the two counters as signed int32 BEFORE converting to float.
