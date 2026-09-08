@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Whitebox/Scenes/GameEntry.unity
+    guid: d56999ac91312da4c99dc0cbccdcd0a0
+  - enabled: 1
     path: Assets/Whitebox/Scenes/MockFlow.unity
     guid: 579514178dafa9c4182843780df40f96
   m_configObjects: {}

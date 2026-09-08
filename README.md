@@ -1,11 +1,32 @@
-# Dragon Legend reconstruction
+# Dragon Legend 复刻工程
 
-Unity 2022.3.62f3. Open this directory with Unity Hub.
+Unity 2022.3.62f3。使用 Unity Hub 打开本目录。
 
-Initial checkpoint: recovered art, original prefab/scene references, decoded configuration snapshots, native Unity configuration loader and existing SDK mock fixture. This is not yet a complete playable reconstruction.
+当前入口：Assets/Whitebox/Scenes/GameEntry.unity。运行后加载配置；标准 Button 提供默认 US 本地测试配置与对照配置切换。地区和 AB 标签属于本地测试选择，服务器完整分流规则尚未验证。此场景是配置启动入口，并非原版主界面。
 
-Open Assets/Whitebox/Scenes/MockFlow.unity for the existing integration fixture. Original exported assets are retained in ReferenceOriginal outside Assets because their game and third-party components require conversion. SDK mocks remain unchanged.
+SDK 模拟测试入口：Assets/Whitebox/Scenes/MockFlow.unity。现有 SDK mock 未修改。
 
-Reverse engineering evidence remains at C:/Projects/Nut Sort Relax/reconstruction/mumu-current/delivery. Device saves and authentication data are not included here.
+## 本轮进展
 
-Priority: restore game entry and main reel loop, tutorial and reward branches, then visual fidelity. Region rules not present in the captured data must remain explicitly unverified. Only official Unity packages may be used.
+- 创建工程和 main 分支，已推送基础版本 304bca8。
+- 新增配置驱动的启动 Prefab、Scene 和 LaunchProfile，事件通过代码绑定。
+- 移植首批配置消费者：初始余额/次数、下注档位解锁、转轴权重、支付倍率、Scatter 索引以及提现阶段参数。
+- 保留原版权重比较边界与 getter 分支，不擅自换算提现金额。
+- 配置切换取消旧加载并释放请求；各平台使用同一加载流程。
+- 在 Unity 2022.3.62f3 中编译和生成场景成功；7 项 PlayMode 测试通过，0 项失败。测试代码位于 Assets/Whitebox/Tests。
+
+## 尚未完成
+
+主玩法可视转轴与完整结算、引导、奖励分支、外围系统解锁及原版 UI/动画/场景视觉对齐仍未完成。首批规则尚未接通所有主流程消费者。不能宣称已经完整 1:1 复刻。
+
+ReferenceOriginal 中的原始 Prefab 和场景是参考文件，仍有待转换脚本/组件，因此保留在 Assets 外。已导出美术可在 Assets/Resources/RecoveredArt 中按路径加载。
+
+下一优先级：恢复主循环和结算，再接入原版布局及事件分支；此前不扩展边角系统。SDK 继续保持现有处理方式。
+
+## 开发约束
+
+遵守 AGENTS.md，只使用官方 Unity 包和 Prefab 驱动结构。核心玩法对象使用 SpriteRenderer/Mesh。大资源避免启动时统一强引用。
+
+动画推荐逐项用 Animator/AnimationClip 和官方 2D Animation 验证。全量高分辨率逐帧烘焙会增大包体、贴图内存及加载峰值，目前未采用。
+
+Library、Temp、Logs 和本地 Artifacts 不提交。本轮不追加原始逆向证据、配置真值表或缓存来源元数据到仓库。
