@@ -124,3 +124,8 @@ RewardBranches 提供 CheckBonusGame，供普通中奖动画之后、免费游�
 恢复 CheckFreeSpinEnd 0x23ca10c：次数恰好为 0 时先将模式改为 Base、暂停音乐，再请求 UIFreeSpinEndView（传入初始免费次数）；等待结束视图完成后请求 transform 音效和转场。按 0x23bf600 的转场事件顺序请求恢复基础界面和初始化转轴，按 0x23bf618 的转场完成顺序请求清除免费结束标记及 normalBg 音乐。非零次数交给 FreeSpinEntry，负值不会打开结束弹窗。GameEntry 管理此控制实例的生命周期。
 
 控制层明确等待实际视图/动画回调，当前未绑定完整 Prefab，不能把请求事件视为视觉实现完成。新增 3 项用例覆盖等待、调用顺序、初始次数传递、正/负次数分支；Unity 2022.3.62f3 全量 PlayMode 90 项通过、0 失败（本地 Artifacts/free-exit-tests.xml）。免费奖励结算、主玩法表现及完整游戏生命周期仍待完成；SDK 保持原处理方式。
+## 本轮：余额入账 setter 与里程碑存档顺序
+
+恢复 GameData.set_GreenCount 0x236d788：先通知旧余额/请求值，通知时存储仍是旧值；随后写入余额、检查 GreenCountLog，再执行两次保存（CheckGreenCount 及 setter 各一次）。不钳制负值，每次赋值最多推进一个里程碑，余额不变也仍通知和保存。阈值 20000/40000/60000/80000 从 Dragon Legend 原始 ELF 的 0xdbc73c/0xdbc634/0xdbc5ec/0xdbc740 读取，并核对方法签名字节。保留原生 b.lt 的 NaN 比较边界。SDK Track 不接入，里程碑存档字段保留。
+
+新增 10 项用例，全量 Unity 2022.3.62f3 PlayMode 100 项通过、0 失败（本地 Artifacts/green-balance-tests.xml）。余额写入接口尚待绑定各奖励的原始完成阶段；已核对 PlayFlyCoin 0x23c306c 为先外部回调、再重置顶部、最后入账，后续必须保留。主流程完整奖励表现和 1:1 视觉仍未完成。

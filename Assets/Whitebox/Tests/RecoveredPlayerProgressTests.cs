@@ -9,6 +9,55 @@ public sealed class RecoveredPlayerProgressTests
         Qonrii=new QonriiPoro {MojGping=new List<int>{10},Rgtigk=new List<int>{2},
             Lgtgl=new List<int>{1,2,3},NggpGpin=new List<int>{5,10,20}}
     });
+    [TestCase(19999f,0,0)]
+    [TestCase(20000f,0,1)]
+    [TestCase(39999f,1,1)]
+    [TestCase(40000f,1,2)]
+    [TestCase(60000f,2,3)]
+    [TestCase(80000f,3,4)]
+    [TestCase(100000f,0,1)]
+    [TestCase(-5f,0,0)]
+    public void GreenBalanceNotifiesOldStateThenPersistsTwice(float requested,int milestone,int expectedMilestone)
+    {
+        var data=new PlayerData {GreenCount=17,GreenCountLog=milestone};
+        var order=new List<string>();
+        var progress=new RecoveredPlayerProgress(Rules(),()=>{
+            Assert.AreEqual(requested,data.GreenCount);
+            Assert.AreEqual(expectedMilestone,data.GreenCountLog);
+            order.Add("save");
+        },data);
+        progress.GreenCountChanged+=(before,after)=>{
+            Assert.AreEqual(17,before); Assert.AreEqual(requested,after);
+            Assert.AreEqual(17,progress.GreenCount); Assert.AreEqual(milestone,data.GreenCountLog);
+            order.Add("event");
+        };
+        progress.SetGreenCount(requested);
+        CollectionAssert.AreEqual(new[]{"event","save","save"},order);
+    }
+
+    [Test]
+    public void GreenMilestonesAdvanceOncePerAssignmentEvenWhenBalanceDoesNotChange()
+    {
+        var data=new PlayerData(); int saves=0;
+        var progress=new RecoveredPlayerProgress(Rules(),()=>saves++,data);
+        for(int i=1;i<=4;i++) {progress.SetGreenCount(100000); Assert.AreEqual(i,data.GreenCountLog);}
+        progress.SetGreenCount(100000);
+        Assert.AreEqual(4,data.GreenCountLog); Assert.AreEqual(10,saves);
+    }
+
+    [Test]
+    public void GreenEventFailurePreventsMutationAndNaNFollowsNativeUnorderedBranch()
+    {
+        var data=new PlayerData {GreenCount=17}; int saves=0;
+        var progress=new RecoveredPlayerProgress(Rules(),()=>saves++,data);
+        System.Action<float,float> fail=(before,after)=>throw new System.InvalidOperationException();
+        progress.GreenCountChanged+=fail;
+        Assert.Throws<System.InvalidOperationException>(()=>progress.SetGreenCount(20000));
+        Assert.AreEqual(17,data.GreenCount); Assert.AreEqual(0,saves); Assert.AreEqual(0,data.GreenCountLog);
+        progress.GreenCountChanged-=fail;
+        progress.SetGreenCount(float.NaN);
+        Assert.IsTrue(float.IsNaN(data.GreenCount)); Assert.AreEqual(1,data.GreenCountLog); Assert.AreEqual(2,saves);
+    }
     [TestCase(0,1,1)]
     [TestCase(1,2,1)]
     [TestCase(2,2,0)]

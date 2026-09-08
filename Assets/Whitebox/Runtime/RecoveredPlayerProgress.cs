@@ -18,6 +18,8 @@ namespace DragonLegend.Whitebox
         public int MoreWild { get => data.MoreWild; private set => data.MoreWild = value; }
         public int JpAddCount => data.JpAddCount;
         public int BankCount => data.BankCount;
+        public float GreenCount => data.GreenCount;
+        public event Action<float,float> GreenCountChanged;
         // Original GameData runtime flag; intentionally absent from PlayerData saves.
         public bool IsBonusGame { get; set; }
         public RecoveredSlotType GameSlotType { get; set; }
@@ -41,6 +43,23 @@ namespace DragonLegend.Whitebox
             data = playerData ?? throw new ArgumentNullException(nameof(playerData));
         }
 
+        // GameData.set_GreenCount 0x236d788: notify before mutation, then two saves.
+        public void SetGreenCount(float value)
+        {
+            GreenCountChanged?.Invoke(data.GreenCount,value);
+            data.GreenCount = value;
+            // CheckGreenCount 0x236d884 literal constants, verified against the ELF.
+            // Native b.lt also passes unordered (NaN); preserve that comparison.
+            int milestone = data.GreenCountLog;
+            if ((milestone == 0 && !(value < 20000f)) ||
+                (milestone == 1 && !(value < 40000f)) ||
+                (milestone == 2 && !(value < 60000f)) ||
+                (milestone == 3 && !(value < 80000f)))
+                data.GreenCountLog++;
+            // SDK tracking omitted; retain milestone state and persistence behavior.
+            save(); // CheckGreenCount always saves, even without a new milestone.
+            save(); // The caller setter saves again.
+        }
         // 0x236e3c8: persist clamped value, then notify using the UNCLAMPED request.
         public void SetSpinCount(int value)
         {
