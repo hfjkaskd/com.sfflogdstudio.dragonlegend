@@ -293,3 +293,17 @@ JinBiEffectItem.PlayShowAnim 0x23d95e0 在停轮表现中播放 zcjb_chuxian；�
 该 Prefab 是 JinBiEffectItem 的骨骼视觉部分，尚未替代完整外层效果，也尚未绑定停轮特效池。原 PlayShowAnim 同时隐藏 ef_glow/rewardTxt，并对外层执行缩放；PlayAnim 随后还有奖励文本、飞行和回调。已从原 ELF 读取后续相关常量：0xdbc540=0.2、0xdbc4a0=1.2、0xdbc6e8=0.4、0xdbc664=0.3，用于继续恢复外层时序；本轮不提前执行灯位点亮或余额入账。SDK 不变。
 
 最终全量 PlayMode 143 项通过、0 失败（Artifacts/coin-appearance-tests.xml）。新增实际原生 Prefab 测试覆盖首次 Start 前请求出场、0.5 秒长度、1/6 秒两个光圈 alpha=1 与 ringadd 绿色 216/255、金色像素渲染、结束后关闭出场光圈并恢复骨骼缩放 0.88，以及再次启用后的待机重置。已查看本次 current-coin-appearance.png；该图是组件出场预览，不是完整停轮/飞行链路完成证据。
+
+## 本轮：实际停轮金币特效与官方对象池
+
+按 RollReel.PlayStopAnim 0x2376a78、ShowSymbolEffect 0x2376750 和回调 0x2377960，恢复基础模式 ID=9 的停轮分支：清空当前列金币查找表，按前三行检查；尚未展示的金币先隐藏静态符号，再获取对应出场对象、设置为符号的世界坐标、登记行号、启动表现，之后发出 200ms 震动与 coinshow 音效请求。保留原 ShowSymbolEffect 的已展示槽位保护；重复调用 PlayStopAnim 会清空查找表但不重复生成已有特效。
+
+新 CoinStopEffect 使用普通 Transform、SpriteRenderer 和 SortingGroup，棋盘特效不使用 Image/Canvas 游戏对象。BuildCoinStopEffect 从已核对的出场/待机资源离线转换，骨骼位置及位置曲线按 100 像素/单位换算，图像尺寸按原裁切区域比例映射到 SpriteRenderer；色彩和启用曲线改绑原生渲染器。Shader 使用本机 UnitySprites.cginc 的顶点处理支持 SpriteRenderer 色彩/翻转，并保留原 PNG 的 PMA 混合。
+
+外层按 Jinbi.prefab 的初始缩放 0.7，以及 PlayShowAnim/回调 0x23d99dc 恢复两段 OutQuad：0.2 秒到 1，再 0.2 秒回到 0.7，与 0.5 秒骨骼出场并行。原 ELF 0xdbc6e4 验证回落值 0.7。奖励文字和独立 ef_glow 在此阶段原本隐藏，尚未实现它们后续的领奖表现。
+
+CoinStopPresenter 已通过 Prefab 接入实际 SpinPlayfield，订阅 StopAnimationRequested。按 Clear 0x2375370，在该列换圈的 EffectsClearRequested 时回收；Clear 本身不重新显示静态图，随后 SetImg/当前 Show 再显示。使用 Unity 官方 ObjectPool 代替原 LeanPool，首次按需实例化，后续复用；没有预创建大量特效，也没有引入第三方池程序集。GM 解绑回收活动对象并移除订阅。
+
+当前只连接金币停轮视觉，Scatter 停轮、声音/震动的实际播放、奖励文字、飞行与余额入账尚未连接；金币收集扫描仍通过其独立数据阶段运行。完整视觉及生命周期 1:1 尚未完成，SDK 不变。
+
+最终全量 PlayMode 144 项通过、0 失败（Artifacts/coin-stop-presenter-tests.xml）。新增测试从实际 GameEntry 加载 Prefab，通过五列控制器逐帧停轮展示三枚指定金币，检查静态图隐藏、世界位置一致、每枚五个 SpriteRenderer 且无 Graphic、两段缩放完成、声音/震动请求顺序对应数量、换圈回收与相同对象复用、重复停轮保护和解绑回收。已查看本次 current-coin-stops.png，三枚金币实际渲染在各自停轮位置；该测试使用指定结果列验证接线，不冒充随机完整奖励回合。

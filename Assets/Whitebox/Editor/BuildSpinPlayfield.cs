@@ -22,6 +22,13 @@ public static class BuildSpinPlayfield
                 AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredSymbols/BaseReels.prefab"), roll);
             // Sprite geometry is authored at 100 pixels/unit; Canvas local coordinates are pixels.
             reelRoot.transform.localScale = new Vector3(100, 100, 100);
+            var stopPrefab=AssetDatabase.LoadAssetAtPath<RecoveredCoinStopEffect>("Assets/Resources/RecoveredSymbols/CoinStopEffect.prefab");
+            RecoveredCoinStopPresenter coinStops=null;
+            if(stopPrefab!=null) {
+                var effects=new GameObject("CoinEffects",typeof(RecoveredCoinStopPresenter));effects.layer=5;
+                effects.transform.SetParent(reelRoot.transform,false);coinStops=effects.GetComponent<RecoveredCoinStopPresenter>();
+                var settings=new SerializedObject(coinStops);settings.FindProperty("effectPrefab").objectReferenceValue=stopPrefab;settings.ApplyModifiedPropertiesWithoutUndo();
+            }
             foreach (var child in reelRoot.GetComponentsInChildren<Transform>(true)) child.gameObject.layer = 5;
             var bottom = Rect("Bottom", root.transform, new Vector2(.5f, 0), new Vector2(.5f, 0),
                 new Vector2(-.003418f, 0), new Vector2(1080, 292.24f));
@@ -32,6 +39,7 @@ public static class BuildSpinPlayfield
             var data = new SerializedObject(root.GetComponent<RecoveredSpinPlayfield>());
             data.FindProperty("rewardDelay").floatValue = .5f;
             data.FindProperty("bonusCoinInterval").floatValue = .5f;
+            data.FindProperty("coinStops").objectReferenceValue=coinStops;
             data.FindProperty("bonusCollection").objectReferenceValue = collection==null?null:collection.GetComponent<RecoveredBonusCollection>();
             data.FindProperty("spinButton").objectReferenceValue = buttonRoot.GetComponent<RecoveredSpinButton>();
             data.FindProperty("reels").objectReferenceValue = reelRoot.GetComponent<RecoveredBaseReelController>();

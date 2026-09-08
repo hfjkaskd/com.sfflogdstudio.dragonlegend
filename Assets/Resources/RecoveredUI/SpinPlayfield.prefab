@@ -65,7 +65,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9183190522074307640}
+  - {fileID: 8035574345290380817}
   m_Father: {fileID: 623233781217720556}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -73,6 +73,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2598879633157271645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 304545967395321650}
+  - component: {fileID: 3478948129685290601}
+  m_Layer: 5
+  m_Name: CoinEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &304545967395321650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2598879633157271645}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8511383017384286432}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3478948129685290601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2598879633157271645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e16ef8769722d140b7034f313020145, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  effectPrefab: {fileID: 6263144576445816659, guid: f6c51799273cb0e42a180e6ac24fefda, type: 3}
 --- !u!1 &6544434768929315992
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,12 +240,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 759264b7a7caf1644a39d4d8d88a8e7f, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-  spinButton: {fileID: 1948010920512002769}
+  spinButton: {fileID: 864021485240217848}
   reels: {fileID: 9177660176823275797}
   symbols: {fileID: 11400000, guid: dc8c6f6a2b1b42e698943b65a3d03c7d, type: 2}
   rewardDelay: 0.5
   bonusCoinInterval: 0.5
   bonusCollection: {fileID: 1015783688566894396}
+  coinStops: {fileID: 3478948129685290601}
 --- !u!1001 &1181584291013865697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -331,7 +377,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7384589907633350657, guid: 8944d3a5de9fabe469a5464e62fd8770, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 304545967395321650}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8944d3a5de9fabe469a5464e62fd8770, type: 3}
 --- !u!4 &8511383017384286432 stripped
@@ -447,7 +496,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 874d1b17a7797a64f899c47834e606bb, type: 3}
---- !u!114 &1948010920512002769 stripped
+--- !u!114 &864021485240217848 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7044924528080409432, guid: 874d1b17a7797a64f899c47834e606bb, type: 3}
   m_PrefabInstance: {fileID: 7654157283058197408}
@@ -458,7 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407c5b2f7dbddd94ba960fda27b69eb8, type: 3}
   m_Name:
   m_EditorClassIdentifier:
---- !u!224 &9183190522074307640 stripped
+--- !u!224 &8035574345290380817 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 413521049639015857, guid: 874d1b17a7797a64f899c47834e606bb, type: 3}
   m_PrefabInstance: {fileID: 7654157283058197408}

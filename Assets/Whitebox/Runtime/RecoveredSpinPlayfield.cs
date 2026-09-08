@@ -13,6 +13,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private float bonusCoinInterval;
         [SerializeField] private RecoveredBonusCollection bonusCollection;
         public RecoveredBonusCollection BonusCollection => bonusCollection;
+        [SerializeField] private RecoveredCoinStopPresenter coinStops;
+        public RecoveredCoinStopPresenter CoinStops => coinStops;
         private RecoveredReelWait rewardWait;
         private RecoveredSpinEntry entry;
         private RecoveredSpinResult result;
@@ -39,6 +41,7 @@ namespace DragonLegend.Whitebox
             // GameData.Init resets Bet=0; SetBet only assigns list[0] for the normal branch.
             Bet = isA ? 0 : bets[0];
             reels.Initialize(symbols);
+            if(coinStops!=null)coinStops.Bind(reels);
             entry.StartVisualsRequested += Started;
             reels.ReelsStopped += Stopped;
             spinButton.Button.onClick.AddListener(Click);
@@ -85,6 +88,7 @@ namespace DragonLegend.Whitebox
         {
             rewardWait?.Cancel(); rewardWait = null;
             BonusCoins?.CancelForProfileChange(); BonusCoins = null;
+            if(coinStops!=null)coinStops.Unbind();
             spinButton.Button.onClick.RemoveListener(Click);
             if (entry != null) entry.StartVisualsRequested -= Started;
             reels.ReelsStopped -= Stopped;
