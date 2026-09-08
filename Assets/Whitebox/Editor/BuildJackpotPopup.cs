@@ -108,7 +108,20 @@ public static class BuildJackpotPopup
             else {
                 SetSprite(content.Find("Title"),"tc_luckyreward_txt");
                 ReplaceArt(content.Find("SkeletonGraphic (ef_shoucanggl)"),"ef_shoucanggl");
-                // Native Title UIShiny is not yet converted; preserve its base image.
+                var shineMaterial=SaveAsset(new Material(Shader.Find("DragonLegend/RecoveredTitleShine")),Folder+"/TitleShine.mat");
+                var shine=content.Find("Title").gameObject.AddComponent<RecoveredTitleShine>();
+                var shineSettings=new SerializedObject(shine);
+                shineSettings.FindProperty("template").objectReferenceValue=shineMaterial;
+                shineSettings.FindProperty("effectFactor").floatValue=.5f;
+                shineSettings.FindProperty("width").floatValue=.25f;
+                shineSettings.FindProperty("rotation").floatValue=135;
+                shineSettings.FindProperty("softness").floatValue=1;
+                shineSettings.FindProperty("brightness").floatValue=1;
+                shineSettings.FindProperty("gloss").floatValue=1;
+                shineSettings.FindProperty("play").boolValue=true;
+                shineSettings.FindProperty("loop").boolValue=true;
+                shineSettings.FindProperty("duration").floatValue=2;
+                shineSettings.ApplyModifiedPropertiesWithoutUndo();
                 // Keep the ordinary Button on its visible TMP graphic, retaining
                 // the authored parent's hit rectangle through raycast padding.
                 var parent=content.Find("Btn/UnPlayBtn").GetComponent<RectTransform>();

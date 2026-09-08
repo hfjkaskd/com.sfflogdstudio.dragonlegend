@@ -45,9 +45,23 @@ public sealed class RecoveredBonusRewardPopupTests
             Assert.AreEqual(0,popup.PlainButton.onClick.GetPersistentEventCount());
             foreach(var component in popup.GetComponentsInChildren<Component>(true))Assert.IsNotNull(component);
             Assert.IsNotNull(popup.Content.Find("Title").GetComponent<Image>().sprite);
-            Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
-            RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+            var shine=popup.Content.Find("Title").GetComponent<RecoveredTitleShine>();Assert.IsNotNull(shine);
+            Time.timeScale=0;yield return null;
+            float factor=shine.EffectFactor;
+            for(int i=0;i<4;i++)yield return null;Assert.AreEqual(factor,shine.EffectFactor);
+            shine.Playing=false;
+            long baseLight=0,shinyLight=0;
+            for(int phase=0;phase<2;phase++){
+                shine.EffectFactor=phase*.5f;
+                Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
+                RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+                long light=0;foreach(var pixel in capture.GetPixels32())light+=pixel.r+pixel.g+pixel.b;
+                if(phase==0)baseLight=light;else shinyLight=light;
+                File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-bonus-reward-shine-"+phase+".png"),capture.EncodeToPNG());
+            }
+            Assert.Greater(shinyLight-baseLight,10000,"The native title shader must visibly brighten its sweep band");
             File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-bonus-reward-window.png"),capture.EncodeToPNG());
+            Time.timeScale=1;
             popup.ClaimButton.onClick.Invoke();Assert.IsTrue(ads.Pending);
             ads.Complete(AdOutcome.Failed);Assert.IsFalse(popup.Claim.IsClicked);
             popup.ClaimButton.onClick.Invoke();ads.Complete(AdOutcome.Rewarded);

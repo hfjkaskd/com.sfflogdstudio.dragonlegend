@@ -20,10 +20,10 @@ or bypass reward ads for the first-free flag. Native 2 / .5 multipliers are stor
 in the prefab. After the actual exit, the existing claim controller requests cash
 flight and retains the caller until arrival.
 
-Known visual gap: the original Title has UIShiny with effect factor .5, width .25,
+The original Title has UIShiny with effect factor .5, width .25,
 rotation 135, softness/brightness/gloss 1, duration 2, looping with no delay and
-updateMode 0. That effect still needs a native conversion; the current title only
-retains its base image. This partial presentation must not be claimed as 1:1.
+updateMode 0. It is now converted through RecoveredTitleShine and its native UI
+shader; see BonusTitleShine/README.md for compiled shader and instruction evidence.
 Full Bonus-window and shared-flight binding remains pending as well.
 
 The PlayMode test exercises the actual prefab, buttons, delayed reveal, pause,
@@ -34,4 +34,4 @@ Full PlayMode run `Artifacts/bonus-popup-tests.xml`: 241 passed, 0 failed.
 Latest capture `Artifacts/current-bonus-reward-window.png` was inspected at native
 1080x1920 resolution: title, cash art, green legacy amount, TMP ad icon/button,
 ordinary claim text and cash-out tip are visible. This is an isolated current
-window capture; title sweep and compositing over the live Bonus board are pending.
+window capture; compositing over the live Bonus board remains pending.

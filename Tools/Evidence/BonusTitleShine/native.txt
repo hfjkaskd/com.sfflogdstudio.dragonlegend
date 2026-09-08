@@ -1,0 +1,528 @@
+Coffee.UIEffects.UIShiny$$ModifyMesh
+4445408: sub sp, sp, #0x190
+444540c: stp d15, d14, [sp, #0x110]
+4445410: stp d13, d12, [sp, #0x120]
+4445414: stp d11, d10, [sp, #0x130]
+4445418: stp d9, d8, [sp, #0x140]
+444541c: str x29, [sp, #0x150]
+4445420: stp x30, x23, [sp, #0x160]
+4445424: stp x22, x21, [sp, #0x170]
+4445428: stp x20, x19, [sp, #0x180]
+444542c: adrp x21, #0x5260000
+4445430: mov x19, x1
+4445434: mov x20, x0
+4445438: ldrb w8, [x21, #0x24a]
+444543c: tbnz w8, #0, #0x4445454
+4445440: adrp x0, #0x4f52000
+4445444: ldr x0, [x0, #0x170]
+4445448: bl #0x22afeb0
+444544c: mov w8, #1
+4445450: strb w8, [x21, #0x24a]
+4445454: mov x0, x20
+4445458: mov x1, xzr
+444545c: str xzr, [sp, #0x78]
+4445460: bl #0x4957c24 UnityEngine.Behaviour$$get_isActiveAndEnabled
+4445464: tbz w0, #0, #0x44456f8
+4445468: ldr x8, [x20]
+444546c: mov x0, x20
+4445470: ldr x9, [x8, #0x2f8]
+4445474: ldr x1, [x8, #0x300]
+4445478: blr x9
+444547c: cbz x0, #0x4445720
+4445480: mov x1, x20
+4445484: bl #0x443f5ac Coffee.UIEffects.ParameterTexture$$GetNormalizedIndex
+4445488: ldr w21, [x20, #0x74]
+444548c: mov x0, x20
+4445490: fmov s8, s0
+4445494: bl #0x443de98 Coffee.UIEffects.BaseMeshEffect$$get_rectTransform
+4445498: cbz x0, #0x4445720
+444549c: mov x1, xzr
+44454a0: bl #0x4964cb4 UnityEngine.RectTransform$$get_rect
+44454a4: adrp x8, #0x4f52000
+44454a8: fmov s9, s0
+44454ac: fmov s10, s1
+44454b0: ldr x8, [x8, #0x170]
+44454b4: fmov s11, s2
+44454b8: fmov s12, s3
+44454bc: ldr x0, [x8]
+44454c0: ldr w8, [x0, #0xe0]
+44454c4: cbnz w8, #0x44454cc
+44454c8: bl #0x22b0024
+44454cc: fmov s0, s9
+44454d0: fmov s1, s10
+44454d4: mov w0, w21
+44454d8: fmov s2, s11
+44454dc: fmov s3, s12
+44454e0: mov x1, x19
+44454e4: fmov s4, #-1.00000000
+44454e8: bl #0x443f844 Coffee.UIEffects.EffectAreaExtensions$$GetEffectArea
+44454ec: adrp x8, #0xdbc000
+44454f0: fmov s12, s0
+44454f4: fmov s11, s1
+44454f8: ldr s0, [x20, #0x64]
+44454fc: ldr s1, [x8, #0x72c]
+4445500: add x0, sp, #8
+4445504: add x1, sp, #4
+4445508: fmov s9, s2
+444550c: fmov s10, s3
+4445510: fmul s0, s0, s1
+4445514: bl #0x4bb6cb0
+4445518: fdiv s14, s10, s9
+444551c: adrp x21, #0x5257000
+4445520: adrp x22, #0x4f1c000
+4445524: ldp s15, s13, [sp, #4]
+4445528: ldrb w8, [x21, #0xd4e]
+444552c: ldr x22, [x22, #0x730]
+4445530: tbnz w8, #0, #0x4445548
+4445534: adrp x0, #0x4f1c000
+4445538: ldr x0, [x0, #0x730]
+444553c: bl #0x22afeb0
+4445540: mov w8, #1
+4445544: strb w8, [x21, #0xd4e]
+4445548: ldr x0, [x22]
+444554c: fmul s14, s14, s15
+4445550: ldr w8, [x0, #0xe0]
+4445554: cbnz w8, #0x444555c
+4445558: bl #0x22b0024
+444555c: fmul s0, s14, s14
+4445560: fmul s1, s13, s13
+4445564: adrp x8, #0xdbc000
+4445568: add x21, sp, #0x80
+444556c: fadd s0, s1, s0
+4445570: ldr s1, [x8, #0x70c]
+4445574: fsqrt s0, s0
+4445578: fcmp s0, s1
+444557c: b.le #0x444558c
+4445580: fdiv s14, s14, s0
+4445584: fdiv s15, s13, s0
+4445588: b #0x44455c0
+444558c: adrp x22, #0x5257000
+4445590: adrp x23, #0x4f1c000
+4445594: ldrb w8, [x22, #0x769]
+4445598: ldr x23, [x23, #0x698]
+444559c: tbnz w8, #0, #0x44455b4
+44455a0: adrp x0, #0x4f1c000
+44455a4: ldr x0, [x0, #0x698]
+44455a8: bl #0x22afeb0
+44455ac: mov w8, #1
+44455b0: strb w8, [x22, #0x769]
+44455b4: ldr x8, [x23]
+44455b8: ldr x8, [x8, #0xb8]
+44455bc: ldp s14, s15, [x8]
+44455c0: movi v0.2d, #0000000000000000
+44455c4: stur q0, [x21, #0x5c]
+44455c8: stp q0, q0, [x21, #0x20]
+44455cc: stp q0, q0, [x21, #0x40]
+44455d0: str q0, [x21, #0x10]
+44455d4: str q0, [sp, #0x80]
+44455d8: cbz x19, #0x4445720
+44455dc: mov x0, x19
+44455e0: mov x1, xzr
+44455e4: bl #0x4b62e08 UnityEngine.UI.VertexHelper$$get_currentVertCount
+44455e8: cmp w0, #1
+44455ec: b.lt #0x44456f8
+44455f0: fdiv s0, s12, s9
+44455f4: fneg s2, s15
+44455f8: mov w21, wzr
+44455fc: fdiv s1, s11, s10
+4445600: fdiv s12, s2, s10
+4445604: fmov s2, #-0.50000000
+4445608: fsub s0, s2, s0
+444560c: fsub s1, s2, s1
+4445610: fmul s2, s0, s14
+4445614: fmul s3, s1, s15
+4445618: fmul s0, s0, s15
+444561c: fmul s1, s1, s14
+4445620: fdiv s11, s14, s9
+4445624: fsub s2, s2, s3
+4445628: fadd s0, s1, s0
+444562c: fmov s1, #0.50000000
+4445630: fdiv s13, s15, s9
+4445634: fadd s15, s0, s1
+4445638: fdiv s10, s14, s10
+444563c: fadd s14, s2, s1
+4445640: add x1, sp, #0x80
+4445644: mov x0, x19
+4445648: mov w2, w21
+444564c: mov x3, xzr
+4445650: bl #0x4b62ea0 UnityEngine.UI.VertexHelper$$PopulateUIVertex
+4445654: mov x0, x20
+4445658: bl #0x443c9f8 Coffee.UIEffects.BaseMeshEffect$$get_connector
+444565c: cbz x0, #0x4445720
+4445660: ldr x8, [x0]
+4445664: ldp s0, s1, [sp, #0x80]
+4445668: ldr w1, [x20, #0x74]
+444566c: add x3, sp, #0xf8
+4445670: add x4, sp, #0x78
+4445674: ldr x9, [x8, #0x228]
+4445678: ldr x5, [x8, #0x230]
+444567c: mov w2, w21
+4445680: stp s11, s12, [sp, #0xf8]
+4445684: str s14, [sp, #0x100]
+4445688: str s13, [sp, #0x104]
+444568c: str s10, [sp, #0x108]
+4445690: str s15, [sp, #0x10c]
+4445694: blr x9
+4445698: ldp s0, s1, [sp, #0xac]
+444569c: bl #0x443c67c Packer$$ToFloat
+44456a0: ldr s1, [sp, #0x7c]
+44456a4: fmov s9, s0
+44456a8: fmov s0, s1
+44456ac: fmov s1, s8
+44456b0: bl #0x443c67c Packer$$ToFloat
+44456b4: add x0, sp, #0xc
+44456b8: add x1, sp, #0x80
+44456bc: mov w2, #0x6c
+44456c0: stp s9, s0, [sp, #0xac]
+44456c4: stp wzr, wzr, [sp, #0xb4]
+44456c8: bl #0x4bb6c40
+44456cc: add x1, sp, #0xc
+44456d0: mov x0, x19
+44456d4: mov w2, w21
+44456d8: mov x3, xzr
+44456dc: bl #0x4b63000 UnityEngine.UI.VertexHelper$$SetUIVertex
+44456e0: mov x0, x19
+44456e4: mov x1, xzr
+44456e8: add w21, w21, #1
+44456ec: bl #0x4b62e08 UnityEngine.UI.VertexHelper$$get_currentVertCount
+44456f0: cmp w21, w0
+44456f4: b.lt #0x4445640
+44456f8: ldp x20, x19, [sp, #0x180]
+44456fc: ldr x29, [sp, #0x150]
+4445700: ldp x22, x21, [sp, #0x170]
+4445704: ldp x30, x23, [sp, #0x160]
+4445708: ldp d9, d8, [sp, #0x140]
+444570c: ldp d11, d10, [sp, #0x130]
+4445710: ldp d13, d12, [sp, #0x120]
+4445714: ldp d15, d14, [sp, #0x110]
+4445718: add sp, sp, #0x190
+444571c: ret
+4445720: bl #0x22b014c
+Coffee.UIEffects.EffectPlayer$$OnWillRenderCanvases
+443e4d4: str d8, [sp, #-0x20]!
+443e4d8: str x30, [sp, #8]
+443e4dc: stp x20, x19, [sp, #0x10]
+443e4e0: adrp x20, #0x5260000
+443e4e4: mov x19, x0
+443e4e8: ldrb w8, [x20, #0x20a]
+443e4ec: tbnz w8, #0, #0x443e504
+443e4f0: adrp x0, #0x4f1b000
+443e4f4: ldr x0, [x0, #0xcb0]
+443e4f8: bl #0x22afeb0
+443e4fc: mov w8, #1
+443e500: strb w8, [x20, #0x20a]
+443e504: ldrb w8, [x19, #0x10]
+443e508: cmp w8, #1
+443e50c: b.ne #0x443e558
+443e510: adrp x8, #0x4f1b000
+443e514: ldr x8, [x8, #0xcb0]
+443e518: ldr x0, [x8]
+443e51c: ldr w8, [x0, #0xe0]
+443e520: cbnz w8, #0x443e528
+443e524: bl #0x22b0024
+443e528: mov x0, xzr
+443e52c: bl #0x4927024 UnityEngine.Application$$get_isPlaying
+443e530: tbz w0, #0, #0x443e558
+443e534: ldr x8, [x19, #0x30]
+443e538: cbz x8, #0x443e558
+443e53c: ldr w8, [x19, #0x24]
+443e540: ldr s8, [x19, #0x28]
+443e544: cmp w8, #2
+443e548: b.ne #0x443e568
+443e54c: mov x0, xzr
+443e550: bl #0x4963724 UnityEngine.Time$$get_unscaledDeltaTime
+443e554: b #0x443e570
+443e558: ldp x20, x19, [sp, #0x10]
+443e55c: ldr x30, [sp, #8]
+443e560: ldr d8, [sp], #0x20
+443e564: ret
+443e568: mov x0, xzr
+443e56c: bl #0x49636d4 UnityEngine.Time$$get_deltaTime
+443e570: fadd s0, s8, s0
+443e574: ldr s1, [x19, #0x18]
+443e578: fcmp s1, s0
+443e57c: str s0, [x19, #0x28]
+443e580: b.hi #0x443e5a4
+443e584: movi d2, #0000000000000000
+443e588: ldrb w8, [x19, #0x1c]
+443e58c: cmp w8, #1
+443e590: strb w8, [x19, #0x10]
+443e594: b.ne #0x443e5a0
+443e598: ldr s2, [x19, #0x20]
+443e59c: fneg s2, s2
+443e5a0: str s2, [x19, #0x28]
+443e5a4: ldr x8, [x19, #0x30]
+443e5a8: cbz x8, #0x443e5cc
+443e5ac: ldp x20, x19, [sp, #0x10]
+443e5b0: fdiv s0, s0, s1
+443e5b4: ldr x0, [x8, #0x40]
+443e5b8: ldr x1, [x8, #0x28]
+443e5bc: ldr x2, [x8, #0x18]
+443e5c0: ldr x30, [sp, #8]
+443e5c4: ldr d8, [sp], #0x20
+443e5c8: br x2
+443e5cc: bl #0x22b014c
+Coffee.UIEffects.EffectPlayer$$OnEnable
+443e14c: str x30, [sp, #-0x50]!
+443e150: stp x26, x25, [sp, #0x10]
+443e154: stp x24, x23, [sp, #0x20]
+443e158: stp x22, x21, [sp, #0x30]
+443e15c: stp x20, x19, [sp, #0x40]
+443e160: adrp x21, #0x5260000
+443e164: adrp x23, #0x4f52000
+443e168: mov x19, x1
+443e16c: ldrb w8, [x21, #0x208]
+443e170: ldr x23, [x23, #0x90]
+443e174: mov x20, x0
+443e178: tbnz w8, #0, #0x443e1f0
+443e17c: adrp x0, #0x4f1b000
+443e180: ldr x0, [x0, #0x660]
+443e184: bl #0x22afeb0
+443e188: adrp x0, #0x4f52000
+443e18c: ldr x0, [x0, #0x98]
+443e190: bl #0x22afeb0
+443e194: adrp x0, #0x4f52000
+443e198: ldr x0, [x0, #0x90]
+443e19c: bl #0x22afeb0
+443e1a0: adrp x0, #0x4f52000
+443e1a4: ldr x0, [x0, #0xa0]
+443e1a8: bl #0x22afeb0
+443e1ac: adrp x0, #0x4f52000
+443e1b0: ldr x0, [x0, #0xa8]
+443e1b4: bl #0x22afeb0
+443e1b8: adrp x0, #0x4f52000
+443e1bc: ldr x0, [x0, #0xb0]
+443e1c0: bl #0x22afeb0
+443e1c4: adrp x0, #0x4f52000
+443e1c8: ldr x0, [x0, #0xb8]
+443e1cc: bl #0x22afeb0
+443e1d0: adrp x0, #0x4f52000
+443e1d4: ldr x0, [x0, #0xc0]
+443e1d8: bl #0x22afeb0
+443e1dc: adrp x0, #0x4f52000
+443e1e0: ldr x0, [x0, #0xc8]
+443e1e4: bl #0x22afeb0
+443e1e8: mov w8, #1
+443e1ec: strb w8, [x21, #0x208]
+443e1f0: ldr x8, [x23]
+443e1f4: adrp x25, #0x4f1b000
+443e1f8: adrp x24, #0x4f52000
+443e1fc: ldr x8, [x8, #0xb8]
+443e200: ldr x25, [x25, #0x660]
+443e204: ldr x21, [x8]
+443e208: ldr x24, [x24, #0x98]
+443e20c: cbnz x21, #0x443e2e0
+443e210: adrp x8, #0x4f52000
+443e214: ldr x8, [x8, #0xb0]
+443e218: ldr x0, [x8]
+443e21c: bl #0x22b0140
+443e220: adrp x8, #0x4f52000
+443e224: mov x21, x0
+443e228: ldr x8, [x8, #0xa8]
+443e22c: ldr x1, [x8]
+443e230: bl #0x3b6a724 System.Collections.Generic.List<object>$$.ctor
+443e234: ldr x8, [x23]
+443e238: mov x1, x21
+443e23c: ldr x0, [x8, #0xb8]
+443e240: str x21, [x0]
+443e244: bl #0x22afe5c
+443e248: adrp x26, #0x4f52000
+443e24c: ldr x26, [x26, #0xc0]
+443e250: ldr x0, [x26]
+443e254: ldr w8, [x0, #0xe0]
+443e258: cbnz w8, #0x443e264
+443e25c: bl #0x22b0024
+443e260: ldr x0, [x26]
+443e264: ldr x8, [x0, #0xb8]
+443e268: ldr x21, [x8, #8]
+443e26c: cbnz x21, #0x443e2c8
+443e270: ldr w9, [x0, #0xe0]
+443e274: cbnz w9, #0x443e284
+443e278: bl #0x22b0024
+443e27c: ldr x8, [x26]
+443e280: ldr x8, [x8, #0xb8]
+443e284: adrp x9, #0x4f52000
+443e288: ldr x9, [x9, #0xc8]
+443e28c: ldr x22, [x8]
+443e290: ldr x0, [x9]
+443e294: bl #0x22b0140
+443e298: adrp x8, #0x4f52000
+443e29c: mov x1, x22
+443e2a0: mov x3, xzr
+443e2a4: ldr x8, [x8, #0xb8]
+443e2a8: mov x21, x0
+443e2ac: ldr x2, [x8]
+443e2b0: bl #0x4b3e2c4 UnityEngine.Canvas.WillRenderCanvases$$.ctor
+443e2b4: ldr x8, [x26]
+443e2b8: mov x1, x21
+443e2bc: ldr x0, [x8, #0xb8]
+443e2c0: str x21, [x0, #8]!
+443e2c4: bl #0x22afe5c
+443e2c8: mov x0, x21
+443e2cc: mov x1, xzr
+443e2d0: bl #0x4b3d614 UnityEngine.Canvas$$add_willRenderCanvases
+443e2d4: ldr x8, [x23]
+443e2d8: ldr x8, [x8, #0xb8]
+443e2dc: ldr x21, [x8]
+443e2e0: ldr x0, [x25]
+443e2e4: bl #0x22b0140
+443e2e8: ldr x2, [x24]
+443e2ec: mov x1, x20
+443e2f0: mov x3, xzr
+443e2f4: mov x22, x0
+443e2f8: bl #0x3d8529c System.Action$$.ctor
+443e2fc: cbz x21, #0x443e3a4
+443e300: adrp x9, #0x4f52000
+443e304: ldr x9, [x9, #0xa0]
+443e308: ldr w10, [x21, #0x1c]
+443e30c: ldr x8, [x21, #0x10]
+443e310: ldr x9, [x9]
+443e314: add w10, w10, #1
+443e318: str w10, [x21, #0x1c]
+443e31c: cbz x8, #0x443e3a4
+443e320: ldrsw x10, [x21, #0x18]
+443e324: ldr w11, [x8, #0x18]
+443e328: cmp w10, w11
+443e32c: b.hs #0x443e34c
+443e330: add x0, x8, x10, lsl #3
+443e334: add w9, w10, #1
+443e338: mov x1, x22
+443e33c: str w9, [x21, #0x18]
+443e340: str x22, [x0, #0x20]!
+443e344: bl #0x22afe5c
+443e348: b #0x443e364
+443e34c: ldr x8, [x9, #0x20]
+443e350: mov x0, x21
+443e354: mov x1, x22
+443e358: ldr x8, [x8, #0xc0]
+443e35c: ldr x2, [x8, #0x70]
+443e360: bl #0x3b6af88 System.Collections.Generic.List<object>$$AddWithResize
+443e364: movi d0, #0000000000000000
+443e368: ldrb w8, [x20, #0x10]
+443e36c: cmp w8, #1
+443e370: b.ne #0x443e37c
+443e374: ldr s0, [x20, #0x14]
+443e378: fneg s0, s0
+443e37c: str x19, [x20, #0x30]!
+443e380: mov x0, x20
+443e384: mov x1, x19
+443e388: stur s0, [x20, #-8]
+443e38c: ldp x20, x19, [sp, #0x40]
+443e390: ldp x22, x21, [sp, #0x30]
+443e394: ldp x24, x23, [sp, #0x20]
+443e398: ldp x26, x25, [sp, #0x10]
+443e39c: ldr x30, [sp], #0x50
+443e3a0: b #0x22afe5c
+443e3a4: bl #0x22b014c
+Coffee.UIEffects.UIShiny$$SetEffectParamsDirty
+44457a0: stp d9, d8, [sp, #-0x20]!
+44457a4: stp x30, x19, [sp, #0x10]
+44457a8: ldr x8, [x0]
+44457ac: mov x19, x0
+44457b0: ldr x9, [x8, #0x2f8]
+44457b4: ldr x1, [x8, #0x300]
+44457b8: blr x9
+44457bc: cbz x0, #0x4445958
+44457c0: fmov s8, #1.00000000
+44457c4: ldr s0, [x19, #0x5c]
+44457c8: mov w8, #0x437f0000
+44457cc: fmov s2, w8
+44457d0: movi d9, #0000000000000000
+44457d4: mov x1, x19
+44457d8: mov w2, wzr
+44457dc: fcmp s0, s8
+44457e0: fcsel s1, s8, s0, gt
+44457e4: fcmp s0, #0.0
+44457e8: fmul s1, s1, s2
+44457ec: fcsel s0, s9, s1, mi
+44457f0: fcvtzs w3, s0
+44457f4: fcmp s0, #0.0
+44457f8: mov w3, w3
+44457fc: bl #0x443f418 Coffee.UIEffects.ParameterTexture$$SetData
+4445800: ldr x8, [x19]
+4445804: mov x0, x19
+4445808: ldr x9, [x8, #0x2f8]
+444580c: ldr x1, [x8, #0x300]
+4445810: blr x9
+4445814: cbz x0, #0x4445958
+4445818: ldr s0, [x19, #0x60]
+444581c: mov w8, #0x437f0000
+4445820: mov x1, x19
+4445824: fmov s2, w8
+4445828: mov w2, #1
+444582c: fcmp s0, s8
+4445830: fcsel s1, s8, s0, gt
+4445834: fcmp s0, #0.0
+4445838: fmul s1, s1, s2
+444583c: fcsel s0, s9, s1, mi
+4445840: fcvtzs w3, s0
+4445844: fcmp s0, #0.0
+4445848: mov w3, w3
+444584c: bl #0x443f418 Coffee.UIEffects.ParameterTexture$$SetData
+4445850: ldr x8, [x19]
+4445854: mov x0, x19
+4445858: ldr x9, [x8, #0x2f8]
+444585c: ldr x1, [x8, #0x300]
+4445860: blr x9
+4445864: cbz x0, #0x4445958
+4445868: fmov s8, #1.00000000
+444586c: ldr s0, [x19, #0x68]
+4445870: mov w8, #0x437f0000
+4445874: fmov s2, w8
+4445878: movi d9, #0000000000000000
+444587c: mov x1, x19
+4445880: mov w2, #2
+4445884: fcmp s0, s8
+4445888: fcsel s1, s8, s0, gt
+444588c: fcmp s0, #0.0
+4445890: fmul s1, s1, s2
+4445894: fcsel s0, s9, s1, mi
+4445898: fcvtzs w3, s0
+444589c: fcmp s0, #0.0
+44458a0: mov w3, w3
+44458a4: bl #0x443f418 Coffee.UIEffects.ParameterTexture$$SetData
+44458a8: ldr x8, [x19]
+44458ac: mov x0, x19
+44458b0: ldr x9, [x8, #0x2f8]
+44458b4: ldr x1, [x8, #0x300]
+44458b8: blr x9
+44458bc: cbz x0, #0x4445958
+44458c0: ldr s0, [x19, #0x6c]
+44458c4: mov w8, #0x437f0000
+44458c8: mov x1, x19
+44458cc: fmov s2, w8
+44458d0: mov w2, #3
+44458d4: fcmp s0, s8
+44458d8: fcsel s1, s8, s0, gt
+44458dc: fcmp s0, #0.0
+44458e0: fmul s1, s1, s2
+44458e4: fcsel s0, s9, s1, mi
+44458e8: fcvtzs w3, s0
+44458ec: fcmp s0, #0.0
+44458f0: mov w3, w3
+44458f4: bl #0x443f418 Coffee.UIEffects.ParameterTexture$$SetData
+44458f8: ldr x8, [x19]
+44458fc: mov x0, x19
+4445900: ldr x9, [x8, #0x2f8]
+4445904: ldr x1, [x8, #0x300]
+4445908: blr x9
+444590c: cbz x0, #0x4445958
+4445910: fmov s0, #1.00000000
+4445914: ldr s1, [x19, #0x70]
+4445918: mov w8, #0x437f0000
+444591c: fmov s2, w8
+4445920: mov x1, x19
+4445924: mov w2, #4
+4445928: ldp x30, x19, [sp, #0x10]
+444592c: fcmp s1, s0
+4445930: fcsel s0, s0, s1, gt
+4445934: fcmp s1, #0.0
+4445938: fmul s0, s0, s2
+444593c: movi d2, #0000000000000000
+4445940: fcsel s0, s2, s0, mi
+4445944: fcvtzs w3, s0
+4445948: fcmp s0, #0.0
+444594c: mov w3, w3
+4445950: ldp d9, d8, [sp], #0x20
+4445954: b #0x443f418
+4445958: bl #0x22b014c
