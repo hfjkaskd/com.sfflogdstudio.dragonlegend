@@ -95,3 +95,10 @@ SetTaskData 保留首次固定 count=1、后续增量及上下限、已领取只
 按 UIMainView.CheckBonusGame 0x23c6d54 和谓词 0x23bf8d8 补齐遗漏分支。区域完成条件为每项大于 1，或 GameData 已有 IsBonusGame 标记；保留空列表触发、null 列表报错的原始边界。标记为运行时状态，不加入 PlayerData 存档字段。进入时先更新任务 5 并保存旧区域，再清标记、替换五项零值区域并再次保存；原列表不被就地清空。
 
 RewardBranches 提供 CheckBonusGame，供普通中奖动画之后、免费游戏判断之前调用。NPC、音效、Bonus 转场与小游戏视图仍未接线，完整主循环仍未完成，SDK 未变。新增 6 个测试用例覆盖阈值、已有标记、两次保存的可观察顺序和空/null 区域；本轮只完成原生指令及源码对照、diff 检查，Defender 阻塞未解除，未运行 Unity 测试，不能声明当前版本测试通过。
+## 本轮：恢复运行验证与 Bonus 区域累积
+
+当前 Defender 实时防护状态已变为关闭，正常 Unity 2022.3.62f3 编译和 PlayMode 测试恢复。先对提交 7b6e561 完成 69 项测试，全部通过，覆盖此前未运行的存档、付费旋转入口、奖励分支与 Bonus 入口用例。
+
+补齐 GameData.SetBonusArea 0x236f868：指定列当前值大于 1 时直接返回且不保存，否则递增后保存；保留负值及非法索引的原始边界，不提前设置 Bonus 游戏标记。新增 8 个用例，包含最后一列累积完成后进入 Bonus 分支并重置的串联验证。最新完整 PlayMode 结果 77 项通过、0 失败（本地 Artifacts/bonus-area-tests.xml），不是完整视觉或生命周期验收。
+
+保留官方 URP 首次成功导入生成的全局配置、GraphicsSettings 引用、调试输入轴、ShaderGraph 设置及 MonoImporter 元数据。未修改 SDK；主玩法 Prefab 接线、转轴动画、Bonus 转场和小游戏等仍未完成。

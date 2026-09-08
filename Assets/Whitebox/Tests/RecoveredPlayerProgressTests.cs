@@ -9,6 +9,53 @@ public sealed class RecoveredPlayerProgressTests
         Qonrii=new QonriiPoro {MojGping=new List<int>{10},Rgtigk=new List<int>{2},
             Lgtgl=new List<int>{1,2,3},NggpGpin=new List<int>{5,10,20}}
     });
+    [TestCase(0,1,1)]
+    [TestCase(1,2,1)]
+    [TestCase(2,2,0)]
+    [TestCase(5,5,0)]
+    [TestCase(-2,-1,1)]
+    public void BonusAreaOnlySavesAcceptedHitsAndPreservesOtherColumns(int before, int after, int expectedSaves)
+    {
+        var data = new PlayerData {BonusArea=new List<int>{7,0,before,1,2}};
+        var original = data.BonusArea; int saves = 0;
+        var progress = new RecoveredPlayerProgress(Rules(), () => {
+            saves++;
+            CollectionAssert.AreEqual(new[]{7,0,after,1,2}, data.BonusArea);
+        }, data);
+        progress.SetBonusArea(2);
+        Assert.AreEqual(expectedSaves, saves);
+        Assert.AreSame(original, data.BonusArea);
+        Assert.AreEqual(after, data.BonusArea[2]);
+        Assert.IsFalse(progress.IsBonusGame);
+    }
+
+    [TestCase(-1)]
+    [TestCase(5)]
+    public void InvalidBonusColumnFailsWithoutSaving(int reel)
+    {
+        var data = new PlayerData(); int saves = 0;
+        var progress = new RecoveredPlayerProgress(Rules(), () => saves++, data);
+        Assert.Throws<System.ArgumentOutOfRangeException>(() => progress.SetBonusArea(reel));
+        Assert.AreEqual(0, saves);
+        CollectionAssert.AreEqual(new[]{0,0,0,0,0}, data.BonusArea);
+    }
+
+    [Test]
+    public void LastBonusHitFeedsEntryThenResetsProgress()
+    {
+        var data = new PlayerData {BonusArea=new List<int>{2,2,2,2,1}};
+        int saves = 0; var rules = Rules();
+        var progress = new RecoveredPlayerProgress(rules, () => saves++, data);
+        var branches = new RecoveredRewardBranches(rules, progress);
+        Assert.IsFalse(branches.CheckBonusGame());
+        progress.SetBonusArea(4);
+        Assert.AreEqual(1, saves);
+        Assert.IsTrue(branches.CheckBonusGame());
+        Assert.AreEqual(3, saves);
+        Assert.AreEqual(5, data.PlayerTaskDatas[0].id);
+        CollectionAssert.AreEqual(new[]{0,0,0,0,0}, data.BonusArea);
+        Assert.IsFalse(branches.CheckBonusGame());
+    }
     [TestCase(20,10)] [TestCase(-3,0)] [TestCase(4,4)]
     public void SpinEventFollowsSaveAndUsesRawRequest(int requested,int stored)
     {

@@ -89,6 +89,16 @@ namespace DragonLegend.Whitebox
             save();
         }
 
+        // GameData.SetBonusArea 0x236f868: each column stops accepting hits at 2.
+        // Existing values above 2 are retained, negative values increment without clamping.
+        // The original emits no UI event here and does not save on the early return.
+        public void SetBonusArea(int reel)
+        {
+            int value = data.BonusArea[reel];
+            if (value > 1) return;
+            data.BonusArea[reel] = unchecked(value + 1);
+            save();
+        }
         // Data stage of UIMainView.CheckBonusGame (0x23c6d54), before NPC/audio/transition.
         // Predicate 0x23bf8d8 is x > 1. Equality of filtered and total counts means
         // even an empty (but non-null) area triggers, and a previously set flag wins.
