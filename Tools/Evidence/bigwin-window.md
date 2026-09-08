@@ -60,9 +60,8 @@ then matched to script.json. No guessing strings from neighboring methods.
 RecoveredBigWinClaim implements the verified claim/callback state and delegates
 actual animation and flight to a dedicated view boundary. Its SDK calls use the
 existing IAdFacade unchanged. It performs no balance mutation. It is not yet wired
-to Spin: the original UIBigWinView prefab, ef_wintanchuang animation conversion,
-pre-window transfer, show events, exit animation and main-flow continuation remain
-required. Unit tests of this boundary cannot prove the popup visually or functionally
+to Spin: pre-window transfer and main-flow continuation remain required. The
+authored popup and converted animations described below now implement its view boundary. Unit tests of this boundary cannot prove the popup visually or functionally
 complete in the actual game.
 
 Original prefab references: Ef_win 114918264173551851, RewardTxt
@@ -107,24 +106,37 @@ samples (about 16 ms per 1000 samples on this machine). The actual prefab test
 exercises each tier, Button callbacks, advertisement failure/retry, paused count,
 window exit and callback-before-flight ordering. This does not yet connect Spin.
 
-Current source-based screenshots are Artifacts/current-bigwin-window-{big,mega,super}.png.
-Initial inspection found that the plain label can lose glyphs in a full-suite capture
-while an isolated popup run renders all glyphs. CPU text-info reports visible glyphs
-and valid scale/color, with no TMP submeshes. Shared atlas/material state is being
-investigated; do not describe this visual issue or the entire popup as fully verified.
-The pre-window transfer/DownEfWin effect and post-window adjusted-award continuation
-still need to be connected to actual Spin before the Big Win branch is complete.
+## Rendered text verification: previous missing-glyph report corrected
 
-Further diagnostic runs: bigwin-popup-full2-tests.xml and bigwin-popup-font-tests.xml
-both passed 218/218. The latter still reproduces missing leading plain-label glyphs
-in a current Super capture. All three CPU atlas PNG snapshots have identical SHA256
-EED7D06DE18557EAC0F3F36E3EAD954DE88C0F85D21B2B4D2B66B4D452D83290.
-The shared white font material has no keywords and its ClipRect remains
-(-32767,-32767,32767,32767). Visible character flags, UV2 SDF scale (.67) and white
-vertex colors remain valid. No TMP_SubMeshUI is present. The source bundle and
-sharedassets0 Alpha8 atlas payloads are byte-identical (SHA256
-2a4211a1f2d98d05cf095cdaddcac7a1ea1abb78fe40bb0ff887634585b89464), which rules out
-those two source atlas variants differing. The GPU/CanvasRenderer mesh path and
-normal hide/reopen lifecycle remain to investigate; no speculative runtime refresh
-or font/layout change was added. Diagnostic logging was removed after recording
-these observations. This unresolved visual defect is retained explicitly.
+The earlier preview-based report of missing plain-label glyphs was an inspection
+error, not a demonstrated game defect. Current PNGs were inspected at original
+resolution and independently decoded with Python stdlib PNG filtering/zlib logic:
+each big/mega/super file contains exactly 892 white pixels in the leading O region
+(x=350..389, y=1410..1459). The supposedly missing pixels are present in the files.
+Do not alter runtime fonts/layout or add refresh workarounds based on that preview.
+
+GPU readback matched CPU font alpha at every pixel in all tiers. CanvasRenderer
+indices, material clipping state, glyph vertices and UVs were also valid. The
+source bundle and sharedassets0 Alpha8 atlas payloads are byte-identical. These
+checks corroborate the PNG pixel evidence. No runtime presentation change was
+needed for this concern.
+
+RecoveredBigWinPopupTests now verifies more than 20 white pixels within EACH
+non-space plain-label glyph's projected bounds, rather than just the string or
+TMP metadata. The unnecessary post-capture ForceMeshUpdate used only for metadata
+inspection was removed; its removal is not claimed as a runtime bug fix. The test
+now claims, counts, exits and deactivates the popup between tiers, reopening the
+same prefab with the correct next tier and verifying callback-before-flight each
+time. The final tier also checks advertisement failure/retry and scaled pause.
+
+Artifacts/bigwin-reopen-tests.xml passed 218/218, including the actual reopen cycle
+and per-glyph pixel assertions. All three latest current-bigwin-window PNGs were
+checked against those results and decoded independently. This resolves the prior
+inspection concern, but does not prove whole-game visual equivalence or complete
+Big Win integration: pre-window transfer and adjusted-award continuation still
+need to be connected to actual Spin. SDK behavior remains unchanged.
+
+Additional main-flow evidence: 23bf8d0, metadata 05046128 via pointer 0501e4f0,
+is b__117_10 and returns zero. The pre-window Big Win bottom-label count must start
+from zero, unlike the post-window b__5 transfer which reads stored DownWinCount.
+This is still to be connected with the actual Spin branch and DownEfWin presentation.

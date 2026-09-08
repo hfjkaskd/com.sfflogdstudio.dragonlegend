@@ -32,14 +32,15 @@ public sealed class RecoveredBigWinPopupTests
         {
             Time.timeScale=1;Time.captureDeltaTime=.05f;
             var rules=Rules();var progress=new RecoveredPlayerProgress(rules,()=>Assert.Fail("Popup must not credit"),new PlayerData{GreenCount=5000});
-            var ads=new LocalAdFacade();var order=new List<string>();int task=0,calls=0;bool flight=false;
+            var ads=new LocalAdFacade();var order=new List<string>();int task=0,calls=0,expectedCalls=0;bool flight=false;
             popup.PauseMusicRequested+=()=>order.Add("pause");popup.Sound1Requested+=s=>order.Add(s);popup.SoundRequested+=s=>order.Add(s);
             popup.CashOutTaskRefreshRequested+=(a,b)=>{Assert.AreEqual(3,a);Assert.AreEqual(1,b);task++;};
             popup.StopSound1Requested+=()=>order.Add("stop");popup.ResumeMusicRequested+=()=>order.Add("resume");
-            popup.FlyCoinRequested+=amount=>{Assert.AreEqual(40000,amount);Assert.AreEqual(1,calls);flight=true;order.Add("fly");};
+            popup.FlyCoinRequested+=amount=>{Assert.AreEqual(40000,amount);Assert.AreEqual(expectedCalls,calls);flight=true;order.Add("fly");};
             var names=new[]{"big","mega","super"};
             for(int tier=0;tier<3;tier++)
             {
+                expectedCalls=tier+1;flight=false;
                 popup.Show((RecoveredSlotWinType)(tier+1),20000,progress,rules,ads,false,0,_=>{calls++;order.Add("caller");});
                 Assert.AreEqual(Vector3.zero,popup.Content.localScale);
                 Assert.IsFalse(popup.PlainButton.gameObject.activeSelf);Assert.IsFalse(popup.CashOutTip.gameObject.activeSelf);
@@ -54,7 +55,17 @@ public sealed class RecoveredBigWinPopupTests
                 Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
                 RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
                 File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-bigwin-window-"+names[tier]+".png"),capture.EncodeToPNG());
-                popup.AdvertisedText.ForceMeshUpdate();
+                // Check rendered pixels, not just TMP character metadata. Do not mutate
+                // a sibling text mesh solely to inspect already-rendered character metadata.
+                for(int c=0;c<popup.PlainText.textInfo.characterCount;c++) {
+                    var ch=popup.PlainText.textInfo.characterInfo[c];if(char.IsWhiteSpace(ch.character))continue;
+                    var lower=camera.WorldToScreenPoint(popup.PlainText.transform.TransformPoint(ch.vertex_BL.position));
+                    var upper=camera.WorldToScreenPoint(popup.PlainText.transform.TransformPoint(ch.vertex_TR.position));int white=0;
+                    for(int y=(int)lower.y;y<(int)upper.y;y++)for(int x=(int)lower.x;x<(int)upper.x;x++) {
+                        var px=capture.GetPixel(x,y);if(px.r>.9f&&px.g>.9f&&px.b>.9f)white++;
+                    }
+                    Assert.Greater(white,20,"Missing rendered plain-label glyph "+ch.character+" in tier "+tier);
+                }
                 // TMP 3.0.9 GenerateTextMesh overwrites the parsed spriteCount with
                 // m_spriteCount. Check the actual parsed character and mesh instead.
                 var character=popup.AdvertisedText.textInfo.characterInfo[0];
@@ -62,6 +73,12 @@ public sealed class RecoveredBigWinPopupTests
                 Assert.IsTrue(character.isVisible);Assert.AreEqual(0,character.spriteIndex);
                 var mesh=popup.AdvertisedText.textInfo.meshInfo[character.materialReferenceIndex];
                 Assert.GreaterOrEqual(mesh.vertexCount,4);
+                if(tier<2) {
+                    popup.ClaimButton.onClick.Invoke();ads.Complete(AdOutcome.Rewarded);
+                    for(int i=0;i<30&&popup.gameObject.activeSelf;i++)yield return null;
+                    Assert.IsFalse(popup.gameObject.activeSelf);Assert.AreEqual(expectedCalls,calls);
+                    Assert.IsTrue(flight);Assert.AreEqual(5000,progress.GreenCount);
+                }
             }
             Assert.AreEqual(3,task);popup.ClaimButton.onClick.Invoke();Assert.IsTrue(ads.Pending);
             ads.Complete(AdOutcome.Failed);Assert.IsFalse(popup.Claim.IsClicked);Assert.IsFalse(flight);
@@ -72,9 +89,9 @@ public sealed class RecoveredBigWinPopupTests
             Time.timeScale=1;
             for(int i=0;i<30&&popup.gameObject.activeSelf;i++)yield return null;
             Assert.IsFalse(popup.gameObject.activeSelf);Assert.AreEqual("$400.00",popup.RewardText.text);
-            Assert.AreEqual(Vector3.zero,popup.Content.localScale);Assert.IsTrue(flight);Assert.AreEqual(1,calls);
+            Assert.AreEqual(Vector3.zero,popup.Content.localScale);Assert.IsTrue(flight);Assert.AreEqual(3,calls);
             CollectionAssert.AreEqual(new[]{"stop","resume","caller","fly"},order.GetRange(order.Count-4,4));
-            Assert.AreEqual(1,calls);Assert.AreEqual(5000,progress.GreenCount);
+            Assert.AreEqual(3,calls);Assert.AreEqual(5000,progress.GreenCount);
         }
         finally{Time.timeScale=scale;Time.captureDeltaTime=delta;RenderTexture.active=previous;camera.targetTexture=null;Object.Destroy(capture);Object.Destroy(target);Object.Destroy(host);Object.Destroy(cameraHost);}
     }
