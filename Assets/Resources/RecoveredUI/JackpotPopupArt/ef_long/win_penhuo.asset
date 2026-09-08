@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a976c75eaa537be429f9145b6718322d, type: 3}
-  m_Name: win_penhuo
+  m_Name:
   m_EditorClassIdentifier:
   channels:
   - slot: 1

@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7029215327193407182}
+  - component: {fileID: 5434923373923404076}
+  - component: {fileID: 3416999414408890351}
   m_Layer: 0
   m_Name: Npc
   m_TagString: Untagged
@@ -37,6 +39,68 @@ RectTransform:
   m_AnchoredPosition: {x: -0.003418, y: 652}
   m_SizeDelta: {x: 1080, y: 770.28}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5434923373923404076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5713209178375287975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66128ef2544497241b015c4c96534e0a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  dragon: {fileID: 220113978966322216}
+  fire: {fileID: 4809505002937749278}
+  shake: {fileID: 3416999414408890351}
+  idleClip: 0
+  winClip: 1
+  windClip: 2
+  fireClip: 3
+  soundDelay: 0.2
+  shakeDelay: 0.6
+  soundName: dragon
+--- !u!114 &3416999414408890351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5713209178375287975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b8f4ff6cf3bebe4bb055642d2617ad7, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  target: {fileID: 7029215327193407182}
+  duration: 1.5
+  intensity: 30
+  frequency: 30
+  falloff:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5845759474606242720
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +238,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bc12bfd228ed9c48b6d2a9c9a14138c, type: 3}
+--- !u!114 &220113978966322216 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3054543002673376968, guid: 4bc12bfd228ed9c48b6d2a9c9a14138c, type: 3}
+  m_PrefabInstance: {fileID: 2985300315812840160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1559611724bab9346874c5930eb40ff4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!224 &6288185083931763312 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9091067624548950160, guid: 4bc12bfd228ed9c48b6d2a9c9a14138c, type: 3}
@@ -289,3 +364,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9091067624548950160, guid: 4bc12bfd228ed9c48b6d2a9c9a14138c, type: 3}
   m_PrefabInstance: {fileID: 7556233116483969494}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4809505002937749278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3054543002673376968, guid: 4bc12bfd228ed9c48b6d2a9c9a14138c, type: 3}
+  m_PrefabInstance: {fileID: 7556233116483969494}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1559611724bab9346874c5930eb40ff4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:

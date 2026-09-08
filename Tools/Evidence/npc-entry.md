@@ -17,8 +17,8 @@ Native branches:
 
 Callback 23c371c hides FireSpine, returns LongSpine to looping idle, then invokes
 the caller's completion. Callback 23c368c requests a shake of ShakeNode (+0x78),
-using the existing native strength/duration fields (+0x1c8/+0x1cc). Its exact shake
-implementation still needs integration. DelayPlayDragonSound state machine 23d39a8
+using the cached ShakeInitPos x/y fields (+0x1c8/+0x1cc). The native arguments are
+duration 1.5, intensity 30 and frequency 30. DelayPlayDragonSound state machine 23d39a8
 waits scaled .2 seconds, plays sound "dragon", waits another scaled .6 seconds,
 then invokes its optional callback. These waits are independent of NPC completion.
 
@@ -140,3 +140,34 @@ current-npc-idle.png, current-npc-wind.png and current-npc-fire.png were inspect
 at original resolution. All 32 full vertex fixtures pass. Warmed-up animation and
 constraint sampling takes 31.5-39.4 ms per 1000 poses with 0 managed bytes allocated;
 this measurement does not include Canvas mesh rebuild/render costs.
+
+## NPC state controller
+
+RecoveredNpcPresentation now configures the two authored layers for native states
+0/1/2; other values are no-ops. State 0 loops the body idle and hides fire. States
+1 and 2 play body win once alongside fire/wind respectively. Body completion hides
+the effect, restores idle, then calls the supplied continuation. Replacing the body
+animation clears the previous completion callback through RecoveredRegionAnimator.
+
+Every state 1/2 call independently schedules the scaled .2-second dragon sound and
+another .6-second wait. Only state 2 requests the shake after that second wait. A
+subsequent Show(0) does not cancel these jobs: the original DelayPlayDragonSound
+UniTask is fire-and-forget and has no InitNpc cancellation token. Overlapping calls
+preserve their separate delays while only the latest body-animation callback survives.
+Full component disable or explicit Cancel does cancel pending lifetime work, stops
+its shake, and clears effect presentation. Sound is currently exposed through the
+existing-style SoundRequested boundary; actual common audio playback remains pending.
+
+BuildNpc authors the existing RecoveredBoardShake against the NPC's QiPan fragment
+with duration 1.5, intensity/frequency 30 and the recovered falloff. Integration must
+initialize its cached origin at main-view initialization and target the same full
+QiPan used by Wild shakes. The component uses the existing shared shake owner, so a
+new shake supersedes an older shake without an intermediate position reset.
+
+RecoveredNpcPresentationTests checks scaled pause, .2-second sound, .8-second shake,
+position restoration, callback-after-idle, invalid states, interrupted completion,
+surviving delayed work, overlapping calls, disable and explicit cancellation. This
+does not yet connect NPC playback to actual CheckBonusGame or instantiate UIBonusView.
+
+Validation: Artifacts/npc-controller-tests.xml passed 227/227 PlayMode tests.
+The full suite includes current NPC rendering and all source geometry checks.
