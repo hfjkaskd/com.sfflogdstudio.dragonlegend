@@ -38,6 +38,7 @@ namespace DragonLegend.Whitebox
         }
         public void PlayScatterAnim()
         {for(int column=0;column<5;column++)for(int row=0;row<3;row++)if(listed[column,row]!=null)listed[column,row].PlayIdle(true);}
+        public void PlayAllWildStopSound()=>StopSoundRequested?.Invoke();
         private void ClearColumn(int column)
         {
             for(int row=0;row<3;row++){if(active[column,row]!=null)pool.Release(active[column,row]);active[column,row]=listed[column,row]=null;}

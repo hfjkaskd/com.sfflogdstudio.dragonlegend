@@ -122,7 +122,10 @@ namespace DragonLegend.Whitebox
             // Native clears BonusAnims, but ShowSymbolEffect's shown-slot set survives until Clear.
             for(int row=0;row<3;row++)lookup[column,row]=null;
             scatters?.BeginColumn(column);
+            bool allWild=reels.ReelAt(column).SymbolId(0)==7&&reels.ReelAt(column).SymbolId(1)==7&&reels.ReelAt(column).SymbolId(2)==7;
             for(int row=0;row<3;row++) {
+                // Native checks a complete Wild1 column inside every row iteration.
+                if(allWild){scatters?.PlayAllWildStopSound();continue;}
                 if(reels.ReelAt(column).SymbolId(row)==10){scatters?.ShowCell(column,row);continue;}
                 if(reels.ReelAt(column).SymbolId(row)!=9 || active[column,row]!=null)continue;
                 if(!reels.ReelAt(column).TryHideForEffect(row))continue;

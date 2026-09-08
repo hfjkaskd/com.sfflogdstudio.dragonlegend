@@ -63,8 +63,8 @@ Fresh `Artifacts/current-scatter-clips-{0,1}.png` were inspected at original
 
 The actual CheckFreeGame consumer still needs to invoke PlayScatterAnim before
 NPC/ring/start-window/transition. Full Free/BaseEnd continuation, shared audio
-binding and UIManager lifetime remain pending. A separate native PlayStopAnim
-detail also remains: an all-Wild1 column requests scatterShow inside each row
-iteration (three requests); the current pass has not yet reproduced that branch.
+binding and UIManager lifetime remain pending. The all-Wild1 column's three
+scatterShow requests inside the row loop have now also been restored; see
+`free-entry-flow.md` for the follow-up verification.
 These tests establish Scatter geometry and the implemented stop behavior, not
 complete gameplay or visual parity across the full lifecycle. SDKs are unchanged.

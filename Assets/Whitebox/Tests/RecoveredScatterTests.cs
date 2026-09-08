@@ -69,6 +69,9 @@ public sealed class RecoveredScatterTests
             reel.SetOffsetPixels(0);reel.ApplyBaseColumn(new[]{10,10,0});field.CoinStops.ShowColumn(0);
             Assert.AreEqual(2,scatters.CreatedCount);Assert.AreEqual(2,scatters.ActiveCount);
             Assert.IsTrue(scatters.At(0,0)==first||scatters.At(0,1)==first);Assert.AreSame(mesh,first.Rig.CurrentMesh);
+            var wild=field.Reels.ReelAt(1);wild.ApplyBaseColumn(new[]{7,7,7});order.Clear();int priorVibrations=vibrations;
+            field.CoinStops.ShowColumn(1);CollectionAssert.AreEqual(new[]{"scatter","scatter","scatter"},order);
+            Assert.AreEqual(priorVibrations,vibrations);Assert.IsNull(scatters.At(1,0));
             scatters.Unbind();Assert.AreEqual(0,scatters.ActiveCount);
         } finally {Time.timeScale=scale;Time.captureDeltaTime=delta;UnityEngine.Random.state=random;Object.Destroy(root);}
     }
