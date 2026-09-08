@@ -8,6 +8,10 @@ SDK 模拟测试入口：Assets/Whitebox/Scenes/MockFlow.unity。现有 SDK mock
 
 ## 本轮进展
 
+- 新增按 ARM64 指令核对的 SlotGameResult 停轴触发列、连续前缀 Wild 判定与最低正奖励回写规则；保留第零列 sentinel 行为。尚未接入主玩法视图，不代表完整结算已完成。
+- 本轮 Unity 2022.3.62f3 PlayMode 共 18 项测试通过，0 失败（含新增 11 项规则边界测试）。
+- Dragon Legend 主流程以逆向资料 mumu-current 为来源；上层 il2cpp 目录包含另一款 Nut Sort 的导出，不能混用。
+
 - 创建工程和 main 分支，已推送基础版本 304bca8。
 - 新增配置驱动的启动 Prefab、Scene 和 LaunchProfile，事件通过代码绑定。
 - 移植首批配置消费者：初始余额/次数、下注档位解锁、转轴权重、支付倍率、Scatter 索引以及提现阶段参数。
