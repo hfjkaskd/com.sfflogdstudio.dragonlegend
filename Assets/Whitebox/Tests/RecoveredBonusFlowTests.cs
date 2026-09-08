@@ -24,7 +24,7 @@ public sealed class RecoveredBonusFlowTests
             GameEntry entry=null;
             foreach(var root in scene.GetRootGameObjects()){var candidate=root.GetComponentInChildren<GameEntry>();if(candidate!=null)entry=candidate;}
             Assert.IsNotNull(entry);
-            for(int i=0;i<200&&entry.BonusFlow==null;i++)yield return null;
+            { float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.BonusFlow==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
             Assert.IsNotNull(entry.BonusFlow);var flow=entry.BonusFlow;var field=entry.Playfield;
             camera=entry.GetComponent<Canvas>().worldCamera;Assert.IsNotNull(camera);
             target=new RenderTexture(1080,1920,24);capture=new Texture2D(1080,1920,TextureFormat.RGB24,false);

@@ -91,7 +91,7 @@ public sealed class RecoveredSymbolEffectTests
     {
         var root=Object.Instantiate(Resources.Load<GameObject>("Whitebox/GameEntry"));var entry=root.GetComponent<GameEntry>();
         try {
-            for(int i=0;i<200&&entry.Playfield==null;i++)yield return null;
+            { float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.Playfield==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
             var field=entry.Playfield;Assert.IsNotNull(field);var presenter=field.SymbolEffects;var reel=field.Reels.ReelAt(0);
             presenter.Present(0,0,5);var first=presenter.At(0,0);Assert.IsNotNull(first);
             Assert.That(Vector3.Distance(reel.SymbolAt(0).Symbol.transform.position,first.transform.position),Is.LessThan(.0001f));

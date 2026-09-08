@@ -25,7 +25,7 @@ public sealed class RecoveredBigWinIntegrationTests
         var previous=RenderTexture.active;Texture2D capture=null;
         try {
             Time.timeScale=1;Time.captureDeltaTime=.05f;
-            for(int i=0;i<200&&entry.Playfield==null;i++)yield return null;
+            { float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.Playfield==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
             var field=entry.Playfield;entry.PlayerStore.Data.GuideStep=2;
             float balance=entry.PlayerProgress.GreenCount,began=-1;int changes=0,completed=0,flights=0,bursts=0;bool found=false;
             field.SymbolAmountReady+=()=>began=Time.time;

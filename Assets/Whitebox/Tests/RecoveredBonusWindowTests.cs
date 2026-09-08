@@ -35,7 +35,7 @@ public sealed class RecoveredBonusWindowTests
         var capture=new Texture2D(1080,1920,TextureFormat.RGB24,false);
         try {
             Time.timeScale=1;Time.captureDeltaTime=.025f;
-            for(int i=0;i<200&&entry.CashFlight==null;i++)yield return null;
+            { float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.CashFlight==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
             Assert.IsNotNull(entry.CashFlight);
             var prefab=Resources.Load<RecoveredBonusWindow>("RecoveredUI/BonusWindow");Assert.IsNotNull(prefab);
             var window=Object.Instantiate(prefab,host.transform);

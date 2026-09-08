@@ -47,7 +47,7 @@ public sealed class RecoveredScatterTests
         var root=Object.Instantiate(Resources.Load<GameObject>("Whitebox/GameEntry"));var entry=root.GetComponent<GameEntry>();
         try {
             Time.timeScale=1;Time.captureDeltaTime=.05f;
-            for(int i=0;i<200&&entry.Playfield==null;i++)yield return null;
+            { float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.Playfield==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
             var field=entry.Playfield;Assert.IsNotNull(field);var scatters=field.Scatters;Assert.IsNotNull(scatters);
             var reel=field.Reels.ReelAt(0);reel.ApplyBaseColumn(new[]{10,9,10});
             var order=new List<string>();scatters.StopSoundRequested+=()=>order.Add("scatter");field.CoinStops.CoinShowSoundRequested+=()=>order.Add("coin");

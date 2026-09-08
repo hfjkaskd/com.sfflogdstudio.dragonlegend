@@ -25,7 +25,7 @@ public sealed class RecoveredCashFlightTests
             Time.timeScale=1;Time.captureDeltaTime=.025f;
             for(int version=0;version<2;version++) {
                 if(version==1)root.transform.Find("SelectAlternative").GetComponent<Button>().onClick.Invoke();
-                for(int i=0;i<200&&entry.CashFlight==null;i++)yield return null;
+                { float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.CashFlight==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
                 Assert.IsNotNull(entry.CashFlight);Assert.AreEqual(version==1,entry.CurrentProfile.isA);
                 var flight=entry.CashFlight;var player=entry.PlayerProgress;int sounds=0,callbacks=0;
                 flight.SoundRequested+=name=>{Assert.AreEqual("fly",name);sounds++;};

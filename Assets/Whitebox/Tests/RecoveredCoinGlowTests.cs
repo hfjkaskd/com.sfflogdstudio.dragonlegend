@@ -60,7 +60,7 @@ public sealed class RecoveredCoinGlowTests
         var previous = RenderTexture.active; Texture2D capture = null;
         try {
             Time.timeScale = 1; Time.captureDeltaTime = .05f;
-            for (int i = 0; i < 200 && entry.Playfield == null; i++) yield return null;
+            { float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.Playfield==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
             var field = entry.Playfield; Assert.IsNotNull(field); Assert.AreEqual("GOOD LUCK",field.DownWin.Label.text); var board = entry.SpinResult.Board;
             // This fixture inspects the bonus-coin layer after all independent effects
             // finish. Stop the newly connected next stage so its popup does not cover

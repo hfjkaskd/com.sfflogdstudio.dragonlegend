@@ -22,7 +22,7 @@ public sealed class RecoveredFreeBonusFlowTests
             yield return SceneManager.LoadSceneAsync("GameEntry",LoadSceneMode.Additive);scene=SceneManager.GetSceneByName("GameEntry");
             GameEntry entry=null;
             foreach(var root in scene.GetRootGameObjects()){var value=root.GetComponentInChildren<GameEntry>();if(value!=null)entry=value;}
-            Assert.IsNotNull(entry);for(int i=0;i<200&&entry.BonusFlow==null;i++)yield return null;
+            Assert.IsNotNull(entry);{ float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.BonusFlow==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
             var flow=entry.BonusFlow;Assert.IsNotNull(flow);
             var weights=new List<int>();for(int i=0;i<=15;i++)weights.Add(i==15?1000000:0);
             var generationRules=new RecoveredGameplayRules(new GoldenDragonAutoGenConfig{Rrggiomg=new RrggiomgPoro{

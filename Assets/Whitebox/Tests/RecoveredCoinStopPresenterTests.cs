@@ -25,7 +25,7 @@ public sealed class RecoveredCoinStopPresenterTests
         var previous=RenderTexture.active;Texture2D capture=null;
         try {
             Time.timeScale=1;Time.captureDeltaTime=.05f;
-            for(int i=0;i<200&&entry.Playfield==null;i++)yield return null;
+            { float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.Playfield==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
             Assert.IsNotNull(entry.Playfield);var field=entry.Playfield;var presenter=field.CoinStops;
             Assert.IsNotNull(presenter);int sounds=0,vibrations=0;
             presenter.CoinShowSoundRequested+=()=>sounds++;

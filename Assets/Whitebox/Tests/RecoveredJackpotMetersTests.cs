@@ -64,7 +64,7 @@ public sealed class RecoveredJackpotMetersTests
         var previous=RenderTexture.active;Texture2D capture=null;
         try {
             Time.timeScale=1;Time.captureDeltaTime=.05f;
-            for(int i=0;i<200&&entry.Playfield==null;i++)yield return null;
+            { float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.Playfield==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
             var field=entry.Playfield;Assert.IsNotNull(field);var meters=field.JackpotMeters;Assert.IsNotNull(meters);
             var progress=entry.PlayerProgress;var rules=entry.Rules;var fans=rules.GetJackPot();
             Assert.AreEqual(new Vector2(-.0018310547f,-111.380005f),((RectTransform)meters.transform).anchoredPosition);

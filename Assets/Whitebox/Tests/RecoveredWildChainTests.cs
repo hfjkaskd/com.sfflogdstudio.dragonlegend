@@ -43,7 +43,7 @@ public sealed class RecoveredWildChainTests
         var previous=RenderTexture.active;Texture2D capture=null;
         try {
             Time.timeScale=1;Time.captureDeltaTime=.05f;
-            for(int i=0;i<200&&entry.Playfield==null;i++)yield return null;
+            { float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.Playfield==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
             var field=entry.Playfield;Assert.IsNotNull(field);var presenter=field.Wilds;var shake=presenter.Shake;
             Assert.AreEqual("QiPan",shake.Target.name);Assert.AreEqual("Result",presenter.transform.parent.name);
             var result=(RectTransform)presenter.transform.parent;Assert.AreEqual(new Vector2(.003418f,335.14f),result.anchoredPosition);

@@ -28,7 +28,7 @@ public sealed class RecoveredJackpotIntegrationTests
         try
         {
             Time.timeScale=1;Time.captureDeltaTime=.05f;
-            for(int i=0;i<200&&entry.Playfield==null;i++)yield return null;
+            { float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.Playfield==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
             var field=entry.Playfield;Assert.IsNotNull(field);var popup=field.JackpotPopup;Assert.IsNotNull(popup);
             Assert.IsFalse(popup.gameObject.activeSelf);Assert.IsNotNull(entry.AdControls);
             Assert.AreEqual(300,popup.GetComponent<Canvas>().sortingOrder);Assert.AreSame(camera,popup.GetComponent<Canvas>().worldCamera);

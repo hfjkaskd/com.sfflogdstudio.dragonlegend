@@ -28,7 +28,7 @@ public sealed class RecoveredSpinPlayfieldTests
         Texture2D capture=null;var oldTarget=RenderTexture.active;
         try {
             Time.timeScale=1;Time.captureDeltaTime=.05f;
-            for(int i=0;i<200&&entry.Playfield==null;i++)yield return null;
+            { float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.Playfield==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
             Assert.IsTrue(entry.Playfield!=null);yield return null;
             var field=entry.Playfield;Assert.IsFalse(entry.CurrentProfile.isA);
             var bets=new List<int>();entry.Rules.GetBet(false,entry.PlayerProgress.Level,bets);Assert.AreEqual(bets[0],field.Bet);
@@ -108,7 +108,9 @@ public sealed class RecoveredSpinPlayfieldTests
         var root=Object.Instantiate(Resources.Load<GameObject>("Whitebox/GameEntry"));var entry=root.GetComponent<GameEntry>();
         try {
             Time.timeScale=1;Time.captureDeltaTime=.05f;
-            for(int i=0;i<200&&entry.Playfield==null;i++)yield return null;
+            // Resource loading is asynchronous; batch mode can run 200 frames in milliseconds.
+            float loadDeadline=Time.realtimeSinceStartup+5;
+            while(entry.Playfield==null&&Time.realtimeSinceStartup<loadDeadline)yield return null;
             Assert.IsTrue(entry.Playfield!=null);var old=entry.Playfield;int stale=0;
             old.Reels.ReelsStopped+=()=>stale++;
             old.Reels.Begin(0,index=>new[]{index,7,9});yield return null;
@@ -116,7 +118,8 @@ public sealed class RecoveredSpinPlayfieldTests
             foreach(var button in profiles)if(button.name=="SelectAlternative")alternate=button;
             Assert.IsTrue(alternate!=null);alternate.onClick.Invoke();
             Assert.IsFalse(old.Reels.IsRunning);
-            for(int i=0;i<200&&entry.Playfield==null;i++)yield return null;
+            loadDeadline=Time.realtimeSinceStartup+5;
+            while(entry.Playfield==null&&Time.realtimeSinceStartup<loadDeadline)yield return null;
             Assert.IsTrue(entry.CurrentProfile.isA);Assert.IsTrue(entry.Playfield!=null);yield return null;
             Assert.AreEqual(0,entry.Playfield.Bet);
             entry.PlayerProgress.SetSpinCount(0);int more=0;entry.SpinEntry.MoreSpinsRequested+=()=>more++;
