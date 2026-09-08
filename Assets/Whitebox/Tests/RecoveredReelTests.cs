@@ -70,7 +70,13 @@ public sealed class RecoveredReelTests
             Random.InitState(777);
             for(int i=0;i<5;i++) {
                 var reel=Object.Instantiate(prefab);reel.transform.position=new Vector3(-3.8f+i*1.9f,-0.01f,0);
-                reel.Initialize(catalog,RecoveredSlotType.Base);reel.Refresh(344,1,false);reels.Add(reel);
+                reel.Initialize(catalog,RecoveredSlotType.Base);reels.Add(reel);
+                var motion=reel.GetComponent<RecoveredBaseReelMotion>();motion.enabled=false;
+                motion.StartSlotSpin(1000,0.5f);motion.AdvanceMotion(0.25f);motion.AdvanceMotion(0.25f);
+                var column=new[]{i,(i+3)%7,7};motion.RequestStop(()=>column);
+                motion.AdvanceMotion(0.1f);motion.AdvanceMotion(0.1f);motion.AdvanceMotion(motion.ReturnDuration);
+                Assert.IsFalse(motion.IsSpinning);
+                for(int row=0;row<3;row++)Assert.AreEqual(column[row],reel.SymbolId(row));
             }
             yield return null;
             RenderPipeline.SubmitRenderRequest(camera,new UniversalRenderPipeline.SingleCameraRequest{destination=render});

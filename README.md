@@ -175,3 +175,17 @@ Unity 2022.3.62f3 全量 PlayMode 117 项通过、0 失败（Artifacts/symbol-vi
 修正后 Unity 2022.3.62f3 全量 PlayMode 120 项通过、0 失败（Artifacts/reel-cycle-verified-tests.xml）。新增测试核对初始随机、接续槽位、后续随机数、严格边界、大位移单次回移、对象复用及免费循环间隔。已检查本次生成的 Artifacts/current-reels.png，五列按原间距裁切显示，测试同时验证窗口外不可见、每列窗口内有实际符号像素。首次崩溃运行不计为通过。
 
 本轮转轴可接受逐帧 Refresh 驱动，但还未绑定主 Spin 链路；加速、停轴减速/回弹、真实结果落位和奖励表现仍待恢复。完整 1:1 目标继续有效，SDK 未修改。
+
+## 本轮：基础转轴加速、结果落位与回弹
+
+Reel Prefab 接入 RecoveredBaseReelMotion，按 StarSlotSpin 0x2375c54 的 Already Start 重入保护、OutSine 加速、0x2377878 的清晰模式 Refresh 及 0x2377898 的立即 StartCoroutine 行为恢复启动。加速完成当帧执行一次匀速 Refresh，不把这次位移丢到下一帧；匀速换圈使用模糊模式。最大速度可按原 SetMaxSpeed 独立更新。
+
+按 ConstantSpeedRoll 0x2377bf4 的基础分支，遇到停轴标记先 yield 一帧，随后才取得当前列结果。ApplyBaseColumn 将结果行依序写到前三槽，保留其余槽的原 ID，并让七槽全部恢复清晰图，不额外消耗随机数。结果提供者失败时终止该阶段，不在后续帧反复重试，也不伪造完成标记。
+
+StopSlotRoll 0x2375fbc 以 abs(offset)×2/maxSpeed 计算返回时长，使用 OutBack；完成回调 0x2377810 同时清除 isStartSpin 和 isStop。overshoot 参数由原 ELF 0xdbbce8 读取为 1.7015800476074219，保存于 Prefab。数学缓动与 Update 均由 Unity 原生运行，无第三方 Tween 程序集。
+
+新增三个顺序/边界测试，Unity 2022.3.62f3 全量 PlayMode 123 项通过、0 失败（Artifacts/reel-motion-tests.xml）。覆盖半程速度、同帧匀速位移、延迟读取新结果、尾槽保留、无额外随机、回弹越过零点、提前停轴、零距离返回和异常终止。
+
+免费模式停轴、SetStop 外层延迟及完成通知、主 Spin 按钮与结果生成器的完整绑定尚未恢复，本轮不代表完整主流程或视觉生命周期 1:1。SDK 保持原处理方式。
+
+五列 Prefab 运动后渲染专项 1 项通过（Artifacts/reel-landing-render-tests.xml），已查看本次 current-reels.png：五列经过加速、匀速、停轴等待、真实测试列结果写入和回弹后，三行顺序与目标列一致，窗口裁切正确。该画面是当前组件测试预览，尚不是已接通的游戏主场景。

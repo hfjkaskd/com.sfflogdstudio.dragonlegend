@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 400}
   - component: {fileID: 114}
+  - component: {fileID: 115}
   m_Layer: 0
   m_Name: Reel
   m_TagString: Untagged
@@ -168,3 +169,17 @@ SpriteMask:
   m_BackSortingOrder: -1
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
+--- !u!114 &115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1cfeee8fab14ccaae38aeb111945acc, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  reel: {fileID: 114}
+  stopOvershoot: 1.70158

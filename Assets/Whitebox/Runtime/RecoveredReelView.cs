@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DragonLegend.Whitebox
@@ -43,6 +44,21 @@ namespace DragonLegend.Whitebox
             offsetPixels = 0; fakeCycle = 0; fakeInterval = initialFakeInterval;
             var position = rotationNode.localPosition; position.y = 0; rotationNode.localPosition = position;
             for (int i = 0; i < slotCount; i++) { ids[i] = RandomId(); symbols[i].Show(catalog, ids[i], mode); }
+        }
+        public void SetOffsetPixels(float value)
+        {
+            offsetPixels = value;
+            var position = rotationNode.localPosition;
+            position.y = value * unitsPerPixel; rotationNode.localPosition = position;
+        }
+        // ConstantSpeedRoll 0x2377f0c..0x23780c8: replace the supplied result rows,
+        // leave the other slot IDs intact, and make all seven sprites sharp.
+        public void ApplyBaseColumn(IReadOnlyList<int> column)
+        {
+            for (int i = 0; i < slotCount; i++) {
+                if (i < column.Count) ids[i] = catalog.Find(column[i]).id;
+                symbols[i].Show(catalog, ids[i], RecoveredSlotType.Base);
+            }
         }
         private int RandomId() => catalog.ModeId(mode, UnityEngine.Random.Range(0, catalog.ModeCount(mode)));
         public void Refresh(float speedPixelsPerSecond, float deltaTime, bool blur)
