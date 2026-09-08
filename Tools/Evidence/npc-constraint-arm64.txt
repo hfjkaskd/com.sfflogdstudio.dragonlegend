@@ -140,7 +140,7 @@ RVA 0x3fb4cd0 first 16 bytes ee0f16fced33016deb2b026de923036d
 03fb4eec  ldp d11, d10, [sp, #0x20]
 03fb4ef0  ldp d13, d12, [sp, #0x10]
 03fb4ef4  ldr d14, [sp], #0xa0
-03fb4ef8  ret 
+03fb4ef8  ret
 03fb4efc  bl #0x22b014c
 03fb4f00  bl #0x22b0154
 
@@ -475,6 +475,6 @@ RVA 0x3fb538c first 16 bytes ff8304d1ef3b086ded33096deb2b0a6d
 03fb58a8  ldp d13, d12, [sp, #0x90]
 03fb58ac  ldp d15, d14, [sp, #0x80]
 03fb58b0  add sp, sp, #0x120
-03fb58b4  ret 
+03fb58b4  ret
 03fb58b8  bl #0x22b014c
 03fb58bc  bl #0x22b0154
