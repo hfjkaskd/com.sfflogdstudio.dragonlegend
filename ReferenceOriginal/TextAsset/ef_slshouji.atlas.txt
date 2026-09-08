@@ -1,0 +1,15 @@
+ef_slshouji.png
+size:202,260
+filter:Linear,Linear
+pma:true
+scale:0.8
+caihong
+bounds:111,2,107,89
+offsets:9,17,123,123
+rotate:90
+qqq_00000
+bounds:2,2,107,107
+offsets:49,49,205,205
+quan
+bounds:2,111,147,147
+offsets:29,29,205,205

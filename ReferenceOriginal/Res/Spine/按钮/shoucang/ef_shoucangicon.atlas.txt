@@ -1,0 +1,16 @@
+ef_shoucangicon.png
+size:242,268
+filter:Linear,Linear
+pma:true
+scale:0.8
+db
+bounds:2,2,130,130
+digl0
+bounds:164,191,75,75
+offsets:15,15,105,105
+ybgl0
+bounds:134,10,122,106
+rotate:90
+yuanbao
+bounds:2,134,160,132
+offsets:5,0,165,132

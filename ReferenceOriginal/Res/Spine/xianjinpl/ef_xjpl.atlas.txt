@@ -1,0 +1,8 @@
+ef_xjpl.png
+size:122,70
+filter:Linear,Linear
+pma:true
+scale:0.9
+cashi
+bounds:2,2,118,66
+offsets:0,0,119,66

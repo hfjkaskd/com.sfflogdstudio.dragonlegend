@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f56315d7dcebc4c4a63fc2745da7807, type: 3}
+  m_Name: mw_wild_iocn
+  m_EditorClassIdentifier:
+  hashCode: 1843674983
+  material: {fileID: 2100000, guid: c6ad59902a6eece4ea9f00270ee64478, type: 2}
+  materialHashCode: 0
+  m_Version: 1.1.0
+  m_FaceInfo:
+    m_FaceIndex: 0
+    m_FamilyName:
+    m_StyleName:
+    m_PointSize: 0
+    m_Scale: 0
+    m_UnitsPerEM: 0
+    m_LineHeight: 0
+    m_AscentLine: 0
+    m_CapLine: 0
+    m_MeanLine: 0
+    m_Baseline: 0
+    m_DescentLine: 0
+    m_SuperscriptOffset: 0
+    m_SuperscriptSize: 0
+    m_SubscriptOffset: 0
+    m_SubscriptSize: 0
+    m_UnderlineOffset: 0
+    m_UnderlineThickness: 0
+    m_StrikethroughOffset: 0
+    m_StrikethroughThickness: 0
+    m_TabWidth: 0
+  spriteSheet: {fileID: 2800000, guid: 0f13ee7f85715b1418210e6a4553f0b3, type: 3}
+  m_SpriteCharacterTable:
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 0
+    m_Scale: 1
+    m_Name: mw_wild_iocn
+    m_HashCode: 1843674983
+  m_SpriteGlyphTable:
+  - m_Index: 0
+    m_Metrics:
+      m_Width: 76
+      m_Height: 69
+      m_HorizontalBearingX: 14.4
+      m_HorizontalBearingY: 54
+      m_HorizontalAdvance: 96
+    m_GlyphRect:
+      m_X: 0
+      m_Y: 0
+      m_Width: 76
+      m_Height: 69
+    m_Scale: 1.5
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: 21300000, guid: 3780219946f6e4f44a3a508da563a992, type: 2}
+  spriteInfoList: []
+  fallbackSpriteAssets: []

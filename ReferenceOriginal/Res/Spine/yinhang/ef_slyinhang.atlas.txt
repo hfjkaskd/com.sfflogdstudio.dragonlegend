@@ -1,0 +1,9 @@
+ef_slyinhang.png
+size:332,171
+filter:Linear,Linear
+pma:true
+yh
+bounds:2,2,167,192
+rotate:90
+yhgl0
+bounds:196,23,134,146

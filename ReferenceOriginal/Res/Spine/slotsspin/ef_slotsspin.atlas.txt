@@ -1,0 +1,12 @@
+ef_slotsspin.png
+size:758,729
+filter:Linear,Linear
+pma:true
+scale:0.8
+jitaigl0
+bounds:2,2,402,257
+offsets:28,29,458,314
+lagan
+bounds:406,77,138,182
+sltos_bg01
+bounds:2,261,754,466

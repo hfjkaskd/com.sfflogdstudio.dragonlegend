@@ -1,0 +1,15 @@
+ef_qizijinli.png
+size:342,312
+filter:Linear,Linear
+pma:true
+gjyu
+bounds:176,7,150,137
+gjyugl0
+bounds:2,2,125,119
+gjyukk
+bounds:2,123,187,172
+offsets:1,1,189,174
+rotate:90
+glow0
+bounds:176,146,164,164
+offsets:18,18,200,200

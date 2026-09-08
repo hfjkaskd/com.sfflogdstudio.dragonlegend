@@ -1,0 +1,15 @@
+ef_qizibixi.png
+size:342,318
+filter:Linear,Linear
+pma:true
+gjbixi
+bounds:176,2,160,148
+gjbixigl0
+bounds:2,3,130,124
+gjbixikk
+bounds:2,129,187,172
+offsets:1,1,189,174
+rotate:90
+glow0
+bounds:176,152,164,164
+offsets:18,18,200,200

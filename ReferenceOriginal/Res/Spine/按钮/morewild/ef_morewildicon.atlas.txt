@@ -1,0 +1,17 @@
+ef_morewildicon.png
+size:492,144
+filter:Linear,Linear
+pma:true
+scale:0.8
+db
+bounds:162,12,130,130
+digl0
+bounds:415,67,75,75
+offsets:15,15,105,105
+long
+bounds:2,2,140,158
+offsets:10,0,163,158
+rotate:90
+longgl0
+bounds:294,20,122,119
+rotate:90

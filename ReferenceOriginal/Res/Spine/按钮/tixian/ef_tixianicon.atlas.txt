@@ -1,0 +1,17 @@
+ef_tixianicon.png
+size:211,234
+filter:Linear,Linear
+pma:true
+scale:0.8
+cash
+bounds:2,2,96,98
+offsets:1,1,98,99
+db
+bounds:2,102,130,130
+digl0
+bounds:134,157,75,75
+offsets:15,15,105,105
+paypal
+bounds:100,4,96,98
+offsets:1,1,98,99
+rotate:90

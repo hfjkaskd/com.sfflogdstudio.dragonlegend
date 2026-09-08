@@ -1,0 +1,14 @@
+{
+  "etag": "W/\"4e554a1f9dca07f9\"",
+  "timestamp": 1788821060657,
+  "matchedRuleNames": [
+    "cp_default_B",
+    "cp_default_1_B",
+    "cp_test_default",
+    "iaa_v2_config_2"
+  ],
+  "source": "C:\\Projects\\Nut Sort Relax\\exports\\com.sfflogdstudio.dragonlegend-20260907\\private\\user-0\\shared_prefs\\publish_sdk_storage.xml",
+  "source_sha256": "2fe566ad70f9f518027ca0e0195b8b98c6edd2913d8a6d888b6854ae83280527",
+  "origin": "device persisted remote response cache; not a fresh network capture",
+  "timestamp_utc": "2026-09-07T22:44:20.657000+00:00"
+}

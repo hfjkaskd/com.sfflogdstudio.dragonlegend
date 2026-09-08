@@ -1,0 +1,17 @@
+ef_sluixia.png
+size:961,291
+filter:Linear,Linear
+pma:true
+scale:0.8
+lizi
+bounds:868,121,79,79
+offsets:12,11,102,102
+uixia
+bounds:2,64,864,225
+offsets:0,0,864,226
+uixiagl0
+bounds:2,2,442,60
+offsets:23,74,488,160
+xx
+bounds:868,202,91,87
+offsets:6,11,102,102

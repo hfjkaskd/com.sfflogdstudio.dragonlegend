@@ -1,0 +1,17 @@
+ef_starttc.png
+size:1754,591
+filter:Linear,Linear
+pma:true
+scale:0.7
+cc_00000
+bounds:1342,213,376,377
+rotate:90
+long
+bounds:2,2,668,587
+longgl0
+bounds:672,2,668,587
+longyan0
+bounds:1616,75,136,136
+offsets:475,171,668,587
+yun
+bounds:1342,104,272,107

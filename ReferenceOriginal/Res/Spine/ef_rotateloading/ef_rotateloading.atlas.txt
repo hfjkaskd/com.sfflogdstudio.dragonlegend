@@ -1,0 +1,9 @@
+ef_rotateloading.png
+size:224,202
+filter:Linear,Linear
+pma:true
+loading
+bounds:2,2,198,198
+point
+bounds:202,163,37,20
+rotate:90

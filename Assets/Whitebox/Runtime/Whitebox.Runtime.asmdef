@@ -1,0 +1,6 @@
+{
+  "name": "Whitebox.Runtime",
+  "rootNamespace": "DragonLegend.Whitebox",
+  "references": ["Unity.ugui"],
+  "autoReferenced": true
+}

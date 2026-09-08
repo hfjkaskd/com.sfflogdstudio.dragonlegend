@@ -1,0 +1,5 @@
+{
+  "name": "Whitebox.PlayModeTests",
+  "references": ["Whitebox.Runtime", "Unity.ugui"],
+  "optionalUnityReferences": ["TestAssemblies"]
+}
