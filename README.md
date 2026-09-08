@@ -151,3 +151,15 @@ BalancePanel 接入 GameEntry 配置及存档加载完成阶段，实例化已�
 恢复余额变化 0x23b9480 的 0.5 秒滚动，打断时从事件旧余额重新开始；原 DOTween .cctor 0x241a014 的 0x241a0e4/0x241a0fc 将 defaultEaseType 写为 6（OutQuad），由 Prefab 中 Unity AnimationCurve 等价表达。经验变化 0x23b92ac 使用 0.5 秒线性填充，不取消前序填充；完成回调 0x23b9694 仅在原始比值恰为 1 时更新等级、清空进度并读取当时等级的新需求。使用原生 Update 和复用动画记录集合，不引入第三方 Tween 程序集。
 
 新增 8 项格式/动画/重绑定用例，完整 PlayMode 114 项通过（Artifacts/balance-binding-tests.xml）。本轮最新 current-balance-panel.png 使用实际绑定数据生成并已查看，确认金额、8/10 文本和 80% 填充显示。真实入口与版本切换的额外绑定断言专项 1 项通过（Artifacts/balance-entry-tests.xml），确认当前数据格式、旧面板释放及单一新面板。完整主界面、顶部飞币重挂父节点、转轴、奖励转场和完整生命周期仍未完成，SDK 未改动。
+
+## 本轮：核心转轴符号资源与原生显示组件
+
+从原 Main.unity 的 GManager.SymbolInfos 恢复 11 个符号的原顺序、ID、清晰/模糊 Sprite 路径和特效来源路径。按 InitSymbols 0x2370fa4，基础池移除索引 8，得到 0..7、9、10；免费池保留前七项 0..6。ScriptableObject 保存路径，Sprite 按需加载并缓存；特效路径仅保留来源，未将尚未转换的 Spine 资产伪装为已实现特效。
+
+恢复 22 个清晰/模糊 Sprite 及一个遮罩 Sprite，保留原 GUID、网格、UV、裁切与 PPU，所有纹理 GUID 均对应工程现有 PNG。单独放在 RecoveredSymbols/Sprites，避免按 Resources 路径加载时与同名 PNG 混淆。
+
+SymbolItem 为普通 Transform + SpriteRenderer Prefab，使用官方 URP Sprite-Unlit-Default 材质，遵循项目禁止 UI 承载核心玩法对象的规范。原版 SymbolItem 的底部 pivot 和子图居中对应 100 像素/单位下的子节点 y=0.86。恢复 SetImg 0x2374a60 的基础清晰/模糊切换（模糊缩放 2 倍）、基础 hide 遮罩及免费模式仅 blur 控制遮罩、主图始终清晰的规则。原实现使用 Image，此处按工程规范改由 SpriteRenderer 承载，并非照搬原组件类型。
+
+Unity 2022.3.62f3 全量 PlayMode 117 项通过、0 失败（Artifacts/symbol-view-tests.xml）；新增用例检查符号顺序、资源、PPU、显示切换、无 UI 组件以及每个渲染区域可见。已查看当前工程生成的 Artifacts/current-symbols.png，22 种清晰/模糊呈现均正常。
+
+原 RollReel 构造方法 0x23775c4 确认每列七个槽位、间距 172；Init 0x23747c4 为逐槽均匀随机填充，尚待接入七槽复用、裁切、滚动、停轴回弹和结算结果落位。本轮符号 Prefab 未接到实际转轴控制器，完整主流程及视觉 1:1 仍未完成。SDK 未改动。
