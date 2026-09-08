@@ -5,6 +5,11 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredCoinStopEffect : MonoBehaviour
     {
         [SerializeField] private RecoveredCoinIdle appearance;
+        [SerializeField] private RecoveredCoinReveal reveal;
+        [SerializeField] private RecoveredCoinGlow glow;
+        public RecoveredCoinReveal Reveal => reveal;
+        public RecoveredCoinGlow Glow => glow;
+        public event System.Action RevealSoundRequested;
         [SerializeField] private float scaleDuration;
         [SerializeField] private float peakScale;
         [SerializeField] private float restingScale;
@@ -12,8 +17,20 @@ namespace DragonLegend.Whitebox
         private float elapsed;
         private int phase;
         public bool IsScaling => phase != 0;
+        private void Awake() { reveal.Revealed += RevealCompleted; }
+        private void RevealCompleted() => glow.Play();
+        public void PlayRewardReveal()
+        {
+            glow.gameObject.SetActive(false);
+            RevealSoundRequested?.Invoke();
+            appearance.gameObject.SetActive(false);
+            reveal.gameObject.SetActive(true);
+            reveal.PlayReveal();
+        }
         public void PlayShow()
         {
+            reveal.gameObject.SetActive(false); glow.gameObject.SetActive(false);
+            appearance.gameObject.SetActive(true);
             appearance.PlayAppearance();
             from=transform.localScale;elapsed=0;phase=1;
         }
@@ -29,5 +46,6 @@ namespace DragonLegend.Whitebox
             else phase=0;
         }
         private void OnDisable(){phase=0;}
+        private void OnDestroy() { if(reveal!=null)reveal.Revealed-=RevealCompleted; }
     }
 }

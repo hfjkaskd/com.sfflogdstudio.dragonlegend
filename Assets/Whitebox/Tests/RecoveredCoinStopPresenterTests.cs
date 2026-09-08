@@ -45,7 +45,7 @@ public sealed class RecoveredCoinStopPresenterTests
                 Assert.Less(Vector3.Distance(symbol.transform.position,effect.transform.position),.00001f);
                 Assert.IsFalse(effect.IsScaling);Assert.AreEqual(.7f,effect.transform.localScale.x,.0001f);
                 Assert.IsEmpty(effect.GetComponentsInChildren<Graphic>(true));
-                Assert.AreEqual(5,effect.GetComponentsInChildren<SpriteRenderer>(true).Length);
+                Assert.AreEqual(5,effect.GetComponentsInChildren<SpriteRenderer>().Length);
             }
             Canvas.ForceUpdateCanvases();
             RenderPipeline.SubmitRenderRequest(camera,new UniversalRenderPipeline.SingleCameraRequest{destination=target});

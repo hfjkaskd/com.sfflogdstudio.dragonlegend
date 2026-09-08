@@ -17,12 +17,26 @@ namespace DragonLegend.Whitebox
         public int ActiveCount => pool==null?0:pool.CountActive;
         public event Action<int> VibrationRequested;
         public event Action CoinShowSoundRequested;
+        public event Action CoinRevealSoundRequested;
+        private RecoveredCoinStopEffect CreateEffect()
+        {
+            var effect=Instantiate(effectPrefab,transform,false);
+            effect.RevealSoundRequested+=RevealSound;
+            return effect;
+        }
+        private void RevealSound()=>CoinRevealSoundRequested?.Invoke();
+        public void PlayRewardReveal(int column,int row)
+        {
+            // RollReel.PlayBonusAnim only invokes its action for an existing row lookup.
+            var effect=lookup[column,row];
+            if(effect!=null)effect.PlayRewardReveal();
+        }
         public RecoveredCoinStopEffect CoinAt(int column,int row)=>lookup[column,row];
         public void Bind(RecoveredBaseReelController controller)
         {
             Unbind();reels=controller;
             if(pool==null)pool=new ObjectPool<RecoveredCoinStopEffect>(
-                ()=>Instantiate(effectPrefab,transform,false),
+                CreateEffect,
                 effect=>{effect.transform.localScale=effectPrefab.transform.localScale;effect.gameObject.SetActive(true);},
                 effect=>effect.gameObject.SetActive(false),effect=>{if(effect!=null)Destroy(effect.gameObject);},true,3,int.MaxValue);
             for(int i=0;i<5;i++) {

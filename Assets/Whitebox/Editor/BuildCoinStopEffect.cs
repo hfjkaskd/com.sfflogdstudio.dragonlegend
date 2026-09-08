@@ -30,6 +30,12 @@ public static class BuildCoinStopEffect
             data.FindProperty("setup").objectReferenceValue=setup;data.ApplyModifiedPropertiesWithoutUndo();
             data=new SerializedObject(root.GetComponent<RecoveredCoinStopEffect>());
             data.FindProperty("appearance").objectReferenceValue=appearance;
+            var reveal=((GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredSymbols/CoinReveal.prefab"),root.transform)).GetComponent<RecoveredCoinReveal>();
+            var glow=((GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredSymbols/CoinGlow.prefab"),root.transform)).GetComponent<RecoveredCoinGlow>();
+            reveal.gameObject.SetActive(false);glow.gameObject.SetActive(false);
+            glow.GetComponent<SortingGroup>().sortingOrder=1;
+            data.FindProperty("reveal").objectReferenceValue=reveal;
+            data.FindProperty("glow").objectReferenceValue=glow;
             data.FindProperty("scaleDuration").floatValue=.2f;data.FindProperty("peakScale").floatValue=1;
             data.FindProperty("restingScale").floatValue=.7f;data.ApplyModifiedPropertiesWithoutUndo();
             PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredSymbols/CoinStopEffect.prefab");

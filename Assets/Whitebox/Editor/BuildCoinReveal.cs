@@ -7,7 +7,6 @@ using UnityEngine.Rendering;
 using Object = UnityEngine.Object;
 using Data = BuildCoinAppearance.Data;
 using Clip = BuildCoinAppearance.Clip;
-using Timeline = BuildCoinAppearance.Timeline;
 
 // Original unweighted coin_c deform frames become native blend shapes. No runtime JSON parser.
 public static class BuildCoinReveal
@@ -17,20 +16,30 @@ public static class BuildCoinReveal
         public int slot, kind; public string key; public bool weighted;
         public float[] vertices, uvs; public int[] triangles;
     }
-    private const string Folder = "Assets/Resources/RecoveredSymbols/CoinReveal";
     private static readonly string[] Channels = { "r", "g", "b", "a" };
 
     public static void Save()
     {
+        Build(false);
+    }
+    public static void SaveGlowAndConnect()
+    {
+        Build(true);
+        BuildCoinStopEffect.Save();
+    }
+    private static void Build(bool glow)
+    {
+        string Folder = "Assets/Resources/RecoveredSymbols/" + (glow ? "CoinGlow" : "CoinReveal");
         Directory.CreateDirectory(Folder); AssetDatabase.Refresh();
         string json = File.ReadAllText("Assets/Whitebox/Editor/RecoveredCoinEffect.json");
         var data = JsonUtility.FromJson<Data>(json);
         var meshData = JsonUtility.FromJson<MeshData>(json);
-        var reveal = Array.Find(data.animations, c => c.name == "zcjb_b_chun");
+        var reveal = Array.Find(data.animations, c => c.name == (glow ? "glow" : "zcjb_b_chun"));
         var idle = Array.Find(data.animations, c => c.name == "idle_chun");
         var texture = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Resources/RecoveredArt/Res/Spine/棋子/jinbi/ef_jinbi.png");
-        var normal = Material("Normal", texture, 10); var additive = Material("Additive", texture, 1);
-        var root = Node("CoinReveal", null); root.AddComponent<SortingGroup>();
+        var normal = Material(Folder, "Normal", texture, 10); var additive = Material(Folder, "Additive", texture, 1);
+        var root = Node(glow ? "CoinGlow" : "CoinReveal", null); root.AddComponent<SortingGroup>();
+        int[] visible = glow ? new[] { 27, 28, 29, 30, 42, 43, 44, 45 } : new[] { 1, 23, 24, 25, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41 };
         try {
             var bones = new Transform[data.bones.Length];
             for (int i = 0; i < bones.Length; i++) {
@@ -42,22 +51,23 @@ public static class BuildCoinReveal
             }
             var renderers = new Renderer[data.slots.Length];
             foreach (var a in data.attachments) {
-                if (a.slot != 1 && a.slot != 23 && a.slot != 24 && a.slot != 25 && (a.slot < 32 || a.slot > 41)) continue;
+                if (Array.IndexOf(visible, a.slot) < 0) continue;
                 if (renderers[a.slot] != null) throw new InvalidOperationException("Multiple attachments need switching.");
                 var slot = data.slots[a.slot]; var region = Array.Find(data.regions, r => r.name == a.name);
                 var node = Node("Slot" + a.slot, bones[slot.bone]);
-                if (a.slot == 1) {
-                    var m = Array.Find(meshData.attachments, x => x.slot == 1);
-                    if (m.kind != 2 || m.weighted || region.rotate != 0 || region.offsets[0] != 0 || region.offsets[1] != 0)
+                if (a.slot == 1 || a.slot == 45) {
+                    var m = Array.Find(meshData.attachments, x => x.slot == a.slot);
+                    if (m.kind != 2 || m.weighted || region.rotate != 0)
                         throw new InvalidOperationException("Unsupported coin mesh format.");
-                    var deform = Array.Find(reveal.timelines, t => t.domain == "deform" && t.index == 1);
-                    var mesh = new Mesh { name = "coin_c" };
+                    var deform = Array.Find(reveal.timelines, t => t.domain == "deform" && t.index == a.slot);
+                    var mesh = new Mesh { name = a.name };
                     var vertices = new Vector3[m.vertices.Length / 2]; var uv = new Vector2[vertices.Length];
                     var colors = new Color[vertices.Length];
                     for (int i = 0; i < vertices.Length; i++) {
                         vertices[i] = new Vector3(m.vertices[i * 2], m.vertices[i * 2 + 1], 0) * .01f;
-                        uv[i] = new Vector2((region.bounds[0] + m.uvs[i * 2] * region.bounds[2]) / texture.width,
-                            1 - (region.bounds[1] + m.uvs[i * 2 + 1] * region.bounds[3]) / texture.height);
+                        // Mesh UVs cover the original untrimmed region, unlike a Sprite rectangle.
+                        uv[i] = new Vector2((region.bounds[0] - region.offsets[0] + m.uvs[i * 2] * region.offsets[2]) / texture.width,
+                            1 - (region.bounds[1] - (region.offsets[3] - region.offsets[1] - region.bounds[3]) + m.uvs[i * 2 + 1] * region.offsets[3]) / texture.height);
                         colors[i] = Color.white;
                     }
                     mesh.vertices = vertices; mesh.uv = uv; mesh.colors = colors; mesh.triangles = m.triangles;
@@ -69,9 +79,15 @@ public static class BuildCoinReveal
                             delta[i] = new Vector3(values[i * 2], values[i * 2 + 1], 0) * .01f - vertices[i];
                         mesh.AddBlendShapeFrame("Frame" + f, 100, delta, null, null);
                     }
-                    mesh.RecalculateBounds(); mesh = SaveAsset(mesh, Folder + "/coin_c.asset");
+                    mesh.RecalculateBounds(); mesh = SaveAsset(mesh, Folder + "/" + a.name + ".asset");
                     var renderer = node.AddComponent<SkinnedMeshRenderer>(); renderer.sharedMesh = mesh;
-                    renderer.sharedMaterial = normal; renderer.updateWhenOffscreen = true;
+                    renderer.sharedMaterial = slot.blend == 1 ? additive : normal; renderer.updateWhenOffscreen = true;
+                    if (glow) {
+                        var tint = new SerializedObject(node.AddComponent<RecoveredMeshTint>());
+                        tint.FindProperty("target").objectReferenceValue = renderer;
+                        tint.FindProperty("color").colorValue = ColorOf(slot.color) * ColorOf(a.color);
+                        tint.ApplyModifiedPropertiesWithoutUndo();
+                    }
                     renderers[a.slot] = renderer;
                 } else {
                     var b = region.bounds; var o = region.offsets; var v = a.values; bool rotated = region.rotate == 90;
@@ -107,18 +123,21 @@ public static class BuildCoinReveal
                 Constant(setup, path, r.GetType(), "m_Enabled", 0);
                 if (r is SpriteRenderer sr) for (int c = 0; c < 4; c++) Constant(setup, path, typeof(SpriteRenderer), "m_Color." + Channels[c], sr.color[c]);
                 if (r is SkinnedMeshRenderer sk) for (int f = 0; f < sk.sharedMesh.blendShapeCount; f++) Constant(setup, path, typeof(SkinnedMeshRenderer), "blendShape.Frame" + f, 0);
+                var tint = r.GetComponent<RecoveredMeshTint>();
+                if (tint != null) for (int c = 0; c < 4; c++) Constant(setup, path, typeof(RecoveredMeshTint), "color." + Channels[c], tint.Color[c]);
             }
             setup = SaveAsset(setup, Folder + "/setup.anim");
             var player = root.AddComponent<Animation>(); player.playAutomatically = false;
-            foreach (var source in new[] { reveal, idle }) {
+            foreach (var source in glow ? new[] { reveal } : new[] { reveal, idle }) {
                 var clip = Convert(source, data, bones, renderers, root.transform);
                 clip = SaveAsset(clip, Folder + "/" + source.name + ".anim"); player.AddClip(clip, source.name);
             }
-            var config = new SerializedObject(root.AddComponent<RecoveredCoinReveal>());
+            var config = new SerializedObject(glow ? (Component)root.AddComponent<RecoveredCoinGlow>() : root.AddComponent<RecoveredCoinReveal>());
             config.FindProperty("animationPlayer").objectReferenceValue = player;
-            config.FindProperty("setup").objectReferenceValue = setup; config.FindProperty("revealSpeed").floatValue = 3;
+            config.FindProperty("setup").objectReferenceValue = setup;
+            if (!glow) config.FindProperty("revealSpeed").floatValue = 3;
             config.ApplyModifiedPropertiesWithoutUndo();
-            PrefabUtility.SaveAsPrefabAsset(root, "Assets/Resources/RecoveredSymbols/CoinReveal.prefab"); AssetDatabase.SaveAssets();
+            PrefabUtility.SaveAsPrefabAsset(root, Folder + ".prefab"); AssetDatabase.SaveAssets();
         } finally { Object.DestroyImmediate(root); }
     }
 
@@ -138,6 +157,7 @@ public static class BuildCoinReveal
                         AnimationUtility.SetKeyLeftTangentMode(curve, k, AnimationUtility.TangentMode.Linear);
                         AnimationUtility.SetKeyRightTangentMode(curve, k, AnimationUtility.TangentMode.Linear);
                     }
+                    if (keys[0].time > 0) curve.AddKey(new Keyframe(0, 0, float.PositiveInfinity, float.PositiveInfinity));
                     clip.SetCurve(path, typeof(SkinnedMeshRenderer), "blendShape.Frame" + f, curve);
                 }
             } else if (slot && t.kind == 0) {
@@ -153,16 +173,17 @@ public static class BuildCoinReveal
                 clip.SetCurve(path, renderers[t.index].GetType(), "m_Enabled", curve);
             } else {
                 for (int c = 0; c < t.frames[0].values.Length; c++) {
-                    string property = slot ? "m_Color." + Channels[c] : t.kind == 0 ? "localEulerAnglesRaw.z" : (t.kind == 4 ? "m_LocalScale." : "m_LocalPosition.") + (c == 0 ? "x" : "y");
+                    bool meshTint = slot && renderers[t.index] is SkinnedMeshRenderer;
+                    string property = slot ? (meshTint ? "color." : "m_Color.") + Channels[c] : t.kind == 0 ? "localEulerAnglesRaw.z" : (t.kind == 4 ? "m_LocalScale." : "m_LocalPosition.") + (c == 0 ? "x" : "y");
                     float offset = slot || t.kind == 4 ? 0 : data.bones[t.index].values[t.kind == 0 ? 0 : c + 1];
                     float factor = slot ? Array.Find(data.attachments, a => a.slot == t.index).color[c] : t.kind == 4 ? data.bones[t.index].values[c + 3] : 1;
                     if (!slot && t.kind == 1) { offset *= .01f; factor *= .01f; }
                     var curve = BuildCoinAppearance.Curve(t.frames, c, offset, factor);
                     if (t.frames[0].time > 0) {
-                        float baseline = slot ? ((SpriteRenderer)renderers[t.index]).color[c] : t.kind == 4 ? data.bones[t.index].values[c + 3] : offset;
+                        float baseline = slot ? (meshTint ? renderers[t.index].GetComponent<RecoveredMeshTint>().Color[c] : ((SpriteRenderer)renderers[t.index]).color[c]) : t.kind == 4 ? data.bones[t.index].values[c + 3] : offset;
                         curve.AddKey(new Keyframe(0, baseline, float.PositiveInfinity, float.PositiveInfinity));
                     }
-                    clip.SetCurve(path, slot ? typeof(SpriteRenderer) : typeof(Transform), property, curve);
+                    clip.SetCurve(path, slot ? (meshTint ? typeof(RecoveredMeshTint) : typeof(SpriteRenderer)) : typeof(Transform), property, curve);
                 }
             }
         }
@@ -172,7 +193,7 @@ public static class BuildCoinReveal
     private static GameObject Node(string name, Transform parent) { var go = new GameObject(name); go.layer = 5; go.transform.SetParent(parent, false); return go; }
     private static Color ColorOf(float[] c) => new Color(c[0], c[1], c[2], c[3]);
     private static void Constant(AnimationClip clip, string path, Type type, string property, float value) => clip.SetCurve(path, type, property, AnimationCurve.Constant(0, 0, value));
-    private static Material Material(string name, Texture texture, int blend) {
+    private static Material Material(string Folder, string name, Texture texture, int blend) {
         var m = new Material(Shader.Find("DragonLegend/Recovered PMA Sprite")) { name = name, mainTexture = texture };
         m.SetFloat("_DestinationBlend", blend); return SaveAsset(m, Folder + "/" + name + ".mat");
     }

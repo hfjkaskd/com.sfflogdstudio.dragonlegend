@@ -319,3 +319,15 @@ CoinStopPresenter 已通过 Prefab 接入实际 SpinPlayfield，订阅 StopAnima
 该资源目前是待接入的奖励骨骼视觉部分，尚未接入实际停轮对象。独立 ef_glow（包含另外一份网格）、奖励文字、灯位飞行、余额入账及后续完整分支仍未完成。没有提前点亮灯位或发放收益，SDK 保持不变。
 
 最终全量 PlayMode 145 项通过、0 失败（Artifacts/coin-reveal-all-tests.xml）。新增测试以原始变形顶点数值核对 0、1/6、1/3、1/2、2/3 秒的 BakeMesh 结果，验证延迟附件、无 Graphic、3 倍速、暂停不完成、切入 1 倍待机与停用取消；已查看本次 current-coin-reveal.png，翻转中金币侧面与正面实际渲染。该图为新奖励骨骼组件的当前预览，不代表奖励主链路已经完成。每枚组件目前有 14 个渲染器；接入多金币场景时仍须核对移动端批次数，优先通过共享材质和复用控制开销。
+
+## 本轮：奖励扫描接入揭晓与独立网格光效
+
+按 JinBiEffectItem.PlayAnim 0x23da0c0、揭晓完成回调 0x23d9b48 及光效完成回调 0x23d9cbc，独立 ef_glow 在揭晓开始时隐藏，揭晓切到 idle_chun 时重新初始化并播放 glow，结束后隐藏。新 CoinGlow 使用原 22/30 秒动画，保留槽 27/28/29/30/42/43/44 的七个区域附件，以及槽 45 的 45 顶点、186 三角索引网格与两组变形数据；首个变形键在 8/30 秒，之前保持 setup。
+
+BuildCoinReveal 的离线转换同时支持 CoinReveal 和 CoinGlow，网格 UV 按未裁切区域及图集偏移映射，不能把 ringadd 的 112×112 裁切尺寸当作原 119×119 区域。格式核对官方 MeshAttachment.UpdateRegion：https://github.com/EsotericSoftware/spine-runtimes/blob/4.1/spine-csharp/src/Attachments/MeshAttachment.cs。没有导入原运行时程序集。原生 Animation 驱动 RecoveredMeshTint 的色彩字段，OnDidApplyAnimationProperties 写入缓存 MaterialPropertyBlock，不修改共享材质、不逐帧分配材质或属性块。
+
+CoinStopEffect Prefab 嵌套揭晓和光效资源，开始时隐藏；实际 SpinPlayfield 的奖励扫描通过 CoinStopPresenter 的行号查找触发揭晓，保留 RollReel.PlayBonusAnim 0x2377394 的无查找项不调用规则。揭晓发出 coinReveal 音效请求，完成后进入金币待机并启动独立光效。对象复用的 PlayShow 会重新隐藏两者并恢复原出场动画。声音的实际播放仍待统一接入。
+
+这里只接入奖励扫描中的骨骼表现。0.2 秒后显示的奖励文字、0.4 秒文字缩放阶段、0.3 秒飞行、到达灯位及收益入账均未提前替代；Wild/Jackpot/免费等后续完整链路仍未完成。原第三方骨骼组件改为 Unity 原生 Prefab/Animation/渲染组件，组件结构存在这一明确差异。SDK 不变。
+
+最终全量 PlayMode 147 项通过、0 失败（Artifacts/coin-glow-all-tests.xml）。新增测试验证裁切网格 UV、45/186 网格结构、变形中间值、延迟附件、PMA 色彩的实例隔离、暂停与结束隐藏；实际 GameEntry 的两枚确定金币通过五列停轮与奖励扫描触发揭晓，验证逐列顺序、音效请求、待机/光效切换、复用恢复和无提前入账/点灯。已查看本轮 current-coin-reward-glow.png；主背景、完整布局和完整奖励生命周期仍有缺口。

@@ -75,8 +75,13 @@ namespace DragonLegend.Whitebox
             AwaitingRewards = true;
             RewardSequenceRequested?.Invoke();
             if (entry != null)
-                BonusCoins.Begin(result.Board.GetSymbol, coin => BonusCoinPresentationRequested?.Invoke(coin),
+                BonusCoins.Begin(result.Board.GetSymbol, PresentBonusCoin,
                     () => WildColumnsCheckRequested?.Invoke());
+        }
+        private void PresentBonusCoin(RecoveredBonusCoin coin)
+        {
+            if (coinStops != null) coinStops.PlayRewardReveal(coin.Column, coin.Row);
+            BonusCoinPresentationRequested?.Invoke(coin);
         }
         // Called by the eventual CheckBaseEnd completion, never by a reel stop callback.
         public void CompleteBaseRound()
