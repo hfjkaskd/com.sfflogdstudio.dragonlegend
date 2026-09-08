@@ -13,10 +13,11 @@ public sealed class RecoveredJackpotPopupArtTests
     [Serializable] private class Evidence {public Rig[] rigs;}
     [Serializable] private class Rig {public string name;public int animation;public Frame[] frames;}
     [Serializable] private class Frame {public float time;public float[] vertices;}
-    [Test]
-    public void PopupWeightedAndSequenceGeometryMatchesAllSourceClips()
+    [TestCase("JackpotPopup/poses.json")]
+    [TestCase("bigwin-poses.json")]
+    public void PopupWeightedAndSequenceGeometryMatchesAllSourceClips(string evidenceFile)
     {
-        var evidence=JsonUtility.FromJson<Evidence>(File.ReadAllText(Path.Combine(Application.dataPath,"../Tools/Evidence/JackpotPopup/poses.json")));
+        var evidence=JsonUtility.FromJson<Evidence>(File.ReadAllText(Path.Combine(Application.dataPath,"../Tools/Evidence/"+evidenceFile)));
         foreach(var source in evidence.rigs) {
             var animator=Object.Instantiate(Resources.Load<RecoveredRegionAnimator>("RecoveredUI/JackpotPopupArt/"+source.name));
             try {

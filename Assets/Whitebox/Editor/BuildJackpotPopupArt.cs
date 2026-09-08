@@ -20,11 +20,18 @@ public static class BuildJackpotPopupArt
         Create("ef_shoucanggl","shoucanggl",new Vector2(50,50),new Vector2(.5f,.5f));
         AssetDatabase.SaveAssets();
     }
-    static void Create(string name,string sourceFolder,Vector2 size,Vector2 pivot)
+    public static void SaveBigWin()
+    {
+        Create("ef_wintanchuang","wintanchuang",Vector2.zero,new Vector2(.5f,.5f),"Tools/Evidence/","Artifacts/BigWinAuthoring/");
+        AssetDatabase.SaveAssets();
+        BuildJackpotPopup.SaveBigWin();
+    }
+    static void Create(string name,string sourceFolder,Vector2 size,Vector2 pivot,string evidence="Tools/Evidence/JackpotPopup/",string authoring="Artifacts/JackpotPopupAuthoring/")
     {
         string folder=Folder+"/"+name;Directory.CreateDirectory(folder);AssetDatabase.Refresh();
-        var source=JsonUtility.FromJson<BuildCoinAppearance.Data>(File.ReadAllText("Tools/Evidence/JackpotPopup/"+name+".json"));
-        var meshes=JsonUtility.FromJson<Meshes>(File.ReadAllText("Artifacts/JackpotPopupAuthoring/"+name+".json"));
+        var source=JsonUtility.FromJson<BuildCoinAppearance.Data>(File.ReadAllText(evidence+name+".json"));
+        var meshes=Array.Exists(source.attachments,a=>a.kind==2)?
+            JsonUtility.FromJson<Meshes>(File.ReadAllText(authoring+name+".json")):new Meshes{meshes=Array.Empty<MeshData>()};
         string resource="RecoveredArt/Res/Spine/"+sourceFolder+"/"+name;
         string image="Assets/Resources/"+resource+".png";var importer=(TextureImporter)AssetImporter.GetAtPath(image);
         importer.alphaIsTransparency=false;importer.textureCompression=TextureImporterCompression.Uncompressed;importer.SaveAndReimport();
