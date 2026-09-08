@@ -1,0 +1,572 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8102fb0c9eccf4c8e769085038e1b6, type: 3}
+  m_Name: ef_scatter
+  m_EditorClassIdentifier:
+  relativeLocalConstraints: []
+  bones:
+  - name: root
+    parent: -1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: all
+    parent: 0
+    mode: 0
+    x: 1.0535555
+    y: -6.456361
+    rotation: 0
+    scaleX: 0.86
+    scaleY: 0.86
+  - name: bj
+    parent: 0
+    mode: 0
+    x: 190.65874
+    y: 407.9278
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: dx
+    parent: 1
+    mode: 0
+    x: 3.4125457
+    y: 4.094963
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: shuu
+    parent: 1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: shu
+    parent: 4
+    mode: 0
+    x: 0.20982122
+    y: -12.04348
+    rotation: 90.47154
+    scaleX: 1
+    scaleY: 1
+  - name: SCATTER
+    parent: 3
+    mode: 0
+    x: 0.9038124
+    y: -67.73295
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: xx01
+    parent: 5
+    mode: 0
+    x: 101.614655
+    y: 48.708508
+    rotation: -90.47154
+    scaleX: 1
+    scaleY: 1
+  - name: xx02
+    parent: 5
+    mode: 0
+    x: -15.722284
+    y: -76.033745
+    rotation: -90.47154
+    scaleX: 1
+    scaleY: 1
+  - name: scattersg
+    parent: 6
+    mode: 0
+    x: -7.188458
+    y: -0.53248215
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: taiji
+    parent: 5
+    mode: 0
+    x: 21.855555
+    y: 0.11069822
+    rotation: -90.47154
+    scaleX: 1
+    scaleY: 1
+  - name: bg
+    parent: 10
+    mode: 0
+    x: -4.2090724e-20
+    y: -0.000000013115523
+    rotation: -0.000009307125
+    scaleX: 1
+    scaleY: 1
+  slots:
+  - bone: 2
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 11
+    attachment: 0
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 11
+    attachment: 1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 10
+    attachment: 16
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 10
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 6
+    attachment: 2
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 6
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 7
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 8
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 9
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 9
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 9
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 9
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 9
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 9
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 9
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 9
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 9
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 9
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  attachments:
+  - name: bg0
+    slot: 1
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -83, y: -82}
+    - {x: -83, y: 83}
+    - {x: 83, y: 83}
+    - {x: 83, y: -82}
+    uv:
+    - {x: 0.7162978, y: 0.5472837}
+    - {x: 0.38430583, y: 0.5472837}
+    - {x: 0.38430583, y: 0.88128775}
+    - {x: 0.7162978, y: 0.88128775}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: bggl0
+    slot: 2
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -93, y: -92}
+    - {x: -93, y: 95}
+    - {x: 94, y: 95}
+    - {x: 94, y: -92}
+    uv:
+    - {x: 0.0040241447, y: 0.5472837}
+    - {x: 0.0040241447, y: 0.92354125}
+    - {x: 0.3802817, y: 0.92354125}
+    - {x: 0.3802817, y: 0.5472837}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: scatter
+    slot: 5
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -108.40382, y: -34.26705}
+    - {x: -108.40382, y: 33.73295}
+    - {x: 95.59618, y: 33.73295}
+    - {x: 95.59618, y: -34.26705}
+    uv:
+    - {x: 0.5070422, y: 0.0040241447}
+    - {x: 0.5070422, y: 0.14084508}
+    - {x: 0.917505, y: 0.14084508}
+    - {x: 0.917505, y: 0.0040241447}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: scattergl0
+    slot: 6
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -118.40382, y: -44.26705}
+    - {x: -118.40382, y: 45.73295}
+    - {x: 105.59618, y: 45.73295}
+    - {x: 105.59618, y: -44.26705}
+    uv:
+    - {x: 0.38430583, y: 0.88531184}
+    - {x: 0.38430583, y: 0.9758551}
+    - {x: 0.60965794, y: 0.9758551}
+    - {x: 0.60965794, y: 0.88531184}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: scattersg/scattersg0
+    slot: 9
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -99.5, y: -11.5}
+    - {x: -99.5, y: 30.5}
+    - {x: -69.5, y: 30.5}
+    - {x: -69.5, y: -11.5}
+    uv:
+    - {x: 0.99597585, y: 0.5331992}
+    - {x: 0.95372236, y: 0.5331992}
+    - {x: 0.95372236, y: 0.5633803}
+    - {x: 0.99597585, y: 0.5633803}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 0.7921569, b: 0.34901962, a: 1}
+    deform: []
+  - name: scattersg/scattersg1
+    slot: 10
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -105.5, y: -23.5}
+    - {x: -105.5, y: 44.5}
+    - {x: -35.5, y: 44.5}
+    - {x: -35.5, y: -23.5}
+    uv:
+    - {x: 0.08853119, y: 0.9275654}
+    - {x: 0.08853119, y: 0.99597585}
+    - {x: 0.15895373, y: 0.99597585}
+    - {x: 0.15895373, y: 0.9275654}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 0.7921569, b: 0.34901962, a: 1}
+    deform: []
+  - name: scattersg/scattersg2
+    slot: 11
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -107.5, y: -31.5}
+    - {x: -107.5, y: 48.5}
+    - {x: -1.4999999, y: 48.5}
+    - {x: -1.4999999, y: -31.5}
+    uv:
+    - {x: 0.9275654, y: 0.86720324}
+    - {x: 0.8470825, y: 0.86720324}
+    - {x: 0.8470825, y: 0.97384304}
+    - {x: 0.9275654, y: 0.97384304}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 0.7921569, b: 0.34901962, a: 1}
+    deform: []
+  - name: scattersg/scattersg3
+    slot: 12
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -103.5, y: -35.5}
+    - {x: -103.5, y: 46.5}
+    - {x: 32.5, y: 46.5}
+    - {x: 32.5, y: -35.5}
+    uv:
+    - {x: 0.72032195, y: 0.7806841}
+    - {x: 0.72032195, y: 0.8631791}
+    - {x: 0.85714287, y: 0.8631791}
+    - {x: 0.85714287, y: 0.7806841}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 0.7921569, b: 0.34901962, a: 1}
+    deform: []
+  - name: scattersg/scattersg4
+    slot: 13
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -95.5, y: -43.5}
+    - {x: -95.5, y: 40.5}
+    - {x: 64.5, y: 40.5}
+    - {x: 64.5, y: -43.5}
+    uv:
+    - {x: 0.9939638, y: 0.31589538}
+    - {x: 0.90945673, y: 0.31589538}
+    - {x: 0.90945673, y: 0.47686118}
+    - {x: 0.9939638, y: 0.47686118}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 0.7921569, b: 0.34901962, a: 1}
+    deform: []
+  - name: scattersg/scattersg5
+    slot: 14
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -69.5, y: -43.5}
+    - {x: -69.5, y: 38.5}
+    - {x: 96.5, y: 38.5}
+    - {x: 96.5, y: -43.5}
+    uv:
+    - {x: 0.9919517, y: 0.14486921}
+    - {x: 0.90945673, y: 0.14486921}
+    - {x: 0.90945673, y: 0.31187123}
+    - {x: 0.9919517, y: 0.31187123}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 0.7921569, b: 0.34901962, a: 1}
+    deform: []
+  - name: scattersg/scattersg6
+    slot: 15
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -35.5, y: -41.5}
+    - {x: -35.5, y: 44.5}
+    - {x: 106.5, y: 44.5}
+    - {x: 106.5, y: -41.5}
+    uv:
+    - {x: 0.6136821, y: 0.88531184}
+    - {x: 0.6136821, y: 0.97183096}
+    - {x: 0.7565392, y: 0.97183096}
+    - {x: 0.7565392, y: 0.88531184}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 0.7921569, b: 0.34901962, a: 1}
+    deform: []
+  - name: scattersg/scattersg7
+    slot: 16
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -3.5, y: -33.5}
+    - {x: -3.5, y: 48.5}
+    - {x: 110.5, y: 48.5}
+    - {x: 110.5, y: -33.5}
+    uv:
+    - {x: 0.84305835, y: 0.86720324}
+    - {x: 0.7605634, y: 0.86720324}
+    - {x: 0.7605634, y: 0.98189133}
+    - {x: 0.84305835, y: 0.98189133}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 0.7921569, b: 0.34901962, a: 1}
+    deform: []
+  - name: scattersg/scattersg8
+    slot: 17
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: 30.5, y: -23.5}
+    - {x: 30.5, y: 44.5}
+    - {x: 110.5, y: 44.5}
+    - {x: 110.5, y: -23.5}
+    uv:
+    - {x: 0.0040241447, y: 0.9275654}
+    - {x: 0.0040241447, y: 0.99597585}
+    - {x: 0.08450704, y: 0.99597585}
+    - {x: 0.08450704, y: 0.9275654}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 0.7921569, b: 0.34901962, a: 1}
+    deform: []
+  - name: scattersg/scattersg9
+    slot: 18
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: 62.5, y: -13.5}
+    - {x: 62.5, y: 34.5}
+    - {x: 104.5, y: 34.5}
+    - {x: 104.5, y: -13.5}
+    uv:
+    - {x: 0.95372236, y: 0.4808853}
+    - {x: 0.95372236, y: 0.52917504}
+    - {x: 0.99597585, y: 0.52917504}
+    - {x: 0.99597585, y: 0.4808853}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 0.7921569, b: 0.34901962, a: 1}
+    deform: []
+  - name: sz
+    slot: 7
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -124, y: -124}
+    - {x: -124, y: 123}
+    - {x: 124, y: 123}
+    - {x: 124, y: -124}
+    uv:
+    - {x: 0.0040241447, y: 0.0040241447}
+    - {x: 0.0040241447, y: 0.501006}
+    - {x: 0.5030181, y: 0.501006}
+    - {x: 0.5030181, y: 0.0040241447}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: sz
+    slot: 8
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -124, y: -124}
+    - {x: -124, y: 123}
+    - {x: 124, y: 123}
+    - {x: 124, y: -124}
+    uv:
+    - {x: 0.0040241447, y: 0.0040241447}
+    - {x: 0.0040241447, y: 0.501006}
+    - {x: 0.5030181, y: 0.501006}
+    - {x: 0.5030181, y: 0.0040241447}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: qq0
+    slot: 3
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -99, y: -99}
+    - {x: -99, y: 99}
+    - {x: 99, y: 99}
+    - {x: 99, y: -99}
+    uv:
+    - {x: 0.5070422, y: 0.14486921}
+    - {x: 0.5070422, y: 0.54325956}
+    - {x: 0.9054326, y: 0.54325956}
+    - {x: 0.9054326, y: 0.14486921}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: taijigl0
+    slot: 4
+    clipping: 0
+    endSlot: 0
+    positions:
+    - {x: -114, y: -114}
+    - {x: -114, y: 114}
+    - {x: 114, y: 114}
+    - {x: 114, y: -114}
+    uv:
+    - {x: 0.72032195, y: 0.5472837}
+    - {x: 0.72032195, y: 0.77665997}
+    - {x: 0.9496982, y: 0.77665997}
+    - {x: 0.9496982, y: 0.5472837}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  channels:
+  - slot: 1
+    index: 2
+    component: -1
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  atlasPath: "RecoveredArt/Res/Spine/\u68CB\u5B50/scatter/ef_scatter"
+  duration: 0
+  pixelsPerUnit: 100

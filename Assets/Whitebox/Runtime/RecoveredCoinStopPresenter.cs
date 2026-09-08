@@ -30,6 +30,7 @@ namespace DragonLegend.Whitebox
         public event Action ExpSoundRequested;
         public event Action<Transform> LampLitEffectRequested;
         private RecoveredBaseReelController reels;
+        private RecoveredScatterPresenter scatters;
         private int language;
         private ObjectPool<RecoveredCoinStopEffect> pool;
         private readonly RecoveredCoinStopEffect[,] active=new RecoveredCoinStopEffect[5,3];
@@ -96,9 +97,9 @@ namespace DragonLegend.Whitebox
             var flash=Instantiate(flashPrefab,transform,false);flash.Completed+=ReleaseFlash;return flash;
         }
         private void ReleaseFlash(RecoveredLampFlash flash) { flashes.Remove(flash);flashPool.Release(flash); }
-        public void Bind(RecoveredBaseReelController controller,int languageType=0,RecoveredBonusCollection bonusCollection=null,int sortingOrder=0)
+        public void Bind(RecoveredBaseReelController controller,int languageType=0,RecoveredBonusCollection bonusCollection=null,int sortingOrder=0,RecoveredScatterPresenter scatterPresenter=null)
         {
-            Unbind();reels=controller;language=languageType;collection=bonusCollection;canvasOrder=sortingOrder;
+            Unbind();reels=controller;language=languageType;collection=bonusCollection;canvasOrder=sortingOrder;scatters=scatterPresenter;
             if(flashPool==null)flashPool=new ObjectPool<RecoveredLampFlash>(CreateFlash,null,
                 flash=>{flash.gameObject.SetActive(false);flash.transform.SetParent(transform,false);},
                 flash=>{if(flash!=null)Destroy(flash.gameObject);},true,1,int.MaxValue);
@@ -120,7 +121,9 @@ namespace DragonLegend.Whitebox
         {
             // Native clears BonusAnims, but ShowSymbolEffect's shown-slot set survives until Clear.
             for(int row=0;row<3;row++)lookup[column,row]=null;
+            scatters?.BeginColumn(column);
             for(int row=0;row<3;row++) {
+                if(reels.ReelAt(column).SymbolId(row)==10){scatters?.ShowCell(column,row);continue;}
                 if(reels.ReelAt(column).SymbolId(row)!=9 || active[column,row]!=null)continue;
                 if(!reels.ReelAt(column).TryHideForEffect(row))continue;
                 var symbol=reels.ReelAt(column).SymbolAt(row).Symbol;

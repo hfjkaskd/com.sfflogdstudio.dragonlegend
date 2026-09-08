@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &245065412767948533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5149430148550028873}
+  - component: {fileID: 5115973546109213641}
+  m_Layer: 5
+  m_Name: ScatterEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5149430148550028873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245065412767948533}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4271234036618506112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5115973546109213641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245065412767948533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03416a5dcda3b204ba86ae5f38c93ede, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  prefab: {fileID: 4954463625438499034, guid: f0626f17ae6b75c40906ccb21e4a0bea, type: 3}
 --- !u!1 &1644161575369416774
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +238,7 @@ RectTransform:
   m_Children:
   - {fileID: 5798272125247681638}
   - {fileID: 2159614776486242643}
+  - {fileID: 5149430148550028873}
   m_Father: {fileID: 4903156380196369003}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -495,6 +541,7 @@ MonoBehaviour:
   symbolAmount: {fileID: 4087428487483292332}
   bonusCollection: {fileID: 1015783688566894396}
   coinStops: {fileID: 3478948129685290601}
+  scatters: {fileID: 5115973546109213641}
   downWin: {fileID: 3672362072098529445}
   winFlight: {fileID: 8181082882740074449}
 --- !u!114 &7340944292854852083

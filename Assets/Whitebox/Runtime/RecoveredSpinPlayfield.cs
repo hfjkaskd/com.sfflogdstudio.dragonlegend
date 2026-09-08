@@ -48,6 +48,8 @@ namespace DragonLegend.Whitebox
         public RecoveredBonusCollection BonusCollection => bonusCollection;
         [SerializeField] private RecoveredCoinStopPresenter coinStops;
         public RecoveredCoinStopPresenter CoinStops => coinStops;
+        [SerializeField] private RecoveredScatterPresenter scatters;
+        public RecoveredScatterPresenter Scatters=>scatters;
         [SerializeField] private RecoveredDownWinText downWin;
         public RecoveredDownWinText DownWin=>downWin;
         [SerializeField] private RecoveredDownWinFlight winFlight;
@@ -101,7 +103,8 @@ namespace DragonLegend.Whitebox
             reels.Initialize(symbols);
             wilds.Bind(reels,GetComponentInParent<Canvas>().sortingOrder);
             symbolEffects.Bind(reels,GetComponentInParent<Canvas>().sortingOrder);
-            if(coinStops!=null)coinStops.Bind(reels,languageType,bonusCollection,GetComponentInParent<Canvas>().sortingOrder);
+            if(scatters!=null){scatters.Bind(reels,GetComponentInParent<Canvas>().sortingOrder);scatters.StopSoundRequested+=ScatterShowSound;}
+            if(coinStops!=null)coinStops.Bind(reels,languageType,bonusCollection,GetComponentInParent<Canvas>().sortingOrder,scatters);
             downWin.Bind(languageType);
             winFlight.Bind(GetComponentInParent<Canvas>().sortingOrder);
             coinStops.WinFlightRequested+=winFlight.Play;
@@ -193,6 +196,7 @@ namespace DragonLegend.Whitebox
         private void StopSound1()=>StopSound1Requested?.Invoke();
         private void ResumeMusic()=>ResumeMusicRequested?.Invoke();
         private void Sound(string name)=>SoundRequested?.Invoke(name);
+        private void ScatterShowSound()=>Sound("scatterShow");
         private void Sound1(string name)=>Sound1Requested?.Invoke(name);
         private void HideWheel()=>HideWheelRequested?.Invoke();
         private void FlyCoin(float amount,Action completed)=>FlyCoinRequested?.Invoke(amount,completed);
@@ -234,6 +238,7 @@ namespace DragonLegend.Whitebox
             if(winFlight!=null) {winFlight.Cancel();if(coinStops!=null)coinStops.WinFlightRequested-=winFlight.Play;}
             if(downWin!=null) { downWin.Cancel(); if(coinStops!=null) {coinStops.RewardRegistered-=downWin.Register;coinStops.RewardPresentationFinished-=downWin.PresentationFinished;} }
             if(coinStops!=null)coinStops.Unbind();
+            if(scatters!=null){scatters.StopSoundRequested-=ScatterShowSound;scatters.Unbind();}
             spinButton.Button.onClick.RemoveListener(Click);
             if (entry != null) {
                 entry.StartVisualsRequested -= Started;

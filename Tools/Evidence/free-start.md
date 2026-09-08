@@ -108,8 +108,7 @@ The strengthened completion-timing assertion also passed in the final focused
 run (`Artifacts/free-start-popup-final-tests.xml`): .5-second wait plus .3-second
 exit, with the count tween running concurrently.
 
-Next source dependency: RollReel.PlayScatterAnim `2377260` enumerates its +b0
-ScatterEffect list and invokes `ScatterEffect.IdleAnim(true)` (`23dade0`) on
-each, rather than animating all symbols. Source prefab is
-`ReferenceOriginal/Res/Prefabs/Scatter.prefab`. Its native visual/controller and
-reel attachment must be restored before connecting the actual Free entry.
+Scatter's native world visual/controller and actual stop-pass attachment are now
+restored (see `scatter.md`). RollReel.PlayScatterAnim `2377260` enumerates its +b0
+ScatterEffect list and invokes IdleAnim(true) on each. The actual Free-entry
+consumer is still needed to call this before the NPC/start-window/transition.

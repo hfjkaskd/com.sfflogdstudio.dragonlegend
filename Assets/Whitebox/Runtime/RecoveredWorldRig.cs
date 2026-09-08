@@ -28,6 +28,20 @@ namespace DragonLegend.Whitebox
         public Mesh CurrentMesh => mesh;
         public Matrix4x4 BoneMatrix(int index) => matrices[index];
         public void Sample(float time) { poseTime = time; RefreshPose(); }
+        // Authored clips of one skeleton share geometry and reusable mesh buffers.
+        public void SelectClipData(RecoveredWorldRigData value)
+        {
+            if(value==null)throw new ArgumentNullException(nameof(value));
+            if(!Initialize())throw new InvalidOperationException("World rig is not configured");
+            if(value.atlasPath!=data.atlasPath||value.bones.Length!=data.bones.Length||value.slots.Length!=data.slots.Length
+                ||value.attachments.Length!=data.attachments.Length)throw new InvalidOperationException("Clip skeleton differs");
+            for(int i=0;i<data.attachments.Length;i++) {
+                var a=data.attachments[i];var b=value.attachments[i];
+                if(a.positions.Length!=b.positions.Length||a.uv.Length!=b.uv.Length||a.triangles.Length!=b.triangles.Length||a.clipping!=b.clipping)
+                    throw new InvalidOperationException("Clip topology differs");
+            }
+            data=value;Sample(0);
+        }
         private void OnEnable() => RefreshPose();
         private void OnDidApplyAnimationProperties() => RefreshPose();
 
