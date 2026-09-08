@@ -8,6 +8,10 @@ SDK 模拟测试入口：Assets/Whitebox/Scenes/MockFlow.unity。现有 SDK mock
 
 ## 本轮进展
 
+- 恢复 GameData 的 SpinCount、LevelExpCount、MoreWild 属性语义：次数保存后通知原始请求值，经验超阈值仅升一级并清零、事件报告旧阈值，MoreWild 通知在保存前。存档操作由调用方提供，避免局部字段覆盖完整玩家记录。
+- 恢复最大次数、等级经验需求和评价触发等级 getter。最新 Unity PlayMode 47 项全部通过。
+- 核实实际主旋转在 UIMainView；RunState/StopState 方法原生体只抛出 NotImplementedException，不应作为有效流程移植。按钮与完整存档消费者仍待接入。
+
 - 已恢复 Bonus 区域保底，包括候选索引直接作为行号、区域补足禁选列的原版分支。
 - 已串联 InitGameResult：引导/保底 Wild、普通 Wild、Bonus 双次计数与保底、强制免费 Scatter、结算、停轴参数与有序回调。配置入口随配置创建生成器。
 - GetCoinSpinAmountWin 保留移除第一项权重后返回索引、不加一的原版实现。
