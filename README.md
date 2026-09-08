@@ -284,3 +284,12 @@ Tools/extract_coin_effect.py 完整消费原 ef_jinbi.skel.bytes 的 21139 字�
 RecoveredCoinIdle 首次 Start 和再次 OnEnable 重置 setup 后播放原待机，平台流程一致。全量 PlayMode 142 项通过、0 失败（Artifacts/bonus-collection-tests.xml）；验证原尺寸/偏移/缩放、目标选择、点亮规则、原 0.5 秒透明度 216/255、三个实际 Image 及不阻挡按钮。已查看本次生成 current-bonus-collection.png，五列 [0,1,2,3,-1] 测试计数显示正确；它是当前入口内的灯位状态测试，不代表金币到达回调已经完成。
 
 金币扫描不直接刷新这些灯位，原版是在飞行到达阶段点亮；该回调及后续余额入账、Wild/Jackpot/免费等完整奖励链仍待连接。全生命周期、主背景和所有视觉 1:1 尚未完成，SDK 不变。
+## 本轮：金币出场动画及重置到待机
+
+JinBiEffectItem.PlayShowAnim 0x23d95e0 在停轮表现中播放 zcjb_chuxian；完成回调 0x23d997c 强制重建 setup 后切入 zcjb_idle 循环。新增 CoinAppearance Prefab，原生 Animation 包含 0.5 秒出场及 1 秒待机，RecoveredCoinIdle 提供 PlayAppearance，并在出场结束后重置所有骨骼、色彩与附件状态再切换。
+
+本段出场启用槽 25/26/27/29，待机启用 25/26/31。必须按槽位识别附件：槽 29 的 ringadd 是区域附件，槽 45 同名 ringadd 才是网格，不需要把本段区域光圈当作网格来近似。转换使用原区域裁切、附件偏移、骨骼曲线和 PMA 材质，出场后不遗留两个光圈的显示或缩放状态。原槽 30 只有颜色时间线，没有显示附件，保持不可见。
+
+该 Prefab 是 JinBiEffectItem 的骨骼视觉部分，尚未替代完整外层效果，也尚未绑定停轮特效池。原 PlayShowAnim 同时隐藏 ef_glow/rewardTxt，并对外层执行缩放；PlayAnim 随后还有奖励文本、飞行和回调。已从原 ELF 读取后续相关常量：0xdbc540=0.2、0xdbc4a0=1.2、0xdbc6e8=0.4、0xdbc664=0.3，用于继续恢复外层时序；本轮不提前执行灯位点亮或余额入账。SDK 不变。
+
+最终全量 PlayMode 143 项通过、0 失败（Artifacts/coin-appearance-tests.xml）。新增实际原生 Prefab 测试覆盖首次 Start 前请求出场、0.5 秒长度、1/6 秒两个光圈 alpha=1 与 ringadd 绿色 216/255、金色像素渲染、结束后关闭出场光圈并恢复骨骼缩放 0.88，以及再次启用后的待机重置。已查看本次 current-coin-appearance.png；该图是组件出场预览，不是完整停轮/飞行链路完成证据。
