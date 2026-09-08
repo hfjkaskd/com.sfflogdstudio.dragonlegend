@@ -54,6 +54,47 @@ public sealed class RecoveredFreeSpinResultTests
         } finally {UnityEngine.Random.state=saved;}
     }
 
+    [TestCase(51,0,0)]
+    [TestCase(72,6,7)]
+    [TestCase(93,10,5)]
+    public void EffectBoardsMatchNativeRandomConsumptionAndPreserveActualRewards(int seed,int coins,int balls)
+    {
+        var saved=UnityEngine.Random.state;
+        try {
+            UnityEngine.Random.InitState(seed);
+            var result=new RecoveredFreeSpinResult(Rules(coins,balls));
+            result.Begin(new[]{2,4,11});
+            Assert.Throws<InvalidOperationException>(()=>result.GetRandomEffectShow());
+            int attempts=0;
+            while(result.IsGenerating && attempts++<10000) result.Step();
+            Assert.IsFalse(result.IsGenerating);
+            var actualSymbols=new int[5,3];
+            for(int col=0;col<5;col++) for(int row=0;row<3;row++)
+                actualSymbols[col,row]=result.GetSymbol(col,row);
+            var actualTypes=new int[result.GeneratedBallCount];
+            for(int i=0;i<actualTypes.Length;i++) actualTypes[i]=result.GetBall(i);
+            int[,] previous=null;
+            for(int repeat=0;repeat<8;repeat++) {
+                var before=UnityEngine.Random.state;
+                var expected=new int[5,3]; var used=new List<int>[5];
+                for(int col=0;col<5;col++) used[col]=new List<int>();
+                Place(expected,used,coins,9); Place(expected,used,balls,11);
+                int next=UnityEngine.Random.Range(0,int.MaxValue);
+                UnityEngine.Random.state=before;
+                var display=result.GetRandomEffectShow();
+                Assert.AreNotSame(previous,display);
+                CollectionAssert.AreEqual(expected,display);
+                Assert.AreEqual(next,UnityEngine.Random.Range(0,int.MaxValue));
+                Assert.AreEqual(coins,result.CoinAmount); Assert.AreEqual(balls,result.BallAmount);
+                for(int col=0;col<5;col++) for(int row=0;row<3;row++)
+                    Assert.AreEqual(actualSymbols[col,row],result.GetSymbol(col,row));
+                Assert.AreEqual(actualTypes.Length,result.GeneratedBallCount);
+                for(int i=0;i<actualTypes.Length;i++) Assert.AreEqual(actualTypes[i],result.GetBall(i));
+                previous=display;
+            }
+        } finally {UnityEngine.Random.state=saved;}
+    }
+
     // Direct list-based reference for native CheckSingleSymbol, including full-column retries.
     private static void Place(int[,] target,List<int>[] used,int count,int symbol)
     {

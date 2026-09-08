@@ -27,6 +27,33 @@ namespace DragonLegend.Whitebox
             this.rules = rules ?? throw new ArgumentNullException(nameof(rules));
         }
 
+        // FreeSlotGameResult.GetRandomEffectShow 0x2382f08. A fresh, zero-filled
+        // display board uses the existing amounts, without touching the real result or ball types.
+        public int[,] GetRandomEffectShow()
+        {
+            if (IsGenerating) throw new InvalidOperationException("The free result is still being generated.");
+            var display = new int[5,3];
+            Array.Clear(reserved,0,reserved.Length);
+            for (int i = 0; i < CoinAmount; i++)
+                while (!TryPlace(display,9)) { }
+            for (int i = 0; i < BallAmount; i++)
+                while (!TryPlace(display,11)) { }
+            return display;
+        }
+
+        private bool TryPlace(int[,] target, int symbol)
+        {
+            int column = UnityEngine.Random.Range(0,5);
+            int count = 0;
+            for (int row = 0; row < 3; row++)
+                if (!reserved[column,row]) rows[count++] = row;
+            if (count == 0) return false;
+            int selectedRow = rows[UnityEngine.Random.Range(0,count)];
+            target[column,selectedRow] = symbol;
+            reserved[column,selectedRow] = true;
+            return true;
+        }
+
         public void Begin(IReadOnlyList<int> symbolIds, Action onComplete = null)
         {
             if (IsGenerating) throw new InvalidOperationException("A free result is already being generated.");
@@ -50,15 +77,7 @@ namespace DragonLegend.Whitebox
             if (remaining <= 0 && stage == 1) { stage = 2; remaining = BallAmount; }
             if (remaining > 0)
             {
-                int column = UnityEngine.Random.Range(0,5);
-                int count = 0;
-                for (int row = 0; row < 3; row++)
-                    if (!reserved[column,row]) rows[count++] = row;
-                if (count == 0) return true;
-                int selectedRow = rows[UnityEngine.Random.Range(0,count)];
-                symbols[column,selectedRow] = stage == 1 ? 9 : 11;
-                reserved[column,selectedRow] = true;
-                remaining--;
+                if (TryPlace(symbols,stage == 1 ? 9 : 11)) remaining--;
                 return true;
             }
             // Native ball list is rebuilt only after both placement passes finish.
