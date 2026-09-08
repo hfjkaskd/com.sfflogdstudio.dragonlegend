@@ -41,6 +41,10 @@ namespace DragonLegend.Whitebox
             return RecoveredJackpotType.Grand;
         }
 
+        // CheckBonusGame 0x23c6d54: invoke after symbol animations, before free game.
+        // True means data is saved and the presenter may start NPC/audio/transition.
+        public bool CheckBonusGame() => progress.PrepareBonusGame();
+
         // CheckFreeGame 0x23c90bc: configured spins must be positive; task 3
         // advances before scatter animations, the intro popup and scene transition.
         public int CheckFreeGame(int scatterCount)

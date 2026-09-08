@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DragonLegend.Whitebox.Recovered;
 
 namespace DragonLegend.Whitebox
@@ -15,6 +16,8 @@ namespace DragonLegend.Whitebox
         public int MoreWild { get => data.MoreWild; private set => data.MoreWild = value; }
         public int JpAddCount => data.JpAddCount;
         public int BankCount => data.BankCount;
+        // Original GameData runtime flag; intentionally absent from PlayerData saves.
+        public bool IsBonusGame { get; set; }
         public event Action BankReady;
         public event Action BankProgressChanged;
         public event Action<int> SpinCountChanged;
@@ -86,6 +89,23 @@ namespace DragonLegend.Whitebox
             save();
         }
 
+        // Data stage of UIMainView.CheckBonusGame (0x23c6d54), before NPC/audio/transition.
+        // Predicate 0x23bf8d8 is x > 1. Equality of filtered and total counts means
+        // even an empty (but non-null) area triggers, and a previously set flag wins.
+        internal bool PrepareBonusGame()
+        {
+            var area = data.BonusArea;
+            int complete = 0;
+            for (int i = 0; i < area.Count; i++)
+                if (area[i] > 1) complete++;
+            if (complete == area.Count) IsBonusGame = true;
+            if (!IsBonusGame) return false;
+            SetTaskData(5, 1); // Its save observes the OLD area and the set runtime flag.
+            IsBonusGame = false;
+            data.BonusArea = new List<int>(5) { 0, 0, 0, 0, 0 };
+            save();
+            return true;
+        }
         // 0x236eb10: first occurrence is always 1, regardless of increment.
         // Claimed records and a null list still save without changing progress.
         public void SetTaskData(int id, int increment)

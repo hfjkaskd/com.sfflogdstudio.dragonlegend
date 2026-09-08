@@ -65,6 +65,58 @@ public sealed class RecoveredRewardBranchesTests
         Assert.AreEqual(1,saves);
     }
 
+    [TestCase(1, false, false)]
+    [TestCase(2, false, true)]
+    [TestCase(3, false, true)]
+    [TestCase(0, true, true)]
+    public void BonusEntryUsesAreaThresholdOrPendingFlag(int lastArea, bool pending, bool enters)
+    {
+        var original = new List<int> {2,2,2,2,lastArea};
+        var data = new PlayerData {BonusArea=original};
+        int saves = 0;
+        RecoveredPlayerProgress progress = null;
+        progress = new RecoveredPlayerProgress(Rules(), () => {
+            saves++;
+            Assert.AreEqual(5, data.PlayerTaskDatas[0].id);
+            if (saves == 1) {
+                Assert.AreSame(original, data.BonusArea);
+                Assert.IsTrue(progress.IsBonusGame);
+            } else {
+                Assert.AreNotSame(original, data.BonusArea);
+                CollectionAssert.AreEqual(new[] {0,0,0,0,0}, data.BonusArea);
+                Assert.IsFalse(progress.IsBonusGame);
+            }
+        }, data) {IsBonusGame=pending};
+        var branches = new RecoveredRewardBranches(Rules(), progress);
+        Assert.AreEqual(enters, branches.CheckBonusGame());
+        Assert.AreEqual(enters ? 2 : 0, saves);
+        Assert.AreEqual(lastArea, original[4]);
+        Assert.IsFalse(progress.IsBonusGame);
+        Assert.IsFalse(branches.CheckBonusGame());
+        Assert.AreEqual(enters ? 2 : 0, saves);
+    }
+
+    [Test]
+    public void EmptyBonusAreaPreservesOriginalCountEquality()
+    {
+        var data = new PlayerData {BonusArea=new List<int>()};
+        int saves = 0; var rules = Rules();
+        var progress = new RecoveredPlayerProgress(rules, () => saves++, data);
+        Assert.IsTrue(new RecoveredRewardBranches(rules, progress).CheckBonusGame());
+        Assert.AreEqual(2, saves);
+        CollectionAssert.AreEqual(new[] {0,0,0,0,0}, data.BonusArea);
+    }
+
+    [Test]
+    public void NullBonusAreaFailsBeforePendingFlagIsConsumedOrDataSaved()
+    {
+        var data = new PlayerData {BonusArea=null};
+        int saves = 0; var rules = Rules();
+        var progress = new RecoveredPlayerProgress(rules, () => saves++, data) {IsBonusGame=true};
+        Assert.Throws<NullReferenceException>(() => new RecoveredRewardBranches(rules, progress).CheckBonusGame());
+        Assert.AreEqual(0, saves);
+        Assert.IsTrue(progress.IsBonusGame);
+    }
     private sealed class ColumnOrder : Random
     {
         private readonly int[] keys={2,0,4,1,3}; private int index;

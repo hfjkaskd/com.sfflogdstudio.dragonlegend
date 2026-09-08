@@ -89,3 +89,9 @@ SetTaskData 保留首次固定 count=1、后续增量及上下限、已领取只
 修正 Quorum 图集的导入设置为原版 1024×1024、可读、无 mipmap、线性 Alpha8、无压缩。只修改导入参数，没有重画图集。静态核对：85 个字形记录保留；PNG Alpha 通道与原始 Alpha8 数据的 1,048,576 字节在坐标行方向转换后逐字节一致；16 个文本配置/材质文件的外部 GUID 无缺失。
 
 本轮未接入完整主界面 Prefab，也未完成字体在 Unity 中的画面验收。包解析时 Unity 仍因 Defender 阻止读取 Whitebox.Runtime.dll 退出；这不属于测试通过。此前完整玩法、动画和视觉对齐的未完成范围继续有效，SDK 保持不变。
+
+## 本轮：Bonus 游戏入口的数据阶段
+
+按 UIMainView.CheckBonusGame 0x23c6d54 和谓词 0x23bf8d8 补齐遗漏分支。区域完成条件为每项大于 1，或 GameData 已有 IsBonusGame 标记；保留空列表触发、null 列表报错的原始边界。标记为运行时状态，不加入 PlayerData 存档字段。进入时先更新任务 5 并保存旧区域，再清标记、替换五项零值区域并再次保存；原列表不被就地清空。
+
+RewardBranches 提供 CheckBonusGame，供普通中奖动画之后、免费游戏判断之前调用。NPC、音效、Bonus 转场与小游戏视图仍未接线，完整主循环仍未完成，SDK 未变。新增 6 个测试用例覆盖阈值、已有标记、两次保存的可观察顺序和空/null 区域；本轮只完成原生指令及源码对照、diff 检查，Defender 阻塞未解除，未运行 Unity 测试，不能声明当前版本测试通过。
