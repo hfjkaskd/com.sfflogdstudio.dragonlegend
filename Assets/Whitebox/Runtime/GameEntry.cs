@@ -20,6 +20,7 @@ namespace DragonLegend.Whitebox
         public RecoveredSlotSettlement Settlement { get; private set; }
         public RecoveredSpinResult SpinResult { get; private set; }
         public RecoveredPlayerStore PlayerStore { get; private set; }
+        public RecoveredFreeSpinResult FreeSpinResult { get; private set; }
         public RecoveredPlayerProgress PlayerProgress { get; private set; }
         public RecoveredSpinEntry SpinEntry { get; private set; }
         public RecoveredRewardBranches RewardBranches { get; private set; }
@@ -47,6 +48,7 @@ namespace DragonLegend.Whitebox
             Settlement = null;
             SpinResult = null;
             PlayerProgress = null;
+            FreeSpinResult = null;
             SpinEntry = null;
             RewardBranches = null;
             PlayerStore = null;
@@ -68,6 +70,7 @@ namespace DragonLegend.Whitebox
             Settlement = null;
             SpinResult = null;
             PlayerProgress = null;
+            FreeSpinResult = null;
             SpinEntry = null;
             RewardBranches = null;
             PlayerStore = null;
@@ -108,6 +111,7 @@ namespace DragonLegend.Whitebox
             PlayerProgress = new RecoveredPlayerProgress(Rules, PlayerStore.Save, PlayerStore.Data);
             SpinEntry = new RecoveredSpinEntry(Rules, PlayerStore.Data, PlayerProgress, SpinResult, PlayerStore.Save);
             RewardBranches = new RecoveredRewardBranches(Rules, PlayerProgress);
+            FreeSpinResult = new RecoveredFreeSpinResult(Rules);
             status.text = profile.countryCode + " / " + profile.profileId + "\nSpins: " + PlayerProgress.SpinCount
                 + "\nLines: " + Rules.GetLines() + "\nCash tiers: " + Rules.GetCashOutCount()
                 + "\n\n" + profile.evidenceNote;

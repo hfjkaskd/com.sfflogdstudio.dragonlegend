@@ -80,6 +80,13 @@ namespace DragonLegend.Whitebox
         public int RandomMoreWildSymbol(int reel) => RandomListWeight(ReelWeights(reel, 2)); // 0x236b5ec
         public int RandomWildCount() => RandomListWeight(data.Gimrol.KilpGpinKgiitr); // 0x236b52c; returns INDEX
         public int GetSpinScatterAmount() => RandomListWeight(data.Rrggiomg.GpinGqorrgrRonpom); // 0x236bea8; returns INDEX
+        public int GetFreeCoinAmount() => RandomListWeight(data.Rrggiomg.QoinOmoinrKgiitr); // 0x236bf98
+        public int GetFreeBallAmount() => RandomListWeight(data.Rrggiomg.RollOmoinrKgiitr); // 0x236bfbc
+        public int GetFreeBallType() // 0x236bfe0: all indices other than 0 and 1 map to 2
+        {
+            int index = RandomListWeight(data.Rrggiomg.RollRipgKgiitr);
+            return index == 0 ? 0 : index == 1 ? 1 : 2;
+        }
         public int GetFreeSpins(int scatterCount) => data.Rrggiomg.RrggGping[scatterCount]; // 0x236becc
 
         // 0x236c9f0: constructs once, in configured ID order.

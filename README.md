@@ -107,3 +107,10 @@ RewardBranches 提供 CheckBonusGame，供普通中奖动画之后、免费游�
 按 CheckFreeGame 0x23c90bc 补齐任务更新之后的数据顺序：任务 3 保存，发送原事件 7 对应的提现任务刷新参数 (5,1)，随后 GameSlotType=Free、FreeSpinCount=配置次数、TotalFreeSpinWin=0。这些是 GameData 运行时字段，不写入 PlayerData；原顺序不追加保存。未触发时保留已有免费状态。事件消费者名由 UIMainView.OnInit 的监听绑定交叉核对。
 
 新增顺序和未触发保护用例，Unity 2022.3.62f3 PlayMode 全部 79 项通过、0 失败（本地 Artifacts/free-entry-tests.xml）。这仅证明现有规则及入口数据阶段；免费开场弹窗、Scatter 动画、自动旋转及返回基础游戏的生命周期仍未接通。SDK 保持不变，完整 1:1 尚未完成。
+## 本轮：免费旋转结果生成器
+
+恢复 FreeSlotGameResult.InitFreeGameResult 0x238265c、RandomSymbolInfo 0x2382ad0、CheckSingleSymbol 0x2382b24，以及免费金币数量、龙珠数量与类型的三个配置 getter。顺序为先取数量、列优先均匀生成底盘、清理共享占位、金币 9 放置、龙珠 11 放置，最后列优先生成所有龙珠类型。包含底盘本身出现的龙珠；类型权重索引非 0/1 时保留原版映射到 2。
+
+采用复用棋盘和固定候选行缓冲，每步最多一次列重试，避免原版随机重试在超额配置下卡住主线程；不静默截断配置数量。GameEntry 在配置生命周期创建/清理该实例。自动免费旋转入口、表现调用与结束分支仍未接通，本轮不宣称完整循环已完成。
+
+新增 4 项用例，对照直接移植的列表式放置逻辑检查棋盘、类型序列和后续随机数（含满盘），并验证超额配置保持待完成且每步可返回。Unity 2022.3.62f3 全量 PlayMode 83 项通过、0 失败（本地 Artifacts/free-result-tests.xml）。主界面、动画和完整生命周期仍待恢复；SDK 不变。
