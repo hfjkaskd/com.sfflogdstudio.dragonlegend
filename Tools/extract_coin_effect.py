@@ -4,6 +4,11 @@ No Spine runtime or assembly is included in Unity.
 """
 import struct,json,sys,hashlib
 from pathlib import Path
+if len(sys.argv)!=3:
+ raise SystemExit('Usage: extract_coin_effect.py INPUT.skel.bytes OUTPUT.json (atlas is read beside INPUT)')
+source=Path(sys.argv[1]).resolve();destination=Path(sys.argv[2]).resolve()
+if destination.suffix.lower()!='.json' or destination.parent==source.parent:
+ raise SystemExit('Output must be a .json outside the source asset directory')
 b=Path(sys.argv[1]).read_bytes();p=8
 
 def u8():
@@ -67,6 +72,12 @@ for i in range(var()):
    else:d['vertices']=[num() for _ in range(n*2)]
    d['hull']=var();assert u8()==0,'mesh sequence'
    d['edges']=shorts();d['size']=[num(),num()]
+  elif kind==6:
+   d['endSlot']=var();n=var();d['weighted']=bool(u8());d['vertices']=[]
+   if d['weighted']:
+    for v in range(n):d['vertices'].append([{'bone':var(),'x':num(),'y':num(),'weight':num()} for _ in range(var())])
+   else:d['vertices']=[num() for _ in range(n*2)]
+   d['color']=color()
   else:raise ValueError(('unsupported attachment',kind,key,p))
   result['attachments'].append(d)
 zero('extra skins');zero('events')
@@ -104,7 +115,7 @@ for _ in range(var()):
     key=ref();kind=u8();count=var();assert kind==0,'attachment sequence timeline'
     var();time=num()
     mesh=next(m for m in result['attachments'] if m['slot']==slot and m['key']==key)
-    assert mesh['kind']==2
+    assert mesh['kind'] in (2,6)
     length=2*sum(len(v) for v in mesh['vertices']) if mesh['weighted'] else len(mesh['vertices'])
     t={'domain':'deform','index':slot,'attachment':key,'kind':kind,'frames':[]}
     for f in range(count):
