@@ -11,6 +11,7 @@ namespace DragonLegend.Whitebox
     {
         private readonly GoldenDragonAutoGenConfig data;
         private readonly List<int> winningCoinWeights = new List<int>();
+        private readonly List<int> bonusCounts = new List<int>(5);
         private List<RecoveredTaskInfo> taskInfos;
         public RecoveredGameplayRules(GoldenDragonAutoGenConfig configuration)
         {
@@ -31,6 +32,31 @@ namespace DragonLegend.Whitebox
         public int GetMinSpin() => data.Ronig.MinGpin[0]; // 0x236b8d8
         public int GetCoinSpinAmount() => RandomListWeight(data.Ronig.QoinGpinKgiitr);
         public int GetCoinReward() => UnityEngine.Random.Range(data.Ronig.QoinRgkorp[0], unchecked(data.Ronig.QoinRgkorp[1] + 1)); // 0x236b93c, inclusive upper bound
+        // 236b9dc: ONE uniform row index shared by all five columns, not five rolls.
+        // Native returns the same scratch list on subsequent calls.
+        public IReadOnlyList<int> GetBonusAllReward()
+        {
+            bonusCounts.Clear();
+            var c = data.Ronig;
+            int index = UnityEngine.Random.Range(0, c.Ltoo.Count);
+            bonusCounts.Add(c.Ltoo[index]);
+            bonusCounts.Add(c.Qoi[index]);
+            bonusCounts.Add(c.Jin[index]);
+            bonusCounts.Add(c.Roo[index]);
+            bonusCounts.Add(c.Rgkorp[index]);
+            return bonusCounts;
+        }
+        public int GetBonusFreeTimes() => data.Ronig.RrggRimgg[0]; // 236bd18
+        // 236bd7c: weight selects both the inclusive amount range and Jump flag.
+        // Called by the item animation, not while preparing the hidden deck.
+        public (int amount, bool jump) GetBonusReward()
+        {
+            var c = data.Ronig;
+            int index = RandomListWeight(c.RgkorpKgiitr);
+            bool jump = c.Jimp[index] != 0;
+            int amount = UnityEngine.Random.Range(c.RgokrpMin[index], unchecked(c.RgkorpMoj[index] + 1));
+            return (amount, jump);
+        }
         public int GetCoinSpinAmountWin() // 0x236b828; removes first weight, no index +1
         {
             if (winningCoinWeights.Count == 0)
