@@ -82,8 +82,9 @@ whose full visual fidelity remains unfinished.
 
 ## Outstanding integration
 
-The original Free ball Wheel entry animation and actual production router binding
-still need completion, as does Treasure and the larger Free lifecycle. This
+The original Free ball Wheel entry animation and actual ball-scan integration are
+now implemented and tested in `free-wheel-game.md`. Production router binding,
+Treasure and the larger Free lifecycle still need completion. This
 window exposes the recovered music/sound and cash-out refresh events; production
 audio/event consumers across all recovered windows remain part of the broader
 unfinished integration. Global pool ownership and unexpected offscreen tween

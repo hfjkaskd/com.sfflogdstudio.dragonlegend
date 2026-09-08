@@ -10,9 +10,10 @@ task update. The float completion callback is passed onward unchanged.
 
 RecoveredFreeSmallGameRouter implements this dispatch with required entry
 consumers. It does not draw the game's reward, credit money, complete a row or
-substitute another game when a consumer is missing. Slot/Wheel/Treasure entry
-animations and windows remain separate unfinished work. Their callbacks in
-the router unit test only record dispatch and are not implementations.
+substitute another game when a consumer is missing. Slot and Wheel entries and
+windows have since been implemented; see lucky-spin-window.md and
+free-wheel-game.md. Treasure remains unfinished. Callbacks in the router unit
+test only record dispatch and are not implementations.
 
 The dispatch test exercises all four results, color columns 0/1/2 and
 out-of-range type mapping, verifies the next RNG value after the single
@@ -28,8 +29,9 @@ are deterministic test configuration; the actual entry rules supply the Lucky
 reward. Unexpected game selection fails the test instead of returning a reward.
 
 This proves the composed Lucky path in a scene integration harness. Production
-FreeEntry/board binding, main-world coordinate placement and the remaining
-three games are still pending. It does not claim complete game lifecycle or
+FreeEntry/board binding, main-world coordinate placement and Treasure are still
+pending. The later FreeWheelGame tests additionally compose two actual ball
+claims through Cash and Grand. This does not claim complete game lifecycle or
 visual parity. SDK handling is unchanged.
 
 Validation: Artifacts/free-small-game-router-tests.xml reports 307/307 PlayMode tests passed in Unity 2022.3.62f3 with graphics enabled, including both new dispatch and two-ball actual Lucky flow tests.

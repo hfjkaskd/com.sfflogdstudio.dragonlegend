@@ -79,7 +79,8 @@ evidence that the whole Wheel window or lifecycle is complete.
 
 The full window, frame/pointer animation, jackpot meters/events, delayed
 autostart and actual reward popup/cash-flight flow are now implemented and tested
-in `wheel-window.md`. Free entry and production routing remain incomplete.
+in `wheel-window.md`. Free entry is implemented in `free-wheel-game.md`;
+production routing remains incomplete.
 `Prepare` and `StartSpin` remain separate entry points for the native ordering.
 
 Native evidence used by that window:
