@@ -1,0 +1,457 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5366747275937278567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4804128352726924755}
+  - component: {fileID: 1256155908949035324}
+  - component: {fileID: 5788392605289282196}
+  - component: {fileID: 7337329215608317988}
+  - component: {fileID: 886752286242782406}
+  m_Layer: 5
+  m_Name: ef_shoucanggl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4804128352726924755
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366747275937278567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1256155908949035324
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366747275937278567}
+  m_CullTransparentMesh: 0
+--- !u!114 &5788392605289282196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366747275937278567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dad06e1c22c15241b8bd93bf1077c3a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_Material: {fileID: 2100000, guid: 601330edf059f894dbfb4541361889cd, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  bones:
+  - name: root
+    parent: -1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: bj
+    parent: 0
+    mode: 0
+    x: 0.0000019693011
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: dx
+    parent: 0
+    mode: 0
+    x: 0.0000019693011
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: qq
+    parent: 2
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: qq01
+    parent: 3
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: qq02
+    parent: 3
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: qq03
+    parent: 3
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: ray
+    parent: 2
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 0.8
+    scaleY: 0.8
+  - name: ray01
+    parent: 7
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: ray02
+    parent: 7
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 180
+    scaleX: 1
+    scaleY: 1
+  - name: cc01
+    parent: 2
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: cc02
+    parent: 2
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 180
+    scaleX: 1
+    scaleY: 1
+  - name: glow
+    parent: 2
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: ch
+    parent: 2
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 0.9
+    scaleY: 0.9
+  - name: ch01
+    parent: 13
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: ch02
+    parent: 13
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  slots:
+  - bone: 1
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 4
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 6
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 5
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 8
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 9
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 10
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 11
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 12
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 14
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 15
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 1
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 1
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  regions:
+  - vertices:
+    - {x: -49.17073, y: -57.038048}
+    - {x: -49.17073, y: 49.17073}
+    - {x: 53.66634, y: 49.17073}
+    - {x: 53.66634, y: -57.038048}
+    uv:
+    - {x: 0.99570817, y: 0.0034423408}
+    - {x: 0.5901288, y: 0.0034423408}
+    - {x: 0.5901288, y: 0.31841654}
+    - {x: 0.99570817, y: 0.31841654}
+    tint: {r: 1, g: 0.85490197, b: 0.45490196, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: 54.683258, y: -51.77684}
+    - {x: -51.41, y: -46.8245}
+    - {x: -46.61488, y: 55.90072}
+    - {x: 59.478382, y: 50.94838}
+    uv:
+    - {x: 0.99570817, y: 0.0034423408}
+    - {x: 0.5901288, y: 0.0034423408}
+    - {x: 0.5901288, y: 0.31841654}
+    - {x: 0.99570817, y: 0.31841654}
+    tint: {r: 1, g: 0.85490197, b: 0.45490196, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -115.51219, y: -115.51219}
+    - {x: -115.51219, y: 115.5122}
+    - {x: 115.5122, y: 115.5122}
+    - {x: 115.5122, y: -115.51219}
+    uv:
+    - {x: 0.5901288, y: 0.32185885}
+    - {x: 0.5901288, y: 0.64027536}
+    - {x: 0.98712444, y: 0.64027536}
+    - {x: 0.98712444, y: 0.32185885}
+    tint: {r: 1, g: 0.6392157, b: 0.33333334, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -170, y: -173.75}
+    - {x: -170, y: 162.5}
+    - {x: 168.75, y: 162.5}
+    - {x: 168.75, y: -173.75}
+    uv:
+    - {x: 0.0042918455, y: 0.0034423408}
+    - {x: 0.0042918455, y: 0.4664372}
+    - {x: 0.5858369, y: 0.4664372}
+    - {x: 0.5858369, y: 0.0034423408}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -170, y: -173.75}
+    - {x: -170, y: 162.5}
+    - {x: 168.75, y: 162.5}
+    - {x: 168.75, y: -173.75}
+    uv:
+    - {x: 0.0042918455, y: 0.0034423408}
+    - {x: 0.0042918455, y: 0.4664372}
+    - {x: 0.5858369, y: 0.4664372}
+    - {x: 0.5858369, y: 0.0034423408}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.10732, y: -146.10732}
+    - {x: -146.10732, y: 146.10732}
+    - {x: 146.10732, y: 146.10732}
+    - {x: 146.10732, y: -146.10732}
+    uv:
+    - {x: 0.0042918455, y: 0.4698795}
+    - {x: 0.0042918455, y: 0.8726334}
+    - {x: 0.5064378, y: 0.8726334}
+    - {x: 0.5064378, y: 0.4698795}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.10732, y: -146.10732}
+    - {x: -146.10732, y: 146.10732}
+    - {x: 146.10732, y: 146.10732}
+    - {x: 146.10732, y: -146.10732}
+    uv:
+    - {x: 0.0042918455, y: 0.4698795}
+    - {x: 0.0042918455, y: 0.8726334}
+    - {x: 0.5064378, y: 0.8726334}
+    - {x: 0.5064378, y: 0.4698795}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.10732, y: -146.10732}
+    - {x: -146.10732, y: 146.10732}
+    - {x: 146.10732, y: 146.10732}
+    - {x: 146.10732, y: -146.10732}
+    uv:
+    - {x: 0.0042918455, y: 0.4698795}
+    - {x: 0.0042918455, y: 0.8726334}
+    - {x: 0.5064378, y: 0.8726334}
+    - {x: 0.5064378, y: 0.4698795}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -128, y: -128}
+    - {x: -128, y: 128}
+    - {x: 128, y: 128}
+    - {x: 128, y: -128}
+    uv:
+    - {x: 0.5107296, y: 0.6437177}
+    - {x: 0.5107296, y: 0.99655765}
+    - {x: 0.9506438, y: 0.99655765}
+    - {x: 0.9506438, y: 0.6437177}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -128, y: -128}
+    - {x: -128, y: 128}
+    - {x: 128, y: 128}
+    - {x: 128, y: -128}
+    uv:
+    - {x: 0.5107296, y: 0.6437177}
+    - {x: 0.5107296, y: 0.99655765}
+    - {x: 0.9506438, y: 0.99655765}
+    - {x: 0.9506438, y: 0.6437177}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  atlasPath: RecoveredArt/Res/Spine/shoucanggl/ef_shoucanggl
+--- !u!111 &7337329215608317988
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366747275937278567}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 67fedcc42523f1e4fbb56726400bb181, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 67fedcc42523f1e4fbb56726400bb181, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &886752286242782406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366747275937278567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1559611724bab9346874c5930eb40ff4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  player: {fileID: 7337329215608317988}
+  rig: {fileID: 5788392605289282196}
+  poses:
+  - clip: shoucanggl
+    animation: {fileID: 11400000, guid: cfc37c825242017468e7373083e44a3c, type: 2}
+  poseTime: 0

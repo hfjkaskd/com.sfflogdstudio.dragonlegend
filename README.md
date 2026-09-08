@@ -460,3 +460,12 @@ RecoveredRegionRig 使用单个原生 MaskableGraphic/CanvasRenderer，按原 42
 - 修正转换器将 JsonUtility 的空序列对象误判为有效序列的问题，生成阶段检查普通附件的四顶点和 UV 完整性。六个既有二进制资源转换回归仍一致，三个新源文件的哈希保持不变。
 - 完整测试 `Artifacts/jackpot-meters-all-tests-2.xml` 为 168/168 通过，覆盖两类动画共 54 个源数据几何采样、序列帧边界、实际按钮取值顺序、暂停及取消回调。当前主相机画面：`Artifacts/current-jackpot-meters.png`。
 - 中奖图标已可播放，但 Wild 后的奖池事件、领取弹窗及飞币完成回调仍未接到实际奖励链；Symbol/Bonus/Free/BaseEnd 继续待补，完整生命周期 1:1 尚未完成。详见 `Tools/Evidence/jackpot-flow.md`。
+
+### 奖池弹窗动画资源（2026-09-08）
+
+- 完整转换 `ef_jackpottc` 的 Grand/Major/Minor 三套循环表现、`ef_slpenqian` 喷币以及 CashOutTip 使用的 `ef_shoucanggl`。弹窗龙形包含 12 个网格，喷币包含 30 条不同帧速的循环序列轨道。
+- 扩展现有 Unity MaskableGraphic 渲染器，支持加权 UI 网格及 NoScaleOrReflection；每个效果一个 CanvasRenderer，Unity Animation 驱动共享曲线，复用实例姿态缓冲。没有引入 Spine 等第三方运行时程序集。
+- 40 组源数据几何对照、三种当前渲染画面、暂停与循环播放验证通过。基准时间按 float32 采样，修正了恰好在 1/30 秒换帧处的双精度参考偏差。
+- `Artifacts/jackpot-popup-art-all-tests-2.xml`：170/170 通过。当前动画画面：`Artifacts/current-jackpot-popup-grand.png`、`current-jackpot-popup-major.png`、`current-jackpot-popup-minor.png`。这些画面仅验证弹窗动画，尚未包含奖励文字、按钮与完整 CashOutTip。
+- 桌面 Editor 姿态采样每 1000 次：三种龙形约 28 ms，喷币约 45 ms，收集光效约 4.7 ms，托管分配均为 0；不代表真机完整 UI 帧耗时。
+- 领取流程的额外证据已整理到 `Tools/Evidence/JackpotPopup/README.md`，包括领取倍率变化后的 0.5 秒数字变化、UIWheelView 关闭顺序、0.3 秒 OutBack/InBack 窗口动画。实际弹窗领取和飞币奖励链仍待接入，未提前完成或替代原版流程。
