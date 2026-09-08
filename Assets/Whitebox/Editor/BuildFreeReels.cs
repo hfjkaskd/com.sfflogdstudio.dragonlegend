@@ -48,6 +48,10 @@ public static class BuildFreeReels
             scanSettings.FindProperty("coinInterval").floatValue=.5f;
             scanSettings.ApplyModifiedPropertiesWithoutUndo();
             settings.FindProperty("coinScan").objectReferenceValue=scan;
+            var ballScan=root.AddComponent<RecoveredFreeBallScan>();var ballSettings=new SerializedObject(ballScan);
+            ballSettings.FindProperty("reels").objectReferenceValue=root.GetComponent<RecoveredFreeReels>();
+            ballSettings.FindProperty("npcDelay").floatValue=1;ballSettings.ApplyModifiedPropertiesWithoutUndo();
+            settings.FindProperty("ballScan").objectReferenceValue=ballScan;
             var reels=settings.FindProperty("reels");reels.arraySize=15;
             var motions=settings.FindProperty("motions");motions.arraySize=15;
             var columns=settings.FindProperty("columns");columns.arraySize=5;

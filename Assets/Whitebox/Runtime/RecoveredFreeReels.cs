@@ -16,6 +16,8 @@ namespace DragonLegend.Whitebox
         public RecoveredFreeReelController Controller=>controller;
         [SerializeField] private RecoveredFreeCoinScan coinScan;
         public RecoveredFreeCoinScan CoinScan=>coinScan;
+        [SerializeField] private RecoveredFreeBallScan ballScan;
+        public RecoveredFreeBallScan BallScan=>ballScan;
         public RecoveredFreeSpecials Specials=>specials;
         public bool IsInitialized { get; private set; }
         public RecoveredReelView At(int column, int row) => reels[column * 3 + row];

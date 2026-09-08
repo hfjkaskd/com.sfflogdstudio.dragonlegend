@@ -45,8 +45,12 @@ namespace DragonLegend.Whitebox
             var coin=reels.Specials.CurrentStoppedCoin(reel);
             if(coin==null)return;
             coin.RewardPresentation.Play(reward.Reward,language(),target);
-            rewards.Add(reel.gameObject,reward.Reward);
-            progress.TotalFreeSpinWin+=reward.Reward;
+            RecordReward(reel,reward.Reward);
+        }
+        public void RecordReward(RecoveredReelView reel,float reward)
+        {
+            rewards.Add(reel.gameObject,reward);
+            progress.TotalFreeSpinWin+=reward;
         }
         private void OnDestroy()
         {

@@ -44,6 +44,7 @@ namespace DragonLegend.Whitebox
         private readonly Dictionary<RecoveredReelView,Component> stopped=new Dictionary<RecoveredReelView,Component>();
         public int BallIndex=>ballIndex;
         public RecoveredFreeCoin CurrentStoppedCoin(RecoveredReelView reel)=>byReel[reel].stoppedCoin;
+        public RecoveredFreeBall CurrentStoppedBall(RecoveredReelView reel)=>byReel[reel].stoppedBall;
         public int CreatedCoins {get;private set;}
         public int CreatedBalls {get;private set;}
         public int ActiveCoins=>coins==null?0:coins.CountActive;
