@@ -13,6 +13,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private float bonusCoinInterval;
         [SerializeField] private float wildColumnInterval;
         [SerializeField] private RecoveredWildPresenter wilds;
+        [SerializeField] private RecoveredSymbolWinPresenter symbolEffects;
+        public RecoveredSymbolWinPresenter SymbolEffects=>symbolEffects;
         [SerializeField] private RecoveredJackpotMeters jackpotMeters;
         [SerializeField] private RecoveredJackpotPopup jackpotPopup;
         [SerializeField] private float jackpotDelay;
@@ -81,6 +83,7 @@ namespace DragonLegend.Whitebox
             }
             reels.Initialize(symbols);
             wilds.Bind(reels,GetComponentInParent<Canvas>().sortingOrder);
+            symbolEffects.Bind(reels,GetComponentInParent<Canvas>().sortingOrder);
             if(coinStops!=null)coinStops.Bind(reels,languageType,bonusCollection,GetComponentInParent<Canvas>().sortingOrder);
             downWin.Bind(languageType);
             winFlight.Bind(GetComponentInParent<Canvas>().sortingOrder);
@@ -138,6 +141,9 @@ namespace DragonLegend.Whitebox
         private void BeginSymbolAnimations()
         {
             SymbolWin.Capture(result.Settlement,result.Board.GetSymbol,BonusCoins.TotalReward,Bet);
+            if(SymbolWin.RequestsLineSound)Sound("win");
+            if(entry==null)return;
+            symbolEffects.Present(SymbolWin,wilds.NextSortingOrder);
             SymbolAnimationsRequested?.Invoke();
         }
         private void PlayJackpotWin(RecoveredJackpotType type)
@@ -171,6 +177,7 @@ namespace DragonLegend.Whitebox
         public void Unbind()
         {
             JackpotSequence?.Cancel();JackpotSequence=null;
+            if(symbolEffects!=null)symbolEffects.Unbind();
             SymbolWin=null;
             if(jackpotPopup!=null) {
                 jackpotPopup.PauseMusicRequested-=PauseMusic;jackpotPopup.StopSound1Requested-=StopSound1;

@@ -70,6 +70,15 @@ def sample(data,time,geometry=False):
                 alpha=evaluate(frames,time,0,True)
                 values=[a+(b-a)*alpha for a,b in zip(values,frames[index+1]['values'])]
             deforms[t['index'],t['attachment']]=values
+    for constraint in data.get('transformConstraints',[]):
+        assert constraint['local']==1 and constraint['relative']==1
+        o,m=constraint['offsets'],constraint['mix'];assert m[5]==0
+        target=pose[constraint['target']]
+        for index in constraint['bones']:
+            p=pose[index]
+            p[0]+=(target[0]+o[0])*m[0]
+            for axis in (1,2):p[axis]+=(target[axis]+o[axis])*m[axis]
+            for axis in (3,4):p[axis]*=1+(target[axis]-1+o[axis])*m[axis]
     matrices=[]
     for b,p in zip(data['bones'],pose):
         matrices.append(matrix([1,0,0,1,0,0] if b['parent']<0 else matrices[b['parent']],b['mode'],p))

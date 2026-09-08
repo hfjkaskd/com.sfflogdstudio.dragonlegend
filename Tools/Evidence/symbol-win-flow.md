@@ -2,9 +2,9 @@
 
 The actual paid Spin now captures `RecoveredSymbolWinSelection` at the start of the
 symbol stage, immediately after CheckJackPot's completion predicate. This is the initial
-selection portion of UIMainView.CheckPlaySymbolAnim (`23cce68`), not completion of that
-method. Symbol effects, temporary-label flight/counting and the Big Win window are still
-required before this stage can continue to CheckBonusGame.
+selection and symbol-effect portion of UIMainView.CheckPlaySymbolAnim (`23cce68`), not completion of that
+method. Temporary-label flight/counting and the Big Win window are still required
+before this stage can continue to CheckBonusGame.
 
 ## Selection order
 
@@ -28,8 +28,8 @@ symbol ID. A shared cell is requested only once; all-Wild 243-path boards yield 
 instead of allocating native LINQ lists and predicates for every coordinate.
 
 The selected first effect paths already exist as provenance in OriginalSymbolCatalog:
-0 A, 1 10, 2 J, 3 Q, 4 K, 5 Yu, 6 Gui, 7 Wild1, under Res/Prefabs. These paths are not
-yet converted winning-effect prefabs. Wild3 and Wild3Light are separate effects for the
+0 A, 1 10, 2 J, 3 Q, 4 K, 5 Yu, 6 Gui, 7 Wild1, under Res/Prefabs. These paths now map to the converted prefabs in
+`Resources/RecoveredSymbols/Winning`. Wild3 and Wild3Light are separate effects for the
 preceding full-column Wild sequence and must not replace Wild1 for ordinary winning cells.
 
 ## Big Win classification
@@ -111,3 +111,78 @@ the existing getter and native `2386504` established the strict (0,1) minimum be
 Only the new test and evidence wording changed. `Artifacts/symbol-selection-tests-2.xml`
 then passed all nine new cases, including preserved fractional rewards and the .1->1
 stored-award mutation before adding the bonus. No runtime workaround was added.
+
+
+## Native winning-symbol presentation (current implementation)
+
+`RecoveredSymbolWinPresenter` now consumes the captured cells at the actual symbol-stage
+boundary. It shares each reel's `TryHideForEffect` ownership with the existing Wild/coin
+effects. An already occupied cell is untouched; a missing effect still claims/hides the
+row, as `RollReel.ShowSymbolEffect` (`2376750`) does. Each symbol has its own Unity
+ObjectPool. Reel wrap returns its three effects, and pooled animation track times survive
+reuse. Profile unbind removes subscriptions and returns active effects. Sorting starts
+after the preceding Wild presentation, preserving the later effect's draw order.
+
+The positive-line sound at native `23cce68` pseudocode line 948 uses pointer `0501d328`.
+ELF relocation `04f1d328 -> 05064fe0` resolves to ScriptString **win**. The playfield
+requests this sound before spawning the selected symbols. Audio playback still requires
+the project's pending audio integration; the request is not evidence of audible output.
+
+Original prefab / selected skeleton clips:
+
+| Original prefab | Binary | Selected clip |
+| --- | --- | --- |
+| A | ef_qizizimu | a_idle |
+| 10 | ef_qizizimu | 10_idle |
+| J | ef_qizizimu | j_idle |
+| Q | ef_qizizimu | q_idle |
+| K | ef_qizizimu | k_idle |
+| Yu | ef_qizijinli | idle |
+| Gui | ef_qizibixi | idle |
+| Wild1 | ef_wild1 | idle |
+| Every nested Win1 | ef_slwin1 | animation |
+
+All main/frame animations loop independently. The authoring conversion retains source
+attachment visibility, atlas regions, colors/additive blending, weighted vertices,
+mesh deformation, bone inheritance and timeline curves. MeshRenderer geometry remains
+in world space at 100 pixels/unit, under the authored Result host's 100 scale. Original
+source node offsets/scales are zero/one. No Spine runtime/plugin is added.
+
+Yu includes a static relative-local transform constraint: target bone 8, constrained
+bone 9, translation offsets (121.555397, -4.161011), translation and scale mixes (-.5,-.5).
+It applies after local animation sampling, before matrix composition; negative weights
+are retained without clamping. The source's single constraint has no constrained
+children, no skin requirement, no shear or animated constraint tracks. Authoring rejects
+other constraint configurations rather than silently using these restricted semantics.
+Binary layout and relative-local math were checked against the primary 4.1 references:
+https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/SkeletonBinary.cs
+https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/TransformConstraint.cs
+
+`verify_wild_extraction.py` re-extracts all eleven covered source binaries and compares
+complete JSON payloads by source SHA-256, protecting binary/atlas inputs. Independent
+Python sampling in `sample_symbol_reference.py` produces five full vertex poses for
+each of the eight clips and the common frame, including Yu's negative scale interval.
+Unity tests compare those vertices against each generated prefab's current mesh, test
+cell ownership/reuse, and render `Artifacts/current-winning-symbols-0.png` / `-1.png`.
+These checks cover the converted symbol effects, not the unfinished total game lifecycle.
+
+
+### Validation and outstanding source-alpha discrepancy
+
+`Artifacts/symbol-effects-all-tests-2.xml`: 201/201 PlayMode checks passed, including
+45 complete independent vertex poses (nine rigs x five times). Both fresh gallery
+captures were inspected. Fish/Wild geometry and frame/letter poses render, but Gui has
+purple areas outside its frame; this is an unresolved visual-fidelity question.
+
+The original atlas declares `pma:true` and the original Gui material disables straight
+alpha input. Both the reference PNG and the independently exported raw Texture2D contain
+nonzero purple RGB at alpha zero, e.g. (10,110) RGBA=(125,10,136,0). Reference PNG SHA-256
+EFDC5FE3352F95CF39606E71AF11DBC058EB9018188BFFD76E69081EDF74DC5A is unchanged in this project.
+The independent raw Texture2D SHA-256 is
+2D64BC13697FD8643702DECF0B606249F26BF2F9EAFA80AABE6FF69FAF4F10BC.
+Premultiplied blending displays that hidden RGB. Exported SkeletonGraphic shader files
+are `DummyShaderTextExporter` placeholders and cannot prove the original GPU behavior.
+Do not silently multiply the whole atlas by alpha (which would darken already-premultiplied
+glow) or erase source RGB merely to make this capture look cleaner. Resolve using the
+original compiled shader/runtime rendering before claiming visual equivalence. This
+issue and the missing subsequent label/Big Win stages keep the full goal incomplete.

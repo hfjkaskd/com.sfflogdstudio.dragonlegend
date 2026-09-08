@@ -18,6 +18,7 @@ namespace DragonLegend.Whitebox
         private readonly Action[] clearHandlers=new Action[5];
         private int order,baseOrder;
         public RecoveredBoardShake Shake=>shake;
+        public int NextSortingOrder=>order;
         public int ActiveCount=>columns==null?0:columns.CountActive;
         public int ActiveLightCount=>flashes.Count;
         public int CreatedCount=>columns==null?0:columns.CountAll;

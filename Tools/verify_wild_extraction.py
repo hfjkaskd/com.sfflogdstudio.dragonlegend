@@ -18,6 +18,7 @@ sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
 files = list(source.rglob('*.skel.bytes'))
 by_hash = {sha(p): p for p in files}
 goldens = list((project / 'Tools/Evidence/Wild').glob('*.json'))
+goldens += list((project / 'Tools/Evidence/Symbols').glob('*.json'))
 goldens += [project / ('Assets/Whitebox/Editor/' + name + '.json') for name in
             ('RecoveredCoinEffect', 'RecoveredLampFlash', 'RecoveredWinBurst')]
 with tempfile.TemporaryDirectory(prefix='dragon-wild-extraction-') as temp:
@@ -49,4 +50,4 @@ for name in ('ef_wild3', 'ef_slwin3'):
     atlas = next(source.rglob(name + '.atlas.txt'))
     raw = next((reverse / 'assets/exported/TextAsset').glob(name + '.atlas__*.bytes'))
     assert atlas.read_bytes() == raw.read_bytes(), 'Reference atlas differs from raw TextAsset'
-print('PASS: six full binary conversions, clipping/deform payload, input guards, original atlas bytes')
+print('PASS: eleven full binary conversions, clipping/deform payload, input guards, original atlas bytes')

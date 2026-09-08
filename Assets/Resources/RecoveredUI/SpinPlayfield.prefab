@@ -191,6 +191,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5798272125247681638}
+  - {fileID: 2159614776486242643}
   m_Father: {fileID: 4903156380196369003}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -198,6 +199,59 @@ RectTransform:
   m_AnchoredPosition: {x: 0.003418, y: 335.14}
   m_SizeDelta: {x: 1080, y: 1919.72}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &6015201527338520207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2159614776486242643}
+  - component: {fileID: 8471696605888690470}
+  m_Layer: 5
+  m_Name: SymbolEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2159614776486242643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6015201527338520207}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4271234036618506112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8471696605888690470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6015201527338520207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53cee5374dd80734aba743de81c77398, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  prefabs:
+  - {fileID: 7134086137385790525, guid: 548004781cd71474a8b4a7ebb69214ec, type: 3}
+  - {fileID: 853879326718886269, guid: eb541c78a71b4694e9d1a0140c93965c, type: 3}
+  - {fileID: 7074311143590288747, guid: 299bfc23587d256419d1716d7ffc11f5, type: 3}
+  - {fileID: 6117300096426985386, guid: 41a37cf4f657d6344b88ca0ae8ce2a60, type: 3}
+  - {fileID: 7819996137104310924, guid: c7eb9a9fe4e1c8b4ab302de1a845c683, type: 3}
+  - {fileID: 3417365063731470104, guid: 7acb9b7933beaca4f8b506c393fb98a3, type: 3}
+  - {fileID: 7976898360249675796, guid: aa735f69222112345af5994835f55c49, type: 3}
+  - {fileID: 1065363565745516999, guid: 761a74a1b8a6fbb458708f01eb12ad43, type: 3}
 --- !u!1 &6544434768929315992
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +479,7 @@ MonoBehaviour:
   bonusCoinInterval: 0.5
   wildColumnInterval: 0.36
   wilds: {fileID: 5595381969470425101}
+  symbolEffects: {fileID: 8471696605888690470}
   jackpotMeters: {fileID: 2322447023878766356}
   jackpotPopup: {fileID: 1405900676340334159}
   jackpotDelay: 1.5

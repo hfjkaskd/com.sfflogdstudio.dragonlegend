@@ -72,6 +72,8 @@ namespace DragonLegend.Whitebox
                 else if (c.component < 0) attachments[c.index] = Mathf.RoundToInt(value);
                 else { var tint = tints[c.index]; tint[c.component] = value; tints[c.index] = tint; }
             }
+            if(data.relativeLocalConstraints!=null)
+                for(int i=0;i<data.relativeLocalConstraints.Length;i++)data.relativeLocalConstraints[i].Apply(local);
             for (int i = 0; i < data.bones.Length; i++) {
                 var b = data.bones[i]; int p = i * 5;
                 matrices[i] = Compose(b.parent < 0 ? Matrix4x4.identity : matrices[b.parent], b.mode,

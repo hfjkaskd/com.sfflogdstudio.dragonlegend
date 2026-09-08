@@ -54,6 +54,16 @@ public static class BuildSpinPlayfield
             wildSettings.FindProperty("columnPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredWildColumn>("Assets/Resources/RecoveredSymbols/Wild3.prefab");
             wildSettings.FindProperty("lightPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredWildLight>("Assets/Resources/RecoveredSymbols/Wild3Light.prefab");
             wildSettings.FindProperty("shake").objectReferenceValue=shake;wildSettings.ApplyModifiedPropertiesWithoutUndo();
+            var symbolsRoot=new GameObject("SymbolEffects",typeof(RecoveredSymbolWinPresenter));symbolsRoot.layer=5;
+            symbolsRoot.transform.SetParent(result,false);symbolsRoot.transform.localScale=new Vector3(100,100,100);
+            var symbolSettings=new SerializedObject(symbolsRoot.GetComponent<RecoveredSymbolWinPresenter>());
+            var effectPrefabs=symbolSettings.FindProperty("prefabs");effectPrefabs.arraySize=8;
+            string[] effectNames={"A","10","J","Q","K","Yu","Gui","Wild1"};
+            for(int i=0;i<effectNames.Length;i++)effectPrefabs.GetArrayElementAtIndex(i).objectReferenceValue=
+                AssetDatabase.LoadAssetAtPath<RecoveredWildColumn>("Assets/Resources/RecoveredSymbols/Winning/"+effectNames[i]+".prefab");
+            symbolSettings.ApplyModifiedPropertiesWithoutUndo();
+            jackpotSettings.FindProperty("symbolEffects").objectReferenceValue=symbolsRoot.GetComponent<RecoveredSymbolWinPresenter>();
+            jackpotSettings.ApplyModifiedPropertiesWithoutUndo();
             var bottom = Rect("Bottom", root.transform, new Vector2(.5f, 0), new Vector2(.5f, 0),
                 new Vector2(-.003418f, 0), new Vector2(1080, 292.24f));
             var winRoot=(GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredUI/DownWinText.prefab"),bottom);

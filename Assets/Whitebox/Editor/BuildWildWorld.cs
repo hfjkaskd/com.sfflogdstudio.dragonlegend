@@ -9,7 +9,8 @@ using Object = UnityEngine.Object;
 
 public static class BuildWildWorld
 {
-    [Serializable] private class Source : BuildCoinAppearance.Data { public new Attachment[] attachments; public new Clip[] animations; }
+    [Serializable] private class Source : BuildCoinAppearance.Data { public new Attachment[] attachments; public new Clip[] animations; public Constraint[] transformConstraints; }
+    [Serializable] private class Constraint { public string name; public int order, skin, target, local, relative; public int[] bones; public float[] offsets, mix; }
     [Serializable] private class Attachment : BuildCoinAppearance.Attachment {
         public int endSlot; public bool weighted;
         public float[] vertices, uvs; public int[] counts, triangles; public Influence[] influences;
@@ -48,9 +49,9 @@ public static class BuildWildWorld
             PrefabUtility.SaveAsPrefabAsset(root,folder+".prefab");AssetDatabase.SaveAssets();
         } finally {Object.DestroyImmediate(root);}
     }
-    static GameObject Create(Transform parent, string name, string file, string directory,string folder=Folder,bool loop=true)
+    public static GameObject Create(Transform parent, string name, string file, string directory,string folder=Folder,bool loop=true, string sourceFolder="Artifacts/WildAuthoring", string clipName=null)
     {
-        var source = JsonUtility.FromJson<Source>(File.ReadAllText("Artifacts/WildAuthoring/" + file + ".json"));
+        var source = JsonUtility.FromJson<Source>(File.ReadAllText(sourceFolder + "/" + file + ".json"));
         var data = ScriptableObject.CreateInstance<RecoveredWorldRigData>(); data.name = file;
         data.atlasPath = "RecoveredArt/Res/Spine/棋子/" + directory + "/" + file; data.pixelsPerUnit = 100;
         string texturePath = "Assets/Resources/" + data.atlasPath + ".png";
@@ -63,6 +64,23 @@ public static class BuildWildWorld
             if (b.mode == 2 || b.mode < 0 || b.mode > 4 || v[5] != 0 || v[6] != 0) throw new InvalidDataException("Unconverted bone");
             data.bones[i] = new RecoveredRegionRig.Bone { name=b.name, parent=b.parent, mode=b.mode, rotation=v[0], x=v[1], y=v[2], scaleX=v[3], scaleY=v[4] };
         }
+        var constraints=new List<RecoveredWorldRigData.RelativeLocalConstraint>();
+        if(source.transformConstraints!=null)foreach(var c in source.transformConstraints) {
+            // Only the recovered fish's single relative-local, zero-shear constraint is supported.
+            // Reject other dependency graphs instead of silently approximating world constraints.
+            if(source.transformConstraints.Length!=1||c.order!=0||c.skin!=0||c.local!=1||c.relative!=1||c.bones.Length!=1
+                ||c.offsets.Length!=6||c.mix.Length!=6||c.mix[5]!=0||c.offsets[5]!=0)
+                throw new InvalidDataException("Unconverted transform constraint: "+c.name);
+            int bone=c.bones[0];
+            if(bone==c.target||data.bones[bone].parent!=data.bones[c.target].parent)
+                throw new InvalidDataException("Constraint dependency requires explicit conversion");
+            foreach(var b in data.bones)if(b.parent==bone)throw new InvalidDataException("Constrained descendants require ordered world updates");
+            constraints.Add(new RecoveredWorldRigData.RelativeLocalConstraint {bone=bone,target=c.target,
+                rotationOffset=c.offsets[0],rotationMix=c.mix[0],
+                translationOffset=new Vector2(c.offsets[1],c.offsets[2]),translationMix=new Vector2(c.mix[1],c.mix[2]),
+                scaleOffset=new Vector2(c.offsets[3],c.offsets[4]),scaleMix=new Vector2(c.mix[3],c.mix[4])});
+        }
+        data.relativeLocalConstraints=constraints.ToArray();
         var ids = new Dictionary<string, int>(); data.attachments = new RecoveredWorldRigData.Attachment[source.attachments.Length];
         for (int i = 0; i < data.attachments.Length; i++) {
             var a = source.attachments[i]; ids.Add(a.slot + "/" + a.key, i);
@@ -107,7 +125,9 @@ public static class BuildWildWorld
             var s=source.slots[i];if(s.blend!=0&&s.blend!=1)throw new InvalidDataException("Unsupported slot blending");
             data.slots[i]=new RecoveredWorldRigData.Slot {bone=s.bone,attachment=string.IsNullOrEmpty(s.attachment)?-1:ids[i+"/"+s.attachment],tint=ColorOf(s.color),additive=s.blend==1};
         }
-        var animation=source.animations[0]; data.duration=animation.duration;
+        var animation=clipName==null?source.animations[0]:Array.Find(source.animations,a=>a.name==clipName);
+        if(animation==null)throw new InvalidDataException("Missing selected animation: "+clipName);
+        data.duration=animation.duration;
         var channels=new List<RecoveredRigAnimation.Channel>();
         foreach (var t in animation.timelines) {
             if (t.domain=="deform") {
@@ -146,7 +166,7 @@ public static class BuildWildWorld
         renderer.sortingOrder=file=="ef_wild3"?0:1;
         var clock=new AnimationClip{name=animation.name,legacy=true,frameRate=30,wrapMode=loop?WrapMode.Loop:WrapMode.Once};
         clock.SetCurve("",typeof(RecoveredWorldRig),"poseTime",AnimationCurve.Linear(0,0,data.duration,data.duration));
-        clock=SaveAsset(clock,folder+"/"+(loop?file:animation.name)+".anim");var player=node.GetComponent<Animation>();player.AddClip(clock,animation.name);player.clip=clock;player.playAutomatically=loop;
+        clock=SaveAsset(clock,folder+"/"+(loop?file:animation.name)+".anim");clock.name=animation.name;EditorUtility.SetDirty(clock);var player=node.GetComponent<Animation>();player.AddClip(clock,animation.name);player.clip=clock;player.playAutomatically=loop;
         return node;
     }
     static void ValidateClip(float[] vertices)
