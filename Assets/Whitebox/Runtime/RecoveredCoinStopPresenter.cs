@@ -122,8 +122,8 @@ namespace DragonLegend.Whitebox
             for(int row=0;row<3;row++)lookup[column,row]=null;
             for(int row=0;row<3;row++) {
                 if(reels.ReelAt(column).SymbolId(row)!=9 || active[column,row]!=null)continue;
+                if(!reels.ReelAt(column).TryHideForEffect(row))continue;
                 var symbol=reels.ReelAt(column).SymbolAt(row).Symbol;
-                symbol.gameObject.SetActive(false);
                 var effect=pool.Get();effect.transform.position=symbol.transform.position;
                 active[column,row]=lookup[column,row]=effect;
                 effect.PlayShow();

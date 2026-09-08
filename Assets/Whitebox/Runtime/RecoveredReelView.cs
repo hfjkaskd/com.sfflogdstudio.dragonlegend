@@ -17,6 +17,7 @@ namespace DragonLegend.Whitebox
         [SerializeField] private int initialFakeInterval;
         private RecoveredSymbolView[] symbols;
         private int[] ids;
+        private bool[] shownEffects;
         private RecoveredSymbolCatalog catalog;
         private RecoveredSlotType mode;
         private float offsetPixels;
@@ -33,7 +34,7 @@ namespace DragonLegend.Whitebox
         {
             catalog = source ?? throw new ArgumentNullException(nameof(source)); mode = slotMode;
             if (symbols == null) {
-                symbols = new RecoveredSymbolView[slotCount]; ids = new int[slotCount];
+                symbols = new RecoveredSymbolView[slotCount]; ids = new int[slotCount];shownEffects=new bool[slotCount];
                 for (int i = 0; i < slotCount; i++) {
                     symbols[i] = Instantiate(symbolPrefab, rotationNode, false);
                     symbols[i].gameObject.layer = gameObject.layer;
@@ -45,12 +46,18 @@ namespace DragonLegend.Whitebox
                 }
             }
             offsetPixels = 0; fakeCycle = 0; fakeInterval = initialFakeInterval;
+            Array.Clear(shownEffects,0,shownEffects.Length);
             var position = rotationNode.localPosition; position.y = 0; rotationNode.localPosition = position;
             for (int i = 0; i < slotCount; i++) { ids[i] = RandomId(); symbols[i].Show(catalog, ids[i], mode); }
         }
         public void ResetPresentation()
         {
             for (int i = 0; i < slotCount; i++) symbols[i].ResetPresentation();
+        }
+        public bool TryHideForEffect(int row)
+        {
+            if(shownEffects[row])return false;
+            shownEffects[row]=true;symbols[row].Symbol.gameObject.SetActive(false);return true;
         }
         public void SetOffsetPixels(float value)
         {
@@ -78,6 +85,7 @@ namespace DragonLegend.Whitebox
             var position = rotationNode.localPosition; position.y = offsetPixels * unitsPerPixel; rotationNode.localPosition = position;
             if (!wrapped) return;
             EffectsClearRequested?.Invoke(); CoinsClearRequested?.Invoke(); BallsClearRequested?.Invoke();
+            Array.Clear(shownEffects,0,shownEffects.Length);
             for (int i = 0; i < slotCount; i++) {
                 int id = i < slotCount - wrapSlots ? ids[i + wrapSlots] : RandomId();
                 symbols[i].Show(catalog, id, mode, blur); ids[i] = id;

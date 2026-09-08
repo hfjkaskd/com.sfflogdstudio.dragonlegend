@@ -11,6 +11,11 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredSymbolCatalog symbols;
         [SerializeField] private float rewardDelay;
         [SerializeField] private float bonusCoinInterval;
+        [SerializeField] private float wildColumnInterval;
+        [SerializeField] private RecoveredWildPresenter wilds;
+        public RecoveredWildPresenter Wilds=>wilds;
+        public RecoveredWildSequence WildSequence {get;private set;}
+        public event Action<int> JackpotCheckRequested;
         [SerializeField] private RecoveredBonusCollection bonusCollection;
         public RecoveredBonusCollection BonusCollection => bonusCollection;
         [SerializeField] private RecoveredCoinStopPresenter coinStops;
@@ -40,11 +45,13 @@ namespace DragonLegend.Whitebox
         {
             Unbind(); entry = spinEntry; result = spinResult; rules = gameplayRules;
             BonusCoins = new RecoveredBonusCoinSequence(rules, progress, bonusCoinInterval);
+            WildSequence=new RecoveredWildSequence(wildColumnInterval);WildSequence.Failed+=WildFailed;
             if (bonusCollection != null) bonusCollection.Initialize(progress.BonusArea);
             rules.GetBet(isA, progress.Level, bets);
             // GameData.Init resets Bet=0; SetBet only assigns list[0] for the normal branch.
             Bet = isA ? 0 : bets[0];
             reels.Initialize(symbols);
+            wilds.Bind(reels,GetComponentInParent<Canvas>().sortingOrder);
             if(coinStops!=null)coinStops.Bind(reels,languageType,bonusCollection,GetComponentInParent<Canvas>().sortingOrder);
             downWin.Bind(languageType);
             winFlight.Bind(GetComponentInParent<Canvas>().sortingOrder);
@@ -86,7 +93,13 @@ namespace DragonLegend.Whitebox
             RewardSequenceRequested?.Invoke();
             if (entry != null)
                 BonusCoins.Begin(result.Board.GetSymbol, PresentBonusCoin,
-                    () => WildColumnsCheckRequested?.Invoke());
+                    BeginWilds);
+        }
+        private void WildFailed(Exception error)=>Error=error;
+        private void BeginWilds()
+        {
+            WildColumnsCheckRequested?.Invoke();
+            if(entry!=null)WildSequence.Begin(result.Board.GetSymbol,wilds.Present,count=>JackpotCheckRequested?.Invoke(count));
         }
         private void PresentBonusCoin(RecoveredBonusCoin coin)
         {
@@ -103,6 +116,7 @@ namespace DragonLegend.Whitebox
         {
             rewardWait?.Cancel(); rewardWait = null;
             BonusCoins?.CancelForProfileChange(); BonusCoins = null;
+            WildSequence?.Cancel();WildSequence=null;if(wilds!=null)wilds.Unbind();
             if(winFlight!=null) {winFlight.Cancel();if(coinStops!=null)coinStops.WinFlightRequested-=winFlight.Play;}
             if(downWin!=null) { downWin.Cancel(); if(coinStops!=null) {coinStops.RewardRegistered-=downWin.Register;coinStops.RewardPresentationFinished-=downWin.PresentationFinished;} }
             if(coinStops!=null)coinStops.Unbind();

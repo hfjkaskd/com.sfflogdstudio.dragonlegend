@@ -33,6 +33,18 @@ public static class BuildSpinPlayfield
                 settings.ApplyModifiedPropertiesWithoutUndo();
             }
             foreach (var child in reelRoot.GetComponentsInChildren<Transform>(true)) child.gameObject.layer = 5;
+            var shake=board.gameObject.AddComponent<RecoveredBoardShake>();var shakeSettings=new SerializedObject(shake);
+            shakeSettings.FindProperty("target").objectReferenceValue=board;
+            shakeSettings.FindProperty("duration").floatValue=.3f;shakeSettings.FindProperty("intensity").floatValue=20;
+            shakeSettings.FindProperty("frequency").floatValue=20;shakeSettings.FindProperty("falloff").animationCurveValue=AnimationCurve.EaseInOut(0,1,1,0);
+            shakeSettings.ApplyModifiedPropertiesWithoutUndo();
+            var result=Rect("Result",board,new Vector2(.5f,.5f),new Vector2(.5f,.5f),new Vector2(.003418f,335.14f),new Vector2(1080,1919.72f));
+            var worldEffects=new GameObject("WildEffects",typeof(RecoveredWildPresenter));worldEffects.layer=5;
+            worldEffects.transform.SetParent(result,false);worldEffects.transform.localScale=new Vector3(100,100,100);
+            var wildSettings=new SerializedObject(worldEffects.GetComponent<RecoveredWildPresenter>());
+            wildSettings.FindProperty("columnPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredWildColumn>("Assets/Resources/RecoveredSymbols/Wild3.prefab");
+            wildSettings.FindProperty("lightPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredWildLight>("Assets/Resources/RecoveredSymbols/Wild3Light.prefab");
+            wildSettings.FindProperty("shake").objectReferenceValue=shake;wildSettings.ApplyModifiedPropertiesWithoutUndo();
             var bottom = Rect("Bottom", root.transform, new Vector2(.5f, 0), new Vector2(.5f, 0),
                 new Vector2(-.003418f, 0), new Vector2(1080, 292.24f));
             var winRoot=(GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredUI/DownWinText.prefab"),bottom);
@@ -51,6 +63,8 @@ public static class BuildSpinPlayfield
             data.FindProperty("downWin").objectReferenceValue=winRoot.GetComponent<RecoveredDownWinText>();
             data.FindProperty("rewardDelay").floatValue = .5f;
             data.FindProperty("bonusCoinInterval").floatValue = .5f;
+            data.FindProperty("wildColumnInterval").floatValue=.36f;
+            data.FindProperty("wilds").objectReferenceValue=worldEffects.GetComponent<RecoveredWildPresenter>();
             data.FindProperty("coinStops").objectReferenceValue=coinStops;
             data.FindProperty("bonusCollection").objectReferenceValue = collection==null?null:collection.GetComponent<RecoveredBonusCollection>();
             data.FindProperty("spinButton").objectReferenceValue = buttonRoot.GetComponent<RecoveredSpinButton>();

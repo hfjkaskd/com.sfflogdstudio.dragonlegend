@@ -442,3 +442,12 @@ RecoveredRegionRig 使用单个原生 MaskableGraphic/CanvasRenderer，按原 42
 - 九组源数据独立裁剪面积/一阶矩、两种绕序的 UV 交点、当前叠加画面、无裁剪对照及生命周期检查通过。完整 `Artifacts/wild-light-all-tests.xml` 为 158/158 通过；最终截图 `Artifacts/current-wild-light-clipped.png`。
 - 桌面 Editor 中入场光效连续采样 1000 次共 50.07 ms、托管分配 0 字节；共享渲染器的持续 Wild 回归为 185.55 ms/1000 次、0 字节。这是姿态/网格微基准，不代表真机完整帧耗时。
 - 当前仍未把三连 Wild 展示接到实际扫描回调，棋盘震动、转轴对象池归属和后续奖池/Bonus/Free/BaseEnd 链继续开发，完整生命周期 1:1 尚未完成。
+
+### 三连 Wild 接入真实主流程（2026-09-08）
+
+- 金币扫描完成后实际执行三连 Wild 逐列检查，支持不连续的完整 Wild 列；每个命中列独立等待 0.36 秒，包含最后一列，无命中则同步进入下一阶段。
+- 按原版顺序隐藏外侧两格和中间格，在中间格位置生成持续 Wild 与入场光效，请求 `change` 音效、200 震动，播放单次光效后震动 QiPan。添加原版 Result 节点及精确坐标，原生网格通过 Prefab 配置的像素/世界单位转换继承棋盘运动。
+- 新增原版 Perlin 棋盘震动，0.3 秒、强度/频率 20、EaseInOut 衰减、先减 deltaTime 再采样，结束恢复缓存坐标。光效独立 0.8 秒回池；持续 Wild 在转轴 Clear 时回池并保留两套动画进度。
+- 金币与 Wild 共用转轴的已展示格记录，防止同一格跨效果重复生成；GM/profile 解绑取消扫描、震动和光效。
+- `Artifacts/wild-chain-all-tests.xml` 为 160/160 通过。真实 Button 启动的五列 Wild 测试覆盖逐列时序、暂停、震动数值、主相机画面、对象池复用、动画进度、重复抑制和解绑清理。最新实际主界面截图：`Artifacts/current-wild-chain.png`。
+- 本轮把主流程推进到 `JackpotCheckRequested`。奖池弹窗/任务推进和其后的 Symbol/Bonus/Free/BaseEnd 仍待接入，Spin 继续保持奖励链锁定，未提前结算余额。SDK 维持现状，完整生命周期 1:1 仍未完成。

@@ -22,14 +22,19 @@ public static class BuildWildWorld
     public static void Save()
     {
         Directory.CreateDirectory(Folder); AssetDatabase.Refresh();
-        var root = new GameObject("Wild3", typeof(SortingGroup)); root.layer = 5;
+        var root = new GameObject("Wild3", typeof(SortingGroup),typeof(RecoveredWildColumn)); root.layer = 5;
         try {
             Create(root.transform, "Wild", "ef_wild3", "wild3");
             var win = new GameObject("Win3"); win.layer = 5; win.transform.SetParent(root.transform, false);
             Create(win.transform, "Glow", "ef_slwin3", "slwin3");
+            var settings=new SerializedObject(root.GetComponent<RecoveredWildColumn>());
+            var players=root.GetComponentsInChildren<Animation>();var array=settings.FindProperty("players");array.arraySize=players.Length;
+            for(int i=0;i<players.Length;i++)array.GetArrayElementAtIndex(i).objectReferenceValue=players[i];
+            settings.FindProperty("sorting").objectReferenceValue=root.GetComponent<SortingGroup>();settings.ApplyModifiedPropertiesWithoutUndo();
             PrefabUtility.SaveAsPrefabAsset(root, Folder + ".prefab"); AssetDatabase.SaveAssets();
         } finally { Object.DestroyImmediate(root); }
     }
+    public static void SaveAndConnect() {Save();BuildSpinPlayfield.Save();}
     public static void SaveLight()
     {
         const string folder="Assets/Resources/RecoveredSymbols/Wild3Light";

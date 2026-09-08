@@ -837,6 +837,8 @@ MonoBehaviour:
   attachments:
   - name: jb/coin0
     slot: 26
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -855,6 +857,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin1
     slot: 26
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -873,6 +877,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin2
     slot: 26
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -891,6 +897,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin3
     slot: 26
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -909,6 +917,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin4
     slot: 26
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -927,6 +937,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin5
     slot: 26
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -945,6 +957,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin6
     slot: 26
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -963,6 +977,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin7
     slot: 26
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -40}
     - {x: -18, y: 39}
@@ -981,6 +997,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin8
     slot: 26
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -999,6 +1017,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin9
     slot: 26
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1017,6 +1037,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin0
     slot: 24
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -1035,6 +1057,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin1
     slot: 24
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1053,6 +1077,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin2
     slot: 24
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1071,6 +1097,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin3
     slot: 24
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1089,6 +1117,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin4
     slot: 24
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1107,6 +1137,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin5
     slot: 24
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -1125,6 +1157,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin6
     slot: 24
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1143,6 +1177,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin7
     slot: 24
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -40}
     - {x: -18, y: 39}
@@ -1161,6 +1197,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin8
     slot: 24
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1179,6 +1217,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin9
     slot: 24
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1197,6 +1237,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin0
     slot: 25
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -1215,6 +1257,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin1
     slot: 25
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1233,6 +1277,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin2
     slot: 25
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1251,6 +1297,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin3
     slot: 25
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1269,6 +1317,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin4
     slot: 25
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1287,6 +1337,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin5
     slot: 25
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -1305,6 +1357,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin6
     slot: 25
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1323,6 +1377,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin7
     slot: 25
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -40}
     - {x: -18, y: 39}
@@ -1341,6 +1397,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin8
     slot: 25
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1359,6 +1417,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin9
     slot: 25
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1377,6 +1437,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin0
     slot: 23
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -1395,6 +1457,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin1
     slot: 23
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1413,6 +1477,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin2
     slot: 23
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1431,6 +1497,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin3
     slot: 23
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1449,6 +1517,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin4
     slot: 23
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1467,6 +1537,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin5
     slot: 23
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -1485,6 +1557,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin6
     slot: 23
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1503,6 +1577,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin7
     slot: 23
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -40}
     - {x: -18, y: 39}
@@ -1521,6 +1597,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin8
     slot: 23
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1539,6 +1617,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin9
     slot: 23
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1557,6 +1637,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin0
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -1575,6 +1657,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin1
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1593,6 +1677,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin2
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1611,6 +1697,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin3
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1629,6 +1717,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin4
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1647,6 +1737,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin5
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -1665,6 +1757,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin6
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1683,6 +1777,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin7
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -40}
     - {x: -18, y: 39}
@@ -1701,6 +1797,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin8
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1719,6 +1817,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin9
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1737,6 +1837,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin0
     slot: 12
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -1755,6 +1857,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin1
     slot: 12
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1773,6 +1877,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin2
     slot: 12
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1791,6 +1897,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin3
     slot: 12
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1809,6 +1917,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin4
     slot: 12
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1827,6 +1937,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin5
     slot: 12
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -1845,6 +1957,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin6
     slot: 12
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1863,6 +1977,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin7
     slot: 12
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -40}
     - {x: -18, y: 39}
@@ -1881,6 +1997,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin8
     slot: 12
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1899,6 +2017,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin9
     slot: 12
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1917,6 +2037,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin0
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -1935,6 +2057,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin1
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -1953,6 +2077,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin2
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1971,6 +2097,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin3
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -1989,6 +2117,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin4
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -2007,6 +2137,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin5
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -2025,6 +2157,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin6
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -2043,6 +2177,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin7
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -40}
     - {x: -18, y: 39}
@@ -2061,6 +2197,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin8
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -2079,6 +2217,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin9
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -2097,6 +2237,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin0
     slot: 4
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -2115,6 +2257,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin1
     slot: 4
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -2133,6 +2277,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin2
     slot: 4
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -2151,6 +2297,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin3
     slot: 4
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -2169,6 +2317,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin4
     slot: 4
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -2187,6 +2337,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin5
     slot: 4
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -2205,6 +2357,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin6
     slot: 4
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -2223,6 +2377,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin7
     slot: 4
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -40}
     - {x: -18, y: 39}
@@ -2241,6 +2397,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin8
     slot: 4
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -2259,6 +2417,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin9
     slot: 4
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -2277,6 +2437,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin0
     slot: 13
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -2295,6 +2457,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin1
     slot: 13
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -2313,6 +2477,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin2
     slot: 13
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -2331,6 +2497,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin3
     slot: 13
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -2349,6 +2517,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin4
     slot: 13
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -2367,6 +2537,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin5
     slot: 13
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39, y: -39}
     - {x: -39, y: 39}
@@ -2385,6 +2557,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin6
     slot: 13
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -2403,6 +2577,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin7
     slot: 13
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -40}
     - {x: -18, y: 39}
@@ -2421,6 +2597,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin8
     slot: 13
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -18, y: -39}
     - {x: -18, y: 39}
@@ -2439,6 +2617,8 @@ MonoBehaviour:
     deform: []
   - name: jb/coin9
     slot: 13
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -35, y: -39}
     - {x: -35, y: 39}
@@ -2457,6 +2637,8 @@ MonoBehaviour:
     deform: []
   - name: lshou_zuo
     slot: 10
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: 88.07096, y: -54.24441}
     - {x: -41.51949, y: -46.1846}
@@ -2808,6 +2990,8 @@ MonoBehaviour:
         m_RotationOrder: 4
   - name: lst_a
     slot: 8
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: 283.3184, y: -12.63806}
     - {x: 5.56778, y: -140.4613}
@@ -8631,6 +8815,8 @@ MonoBehaviour:
         m_RotationOrder: 4
   - name: lst_b
     slot: 7
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -62.56866, y: 186.41803}
     - {x: 129.7818, y: -110.17953}
@@ -11180,6 +11366,8 @@ MonoBehaviour:
         m_RotationOrder: 4
   - name: lwei
     slot: 5
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: 188.86087, y: 45.52359}
     - {x: 242.07597, y: 51.1866}
@@ -11533,6 +11721,8 @@ MonoBehaviour:
         m_RotationOrder: 4
   - name: lwei
     slot: 6
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: 156.81058, y: 41.19611}
     - {x: -21.20056, y: 37.31134}
@@ -12603,6 +12793,8 @@ MonoBehaviour:
         m_RotationOrder: 4
   - name: lt_maoa
     slot: 18
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: 79.29501, y: -2.27369}
     - {x: 73.90359, y: -6.02776}
@@ -12868,6 +13060,8 @@ MonoBehaviour:
     deform: []
   - name: lt_maob
     slot: 17
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: 205.33655, y: 68.31635}
     - {x: 205.62946, y: 63.60077}
@@ -19439,6 +19633,8 @@ MonoBehaviour:
         m_RotationOrder: 4
   - name: lt_maoc
     slot: 16
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: 4.68927, y: 166.23248}
     - {x: 59.46133, y: -13.25397}
@@ -20447,6 +20643,8 @@ MonoBehaviour:
         m_RotationOrder: 4
   - name: lt_maod
     slot: 15
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: 205.50624, y: 13.51178}
     - {x: 183.61342, y: 13.51178}
@@ -20759,6 +20957,8 @@ MonoBehaviour:
         m_RotationOrder: 4
   - name: lt_tou
     slot: 19
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -217.30704, y: 397.23788}
     - {x: 330.2121, y: 351.00012}
@@ -46942,6 +47142,8 @@ MonoBehaviour:
         m_RotationOrder: 4
   - name: lt_touan
     slot: 14
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: 183.7553, y: -31.90573}
     - {x: -131.14888, y: -31.90572}
@@ -47222,6 +47424,8 @@ MonoBehaviour:
         m_RotationOrder: 4
   - name: ltouyangl0
     slot: 20
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -139.00923, y: 85.32364}
     - {x: -711.49005, y: 39.08588}
@@ -47698,6 +47902,8 @@ MonoBehaviour:
     deform: []
   - name: lt_xu
     slot: 22
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -173.66187, y: -93.32352}
     - {x: -75.15733, y: -96.83134}
@@ -52335,6 +52541,8 @@ MonoBehaviour:
         m_RotationOrder: 4
   - name: lt_xu
     slot: 21
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -143.33134, y: -41.69033}
     - {x: -43.0043, y: -207.2365}
@@ -54687,6 +54895,8 @@ MonoBehaviour:
         m_RotationOrder: 4
   - name: wild_D
     slot: 35
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -30.061657, y: -30.249725}
     - {x: -30.061657, y: 39.750275}
@@ -54705,6 +54915,8 @@ MonoBehaviour:
     deform: []
   - name: wild_Dgl0
     slot: 36
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -39.061657, y: -38.249725}
     - {x: -39.061657, y: 48.750275}
@@ -54723,6 +54935,8 @@ MonoBehaviour:
     deform: []
   - name: wild_di
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -95.5, y: -258.5}
     - {x: -95.5, y: 263.5}
@@ -54741,6 +54955,8 @@ MonoBehaviour:
     deform: []
   - name: wild_I
     slot: 31
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -19.033907, y: -30.249725}
     - {x: -19.033907, y: 39.750275}
@@ -54759,6 +54975,8 @@ MonoBehaviour:
     deform: []
   - name: wild_Igl0
     slot: 32
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -28.033907, y: -39.249725}
     - {x: -28.033907, y: 48.750275}
@@ -54777,6 +54995,8 @@ MonoBehaviour:
     deform: []
   - name: wild_kk
     slot: 27
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -96, y: -261}
     - {x: -96, y: 259}
@@ -54795,6 +55015,8 @@ MonoBehaviour:
     deform: []
   - name: wild_kkgl0
     slot: 28
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -108, y: -271}
     - {x: -108, y: 273}
@@ -54813,6 +55035,8 @@ MonoBehaviour:
     deform: []
   - name: wild_L
     slot: 33
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -25.686235, y: -31.249725}
     - {x: -25.686235, y: 39.750275}
@@ -54831,6 +55055,8 @@ MonoBehaviour:
     deform: []
   - name: wild_Lgl0
     slot: 34
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -34.686234, y: -39.249725}
     - {x: -34.686234, y: 48.750275}
@@ -54849,6 +55075,8 @@ MonoBehaviour:
     deform: []
   - name: wild_W
     slot: 29
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -37.670815, y: -30.249725}
     - {x: -37.670815, y: 39.750275}
@@ -54867,6 +55095,8 @@ MonoBehaviour:
     deform: []
   - name: wild_Wgl0
     slot: 30
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -46.670815, y: -39.249725}
     - {x: -46.670815, y: 48.750275}

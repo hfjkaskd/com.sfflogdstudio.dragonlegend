@@ -1,9 +1,10 @@
 # Three-Wild-column presentation: recovered source contract
 
-The persistent Wild3 and clipped Wild3Light prefabs are now converted to native world-space
-meshes (see the implementation sections below). The current playfield still stops at
-`WildColumnsCheckRequested`. The presentation, shake and downstream reward stages remain
-to be connected; isolated prefab verification does not establish completion of that chain.
+The persistent Wild3 and clipped Wild3Light prefabs are converted to native world-space
+meshes and connected to the actual post-coin scan, with board shake and pool ownership.
+The current playfield stops at the new `JackpotCheckRequested` continuation. Jackpot
+presentation and the subsequent reward stages remain unfinished; the Wild verification
+does not establish completion of the full game lifecycle.
 
 ## Native control flow
 
@@ -146,8 +147,7 @@ source-number assertions. Reference geometry/UV rules were checked against offic
 [MeshAttachment.cs](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/Attachments/MeshAttachment.cs), and
 [RegionAttachment.cs](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/Attachments/RegionAttachment.cs).
 
-Remaining: native shake scheduling, reel ownership/pooling and actual scan integration,
-followed by jackpot and the other awaited post-spin branches. The authoring path explicitly
+Remaining: jackpot and the other awaited post-spin branches. The authoring path explicitly
 rejects unsupported bone/attachment formats instead of silently discarding them.
 
 ## Native Wild3Light clipping and one-shot lifecycle
@@ -183,5 +183,58 @@ only the clipping disabled; it is not an original-game reference or a desired fi
 
 The clipping integration changes the common world renderer, so the full persistent Wild
 numeric/render tests and the existing gameplay PlayMode suite must pass before committing.
-This still does not connect the effect to the actual board scan, add shake, request sound
-or vibration, or execute jackpot/bonus/free-game stages. Those remain active goal work.
+The scan connection is described below. Jackpot/bonus/free-game stages remain active goal work.
+
+## Actual post-spin Wild chain
+
+`RecoveredSpinPlayfield.BeginWilds` now follows the real `RecoveredBonusCoinSequence`
+completion. `RecoveredWildSequence` reads all three live symbols in each column, counts
+each complete ID-7 column (including gaps), invokes the presenter synchronously, then
+waits .36 scaled seconds including the final match. A no-Wild scan completes immediately.
+Profile cancellation inside a callback stops further reads, waits and completion.
+
+The presenter hides rows 0, 2, then 1 using a common shown-slot set owned by
+`RecoveredReelView`. Coin stop presentation uses this same set, preserving the original
+cross-effect duplicate suppression. A null-effect outer-row call still hides its symbol.
+The set resets on native wrap/Clear before the following SetImg pass; despawning an effect
+does not itself reactivate its source symbol.
+
+For a newly shown middle row, the presenter pool-spawns the persistent Wild at the middle
+symbol's world position, then the entry light at that position. It requests sound `change`
+and vibration 200 before starting `wild3` once. These remain request events, consistent
+with the current external audio/vibration handling; SDK implementation is unchanged.
+The light's completion returns it to its own official Unity ObjectPool. It does not block
+the .36-second scan. Persistent Wild instances belong to their reel's Clear event.
+
+`RecoveredWildColumn` stores both native Animation phases before deactivation and restores
+them after activation, matching the original skeleton tracks retaining time while pooled.
+Original [SkeletonGraphic.OnDisable](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-unity/Assets/Spine/Runtime/spine-unity/Components/SkeletonGraphic.cs)
+clears rendering without clearing the animation state. The persistent idle and border
+clocks are independent; the entry light explicitly restarts at zero instead.
+
+The original UIMainView binding resolves ShakeNode to QiPan and Result to its child:
+Result anchored position (.003418,335.14), size (1080,1919.72), centered anchors/pivot.
+The authored target prefab now contains that Result node. A configured scale-100 child
+bridges its pixel coordinate system to the world-space mesh units. Both Wild effects
+inherit QiPan motion. Creation-order sorting preserves overlap ordering between newly
+spawned persistent columns and entry lights; cached buffers and pool instances are reused.
+
+`RecoveredBoardShake` uses the original coroutine algorithm: .3 seconds, intensity 20,
+frequency 20, EaseInOut falloff 1 to 0, subtract-delta-before-sample, global replacement of
+an existing shake, absolute Time.time Perlin sampling and restoration of the cached initial
+anchored position. The Wild presenter calls it after the light spawn/play, even when the
+middle row was already shown. Bind/unbind cancellation restores the original position.
+Other pre-existing shake request sites are not automatically presumed equivalent.
+
+When the scan completes, `JackpotCheckRequested(count)` runs while any remaining entry
+lights continue. The actual jackpot popup/task progression is not connected yet. Spin
+stays locked and AwaitingRewards stays true; neither reel stop nor Wild completion credits
+the balance or substitutes for CheckBaseEnd.
+
+Validation: `Artifacts/wild-chain-all-tests.xml`, 160/160 passed. The actual Unity Button
+starts a spin; the test applies the original guaranteed-five-Wild board stage before reel
+stops, then checks all five presentations, .36-second waits, exact shake samples, pause,
+five sound/vibration requests, independent light completion, source hiding, phase-preserving
+pool reuse, duplicate suppression shared with coin effects and profile unbind cleanup.
+`Artifacts/current-wild-chain.png` is the fresh actual main-camera capture at the third
+column's presentation. Rebuild with Unity execute method `BuildWildWorld.SaveAndConnect`.

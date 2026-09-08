@@ -65,6 +65,8 @@ MonoBehaviour:
   attachments:
   - name: 3aaa/3aaa0
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -69, y: -145}
     - {x: -69, y: 145}
@@ -83,6 +85,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa1
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -70, y: -145}
     - {x: -70, y: 147}
@@ -101,6 +105,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa2
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -75, y: -147}
     - {x: -75, y: 161}
@@ -119,6 +125,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa3
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -76, y: -147}
     - {x: -76, y: 155}
@@ -137,6 +145,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa4
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -73, y: -148}
     - {x: -73, y: 146}
@@ -155,6 +165,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa5
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -70, y: -148}
     - {x: -70, y: 159}
@@ -173,6 +185,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa6
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -69, y: -148}
     - {x: -69, y: 156}
@@ -191,6 +205,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa7
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -71, y: -147}
     - {x: -71, y: 158}
@@ -209,6 +225,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa8
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -67, y: -147}
     - {x: -67, y: 156}
@@ -227,6 +245,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa9
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -69, y: -146}
     - {x: -69, y: 150}
@@ -245,6 +265,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa10
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -68, y: -144}
     - {x: -68, y: 151}
@@ -263,6 +285,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa11
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -67, y: -149}
     - {x: -67, y: 150}
@@ -281,6 +305,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa12
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -70, y: -150}
     - {x: -70, y: 146}
@@ -299,6 +325,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa13
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -62, y: -149}
     - {x: -62, y: 143}
@@ -317,6 +345,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa14
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -65, y: -148}
     - {x: -65, y: 142}
@@ -335,6 +365,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa15
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -68, y: -146}
     - {x: -68, y: 142}
@@ -353,6 +385,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa16
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -63, y: -145}
     - {x: -63, y: 143}
@@ -371,6 +405,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa17
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -61, y: -143}
     - {x: -61, y: 145}
@@ -389,6 +425,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa18
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -63, y: -143}
     - {x: -63, y: 145}
@@ -407,6 +445,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa19
     slot: 1
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -65, y: -145}
     - {x: -65, y: 149}
@@ -425,6 +465,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa0
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -69, y: -145}
     - {x: -69, y: 145}
@@ -443,6 +485,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa1
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -70, y: -145}
     - {x: -70, y: 147}
@@ -461,6 +505,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa2
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -75, y: -147}
     - {x: -75, y: 161}
@@ -479,6 +525,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa3
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -76, y: -147}
     - {x: -76, y: 155}
@@ -497,6 +545,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa4
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -73, y: -148}
     - {x: -73, y: 146}
@@ -515,6 +565,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa5
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -70, y: -148}
     - {x: -70, y: 159}
@@ -533,6 +585,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa6
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -69, y: -148}
     - {x: -69, y: 156}
@@ -551,6 +605,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa7
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -71, y: -147}
     - {x: -71, y: 158}
@@ -569,6 +625,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa8
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -67, y: -147}
     - {x: -67, y: 156}
@@ -587,6 +645,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa9
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -69, y: -146}
     - {x: -69, y: 150}
@@ -605,6 +665,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa10
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -68, y: -144}
     - {x: -68, y: 151}
@@ -623,6 +685,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa11
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -67, y: -149}
     - {x: -67, y: 150}
@@ -641,6 +705,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa12
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -70, y: -150}
     - {x: -70, y: 146}
@@ -659,6 +725,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa13
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -62, y: -149}
     - {x: -62, y: 143}
@@ -677,6 +745,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa14
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -65, y: -148}
     - {x: -65, y: 142}
@@ -695,6 +765,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa15
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -68, y: -146}
     - {x: -68, y: 142}
@@ -713,6 +785,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa16
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -63, y: -145}
     - {x: -63, y: 143}
@@ -731,6 +805,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa17
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -61, y: -143}
     - {x: -61, y: 145}
@@ -749,6 +825,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa18
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -63, y: -143}
     - {x: -63, y: 145}
@@ -767,6 +845,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa19
     slot: 2
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -65, y: -145}
     - {x: -65, y: 149}
@@ -785,6 +865,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa0
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -69, y: -145}
     - {x: -69, y: 145}
@@ -803,6 +885,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa1
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -70, y: -145}
     - {x: -70, y: 147}
@@ -821,6 +905,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa2
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -75, y: -147}
     - {x: -75, y: 161}
@@ -839,6 +925,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa3
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -76, y: -147}
     - {x: -76, y: 155}
@@ -857,6 +945,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa4
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -73, y: -148}
     - {x: -73, y: 146}
@@ -875,6 +965,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa5
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -70, y: -148}
     - {x: -70, y: 159}
@@ -893,6 +985,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa6
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -69, y: -148}
     - {x: -69, y: 156}
@@ -911,6 +1005,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa7
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -71, y: -147}
     - {x: -71, y: 158}
@@ -929,6 +1025,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa8
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -67, y: -147}
     - {x: -67, y: 156}
@@ -947,6 +1045,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa9
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -69, y: -146}
     - {x: -69, y: 150}
@@ -965,6 +1065,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa10
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -68, y: -144}
     - {x: -68, y: 151}
@@ -983,6 +1085,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa11
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -67, y: -149}
     - {x: -67, y: 150}
@@ -1001,6 +1105,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa12
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -70, y: -150}
     - {x: -70, y: 146}
@@ -1019,6 +1125,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa13
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -62, y: -149}
     - {x: -62, y: 143}
@@ -1037,6 +1145,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa14
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -65, y: -148}
     - {x: -65, y: 142}
@@ -1055,6 +1165,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa15
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -68, y: -146}
     - {x: -68, y: 142}
@@ -1073,6 +1185,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa16
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -63, y: -145}
     - {x: -63, y: 143}
@@ -1091,6 +1205,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa17
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -61, y: -143}
     - {x: -61, y: 145}
@@ -1109,6 +1225,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa18
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -63, y: -143}
     - {x: -63, y: 145}
@@ -1127,6 +1245,8 @@ MonoBehaviour:
     deform: []
   - name: 3aaa/3aaa19
     slot: 3
+    clipping: 0
+    endSlot: 0
     positions:
     - {x: -65, y: -145}
     - {x: -65, y: 149}
