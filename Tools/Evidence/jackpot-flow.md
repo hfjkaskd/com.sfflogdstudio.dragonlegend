@@ -96,3 +96,48 @@ API is implemented and tested, but its triggering jackpot event, popup, first-fr
 claim-button/SDK boundary, fly-coin presentation and continuation remain to be connected.
 No placeholder reward or automatic popup completion has been added. The current screenshot
 and source pose comparisons cover these meters, not the entire game's visual fidelity.
+
+## Claim lifecycle recovered after popup artwork
+
+`RecoveredJackpotClaim` now implements the native click/reward/window/fly-coin boundary,
+using the existing `IAdFacade` mock. It is a presentation-independent controller; the
+complete popup prefab and its actual main-flow connection are still outstanding.
+`IRecoveredJackpotClaimView` requires real count/exit/flight completion from the presenter;
+it does not synthesize completion, credit, or a delay. Count must ultimately use the
+original authored 0.5-second OutQuad presentation and exit the 0.3-second InBack scale.
+
+Direct ARM64 verification of `23b32a8` resolves an ambiguity in its expanded pseudocode:
+
+```text
+23b34b4 ldrb w8, [x0, #0x5a]  ; reread current GameData.isFirstFreeReward
+23b34b8 cmp w8, #1
+23b34bc b.ne #0x23b359c
+23b34c0 ldr s0, [x19, #0xa4]  ; winCount
+23b34c4 ldr s1, [x19, #0xac]  ; multiplier captured on show
+...
+23b3634 ldr x3, [x8]           ; PTR 4f1de90 = jackpot
+23b3640 mov x4, x3             ; posId AND sceneId are jackpot
+23b3648 b #0x2379600            ; SdkAdManager.PlayRewardAd
+```
+
+ELF RELATIVE relocation -> script.json string: `4f1cf38 = click`,
+`4f1c4d8 = iv_`, `4f1c4e0 = rv_`, `4f391e0 = reward`.
+Those internal SDK prefixes are not the caller's posId. The mock receives the actual
+caller parameters `jackpot/jackpot`; UnPlayBtn receives `iv_close/jackpot`.
+
+Native success `23b3cb0` multiplies winCount and invokes finishCall. Failure `23b3cec`
+only clears the click latch. `23b38c0` bypasses counting for equal amounts, otherwise
+requests count sound and the tween. `23b3bac` hides a shown wheel before the jackpot.
+`23b3680` stops Sound1, resumes music, then dispatches the fly-coin event. `23b38a0`
+invokes the saved callback with winCount only on flight completion.
+
+The original curCount remains unchanged by its text setter. First-free status is captured
+for the show-time multiplier/visibility but read again on click. The controller neither
+consumes this runtime flag nor persists it. Unknown names lock clicks as in the original;
+BeforeShow resets the latch. No unrequested synthetic close behavior is introduced.
+
+Tests cover all three mock failure outcomes and retry, repeated clicks while pending,
+first-free transitions between show and click, equal-reward count bypass, wheel-before-
+popup hide, and flight callback -> title reset -> actual two-save balance credit ordering.
+These tests validate the claim controller, not the still-unassembled popup layout or the
+remaining jackpot-to-symbol main-flow continuation.

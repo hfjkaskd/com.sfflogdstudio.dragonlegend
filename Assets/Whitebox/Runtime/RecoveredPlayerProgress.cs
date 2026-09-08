@@ -23,6 +23,8 @@ namespace DragonLegend.Whitebox
         public event Action<float,float> GreenCountChanged;
         // Original GameData runtime flag; intentionally absent from PlayerData saves.
         public bool IsBonusGame { get; set; }
+        // GameData +0x5a, runtime only. The jackpot view reads it again on click.
+        public bool IsFirstFreeReward { get; set; }
         public RecoveredSlotType GameSlotType { get; set; }
         public int FreeSpinCount { get; set; }
         public float TotalFreeSpinWin { get; set; }
