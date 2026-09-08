@@ -31,15 +31,23 @@ Relevant verified native entry points for that integration:
 - PoolManager.CreateJinBi 0x238b040: scale .7, hide the parent slot's first
   child, reset anchored position. Only isInit=false calls PlayShowAnim.
 - JinBiEffectItem.PlayShowAnim 0x23d95e0: hide glow and reward text, play a
-  one-shot appearance clip, and run a scale tween to 1 followed by a return
-  to .7. The animation completion callback 0x23d997c starts a looping clip.
-  Exact metadata string and tween duration binding remains to be resolved.
+  one-shot zcjb_chuxian clip, and run a .2-second scale tween to 1 followed
+  by a .2-second return to .7. The animation completion callback 0x23d997c
+  starts the zcjb_idle loop.
 - PoolManager.CreateLongzhu 0x238b480 (also expanded in CheckFakeCoin): scale
   .8, hide the parent slot's first child, reset anchored position, use the
   shared ball index after RandomBallInfos, initialize the selected ball type,
   then increment the index.
 - LongzhuItem.Init 0x23ae940 plays the selected type's idle loop and clears
   reward text. Its isInit argument does not alter that native method.
+
+ELF relocation/string resolution for integration: 0x4f1eac8 points to
+0x50655a0 (zcjb_chuxian), 0x4f1d1a8 to 0x50655a8 (zcjb_idle). Native float
+at ELF 0xdbc540 (Ghidra 0xebc540) is .20000000298023224. GetBallAnim 0x23ae9f4
+uses format {0}_{1} (0x4f1cf60 -> 0x5065b00), suffix zi for type 0
+(0x4f1cf68 -> 0x5065620), lan for type 1 (0x4f1cf70 -> 0x50616b0), and lv
+for all other types (0x4f1cf78 -> 0x5061a10). Thus type 0 is purple, type 1
+blue, and the remaining branch green; do not infer enum order from atlas order.
 
 Validation: 19 binary extraction checks passed; Unity 2022.3.62f3 full PlayMode
 suite **264/264 passed** in `Artifacts/free-symbol-art-full-tests.xml`. Tests

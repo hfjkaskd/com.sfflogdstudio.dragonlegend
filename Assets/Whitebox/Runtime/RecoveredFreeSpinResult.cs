@@ -22,6 +22,20 @@ namespace DragonLegend.Whitebox
         public int GetBall(int index) => ballTypes[index];
         public int GeneratedBallCount => ballTypes.Count;
 
+        // RandomBallInfos 0x2382e90 and ShuffleUnity<Int32Enum> 0x2635804.
+        // PoolManager resets its shared index only when this returns true.
+        public bool RandomBallInfos(int index)
+        {
+            if (index < ballTypes.Count) return false;
+            for (int i = 0; i < ballTypes.Count; i++) {
+                int value = ballTypes[i];
+                int selected = UnityEngine.Random.Range(i,ballTypes.Count);
+                ballTypes[i] = ballTypes[selected];
+                ballTypes[selected] = value;
+            }
+            return true;
+        }
+
         public RecoveredFreeSpinResult(RecoveredGameplayRules rules)
         {
             this.rules = rules ?? throw new ArgumentNullException(nameof(rules));
