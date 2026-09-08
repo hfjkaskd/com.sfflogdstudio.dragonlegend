@@ -16,9 +16,10 @@ public static class BuildJackpotPopup
     const string Temporary = "Assets/Whitebox/Editor/JackpotSourceImport.prefab";
     public static void Save()=>Save(false);
     public static void SaveBigWin()=>Save(true);
-    private static void Save(bool bigWin)
+    public static void SaveReward()=>Save(false,true);
+    private static void Save(bool bigWin,bool reward=false)
     {
-        string Folder="Assets/Resources/RecoveredUI/"+(bigWin?"BigWinPopup":"JackpotPopup");
+        string Folder="Assets/Resources/RecoveredUI/"+(reward?"BonusRewardPopup":bigWin?"BigWinPopup":"JackpotPopup");
         Directory.CreateDirectory(Folder); AssetDatabase.Refresh();
         var map = new Dictionary<string, string>();
         MapScript<Text>(map, "04f84fc2003509a5e7e068ec1271cc40");
@@ -60,13 +61,14 @@ public static class BuildJackpotPopup
             if(AssetDatabase.LoadAssetAtPath<Sprite>(path)==null) throw new InvalidDataException("Missing single sprite "+path);
             Map(map,guids[i],path);
         }
+        if(reward)Map(map,"48aec213d31978a4686437111f08efe4","Assets/Resources/RecoveredArt/Res/UI/pop-up/tc_luckyreward_txt.png");
         // Preserve the source's entire native UI serialization, including all TMP
         // fields, child order, slider references and nonuniform RectTransforms.
         // Remove only the four unavailable original runtime component types.
-        string text=File.ReadAllText(Source+"Res/ViewPrefabs/"+(bigWin?"UIBigWinView":"UIJackpotView")+".prefab").Replace("\r", "");
+        string text=File.ReadAllText(Source+"Res/ViewPrefabs/"+(reward?"UIRewardView":bigWin?"UIBigWinView":"UIJackpotView")+".prefab").Replace("\r", "");
         var removed=new List<string>();
         text=Regex.Replace(text,@"--- !u!\d+ &(\d+)\n(.*?)(?=\n--- !u!|\z)",m=>{
-            if(Regex.IsMatch(m.Value,@"guid: (7ad44050883007d13e449710cf6d50ab|5e3487c565f1d21538077d3c35a0f678|84e667d034d69ee8fdb17a866ff648f4|da904f91a28860280fb976ac34b27df4|ff326197253ae4cec0b46632391386ec)"))
+            if(Regex.IsMatch(m.Value,@"guid: (82e287c25388c67ed9b6a9913f2b840b|132b6501dc1746e5b20bc04c0ad3cc98|7ad44050883007d13e449710cf6d50ab|5e3487c565f1d21538077d3c35a0f678|84e667d034d69ee8fdb17a866ff648f4|da904f91a28860280fb976ac34b27df4|ff326197253ae4cec0b46632391386ec)"))
             {removed.Add(m.Groups[1].Value);return "";}return m.Value;
         },RegexOptions.Singleline);
         foreach(string id in removed) text=Regex.Replace(text,@"  - component: \{fileID: "+id+@"\}\n", "");
@@ -76,6 +78,7 @@ public static class BuildJackpotPopup
             m.Value.Contains("e0b4d57e8f658b407a2ad25df85fb0d6")?
             m.Value.Replace("m_Color: {r: 1, g: 1, b: 1, a: 1}","m_Color: {r: 1, g: 1, b: 1, a: 0}"):m.Value,RegexOptions.Singleline);
         foreach(var pair in map)text=text.Replace(pair.Key,pair.Value);
+        if(reward)text=text.Replace("guid: "+map["48aec213d31978a4686437111f08efe4"]+", type: 2","guid: "+map["48aec213d31978a4686437111f08efe4"]+", type: 3");
         // Source sprites were standalone native .asset files (type 2); recovered
         // single-sprite PNG importers expose the same local id as imported assets (3).
         foreach(string guid in guids) text=text.Replace("guid: "+map[guid]+", type: 2", "guid: "+map[guid]+", type: 3");
@@ -100,7 +103,25 @@ public static class BuildJackpotPopup
             SetSprite(content.Find("CashOutTip/Slider/Fill Area/Fill"),"tc_bak_bar02");
             SetSprite(content.Find("CashOutTip").GetChild(5),"tc_tx_01");
             string effect=bigWin?"ef_wintanchuang":"ef_jackpottc";
-            var dragon=ReplaceArt(content.Find("SkeletonGraphic ("+effect+")"),effect);
+            RecoveredRegionAnimator dragon=null;
+            if(!reward)dragon=ReplaceArt(content.Find("SkeletonGraphic ("+effect+")"),effect);
+            else {
+                SetSprite(content.Find("Title"),"tc_luckyreward_txt");
+                ReplaceArt(content.Find("SkeletonGraphic (ef_shoucanggl)"),"ef_shoucanggl");
+                // Native Title UIShiny is not yet converted; preserve its base image.
+                // Keep the ordinary Button on its visible TMP graphic, retaining
+                // the authored parent's hit rectangle through raycast padding.
+                var parent=content.Find("Btn/UnPlayBtn").GetComponent<RectTransform>();
+                var label=parent.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
+                var corners=new Vector3[4];parent.GetLocalCorners(corners);
+                var min=label.transform.InverseTransformPoint(parent.TransformPoint(corners[0]));
+                var max=label.transform.InverseTransformPoint(parent.TransformPoint(corners[2]));
+                var rect=label.rectTransform.rect;
+                label.raycastPadding=new Vector4(rect.xMin-min.x,rect.yMin-min.y,max.x-rect.xMax,max.y-rect.yMax)*-1;
+                label.raycastTarget=true;
+                Object.DestroyImmediate(parent.GetComponent<Button>());Object.DestroyImmediate(parent.GetComponent<Image>());
+                var button=label.gameObject.AddComponent<Button>();button.targetGraphic=label;button.transition=Selectable.Transition.None;
+            }
             ReplaceArt(content.Find("SkeletonGraphic (ef_slpenqian)"),"ef_slpenqian");
             var tipRoot=content.Find("CashOutTip");ReplaceArt(tipRoot.Find("SkeletonGraphic (ef_shoucanggl)"),"ef_shoucanggl");
             var tip=tipRoot.gameObject.AddComponent<RecoveredCashOutTip>();var ts=new SerializedObject(tip);
@@ -110,14 +131,15 @@ public static class BuildJackpotPopup
             ts.FindProperty("readyFormat").stringValue="You Can Cash Out <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> Now!";
             ts.FindProperty("remainingFormat").stringValue="Earn <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material>  more to withdrawl <material=\"#003815_3\"><gradient=\"cash\">{1}</gradient></material>.";
             ts.ApplyModifiedPropertiesWithoutUndo();
-            MonoBehaviour popup=bigWin?(MonoBehaviour)root.AddComponent<RecoveredBigWinPopup>():root.AddComponent<RecoveredJackpotPopup>();var settings=new SerializedObject(popup);
+            MonoBehaviour popup=reward?(MonoBehaviour)root.AddComponent<RecoveredBonusRewardPopup>():bigWin?(MonoBehaviour)root.AddComponent<RecoveredBigWinPopup>():root.AddComponent<RecoveredJackpotPopup>();var settings=new SerializedObject(popup);
             settings.FindProperty("content").objectReferenceValue=content;
-            settings.FindProperty("dragon").objectReferenceValue=dragon;
+            if(!reward)settings.FindProperty("dragon").objectReferenceValue=dragon;
+            else {settings.FindProperty("advertisedMultiplier").floatValue=2;settings.FindProperty("plainMultiplier").floatValue=.5f;}
             settings.FindProperty("rewardText").objectReferenceValue=content.Find("Text (Legacy)").GetComponent<Text>();
             settings.FindProperty("advertisedText").objectReferenceValue=content.Find("Btn/ClaimBtn/Text (TMP)").GetComponent<TMP_Text>();
             settings.FindProperty("plainText").objectReferenceValue=content.Find("Btn/UnPlayBtn/Text (TMP)").GetComponent<TMP_Text>();
             settings.FindProperty("claimButton").objectReferenceValue=content.Find("Btn/ClaimBtn").GetComponent<Button>();
-            settings.FindProperty("plainButton").objectReferenceValue=content.Find("Btn/UnPlayBtn").GetComponent<Button>();
+            settings.FindProperty("plainButton").objectReferenceValue=(reward?content.Find("Btn/UnPlayBtn/Text (TMP)"):content.Find("Btn/UnPlayBtn")).GetComponent<Button>();
             settings.FindProperty("cashOutTip").objectReferenceValue=tip;
             settings.FindProperty("fromScale").floatValue=0;settings.FindProperty("toScale").floatValue=1;
             settings.FindProperty("windowDuration").floatValue=.3f;settings.FindProperty("countDuration").floatValue=.5f;
