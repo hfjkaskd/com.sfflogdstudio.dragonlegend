@@ -265,8 +265,8 @@ and clears the legacy Text; the .5-second OutQuad bottom count reads stored
 DownWinCount through 23c2d48 and formats only text through 23c2d60. The stored total
 is deliberately unchanged. Native FlyAnimUtils 238c74c supplies the control geometry.
 Zero reward skips the stage; cancellation restores an active flight and cancels waits,
-without undoing cash already awarded. Big Win currently advances SetTaskData(1,1)
-at the native post-prelude boundary; its window branch remains pending.
+without undoing cash already awarded. The subsequent Big Win integration is
+documented in bigwin-window.md.
 
 Validation: `Artifacts/ordinary-win-tests.xml` passed 207/207 PlayMode tests. Fresh
 `current-ordinary-win-flight.png` and `current-ordinary-win-complete.png` were inspected.
@@ -276,4 +276,12 @@ boundary, and the final bottom amount. Separate checks cover scaled pause, cance
 zero/negative awards and text-only counting with a pre-existing stored bonus total.
 Spin remains busy until the still-pending Bonus/Free/BaseEnd continuation is recovered.
 These results supersede the earlier notes that ordinary credit/transfer were pending;
-Big Win, remaining main-flow branches and full visual equivalence remain incomplete.
+Big Win is now connected through its final transfer (see bigwin-window.md).
+Remaining main-flow branches and full visual equivalence remain incomplete.
+
+
+Current integration validation: Artifacts/bigwin-flow-final-tests.xml passes
+221/221 tests. Both ordinary and Big Win paths reach SymbolSequenceCompleted;
+Big Win shares the final transfer with direct credit disabled, preserving its
+separate event-1 cash-flight credit. A returned zero award does not use the ordinary
+zero-reward early exit. Bonus/Free/BaseEnd still need source-aligned continuation.

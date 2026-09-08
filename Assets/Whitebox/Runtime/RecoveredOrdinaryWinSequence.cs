@@ -27,13 +27,17 @@ namespace DragonLegend.Whitebox
         public event Action FlightArrived;
         public event Action<Exception> Failed;
         public void Begin(float totalWin,Func<float> readBonus,RecoveredPlayerProgress progress,Action completed)
+            =>Begin(totalWin,readBonus,progress,completed,true);
+        public void BeginAfterBigWin(float awarded,Func<float> readBonus,Action completed)
+            =>Begin(awarded,readBonus,null,completed,false);
+        private void Begin(float totalWin,Func<float> readBonus,RecoveredPlayerProgress progress,Action completed,bool credit)
         {
             Cancel();int token=++generation;IsRunning=true;continuation=completed;target=totalWin;
             try {
-                if(totalWin==0){Complete();return;}
+                if(credit&&totalWin==0){Complete();return;}
                 labelTransform=amount.Label.transform;origin=labelTransform.position;
                 // Native credit precedes the later presentation, using the latest balance.
-                progress.SetGreenCount(progress.GreenCount+totalWin);
+                if(credit)progress.SetGreenCount(progress.GreenCount+totalWin);
                 if(token!=generation)return;
                 downWin.SetTemporaryTotal(totalWin);
                 if(readBonus()<totalWin) {

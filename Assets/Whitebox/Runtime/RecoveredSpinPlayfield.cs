@@ -23,6 +23,10 @@ namespace DragonLegend.Whitebox
         private bool isA;
         private int language;
         public RecoveredJackpotPopup JackpotPopup=>jackpotPopup;
+        [SerializeField] private RecoveredBigWinPopup bigWinPopup;
+        [SerializeField] private RecoveredBigWinSequence bigWinSequence;
+        public RecoveredBigWinPopup BigWinPopup=>bigWinPopup;
+        public RecoveredBigWinSequence BigWinSequence=>bigWinSequence;
         public RecoveredJackpotSequence JackpotSequence {get;private set;}
         public event Action SymbolAnimationsRequested,SymbolAmountReady,SymbolSequenceCompleted,BigWinBranchEntered;
         [SerializeField] private RecoveredOrdinaryWinSequence ordinaryWin;
@@ -70,6 +74,11 @@ namespace DragonLegend.Whitebox
             SymbolWin=new RecoveredSymbolWinSelection(rules);
             symbolAmount.Bind(languageType);
             ordinaryWin.Failed+=WildFailed;
+            bigWinSequence.Failed+=WildFailed;
+            bigWinPopup.GetComponent<Canvas>().worldCamera=GetComponentInParent<Canvas>().worldCamera;
+            bigWinPopup.PauseMusicRequested+=PauseMusic;bigWinPopup.StopSound1Requested+=StopSound1;
+            bigWinPopup.ResumeMusicRequested+=ResumeMusic;bigWinPopup.Sound1Requested+=Sound1;bigWinPopup.SoundRequested+=Sound;
+            bigWinPopup.FlyCoinRequested+=BigWinFlyCoin;bigWinPopup.CashOutTaskRefreshRequested+=CashOutRefresh;
             jackpotPopup.GetComponent<Canvas>().worldCamera=GetComponentInParent<Canvas>().worldCamera;
             JackpotSequence=new RecoveredJackpotSequence(new RecoveredRewardBranches(rules,progress),jackpotDelay);
             JackpotSequence.WinRequested+=PlayJackpotWin;JackpotSequence.PauseMusicRequested+=PauseMusic;
@@ -162,8 +171,9 @@ namespace DragonLegend.Whitebox
             SymbolAmountReady?.Invoke();if(entry==null)return;
             if(!SymbolWin.HasReward){SymbolSequenceCompleted?.Invoke();return;}
             if(SymbolWin.BigWin!=RecoveredSlotWinType.None) {
-                // This native task update precedes the still-pending Big Win flight/window branch.
-                player.SetTaskData(1,1);if(entry!=null)BigWinBranchEntered?.Invoke();return;
+                bigWinSequence.Begin(SymbolWin.BigWin,SymbolWin.LineWin,SymbolWin.TotalWin,ReadBonusAmount,
+                    player,rules,ads,isA,language,SymbolsCompleted);
+                if(entry!=null)BigWinBranchEntered?.Invoke();return;
             }
             ordinaryWin.Begin(SymbolWin.TotalWin,ReadBonusAmount,player,SymbolsCompleted);
         }
@@ -184,6 +194,7 @@ namespace DragonLegend.Whitebox
         private void Sound1(string name)=>Sound1Requested?.Invoke(name);
         private void HideWheel()=>HideWheelRequested?.Invoke();
         private void FlyCoin(float amount,Action completed)=>FlyCoinRequested?.Invoke(amount,completed);
+        private void BigWinFlyCoin(float amount)=>FlyCoin(amount,null);
         private void CashOutRefresh(int task,int amount)=>CashOutTaskRefreshRequested?.Invoke(task,amount);
         private void PresentBonusCoin(RecoveredBonusCoin coin)
         {
@@ -198,6 +209,12 @@ namespace DragonLegend.Whitebox
         }
         public void Unbind()
         {
+            if(bigWinSequence!=null){bigWinSequence.Failed-=WildFailed;bigWinSequence.Cancel();}
+            if(bigWinPopup!=null) {
+                bigWinPopup.PauseMusicRequested-=PauseMusic;bigWinPopup.StopSound1Requested-=StopSound1;
+                bigWinPopup.ResumeMusicRequested-=ResumeMusic;bigWinPopup.Sound1Requested-=Sound1;bigWinPopup.SoundRequested-=Sound;
+                bigWinPopup.FlyCoinRequested-=BigWinFlyCoin;bigWinPopup.CashOutTaskRefreshRequested-=CashOutRefresh;
+            }
             JackpotSequence?.Cancel();JackpotSequence=null;
             if(symbolEffects!=null)symbolEffects.Unbind();
             if(ordinaryWin!=null){ordinaryWin.Failed-=WildFailed;ordinaryWin.Cancel();}

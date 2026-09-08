@@ -40,7 +40,7 @@ public sealed class RecoveredJackpotIntegrationTests
             float beforeBalance=entry.PlayerProgress.GreenCount,winTime=-1,flightAmount=0;int symbols=0;Action flight=null;
             int amounts=0;float symbolTime=-1,amountTime=-1;
             field.SymbolAnimationsRequested+=()=>{symbols++;symbolTime=Time.time;};
-            field.SymbolAmountReady+=()=>{amounts++;amountTime=Time.time;};
+            field.SymbolAmountReady+=()=>{amounts++;amountTime=Time.time;Assert.AreEqual(RecoveredCurrency.Format(field.SymbolWin.LineWin,entry.CurrentProfile.languageType,2),field.SymbolAmount.Label.text);};
             field.JackpotSequence.WinRequested+=type=>{Assert.AreEqual(RecoveredJackpotType.Grand,type);winTime=Time.time;};
             field.FlyCoinRequested+=(amount,completed)=>{flightAmount=amount;flight=completed;};
             field.SpinButton.Button.onClick.Invoke();Assert.IsFalse(entry.PlayerProgress.IsFirstFreeReward);
@@ -89,7 +89,7 @@ public sealed class RecoveredJackpotIntegrationTests
             for(int i=0;i<20;i++)yield return null;
             Assert.GreaterOrEqual(field.SymbolAmount.GetComponent<Canvas>().sortingOrder,field.Wilds.NextSortingOrder);
             Assert.AreEqual(1,amounts);Assert.GreaterOrEqual(amountTime-symbolTime,.5f-.0001f);
-            Assert.AreEqual(RecoveredCurrency.Format(field.SymbolWin.LineWin,entry.CurrentProfile.languageType,2),field.SymbolAmount.Label.text);
+            Assert.IsTrue(field.BigWinSequence.IsRunning);Assert.AreEqual(string.Empty,field.SymbolAmount.Label.text);
             Assert.AreEqual(beforeBalance+flightAmount,entry.PlayerProgress.GreenCount,"The initial amount tween cannot credit the line award");
             var gm=root.transform.Find("SelectUS");Assert.IsTrue(gm.gameObject.activeInHierarchy);
             Assert.Greater(gm.GetComponent<Canvas>().sortingOrder,field.SymbolAmount.GetComponent<Canvas>().sortingOrder);
@@ -97,7 +97,7 @@ public sealed class RecoveredJackpotIntegrationTests
             Canvas.ForceUpdateCanvases();var hits=new List<RaycastResult>();
             gm.GetComponent<GraphicRaycaster>().Raycast(new PointerEventData(EventSystem.current){position=RectTransformUtility.WorldToScreenPoint(camera,gm.position)},hits);
             Assert.IsTrue(hits.Exists(hit=>hit.gameObject==gm.gameObject),"GM version Button must remain reachable through Unity UI raycasting");
-            Capture(camera,target,capture,"current-symbol-amount-main.png");
+            Capture(camera,target,capture,"current-jackpot-to-bigwin.png");
             Assert.AreEqual(0,entry.CashFlight.ActiveEffectCount);
             Assert.AreEqual(RecoveredCurrency.Format(beforeBalance+flightAmount,entry.CurrentProfile.languageType),entry.BalancePanel.BalanceText);
             Assert.IsTrue(field.IsBusy);Assert.IsTrue(field.AwaitingRewards,"Only CheckBaseEnd can release Spin");

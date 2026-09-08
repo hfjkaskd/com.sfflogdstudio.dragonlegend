@@ -62,6 +62,10 @@ public sealed class RecoveredCoinGlowTests
             Time.timeScale = 1; Time.captureDeltaTime = .05f;
             for (int i = 0; i < 200 && entry.Playfield == null; i++) yield return null;
             var field = entry.Playfield; Assert.IsNotNull(field); Assert.AreEqual("GOOD LUCK",field.DownWin.Label.text); var board = entry.SpinResult.Board;
+            // This fixture inspects the bonus-coin layer after all independent effects
+            // finish. Stop the newly connected next stage so its popup does not cover
+            // the glyph pixels under inspection; BigWinIntegrationTests covers that path.
+            field.BigWinBranchEntered+=field.BigWinSequence.Cancel;
             board.BeginGuaranteedBonus(2, new[] { 0, 4 }, new System.Random(21), (min, max) => 0);
             while (board.IsPlacingSingleSymbol) board.StepSingleSymbol();
             var columns = new int[5][];

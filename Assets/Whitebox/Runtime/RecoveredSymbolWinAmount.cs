@@ -28,7 +28,17 @@ namespace DragonLegend.Whitebox
         {
             Cancel();IsRunning=true;continuation=completed;
             if(totalWin==0||lineWin==0){Finish();return;}
-            readBonus=bonusGetter??throw new ArgumentNullException(nameof(bonusGetter));target=lineWin;
+            StartCount(lineWin,bonusGetter);
+        }
+        public void BeginAdjusted(float original,float awarded,Action completed)
+        {
+            Cancel();IsRunning=true;continuation=completed;
+            if(original==awarded){Finish();return;}
+            StartCount(awarded,()=>original);
+        }
+        private void StartCount(float value,Func<float> getter)
+        {
+            readBonus=getter??throw new ArgumentNullException(nameof(getter));target=value;
             elapsed=0;started=false;counting=true;initialFrame=Time.frameCount;
             wait=RecoveredReelWait.Delay(waitDuration,Finish,Failed);
         }

@@ -104,7 +104,7 @@ binary and checks input bytes remain unchanged. The first full popup run passed
 218/218 tests, including all 24 geometry poses and 0-byte allocation per 1000 pose
 samples (about 16 ms per 1000 samples on this machine). The actual prefab test
 exercises each tier, Button callbacks, advertisement failure/retry, paused count,
-window exit and callback-before-flight ordering. This does not yet connect Spin.
+window exit and callback-before-flight ordering. Actual Spin integration is covered below.
 
 ## Rendered text verification: previous missing-glyph report corrected
 
@@ -132,11 +132,43 @@ time. The final tier also checks advertisement failure/retry and scaled pause.
 Artifacts/bigwin-reopen-tests.xml passed 218/218, including the actual reopen cycle
 and per-glyph pixel assertions. All three latest current-bigwin-window PNGs were
 checked against those results and decoded independently. This resolves the prior
-inspection concern, but does not prove whole-game visual equivalence or complete
-Big Win integration: pre-window transfer and adjusted-award continuation still
-need to be connected to actual Spin. SDK behavior remains unchanged.
+inspection concern, but does not prove whole-game visual equivalence. The subsequent
+actual Spin integration is covered below. SDK behavior remains unchanged.
 
 Additional main-flow evidence: 23bf8d0, metadata 05046128 via pointer 0501e4f0,
 is b__117_10 and returns zero. The pre-window Big Win bottom-label count must start
 from zero, unlike the post-window b__5 transfer which reads stored DownWinCount.
-This is still to be connected with the actual Spin branch and DownEfWin presentation.
+This getter is now used by the actual Spin branch and DownEfWin presentation.
+
+
+## Actual Spin integration
+
+RecoveredBigWinSequence now connects the authored popup to CheckPlaySymbolAnim
+(23cce68). After capturing the amount origin it updates task (1,1). A nonzero line
+amount flies for .3 seconds with InQuad and world-up control height 1. Arrival
+restores and clears the legacy text, plays the existing pooled DownEfWin burst,
+and counts the bottom label from zero for .5 seconds without changing its stored
+total (23c25b0, 23bf8d0, 23c2a88). The independent popup delay is 1.1 seconds for
+nonzero line wins and .8 seconds otherwise.
+
+The popup callback only stores the returned award and releases the native-style
+WaitUntil. Event-1 cash flight receives a null continuation. Changed awards count
+from original total to returned award for .3 seconds with an independent .5-second
+wait (23c2ac8, 23c2ae4, 23c2aec). The common final transfer sets the temporary total,
+compares live bonus, optionally flies for .3 seconds, and waits .8 seconds. It
+never credits cash directly; the existing cash flight does that once. Zero returned
+awards retain the adjustment and final waits. Cancellation restores an active
+flight and prevents delayed window opening.
+
+Artifacts/bigwin-flow-final-tests.xml passes 221/221 PlayMode tests. Actual Spin
+uses an original weighted board and exercises advertisement failure, retry,
+rewarded claim, callback-before-flight, exactly one credit, adjusted amount and
+final transfer. Separate tests cover the no-line .8-second branch, scaled pause,
+zero returned award and cancellation. Current captures are current-bigwin-spin-popup,
+current-bigwin-spin-adjustment and current-bigwin-spin-complete PNGs in Artifacts.
+The older coin-layer pixel test cancels the downstream Big Win branch so that its
+new overlay does not obscure the layer being measured; the independent integration
+test covers the complete popup path. Jackpot integration now proceeds into Big Win.
+
+Spin remains busy: CheckBonusGame, CheckFreeGame and CheckBaseEnd are still pending.
+These tests do not establish whole-game or whole-scene visual equivalence.

@@ -8,7 +8,7 @@ public static class BuildSpinPlayfield
     public static void Save()
     {
         const string destination = "Assets/Resources/RecoveredUI/SpinPlayfield.prefab";
-        var root = new GameObject("SpinPlayfield", typeof(RectTransform), typeof(RecoveredSpinPlayfield),typeof(RecoveredOrdinaryWinSequence));
+        var root = new GameObject("SpinPlayfield", typeof(RectTransform), typeof(RecoveredSpinPlayfield),typeof(RecoveredOrdinaryWinSequence),typeof(RecoveredBigWinSequence));
         // Author under the same parent-Canvas relationship used by GameEntry at runtime.
         var canvasContext=new GameObject("Authoring Canvas",typeof(RectTransform),typeof(Canvas));
         root.transform.SetParent(canvasContext.transform,false);
@@ -24,6 +24,10 @@ public static class BuildSpinPlayfield
             popup.GetComponent<Canvas>().sortingOrder=300;popup.gameObject.SetActive(false);
             jackpotSettings.FindProperty("jackpotPopup").objectReferenceValue=popup;
             jackpotSettings.FindProperty("jackpotDelay").floatValue=1.5f;jackpotSettings.ApplyModifiedPropertiesWithoutUndo();
+            var bigPopup=(RecoveredBigWinPopup)PrefabUtility.InstantiatePrefab(
+                AssetDatabase.LoadAssetAtPath<RecoveredBigWinPopup>("Assets/Resources/RecoveredUI/BigWinPopup.prefab"),root.transform);
+            bigPopup.GetComponent<Canvas>().sortingOrder=300;bigPopup.gameObject.SetActive(false);
+            jackpotSettings.FindProperty("bigWinPopup").objectReferenceValue=bigPopup;jackpotSettings.ApplyModifiedPropertiesWithoutUndo();
             var board = Rect("QiPan", root.transform, new Vector2(.5f, 0), new Vector2(.5f, .5f),
                 new Vector2(-.003418f, 652), new Vector2(1080, 770.28f));
             var roll = Rect("Roll", board, new Vector2(.5f, .5f), new Vector2(.5f, .5f),
@@ -96,6 +100,18 @@ public static class BuildSpinPlayfield
             transferSettings.FindProperty("burstPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredWinBurst>("Assets/Resources/RecoveredUI/WinBurst.prefab");
             transferSettings.FindProperty("burstParent").objectReferenceValue=bottom;
             transferSettings.FindProperty("destination").objectReferenceValue=winRoot.transform;transferSettings.ApplyModifiedPropertiesWithoutUndo();
+            var bigSequence=root.GetComponent<RecoveredBigWinSequence>();var bigSettings=new SerializedObject(bigSequence);
+            bigSettings.FindProperty("amount").objectReferenceValue=amount;
+            bigSettings.FindProperty("downWin").objectReferenceValue=winRoot.GetComponent<RecoveredDownWinText>();
+            bigSettings.FindProperty("bursts").objectReferenceValue=transfers.GetComponent<RecoveredDownWinFlight>();
+            bigSettings.FindProperty("finalTransfer").objectReferenceValue=ordinary;
+            bigSettings.FindProperty("popup").objectReferenceValue=bigPopup;
+            bigSettings.FindProperty("flightDuration").floatValue=.3f;bigSettings.FindProperty("flightHeight").floatValue=1;
+            bigSettings.FindProperty("countDuration").floatValue=.5f;bigSettings.FindProperty("lineDelay").floatValue=1.1f;
+            bigSettings.FindProperty("noLineDelay").floatValue=.8f;
+            bigSettings.FindProperty("flightEase").animationCurveValue=new AnimationCurve(new Keyframe(0,0,0,0),new Keyframe(1,1,2,2));
+            bigSettings.FindProperty("countEase").animationCurveValue=new AnimationCurve(new Keyframe(0,0,2,2),new Keyframe(1,1,0,0));
+            bigSettings.ApplyModifiedPropertiesWithoutUndo();data.FindProperty("bigWinSequence").objectReferenceValue=bigSequence;
             data.FindProperty("winFlight").objectReferenceValue=transfers.GetComponent<RecoveredDownWinFlight>();
             data.FindProperty("downWin").objectReferenceValue=winRoot.GetComponent<RecoveredDownWinText>();
             data.FindProperty("rewardDelay").floatValue = .5f;

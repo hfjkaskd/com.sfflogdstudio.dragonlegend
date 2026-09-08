@@ -50,6 +50,10 @@ namespace DragonLegend.Whitebox
         private void Arrived(RecoveredLampFlight flight)
         {
             Release(flight);
+            PlayBurst();
+        }
+        public void PlayBurst()
+        {
             var burst=bursts.Get();burst.gameObject.SetActive(true);activeBursts.Add(burst);
             ArrivalEffectRequested?.Invoke();
             CoinBurstSoundRequested?.Invoke();VibrationRequested?.Invoke(200);
