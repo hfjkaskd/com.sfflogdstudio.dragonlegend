@@ -26,6 +26,11 @@ namespace DragonLegend.Whitebox
         public RecoveredSlotType GameSlotType { get; set; }
         public int FreeSpinCount { get; set; }
         public float TotalFreeSpinWin { get; set; }
+        // GameData 0x4c/0x50/0x54, runtime values written by the jackpot meters.
+        // These are independent of the credited balance and absent from PlayerData.
+        public float GrandJackPotReward { get; set; }
+        public float MajorJackPotReward { get; set; }
+        public float MiniJackPotReward { get; set; }
         public event Action BankReady;
         public event Action BankProgressChanged;
         public event Action<int> SpinCountChanged;

@@ -80,6 +80,51 @@ public sealed class RecoveredRewardBranchesTests
         Assert.AreEqual(3,data.PlayerTaskDatas[0].id);
     }
 
+    [TestCase(2, RecoveredJackpotType.None, 0f)]
+    [TestCase(3, RecoveredJackpotType.Minor, 305.5f)]
+    [TestCase(4, RecoveredJackpotType.Major, 204.25f)]
+    [TestCase(5, RecoveredJackpotType.Grand, 103.125f)]
+    public void JackpotSnapshotsRuntimeMeterAfterTaskSaveWithoutCreditingBalance(
+        int columns, RecoveredJackpotType expectedType, float expectedReward)
+    {
+        var data = new PlayerData {GreenCount=77};
+        int saves=0; var rules=Rules(); RecoveredPlayerProgress progress=null;
+        progress = new RecoveredPlayerProgress(rules,()=>{
+            saves++;
+            // Native reads the reward only after task mutation (including its save).
+            progress.GrandJackPotReward=103.125f;
+            progress.MajorJackPotReward=204.25f;
+            progress.MiniJackPotReward=305.5f;
+        },data) {GrandJackPotReward=1,MajorJackPotReward=2,MiniJackPotReward=3};
+        var branches=new RecoveredRewardBranches(rules,progress);
+        Assert.AreEqual(expectedType,branches.CheckJackpot(columns,out float snapshot));
+        Assert.AreEqual(expectedReward,snapshot);
+        progress.GrandJackPotReward=progress.MajorJackPotReward=progress.MiniJackPotReward=-9;
+        Assert.AreEqual(expectedReward,snapshot);
+        Assert.AreEqual(columns<3?0:1,saves);
+        Assert.AreEqual(77,progress.GreenCount);
+    }
+
+    [Test]
+    public void JackpotConfigurationRetainsNativeUnitsAndInt32Overflow()
+    {
+        var multipliers=new List<int>{500,200,50};
+        var config=new GoldenDragonAutoGenConfig {Qonrii=new QonriiPoro {
+            Joqkpor=multipliers,JpOpp=new List<int>{17,999},JpQloim=new List<int>{1500,125,-250}}};
+        var rules=new RecoveredGameplayRules(config);
+        Assert.AreSame(multipliers,rules.GetJackPot());
+        Assert.AreEqual(17,rules.GetJpAdd());
+        Assert.AreEqual(1.5f,rules.GetJpClaim(0));
+        Assert.AreEqual(.125f,rules.GetJpClaim(1));
+        Assert.AreEqual(-.25f,rules.GetJpClaim(2));
+        Assert.Throws<ArgumentOutOfRangeException>(()=>rules.GetJpClaim(3));
+        Assert.AreEqual(525.5f,rules.GetJackpotReward(100.5f,1,25));
+        Assert.AreEqual(425f,rules.GetJackpotReward(100.5f,0,25));
+        config.Qonrii.JpOpp[0]=int.MaxValue;
+        // ARM64 mul w8,w0,w20 wraps 2147483647*2 to -2 before scvtf.
+        Assert.AreEqual(8.5f,rules.GetJackpotReward(3.5f,3,2));
+    }
+
     [Test]
     public void NewTaskIgnoresIncrementThenExistingTaskClampsAndClaimedTaskOnlySaves()
     {

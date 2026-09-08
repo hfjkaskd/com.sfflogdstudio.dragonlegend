@@ -51,6 +51,14 @@ namespace DragonLegend.Whitebox
         public int GetInitSpinCount() => data.Qonrii.InirGping[0]; // 0x236a5d4
         public int GetLines() => data.Gimrol.Lingg[0]; // 0x236b73c
         public string GetConfigType() => data.Qonrii.Ripg[0]; // 0x236a248
+        public IReadOnlyList<int> GetJackPot() => data.Qonrii.Joqkpor; // 0x236ad18
+        public int GetJpAdd() => data.Qonrii.JpOpp[0]; // 0x236af28
+        public float GetJpClaim(int index) => data.Qonrii.JpQloim[index] / 1000f; // 0x236ad3c
+
+        // JackPot.RefreshRewardValue 0x23983ac and PlayRewardAnim 0x2398660:
+        // native multiplies the two counters as signed int32 BEFORE converting to float.
+        public float GetJackpotReward(float multiplier, int bet, int addCount)
+            => multiplier * bet + (float)unchecked(GetJpAdd() * addCount);
         public int GetCashOutCount() => data.Rgpggm.Qogt.Count; // 0x236ccc8
         public float GetCashOutCash(int index) => data.Rgpggm.Qogt[index]; // 0x236cd20; no currency conversion
 

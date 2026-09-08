@@ -41,7 +41,7 @@ namespace DragonLegend.Whitebox
         }
 
         // CheckJackPot 0x23caa64: task 2 advances before the reward popup.
-        // Popup award values and completion remain the presenter's responsibility.
+        // Presentation and completion remain the presenter's responsibility.
         public RecoveredJackpotType CheckJackpot(int wildColumns)
         {
             if (wildColumns < 3) return RecoveredJackpotType.None;
@@ -49,6 +49,21 @@ namespace DragonLegend.Whitebox
             if (wildColumns == 3) return RecoveredJackpotType.Minor;
             if (wildColumns == 4) return RecoveredJackpotType.Major;
             return RecoveredJackpotType.Grand;
+        }
+
+        // Snapshot AFTER SetTaskData, BEFORE the jackpot event and 1.5-second delay.
+        // The popup receives this value even if a meter refreshes during the delay.
+        public RecoveredJackpotType CheckJackpot(int wildColumns, out float reward)
+        {
+            var type = CheckJackpot(wildColumns);
+            switch (type)
+            {
+                case RecoveredJackpotType.Grand: reward = progress.GrandJackPotReward; break;
+                case RecoveredJackpotType.Major: reward = progress.MajorJackPotReward; break;
+                case RecoveredJackpotType.Minor: reward = progress.MiniJackPotReward; break;
+                default: reward = 0; break;
+            }
+            return type;
         }
 
         // CheckBonusGame 0x23c6d54: invoke after symbol animations, before free game.
