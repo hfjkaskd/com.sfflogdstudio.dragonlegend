@@ -430,6 +430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5974125640153786760}
   - component: {fileID: 6276283710307673030}
+  - component: {fileID: 7340944292854852083}
   m_Layer: 5
   m_Name: SpinPlayfield
   m_TagString: Untagged
@@ -484,11 +485,78 @@ MonoBehaviour:
   jackpotMeters: {fileID: 2322447023878766356}
   jackpotPopup: {fileID: 1405900676340334159}
   jackpotDelay: 1.5
+  ordinaryWin: {fileID: 7340944292854852083}
   symbolAmount: {fileID: 4087428487483292332}
   bonusCollection: {fileID: 1015783688566894396}
   coinStops: {fileID: 3478948129685290601}
   downWin: {fileID: 3672362072098529445}
   winFlight: {fileID: 8181082882740074449}
+--- !u!114 &7340944292854852083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842712680581577391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 736a52bed99eb20498100d76f0231ec0, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  amount: {fileID: 4087428487483292332}
+  downWin: {fileID: 3672362072098529445}
+  flightDuration: 0.3
+  flightHeight: 1
+  bottomCountDuration: 0.5
+  completionDelay: 0.8
+  flightEase:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  countEase:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &42646711000093973
 PrefabInstance:
   m_ObjectHideFlags: 0

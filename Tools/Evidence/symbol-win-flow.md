@@ -249,3 +249,31 @@ GraphicRaycaster, the .5-second boundary, the line-only displayed target and unc
 line-award balance. The test's all-Wild board is explicitly settled before reel completion
 so it exercises a nonzero line count deterministically. This validates the initial
 symbol amount segment; later transfer/credit/Big Win/Bonus/Free/BaseEnd are still pending.
+
+## Ordinary payout and final amount transfer
+
+The no-Big-Win branch is now connected to actual Spin after the temporary line
+prelude. `RecoveredOrdinaryWinSequence` uses prefab-authored timing and curves:
+credit the latest GreenCount directly, set tempDownWinCount, compare the live bonus
+against totalWin, then optionally fly the legacy amount to DownWinText in .3 seconds
+(InQuad, quadratic world-space Bezier, midpoint + world up * 1). The .8-second scaled
+continuation wait is independent of the flight. No cash-flight pool or SDK is involved.
+
+Evidence: `23cce68` direct setter branch; callback pointer 0501e7d0 resolves through
+ELF relocation 04f1e7d0 to metadata 05046280, method 23c2b2c (b__5). Arrival restores
+and clears the legacy Text; the .5-second OutQuad bottom count reads stored
+DownWinCount through 23c2d48 and formats only text through 23c2d60. The stored total
+is deliberately unchanged. Native FlyAnimUtils 238c74c supplies the control geometry.
+Zero reward skips the stage; cancellation restores an active flight and cancels waits,
+without undoing cash already awarded. Big Win currently advances SetTaskData(1,1)
+at the native post-prelude boundary; its window branch remains pending.
+
+Validation: `Artifacts/ordinary-win-tests.xml` passed 207/207 PlayMode tests. Fresh
+`current-ordinary-win-flight.png` and `current-ordinary-win-complete.png` were inspected.
+The actual Spin integration uses a settled board from original base weights, verifies
+one credit before the flight, no cash-flight/advertisement side effects, the .8-second
+boundary, and the final bottom amount. Separate checks cover scaled pause, cancellation,
+zero/negative awards and text-only counting with a pre-existing stored bonus total.
+Spin remains busy until the still-pending Bonus/Free/BaseEnd continuation is recovered.
+These results supersede the earlier notes that ordinary credit/transfer were pending;
+Big Win, remaining main-flow branches and full visual equivalence remain incomplete.

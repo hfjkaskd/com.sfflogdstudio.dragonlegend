@@ -14,6 +14,9 @@ namespace DragonLegend.Whitebox
         private float temporaryTotal;
         private int language;
         public float Total { get; private set; }
+        public float TemporaryTotal=>temporaryTotal;
+        public void SetTemporaryTotal(float value)=>temporaryTotal=value;
+        public void ShowAmountOnly(float value)=>label.text=RecoveredCurrency.Format(value,language,2);
         public TextMeshProUGUI Label=>label;
         public Exception Error { get; private set; }
         public event Action<float> Changed;

@@ -8,7 +8,7 @@ public static class BuildSpinPlayfield
     public static void Save()
     {
         const string destination = "Assets/Resources/RecoveredUI/SpinPlayfield.prefab";
-        var root = new GameObject("SpinPlayfield", typeof(RectTransform), typeof(RecoveredSpinPlayfield));
+        var root = new GameObject("SpinPlayfield", typeof(RectTransform), typeof(RecoveredSpinPlayfield),typeof(RecoveredOrdinaryWinSequence));
         // Author under the same parent-Canvas relationship used by GameEntry at runtime.
         var canvasContext=new GameObject("Authoring Canvas",typeof(RectTransform),typeof(Canvas));
         root.transform.SetParent(canvasContext.transform,false);
@@ -81,6 +81,15 @@ public static class BuildSpinPlayfield
             PrefabUtility.RecordPrefabInstancePropertyModifications(amountCanvas);
             var data = new SerializedObject(root.GetComponent<RecoveredSpinPlayfield>());
             data.FindProperty("symbolAmount").objectReferenceValue=amount;
+            var ordinary=root.GetComponent<RecoveredOrdinaryWinSequence>();
+            var ordinarySettings=new SerializedObject(ordinary);
+            ordinarySettings.FindProperty("amount").objectReferenceValue=amount;
+            ordinarySettings.FindProperty("downWin").objectReferenceValue=winRoot.GetComponent<RecoveredDownWinText>();
+            ordinarySettings.FindProperty("flightDuration").floatValue=.3f;ordinarySettings.FindProperty("flightHeight").floatValue=1;
+            ordinarySettings.FindProperty("bottomCountDuration").floatValue=.5f;ordinarySettings.FindProperty("completionDelay").floatValue=.8f;
+            ordinarySettings.FindProperty("flightEase").animationCurveValue=new AnimationCurve(new Keyframe(0,0,0,0),new Keyframe(1,1,2,2));
+            ordinarySettings.FindProperty("countEase").animationCurveValue=new AnimationCurve(new Keyframe(0,0,2,2),new Keyframe(1,1,0,0));
+            ordinarySettings.ApplyModifiedPropertiesWithoutUndo();data.FindProperty("ordinaryWin").objectReferenceValue=ordinary;
             var transfers=new GameObject("WinFlights",typeof(RecoveredDownWinFlight));transfers.layer=5;transfers.transform.SetParent(reelRoot.transform,false);
             var transferSettings=new SerializedObject(transfers.GetComponent<RecoveredDownWinFlight>());
             transferSettings.FindProperty("flightPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredLampFlight>("Assets/Resources/RecoveredSymbols/DownWinFlight.prefab");
