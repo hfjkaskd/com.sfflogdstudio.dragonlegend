@@ -43,4 +43,31 @@ public sealed class RecoveredLampFlightTests
             Assert.AreEqual(1, arrived); Assert.IsFalse(flight.IsFlying);
         } finally { Time.timeScale = scale; Time.captureDeltaTime = delta; Object.Destroy(flight.gameObject); Object.Destroy(destination); }
     }
+    [UnityTest]
+    public IEnumerator BottomWinFlightUsesInQuadAndKeepsOriginalParticleVariant()
+    {
+        var flight=Object.Instantiate(Resources.Load<RecoveredLampFlight>("RecoveredSymbols/DownWinFlight"));
+        var destination=new GameObject("Bottom destination");
+        float scale=Time.timeScale,delta=Time.captureDeltaTime;
+        try {
+            Assert.IsFalse(flight.gameObject.activeSelf,"Position the pooled particle before enabling emission.");
+            Assert.AreEqual(1,flight.GetComponentsInChildren<ParticleSystem>(true).Length);
+            Assert.AreEqual(2,flight.GetComponentsInChildren<TrailRenderer>(true).Length);
+            Time.timeScale=1;Time.captureDeltaTime=.075f;
+            flight.transform.position=Vector3.zero;destination.transform.position=new Vector3(0,-4,0);
+            flight.gameObject.SetActive(true);yield return null;
+            int arrivals=0;flight.Arrived+=value=>arrivals++;flight.Begin(destination.transform,3);
+            Assert.AreEqual(-.8f,flight.ControlPoint.y,.00001f);
+            destination.transform.position=new Vector3(10,-20,3);
+            float[] expected={-.109375f,-.55f,-1.659375f,-4};
+            for(int i=0;i<4;i++) {yield return null;Assert.AreEqual(expected[i],flight.transform.position.y,.0001f);}
+            Assert.AreEqual(1,arrivals);Assert.AreEqual(4,flight.GetComponent<SortingGroup>().sortingOrder);
+            flight.Begin(destination.transform,0);Time.timeScale=0;
+            for(int i=0;i<5;i++)yield return null;
+            Assert.AreEqual(new Vector3(0,-4,0),flight.transform.position);
+            flight.gameObject.SetActive(false);Time.timeScale=1;
+            for(int i=0;i<5;i++)yield return null;Assert.AreEqual(1,arrivals);
+        } finally {Time.timeScale=scale;Time.captureDeltaTime=delta;Object.Destroy(flight.gameObject);Object.Destroy(destination);}
+    }
+
 }

@@ -41,6 +41,11 @@ public static class BuildSpinPlayfield
                 AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredUI/SpinButton.prefab"), main);
             ((RectTransform)buttonRoot.transform).anchoredPosition = new Vector2(417, -23.793f);
             var data = new SerializedObject(root.GetComponent<RecoveredSpinPlayfield>());
+            var transfers=new GameObject("WinFlights",typeof(RecoveredDownWinFlight));transfers.layer=5;transfers.transform.SetParent(reelRoot.transform,false);
+            var transferSettings=new SerializedObject(transfers.GetComponent<RecoveredDownWinFlight>());
+            transferSettings.FindProperty("flightPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredLampFlight>("Assets/Resources/RecoveredSymbols/DownWinFlight.prefab");
+            transferSettings.FindProperty("destination").objectReferenceValue=winRoot.transform;transferSettings.ApplyModifiedPropertiesWithoutUndo();
+            data.FindProperty("winFlight").objectReferenceValue=transfers.GetComponent<RecoveredDownWinFlight>();
             data.FindProperty("downWin").objectReferenceValue=winRoot.GetComponent<RecoveredDownWinText>();
             data.FindProperty("rewardDelay").floatValue = .5f;
             data.FindProperty("bonusCoinInterval").floatValue = .5f;

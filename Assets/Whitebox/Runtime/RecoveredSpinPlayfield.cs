@@ -17,6 +17,8 @@ namespace DragonLegend.Whitebox
         public RecoveredCoinStopPresenter CoinStops => coinStops;
         [SerializeField] private RecoveredDownWinText downWin;
         public RecoveredDownWinText DownWin=>downWin;
+        [SerializeField] private RecoveredDownWinFlight winFlight;
+        public RecoveredDownWinFlight WinFlight=>winFlight;
         private RecoveredReelWait rewardWait;
         private RecoveredSpinEntry entry;
         private RecoveredSpinResult result;
@@ -45,6 +47,8 @@ namespace DragonLegend.Whitebox
             reels.Initialize(symbols);
             if(coinStops!=null)coinStops.Bind(reels,languageType,bonusCollection,GetComponentInParent<Canvas>().sortingOrder);
             downWin.Bind(languageType);
+            winFlight.Bind(GetComponentInParent<Canvas>().sortingOrder);
+            coinStops.WinFlightRequested+=winFlight.Play;
             coinStops.RewardRegistered+=downWin.Register;
             coinStops.RewardPresentationFinished+=downWin.PresentationFinished;
             entry.StartVisualsRequested += Started;
@@ -99,6 +103,7 @@ namespace DragonLegend.Whitebox
         {
             rewardWait?.Cancel(); rewardWait = null;
             BonusCoins?.CancelForProfileChange(); BonusCoins = null;
+            if(winFlight!=null) {winFlight.Cancel();if(coinStops!=null)coinStops.WinFlightRequested-=winFlight.Play;}
             if(downWin!=null) { downWin.Cancel(); if(coinStops!=null) {coinStops.RewardRegistered-=downWin.Register;coinStops.RewardPresentationFinished-=downWin.PresentationFinished;} }
             if(coinStops!=null)coinStops.Unbind();
             spinButton.Button.onClick.RemoveListener(Click);

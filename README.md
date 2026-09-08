@@ -392,3 +392,16 @@ RecoveredCoinStopPresenter 使用官方 ObjectPool 回收/复用飞行对象。�
 此前整图预览被判断为缺少美元符号和 GM 按钮，但本轮直接用 System.Drawing 解码同一 current-down-win.png：在 x=440..459、y=1670..1749 的美元符号区域有 765 个绿色像素；从文件截取原始局部后，current-down-win-detail.png 完整显示 $0.34，current-gm-detail.png 完整显示两个 GM 按钮。该证据纠正上一节的遮挡判断：当前 PNG 文件没有对应的缺字，不能把整图预览呈现差异当作游戏缺陷。此结论只覆盖本次被怀疑的区域，不代表整套视觉已完成复刻。
 
 实际奖励集成测试增加冻结动画后的连续 8 帧 StandardRequest 渲染，每帧根据 TMP 字符网格边界逐一检查每个可见金额字符的绿色像素，防止仅字符串正确却完全漏绘字符的假阳性。定向测试通过（Artifacts/render-glyph-tests.xml），原 151 项逻辑/结构测试基线保留；本轮仅改变测试，没有更改运行时或 SDK。后续继续恢复飞向底部文本的原粒子和抵达光效，以及完整奖励生命周期。
+
+
+## 本轮：金币飞向底部中奖文本与二次缩放
+
+按 UIMainView 回调 0x23c1114，金币开始两段 OutQuad 缩放：0.2 秒到 1，回调 0x23c1614 再用 0.2 秒回到 0.7；并行启动从金币当前位置至 DownWinText 的 0.3 秒二次贝塞尔飞行。该路径指定 Ease=5/InQuad，与灯位路径的 Ease=4/InOutSine 不同，不能共用相同缓动值。负弧高仍按 Fly 0x238c74c 解析为起止三维距离×0.3，终点在启动时固定。
+
+原 OnFlyStart 0x23c1648 使用 PoolManager.JinBi_Lizi（tuowei）资源，先停用实例、设到金币世界位置、启用并放到同级末尾，随后设所有 Renderer 为主 Canvas+1。新增 DownWinFlight 原生 Prefab Variant，共享已恢复的一套 ParticleSystem、两条 TrailRenderer、原材质和参数，仅配置 InQuad、初始位置零和初始停用。先定位后启用避免在池原点发射粒子。现阶段灯位和底部路径由两个官方 ObjectPool 分别回收，属于相对于原共用 LeanPool 的实现结构差异，资源仍共享。
+
+实际 RewardPresentationFinished 先执行金币二次缩放和底部飞行，再启动既有 DownWinText 的独立 0.3 秒等待。底部粒子放在棋盘公共父级，不随金币局部缩放，也不依赖灯位目标存在。到达先回收飞行，再发出底部光效请求、coinBrust 音效请求与 200ms 震动请求。原到达光效对应 UIMainView.DownEfWin 外部 GUID 9ecbe9477681b654d9661c362142ebc1，即 Res/Prefabs/Boom.prefab，尚未生成该原生光效实例；声音/震动实际播放仍待接入。
+
+全量 PlayMode 152 项通过（Artifacts/win-flight-all-tests.xml）。新增向下轨迹四帧数值 -0.109375/-0.55/-1.659375/-4、目标快照、排序、原粒子结构、暂停与停用测试；真实入口验证两枚金币各启动一次底部飞行、起止位置、同时缩放、同一对象复用、先回收再到达事件及声音/震动请求顺序。底部文字合计正确，顶部余额保持不变。该阶段仍不替代完整奖励结算，Wild/Jackpot/免费模式和全局视觉复刻未完成，SDK 不变。
+
+追加 2 项定向复测通过（Artifacts/win-flight-final-tests.xml），包括在途飞行时调用真实 Playfield.Unbind，活动对象立即回收且后续不再到达。已查看最新 current-win-flight-detail.png 的原图局部，粒子拖尾从金币向底部文本方向延伸。

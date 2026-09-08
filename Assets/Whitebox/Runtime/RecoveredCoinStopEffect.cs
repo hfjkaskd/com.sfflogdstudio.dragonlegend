@@ -42,8 +42,9 @@ namespace DragonLegend.Whitebox
             reveal.gameObject.SetActive(false); glow.gameObject.SetActive(false);
             appearance.gameObject.SetActive(true);
             appearance.PlayAppearance();
-            from=transform.localScale;elapsed=0;phase=1;
+            PlayTransferPulse();
         }
+        public void PlayTransferPulse() { from=transform.localScale;elapsed=0;phase=1; }
         private void Update()
         {
             if(phase==0)return;

@@ -6,6 +6,8 @@ namespace DragonLegend.Whitebox
 {
     public sealed class RecoveredLampFlight : MonoBehaviour
     {
+        public enum Curve { InOutSine, InQuad }
+        [SerializeField] private Curve curve;
         [SerializeField] private float duration;
         [SerializeField] private float automaticArcRatio;
         [SerializeField] private int sortingOffset;
@@ -34,7 +36,7 @@ namespace DragonLegend.Whitebox
             if (!IsFlying) return;
             elapsed += Time.deltaTime;
             float t = duration == 0 ? 1 : Mathf.Clamp01(elapsed / duration);
-            float eased = (1 - Mathf.Cos(Mathf.PI * t)) * .5f;
+            float eased = curve == Curve.InQuad ? t * t : (1 - Mathf.Cos(Mathf.PI * t)) * .5f;
             float inverse = 1 - eased;
             transform.position = start * (inverse * inverse) + control * (eased * (inverse + inverse)) + end * (eased * eased);
             if (t < 1) return;

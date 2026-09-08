@@ -157,6 +157,52 @@ RectTransform:
   m_AnchoredPosition: {x: -0.003418, y: 0}
   m_SizeDelta: {x: 1080, y: 292.24}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!1 &6945831991783634236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6310115660257212385}
+  - component: {fileID: 8181082882740074449}
+  m_Layer: 5
+  m_Name: WinFlights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6310115660257212385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6945831991783634236}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8511383017384286432}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8181082882740074449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6945831991783634236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cac2f8d7245e304f83534a76e2dcadc, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  flightPrefab: {fileID: 6524449533108465000, guid: 7190395f66c4a0d43a97b6fb414f08a4, type: 3}
+  destination: {fileID: 1724587087816881056}
 --- !u!1 &8134780190571838129
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +297,7 @@ MonoBehaviour:
   bonusCollection: {fileID: 1015783688566894396}
   coinStops: {fileID: 3478948129685290601}
   downWin: {fileID: 3672362072098529445}
+  winFlight: {fileID: 8181082882740074449}
 --- !u!1001 &1181584291013865697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -385,6 +432,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7384589907633350657, guid: 8944d3a5de9fabe469a5464e62fd8770, type: 3}
       insertIndex: -1
       addedObject: {fileID: 304545967395321650}
+    - targetCorrespondingSourceObject: {fileID: 7384589907633350657, guid: 8944d3a5de9fabe469a5464e62fd8770, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6310115660257212385}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8944d3a5de9fabe469a5464e62fd8770, type: 3}
 --- !u!4 &8511383017384286432 stripped

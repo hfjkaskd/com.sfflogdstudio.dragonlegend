@@ -19,6 +19,7 @@ namespace DragonLegend.Whitebox
         private RecoveredBonusCollection collection;
         public event Action<GameObject,float> RewardRegistered;
         public event Action<GameObject> RewardPresentationFinished;
+        public event Action<Transform> WinFlightRequested;
         private int canvasOrder;
         private Transform newFlightParent;
         private ObjectPool<RecoveredLampFlight> flightPool;
@@ -44,8 +45,14 @@ namespace DragonLegend.Whitebox
             var effect=Instantiate(effectPrefab,transform,false);
             effect.RevealSoundRequested+=RevealSound;
             effect.LampFlightRequested+=StartFlight;
-            effect.RewardPresentationFinished+=value=>RewardPresentationFinished?.Invoke(value.gameObject);
+            effect.RewardPresentationFinished+=RewardFinished;
             return effect;
+        }
+        private void RewardFinished(RecoveredCoinStopEffect effect)
+        {
+            effect.PlayTransferPulse();
+            WinFlightRequested?.Invoke(effect.transform);
+            RewardPresentationFinished?.Invoke(effect.gameObject);
         }
         private void RevealSound()=>CoinRevealSoundRequested?.Invoke();
         public void PlayRewardReveal(int column,int row,float reward,int collectionCount)

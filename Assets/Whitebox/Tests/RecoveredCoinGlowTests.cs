@@ -68,6 +68,17 @@ public sealed class RecoveredCoinGlowTests
             for (int c = 0; c < 5; c++) { columns[c] = new int[3]; for (int r = 0; r < 3; r++) columns[c][r] = board.GetSymbol(c, r); }
             float balance = entry.PlayerProgress.GreenCount; int presentations = 0, sounds = 0, firstReward = 0;
             field.CoinStops.CoinRevealSoundRequested += () => sounds++;
+            int winFlights=0,winArrivals=0,burstSounds=0,winVibrations=0;
+            field.CoinStops.RewardPresentationFinished+=effect=>{
+                Assert.IsTrue(effect.GetComponent<RecoveredCoinStopEffect>().IsScaling);
+                Assert.AreEqual(1,field.WinFlight.ActiveCount);
+                Assert.AreEqual(effect.transform.position,field.WinFlight.FlightAt(0).StartPoint);
+                Assert.AreEqual(field.DownWin.transform.position,field.WinFlight.FlightAt(0).EndPoint);
+                winFlights++;
+            };
+            field.WinFlight.ArrivalEffectRequested+=()=>{Assert.AreEqual(0,field.WinFlight.ActiveCount);winArrivals++;};
+            field.WinFlight.CoinBurstSoundRequested+=()=>{Assert.AreEqual(burstSounds+1,winArrivals);burstSounds++;};
+            field.WinFlight.VibrationRequested+=duration=>{Assert.AreEqual(200,duration);Assert.AreEqual(winVibrations+1,burstSounds);winVibrations++;};
             int arrivals=0, winUpdates=0;float displayedReward=0;
             field.DownWin.Changed+=value=>{winUpdates++;displayedReward=value;};
             field.CoinStops.ExpSoundRequested+=()=>{
@@ -112,6 +123,14 @@ public sealed class RecoveredCoinGlowTests
             RenderPipeline.SubmitRenderRequest(camera,new UniversalRenderPipeline.SingleCameraRequest{destination=target});
             RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
             File.WriteAllBytes(Path.GetFullPath(Path.Combine(Application.dataPath,"../Artifacts/current-lamp-flight.png")),capture.EncodeToPNG());
+            Assert.AreEqual(1,field.WinFlight.ActiveCount);
+            Assert.Greater(Vector3.Distance(field.WinFlight.FlightAt(0).StartPoint,field.WinFlight.FlightAt(0).transform.position),.01f);
+            yield return null;yield return null;
+            Assert.AreEqual(1,field.WinFlight.ActiveCount);
+            Canvas.ForceUpdateCanvases();
+            RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
+            RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+            File.WriteAllBytes(Path.GetFullPath(Path.Combine(Application.dataPath,"../Artifacts/current-win-flight.png")),capture.EncodeToPNG());
             for(int i=0;i<20&&field.CoinStops.ActiveFlashCount==0;i++)yield return null;
             Assert.Greater(field.CoinStops.ActiveFlashCount,0);
             var activeFlash=field.CoinStops.FlashAt(0);
@@ -147,6 +166,8 @@ public sealed class RecoveredCoinGlowTests
 
             for (int i = 0; i < 80 && (field.BonusCoins.IsRunning || first.Glow.IsPlaying || second.Glow.IsPlaying || field.CoinStops.ActiveFlashCount>0); i++) yield return null;
             Assert.AreEqual(2, presentations); Assert.AreEqual(2, sounds); Assert.IsNull(field.BonusCoins.Error);
+            Assert.AreEqual(2,winFlights);Assert.AreEqual(2,winArrivals);Assert.AreEqual(2,burstSounds);Assert.AreEqual(2,winVibrations);
+            Assert.AreEqual(1,field.WinFlight.CreatedCount);Assert.AreEqual(0,field.WinFlight.ActiveCount);
             Assert.AreEqual(2,winUpdates);Assert.AreEqual(field.BonusCoins.TotalReward,displayedReward);
             Assert.AreEqual(RecoveredCurrency.Format(displayedReward,0),field.DownWin.Label.text);
             Canvas.ForceUpdateCanvases();
@@ -186,7 +207,11 @@ public sealed class RecoveredCoinGlowTests
             first.PlayShow(); Assert.IsFalse(first.Reveal.gameObject.activeSelf); Assert.IsFalse(first.Glow.gameObject.activeSelf);
             Assert.IsFalse(first.RewardText.Label.gameObject.activeSelf);
             Assert.AreEqual(5, first.GetComponentsInChildren<SpriteRenderer>().Length);
-            field.CoinStops.Unbind(); Assert.AreEqual(0, field.CoinStops.ActiveCount);
+            field.WinFlight.Play(first.transform);Assert.AreEqual(1,field.WinFlight.ActiveCount);
+            yield return null;field.Unbind();
+            Assert.AreEqual(0,field.WinFlight.ActiveCount);Assert.AreEqual(0,field.CoinStops.ActiveCount);
+            for(int i=0;i<10;i++)yield return null;
+            Assert.AreEqual(2,winArrivals,"Profile unbind must cancel the old transfer callback.");
         } finally {
             Object.DestroyImmediate(root); Object.Destroy(cameraHost); RenderTexture.active = previous;
             if (capture != null) Object.Destroy(capture); target.Release(); Object.Destroy(target);
