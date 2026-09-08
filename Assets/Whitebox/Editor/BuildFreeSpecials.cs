@@ -23,6 +23,12 @@ public static class BuildFreeSpecials
         data.FindProperty("coinPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredFreeCoin>("Assets/Resources/RecoveredSymbols/FreeCoin.prefab");
         data.FindProperty("ballPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredFreeBall>("Assets/Resources/RecoveredSymbols/FreeBall.prefab");
         data.FindProperty("storage").objectReferenceValue=storage;
+        var lamps=node.GetComponent<RecoveredFreeLampFlights>();if(lamps==null)lamps=node.AddComponent<RecoveredFreeLampFlights>();
+        var lampSettings=new SerializedObject(lamps);
+        lampSettings.FindProperty("flightPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredLampFlight>("Assets/Resources/RecoveredSymbols/LampFlight.prefab");
+        lampSettings.FindProperty("flashPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredLampFlash>("Assets/Resources/RecoveredUI/LampFlash.prefab");
+        lampSettings.FindProperty("storage").objectReferenceValue=storage;lampSettings.FindProperty("arrivalSound").stringValue="exp";
+        lampSettings.ApplyModifiedPropertiesWithoutUndo();data.FindProperty("lampFlights").objectReferenceValue=lamps;
         data.FindProperty("slotCenter").vector3Value=new Vector3(0,.86f,0);
         data.FindProperty("coinScale").floatValue=.7f;data.FindProperty("ballScale").floatValue=.8f;
         data.FindProperty("coinStopSound").stringValue="coinshow";

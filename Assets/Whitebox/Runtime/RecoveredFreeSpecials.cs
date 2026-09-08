@@ -11,6 +11,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredFreeCoin coinPrefab;
         [SerializeField] private RecoveredFreeBall ballPrefab;
         [SerializeField] private Transform storage;
+        [SerializeField] private RecoveredFreeLampFlights lampFlights;
+        public RecoveredFreeLampFlights LampFlights=>lampFlights;
         [SerializeField] private Vector3 slotCenter;
         [SerializeField] private float coinScale,ballScale;
         [SerializeField] private string coinStopSound,ballStopSound;
@@ -54,6 +56,7 @@ namespace DragonLegend.Whitebox
         {
             result=source??throw new ArgumentNullException(nameof(source));
             if(coins==null) {
+                lampFlights.SoundRequested+=ForwardSound;
                 coins=new ObjectPool<RecoveredFreeCoin>(NewCoin,null,ReturnCoin,c=>Destroy(c.gameObject));
                 balls=new ObjectPool<RecoveredFreeBall>(NewBall,null,ReturnBall,b=>Destroy(b.gameObject));
             }
@@ -64,7 +67,8 @@ namespace DragonLegend.Whitebox
                 bindings[col*3+row]=binding;byReel.Add(reel,binding);
             }
         }
-        private RecoveredFreeCoin NewCoin(){CreatedCoins++;var coin=Instantiate(coinPrefab,storage,false);coin.gameObject.SetActive(false);return coin;}
+        private RecoveredFreeCoin NewCoin(){CreatedCoins++;var coin=Instantiate(coinPrefab,storage,false);coin.gameObject.SetActive(false);coin.RewardPresentation.LampFlightRequested+=lampFlights.Launch;coin.RewardPresentation.SoundRequested+=ForwardSound;return coin;}
+        private void ForwardSound(string value)=>SoundRequested?.Invoke(value);
         private RecoveredFreeBall NewBall(){CreatedBalls++;var ball=Instantiate(ballPrefab,storage,false);ball.gameObject.SetActive(false);return ball;}
         private void ReturnCoin(RecoveredFreeCoin coin){coin.gameObject.SetActive(false);coin.transform.SetParent(storage,false);}
         private void ReturnBall(RecoveredFreeBall ball){ball.gameObject.SetActive(false);ball.transform.SetParent(storage,false);}
@@ -176,6 +180,7 @@ namespace DragonLegend.Whitebox
         private void OnDestroy()
         {
             if(bindings!=null)foreach(var binding in bindings)binding.Release();
+            if(lampFlights!=null)lampFlights.SoundRequested-=ForwardSound;
             coins?.Clear();balls?.Clear();
         }
     }

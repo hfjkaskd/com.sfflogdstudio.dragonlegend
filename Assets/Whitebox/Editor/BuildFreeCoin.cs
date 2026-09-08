@@ -31,6 +31,7 @@ public static class BuildFreeCoin
             settings.FindProperty("restingScale").floatValue=.7f;
             settings.ApplyModifiedPropertiesWithoutUndo();
             BuildFreeClipping.Configure(root);
+            BuildFreeCoinReward.Configure(root);
             root.SetActive(true);PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredSymbols/FreeCoin.prefab");
             AssetDatabase.SaveAssets();
         } finally {Object.DestroyImmediate(root);}

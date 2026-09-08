@@ -34,8 +34,9 @@ is held at its authored .7 scale for this side-by-side image.
 
 The shared Free coin pool and CheckFakeCoin consumer are now attached to
 FreeReels (see free-specials-pool.md). Per-mini-reel clipping is connected
-(see free-specials-clipping.md). Pending: rewards and collection flight, and production Free flow
-binding. This prefab alone does not establish complete pool lifecycle or
+(see free-specials-clipping.md). Reward reveal and pooled collection flight are
+now implemented (see free-coin-reward.md). Production Free flow binding remains
+pending. This prefab alone does not establish complete pool lifecycle or
 Free gameplay fidelity. SDK handling is unchanged.
 
 Validation: full Unity 2022.3.62f3 PlayMode suite **270/270 passed** in
