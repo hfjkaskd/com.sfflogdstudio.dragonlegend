@@ -223,3 +223,15 @@ RecoveredBaseReelController 恢复 ClickSpin 0x23d1f30 到全部转轴停止等�
 新增四个实际 Unity Update 驱动测试，覆盖普通五列和从第 1/3/5 列开始的特殊分支，验证启动间隔、顺序落位、高亮开关顺序、延迟下限、音效/震动请求数量及单次完成。全量 PlayMode 134 项通过、0 失败（Artifacts/base-controller-tests.xml）。已查看本次生成的 current-base-controller.png，五列控制器经过实际逐帧运动后落位与裁切正常。
 
 音效、高亮、震动和停轴特效目前为按原顺序发出的表现请求，尚待绑定对应原生组件；控制器的 ReelsStopped 只代表转轴段结束，不能替代后续奖励序列结束。主 Spin 按钮、生成结果与此 Prefab 的实际场景接线、免费转轴和奖励视觉仍未完成。SDK 处理方式不变，完整生命周期及视觉 1:1 目标继续有效。
+
+## 本轮：原 Spin 按钮转为 Unity 原生动画资源
+
+原 SpinBtn 的可见内容来自 ef_slspineaniu.skel.bytes，没有完整静态按钮图。Tools/extract_spin_button.py 读取这份 4.1.24 二进制及原 atlas，完整消费 2144 字节，恢复 10 根骨骼、9 个槽位（其中 8 个有图像附件）、无约束/变形/绘制顺序变化、17 条 dianji 时间线和 4 条 idle 时间线。未知格式直接报错，不跳过字节。提取结果保留源 SHA-256，重新提取与提交的 JSON 哈希一致。格式核对来源：https://github.com/EsotericSoftware/spine-runtimes/blob/4.1/spine-csharp/src/SkeletonBinary.cs；工程没有引入其运行时或程序集。
+
+BuildSpinButton 使用 UnityEditor 官方 API 保存 SpinButton Prefab、7 个图集 Sprite、setup/idle/dianji 原生 AnimationClip。保留按钮 222×219.41 尺寸、视觉 y=1.7929688、附件偏移/裁切/旋转、骨骼层级及原绘制顺序。曲线保留原关键帧，Bezier 段按原 9 个内部采样点展开为分段线性曲线；idle 4 秒循环，dianji 1 秒完成后重置 setup 并回到 idle，不使用跨动画混合来替代原重新初始化行为。
+
+可见底板 Image 为标准 Button 的 targetGraphic 和实际射线命中对象，事件通过代码绑定。运行时只控制 Animation，不创建静态 UI。PMA 普通与叠加材质由原生 ShaderLab 表达，图集声明 pma:true。AssetRipper 导入设置的 alphaIsTransparency 颜色扩展在预乘混合下产生明显竖条；已关闭该项及有损纹理压缩，保持原 PNG 解码像素，重新渲染确认污染消失。该小图集未新增第二份纹理。
+
+首次 OnEnable 采样早于子 Image.Awake 曾触发 Unity m_DidAwake 断言，已将首次播放放到 Start，所有平台使用同一初始化流程。测试 Canvas 图层也已校正，避免测试相机剔除整个 Canvas。中间通过测试但带竖条的画面不作为视觉完成证据。
+
+最终全量 PlayMode 136 项通过、0 失败（Artifacts/spin-button-pma-tests.xml）。新增测试检查原旋转角、关键帧透明度、点击图层重置、可见底板的真实 GraphicRaycaster 命中、标准 Button 事件及点击后返回循环待机。本次 current-spin-button.png 已检查，竖条消失，底板和叶片/发光可见。按钮 Prefab 尚未接入主 GameEntry 的实际扣次数、生成结果和转轴调用；该主流程接线、奖励流程及完整视觉生命周期继续未完成，SDK 未改动。
