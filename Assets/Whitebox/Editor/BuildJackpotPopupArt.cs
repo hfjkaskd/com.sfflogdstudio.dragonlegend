@@ -26,7 +26,7 @@ public static class BuildJackpotPopupArt
         AssetDatabase.SaveAssets();
         BuildJackpotPopup.SaveBigWin();
     }
-    static void Create(string name,string sourceFolder,Vector2 size,Vector2 pivot,string evidence="Tools/Evidence/JackpotPopup/",string authoring="Artifacts/JackpotPopupAuthoring/")
+    public static void Create(string name,string sourceFolder,Vector2 size,Vector2 pivot,string evidence="Tools/Evidence/JackpotPopup/",string authoring="Artifacts/JackpotPopupAuthoring/",RecoveredNpcConstraints npcConstraints=null)
     {
         string folder=Folder+"/"+name;Directory.CreateDirectory(folder);AssetDatabase.Refresh();
         var source=JsonUtility.FromJson<BuildCoinAppearance.Data>(File.ReadAllText(evidence+name+".json"));
@@ -40,6 +40,7 @@ public static class BuildJackpotPopupArt
         try {
             root.layer=5;var rect=(RectTransform)root.transform;rect.sizeDelta=size;rect.pivot=pivot;
             var rig=root.GetComponent<RecoveredRegionRig>();rig.raycastTarget=false;rig.canvasRenderer.cullTransparentMesh=false;
+            rig.npcConstraints=npcConstraints;
             rig.bones=new RecoveredRegionRig.Bone[source.bones.Length];
             for(int i=0;i<source.bones.Length;i++) {
                 var b=source.bones[i];if(b.mode==2||b.values[5]!=0||b.values[6]!=0)throw new InvalidDataException("Unconverted popup bone");

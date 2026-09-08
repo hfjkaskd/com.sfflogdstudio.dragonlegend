@@ -100,3 +100,43 @@ prefab authoring and fresh runtime visual checks.
 Validation: Artifacts/npc-constraint-tests.xml passed 224/224 PlayMode tests.
 1000 warmed-up NPC constraint poses took 31.14 ms with 0 allocated managed bytes.
 No NPC visual-equivalence claim is made by this arithmetic-only validation.
+
+## Authored NPC artwork
+
+BuildNpc.Save now creates RecoveredUI/Npc and the shared ef_long native rig prefab.
+It uses the verified constraint program, weighted source vertices, all four native
+Animation clips and the unchanged 1981x1891 atlas. Texture preprocessing/compression
+is disabled to preserve PMA source pixels. UI presentation uses the existing native
+RecoveredRegionRig; no Spine assembly is present.
+
+The Npc root retains QiPan's bottom-center anchor, position (-.003418,652), size
+(1080,770.28). LongSpine retains position (0,355), size (990,1245.0002), pivot
+(.47777772,.3566265). FireSpine retains its PlayFire parent stretched with position
+(.0034179688,335.14), sizeDelta (0,1149.72), and its child position
+(-.0034179688,19.859985), original size/pivot. Both original layers are 0. Fire is
+inactive initially, matching InitNpc(0). This authored fragment still needs insertion
+at the corresponding main-view hierarchy and sorting location.
+
+The source atlas sequences use mode 1 (play once, hold final frame). Independent
+sample_npc_geometry.py combines the source constraint matrices, weighted meshes and
+that frame-selection rule to generate 32 full geometry references. It passes these
+matrices to sample_wild_reference without changing its existing default behavior.
+
+Named animation event fields are retained in RecoveredRigAnimation.events. The
+visual sampler does not dispatch gameplay callbacks: InitNpc's identified calls do
+not provide an event handler. Nonempty event audio paths remain rejected by this
+authoring path pending explicit support. JsonUtility represents the source null audio
+path as empty, so the check accepts that empty representation. Full audio event data
+remains preserved in the offline source conversion.
+
+RecoveredNpcArtTests renders fresh idle/wind/fire captures from the actual prefab,
+checks its two-layer layout and preserved huo event, and exercises native one-shot
+completion with scaled pause. The existing independent geometry test now includes
+npc-geometry.json and checks every vertex in all four clips. NPC state-controller,
+delayed dragon sound/shake and actual Bonus integration are still pending.
+
+Validation: Artifacts/npc-art-tests.xml passed 226/226 PlayMode tests. Latest
+current-npc-idle.png, current-npc-wind.png and current-npc-fire.png were inspected
+at original resolution. All 32 full vertex fixtures pass. Warmed-up animation and
+constraint sampling takes 31.5-39.4 ms per 1000 poses with 0 managed bytes allocated;
+this measurement does not include Canvas mesh rebuild/render costs.

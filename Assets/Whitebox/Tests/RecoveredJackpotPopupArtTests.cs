@@ -15,6 +15,7 @@ public sealed class RecoveredJackpotPopupArtTests
     [Serializable] private class Frame {public float time;public float[] vertices;}
     [TestCase("JackpotPopup/poses.json")]
     [TestCase("bigwin-poses.json")]
+    [TestCase("npc-geometry.json")]
     public void PopupWeightedAndSequenceGeometryMatchesAllSourceClips(string evidenceFile)
     {
         var evidence=JsonUtility.FromJson<Evidence>(File.ReadAllText(Path.Combine(Application.dataPath,"../Tools/Evidence/"+evidenceFile)));

@@ -46,7 +46,7 @@ def evaluate(frames,time,component,percent=False):
         if time<=x1:return y0+(y1-y0)*(time-x0)/(x1-x0)
     return p1
 
-def sample(data,time,geometry=False):
+def sample(data,time,geometry=False,world_matrices=None):
     pose=[b['values'][:5] for b in data['bones']]
     active=[s['attachment'] for s in data['slots']]
     deforms={}
@@ -70,7 +70,7 @@ def sample(data,time,geometry=False):
                 alpha=evaluate(frames,time,0,True)
                 values=[a+(b-a)*alpha for a,b in zip(values,frames[index+1]['values'])]
             deforms[t['index'],t['attachment']]=values
-    for constraint in data.get('transformConstraints',[]):
+    for constraint in (() if world_matrices is not None else data.get('transformConstraints',[])):
         assert constraint['local']==1 and constraint['relative']==1
         o,m=constraint['offsets'],constraint['mix'];assert m[5]==0
         target=pose[constraint['target']]
@@ -82,6 +82,7 @@ def sample(data,time,geometry=False):
     matrices=[]
     for b,p in zip(data['bones'],pose):
         matrices.append(matrix([1,0,0,1,0,0] if b['parent']<0 else matrices[b['parent']],b['mode'],p))
+    if world_matrices is not None:matrices=world_matrices
     vertices=[];records=[]
     for slot,key in enumerate(active):
         if key is None:continue

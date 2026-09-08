@@ -112,7 +112,15 @@ public static class BuildJackpotMeters
     public static RecoveredRigAnimation Poses(BuildCoinAppearance.Data source,BuildCoinAppearance.Clip animation,Dictionary<string,int> ids,RecoveredRegionRig rig)
     {
         var channels=new List<RecoveredRigAnimation.Channel>();var sequences=new List<RecoveredRigAnimation.SequenceChannel>();
+        var events=new List<RecoveredRigAnimation.NamedEvent>();
         foreach(var t in animation.timelines) {
+            if(t.domain=="event") {
+                foreach(var f in t.frames) {
+                    var e=source.events[f.@event];if(!string.IsNullOrEmpty(e.audio))throw new InvalidDataException("Audio-bearing rig event needs explicit conversion");
+                    events.Add(new RecoveredRigAnimation.NamedEvent{time=f.time,name=e.name,intValue=f.@int,floatValue=f.@float,stringValue=f.@string});
+                }
+                continue;
+            }
             if(t.domain=="sequence") {
                 var a=Array.Find(source.attachments,x=>x.slot==t.index&&x.key==t.attachment);
                 var frames=new RecoveredRigAnimation.SequenceFrame[t.frames.Length];
@@ -133,7 +141,7 @@ public static class BuildJackpotMeters
                 channels.Add(new RecoveredRigAnimation.Channel{slot=slot,index=t.index,component=component,curve=curve});
             }
         }
-        var poses=ScriptableObject.CreateInstance<RecoveredRigAnimation>();poses.channels=channels.ToArray();poses.sequences=sequences.ToArray();return poses;
+        var poses=ScriptableObject.CreateInstance<RecoveredRigAnimation>();poses.channels=channels.ToArray();poses.sequences=sequences.ToArray();poses.events=events.ToArray();return poses;
     }
     public static RecoveredRegionRig.Region Region(BuildCoinAppearance.Data source,BuildCoinAppearance.Attachment a,string path,Texture2D atlas)
     {

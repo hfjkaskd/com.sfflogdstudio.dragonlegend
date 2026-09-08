@@ -9,6 +9,8 @@ namespace DragonLegend.Whitebox
         [Serializable] public sealed class SequenceChannel {public int slot,attachment,count;public SequenceFrame[] frames;}
         public Channel[] channels;
         public SequenceChannel[] sequences;
+        [Serializable] public sealed class NamedEvent {public float time,floatValue;public int intValue;public string name,stringValue;}
+        public NamedEvent[] events;
         public static int SequenceIndex(SequenceFrame frame,float time,int count)
         {
             int index=frame.index;
