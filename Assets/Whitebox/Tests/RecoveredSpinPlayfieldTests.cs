@@ -45,7 +45,18 @@ public sealed class RecoveredSpinPlayfieldTests
             Assert.IsFalse(entry.SpinResult.IsGenerating, "Native InitGameResult completes within the click handler.");
             Assert.IsTrue(field.Reels.MotionAt(0).IsSpinning, "First reel must start before click returns.");
             field.SpinButton.Button.onClick.Invoke();Assert.AreEqual(before-1,entry.PlayerProgress.SpinCount);
+            for(int i=0;i<250&&field.Reels.IsRunning;i++)yield return null;
+            Assert.IsFalse(field.Reels.IsRunning);
+            Assert.IsFalse(field.AwaitingRewards,"Native reward delay must follow the all-reels-stopped wait.");
+            Assert.Throws<System.InvalidOperationException>(()=>field.CompleteBaseRound());
+            float stoppedAt=Time.time;
+            Time.timeScale=0;
+            for(int i=0;i<15;i++)yield return null;
+            Assert.AreEqual(0,rewards,"Paused game time must not advance the reward delay.");
+            Assert.IsTrue(field.IsBusy);
+            Time.timeScale=1;
             for(int i=0;i<250&&!field.AwaitingRewards;i++)yield return null;
+            Assert.GreaterOrEqual(Time.time-stoppedAt,.499f);
             Assert.IsTrue(field.AwaitingRewards);Assert.IsTrue(field.IsBusy);Assert.AreEqual(1,rewards);
             Assert.IsFalse(entry.SpinResult.IsGenerating);Assert.AreEqual(5,field.Reels.StoppedCount);
             for(int col=0;col<5;col++)for(int row=0;row<3;row++) {
@@ -97,6 +108,15 @@ public sealed class RecoveredSpinPlayfieldTests
             Assert.IsFalse(entry.Playfield.IsBusy);Assert.IsFalse(entry.Playfield.SpinButton.IsClickAnimationPlaying);
             for(int i=0;i<35;i++)yield return null;
             Assert.AreEqual(0,stale);Assert.IsFalse(entry.Playfield.Reels.IsRunning);
+            // Switch again specifically while the post-reel delay is pending.
+            var pending=entry.Playfield;int staleRewards=0;
+            pending.RewardSequenceRequested+=()=>staleRewards++;
+            entry.PlayerProgress.SetSpinCount(1);pending.SpinButton.Button.onClick.Invoke();
+            for(int i=0;i<250&&pending.Reels.IsRunning;i++)yield return null;
+            Assert.IsFalse(pending.Reels.IsRunning);Assert.IsFalse(pending.AwaitingRewards);
+            alternate.onClick.Invoke();
+            for(int i=0;i<35;i++)yield return null;
+            Assert.AreEqual(0,staleRewards,"Profile teardown must cancel the pending reward delay.");
         } finally {
             Object.DestroyImmediate(root);if(had)PlayerPrefs.SetString(key,previous);else PlayerPrefs.DeleteKey(key);PlayerPrefs.Save();
             Time.captureDeltaTime=delta;Time.timeScale=scale;Random.state=random;

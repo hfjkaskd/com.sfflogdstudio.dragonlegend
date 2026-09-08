@@ -247,3 +247,12 @@ GetConfigType 按 0x236a248 读取 Qonrii.Ripg 首项；普通模式按原 SetBe
 GM 切换显式取消旧控制器的启动、延迟、停轴与条件等待，移除按钮订阅，避免旧列对新配置触发完成事件；原独立 SetStop 的默认无自动取消语义不变。
 
 已核对最终 Unity 2022.3.62f3 全量 PlayMode 138 项通过、0 失败（Artifacts/spin-playfield-native-tests.xml）。新增实际 GameEntry Prefab 测试通过可见按钮 GraphicRaycaster 命中触发点击，检查同步结果、首次启动、重复点击、存档、15 个真实落位符号、五列渲染像素，以及 GM 中途切换和无次数点击。最新 current-entry-spin.png 为该实际入口测试生成；主场景背景、外围 UI、停轴特效、奖励和免费回合仍不完整，不能视作完整视觉或生命周期 1:1。SDK 保持原处理方式。
+## 本轮：恢复停轮到奖励检查之间的原始等待
+
+再次检查 ClickSpin MoveNext 0x23d1f30：全部停止的 WaitUntil 返回后，0x23d237c 明确加载 float 0.5，0x23d2394 调用 WaitForSeconds，使用 scaled time、Update 时机和空取消令牌；等待完成后 0x23d2504 才调用 CheckPlayBonusAnim。此前入口在 ReelsStopped 当场发出 RewardSequenceRequested，遗漏了这段等待。
+
+SpinPlayfield 现在从 Prefab 的 rewardDelay=0.5 读取参数，复用已恢复的 Update 等待器；等待结束才进入 AwaitingRewards 并发出请求。等待期间保持忙碌，不能调用 CompleteBaseRound 提前解锁。GM 解绑显式取消待执行的奖励等待，异常记录到 Error，不伪造回合完成。制作脚本同步保存该参数，SDK 不变。
+
+此次修正只恢复奖励入口时序；七段奖励检查的原生表现及完整回合链仍待完成，不以固定延时替代它们，也不宣称已完成 1:1。
+
+最终全量 PlayMode 138 项通过、0 失败（Artifacts/post-reel-delay-tests.xml）。扩展实际入口测试：停轮当帧奖励尚未开始、提前结束回合报错、暂停 15 帧不推进延时、恢复后累计至少 0.5 秒才请求奖励；另覆盖 GM 在这段等待内切换后不触发旧奖励。已查看本次生成的 current-entry-spin.png，现有棋盘落位正常，场景和奖励视觉仍明显未完成。
