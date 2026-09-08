@@ -50,6 +50,7 @@ public static class BuildFreeReels
                 }
             }
             settings.ApplyModifiedPropertiesWithoutUndo();
+            BuildFreeSpecials.Attach(root);
             PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredSymbols/FreeReels.prefab");
         } finally { Object.DestroyImmediate(root); }
         AssetDatabase.SaveAssets();

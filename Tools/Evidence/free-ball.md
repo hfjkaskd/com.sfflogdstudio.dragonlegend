@@ -29,7 +29,8 @@ inputs, pause, start-to-idle transitions, unchanged scale and reinitialization.
 The current preview Artifacts/current-free-ball-idle-start.png shows purple,
 blue and green in native type order, idle above and start below, at .173s.
 
-Pending: pooled CreateLongzhu and shared type-index ownership, mini-reel
+Pooled CreateLongzhu and shared type-index ownership are now attached to
+FreeReels (see free-specials-pool.md). Pending: mini-reel
 clipping, collection/reward animations and the production Free gameplay loop.
 This prefab does not claim those integrations are complete. SDKs are unchanged.
 

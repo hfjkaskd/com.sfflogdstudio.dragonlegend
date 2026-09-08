@@ -32,7 +32,8 @@ and return, animation transition, and hidden-but-unchanged text. The fresh
 on the left and the appearance clip at .173 seconds on the right. The root
 is held at its authored .7 scale for this side-by-side image.
 
-Pending: the shared Free coin pool and CheckFakeCoin consumer, per-mini-reel
+The shared Free coin pool and CheckFakeCoin consumer are now attached to
+FreeReels (see free-specials-pool.md). Pending: per-mini-reel
 world clipping, rewards and collection flight, and production Free flow
 binding. This prefab alone does not establish complete pool lifecycle or
 Free gameplay fidelity. SDK handling is unchanged.

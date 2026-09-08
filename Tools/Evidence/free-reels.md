@@ -32,9 +32,12 @@ by runtime layout code.
 the actual initial Free result. For IDs 9 and 11 the initial effect callback
 runs immediately, before the next reel initializes. Other IDs follow the
 ordinary branch of `CheckFakeCoin(true)`: replace slot zero when that ID exists
-in the Free catalog, leaving the other six slots unchanged. The consumer must
-provide the special-effect callback; the component does not silently omit it.
+in the Free catalog, leaving the other six slots unchanged. Special effects
+are handled by the default pool or an explicitly supplied test consumer.
 The result must have finished generation before initialization starts.
+The default path now uses the authored RecoveredFreeSpecials pool; an explicit
+callback can still replace that consumer for controlled tests. See
+free-specials-pool.md for actual initial and rolling special integration.
 
 Raw ARM64 `023757dc.asm`, 0x2375bbc..0x2375c20, proves the normal branch stores
 the matching definition in slot zero and tail-calls `SetImg` with w3=1, w4=0.

@@ -7,17 +7,20 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredFreeReels : MonoBehaviour
     {
         [SerializeField] private RecoveredReelView[] reels;
+        [SerializeField] private RecoveredFreeSpecials specials;
+        public RecoveredFreeSpecials Specials=>specials;
         public bool IsInitialized { get; private set; }
         public RecoveredReelView At(int column, int row) => reels[column * 3 + row];
 
         public void Initialize(RecoveredSymbolCatalog catalog, RecoveredFreeSpinResult result,
-            Action<int,int,RecoveredReelView,int> initialEffects)
+            Action<int,int,RecoveredReelView,int> initialEffects=null)
         {
             if (IsInitialized) return;
             if (catalog == null) throw new ArgumentNullException(nameof(catalog));
             if (result == null) throw new ArgumentNullException(nameof(result));
             if (result.IsGenerating) throw new InvalidOperationException("The initial Free result is still being generated.");
-            if (initialEffects == null) throw new ArgumentNullException(nameof(initialEffects));
+            specials.Bind(this,result);
+            if (initialEffects == null) initialEffects=specials.ShowInitial;
             IsInitialized = true;
             for (int column = 0; column < 5; column++)
                 for (int row = 0; row < 3; row++) {
