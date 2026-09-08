@@ -21,19 +21,22 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredJackpotPopup jackpotPopup;
         [SerializeField] private float enterDuration=.3f,hintInterval=1.83f;
         [SerializeField] private AnimationCurve enterEase;
+        [SerializeField] private float exitDuration=.3f;
+        [SerializeField] private AnimationCurve exitEase;
         private RecoveredBonusSelection selection;
         private RecoveredPlayerProgress progress;
         private RecoveredGameplayRules rules;
         private RecoveredCashFlightPresenter cashFlight;
         private IAdFacade ads;
         private int language;
-        private bool isA,entering;
+        private bool isA,entering,exiting;
         private float elapsed;
         private RecoveredReelWait hint;
         public RecoveredBonusSelection Selection=>selection;
         public int CardCount=>cards.Length;
         public RecoveredBonusItemTurn Card(int index)=>cards[index];
         public TMP_Text Chances=>chances;
+        public Button CloseButton=>closeButton;
         public event Action CloseRequested,ExitRequested,HideFingerRequested;
         public event Action HideWheelRequested;
         public event Action<int,int> CashOutTaskRefreshRequested;
@@ -45,7 +48,9 @@ namespace DragonLegend.Whitebox
         private void Awake()
         {
             for(int i=0;i<cards.Length;i++){int index=i;cards[i].Selected+=()=>selection.Select(index);}
-            closeButton.onClick.AddListener(()=>CloseRequested?.Invoke());
+            closeButton.onClick.AddListener(()=>{
+                if(selection.RequestClose())CloseRequested?.Invoke();
+            });
             characters.SoundRequested+=Sound;cash.SoundRequested+=Sound;rewardPopup.SoundRequested+=Sound;jackpotPopup.SoundRequested+=Sound;
             characters.VibrationRequested+=value=>VibrationRequested?.Invoke(value);
             characters.JackpotAnimationRequested+=type=>meters.At((int)type-1).PlayAnim(null);
@@ -70,11 +75,16 @@ namespace DragonLegend.Whitebox
             if(selection==null)selection=new RecoveredBonusSelection(rules,ads,this,cards.Length);
             meters.Initialize(progress,rules,readBet,language);
             ResetTargets(grandTargets);ResetTargets(majorTargets);ResetTargets(minorTargets);
-            selection.BeforeShow();content.localScale=Vector3.zero;elapsed=0;entering=true;
+            selection.BeforeShow();content.localScale=Vector3.zero;elapsed=0;exiting=false;entering=true;
         }
         private static void ResetTargets(Transform[] targets){foreach(var target in targets)target.GetChild(0).gameObject.SetActive(true);}
         private void Update()
         {
+            if(exiting){
+                elapsed+=Time.deltaTime;float fraction=Mathf.Clamp01(elapsed/exitDuration);
+                content.localScale=Vector3.one*(1-exitEase.Evaluate(fraction));
+                if(fraction>=1){exiting=false;gameObject.SetActive(false);}return;
+            }
             if(!entering)return;elapsed+=Time.deltaTime;
             float t=Mathf.Clamp01(elapsed/enterDuration);content.localScale=Vector3.one*enterEase.Evaluate(t);
             if(t>=1){entering=false;selection.AfterShow();}
@@ -103,9 +113,11 @@ namespace DragonLegend.Whitebox
                 hint=RecoveredReelWait.Delay(hintInterval,()=>{hint=null;HideFinger();ShowFinger();},Fail);
             },Fail);
         }
-        // Coordinator must execute the original close/exit transition and complete
-        // the main-flow source; a selection alone must not deactivate this window.
+        public void HideAtCover()
+        {
+            entering=false;exiting=true;elapsed=0;content.localScale=Vector3.one;
+        }
         public void HideBonus()=>ExitRequested?.Invoke();
-        private void OnDisable(){entering=false;CancelFingerSequence();HideFinger();}
+        private void OnDisable(){entering=false;exiting=false;CancelFingerSequence();HideFinger();}
     }
 }

@@ -71,8 +71,13 @@ public static class BuildBonusWindow
             s.FindProperty("jackpotPopup").objectReferenceValue=Popup<RecoveredJackpotPopup>(root.transform,"JackpotPopup");
             s.FindProperty("enterDuration").floatValue=.3f;s.FindProperty("hintInterval").floatValue=1.83f;
             s.FindProperty("enterEase").animationCurveValue=new AnimationCurve(new Keyframe(0,0,4.70158f,4.70158f),new Keyframe(1,1,0,0));s.ApplyModifiedPropertiesWithoutUndo();
+            s.FindProperty("exitDuration").floatValue=.3f;
+            s.FindProperty("exitEase").animationCurveValue=new AnimationCurve(new Keyframe(0,0,0,0),new Keyframe(1,1,4.70158f,4.70158f));s.ApplyModifiedPropertiesWithoutUndo();
             PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredUI/BonusWindow.prefab");AssetDatabase.SaveAssets();
         }finally{PrefabUtility.UnloadPrefabContents(root);AssetDatabase.DeleteAsset(Temporary);}
+        var exitRoot=new GameObject("BonusExit");
+        try{exitRoot.AddComponent<RecoveredBonusExit>();PrefabUtility.SaveAsPrefabAsset(exitRoot,"Assets/Resources/RecoveredUI/BonusExit.prefab");}
+        finally{Object.DestroyImmediate(exitRoot);}
     }
     private static T Add<T>(Transform parent,string name) where T:Component=>((GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredUI/"+name+".prefab"),parent)).GetComponent<T>();
     private static T Popup<T>(Transform parent,string name) where T:Component

@@ -48,14 +48,13 @@ capture uses GameEntry's active config.
 ## Remaining main-flow work
 
 This prefab is not yet connected to the main `CheckBonus` entry/completion
-source. Close/exit are explicit requests, not a fabricated hide or spin unlock.
-The source exit methods still need their coordinator: `239b3a4` (close click),
-`239d1e8` (HideBonusView state machine), `239ccc4` (CloseBonusView state machine),
-`239d5f4` (WaitZhuanChang), and callbacks `239bc88/90/98`.
+source. `RecoveredBonusExit` now implements close/exit scheduling and completion
+with the actual world transition and the window's native scale-out animation;
+see `bonus-exit.md`. Its completion still needs the main CheckBonus consumer.
 
 Nested popup sorting 301 is an integration setting; complete UIManager window
 stack/sorting parity remains unverified. Full source finger conversion, audio
-event binding, main entry/exit transitions, Free/BaseEnd continuation and the
+event binding, main entry/exit integration, Free/BaseEnd continuation and the
 broader lifecycle audit remain required. This is not complete 1:1 reconstruction.
 
 Existing untracked official PackageManager/URP project settings are retained in

@@ -42,6 +42,11 @@ namespace DragonLegend.Whitebox
             // Native does not clear isClick or isNeedPlayAd here (23997b4).
         }
         public void AfterShow()=>view.ShowFinger();
+        public bool RequestClose()
+        {
+            if(IsEnd)return false;
+            IsEnd=true;return true;
+        }
         public void Select(int index)
         {
             if(IsClicked)return;
