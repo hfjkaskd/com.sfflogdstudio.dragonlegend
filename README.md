@@ -451,3 +451,12 @@ RecoveredRegionRig 使用单个原生 MaskableGraphic/CanvasRenderer，按原 42
 - 金币与 Wild 共用转轴的已展示格记录，防止同一格跨效果重复生成；GM/profile 解绑取消扫描、震动和光效。
 - `Artifacts/wild-chain-all-tests.xml` 为 160/160 通过。真实 Button 启动的五列 Wild 测试覆盖逐列时序、暂停、震动数值、主相机画面、对象池复用、动画进度、重复抑制和解绑清理。最新实际主界面截图：`Artifacts/current-wild-chain.png`。
 - 本轮把主流程推进到 `JackpotCheckRequested`。奖池弹窗/任务推进和其后的 Symbol/Bonus/Free/BaseEnd 仍待接入，Spin 继续保持奖励链锁定，未提前结算余额。SDK 维持现状，完整生命周期 1:1 仍未完成。
+
+### 奖池主界面与原生序列帧（2026-09-08）
+
+- 主界面实际加载 `JackpotMeters.prefab`，按原版 JackPot、Grand、Major、Minior 和文字节点的 RectTransform 配置恢复布局、Green 位图字体、待机与中奖光效。
+- 完整解析三个原版图标的 `idle`/`win` 动画，支持 OnlyTranslation 骨骼和 20 帧爆光序列。每个图标使用一个 CanvasRenderer，Unity Animation 驱动共享曲线及缓存姿态，纹理按 Resources 路径加载；没有引入第三方运行时程序集。
+- 实际 Spin 按钮在原定阶段刷新三个奖池：先写入运行时目标奖励，再执行 0.3 秒数字动画。保留原版 tween setter 只更新 Text、不更新 `curJackPotWin` 的行为。中奖动画 API 先回待机，再调用完成回调，最后按最新状态刷新数值。
+- 修正转换器将 JsonUtility 的空序列对象误判为有效序列的问题，生成阶段检查普通附件的四顶点和 UV 完整性。六个既有二进制资源转换回归仍一致，三个新源文件的哈希保持不变。
+- 完整测试 `Artifacts/jackpot-meters-all-tests-2.xml` 为 168/168 通过，覆盖两类动画共 54 个源数据几何采样、序列帧边界、实际按钮取值顺序、暂停及取消回调。当前主相机画面：`Artifacts/current-jackpot-meters.png`。
+- 中奖图标已可播放，但 Wild 后的奖池事件、领取弹窗及飞币完成回调仍未接到实际奖励链；Symbol/Bonus/Free/BaseEnd 继续待补，完整生命周期 1:1 尚未完成。详见 `Tools/Evidence/jackpot-flow.md`。

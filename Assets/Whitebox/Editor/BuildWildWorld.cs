@@ -11,12 +11,12 @@ public static class BuildWildWorld
 {
     [Serializable] private class Source : BuildCoinAppearance.Data { public new Attachment[] attachments; public new Clip[] animations; }
     [Serializable] private class Attachment : BuildCoinAppearance.Attachment {
-        public int kind, endSlot; public bool weighted; public string path;
+        public int endSlot; public bool weighted;
         public float[] vertices, uvs; public int[] counts, triangles; public Influence[] influences;
     }
     [Serializable] private class Influence { public int bone; public float x, y, weight; }
     [Serializable] private class Clip { public string name; public float duration; public Timeline[] timelines; }
-    [Serializable] private class Timeline : BuildCoinAppearance.Timeline { public string attachment; }
+    [Serializable] private class Timeline : BuildCoinAppearance.Timeline { }
     const string Folder = "Assets/Resources/RecoveredSymbols/Wild3";
 
     public static void Save()

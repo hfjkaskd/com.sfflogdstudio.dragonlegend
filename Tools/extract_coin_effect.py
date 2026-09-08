@@ -34,6 +34,10 @@ def num():
 
 def color():return [u8()/255 for _ in range(4)]
 
+def sequence(attachment):
+ present=u8();assert present in (0,1),'sequence boolean'
+ if present:attachment['sequence']={'count':var(),'start':var(),'digits':var(),'setupIndex':var()}
+
 def ref():
  n=var();return strings[n-1] if n else None
 
@@ -61,7 +65,7 @@ for i in range(var()):
   d={'slot':slot,'key':key,'name':name or key,'kind':kind}
   if kind==0:
    d.update(path=ref(),values=[num() for _ in range(7)],color=color())
-   assert u8()==0,'sequence'
+   sequence(d)
   elif kind==2:
    d.update(path=ref(),color=color());n=var();d['uvs']=[num() for _ in range(n*2)]
    def shorts():
@@ -70,7 +74,7 @@ for i in range(var()):
    if d['weighted']:
     for v in range(n):d['vertices'].append([{'bone':var(),'x':num(),'y':num(),'weight':num()} for _ in range(var())])
    else:d['vertices']=[num() for _ in range(n*2)]
-   d['hull']=var();assert u8()==0,'mesh sequence'
+   d['hull']=var();sequence(d)
    d['edges']=shorts();d['size']=[num(),num()]
   elif kind==6:
    d['endSlot']=var();n=var();d['weighted']=bool(u8());d['vertices']=[]
@@ -112,7 +116,14 @@ for _ in range(var()):
   for si in range(var()):
    slot=var()
    for ai in range(var()):
-    key=ref();kind=u8();count=var();assert kind==0,'attachment sequence timeline'
+    key=ref();kind=u8();count=var();assert kind in (0,1),'attachment timeline'
+    if kind==1:
+     t={'domain':'sequence','index':slot,'attachment':key,'kind':kind,'frames':[]}
+     for f in range(count):
+      time=num();packed=struct.unpack_from('>i',b,p)[0];p+=4
+      mode=packed&15;assert mode<=6,'sequence mode'
+      t['frames'].append({'time':time,'mode':mode,'index':packed>>4,'delay':num()})
+     a['timelines'].append(t);continue
     var();time=num()
     mesh=next(m for m in result['attachments'] if m['slot']==slot and m['key']==key)
     assert mesh['kind'] in (2,6)

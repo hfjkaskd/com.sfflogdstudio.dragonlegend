@@ -14,11 +14,12 @@ public static class BuildCoinAppearance
     [Serializable] public class Data { public Bone[] bones; public Slot[] slots; public Attachment[] attachments; public Clip[] animations; public Region[] regions; }
     [Serializable] public class Bone { public string name; public int parent, mode; public float[] values; }
     [Serializable] public class Slot { public string name, attachment; public int bone, blend; public float[] color; }
-    [Serializable] public class Attachment { public int slot; public string name, key; public float[] values, color; }
+    [Serializable] public class Attachment { public int slot,kind; public string name, key,path; public float[] values, color; public Sequence sequence; }
+    [Serializable] public class Sequence {public int count,start,digits,setupIndex;}
     [Serializable] public class Region { public string name; public int[] bounds, offsets; public int rotate; }
     [Serializable] public class Clip { public string name; public float duration; public Timeline[] timelines; }
-    [Serializable] public class Timeline { public string domain; public int index, kind; public Frame[] frames; }
-    [Serializable] public class Frame { public float time; public float[] values; public string attachment; public int curve; public Bezier[] bezier; }
+    [Serializable] public class Timeline { public string domain,attachment; public int index, kind; public Frame[] frames; }
+    [Serializable] public class Frame { public float time,delay; public float[] values; public string attachment; public int curve,mode,index; public Bezier[] bezier; }
     [Serializable] public class Bezier { public float[] values; }
     private static string Folder;
     private static readonly string[] Rgba = {"r","g","b","a"};

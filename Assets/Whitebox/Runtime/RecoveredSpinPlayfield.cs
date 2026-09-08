@@ -13,6 +13,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private float bonusCoinInterval;
         [SerializeField] private float wildColumnInterval;
         [SerializeField] private RecoveredWildPresenter wilds;
+        [SerializeField] private RecoveredJackpotMeters jackpotMeters;
+        public RecoveredJackpotMeters JackpotMeters=>jackpotMeters;
         public RecoveredWildPresenter Wilds=>wilds;
         public RecoveredWildSequence WildSequence {get;private set;}
         public event Action<int> JackpotCheckRequested;
@@ -50,6 +52,10 @@ namespace DragonLegend.Whitebox
             rules.GetBet(isA, progress.Level, bets);
             // GameData.Init resets Bet=0; SetBet only assigns list[0] for the normal branch.
             Bet = isA ? 0 : bets[0];
+            if(jackpotMeters!=null) {
+                jackpotMeters.Initialize(progress,rules,()=>Bet,languageType);
+                entry.JackpotAnimationsRequested+=jackpotMeters.PlayRewardAnim;
+            }
             reels.Initialize(symbols);
             wilds.Bind(reels,GetComponentInParent<Canvas>().sortingOrder);
             if(coinStops!=null)coinStops.Bind(reels,languageType,bonusCollection,GetComponentInParent<Canvas>().sortingOrder);
@@ -121,7 +127,11 @@ namespace DragonLegend.Whitebox
             if(downWin!=null) { downWin.Cancel(); if(coinStops!=null) {coinStops.RewardRegistered-=downWin.Register;coinStops.RewardPresentationFinished-=downWin.PresentationFinished;} }
             if(coinStops!=null)coinStops.Unbind();
             spinButton.Button.onClick.RemoveListener(Click);
-            if (entry != null) entry.StartVisualsRequested -= Started;
+            if (entry != null) {
+                entry.StartVisualsRequested -= Started;
+                if(jackpotMeters!=null)entry.JackpotAnimationsRequested-=jackpotMeters.PlayRewardAnim;
+            }
+            if(jackpotMeters!=null)jackpotMeters.Cancel();
             reels.ReelsStopped -= Stopped;
             reels.AbortForProfileChange();
             entry = null; result = null; rules = null; IsBusy = false; AwaitingRewards = false; Error = null;

@@ -60,9 +60,39 @@ into `analysis/script.json`, not inferred from English names:
 
 ## Implementation status
 
-Implemented: configuration accessors, integer arithmetic, runtime reward fields, and
-CheckJackpot reward snapshot with tests covering save-time mutation and no balance credit.
-Existing real Spin flow still ends at JackpotCheckRequested after Wild. The native jackpot
-meters, popup presentation, sound events, first-free state, claim-button/SDK boundary,
-fly-coin presentation and continuation are not yet connected. No placeholder reward or
-automatic popup completion has been added. This evidence is not a claim of visual fidelity.
+Implemented: configuration accessors, integer arithmetic, runtime reward fields, reward
+snapshot, and all three prefab jackpot meters in the actual main view. Spin's existing
+JackpotAnimationsRequested now immediately stores all three rewards and starts the native
+0.3-second number presentation. Both original text objects, their coordinates, Green font,
+and the disabled TMP object are represented in the prefab.
+
+`InitJackPot` (`23bb2cc`) enumerates all configured multipliers; index 0/1 selects Grand/Major
+and subsequent indices select Mini (the stored meter index is still the enumerated index).
+`OnClickButton` (`23bd4e8`) starts Grand, Major, Mini number tweens in that order.
+
+Original icon resources: `Res/Spine/jackpot3小个/{grand,major,minor}_icon/ef_*icon`.
+Each has 22 bones, 31 slots, 30 attachments, and two 2-second animations (`idle`, `win`).
+Thirteen bones use OnlyTranslation. The slot-5 `grbao/grbao` sequence has 20 atlas frames,
+start 0, digits 0, setup index 0; win uses Once mode with a 0.05-second frame delay.
+All three files are fully parsed (12555/12559/12183 bytes). The converter now reads region
+and mesh sequence records and attachment sequence timelines without skipping their bytes.
+
+Native Unity representation: one CanvasRenderer per icon, immutable shared animation
+curves, prefab geometry, cached instance pose arrays, atlas loaded by Resources path.
+PMA color/additive behavior and rotated/trimmed sequence-frame UVs are retained.
+`PlaySpineAnim` (`238bc24`) forces Initialize(true), clears tracks, then starts the new
+animation, so there is no defaultMix crossfade to reproduce here. Each icon samples from
+its cached setup pose, including when switching between win and idle.
+`PlayAnim.b__0` (`239940c`) returns to idle, invokes caller, then refreshes the reward from
+the latest state. The prefab meter preserves this order and cancels callbacks on release.
+
+Format references: [SkeletonBinary.cs](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/SkeletonBinary.cs),
+[Sequence.cs](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/Attachments/Sequence.cs),
+[Animation.cs](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/Animation.cs).
+These sources inform offline decoding and native math; no Spine runtime assembly is added.
+
+Existing real Spin reward flow still ends at JackpotCheckRequested after Wild. The icon win
+API is implemented and tested, but its triggering jackpot event, popup, first-free state,
+claim-button/SDK boundary, fly-coin presentation and continuation remain to be connected.
+No placeholder reward or automatic popup completion has been added. The current screenshot
+and source pose comparisons cover these meters, not the entire game's visual fidelity.

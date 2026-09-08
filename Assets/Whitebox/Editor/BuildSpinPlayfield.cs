@@ -12,6 +12,10 @@ public static class BuildSpinPlayfield
         try {
             root.layer = 5; var rect = (RectTransform)root.transform;
             rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one; rect.sizeDelta = Vector2.zero;
+            var jackpotPrefab=AssetDatabase.LoadAssetAtPath<RecoveredJackpotMeters>("Assets/Resources/RecoveredUI/JackpotMeters.prefab");
+            var jackpot=jackpotPrefab==null?null:(RecoveredJackpotMeters)PrefabUtility.InstantiatePrefab(jackpotPrefab,root.transform);
+            var jackpotSettings=new SerializedObject(root.GetComponent<RecoveredSpinPlayfield>());
+            jackpotSettings.FindProperty("jackpotMeters").objectReferenceValue=jackpot;jackpotSettings.ApplyModifiedPropertiesWithoutUndo();
             var board = Rect("QiPan", root.transform, new Vector2(.5f, 0), new Vector2(.5f, .5f),
                 new Vector2(-.003418f, 652), new Vector2(1080, 770.28f));
             var roll = Rect("Roll", board, new Vector2(.5f, .5f), new Vector2(.5f, .5f),
