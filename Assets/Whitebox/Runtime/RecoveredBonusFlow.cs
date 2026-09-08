@@ -11,6 +11,7 @@ namespace DragonLegend.Whitebox
         [SerializeField] private float ringDuration=1.8f,afterSourceDelay=.5f;
         private RecoveredSceneTransition transition;
         private RecoveredSpinPlayfield playfield;
+        private RecoveredFreeCoinScan freeCoinScan;
         private RecoveredPlayerProgress progress;
         private RecoveredGameplayRules rules;
         private RecoveredCashFlightPresenter flight;
@@ -51,6 +52,12 @@ namespace DragonLegend.Whitebox
                 });
             },Fail);
         }
+        public void BindFreeScan(RecoveredFreeCoinScan scan)
+        {
+            if(freeCoinScan!=null)freeCoinScan.Completed-=Begin;
+            freeCoinScan=scan;
+            if(freeCoinScan!=null)freeCoinScan.Completed+=Begin;
+        }
         private int ReadBet()=>playfield.Bet;
         private void SourceCompleted()=>wait=RecoveredReelWait.Delay(afterSourceDelay,()=>{
             wait=null;IsRunning=false;Completed?.Invoke();
@@ -61,6 +68,7 @@ namespace DragonLegend.Whitebox
         private void Fail(Exception error){Unbind();Failed?.Invoke(error);}
         public void Unbind()
         {
+            BindFreeScan(null);
             wait?.Cancel();wait=null;exit.Unbind();window.gameObject.SetActive(false);
             if(playfield!=null){playfield.SymbolSequenceCompleted-=Begin;playfield.Npc.SoundRequested-=Sound;playfield.Npc.Failed-=Fail;playfield.Npc.Cancel();}
             if(transition!=null){transition.Failed-=Fail;transition.Cancel();Destroy(transition.gameObject);transition=null;}
