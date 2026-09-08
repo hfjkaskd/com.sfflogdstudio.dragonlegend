@@ -141,3 +141,13 @@ RewardBranches 提供 CheckBonusGame，供普通中奖动画之后、免费游�
 修复已导入 PNG 但缺失独立 Sprite 资产导致的白块：原样恢复六个 Sprite 及 GUID，保留原裁切、网格、UV、pivot 和九宫格边界，纹理引用逐一核对现有原始 PNG。测试使用 Unity 对象空值判断检查 Sprite、纹理及字体，避免 NUnit 普通非空断言遗漏缺失对象。预览采用官方 URP 渲染请求、UI Layer 5、1080×1920 相机 Canvas。
 
 Unity 2022.3.62f3 完整 PlayMode 106 项通过、0 失败（本地 Artifacts/balance-sprites-tests.xml）。已检查本次生成的 Artifacts/current-balance-panel.png：背景、图标、文本及进度条可见，原白块已消失。这是顶部显示片段验收，不代表完整主界面或游戏生命周期 1:1；后续仍须接入原生刷新及动画。SDK 未改动。
+
+## 本轮：顶部余额/经验绑定真实玩家数据
+
+BalancePanel 接入 GameEntry 配置及存档加载完成阶段，实例化已配置的原显示 Prefab，并订阅当前 PlayerProgress；GM 切换及入口停用时解除订阅、销毁旧面板。静态层级、字体和布局均保留在 Prefab，未用代码构建。LaunchProfile 增加原 LanguageType 数值配置（EN=0、BR=1），现有默认 US 仍取 0；未推断未知国家分流。
+
+恢复 TopTitle.Init 0x23b9018：余额格式化、等级文本、经验/需求及 fillAmount。CurrencyUtils 0x238c4e4 先除以 100，按 EN/BR 取币符和小数分隔符；非零语言走 BR，保留 decimals=0 的原 invariant 分组行为。运行时原格式因此是 $1789.00 和 8/10，与 Prefab 初始示例 $ 1,789.00 和 80% 不同。
+
+恢复余额变化 0x23b9480 的 0.5 秒滚动，打断时从事件旧余额重新开始；原 DOTween .cctor 0x241a014 的 0x241a0e4/0x241a0fc 将 defaultEaseType 写为 6（OutQuad），由 Prefab 中 Unity AnimationCurve 等价表达。经验变化 0x23b92ac 使用 0.5 秒线性填充，不取消前序填充；完成回调 0x23b9694 仅在原始比值恰为 1 时更新等级、清空进度并读取当时等级的新需求。使用原生 Update 和复用动画记录集合，不引入第三方 Tween 程序集。
+
+新增 8 项格式/动画/重绑定用例，完整 PlayMode 114 项通过（Artifacts/balance-binding-tests.xml）。本轮最新 current-balance-panel.png 使用实际绑定数据生成并已查看，确认金额、8/10 文本和 80% 填充显示。真实入口与版本切换的额外绑定断言专项 1 项通过（Artifacts/balance-entry-tests.xml），确认当前数据格式、旧面板释放及单一新面板。完整主界面、顶部飞币重挂父节点、转轴、奖励转场和完整生命周期仍未完成，SDK 未改动。

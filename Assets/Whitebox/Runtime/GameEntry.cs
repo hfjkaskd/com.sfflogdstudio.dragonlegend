@@ -14,6 +14,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private Button selectDefault;
         [SerializeField] private Button selectAlternative;
         [SerializeField] private Text status;
+        [SerializeField] private RecoveredBalancePanel balancePanelPrefab;
+        private RecoveredBalancePanel balancePanel;
         private Coroutine loading;
         private IEnumerator activeLoad;
         public RecoveredGameplayRules Rules { get; private set; }
@@ -46,6 +48,7 @@ namespace DragonLegend.Whitebox
             (activeLoad as IDisposable)?.Dispose();
             activeLoad = null;
             loading = null;
+            if (balancePanel != null) { balancePanel.Unbind(); Destroy(balancePanel.gameObject); balancePanel = null; }
             Rules = null;
             Settlement = null;
             SpinResult = null;
@@ -70,6 +73,7 @@ namespace DragonLegend.Whitebox
             if (loading != null) StopCoroutine(loading);
             (activeLoad as IDisposable)?.Dispose();
             activeLoad = null;
+            if (balancePanel != null) { balancePanel.Unbind(); Destroy(balancePanel.gameObject); balancePanel = null; }
             Rules = null;
             Settlement = null;
             SpinResult = null;
@@ -124,6 +128,10 @@ namespace DragonLegend.Whitebox
                 + "\nLines: " + Rules.GetLines() + "\nCash tiers: " + Rules.GetCashOutCount()
                 + "\n\n" + profile.evidenceNote;
             loading = null;
+            if (balancePanelPrefab != null) {
+                balancePanel = Instantiate(balancePanelPrefab, transform, false);
+                balancePanel.Bind(PlayerProgress, Rules, profile.languageType);
+            }
             Ready?.Invoke(Rules);
         }
     }

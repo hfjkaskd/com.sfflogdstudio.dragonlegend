@@ -68,6 +68,10 @@ public sealed class RecoveredRulesTests
             Assert.IsNotNull(entry.Settlement);
             Assert.IsNotNull(entry.PlayerStore.Data);
             Assert.IsNotNull(entry.PlayerProgress);
+            var initialPanel = go.GetComponentInChildren<RecoveredBalancePanel>();
+            Assert.IsTrue(initialPanel != null,"Entry must instantiate the original configured balance prefab.");
+            Assert.AreEqual(RecoveredCurrency.Format(entry.PlayerProgress.GreenCount,entry.CurrentProfile.languageType),initialPanel.BalanceText);
+            Assert.AreEqual(string.Format("{0}",entry.PlayerProgress.Level),initialPanel.LevelText);
             var initialSettlement = entry.Settlement;
             Assert.IsTrue(entry.CurrentProfile.advertisementPresentationEnabled);
             int notifications = 0;
@@ -83,6 +87,11 @@ public sealed class RecoveredRulesTests
             Assert.IsNotNull(entry.PlayerStore.Data);
             Assert.IsNotNull(entry.PlayerProgress);
             Assert.AreNotSame(initialSettlement, entry.Settlement);
+            yield return null; // Destroy of the old profile's view completes at end of frame.
+            var currentPanels = go.GetComponentsInChildren<RecoveredBalancePanel>();
+            Assert.AreEqual(1,currentPanels.Length,"Profile switching must not retain duplicate panels.");
+            Assert.IsTrue(initialPanel == null);
+            Assert.AreEqual(RecoveredCurrency.Format(entry.PlayerProgress.GreenCount,entry.CurrentProfile.languageType),currentPanels[0].BalanceText);
             Assert.AreEqual(1,notifications);
             go.SetActive(false);
             Assert.IsNull(entry.Rules);

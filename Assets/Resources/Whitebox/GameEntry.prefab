@@ -683,6 +683,7 @@ MonoBehaviour:
   selectDefault: {fileID: 8422476087570905085}
   selectAlternative: {fileID: 6424519227064210290}
   status: {fileID: 8394448435524178321}
+  balancePanelPrefab: {fileID: 114000000000000001, guid: cee6b873700a4aeaaaf0a49b07037a81, type: 3}
 --- !u!1 &8873209826350938690
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 {
   "name": "Whitebox.Runtime",
   "rootNamespace": "DragonLegend.Whitebox",
-  "references": ["Unity.ugui"],
+  "references": ["Unity.ugui", "Unity.TextMeshPro"],
   "autoReferenced": true
 }

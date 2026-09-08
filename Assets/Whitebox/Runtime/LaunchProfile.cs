@@ -7,6 +7,7 @@ namespace DragonLegend.Whitebox
     {
         public string profileId;
         public string countryCode;
+        public int languageType; // Original LanguageType: EN=0, BR=1; explicit GM profile setting.
         public string snapshotPath;
         public bool cashPresentationEnabled;
         public bool advertisementPresentationEnabled;
