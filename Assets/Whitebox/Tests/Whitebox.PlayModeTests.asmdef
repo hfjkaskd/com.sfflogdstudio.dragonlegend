@@ -1,5 +1,5 @@
 {
   "name": "Whitebox.PlayModeTests",
-  "references": ["Whitebox.Runtime", "Unity.ugui"],
+  "references": ["Whitebox.Runtime", "Unity.ugui", "Unity.TextMeshPro", "Unity.RenderPipelines.Universal.Runtime"],
   "optionalUnityReferences": ["TestAssemblies"]
 }

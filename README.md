@@ -134,3 +134,10 @@ RewardBranches 提供 CheckBonusGame，供普通中奖动画之后、免费游�
 恢复 PlayFlyCoin 完成回调 0x23c306c：先执行可空外部回调，再调用顶部重置，最后读取当时的余额加上奖励并走 SetGreenCount。不得提前缓存余额；任一回调抛错时不继续入账。保留重复回调重复入账、负奖励不钳制的原始行为，动画消费者负责按实际完成事件调用。
 
 新增 5 项边界与顺序用例，Unity 2022.3.62f3 PlayMode 全量 105 项通过、0 失败（本地 Artifacts/fly-credit-tests.xml）。此入口通过 GameEntry.RewardBranches 可供视图调用，尚未绑定真实飞币 Prefab；飞行路径、数量、时长及完整主流程表现继续待恢复。SDK 不变，完整 1:1 尚未达成。
+## 本轮：主界面余额与等级原始显示 Prefab
+
+从原版 UIMainView 的 Top 子树恢复 BalancePanel，保留 Topbg、Cash、Level 的原布局、颜色、TMP 字体材质及 Image 参数；移除依赖旧程序集的 TopTitle 脚本，Image/TMP 绑定官方组件。尚不包含提现、帮助、设置和 Spine 动画，也未绑定运行时余额/经验刷新；显示文本仍为原 Prefab 初值。
+
+修复已导入 PNG 但缺失独立 Sprite 资产导致的白块：原样恢复六个 Sprite 及 GUID，保留原裁切、网格、UV、pivot 和九宫格边界，纹理引用逐一核对现有原始 PNG。测试使用 Unity 对象空值判断检查 Sprite、纹理及字体，避免 NUnit 普通非空断言遗漏缺失对象。预览采用官方 URP 渲染请求、UI Layer 5、1080×1920 相机 Canvas。
+
+Unity 2022.3.62f3 完整 PlayMode 106 项通过、0 失败（本地 Artifacts/balance-sprites-tests.xml）。已检查本次生成的 Artifacts/current-balance-panel.png：背景、图标、文本及进度条可见，原白块已消失。这是顶部显示片段验收，不代表完整主界面或游戏生命周期 1:1；后续仍须接入原生刷新及动画。SDK 未改动。
