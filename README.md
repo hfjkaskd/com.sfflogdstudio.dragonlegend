@@ -163,3 +163,15 @@ SymbolItem 为普通 Transform + SpriteRenderer Prefab，使用官方 URP Sprite
 Unity 2022.3.62f3 全量 PlayMode 117 项通过、0 失败（Artifacts/symbol-view-tests.xml）；新增用例检查符号顺序、资源、PPU、显示切换、无 UI 组件以及每个渲染区域可见。已查看当前工程生成的 Artifacts/current-symbols.png，22 种清晰/模糊呈现均正常。
 
 原 RollReel 构造方法 0x23775c4 确认每列七个槽位、间距 172；Init 0x23747c4 为逐槽均匀随机填充，尚待接入七槽复用、裁切、滚动、停轴回弹和结算结果落位。本轮符号 Prefab 未接到实际转轴控制器，完整主流程及视觉 1:1 仍未完成。SDK 未改动。
+
+## 本轮：七槽转轴循环与原生裁切
+
+新增 RecoveredReelView 和 Reel Prefab，按 Init 0x23747c4 初始化七个复用符号，172 像素间距；原 RotNode 高 516、符号底部锚点换算为 -258 像素起点。参数存于 Prefab，首次实例化 SymbolItem 后，换圈及重新初始化都复用这七个对象。
+
+按 ARM64 RefreshSymbol 0x2375630 和 SetSymbolPos 0x2374f4c：先减去 speed×deltaTime，仅在严格低于 -688 时回移 688，一次调用最多回移一次；保留大帧位移后仍越界的原行为。换圈先请求效果、金币、龙珠清理，再把旧槽 4/5/6 搬到逻辑槽 0/1/2，随后按原顺序随机四项。免费模式初始每两圈触发一次 CheckFakeCoin 请求，此后间隔按 Random.Range(4,6) 重取。清理和 FakeCoin 请求尚待绑定实际特效池，不代表这些特效已完成。
+
+原 188×518 矩形窗口使用 SpriteMask，遮罩 Sprite 来自原始 White1px。手写不完整 SpriteMask YAML 曾导致导入崩溃；已改由 BuildReelMask 的 UnityEditor 官方 API 保存完整渲染器及内置材质引用，正常导入成功。该脚本仅用于资产制作，运行时和真机均使用保存好的原生 Prefab，不存在 Editor 核心逻辑兜底。
+
+修正后 Unity 2022.3.62f3 全量 PlayMode 120 项通过、0 失败（Artifacts/reel-cycle-verified-tests.xml）。新增测试核对初始随机、接续槽位、后续随机数、严格边界、大位移单次回移、对象复用及免费循环间隔。已检查本次生成的 Artifacts/current-reels.png，五列按原间距裁切显示，测试同时验证窗口外不可见、每列窗口内有实际符号像素。首次崩溃运行不计为通过。
+
+本轮转轴可接受逐帧 Refresh 驱动，但还未绑定主 Spin 链路；加速、停轴减速/回弹、真实结果落位和奖励表现仍待恢复。完整 1:1 目标继续有效，SDK 未修改。
