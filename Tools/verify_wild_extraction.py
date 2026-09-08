@@ -21,6 +21,7 @@ goldens = list((project / 'Tools/Evidence/Wild').glob('*.json'))
 goldens += list((project / 'Tools/Evidence/Symbols').glob('*.json'))
 goldens += [project / 'Tools/Evidence/ef_wintanchuang.json']
 goldens += [project / 'Tools/Evidence/ef_slzhuanchang.json']
+goldens += [project / 'Tools/Evidence/ef_long.json']
 goldens += [project / ('Assets/Whitebox/Editor/' + name + '.json') for name in
             ('RecoveredCoinEffect', 'RecoveredLampFlash', 'RecoveredWinBurst')]
 with tempfile.TemporaryDirectory(prefix='dragon-wild-extraction-') as temp:

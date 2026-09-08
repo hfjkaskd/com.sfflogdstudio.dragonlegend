@@ -41,6 +41,9 @@ def sequence(attachment):
 def ref():
  n=var();return strings[n-1] if n else None
 
+def signed():
+ value=var();return (value>>1)^-(value&1)
+
 def zero(label):
  value=var();assert value==0,(label,value,p)
 
@@ -90,7 +93,13 @@ for i in range(var()):
    d['color']=color()
   else:raise ValueError(('unsupported attachment',kind,key,p))
   result['attachments'].append(d)
-zero('extra skins');zero('events')
+zero('extra skins')
+events=[]
+for i in range(var()):
+ event={'name':ref(),'int':signed(),'float':num(),'string':string(),'audio':string()}
+ if event['audio'] is not None:event.update(volume=num(),balance=num())
+ events.append(event)
+if events:result['events']=events
 
 def timeline(domain,index,kind,count):
  d={'domain':domain,'index':index,'kind':kind,'frames':[]}
@@ -146,7 +155,17 @@ for _ in range(var()):
       time=num();curve=u8();assert curve<=2;frame['curve']=curve
       if curve==2:frame['bezier']=[{'values':[num() for _ in range(4)]}]
     a['timelines'].append(t)
- for label in ['draw order','event animation']:zero(label)
+ zero('draw order')
+ event_count=var()
+ if event_count:
+  frames=[]
+  for i in range(event_count):
+   frame={'time':num(),'event':var()};event=events[frame['event']]
+   frame.update(int=signed(),float=num());override=u8();assert override in (0,1),'event string boolean'
+   frame['string']=string() if override else event['string']
+   if event['audio'] is not None:frame.update(volume=num(),balance=num())
+   frames.append(frame)
+  a['timelines'].append({'domain':'event','frames':frames})
  assert expected==len(a['timelines']),(expected,len(a['timelines']))
  a['duration']=max(f['time'] for t in a['timelines'] for f in t['frames']);result['animations'].append(a)
 assert p==len(b),(p,len(b))
