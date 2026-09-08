@@ -1,0 +1,810 @@
+{
+  "nodes": [
+    {
+      "name": "Coin",
+      "parent": -1,
+      "position": [
+        -0.46,
+        245.21
+      ],
+      "size": [
+        1080.0,
+        80.27
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": false
+    },
+    {
+      "name": "Coin1",
+      "parent": 0,
+      "position": [
+        -388.28998,
+        -10.0
+      ],
+      "size": [
+        204.79999,
+        100.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": false
+    },
+    {
+      "name": "Item",
+      "parent": 1,
+      "position": [
+        -23.8,
+        9.0
+      ],
+      "size": [
+        54.0,
+        55.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": true,
+      "idle": false
+    },
+    {
+      "name": "s (1)",
+      "parent": 2,
+      "position": [
+        0.0,
+        2.0
+      ],
+      "size": [
+        53.0,
+        57.0
+      ],
+      "scale": [
+        0.21,
+        0.21,
+        0.2
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": true
+    },
+    {
+      "name": "Item (1)",
+      "parent": 1,
+      "position": [
+        48.0,
+        9.0
+      ],
+      "size": [
+        54.0,
+        55.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": true,
+      "idle": false
+    },
+    {
+      "name": "s (1)",
+      "parent": 4,
+      "position": [
+        0.0,
+        2.0
+      ],
+      "size": [
+        53.0,
+        57.0
+      ],
+      "scale": [
+        0.21,
+        0.21,
+        0.2
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": true
+    },
+    {
+      "name": "Coin2",
+      "parent": 0,
+      "position": [
+        -190.495,
+        -10.0
+      ],
+      "size": [
+        190.78998,
+        100.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": false
+    },
+    {
+      "name": "Item (2)",
+      "parent": 6,
+      "position": [
+        -37.0,
+        9.0
+      ],
+      "size": [
+        54.0,
+        55.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": true,
+      "idle": false
+    },
+    {
+      "name": "s (1)",
+      "parent": 7,
+      "position": [
+        0.0,
+        2.0
+      ],
+      "size": [
+        53.0,
+        57.0
+      ],
+      "scale": [
+        0.21,
+        0.21,
+        0.2
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": true
+    },
+    {
+      "name": "Item (3)",
+      "parent": 6,
+      "position": [
+        35.8,
+        9.0
+      ],
+      "size": [
+        54.0,
+        55.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": true,
+      "idle": false
+    },
+    {
+      "name": "s (1)",
+      "parent": 9,
+      "position": [
+        0.0,
+        2.0
+      ],
+      "size": [
+        53.0,
+        57.0
+      ],
+      "scale": [
+        0.21,
+        0.21,
+        0.2
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": true
+    },
+    {
+      "name": "Coin3",
+      "parent": 0,
+      "position": [
+        1.2998438,
+        -10.000004
+      ],
+      "size": [
+        192.79999,
+        100.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": false
+    },
+    {
+      "name": "Item (4)",
+      "parent": 11,
+      "position": [
+        -37.0,
+        9.0
+      ],
+      "size": [
+        54.0,
+        55.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": true,
+      "idle": false
+    },
+    {
+      "name": "s (1)",
+      "parent": 12,
+      "position": [
+        0.0,
+        2.0
+      ],
+      "size": [
+        53.0,
+        57.0
+      ],
+      "scale": [
+        0.21,
+        0.21,
+        0.2
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": true
+    },
+    {
+      "name": "Item (5)",
+      "parent": 11,
+      "position": [
+        35.1,
+        9.0
+      ],
+      "size": [
+        54.0,
+        55.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": true,
+      "idle": false
+    },
+    {
+      "name": "s (1)",
+      "parent": 14,
+      "position": [
+        0.0,
+        2.0
+      ],
+      "size": [
+        53.0,
+        57.0
+      ],
+      "scale": [
+        0.21,
+        0.21,
+        0.2
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": true
+    },
+    {
+      "name": "Coin4",
+      "parent": 0,
+      "position": [
+        192.14409,
+        -10.000004
+      ],
+      "size": [
+        188.89001,
+        100.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": false
+    },
+    {
+      "name": "Item (6)",
+      "parent": 16,
+      "position": [
+        -36.7,
+        9.0
+      ],
+      "size": [
+        54.0,
+        55.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": true,
+      "idle": false
+    },
+    {
+      "name": "s (1)",
+      "parent": 17,
+      "position": [
+        0.0,
+        2.0
+      ],
+      "size": [
+        53.0,
+        57.0
+      ],
+      "scale": [
+        0.21,
+        0.21,
+        0.2
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": true
+    },
+    {
+      "name": "Item (7)",
+      "parent": 16,
+      "position": [
+        33.7,
+        9.0
+      ],
+      "size": [
+        54.0,
+        55.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": true,
+      "idle": false
+    },
+    {
+      "name": "s (1)",
+      "parent": 19,
+      "position": [
+        0.0,
+        2.0
+      ],
+      "size": [
+        53.0,
+        57.0
+      ],
+      "scale": [
+        0.21,
+        0.21,
+        0.2
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": true
+    },
+    {
+      "name": "Coin5",
+      "parent": 0,
+      "position": [
+        390.61548,
+        -10.0
+      ],
+      "size": [
+        208.04999,
+        100.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": false
+    },
+    {
+      "name": "Item (8)",
+      "parent": 21,
+      "position": [
+        -40.8,
+        9.0
+      ],
+      "size": [
+        54.0,
+        55.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": true,
+      "idle": false
+    },
+    {
+      "name": "s (1)",
+      "parent": 22,
+      "position": [
+        0.0,
+        2.0
+      ],
+      "size": [
+        53.0,
+        57.0
+      ],
+      "scale": [
+        0.21,
+        0.21,
+        0.2
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": true
+    },
+    {
+      "name": "Item (9)",
+      "parent": 21,
+      "position": [
+        30.3,
+        9.0
+      ],
+      "size": [
+        54.0,
+        55.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": true,
+      "idle": false
+    },
+    {
+      "name": "s (1)",
+      "parent": 24,
+      "position": [
+        0.0,
+        2.0
+      ],
+      "size": [
+        53.0,
+        57.0
+      ],
+      "scale": [
+        0.21,
+        0.21,
+        0.2
+      ],
+      "anchorMin": [
+        0.5,
+        0.5
+      ],
+      "anchorMax": [
+        0.5,
+        0.5
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "image": false,
+      "idle": true
+    }
+  ]
+}

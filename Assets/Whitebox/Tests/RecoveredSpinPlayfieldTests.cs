@@ -76,6 +76,23 @@ public sealed class RecoveredSpinPlayfieldTests
                 Assert.Greater(visible,500,"Main UI camera must render reel "+col);
             }
             File.WriteAllBytes(Path.GetFullPath(Path.Combine(Application.dataPath,"../Artifacts/current-entry-spin.png")),capture.EncodeToPNG());
+            Assert.IsNotNull(field.BonusCollection);
+            field.BonusCollection.Initialize(new[]{0,1,2,3,-1});
+            yield return null;
+            foreach(var idle in field.BonusCollection.GetComponentsInChildren<RecoveredCoinIdle>()) {
+                var animation=idle.GetComponent<Animation>();
+                Assert.IsTrue(animation.IsPlaying("zcjb_idle"));
+                animation.GetClip("zcjb_idle").SampleAnimation(idle.gameObject,.5f);
+                var graphics=idle.GetComponentsInChildren<Image>();
+                Assert.AreEqual(3,graphics.Length);
+                foreach(var graphic in graphics) {
+                    Assert.IsFalse(graphic.raycastTarget);
+                    if(graphic.transform.parent.name=="Slot26")Assert.That(graphic.color.a,Is.EqualTo(216f/255).Within(.0001f));
+                }
+            }
+            RenderPipeline.SubmitRenderRequest(camera,new UniversalRenderPipeline.SingleCameraRequest{destination=target});
+            RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+            File.WriteAllBytes(Path.GetFullPath(Path.Combine(Application.dataPath,"../Artifacts/current-bonus-collection.png")),capture.EncodeToPNG());
         } finally {
             Object.DestroyImmediate(root);Object.Destroy(cameraHost);Object.Destroy(eventHost);
             RenderTexture.active=oldTarget;if(capture!=null)Object.Destroy(capture);target.Release();Object.Destroy(target);

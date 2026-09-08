@@ -16,6 +16,8 @@ public static class BuildSpinPlayfield
                 new Vector2(-.003418f, 652), new Vector2(1080, 770.28f));
             var roll = Rect("Roll", board, new Vector2(.5f, .5f), new Vector2(.5f, .5f),
                 new Vector2(-1.62f, -71), new Vector2(948, 515));
+            var collectionPrefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredUI/BonusCollection.prefab");
+            var collection=collectionPrefab==null?null:(GameObject)PrefabUtility.InstantiatePrefab(collectionPrefab,board);
             var reelRoot = (GameObject)PrefabUtility.InstantiatePrefab(
                 AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredSymbols/BaseReels.prefab"), roll);
             // Sprite geometry is authored at 100 pixels/unit; Canvas local coordinates are pixels.
@@ -30,6 +32,7 @@ public static class BuildSpinPlayfield
             var data = new SerializedObject(root.GetComponent<RecoveredSpinPlayfield>());
             data.FindProperty("rewardDelay").floatValue = .5f;
             data.FindProperty("bonusCoinInterval").floatValue = .5f;
+            data.FindProperty("bonusCollection").objectReferenceValue = collection==null?null:collection.GetComponent<RecoveredBonusCollection>();
             data.FindProperty("spinButton").objectReferenceValue = buttonRoot.GetComponent<RecoveredSpinButton>();
             data.FindProperty("reels").objectReferenceValue = reelRoot.GetComponent<RecoveredBaseReelController>();
             data.FindProperty("symbols").objectReferenceValue = AssetDatabase.LoadAssetAtPath<RecoveredSymbolCatalog>("Assets/Resources/RecoveredSymbols/OriginalSymbolCatalog.asset");

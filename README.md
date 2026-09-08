@@ -270,3 +270,17 @@ CheckPlayBonusAnim 0x23cb808 按列 0..4、每列行 0..2 读取当前结果；�
 金币特效实例、目标两格灯位、飞行、音效、余额入账回调及后续 Wild/Jackpot 等奖励表现仍待恢复。当前接入不表示金币视觉或完整回合完成，SDK 未修改。
 
 最终全量 PlayMode 141 项通过、0 失败（Artifacts/bonus-coin-sequence-tests.xml）。新增三项测试覆盖当前棋盘逐列逐行读取、原 Random.Range 序列及后继随机值、暂停、每枚及最后一枚等待、超过 2 与负数收集值、零即时存档/余额变化、GM 取消、表现异常，以及无金币同步完成。已查看本次 current-entry-spin.png；它验证现有入口落位，未将这张无金币引导画面当作金币飞行视觉完成证据。
+
+## 本轮：原生收集灯位 Prefab 与金币待机动画
+
+恢复原 UIMainView 的 Coin 子树 26 个布局节点：容器位置 (-0.46,245.21)、尺寸 1080×80.27，五列各两个 54×55 灯位，点亮层保留原 (0,2) 偏移及 (0.21,0.21,0.2) 缩放。底板 zjm_icon_wanfa01 Sprite 保留原 GUID、网格/UV 和原纹理引用。BuildBonusCollection 使用 UnityEditor API 制作 BonusCollection 嵌套 Prefab，接入 SpinPlayfield 的 QiPan，在初始化时按当前 PlayerData.BonusArea 点亮。
+
+RecoveredBonusCollection 按 BonusCoins.Init 0x23b8154，以 count>=1/count>=2 控制各 Item 的首个子节点，负值全部关闭，大于 2 仍点亮两个。GetUnSelect 0x23b82f0 按一基计数选择目标，不按当前 activeSelf 搜索：1/2 返回对应 Item，0、负数和 >=3 返回空。灯位为信息展示 Image，不拦截射线；游戏符号仍由 SpriteRenderer 表达。
+
+Tools/extract_coin_effect.py 完整消费原 ef_jinbi.skel.bytes 的 21139 字节，保留 29 根骨骼、46 槽、59 附件、13 动画及两份非加权网格（70/45 顶点、204/186 三角索引）的变形时间线。重提取输出 SHA-256 一致，未知附件/时间线不静默跳过。格式核对：https://github.com/EsotericSoftware/spine-runtimes/blob/4.1/spine-csharp/src/SkeletonBinary.cs；没有导入 Spine 程序集或运行时。
+
+原灯位使用 zcjb_idle 1 秒循环，setup 全部附件为空，该动画只启用槽 25/26/31 的三个区域附件。BuildBonusCoinIdle 将这一段转为原生 Image、PMA 材质、AnimationClip 和骨骼 RectTransform；槽 30 只有色彩时间线而没有附件，保持不可见，不制造额外光圈。其他动画及网格数据保留在 Editor JSON，尚未转换为实际金币飞行等效果。转换器拒绝新增可见槽或未转换附件切换。原图集 pma:true，关闭透明像素扩色与有损压缩，避免已有 PMA 竖条问题。
+
+RecoveredCoinIdle 首次 Start 和再次 OnEnable 重置 setup 后播放原待机，平台流程一致。全量 PlayMode 142 项通过、0 失败（Artifacts/bonus-collection-tests.xml）；验证原尺寸/偏移/缩放、目标选择、点亮规则、原 0.5 秒透明度 216/255、三个实际 Image 及不阻挡按钮。已查看本次生成 current-bonus-collection.png，五列 [0,1,2,3,-1] 测试计数显示正确；它是当前入口内的灯位状态测试，不代表金币到达回调已经完成。
+
+金币扫描不直接刷新这些灯位，原版是在飞行到达阶段点亮；该回调及后续余额入账、Wild/Jackpot/免费等完整奖励链仍待连接。全生命周期、主背景和所有视觉 1:1 尚未完成，SDK 不变。

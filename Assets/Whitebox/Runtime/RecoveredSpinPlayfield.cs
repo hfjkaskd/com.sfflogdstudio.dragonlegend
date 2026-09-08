@@ -11,6 +11,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredSymbolCatalog symbols;
         [SerializeField] private float rewardDelay;
         [SerializeField] private float bonusCoinInterval;
+        [SerializeField] private RecoveredBonusCollection bonusCollection;
+        public RecoveredBonusCollection BonusCollection => bonusCollection;
         private RecoveredReelWait rewardWait;
         private RecoveredSpinEntry entry;
         private RecoveredSpinResult result;
@@ -32,6 +34,7 @@ namespace DragonLegend.Whitebox
         {
             Unbind(); entry = spinEntry; result = spinResult; rules = gameplayRules;
             BonusCoins = new RecoveredBonusCoinSequence(rules, progress, bonusCoinInterval);
+            if (bonusCollection != null) bonusCollection.Initialize(progress.BonusArea);
             rules.GetBet(isA, progress.Level, bets);
             // GameData.Init resets Bet=0; SetBet only assigns list[0] for the normal branch.
             Bet = isA ? 0 : bets[0];
