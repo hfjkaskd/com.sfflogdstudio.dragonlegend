@@ -24,7 +24,9 @@ namespace DragonLegend.Whitebox
         private int language;
         public RecoveredJackpotPopup JackpotPopup=>jackpotPopup;
         public RecoveredJackpotSequence JackpotSequence {get;private set;}
-        public event Action SymbolAnimationsRequested;
+        public event Action SymbolAnimationsRequested,SymbolAmountReady;
+        [SerializeField] private RecoveredSymbolWinAmount symbolAmount;
+        public RecoveredSymbolWinAmount SymbolAmount=>symbolAmount;
         public RecoveredSymbolWinSelection SymbolWin {get;private set;}
         public event Action PauseMusicRequested,StopSound1Requested,ResumeMusicRequested,HideWheelRequested;
         public event Action<string> SoundRequested,Sound1Requested;
@@ -64,6 +66,7 @@ namespace DragonLegend.Whitebox
             Unbind(); entry = spinEntry; result = spinResult; rules = gameplayRules;
             player=progress;ads=adFacade??new LocalAdFacade();this.isA=isA;language=languageType;
             SymbolWin=new RecoveredSymbolWinSelection(rules);
+            symbolAmount.Bind(languageType);
             jackpotPopup.GetComponent<Canvas>().worldCamera=GetComponentInParent<Canvas>().worldCamera;
             JackpotSequence=new RecoveredJackpotSequence(new RecoveredRewardBranches(rules,progress),jackpotDelay);
             JackpotSequence.WinRequested+=PlayJackpotWin;JackpotSequence.PauseMusicRequested+=PauseMusic;
@@ -145,7 +148,13 @@ namespace DragonLegend.Whitebox
             if(entry==null)return;
             symbolEffects.Present(SymbolWin,wilds.NextSortingOrder);
             SymbolAnimationsRequested?.Invoke();
+            if(entry!=null) {
+                symbolAmount.SetSortingOrder(Math.Max(wilds.NextSortingOrder,symbolEffects.NextSortingOrder));
+                symbolAmount.Begin(SymbolWin.LineWin,SymbolWin.TotalWin,ReadBonusAmount,AmountReady);
+            }
         }
+        private float ReadBonusAmount()=>BonusCoins.TotalReward;
+        private void AmountReady()=>SymbolAmountReady?.Invoke();
         private void PlayJackpotWin(RecoveredJackpotType type)
         {
             // JackPotAnim 23bc60c selects Grand/Major/otherwise Mini. Its callback
@@ -178,6 +187,7 @@ namespace DragonLegend.Whitebox
         {
             JackpotSequence?.Cancel();JackpotSequence=null;
             if(symbolEffects!=null)symbolEffects.Unbind();
+            if(symbolAmount!=null)symbolAmount.Cancel();
             SymbolWin=null;
             if(jackpotPopup!=null) {
                 jackpotPopup.PauseMusicRequested-=PauseMusic;jackpotPopup.StopSound1Requested-=StopSound1;

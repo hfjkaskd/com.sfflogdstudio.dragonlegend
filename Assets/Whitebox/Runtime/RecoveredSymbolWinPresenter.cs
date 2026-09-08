@@ -15,6 +15,7 @@ namespace DragonLegend.Whitebox
         private readonly Action[] clearHandlers=new Action[5];
         private int order,baseOrder;
         public int ActiveCount {get;private set;}
+        public int NextSortingOrder=>order;
         public RecoveredWildColumn At(int column,int row)=>active[column*3+row];
         public void Bind(RecoveredBaseReelController controller,int canvasOrder)
         {

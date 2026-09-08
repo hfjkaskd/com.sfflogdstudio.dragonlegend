@@ -89,11 +89,11 @@ label flight portion. The Big Win branch instead opens its own window and waits 
 callback. Keep the two paths distinct to avoid double credit or delaying an ordinary
 line payout until a cash animation that the original does not request.
 
-The currently captured selection does not advance task 1, credit the line/bonus reward,
-open a Big Win window, or release Spin busy state prematurely. Existing actual jackpot
-flight/credit remains independent. The next work is native world-space conversion of
-the winning-symbol prefabs, occupied-row lifecycle, authored temporary label presentation,
-and the complete Big Win/non-Big-Win continuation, followed by Bonus, Free and BaseEnd.
+The current selection, winning-symbol prefabs and temporary-label count do not yet
+advance task 1, credit the line/bonus reward, open a Big Win window, or release Spin
+busy state. Existing actual jackpot flight/credit remains independent. The next work
+is the complete Big Win/non-Big-Win continuation after the temporary amount's .5-second
+wait, followed by Bonus, Free and BaseEnd.
 
 ## Verification scope
 
@@ -186,3 +186,66 @@ Do not silently multiply the whole atlas by alpha (which would darken already-pr
 glow) or erase source RGB merely to make this capture look cleaner. Resolve using the
 original compiled shader/runtime rendering before claiming visual equivalence. This
 issue and the missing subsequent label/Big Win stages keep the full goal incomplete.
+
+
+## Temporary line-award prelude
+
+`RecoveredSymbolWinAmount` now runs immediately after the actual symbol selection and
+prefab requests, on the authored `TempWin/Text (Legacy)` hierarchy. Original UIMainView
+references Text fileID 114013933698592938. Its parent is bottom-anchored at
+(-.0034179688,336.26917), size (1080,130); the child is centered, size (160,30), scale
+(1.5,1.5,1.5), white, font size 0, no best fit, center alignment, horizontal overflow,
+vertical truncate, raycast enabled. It uses the already recovered static Green font
+(original GUID 36977c4faccb97c4ebe0b4fdeea88b25). `OnBeforeShow` 23bb0ec clears the label.
+
+For nonzero total and nonzero line award, the .3-second OutQuad count gets its start
+from the live bonus getter on tween startup, targets **lineWin** and only formats the
+legacy Text with currency precision 2. It neither changes bonusCount nor credits cash.
+The original awaited .5-second scaled delay is independent of the .3-second count.
+Zero total and zero line award skip both getter/tween and delay. Profile teardown cancels
+the pending wait and count; rebinding performs the original initial text clear.
+`SymbolAmountReady` marks this exact next boundary while later credit/flight/Big Win
+presentation remains to be implemented. It does not release Spin or skip to BaseEnd.
+
+The shader uncertainty described above now has stronger evidence: see `SymbolShader`.
+Actual compiled GLES confirms premultiplied output with no second texture-alpha
+multiplication in the normal variant. Runtime masking still needs direct comparison.
+
+
+### Next-stage callback details to preserve
+
+The legacy amount's extra Canvas is an explicit bridge between original UI sibling
+ordering and the recovered world MeshRenderers. Its sorting order is set after both
+Wild and ordinary symbol effects before counting, so the amount remains visible over
+those effects at the original position. It does not change the source Text geometry.
+
+Native callback `23c2b2c` (b__5) restores the captured Text world position and clears it,
+then kills the shared win tween. If stored DownWinCount (+0x248) differs from tempWin,
+it starts a .5-second tween with getter `23c2d48` and setter `23c2d60`. The latter only
+formats DownWinText (+0x90); it does NOT assign DownWinCount. Do not implement it as a
+setter that mutates the stored total every frame. The pre-popup Big Win transfer
+callback `23c25b0` (b__7) also restores/clears the legacy Text; only for a nonzero Big Win
+it spawns DownEfWin, requests sound/vibration, and starts its separate .5-second bottom
+label count toward totalWin. `23c2a88` is another text-only bottom-label setter.
+The post-window legacy-text getter `23c2ae4` returns totalWin, not tempWin, before
+counting toward the callback's new tempWin value. These remaining branches have not
+been replaced with a generic shared amount accumulator.
+
+
+The authored amount Canvas must be nested when setting `overrideSorting`; Unity ignores
+that property on a root Canvas. `BuildSpinPlayfield` now authors beneath a temporary
+Canvas context, saves the nested amount's explicit override, then removes only its own
+temporary authoring objects. The saved playfield still has no extra parent Canvas.
+The existing US/alternative GM Buttons each use an authored Canvas at the existing GM
+order 5000 plus a standard GraphicRaycaster, preserving visibility and UI hit testing
+above recovered gameplay canvases. Their profile callbacks and positions are unchanged.
+
+
+Validation: `Artifacts/symbol-amount-gm-tests.xml` passed 204/204 PlayMode tests.
+The current `Artifacts/current-symbol-amount-main.png` was inspected after that run:
+the legacy amount is visible above the world Wild meshes and the two GM version Buttons
+are visible again. The integration test also verifies the US Button through the actual
+GraphicRaycaster, the .5-second boundary, the line-only displayed target and unchanged
+line-award balance. The test's all-Wild board is explicitly settled before reel completion
+so it exercises a nonzero line count deterministically. This validates the initial
+symbol amount segment; later transfer/credit/Big Win/Bonus/Free/BaseEnd are still pending.

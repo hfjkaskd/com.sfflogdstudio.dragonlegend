@@ -1,0 +1,407 @@
+{
+  "source": "assets\\objects\\Shader\\7b327b34e12c9f468cf54bbd7d1b2b5e_CAB-014000ed2538cb87d1aa4612be612002_-2506585663452162707.json",
+  "sourceSha256": "03eeaa46bd06fec128cea83a53e662b703069a9893f09cebcefe0d541def5047",
+  "glesBlobSha256": "3e60d17b02c8ae57927b157f1e4a7756be59b084a46bf413da3b79f51c1788ce",
+  "shader": "Spine/SkeletonGraphic",
+  "state": {
+    "m_Name": "Normal",
+    "rtBlend0": {
+      "srcBlend": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlend": {
+        "val": 10.0,
+        "name": "<noninit>"
+      },
+      "srcBlendAlpha": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlendAlpha": {
+        "val": 10.0,
+        "name": "<noninit>"
+      },
+      "blendOp": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOpAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "colMask": {
+        "val": 0.0,
+        "name": "_ColorMask"
+      }
+    },
+    "rtBlend1": {
+      "srcBlend": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlend": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "srcBlendAlpha": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlendAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOp": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOpAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "colMask": {
+        "val": 15.0,
+        "name": "<noninit>"
+      }
+    },
+    "rtBlend2": {
+      "srcBlend": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlend": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "srcBlendAlpha": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlendAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOp": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOpAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "colMask": {
+        "val": 15.0,
+        "name": "<noninit>"
+      }
+    },
+    "rtBlend3": {
+      "srcBlend": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlend": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "srcBlendAlpha": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlendAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOp": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOpAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "colMask": {
+        "val": 15.0,
+        "name": "<noninit>"
+      }
+    },
+    "rtBlend4": {
+      "srcBlend": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlend": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "srcBlendAlpha": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlendAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOp": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOpAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "colMask": {
+        "val": 15.0,
+        "name": "<noninit>"
+      }
+    },
+    "rtBlend5": {
+      "srcBlend": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlend": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "srcBlendAlpha": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlendAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOp": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOpAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "colMask": {
+        "val": 15.0,
+        "name": "<noninit>"
+      }
+    },
+    "rtBlend6": {
+      "srcBlend": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlend": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "srcBlendAlpha": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlendAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOp": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOpAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "colMask": {
+        "val": 15.0,
+        "name": "<noninit>"
+      }
+    },
+    "rtBlend7": {
+      "srcBlend": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlend": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "srcBlendAlpha": {
+        "val": 1.0,
+        "name": "<noninit>"
+      },
+      "destBlendAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOp": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "blendOpAlpha": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "colMask": {
+        "val": 15.0,
+        "name": "<noninit>"
+      }
+    },
+    "rtSeparateBlend": false,
+    "zClip": {
+      "val": 1.0,
+      "name": "<noninit>"
+    },
+    "zTest": {
+      "val": 0.0,
+      "name": "unity_GUIZTestMode"
+    },
+    "zWrite": {
+      "val": 0.0,
+      "name": "<noninit>"
+    },
+    "culling": {
+      "val": 0.0,
+      "name": "<noninit>"
+    },
+    "conservative": {
+      "val": 0.0,
+      "name": "<noninit>"
+    },
+    "offsetFactor": {
+      "val": 0.0,
+      "name": "<noninit>"
+    },
+    "offsetUnits": {
+      "val": 0.0,
+      "name": "<noninit>"
+    },
+    "alphaToMask": {
+      "val": 0.0,
+      "name": "<noninit>"
+    },
+    "stencilOp": {
+      "pass": {
+        "val": 0.0,
+        "name": "_StencilOp"
+      },
+      "fail": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "zFail": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "comp": {
+        "val": 0.0,
+        "name": "_StencilComp"
+      }
+    },
+    "stencilOpFront": {
+      "pass": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "fail": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "zFail": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "comp": {
+        "val": 8.0,
+        "name": "<noninit>"
+      }
+    },
+    "stencilOpBack": {
+      "pass": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "fail": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "zFail": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "comp": {
+        "val": 8.0,
+        "name": "<noninit>"
+      }
+    },
+    "stencilReadMask": {
+      "val": 0.0,
+      "name": "_StencilReadMask"
+    },
+    "stencilWriteMask": {
+      "val": 0.0,
+      "name": "_StencilWriteMask"
+    },
+    "stencilRef": {
+      "val": 0.0,
+      "name": "_Stencil"
+    },
+    "fogStart": {
+      "val": 0.0,
+      "name": "unity_FogStart"
+    },
+    "fogEnd": {
+      "val": 0.0,
+      "name": "unity_FogEnd"
+    },
+    "fogDensity": {
+      "val": 0.0,
+      "name": "unity_FogDensity"
+    },
+    "fogColor": {
+      "x": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "y": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "z": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "w": {
+        "val": 0.0,
+        "name": "<noninit>"
+      },
+      "name": "unity_FogColor"
+    },
+    "fogMode": 0,
+    "gpuProgramID": 40530,
+    "m_Tags": {
+      "tags": [
+        [
+          "CanUseSpriteAtlas",
+          "true"
+        ],
+        [
+          "IGNOREPROJECTOR",
+          "true"
+        ],
+        [
+          "PreviewType",
+          "Plane"
+        ],
+        [
+          "QUEUE",
+          "Transparent"
+        ],
+        [
+          "RenderType",
+          "Transparent"
+        ]
+      ]
+    },
+    "m_LOD": 0,
+    "lighting": false
+  }
+}

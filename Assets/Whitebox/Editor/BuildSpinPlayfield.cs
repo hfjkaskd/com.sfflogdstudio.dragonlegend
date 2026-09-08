@@ -9,6 +9,9 @@ public static class BuildSpinPlayfield
     {
         const string destination = "Assets/Resources/RecoveredUI/SpinPlayfield.prefab";
         var root = new GameObject("SpinPlayfield", typeof(RectTransform), typeof(RecoveredSpinPlayfield));
+        // Author under the same parent-Canvas relationship used by GameEntry at runtime.
+        var canvasContext=new GameObject("Authoring Canvas",typeof(RectTransform),typeof(Canvas));
+        root.transform.SetParent(canvasContext.transform,false);
         try {
             root.layer = 5; var rect = (RectTransform)root.transform;
             rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one; rect.sizeDelta = Vector2.zero;
@@ -71,7 +74,13 @@ public static class BuildSpinPlayfield
             var buttonRoot = (GameObject)PrefabUtility.InstantiatePrefab(
                 AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredUI/SpinButton.prefab"), main);
             ((RectTransform)buttonRoot.transform).anchoredPosition = new Vector2(417, -23.793f);
+            var amount=(RecoveredSymbolWinAmount)PrefabUtility.InstantiatePrefab(
+                AssetDatabase.LoadAssetAtPath<RecoveredSymbolWinAmount>("Assets/Resources/RecoveredUI/SymbolWinAmount.prefab"),root.transform);
+            // Canvas ignores overrideSorting while it is a prefab root; configure the nested instance.
+            var amountCanvas=amount.GetComponent<Canvas>();amountCanvas.overrideSorting=true;
+            PrefabUtility.RecordPrefabInstancePropertyModifications(amountCanvas);
             var data = new SerializedObject(root.GetComponent<RecoveredSpinPlayfield>());
+            data.FindProperty("symbolAmount").objectReferenceValue=amount;
             var transfers=new GameObject("WinFlights",typeof(RecoveredDownWinFlight));transfers.layer=5;transfers.transform.SetParent(reelRoot.transform,false);
             var transferSettings=new SerializedObject(transfers.GetComponent<RecoveredDownWinFlight>());
             transferSettings.FindProperty("flightPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredLampFlight>("Assets/Resources/RecoveredSymbols/DownWinFlight.prefab");
@@ -99,6 +108,11 @@ public static class BuildSpinPlayfield
                 // Keep local GM controls accessible above the recovered board.
                 var primary = (UnityEngine.UI.Button)entry.FindProperty("selectDefault").objectReferenceValue;
                 var alternative = (UnityEngine.UI.Button)entry.FindProperty("selectAlternative").objectReferenceValue;
+                foreach(var button in new[]{primary,alternative}) {
+                    var gmCanvas=button.GetComponent<Canvas>();if(gmCanvas==null)gmCanvas=button.gameObject.AddComponent<Canvas>();
+                    gmCanvas.overrideSorting=true;gmCanvas.sortingOrder=5000;
+                    if(button.GetComponent<UnityEngine.UI.GraphicRaycaster>()==null)button.gameObject.AddComponent<UnityEngine.UI.GraphicRaycaster>();
+                }
                 ((RectTransform)primary.transform).anchoredPosition = new Vector2(0, 350);
                 ((RectTransform)alternative.transform).anchoredPosition = new Vector2(0, 230);
                 var status = (UnityEngine.UI.Text)entry.FindProperty("status").objectReferenceValue;
@@ -107,7 +121,7 @@ public static class BuildSpinPlayfield
                 entryRoot.transform.Find("Scope").gameObject.SetActive(false);
                 entry.ApplyModifiedPropertiesWithoutUndo(); PrefabUtility.SaveAsPrefabAsset(entryRoot, entryPath);
             } finally { PrefabUtility.UnloadPrefabContents(entryRoot); }
-        } finally { Object.DestroyImmediate(root); }
+        } finally { Object.DestroyImmediate(root);Object.DestroyImmediate(canvasContext); }
     }
     private static RectTransform Rect(string name, Transform parent, Vector2 anchor, Vector2 pivot, Vector2 position, Vector2 size)
     {
