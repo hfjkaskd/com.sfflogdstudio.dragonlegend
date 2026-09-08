@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace DragonLegend.Whitebox
 {
+    public enum RecoveredFreeSpinReward { Slot=0,Wheel=1,Treasure=2,Lucky=3 }
+    public enum RecoveredWheelType { Major=0,Cash=1,Mini=2,Grand=3 }
     // Ported from native ConfigManager bodies, not metadata stubs.
     // Offsets refer to the original ARM64 ELF. Configuration retains original keys.
     public sealed class RecoveredGameplayRules
@@ -12,6 +14,8 @@ namespace DragonLegend.Whitebox
         private readonly GoldenDragonAutoGenConfig data;
         private readonly List<int> winningCoinWeights = new List<int>();
         private readonly List<int> bonusCounts = new List<int>(5);
+        private readonly List<int> freeRewardWeights = new List<int>(4);
+        private Dictionary<int,RecoveredWheelType> wheelInfo;
         private List<RecoveredTaskInfo> taskInfos;
         public RecoveredGameplayRules(GoldenDragonAutoGenConfig configuration)
         {
@@ -129,6 +133,30 @@ namespace DragonLegend.Whitebox
         public int GetSpinScatterAmount() => RandomListWeight(data.Rrggiomg.GpinGqorrgrRonpom); // 0x236bea8; returns INDEX
         public int GetFreeCoinAmount() => RandomListWeight(data.Rrggiomg.QoinOmoinrKgiitr); // 0x236bf98
         public int GetFreeBallAmount() => RandomListWeight(data.Rrggiomg.RollOmoinrKgiitr); // 0x236bfbc
+        // 0x236c01c: build one weight column across all four reward branches.
+        public RecoveredFreeSpinReward GetFreeReward(int index)
+        {
+            var c=data.Rrggiomg;freeRewardWeights.Clear();
+            freeRewardWeights.Add(c.RollGlorg[index]);freeRewardWeights.Add(c.RollKtggl[index]);
+            freeRewardWeights.Add(c.RollRrgogirg[index]);freeRewardWeights.Add(c.RollLiqki[index]);
+            int selected=RandomListWeight(freeRewardWeights);
+            return selected>=0&&selected<=2?(RecoveredFreeSpinReward)selected:RecoveredFreeSpinReward.Lucky;
+        }
+        public float GetLuckyReward()=>UnityEngine.Random.Range(data.Rrggiomg.LiqkiRgkorp[0],unchecked(data.Rrggiomg.LiqkiRgkorp[1]+1)); // 0x236c30c
+        public float GetSlotReward() // 0x236c3b0: weight draw, then inclusive integer reward draw.
+        {
+            var c=data.Rrggiomg;int index=RandomListWeight(c.GlorgKgiitr);
+            return UnityEngine.Random.Range(c.GlorgMin[index],unchecked(c.GlorgMoj[index]+1));
+        }
+        public IReadOnlyDictionary<int,RecoveredWheelType> GetWheelInfo() // 0x236c470, same cached dictionary.
+        {
+            if(wheelInfo==null)wheelInfo=new Dictionary<int,RecoveredWheelType>{
+                {0,RecoveredWheelType.Major},{1,RecoveredWheelType.Cash},{2,RecoveredWheelType.Mini},{3,RecoveredWheelType.Cash},
+                {4,RecoveredWheelType.Grand},{5,RecoveredWheelType.Cash},{6,RecoveredWheelType.Mini},{7,RecoveredWheelType.Cash}};
+            return wheelInfo;
+        }
+        public float GetWheelReward(int index)=>data.Rrggiomg.KtgglRgkorp[index]; // 0x236c5b0, no random draw.
+        public int RandomWheelWeight()=>RandomListWeight(data.Rrggiomg.KtgglRgkorpKgiitr); // 0x236c620 tail-call.
         public int GetFreeBallType() // 0x236bfe0: all indices other than 0 and 1 map to 2
         {
             int index = RandomListWeight(data.Rrggiomg.RollRipgKgiitr);
