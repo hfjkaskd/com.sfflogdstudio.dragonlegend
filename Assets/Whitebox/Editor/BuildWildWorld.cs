@@ -49,11 +49,11 @@ public static class BuildWildWorld
             PrefabUtility.SaveAsPrefabAsset(root,folder+".prefab");AssetDatabase.SaveAssets();
         } finally {Object.DestroyImmediate(root);}
     }
-    public static GameObject Create(Transform parent, string name, string file, string directory,string folder=Folder,bool loop=true, string sourceFolder="Artifacts/WildAuthoring", string clipName=null)
+    public static GameObject Create(Transform parent, string name, string file, string directory,string folder=Folder,bool loop=true, string sourceFolder="Artifacts/WildAuthoring", string clipName=null,string atlasPath=null)
     {
         var source = JsonUtility.FromJson<Source>(File.ReadAllText(sourceFolder + "/" + file + ".json"));
         var data = ScriptableObject.CreateInstance<RecoveredWorldRigData>(); data.name = file;
-        data.atlasPath = "RecoveredArt/Res/Spine/棋子/" + directory + "/" + file; data.pixelsPerUnit = 100;
+        data.atlasPath = atlasPath ?? "RecoveredArt/Res/Spine/棋子/" + directory + "/" + file; data.pixelsPerUnit = 100;
         string texturePath = "Assets/Resources/" + data.atlasPath + ".png";
         var importer = (TextureImporter)AssetImporter.GetAtPath(texturePath);
         importer.alphaIsTransparency = false; importer.textureCompression = TextureImporterCompression.Uncompressed; importer.SaveAndReimport();

@@ -65,5 +65,39 @@ Tools/sample_transition_reference.py produces 11 independent geometry samples,
 including both sides of .8 and 3 seconds and the exact float32 clip endpoint.
 Tools/verify_wild_extraction.py now passes 13 full source conversions and verifies
 input bytes stay unchanged. These are offline conversion checks, not Unity visual
-tests. The converted data and fixtures are ready for a world-prefab implementation;
-NPC animation, transition prefab and actual Bonus window integration remain pending.
+tests. Native world-prefab implementation is described below; NPC animation and
+actual Bonus window integration remain pending.
+
+## Native world prefab
+
+BuildSceneTransition.Save authors RecoveredEffects/SceneTransition with a persistent
+controller and an inactive world mesh child at original local position (0,0,20),
+unit scale, layer 0, sorting order 0. BuildWildWorld now accepts an explicit atlas
+resource path, preserving all existing callers. Tools/prepare_transition.py flattens
+only weighted vertex arrays for JsonUtility; the checked-in source stays unchanged.
+The resulting definition retains the four meshes, inheritance modes and additive
+slot colors. Atlas alpha preprocessing and compression are disabled to retain PMA
+source pixels. No new third-party runtime assembly or CanvasRenderer is involved.
+
+RecoveredSceneTransition plays the authored non-looping Unity Animation. Its shared
+scaled Update wait runner invokes the cover callback after .8 seconds, then the
+second callback after another 2.2 seconds. LateUpdate observes animation completion
+and hides the child separately. Cancellation cancels pending waits, stops playback
+and hides the child; reentrant cancellation in the first callback does not schedule
+a stale second callback. Timing, clip name and component references are serialized.
+
+RecoveredSceneTransitionTests compares every vertex in all 11 independent source
+poses, checks the current mesh contributes visible pixels at .8 and 1.8 seconds,
+and measures zero managed allocation across 1000 warmed-up mesh pose updates.
+It also checks scaled pause, callback order, the still-active visual at the second
+callback, visual deactivation at the end, cancellation and reentrant cancellation.
+Test observation uses Time.timeAsDouble: single-precision Time.time subtraction
+at the cumulative suite time rounded an actual .8-second interval to .799987793.
+This observation correction does not change runtime timing.
+
+This prefab is not yet attached to actual Bonus entry. Do not advance or release
+Spin until the NPC, Bonus window and following main-flow stages are connected.
+
+Final validation: Artifacts/transition-final-tests.xml passed 222/222 PlayMode tests.
+Fresh current-transition-0.png and current-transition-1.png capture the authored
+world effect at .8 and 1.8 seconds; the first frame was re-inspected after the final run.
