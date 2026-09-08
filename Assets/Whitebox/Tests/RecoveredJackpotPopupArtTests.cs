@@ -16,6 +16,7 @@ public sealed class RecoveredJackpotPopupArtTests
     [TestCase("JackpotPopup/poses.json")]
     [TestCase("bigwin-poses.json")]
     [TestCase("npc-geometry.json")]
+    [TestCase("bonus-card-poses.json")]
     public void PopupWeightedAndSequenceGeometryMatchesAllSourceClips(string evidenceFile)
     {
         var evidence=JsonUtility.FromJson<Evidence>(File.ReadAllText(Path.Combine(Application.dataPath,"../Tools/Evidence/"+evidenceFile)));
@@ -31,10 +32,10 @@ public sealed class RecoveredJackpotPopupArtTests
                         if(region.counts!=null&&region.counts.Length>0) {
                             int influence=0;
                             for(int v=0;v<region.counts.Length;v++) {
-                                var point=Vector3.zero;for(int w=0;w<region.counts[v];w++,influence++)point+=rig.BoneMatrix(region.boneIndices[influence]).MultiplyPoint3x4(region.vertices[influence])*region.weights[influence];
+                                var point=Vector3.zero;for(int w=0;w<region.counts[v];w++,influence++)point+=rig.BoneMatrix(region.boneIndices[influence]).MultiplyPoint3x4(region.CurrentVertices[influence])*region.weights[influence];
                                 Check(point,frame,ref at,source.name);
                             }
-                        }else foreach(var vertex in region.vertices)Check(rig.BoneMatrix(slot.bone).MultiplyPoint3x4(vertex),frame,ref at,source.name);
+                        }else foreach(var vertex in region.CurrentVertices)Check(rig.BoneMatrix(slot.bone).MultiplyPoint3x4(vertex),frame,ref at,source.name);
                     }
                     Assert.AreEqual(frame.vertices.Length,at);
                 }

@@ -113,7 +113,23 @@ public static class BuildJackpotMeters
     {
         var channels=new List<RecoveredRigAnimation.Channel>();var sequences=new List<RecoveredRigAnimation.SequenceChannel>();
         var events=new List<RecoveredRigAnimation.NamedEvent>();
+        var deforms=new List<RecoveredRigAnimation.DeformChannel>();
         foreach(var t in animation.timelines) {
+            if(t.domain=="deform") {
+                int attachment=ids[t.index+"/"+t.attachment];
+                var region=rig.regions[attachment];
+                var frames=new RecoveredRigAnimation.DeformFrame[t.frames.Length];
+                for(int i=0;i<frames.Length;i++) {
+                    var f=t.frames[i];
+                    if(f.values.Length!=region.vertices.Length*2)throw new InvalidDataException("Deform vertex count differs from mesh");
+                    AnimationCurve percent=null;
+                    if(i+1<frames.Length)percent=BuildCoinAppearance.Curve(new[]{
+                        new BuildCoinAppearance.Frame{time=f.time,values=new[]{0f},curve=f.curve,bezier=f.bezier},
+                        new BuildCoinAppearance.Frame{time=t.frames[i+1].time,values=new[]{1f}}},0,0,1);
+                    frames[i]=new RecoveredRigAnimation.DeformFrame{time=f.time,values=f.values,percent=percent};
+                }
+                deforms.Add(new RecoveredRigAnimation.DeformChannel{slot=t.index,attachment=attachment,frames=frames});continue;
+            }
             if(t.domain=="event") {
                 foreach(var f in t.frames) {
                     var e=source.events[f.@event];if(!string.IsNullOrEmpty(e.audio))throw new InvalidDataException("Audio-bearing rig event needs explicit conversion");
@@ -141,7 +157,7 @@ public static class BuildJackpotMeters
                 channels.Add(new RecoveredRigAnimation.Channel{slot=slot,index=t.index,component=component,curve=curve});
             }
         }
-        var poses=ScriptableObject.CreateInstance<RecoveredRigAnimation>();poses.channels=channels.ToArray();poses.sequences=sequences.ToArray();poses.events=events.ToArray();return poses;
+        var poses=ScriptableObject.CreateInstance<RecoveredRigAnimation>();poses.channels=channels.ToArray();poses.sequences=sequences.ToArray();poses.events=events.ToArray();poses.deforms=deforms.ToArray();return poses;
     }
     public static RecoveredRegionRig.Region Region(BuildCoinAppearance.Data source,BuildCoinAppearance.Attachment a,string path,Texture2D atlas)
     {

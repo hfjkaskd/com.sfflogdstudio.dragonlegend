@@ -13,6 +13,9 @@ namespace DragonLegend.Whitebox
         [Serializable] public sealed class Region {
             public Vector2[] vertices,uv;public Color tint=Color.white;public int[] sequenceFrames;public int setupIndex;
             public int[] triangles,counts,boneIndices;public float[] weights;
+            [NonSerialized] public Vector2[] deformed;
+            [NonSerialized] public bool deformActive;
+            public Vector2[] CurrentVertices=>deformActive?deformed:vertices;
         }
         public Bone[] bones;
         public Slot[] slots;
@@ -23,9 +26,17 @@ namespace DragonLegend.Whitebox
         private Matrix4x4[] matrices;
         public override Texture mainTexture {get {if(atlas==null)atlas=Resources.Load<Texture2D>(atlasPath);return atlas;}}
         public Matrix4x4 BoneMatrix(int index)=>matrices[index];
+        public void ResetDeformations()
+        {
+            if(regions==null)return;
+            foreach(var region in regions)region.deformActive=false;
+        }
         public void RefreshPose()
         {
             if(bones==null)return;
+            if(regions!=null)foreach(var region in regions)
+                if(region.triangles!=null&&region.triangles.Length>0&&region.deformed==null)
+                    region.deformed=new Vector2[region.vertices.Length];
             if(matrices==null||matrices.Length!=bones.Length)matrices=new Matrix4x4[bones.Length];
             if(npcConstraints!=null&&npcConstraints.steps!=null&&npcConstraints.steps.Length>0)
                 npcConstraints.Evaluate(bones,matrices);
@@ -67,15 +78,16 @@ namespace DragonLegend.Whitebox
                 Color tint=slot.tint*region.tint*color;
                 tint.r*=tint.a;tint.g*=tint.a;tint.b*=tint.a;if(slot.additive)tint.a=0;
                 int first=mesh.currentVertCount;
+                var vertices=region.CurrentVertices;
                 if(region.counts!=null&&region.counts.Length>0) {
                     int influence=0;
                     for(int v=0;v<region.counts.Length;v++) {
                         var position=Vector3.zero;
                         for(int w=0;w<region.counts[v];w++,influence++)
-                            position+=matrices[region.boneIndices[influence]].MultiplyPoint3x4(region.vertices[influence])*region.weights[influence];
+                            position+=matrices[region.boneIndices[influence]].MultiplyPoint3x4(vertices[influence])*region.weights[influence];
                         mesh.AddVert(position,tint,region.uv[v]);
                     }
-                } else for(int v=0;v<region.vertices.Length;v++)mesh.AddVert(matrices[slot.bone].MultiplyPoint3x4(region.vertices[v]),tint,region.uv[v]);
+                } else for(int v=0;v<vertices.Length;v++)mesh.AddVert(matrices[slot.bone].MultiplyPoint3x4(vertices[v]),tint,region.uv[v]);
                 if(region.triangles!=null&&region.triangles.Length>0)
                     for(int t=0;t<region.triangles.Length;t+=3)mesh.AddTriangle(first+region.triangles[t],first+region.triangles[t+1],first+region.triangles[t+2]);
                 else {mesh.AddTriangle(first,first+1,first+2);mesh.AddTriangle(first+2,first+3,first);}

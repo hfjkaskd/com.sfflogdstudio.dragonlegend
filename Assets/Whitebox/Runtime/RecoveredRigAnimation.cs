@@ -11,6 +11,9 @@ namespace DragonLegend.Whitebox
         public SequenceChannel[] sequences;
         [Serializable] public sealed class NamedEvent {public float time,floatValue;public int intValue;public string name,stringValue;}
         public NamedEvent[] events;
+        [Serializable] public sealed class DeformFrame {public float time;public float[] values;public AnimationCurve percent;}
+        [Serializable] public sealed class DeformChannel {public int slot,attachment;public DeformFrame[] frames;}
+        public DeformChannel[] deforms;
         public static int SequenceIndex(SequenceFrame frame,float time,int count)
         {
             int index=frame.index;
@@ -28,6 +31,7 @@ namespace DragonLegend.Whitebox
         }
         public void Sample(float time,RecoveredRegionRig rig)
         {
+            rig.ResetDeformations();
             for(int i=0;i<channels.Length;i++) {
                 var channel=channels[i];float value=channel.curve.Evaluate(time);
                 if(channel.slot) {
@@ -46,7 +50,25 @@ namespace DragonLegend.Whitebox
                 while(frame>=0&&time<sequence.frames[frame].time)frame--;
                 slot.sequenceIndex=frame<0?-1:SequenceIndex(sequence.frames[frame],time,sequence.count);
             }
+            // Allocate mesh buffers with the rig's initial pose, then reuse them.
             rig.RefreshPose();
+            if(deforms!=null)foreach(var deform in deforms) {
+                if(rig.slots[deform.slot].attachment!=deform.attachment)continue;
+                int frame=deform.frames.Length-1;
+                while(frame>=0&&time<deform.frames[frame].time)frame--;
+                if(frame<0)continue;
+                var current=deform.frames[frame];
+                var next=frame+1<deform.frames.Length?deform.frames[frame+1]:current;
+                float percent=current.percent==null?0:current.percent.Evaluate(time);
+                var region=rig.regions[deform.attachment];bool weighted=region.counts!=null&&region.counts.Length>0;
+                for(int i=0;i<region.vertices.Length;i++) {
+                    int at=i*2;
+                    var value=new Vector2(current.values[at]+(next.values[at]-current.values[at])*percent,
+                        current.values[at+1]+(next.values[at+1]-current.values[at+1])*percent);
+                    region.deformed[i]=weighted?region.vertices[i]+value:value;
+                }
+                region.deformActive=true;
+            }
         }
     }
 }
