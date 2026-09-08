@@ -75,6 +75,17 @@ namespace DragonLegend.Whitebox
             }
         }
         private int RandomId() => catalog.ModeId(mode, UnityEngine.Random.Range(0, catalog.ModeCount(mode)));
+        // CheckFakeCoin(true) 0x2375bbc: ordinary results replace only slot zero,
+        // then SetImg(..., true, false) retains the Free cover. Unknown IDs leave it alone.
+        public void ApplyFreeInitialSymbol(int id)
+        {
+            for (int i = 0; i < catalog.ModeCount(RecoveredSlotType.Free); i++) {
+                if (catalog.ModeId(RecoveredSlotType.Free,i) != id) continue;
+                ids[0] = id;
+                symbols[0].Show(catalog,id,RecoveredSlotType.Free,true);
+                return;
+            }
+        }
         public void Refresh(float speedPixelsPerSecond, float deltaTime, bool blur)
         {
             float next = offsetPixels - speedPixelsPerSecond * deltaTime;

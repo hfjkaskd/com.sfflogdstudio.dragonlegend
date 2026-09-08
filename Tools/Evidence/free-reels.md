@@ -28,13 +28,23 @@ by runtime layout code.
 
 `RecoveredFreeReels.Initialize` implements the once-only guard from
 `UIMainView.InitFreeReels` 0x23bd420 and ordered initialization from
-`FreeRoll.Init` 0x23b8440. The initial effect callback runs immediately after
-each reel's seven random symbol draws and before the next reel initializes,
-matching the position of `CheckFakeCoin(true)` in the original. The consumer
-must provide that callback; the component does not silently omit it.
+`FreeRoll.Init` 0x23b8440. After each reel's seven random symbol draws, it reads
+the actual initial Free result. For IDs 9 and 11 the initial effect callback
+runs immediately, before the next reel initializes. Other IDs follow the
+ordinary branch of `CheckFakeCoin(true)`: replace slot zero when that ID exists
+in the Free catalog, leaving the other six slots unchanged. The consumer must
+provide the special-effect callback; the component does not silently omit it.
+The result must have finished generation before initialization starts.
+
+Raw ARM64 `023757dc.asm`, 0x2375bbc..0x2375c20, proves the normal branch stores
+the matching definition in slot zero and tail-calls `SetImg` with w3=1, w4=0.
+Thus the sharp Free sprite is shown with its cover active. It must not retain
+the initial random sprite or use the uncovered Base presentation. This branch
+does not draw any additional random numbers.
 
 Tests check the authored positions and row order, first-image alignment,
-all 105 initial symbol draws, interleaved effect callback RNG, and the
+all 105 initial symbol draws, actual ordinary results and their cover state,
+interleaved special-effect callback RNG, and the
 initialization guard. The camera test leaves sibling masks active while only
 one bottom reel's symbols are visible, proving hidden slots do not leak into
 neighboring cells. It then renders all fifteen cells into a fresh
@@ -48,3 +58,13 @@ The SDK path has not changed.
 Validation: Unity 2022.3.62f3 full PlayMode suite **261/261 passed** in
 `Artifacts/free-reels-full-tests.xml`. The fresh 1080x720 Free reel prefab
 capture was inspected at original resolution; all fifteen cells are visible.
+That initial layout-only run predates the actual-result initialization fix;
+its preview has been superseded by the current initialization test capture.
+
+Actual-result initialization validation: **261/261 passed** in
+`Artifacts/free-initial-result-tests.xml`; the updated 1080x720 preview was
+inspected at original resolution. Ordinary symbols now show the native dark
+cover required by SetImg's true argument. The mixed-result test uses five coins,
+five balls and five ordinary cells, and verifies that only the ten special
+cells call the effect consumer while all fifteen reels consume their seven
+initial random symbols in the original order.
