@@ -20,6 +20,7 @@ namespace DragonLegend.Whitebox
         private RecoveredFreeSpinResult result;
         private Binding[] bindings;
         private int ballIndex;
+        private readonly Dictionary<RecoveredReelView,Component> stopped=new Dictionary<RecoveredReelView,Component>();
         public int BallIndex=>ballIndex;
         public int CreatedCoins {get;private set;}
         public int CreatedBalls {get;private set;}
@@ -34,12 +35,13 @@ namespace DragonLegend.Whitebox
             public Binding(RecoveredFreeSpecials owner,RecoveredReelView reel,int column,int row)
             {
                 this.owner=owner;this.reel=reel;this.column=column;this.row=row;
-                reel.CoinsClearRequested+=ClearCoins;reel.BallsClearRequested+=ClearBalls;reel.FakeCoinRequested+=Refresh;
+                reel.EffectsClearRequested+=ClearStopped;reel.CoinsClearRequested+=ClearCoins;reel.BallsClearRequested+=ClearBalls;reel.FakeCoinRequested+=Refresh;
             }
+            private void ClearStopped()=>owner.ClearStopped(reel);
             private void ClearCoins()=>owner.ClearCoins(reel);
             private void ClearBalls()=>owner.ClearBalls(reel);
             private void Refresh()=>owner.ShowRolling(reel,column,row);
-            public void Release(){reel.CoinsClearRequested-=ClearCoins;reel.BallsClearRequested-=ClearBalls;reel.FakeCoinRequested-=Refresh;}
+            public void Release(){reel.EffectsClearRequested-=ClearStopped;reel.CoinsClearRequested-=ClearCoins;reel.BallsClearRequested-=ClearBalls;reel.FakeCoinRequested-=Refresh;}
         }
         public void Bind(RecoveredFreeReels reels,RecoveredFreeSpinResult source)
         {
@@ -80,6 +82,29 @@ namespace DragonLegend.Whitebox
         {
             if(id==9)CreateCoin(reel.SymbolAt(0),true);
             else if(id==11)CreateBall(reel.SymbolAt(0),true);
+        }
+        // ConstantSpeedRoll Free branch: cleanup precedes reading the actual cell.
+        public void ApplyStoppedResult(RecoveredReelView reel,int column,int row)
+        {
+            ClearCoins(reel);ClearBalls(reel);
+            int id=result.GetSymbol(column,row);Component effect;
+            if(id==9)effect=CreateCoin(reel.SymbolAt(0),false);
+            else if(id==11)effect=CreateBall(reel.SymbolAt(0),false);
+            else {reel.ApplyFreeStoppedSymbol(id);return;}
+            // Native Dictionary.Add rejects a second special landing before Clear.
+            stopped.Add(reel,effect);
+        }
+        public Component StoppedAt(RecoveredReelView reel)=>stopped.TryGetValue(reel,out var effect)?effect:null;
+        private void ClearStopped(RecoveredReelView reel)
+        {
+            if(!stopped.TryGetValue(reel,out var effect))return;
+            var slot=reel.SymbolAt(0);
+            if(effect is RecoveredFreeCoin coin) {
+                if(coinSlots.TryGetValue(slot,out var list)&&list.Remove(coin)&&coin.gameObject.activeInHierarchy)coins.Release(coin);
+            } else if(effect is RecoveredFreeBall ball) {
+                if(ballSlots.TryGetValue(slot,out var list)&&list.Remove(ball)&&ball.gameObject.activeInHierarchy)balls.Release(ball);
+            }
+            stopped.Remove(reel);
         }
         public void ShowRolling(RecoveredReelView reel,int column,int row)
         {

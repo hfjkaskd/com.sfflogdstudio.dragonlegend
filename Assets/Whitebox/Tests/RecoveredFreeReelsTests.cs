@@ -47,7 +47,8 @@ public sealed class RecoveredFreeReelsTests
             for(int col=0;col<5;col++)for(int row=0;row<3;row++) {
                 int i=col*3+row;var reel=root.At(col,row);int id=result.GetSymbol(col,row);
                 Assert.IsTrue(root.IsInitialized);Assert.AreEqual(7,reel.SlotCount);
-                Assert.IsNull(reel.GetComponent<RecoveredBaseReelMotion>());
+                Assert.IsNotNull(reel.GetComponent<RecoveredFreeReelMotion>());
+                Assert.IsNotNull(reel.GetComponent<RecoveredBaseReelMotion>());
                 Assert.IsNotNull(reel.GetComponent<SortingGroup>());
                 Assert.AreEqual("Mask"+(3-row),reel.name);
                 Assert.That(reel.transform.parent.localPosition.x,Is.EqualTo(-3.8f+col*1.9f).Within(.00001f));

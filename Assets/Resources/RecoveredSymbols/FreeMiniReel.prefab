@@ -124,6 +124,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4802618266308460957}
   - component: {fileID: 5389919976108337928}
+  - component: {fileID: 1737495533365116054}
+  - component: {fileID: 3561958022729166845}
   - component: {fileID: 3994895739820643672}
   m_Layer: 0
   m_Name: FreeMiniReel
@@ -170,6 +172,37 @@ MonoBehaviour:
   bottomPixels: -86
   wrapSlots: 4
   initialFakeInterval: 2
+--- !u!114 &1737495533365116054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309509835783548020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1cfeee8fab14ccaae38aeb111945acc, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  reel: {fileID: 5389919976108337928}
+  stopOvershoot: 1.70158
+  baseSpinSpeed: 7000
+  automaticStopDelay: 0.5
+--- !u!114 &3561958022729166845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309509835783548020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d768fa8f37652fa42a89d182937fcece, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  movement: {fileID: 1737495533365116054}
+  reel: {fileID: 5389919976108337928}
+  speedPixels: 5000
 --- !u!210 &3994895739820643672
 SortingGroup:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace DragonLegend.Whitebox
 {
     // Base-mode movement from StarSlotSpin, ConstantSpeedRoll, StopSlotRoll.
-    // Free stop presentation remains a separate unfinished branch.
+    // Shared native movement also accepts the Free result-landing branch.
     public sealed class RecoveredBaseReelMotion : MonoBehaviour
     {
         [SerializeField] private RecoveredReelView reel;
@@ -15,6 +15,7 @@ namespace DragonLegend.Whitebox
         private int phase; // idle, accelerating, constant, one-frame stop wait, return tween
         private float maxSpeed, accelerationTarget, duration, elapsed, returnStart;
         private Func<IReadOnlyList<int>> resultProvider;
+        private Action resultApplication;
         public bool IsSpinning { get; private set; }
         public bool StopRequested { get; private set; }
         public float CurrentSpeed { get; private set; }
@@ -37,9 +38,17 @@ namespace DragonLegend.Whitebox
         internal void AbortForProfileChange() { phase = 0; IsSpinning = false; StopRequested = false; }
         public void RequestStop(Func<IReadOnlyList<int>> currentColumn)
         {
+            resultApplication = null;
             resultProvider = currentColumn ?? throw new ArgumentNullException(nameof(currentColumn));
             StopRequested = true;
         }
+        public void RequestResultStop(Action applyResult)
+        {
+            resultApplication=applyResult??throw new ArgumentNullException(nameof(applyResult));
+            StopRequested=true;
+        }
+        public RecoveredReelStopOperation SetResultStop(float seconds,Action applyResult,Action<RecoveredReelView> completed=null)
+            => RecoveredReelStopLoop.ScheduleResult(this,reel,seconds,applyResult,completed);
         public RecoveredReelStopOperation SetStop(float seconds, Func<IReadOnlyList<int>> currentColumn,
             Action<RecoveredReelView> completed = null)
             => RecoveredReelStopLoop.Schedule(this,reel,seconds,currentColumn,completed);
@@ -59,7 +68,7 @@ namespace DragonLegend.Whitebox
             else if (phase == 2) AdvanceConstant(deltaTime);
             else if (phase == 3) {
                 phase = 0; // A failed result callback terminates this coroutine stage.
-                reel.ApplyBaseColumn(resultProvider());
+                if(resultApplication!=null)resultApplication();else reel.ApplyBaseColumn(resultProvider());
                 returnStart = reel.OffsetPixels;
                 ReturnDuration = Mathf.Abs(returnStart) * 2 / maxSpeed;
                 duration = Mathf.Max(0, ReturnDuration); elapsed = 0; phase = 4;

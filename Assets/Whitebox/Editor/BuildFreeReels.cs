@@ -22,7 +22,12 @@ public static class BuildFreeReels
         var mini=PrefabUtility.LoadPrefabContents("Assets/Resources/RecoveredSymbols/Reel.prefab");
         try {
             mini.name="FreeMiniReel";
-            Object.DestroyImmediate(mini.GetComponent<RecoveredBaseReelMotion>());
+            var freeMotion=mini.AddComponent<RecoveredFreeReelMotion>();
+            var motionSettings=new SerializedObject(freeMotion);
+            motionSettings.FindProperty("movement").objectReferenceValue=mini.GetComponent<RecoveredBaseReelMotion>();
+            motionSettings.FindProperty("reel").objectReferenceValue=mini.GetComponent<RecoveredReelView>();
+            motionSettings.FindProperty("speedPixels").floatValue=5000;
+            motionSettings.ApplyModifiedPropertiesWithoutUndo();
             mini.AddComponent<SortingGroup>();
             var settings=new SerializedObject(mini.GetComponent<RecoveredReelView>());
             // Native anchoredPosition starts at zero. SymbolItem anchors to the bottom
@@ -38,6 +43,7 @@ public static class BuildFreeReels
         try {
             var settings=new SerializedObject(root.GetComponent<RecoveredFreeReels>());
             var reels=settings.FindProperty("reels");reels.arraySize=15;
+            var motions=settings.FindProperty("motions");motions.arraySize=15;
             var prefab=AssetDatabase.LoadAssetAtPath<GameObject>(miniPath);
             for(int col=0;col<layout.columns.Length;col++) {
                 var source=layout.columns[col];
@@ -48,6 +54,7 @@ public static class BuildFreeReels
                     var reel=(GameObject)PrefabUtility.InstantiatePrefab(prefab,column.transform);
                     reel.name=cell.name;reel.transform.localPosition=new Vector3(cell.x*.01f,cell.y*.01f,0);
                     reels.GetArrayElementAtIndex(col*3+row).objectReferenceValue=reel.GetComponent<RecoveredReelView>();
+                    motions.GetArrayElementAtIndex(col*3+row).objectReferenceValue=reel.GetComponent<RecoveredFreeReelMotion>();
                 }
             }
             settings.ApplyModifiedPropertiesWithoutUndo();

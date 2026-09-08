@@ -88,6 +88,14 @@ namespace DragonLegend.Whitebox
                 return;
             }
         }
+        public void ApplyFreeStoppedSymbol(int id)
+        {
+            for(int i=0;i<catalog.ModeCount(RecoveredSlotType.Free);i++) {
+                if(catalog.ModeId(RecoveredSlotType.Free,i)!=id)continue;
+                ids[0]=id;symbols[0].Show(catalog,id,RecoveredSlotType.Free,true);return;
+            }
+            throw new InvalidOperationException("Free stop result has no symbol definition.");
+        }
         public void Refresh(float speedPixelsPerSecond, float deltaTime, bool blur)
         {
             float next = offsetPixels - speedPixelsPerSecond * deltaTime;

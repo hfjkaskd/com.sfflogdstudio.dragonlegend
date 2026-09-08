@@ -8,6 +8,8 @@ namespace DragonLegend.Whitebox
     {
         [SerializeField] private RecoveredReelView[] reels;
         [SerializeField] private RecoveredFreeSpecials specials;
+        [SerializeField] private RecoveredFreeReelMotion[] motions;
+        public RecoveredFreeReelMotion MotionAt(int column,int row)=>motions[column*3+row];
         public RecoveredFreeSpecials Specials=>specials;
         public bool IsInitialized { get; private set; }
         public RecoveredReelView At(int column, int row) => reels[column * 3 + row];
@@ -26,6 +28,7 @@ namespace DragonLegend.Whitebox
                 for (int row = 0; row < 3; row++) {
                     var reel = At(column,row);
                     reel.Initialize(catalog,RecoveredSlotType.Free);
+                    MotionAt(column,row).Bind(specials,column,row);
                     // CheckFakeCoin(true) must occur before the next reel consumes its random IDs.
                     int id=result.GetSymbol(column,row);
                     if(id==9 || id==11) initialEffects(column,row,reel,id);

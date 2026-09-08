@@ -14,6 +14,7 @@ namespace DragonLegend.Whitebox
         private readonly RecoveredBaseReelMotion motion;
         private readonly RecoveredReelView reel;
         private readonly Func<IReadOnlyList<int>> column;
+        private readonly Action applyResult;
         private readonly Action<RecoveredReelView> callback;
         private readonly int initialFrame;
         private readonly float delay;
@@ -25,11 +26,12 @@ namespace DragonLegend.Whitebox
         internal void CancelForProfileChange() { Error = new OperationCanceledException("GM profile changed."); phase = 3; }
         public override bool keepWaiting { get { if (IsCompleted) GetResult(); return !IsCompleted; } }
         internal RecoveredReelStopOperation(RecoveredBaseReelMotion target, RecoveredReelView view,
-            float seconds, Func<IReadOnlyList<int>> result, Action<RecoveredReelView> completed, int frame)
+            float seconds, Func<IReadOnlyList<int>> result, Action<RecoveredReelView> completed, int frame, Action applyResult=null)
         {
             // Original WaitForSeconds uses TimeSpan.FromMilliseconds(seconds * 1000f).
             delay = (float)TimeSpan.FromMilliseconds(seconds * 1000f).TotalSeconds;
             if (delay < 0) throw new ArgumentOutOfRangeException(nameof(seconds));
+            this.applyResult=applyResult;
             motion = target; reel = view; column = result; callback = completed; initialFrame = frame;
         }
         public void GetResult()
@@ -45,7 +47,8 @@ namespace DragonLegend.Whitebox
                     if (elapsed == 0 && frame == initialFrame) return true;
                     elapsed += scaledDeltaTime;
                     if (elapsed < delay) return true;
-                    motion.RequestStop(column); phase = 1;
+                    if(applyResult!=null)motion.RequestResultStop(applyResult);else motion.RequestStop(column);
+                    phase = 1;
                     RecoveredReelStopLoop.Requeue(this);
                     return false; // Delay item completes; WaitUntil is a newly queued loop item.
                 }
@@ -75,6 +78,13 @@ namespace DragonLegend.Whitebox
             EnsureInstalled();
             var operation = new RecoveredReelStopOperation(motion,reel,seconds,column,callback,Time.frameCount);
             Requeue(operation); return operation;
+        }
+        internal static RecoveredReelStopOperation ScheduleResult(RecoveredBaseReelMotion motion,RecoveredReelView reel,
+            float seconds,Action applyResult,Action<RecoveredReelView> callback)
+        {
+            if(applyResult==null)throw new ArgumentNullException(nameof(applyResult));
+            var operation=new RecoveredReelStopOperation(motion,reel,seconds,null,callback,Time.frameCount,applyResult);
+            Requeue(operation);return operation;
         }
         internal static void Requeue(IRecoveredReelUpdateItem operation)
         { EnsureInstalled(); if (running) waiting.Add(operation); else pending.Add(operation); }
