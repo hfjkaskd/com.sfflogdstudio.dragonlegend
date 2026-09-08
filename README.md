@@ -355,3 +355,14 @@ FlyWithPool 0x238ce40 的 ARM 参数明确为 arcHeight=-1、lateralOffset=0、i
 RecoveredCoinStopPresenter 使用官方 ObjectPool 回收/复用飞行对象。按到达回调 0x23d9dcc，先发出 exp 音效请求，再回收飞行对象，然后显示目标首个子节点，最后发出点灯特效请求。灯位从这一阶段开始真正点亮，不再在扫描时提前点亮。换圈/GM 解绑会回收所属飞行并取消后续到达。额外 dianliang 骨骼闪光尚未接入，声音实际播放、奖励汇总和余额入账、其他完整分支仍未完成；SDK 不变。
 
 最终全量 PlayMode 149 项通过、0 失败（Artifacts/lamp-flight-all-tests.xml）。验证原粒子/轨迹结构、排序与材质可用性、四个飞行采样位置、三维距离控制点、终点快照、暂停与停用；实际入口验证两枚金币文字结束后起飞、到达前灯位关闭、音效/回收/点亮顺序、同一池对象复用且余额不变。已查看最新 current-lamp-flight.png，实际粒子拖尾位于金币至灯位路径中。主背景、完整布局、完整奖励生命周期等仍有缺口，尚非完整 1:1。
+
+
+## 本轮：到达灯位后的原始 dianliang 闪光
+
+完整读取 ef_sltongbi.skel.bytes 的 1397 字节，恢复 9 根骨骼、8 个槽位、6 个区域附件和 dianliang 的 17 条时间线。新 LampFlash Prefab 使用原始图集及六个加法混合 Image，原生 Animation 保留 0.5 秒时长、附件开关、色彩与缩放曲线；不引入 Spine 运行时。图集声明 PMA，关闭透明 RGB 扩张并保留未压缩纹理。原第三方骨骼组件转换为 Unity 原生组件是明确的实现差异。
+
+按到达回调 0x23d9dcc，飞行回收并点亮灯位后，从独立官方 ObjectPool 获取闪光、设为该灯位子节点、anchoredPosition 归零，播放 dianliang 一次；按完成回调 0x23da05c，结束后仅回收闪光，常亮金币继续显示。GM 解绑取消并回收活动闪光。提取器按输入文件名选择对应图集；旧金币提取结果 SHA-256 与原 JSON 完全一致。
+
+全量 PlayMode 150 项通过（Artifacts/lamp-flash-all-tests.xml），覆盖六区域加法材质、原始关键帧、0.5 秒完成、暂停与取消，以及实际两枚金币到达后父节点、点亮和对象池回收。完整奖励汇总/入账、Wild/Jackpot/免费分支、实际音效以及主背景和完整布局仍未完成；SDK 保持现有处理方式。
+
+追加渲染验证通过（Artifacts/lamp-flash-render-tests.xml）：等待实际非透明动画帧，再在同一帧禁用闪光图像重新渲染，灯位区域有超过 100 个像素增加至少 10 个色阶，排除常亮金币导致的假阳性。已查看最新 current-lamp-flash.png。首次过早截图的对比失败暴露了测试采样问题，改为等待实际动画状态后通过；没有为测试改变运行时动画时序。

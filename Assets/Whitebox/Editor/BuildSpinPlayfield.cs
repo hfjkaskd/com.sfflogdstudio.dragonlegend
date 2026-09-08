@@ -29,6 +29,7 @@ public static class BuildSpinPlayfield
                 effects.transform.SetParent(reelRoot.transform,false);coinStops=effects.GetComponent<RecoveredCoinStopPresenter>();
                 var settings=new SerializedObject(coinStops);settings.FindProperty("effectPrefab").objectReferenceValue=stopPrefab;
                 settings.FindProperty("flightPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredLampFlight>("Assets/Resources/RecoveredSymbols/LampFlight.prefab");
+                settings.FindProperty("flashPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredLampFlash>("Assets/Resources/RecoveredUI/LampFlash.prefab");
                 settings.ApplyModifiedPropertiesWithoutUndo();
             }
             foreach (var child in reelRoot.GetComponentsInChildren<Transform>(true)) child.gameObject.layer = 5;

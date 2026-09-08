@@ -10,6 +10,12 @@ namespace DragonLegend.Whitebox
     {
         [SerializeField] private RecoveredCoinStopEffect effectPrefab;
         [SerializeField] private RecoveredLampFlight flightPrefab;
+        [SerializeField] private RecoveredLampFlash flashPrefab;
+        private ObjectPool<RecoveredLampFlash> flashPool;
+        private readonly List<RecoveredLampFlash> flashes=new List<RecoveredLampFlash>(2);
+        public int ActiveFlashCount=>flashes.Count;
+        public int CreatedFlashCount=>flashPool==null?0:flashPool.CountAll;
+        public RecoveredLampFlash FlashAt(int index)=>flashes[index];
         private RecoveredBonusCollection collection;
         private int canvasOrder;
         private Transform newFlightParent;
@@ -69,11 +75,23 @@ namespace DragonLegend.Whitebox
             ExpSoundRequested?.Invoke();
             ReleaseFlight(flight);
             target.GetChild(0).gameObject.SetActive(true);
+            var flash=flashPool.Get();flash.transform.SetParent(target,false);
+            ((RectTransform)flash.transform).anchoredPosition=Vector2.zero;
+            flash.transform.localScale=flashPrefab.transform.localScale;
+            flash.gameObject.SetActive(true);flashes.Add(flash);flash.Play();
             LampLitEffectRequested?.Invoke(target);
         }
+        private RecoveredLampFlash CreateFlash()
+        {
+            var flash=Instantiate(flashPrefab,transform,false);flash.Completed+=ReleaseFlash;return flash;
+        }
+        private void ReleaseFlash(RecoveredLampFlash flash) { flashes.Remove(flash);flashPool.Release(flash); }
         public void Bind(RecoveredBaseReelController controller,int languageType=0,RecoveredBonusCollection bonusCollection=null,int sortingOrder=0)
         {
             Unbind();reels=controller;language=languageType;collection=bonusCollection;canvasOrder=sortingOrder;
+            if(flashPool==null)flashPool=new ObjectPool<RecoveredLampFlash>(CreateFlash,null,
+                flash=>{flash.gameObject.SetActive(false);flash.transform.SetParent(transform,false);},
+                flash=>{if(flash!=null)Destroy(flash.gameObject);},true,1,int.MaxValue);
             if(flightPool==null)flightPool=new ObjectPool<RecoveredLampFlight>(CreateFlight,null,
                 flight=>{flight.gameObject.SetActive(false);flight.transform.SetParent(transform,false);},
                 flight=>{if(flight!=null)Destroy(flight.gameObject);},true,1,int.MaxValue);
@@ -114,11 +132,12 @@ namespace DragonLegend.Whitebox
         }
         public void Unbind()
         {
+            for(int i=flashes.Count-1;i>=0;i--)ReleaseFlash(flashes[i]);
             if(reels==null)return;
             reels.StopAnimationRequested-=ShowColumn;
             for(int i=0;i<5;i++){reels.ReelAt(i).EffectsClearRequested-=clearHandlers[i];ClearColumn(i);}
             reels=null;
         }
-        private void OnDestroy(){Unbind();pool?.Clear();flightPool?.Clear();}
+        private void OnDestroy(){Unbind();pool?.Clear();flightPool?.Clear();flashPool?.Clear();}
     }
 }

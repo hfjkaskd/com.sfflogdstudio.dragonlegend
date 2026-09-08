@@ -75,6 +75,10 @@ public sealed class RecoveredCoinGlowTests
             };
             field.CoinStops.LampLitEffectRequested+=lamp=>{
                 Assert.AreEqual(0,field.CoinStops.ActiveFlightCount);Assert.IsTrue(lamp.GetChild(0).gameObject.activeSelf);arrivals++;
+                Assert.Greater(field.CoinStops.ActiveFlashCount,0);
+                var flash=field.CoinStops.FlashAt(field.CoinStops.ActiveFlashCount-1);
+                Assert.AreSame(lamp,flash.transform.parent);Assert.IsTrue(flash.IsPlaying);
+                Assert.AreEqual(Vector2.zero,((RectTransform)flash.transform).anchoredPosition);
             };
             field.BonusCoinPresentationRequested += coin => {
                 if(presentations==0)firstReward=coin.Reward;
@@ -107,12 +111,46 @@ public sealed class RecoveredCoinGlowTests
             RenderPipeline.SubmitRenderRequest(camera,new UniversalRenderPipeline.SingleCameraRequest{destination=target});
             RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
             File.WriteAllBytes(Path.GetFullPath(Path.Combine(Application.dataPath,"../Artifacts/current-lamp-flight.png")),capture.EncodeToPNG());
-            for (int i = 0; i < 80 && (field.BonusCoins.IsRunning || first.Glow.IsPlaying || second.Glow.IsPlaying); i++) yield return null;
+            for(int i=0;i<20&&field.CoinStops.ActiveFlashCount==0;i++)yield return null;
+            Assert.Greater(field.CoinStops.ActiveFlashCount,0);
+            var activeFlash=field.CoinStops.FlashAt(0);
+            var animatedImages=activeFlash.GetComponentsInChildren<UnityEngine.UI.Image>();
+            bool visibleFlash=false;
+            for(int i=0;i<5&&!visibleFlash;i++) {
+                yield return null;
+                foreach(var image in animatedImages)if(image.enabled&&image.color.a>.1f)visibleFlash=true;
+            }
+            Assert.IsTrue(visibleFlash,"The arrival animation must sample a visible frame.");
+            Canvas.ForceUpdateCanvases();
+            RenderPipeline.SubmitRenderRequest(camera,new UniversalRenderPipeline.SingleCameraRequest{destination=target});
+            RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+            var lampPoint=camera.WorldToScreenPoint(field.BonusCollection.GetUnselectedTarget(0,1).position);
+            int bright=0;var pixels=capture.GetPixels32();
+            for(int y=(int)lampPoint.y-40;y<(int)lampPoint.y+40;y++)for(int x=(int)lampPoint.x-40;x<(int)lampPoint.x+40;x++)
+                if(pixels[y*1080+x].r>180&&pixels[y*1080+x].g>120)bright++;
+            Assert.Greater(bright,300);
+            File.WriteAllBytes(Path.GetFullPath(Path.Combine(Application.dataPath,"../Artifacts/current-lamp-flash.png")),capture.EncodeToPNG());
+            // Render the same frame without the flash; the already-lit coin must not satisfy this check.
+            var flashImages=field.CoinStops.FlashAt(0).GetComponentsInChildren<UnityEngine.UI.Image>();
+            foreach(var image in flashImages)image.enabled=false;
+            Canvas.ForceUpdateCanvases();
+            RenderPipeline.SubmitRenderRequest(camera,new UniversalRenderPipeline.SingleCameraRequest{destination=target});
+            RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+            var withoutFlash=capture.GetPixels32();int flashPixels=0;
+            for(int y=(int)lampPoint.y-100;y<(int)lampPoint.y+100;y++)for(int x=(int)lampPoint.x-100;x<(int)lampPoint.x+100;x++) {
+                int index=y*1080+x;
+                if(pixels[index].r>withoutFlash[index].r+10 || pixels[index].g>withoutFlash[index].g+10)flashPixels++;
+            }
+            Assert.Greater(flashPixels,100,"The arrival flash must add visible pixels beyond the lit lamp itself.");
+            foreach(var image in flashImages)image.enabled=true;
+
+            for (int i = 0; i < 80 && (field.BonusCoins.IsRunning || first.Glow.IsPlaying || second.Glow.IsPlaying || field.CoinStops.ActiveFlashCount>0); i++) yield return null;
             Assert.AreEqual(2, presentations); Assert.AreEqual(2, sounds); Assert.IsNull(field.BonusCoins.Error);
             Assert.IsFalse(first.Glow.gameObject.activeSelf); Assert.IsFalse(second.Glow.gameObject.activeSelf);
             Assert.AreEqual(balance, entry.PlayerProgress.GreenCount, "Reveal must not prematurely credit the missing flight stage.");
             Assert.IsTrue(field.BonusCollection.GetUnselectedTarget(0, 1).GetChild(0).gameObject.activeSelf);
             Assert.AreEqual(2,arrivals);Assert.AreEqual(1,field.CoinStops.CreatedFlightCount);Assert.AreEqual(0,field.CoinStops.ActiveFlightCount);
+            Assert.AreEqual(0,field.CoinStops.ActiveFlashCount);Assert.That(field.CoinStops.CreatedFlashCount,Is.InRange(1,2));
             Assert.AreEqual(2, field.CoinStops.CreatedCount);
             first.PlayShow(); Assert.IsFalse(first.Reveal.gameObject.activeSelf); Assert.IsFalse(first.Glow.gameObject.activeSelf);
             Assert.IsFalse(first.RewardText.Label.gameObject.activeSelf);

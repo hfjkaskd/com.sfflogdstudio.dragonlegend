@@ -123,7 +123,8 @@ for _ in range(var()):
  a['duration']=max(f['time'] for t in a['timelines'] for f in t['frames']);result['animations'].append(a)
 assert p==len(b),(p,len(b))
 regions=[]
-for line in Path(sys.argv[1]).with_name('ef_jinbi.atlas.txt').read_text().splitlines():
+atlas_name=Path(sys.argv[1]).name.removesuffix('.skel.bytes')+'.atlas.txt'
+for line in Path(sys.argv[1]).with_name(atlas_name).read_text().splitlines():
  if ':' not in line and not line.endswith('.png'):
   region={'name':line,'rotate':0};regions.append(region)
  elif regions:

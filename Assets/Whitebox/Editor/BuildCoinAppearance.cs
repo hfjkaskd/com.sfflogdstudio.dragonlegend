@@ -20,27 +20,39 @@ public static class BuildCoinAppearance
     [Serializable] public class Timeline { public string domain; public int index, kind; public Frame[] frames; }
     [Serializable] public class Frame { public float time; public float[] values; public string attachment; public int curve; public Bezier[] bezier; }
     [Serializable] public class Bezier { public float[] values; }
-    private const string Folder = "Assets/Resources/RecoveredUI/CoinAppearance";
+    private static string Folder;
     private static readonly string[] Rgba = {"r","g","b","a"};
     public static void Save()
     {
+        Build(false);
+    }
+    public static void SaveLampFlash()
+    {
+        Build(true);
+        BuildSpinPlayfield.Save();
+    }
+    private static void Build(bool lamp)
+    {
+        Folder = "Assets/Resources/RecoveredUI/" + (lamp ? "LampFlash" : "CoinAppearance");
         Directory.CreateDirectory(Folder); AssetDatabase.Refresh();
-        var data = JsonUtility.FromJson<Data>(File.ReadAllText("Assets/Whitebox/Editor/RecoveredCoinEffect.json"));
-        foreach(var clipName in new[]{"zcjb_idle","zcjb_chuxian"}) {
+        var data = JsonUtility.FromJson<Data>(File.ReadAllText(lamp ? "Assets/Whitebox/Editor/RecoveredLampFlash.json" : "Assets/Whitebox/Editor/RecoveredCoinEffect.json"));
+        var names = lamp ? new[]{"dianliang"} : new[]{"zcjb_idle","zcjb_chuxian"};
+        var slots = lamp ? new[]{2,3,4,5,6,7} : new[]{25,26,27,29,31};
+        foreach(var clipName in names) {
         var idle=Array.Find(data.animations,a=>a.name==clipName);
         if(idle==null)throw new InvalidOperationException("Missing original coin clip.");
         foreach(var timeline in idle.timelines) {
             if(timeline.domain=="deform")throw new InvalidOperationException("Idle now requires mesh deformation.");
             if(timeline.domain!="slot" || timeline.kind!=0)continue;
             foreach(var frame in timeline.frames)if(frame.attachment!=null) {
-                if(timeline.index!=25 && timeline.index!=26 && timeline.index!=27 && timeline.index!=29 && timeline.index!=31)
+                if(Array.IndexOf(slots,timeline.index)<0)
                     throw new InvalidOperationException("Unconverted visible idle slot.");
                 var attachment=Array.Find(data.attachments,a=>a.slot==timeline.index);
                 if(attachment.key!=frame.attachment)throw new InvalidOperationException("Unconverted attachment switch.");
             }
         }
         }
-        const string texturePath = "Assets/Resources/RecoveredArt/Res/Spine/棋子/jinbi/ef_jinbi.png";
+        string texturePath = lamp ? "Assets/Resources/RecoveredArt/Res/Spine/sltongbi/ef_sltongbi.png" : "Assets/Resources/RecoveredArt/Res/Spine/棋子/jinbi/ef_jinbi.png";
         var importer = (TextureImporter)AssetImporter.GetAtPath(texturePath);
         // Original atlas declares pma:true. Transparent RGB dilation corrupts PMA texels.
         if (importer.alphaIsTransparency || importer.textureCompression != TextureImporterCompression.Uncompressed) {
@@ -48,9 +60,10 @@ public static class BuildCoinAppearance
             importer.SaveAndReimport();
         }
         var texture = AssetDatabase.LoadAssetAtPath<Texture2D>(texturePath);
-        var root = new GameObject("CoinIdle", typeof(RectTransform), typeof(Animation), typeof(RecoveredCoinIdle));
+        var root = new GameObject(lamp ? "Ef_sltongbi" : "CoinIdle", typeof(RectTransform), typeof(Animation));
+        Component driver = lamp ? (Component)root.AddComponent<RecoveredLampFlash>() : root.AddComponent<RecoveredCoinIdle>();
         try {
-            root.layer=5; var rect=(RectTransform)root.transform; rect.sizeDelta=new Vector2(53,57);
+            root.layer=5; var rect=(RectTransform)root.transform; rect.sizeDelta=lamp ? new Vector2(50,50) : new Vector2(53,57);
             var visual=Rect("Visual",root.transform); visual.anchoredPosition=Vector2.zero;
             var bones=new RectTransform[data.bones.Length];
             var ordering=new Dictionary<Transform,int>();
@@ -63,7 +76,7 @@ public static class BuildCoinAppearance
             var normal=Material("PmaNormal",10); var additive=Material("PmaAdditive",1);
             var images=new Image[data.slots.Length];
             foreach(var attachment in data.attachments) {
-                if (attachment.slot != 25 && attachment.slot != 26 && attachment.slot != 27 && attachment.slot != 29 && attachment.slot != 31) continue;
+                if (Array.IndexOf(slots,attachment.slot)<0) continue;
                 var slot=data.slots[attachment.slot];var region=Array.Find(data.regions,r=>r.name==attachment.name);
                 var b=region.bounds;var offsets=region.offsets;bool rotated=region.rotate==90;
                 int packedWidth=rotated?b[3]:b[2],packedHeight=rotated?b[2]:b[3];
@@ -99,7 +112,7 @@ public static class BuildCoinAppearance
             baseline=SaveAsset(baseline,Folder+"/setup.anim");
             var player=root.GetComponent<Animation>();player.playAutomatically=false;
             foreach(var source in data.animations) {
-                if (source.name != "zcjb_idle" && source.name != "zcjb_chuxian") continue;
+                if (Array.IndexOf(names,source.name)<0) continue;
                 var clip=new AnimationClip{name=source.name,legacy=true,frameRate=30,wrapMode=source.name=="zcjb_idle"?WrapMode.Loop:WrapMode.Once};
                 foreach(var t in source.timelines) {
                     bool slot=t.domain=="slot";
@@ -120,10 +133,10 @@ public static class BuildCoinAppearance
                 }
                 clip=SaveAsset(clip,Folder+"/"+source.name+".anim");player.AddClip(clip,source.name);
             }
-            var serialized=new SerializedObject(root.GetComponent<RecoveredCoinIdle>());
+            var serialized=new SerializedObject(driver);
             serialized.FindProperty("animationPlayer").objectReferenceValue=player;
             serialized.FindProperty("setup").objectReferenceValue=baseline;serialized.ApplyModifiedPropertiesWithoutUndo();
-            PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredUI/CoinAppearance.prefab");AssetDatabase.SaveAssets();
+            PrefabUtility.SaveAsPrefabAsset(root,Folder+".prefab");AssetDatabase.SaveAssets();
         } finally {Object.DestroyImmediate(root);}
     }
     private static RectTransform Rect(string name,Transform parent) {
