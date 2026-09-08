@@ -20,12 +20,15 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredAdSimulationControls adControls;
         [SerializeField] private RecoveredCashFlightPresenter cashFlightPrefab;
         public RecoveredCashFlightPresenter CashFlight {get;private set;}
+        [SerializeField] private RecoveredBonusFlow bonusFlowPrefab;
+        public RecoveredBonusFlow BonusFlow {get;private set;}
         public RecoveredBalancePanel BalancePanel=>balancePanel;
         public LocalAdFacade Ads {get;private set;}
         public RecoveredAdSimulationControls AdControls=>adControls;
         public RecoveredSpinPlayfield Playfield { get; private set; }
         private void ReleasePlayfield()
         {
+            if(BonusFlow!=null){BonusFlow.Unbind();Destroy(BonusFlow.gameObject);BonusFlow=null;}
             if(CashFlight!=null){CashFlight.Unbind();Destroy(CashFlight.gameObject);CashFlight=null;}
             Ads?.Complete(AdOutcome.Cancelled);Ads=null;
             if(adControls!=null)adControls.Bind(null);
@@ -163,6 +166,10 @@ namespace DragonLegend.Whitebox
                 CashFlight=Instantiate(cashFlightPrefab,transform,false);
                 CashFlight.Bind(RewardBranches,balancePanel,profile.isA);
                 Playfield.FlyCoinRequested+=FlyCoin;
+            }
+            if(bonusFlowPrefab!=null){
+                BonusFlow=Instantiate(bonusFlowPrefab,transform,false);
+                BonusFlow.Bind(Playfield,PlayerProgress,Rules,CashFlight,Ads,profile.isA,profile.languageType);
             }
             Ready?.Invoke(Rules);
         }

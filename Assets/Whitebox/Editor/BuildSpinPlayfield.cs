@@ -124,6 +124,7 @@ public static class BuildSpinPlayfield
             data.FindProperty("reels").objectReferenceValue = reelRoot.GetComponent<RecoveredBaseReelController>();
             data.FindProperty("symbols").objectReferenceValue = AssetDatabase.LoadAssetAtPath<RecoveredSymbolCatalog>("Assets/Resources/RecoveredSymbols/OriginalSymbolCatalog.asset");
             data.ApplyModifiedPropertiesWithoutUndo();
+            BuildBonusFlow.AttachNpc(root);
             var saved = PrefabUtility.SaveAsPrefabAsset(root, destination);
             const string entryPath = "Assets/Resources/Whitebox/GameEntry.prefab";
             var entryRoot = PrefabUtility.LoadPrefabContents(entryPath);

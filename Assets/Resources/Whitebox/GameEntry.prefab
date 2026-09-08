@@ -1222,6 +1222,7 @@ MonoBehaviour:
   playfieldPrefab: {fileID: 6276283710307673030, guid: 30e3816eafc8a8a41a7ff4e7ac98a436, type: 3}
   adControls: {fileID: 492426166333366710}
   cashFlightPrefab: {fileID: 3496523774249698004, guid: 28e56ad672b796f48835ceb487427047, type: 3}
+  bonusFlowPrefab: {fileID: 7761479274615700034, guid: 99279d91208a2f742a891c38668f63fe, type: 3}
 --- !u!1 &8873209826350938690
 GameObject:
   m_ObjectHideFlags: 0

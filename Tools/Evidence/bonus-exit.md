@@ -2,7 +2,8 @@
 
 Authoritative input: current `reconstruction/mumu-current/native-functions/game`
 and `analysis/script.json`, plus the current arm64 ELF. This extends the window
-and world transition recovered earlier; main CheckBonus integration remains open.
+and world transition recovered earlier. Main CheckBonus is now connected through
+RecoveredBonusFlow; see `bonus-flow.md` for the current boundary and tests.
 
 ## Native ordering
 

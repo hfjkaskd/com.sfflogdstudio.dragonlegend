@@ -47,10 +47,11 @@ capture uses GameEntry's active config.
 
 ## Remaining main-flow work
 
-This prefab is not yet connected to the main `CheckBonus` entry/completion
-source. `RecoveredBonusExit` now implements close/exit scheduling and completion
+This prefab is now connected to the main Spin post-symbol stage via
+`RecoveredBonusFlow` (see `bonus-flow.md`). `RecoveredBonusExit` implements close/exit scheduling and completion
 with the actual world transition and the window's native scale-out animation;
-see `bonus-exit.md`. Its completion still needs the main CheckBonus consumer.
+see `bonus-exit.md`. The flow consumes completion and waits the source .5 seconds;
+Free/BaseEnd still needs the next consumer.
 
 Nested popup sorting 301 is an integration setting; complete UIManager window
 stack/sorting parity remains unverified. Full source finger conversion, audio

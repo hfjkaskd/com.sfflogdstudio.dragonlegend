@@ -6,6 +6,8 @@ namespace DragonLegend.Whitebox
 {
     public sealed class RecoveredSpinPlayfield : MonoBehaviour
     {
+        [SerializeField] private RecoveredNpcPresentation npc;
+        public RecoveredNpcPresentation Npc=>npc;
         [SerializeField] private RecoveredSpinButton spinButton;
         [SerializeField] private RecoveredBaseReelController reels;
         [SerializeField] private RecoveredSymbolCatalog symbols;

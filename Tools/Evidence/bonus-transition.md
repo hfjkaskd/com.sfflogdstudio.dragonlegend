@@ -95,8 +95,9 @@ Test observation uses Time.timeAsDouble: single-precision Time.time subtraction
 at the cumulative suite time rounded an actual .8-second interval to .799987793.
 This observation correction does not change runtime timing.
 
-This prefab is not yet attached to actual Bonus entry. Do not advance or release
-Spin until the NPC, Bonus window and following main-flow stages are connected.
+Current integration update: `RecoveredBonusFlow` now attaches this world prefab
+to the actual post-symbol Bonus entry, including NPC and window completion; see
+`bonus-flow.md`. Spin must still await the following Free/BaseEnd stages.
 
 Final validation: Artifacts/transition-final-tests.xml passed 222/222 PlayMode tests.
 Fresh current-transition-0.png and current-transition-1.png capture the authored
