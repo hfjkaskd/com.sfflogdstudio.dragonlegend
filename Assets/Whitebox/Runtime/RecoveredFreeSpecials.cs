@@ -13,6 +13,11 @@ namespace DragonLegend.Whitebox
         [SerializeField] private Transform storage;
         [SerializeField] private Vector3 slotCenter;
         [SerializeField] private float coinScale,ballScale;
+        [SerializeField] private string coinStopSound,ballStopSound;
+        [SerializeField] private int stopVibrationMilliseconds;
+        public event Action<string> SoundRequested;
+        public event Action<int> VibrationRequested;
+        private readonly Dictionary<RecoveredReelView,Binding> byReel=new Dictionary<RecoveredReelView,Binding>();
         private ObjectPool<RecoveredFreeCoin> coins;
         private ObjectPool<RecoveredFreeBall> balls;
         private readonly Dictionary<RecoveredSymbolView,List<RecoveredFreeCoin>> coinSlots=new Dictionary<RecoveredSymbolView,List<RecoveredFreeCoin>>();
@@ -32,6 +37,8 @@ namespace DragonLegend.Whitebox
             private readonly RecoveredFreeSpecials owner;
             private readonly RecoveredReelView reel;
             private readonly int column,row;
+            public RecoveredFreeCoin stoppedCoin;
+            public RecoveredFreeBall stoppedBall;
             public Binding(RecoveredFreeSpecials owner,RecoveredReelView reel,int column,int row)
             {
                 this.owner=owner;this.reel=reel;this.column=column;this.row=row;
@@ -52,7 +59,10 @@ namespace DragonLegend.Whitebox
             }
             if(bindings!=null)return;
             bindings=new Binding[15];
-            for(int col=0;col<5;col++)for(int row=0;row<3;row++)bindings[col*3+row]=new Binding(this,reels.At(col,row),col,row);
+            for(int col=0;col<5;col++)for(int row=0;row<3;row++) {
+                var reel=reels.At(col,row);var binding=new Binding(this,reel,col,row);
+                bindings[col*3+row]=binding;byReel.Add(reel,binding);
+            }
         }
         private RecoveredFreeCoin NewCoin(){CreatedCoins++;var coin=Instantiate(coinPrefab,storage,false);coin.gameObject.SetActive(false);return coin;}
         private RecoveredFreeBall NewBall(){CreatedBalls++;var ball=Instantiate(ballPrefab,storage,false);ball.gameObject.SetActive(false);return ball;}
@@ -87,14 +97,25 @@ namespace DragonLegend.Whitebox
         public void ApplyStoppedResult(RecoveredReelView reel,int column,int row)
         {
             ClearCoins(reel);ClearBalls(reel);
+            var binding=byReel[reel];binding.stoppedCoin=null;binding.stoppedBall=null;
             int id=result.GetSymbol(column,row);Component effect;
-            if(id==9)effect=CreateCoin(reel.SymbolAt(0),false);
-            else if(id==11)effect=CreateBall(reel.SymbolAt(0),false);
+            if(id==9)effect=binding.stoppedCoin=CreateCoin(reel.SymbolAt(0),false);
+            else if(id==11)effect=binding.stoppedBall=CreateBall(reel.SymbolAt(0),false);
             else {reel.ApplyFreeStoppedSymbol(id);return;}
             // Native Dictionary.Add rejects a second special landing before Clear.
             stopped.Add(reel,effect);
         }
         public Component StoppedAt(RecoveredReelView reel)=>stopped.TryGetValue(reel,out var effect)?effect:null;
+        public void PlayStopAnimation(RecoveredReelView reel)
+        {
+            var binding=byReel[reel];
+            if(binding.stoppedCoin!=null) {
+                binding.stoppedCoin.PlayShow();SoundRequested?.Invoke(coinStopSound);VibrationRequested?.Invoke(stopVibrationMilliseconds);
+            }
+            if(binding.stoppedBall!=null) {
+                binding.stoppedBall.PlayStart();SoundRequested?.Invoke(ballStopSound);VibrationRequested?.Invoke(stopVibrationMilliseconds);
+            }
+        }
         public void ShowStoppedEffect(RecoveredReelView reel,Transform resultLayer)
         {
             if(!stopped.TryGetValue(reel,out var effect))return;

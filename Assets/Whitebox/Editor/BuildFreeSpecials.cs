@@ -25,6 +25,9 @@ public static class BuildFreeSpecials
         data.FindProperty("storage").objectReferenceValue=storage;
         data.FindProperty("slotCenter").vector3Value=new Vector3(0,.86f,0);
         data.FindProperty("coinScale").floatValue=.7f;data.FindProperty("ballScale").floatValue=.8f;
+        data.FindProperty("coinStopSound").stringValue="coinshow";
+        data.FindProperty("ballStopSound").stringValue="scatterShow";
+        data.FindProperty("stopVibrationMilliseconds").intValue=200;
         data.ApplyModifiedPropertiesWithoutUndo();
         data=new SerializedObject(root.GetComponent<RecoveredFreeReels>());data.FindProperty("specials").objectReferenceValue=specials;data.ApplyModifiedPropertiesWithoutUndo();
     }

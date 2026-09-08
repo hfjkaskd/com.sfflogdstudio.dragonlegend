@@ -45,7 +45,8 @@ despawn a result-layer effect and that restart restores parenting/clipping befor
 wrap cleanup. The fresh whole-board capture is
 Artifacts/current-free-columns-stopped.png.
 
-Still pending: PlayFreeStopAnim, per-spin rewards and collection/flight,
+PlayFreeStopAnim and the five-column reel-phase controller are now connected
+(see free-stop-presentation.md). Still pending: per-spin rewards and collection/flight,
 FreeAutoSpin accounting/continuations, full Free mode UI and production FreeEntry
 binding. A complete Free lifecycle or full game parity is not established here.
 

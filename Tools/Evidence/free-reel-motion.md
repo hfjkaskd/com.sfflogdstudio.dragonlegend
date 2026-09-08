@@ -43,7 +43,8 @@ overshoot, final flags, next-wrap pool cleanup and paused delayed callbacks.
 
 Scope: the independent mini reel can now spin, land its actual result and return.
 FreeRoll three-row callback aggregation and the Free StarSpin async wrapper are
-now connected (see free-columns.md). Still pending: PlayFreeStopAnim, reward collection/flight, FreeAutoSpin,
+now connected (see free-columns.md). Stop presentation is connected
+(free-stop-presentation.md). Still pending: reward collection/flight, full FreeAutoSpin,
 mode view switching or production FreeEntry binding. Source Free StarSpin waits
 for !isStop, not !isStartSpin; that unusual startup completion must be preserved
 when integrating the higher-level wrapper. SDK behavior remains unchanged.

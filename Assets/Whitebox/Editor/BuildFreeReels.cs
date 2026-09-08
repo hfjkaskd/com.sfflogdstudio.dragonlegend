@@ -71,6 +71,14 @@ public static class BuildFreeReels
             }
             settings.ApplyModifiedPropertiesWithoutUndo();
             BuildFreeSpecials.Attach(root);
+            var controller=root.AddComponent<RecoveredFreeReelController>();
+            var controllerData=new SerializedObject(controller);
+            controllerData.FindProperty("reels").objectReferenceValue=root.GetComponent<RecoveredFreeReels>();
+            controllerData.FindProperty("accelerationSeconds").floatValue=.2f;
+            controllerData.FindProperty("reelStopSound").stringValue="reelstop";
+            controllerData.ApplyModifiedPropertiesWithoutUndo();
+            settings=new SerializedObject(root.GetComponent<RecoveredFreeReels>());
+            settings.FindProperty("controller").objectReferenceValue=controller;settings.ApplyModifiedPropertiesWithoutUndo();
             PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredSymbols/FreeReels.prefab");
         } finally { Object.DestroyImmediate(root); }
         AssetDatabase.SaveAssets();

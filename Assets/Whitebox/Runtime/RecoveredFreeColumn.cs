@@ -33,6 +33,8 @@ namespace DragonLegend.Whitebox
                 operation.Continuation=()=>{if(operation.Error!=null)Debug.LogException(operation.Error);};
             }
         }
+        public void PlayStopAnimation()
+        {for(int i=0;i<rows.Length;i++)specials.PlayStopAnimation(rows[i].Reel);}
         public void ShowFreeEffects()
         {for(int i=0;i<rows.Length;i++)specials.ShowStoppedEffect(rows[i].Reel,resultLayer);}
     }

@@ -43,3 +43,6 @@ Validation: full Unity 2022.3.62f3 PlayMode suite **270/270 passed** in
 covering the source clips and setup pose. The fresh 1200x600 initial/appearance
 capture was inspected at original resolution; the initial source label 96.3
 is visibly preserved and is not being presented as a calculated reward.
+
+Active stop-time replay now retains overlapping scale tweens and lazy start
+values; see free-stop-presentation.md. Inactive pool lifetime remains open.
