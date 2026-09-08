@@ -15,6 +15,8 @@ namespace DragonLegend.Whitebox
         public RecoveredBonusCollection BonusCollection => bonusCollection;
         [SerializeField] private RecoveredCoinStopPresenter coinStops;
         public RecoveredCoinStopPresenter CoinStops => coinStops;
+        [SerializeField] private RecoveredDownWinText downWin;
+        public RecoveredDownWinText DownWin=>downWin;
         private RecoveredReelWait rewardWait;
         private RecoveredSpinEntry entry;
         private RecoveredSpinResult result;
@@ -42,6 +44,9 @@ namespace DragonLegend.Whitebox
             Bet = isA ? 0 : bets[0];
             reels.Initialize(symbols);
             if(coinStops!=null)coinStops.Bind(reels,languageType,bonusCollection,GetComponentInParent<Canvas>().sortingOrder);
+            downWin.Bind(languageType);
+            coinStops.RewardRegistered+=downWin.Register;
+            coinStops.RewardPresentationFinished+=downWin.PresentationFinished;
             entry.StartVisualsRequested += Started;
             reels.ReelsStopped += Stopped;
             spinButton.Button.onClick.AddListener(Click);
@@ -55,7 +60,7 @@ namespace DragonLegend.Whitebox
                 while (result.IsGenerating) result.Step();
             }
         }
-        private void Started() { IsBusy = true; AwaitingRewards = false; Error = null; spinButton.PlayAcceptedClick(); }
+        private void Started() { IsBusy = true; AwaitingRewards = false; Error = null; downWin.Started(); spinButton.PlayAcceptedClick(); }
         private void ResultReady(int index) => reels.Begin(index, ReadColumn);
         private IReadOnlyList<int> ReadColumn(int index)
         {
@@ -73,6 +78,7 @@ namespace DragonLegend.Whitebox
         {
             rewardWait = null;
             AwaitingRewards = true;
+            downWin.BeginScan();
             RewardSequenceRequested?.Invoke();
             if (entry != null)
                 BonusCoins.Begin(result.Board.GetSymbol, PresentBonusCoin,
@@ -93,6 +99,7 @@ namespace DragonLegend.Whitebox
         {
             rewardWait?.Cancel(); rewardWait = null;
             BonusCoins?.CancelForProfileChange(); BonusCoins = null;
+            if(downWin!=null) { downWin.Cancel(); if(coinStops!=null) {coinStops.RewardRegistered-=downWin.Register;coinStops.RewardPresentationFinished-=downWin.PresentationFinished;} }
             if(coinStops!=null)coinStops.Unbind();
             spinButton.Button.onClick.RemoveListener(Click);
             if (entry != null) entry.StartVisualsRequested -= Started;

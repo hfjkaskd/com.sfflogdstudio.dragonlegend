@@ -17,6 +17,8 @@ namespace DragonLegend.Whitebox
         public int CreatedFlashCount=>flashPool==null?0:flashPool.CountAll;
         public RecoveredLampFlash FlashAt(int index)=>flashes[index];
         private RecoveredBonusCollection collection;
+        public event Action<GameObject,float> RewardRegistered;
+        public event Action<GameObject> RewardPresentationFinished;
         private int canvasOrder;
         private Transform newFlightParent;
         private ObjectPool<RecoveredLampFlight> flightPool;
@@ -42,6 +44,7 @@ namespace DragonLegend.Whitebox
             var effect=Instantiate(effectPrefab,transform,false);
             effect.RevealSoundRequested+=RevealSound;
             effect.LampFlightRequested+=StartFlight;
+            effect.RewardPresentationFinished+=value=>RewardPresentationFinished?.Invoke(value.gameObject);
             return effect;
         }
         private void RevealSound()=>CoinRevealSoundRequested?.Invoke();
@@ -49,7 +52,7 @@ namespace DragonLegend.Whitebox
         {
             // RollReel.PlayBonusAnim only invokes its action for an existing row lookup.
             var effect=lookup[column,row];
-            if(effect!=null)effect.PlayRewardReveal(reward,language,collection==null?null:collection.GetUnselectedTarget(column,collectionCount));
+            if(effect!=null) { RewardRegistered?.Invoke(effect.gameObject,reward); effect.PlayRewardReveal(reward,language,collection==null?null:collection.GetUnselectedTarget(column,collectionCount)); }
         }
         public RecoveredCoinStopEffect CoinAt(int column,int row)=>lookup[column,row];
         private RecoveredLampFlight CreateFlight()

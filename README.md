@@ -366,3 +366,20 @@ RecoveredCoinStopPresenter 使用官方 ObjectPool 回收/复用飞行对象。�
 全量 PlayMode 150 项通过（Artifacts/lamp-flash-all-tests.xml），覆盖六区域加法材质、原始关键帧、0.5 秒完成、暂停与取消，以及实际两枚金币到达后父节点、点亮和对象池回收。完整奖励汇总/入账、Wild/Jackpot/免费分支、实际音效以及主背景和完整布局仍未完成；SDK 保持现有处理方式。
 
 追加渲染验证通过（Artifacts/lamp-flash-render-tests.xml）：等待实际非透明动画帧，再在同一帧禁用闪光图像重新渲染，灯位区域有超过 100 个像素增加至少 10 个色阶，排除常亮金币导致的假阳性。已查看最新 current-lamp-flash.png。首次过早截图的对比失败暴露了测试采样问题，改为等待实际动画状态后通过；没有为测试改变运行时动画时序。
+
+
+## 本轮：底部中奖金额的独立延迟汇总
+
+按 UIMainView.DownWinTextCoin 状态机 0x23d3fb4，恢复独立的 0.3 秒缩放时间等待，之后读取 JinbiRewardsDic 中当前特效对应金额（不存在时为 0），累加 temp_down_win，同步 DownWinCount，使用原 CurrencyUtils 的两位小数格式刷新底部文字。读取发生在等待后，不捕获早期金额；字典值不被消费，多次回调可重复累加。CheckPlayBonusAnim 0x23cb808 起始只清零 temp_down_win/bonusCount 和字典，不提前覆盖 DownWinCount 或显示文字。
+
+实际停轮金币在 PlayAnim 前登记对象与奖励；奖励文字结束时先尝试启动灯位飞行，再发出奖励展示完成事件，接入底部独立等待。没有灯位目标也能继续汇总，底部金额不依赖灯位到达。此阶段没有调用 SetGreenCount，顶部余额和存档不提前变化。版本解绑取消待处理等待与订阅，避免旧版本回调污染新入口。
+
+从原 UIMainView 的 DownWinText（fileID 114434512891515560）直接提取 WinTxt 子树，保留 Bottom 下位置 (-7,58)、尺寸 (225.87,59.02)、70 字号、禁用自动字号、原 Quorum SDF 字体、#003815_3 材质、渐变色、对齐和溢出设置，仅将原导出 TMP 脚本 GUID 映射为本机 Unity 官方 TextMeshPro 的 GUID。原 TMP、字体与材质程序集保持官方版本。新的基础入口按 SetInitShow 0x23bca34 的暂存额为零分支显示 GOOD LUCK；接受转动按 ClickSpin 0x23d1f30 再次显示相同原文。
+
+全量 PlayMode 151 项通过（Artifacts/down-win-all-tests.xml）。新增覆盖延迟、暂停、延后查字典、重复回调、重复登记异常、清空扫描时保留旧显示、地区金额格式及停用取消；实际 GameEntry 两枚停轮金币各触发一次底部累计，最终金额等于本次奖励扫描合计，顶部余额保持不变。已查看最新 current-down-win.png，底部金额在原位置真实渲染。
+
+原 b__1（0x23c1114）还有单独飞向底部文本的粒子及金币二次缩放，抵达后又生成 DownEfWin 光效（0x23c1824）；这部分表现尚未接入，不能把本轮独立文字汇总称为完整奖励飞行。顶部入账、Wild/Jackpot/免费分支、完整背景和布局仍有缺口，SDK 不变。
+
+入口初始文案修正后，3 项定向 PlayMode 复测全部通过（Artifacts/down-win-final-tests.xml），包括实际入口初始化 GOOD LUCK 与两金币汇总渲染。
+
+视觉复核补充：全量测试截图中底部 $0.40 完整显示；随后定向测试重生成的 current-down-win.png 出现部分文字/图像被遮挡（含已有 GM 文本和金币），底部 $0.26 也不完整。逻辑和 Prefab 参数验证通过不能证明完整渲染正确；遮挡原因尚未确定，下一轮须继续检查渲染顺序、遮罩和截图渲染路径，不把当前截图作为完美 1:1 证据。

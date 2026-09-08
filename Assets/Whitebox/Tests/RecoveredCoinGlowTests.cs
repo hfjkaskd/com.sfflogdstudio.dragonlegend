@@ -61,14 +61,15 @@ public sealed class RecoveredCoinGlowTests
         try {
             Time.timeScale = 1; Time.captureDeltaTime = .05f;
             for (int i = 0; i < 200 && entry.Playfield == null; i++) yield return null;
-            var field = entry.Playfield; Assert.IsNotNull(field); var board = entry.SpinResult.Board;
+            var field = entry.Playfield; Assert.IsNotNull(field); Assert.AreEqual("GOOD LUCK",field.DownWin.Label.text); var board = entry.SpinResult.Board;
             board.BeginGuaranteedBonus(2, new[] { 0, 4 }, new System.Random(21), (min, max) => 0);
             while (board.IsPlacingSingleSymbol) board.StepSingleSymbol();
             var columns = new int[5][];
             for (int c = 0; c < 5; c++) { columns[c] = new int[3]; for (int r = 0; r < 3; r++) columns[c][r] = board.GetSymbol(c, r); }
             float balance = entry.PlayerProgress.GreenCount; int presentations = 0, sounds = 0, firstReward = 0;
             field.CoinStops.CoinRevealSoundRequested += () => sounds++;
-            int arrivals=0;
+            int arrivals=0, winUpdates=0;float displayedReward=0;
+            field.DownWin.Changed+=value=>{winUpdates++;displayedReward=value;};
             field.CoinStops.ExpSoundRequested+=()=>{
                 Assert.AreEqual(1,field.CoinStops.ActiveFlightCount);
                 Assert.IsFalse(field.CoinStops.FlightAt(0).Destination.GetChild(0).gameObject.activeSelf);
@@ -146,6 +147,13 @@ public sealed class RecoveredCoinGlowTests
 
             for (int i = 0; i < 80 && (field.BonusCoins.IsRunning || first.Glow.IsPlaying || second.Glow.IsPlaying || field.CoinStops.ActiveFlashCount>0); i++) yield return null;
             Assert.AreEqual(2, presentations); Assert.AreEqual(2, sounds); Assert.IsNull(field.BonusCoins.Error);
+            Assert.AreEqual(2,winUpdates);Assert.AreEqual(field.BonusCoins.TotalReward,displayedReward);
+            Assert.AreEqual(RecoveredCurrency.Format(displayedReward,0),field.DownWin.Label.text);
+            Canvas.ForceUpdateCanvases();
+            RenderPipeline.SubmitRenderRequest(camera,new UniversalRenderPipeline.SingleCameraRequest{destination=target});
+            RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+            File.WriteAllBytes(Path.GetFullPath(Path.Combine(Application.dataPath,"../Artifacts/current-down-win.png")),capture.EncodeToPNG());
+
             Assert.IsFalse(first.Glow.gameObject.activeSelf); Assert.IsFalse(second.Glow.gameObject.activeSelf);
             Assert.AreEqual(balance, entry.PlayerProgress.GreenCount, "Reveal must not prematurely credit the missing flight stage.");
             Assert.IsTrue(field.BonusCollection.GetUnselectedTarget(0, 1).GetChild(0).gameObject.activeSelf);

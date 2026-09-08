@@ -35,11 +35,13 @@ public static class BuildSpinPlayfield
             foreach (var child in reelRoot.GetComponentsInChildren<Transform>(true)) child.gameObject.layer = 5;
             var bottom = Rect("Bottom", root.transform, new Vector2(.5f, 0), new Vector2(.5f, 0),
                 new Vector2(-.003418f, 0), new Vector2(1080, 292.24f));
+            var winRoot=(GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredUI/DownWinText.prefab"),bottom);
             var main = Rect("Main", bottom, new Vector2(.5f, .5f), new Vector2(.5f, .5f), Vector2.zero, new Vector2(100, 100));
             var buttonRoot = (GameObject)PrefabUtility.InstantiatePrefab(
                 AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredUI/SpinButton.prefab"), main);
             ((RectTransform)buttonRoot.transform).anchoredPosition = new Vector2(417, -23.793f);
             var data = new SerializedObject(root.GetComponent<RecoveredSpinPlayfield>());
+            data.FindProperty("downWin").objectReferenceValue=winRoot.GetComponent<RecoveredDownWinText>();
             data.FindProperty("rewardDelay").floatValue = .5f;
             data.FindProperty("bonusCoinInterval").floatValue = .5f;
             data.FindProperty("coinStops").objectReferenceValue=coinStops;
