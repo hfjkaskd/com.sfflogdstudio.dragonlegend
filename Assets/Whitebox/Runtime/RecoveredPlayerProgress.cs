@@ -113,6 +113,12 @@ namespace DragonLegend.Whitebox
             save();
         }
 
+        // CheckPlayBonusAnim directly increments PlayerData, without a cap or save.
+        // This is distinct from GameData.SetBonusArea below.
+        internal int CollectPresentedBonusCoin(int reel)
+        {
+            return data.BonusArea[reel] = unchecked(data.BonusArea[reel] + 1);
+        }
         // GameData.SetBonusArea 0x236f868: each column stops accepting hits at 2.
         // Existing values above 2 are retained, negative values increment without clamping.
         // The original emits no UI event here and does not save on the early return.

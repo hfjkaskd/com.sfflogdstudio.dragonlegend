@@ -29,6 +29,7 @@ public static class BuildSpinPlayfield
             ((RectTransform)buttonRoot.transform).anchoredPosition = new Vector2(417, -23.793f);
             var data = new SerializedObject(root.GetComponent<RecoveredSpinPlayfield>());
             data.FindProperty("rewardDelay").floatValue = .5f;
+            data.FindProperty("bonusCoinInterval").floatValue = .5f;
             data.FindProperty("spinButton").objectReferenceValue = buttonRoot.GetComponent<RecoveredSpinButton>();
             data.FindProperty("reels").objectReferenceValue = reelRoot.GetComponent<RecoveredBaseReelController>();
             data.FindProperty("symbols").objectReferenceValue = AssetDatabase.LoadAssetAtPath<RecoveredSymbolCatalog>("Assets/Resources/RecoveredSymbols/OriginalSymbolCatalog.asset");

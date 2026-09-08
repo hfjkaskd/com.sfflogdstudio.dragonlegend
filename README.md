@@ -256,3 +256,17 @@ SpinPlayfield 现在从 Prefab 的 rewardDelay=0.5 读取参数，复用已恢�
 此次修正只恢复奖励入口时序；七段奖励检查的原生表现及完整回合链仍待完成，不以固定延时替代它们，也不宣称已完成 1:1。
 
 最终全量 PlayMode 138 项通过、0 失败（Artifacts/post-reel-delay-tests.xml）。扩展实际入口测试：停轮当帧奖励尚未开始、提前结束回合报错、暂停 15 帧不推进延时、恢复后累计至少 0.5 秒才请求奖励；另覆盖 GM 在这段等待内切换后不触发旧奖励。已查看本次生成的 current-entry-spin.png，现有棋盘落位正常，场景和奖励视觉仍明显未完成。
+
+## 本轮：接入 Bonus 金币扫描的数据与等待阶段
+
+CheckPlayBonusAnim 0x23cb808 按列 0..4、每列行 0..2 读取当前结果；仅 ID=9 处理金币。ConfigManager.GetCoinReward 0x236b93c 从 Ronig.QoinRgkorp 两项读取范围，调用整数 Random.Range(min,max+1)，上界包含，保留原 unchecked 加一。每枚先累加 float 奖励总额，再直接对 PlayerData.BonusArea 当前列加一，随后获取表现目标并请求金币表现，等待 0.5 个 scaled 秒后继续扫描；最后一枚也等待。无金币时同步完成，不额外等待、不消耗奖励随机数。
+
+新增 RecoveredBonusCoinSequence 并从主 SpinPlayfield 的奖励入口实际启动，间隔保存在 Prefab。扫描完成发出后续 Wild 检查请求；当前尚未连接该段完整表现。每枚请求包含列、行、奖励与递增后收集数，供原生金币表现继续接入。保存总额不等于增加余额；这里只恢复扫描数据阶段，没有伪造飞行完成或发奖回调。
+
+原 0x23cbd14 是直接 List.set_Item，不是 GameData.SetBonusArea：可以超过 2，不立即保存。现有受上限约束的 SetBonusArea 保持其原语义，新增独立内部写入路径。BonusCoins.GetUnSelect 0x23b82f0 对 count>=3 返回空目标，但金币奖励扫描仍继续，此时不能把收集数强行裁切成 2。
+
+序列使用已恢复的 Update 等待器，GM 切换明确取消旧等待；取消或表现请求失败保留此前发生的数据写入，不伪造完成，也不回滚原调用前的随机数。未将 15 格预先转成金币列表，延迟后的格子按原顺序读取当时结果。
+
+金币特效实例、目标两格灯位、飞行、音效、余额入账回调及后续 Wild/Jackpot 等奖励表现仍待恢复。当前接入不表示金币视觉或完整回合完成，SDK 未修改。
+
+最终全量 PlayMode 141 项通过、0 失败（Artifacts/bonus-coin-sequence-tests.xml）。新增三项测试覆盖当前棋盘逐列逐行读取、原 Random.Range 序列及后继随机值、暂停、每枚及最后一枚等待、超过 2 与负数收集值、零即时存档/余额变化、GM 取消、表现异常，以及无金币同步完成。已查看本次 current-entry-spin.png；它验证现有入口落位，未将这张无金币引导画面当作金币飞行视觉完成证据。

@@ -10,6 +10,7 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredBaseReelController reels;
         [SerializeField] private RecoveredSymbolCatalog symbols;
         [SerializeField] private float rewardDelay;
+        [SerializeField] private float bonusCoinInterval;
         private RecoveredReelWait rewardWait;
         private RecoveredSpinEntry entry;
         private RecoveredSpinResult result;
@@ -20,6 +21,9 @@ namespace DragonLegend.Whitebox
         public bool IsBusy { get; private set; }
         public bool AwaitingRewards { get; private set; }
         public Exception Error { get; private set; }
+        public RecoveredBonusCoinSequence BonusCoins { get; private set; }
+        public event Action<RecoveredBonusCoin> BonusCoinPresentationRequested;
+        public event Action WildColumnsCheckRequested;
         public RecoveredSpinButton SpinButton => spinButton;
         public RecoveredBaseReelController Reels => reels;
         public event Action RewardSequenceRequested;
@@ -27,6 +31,7 @@ namespace DragonLegend.Whitebox
             RecoveredPlayerProgress progress, RecoveredGameplayRules gameplayRules, bool isA)
         {
             Unbind(); entry = spinEntry; result = spinResult; rules = gameplayRules;
+            BonusCoins = new RecoveredBonusCoinSequence(rules, progress, bonusCoinInterval);
             rules.GetBet(isA, progress.Level, bets);
             // GameData.Init resets Bet=0; SetBet only assigns list[0] for the normal branch.
             Bet = isA ? 0 : bets[0];
@@ -63,6 +68,9 @@ namespace DragonLegend.Whitebox
             rewardWait = null;
             AwaitingRewards = true;
             RewardSequenceRequested?.Invoke();
+            if (entry != null)
+                BonusCoins.Begin(result.Board.GetSymbol, coin => BonusCoinPresentationRequested?.Invoke(coin),
+                    () => WildColumnsCheckRequested?.Invoke());
         }
         // Called by the eventual CheckBaseEnd completion, never by a reel stop callback.
         public void CompleteBaseRound()
@@ -73,6 +81,7 @@ namespace DragonLegend.Whitebox
         public void Unbind()
         {
             rewardWait?.Cancel(); rewardWait = null;
+            BonusCoins?.CancelForProfileChange(); BonusCoins = null;
             spinButton.Button.onClick.RemoveListener(Click);
             if (entry != null) entry.StartVisualsRequested -= Started;
             reels.ReelsStopped -= Stopped;

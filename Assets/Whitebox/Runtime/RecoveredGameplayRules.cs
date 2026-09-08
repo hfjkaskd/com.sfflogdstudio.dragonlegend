@@ -20,6 +20,7 @@ namespace DragonLegend.Whitebox
         public int GetWildSpinCD() => data.Gimrol.KilpGpinQP[0]; // 0x236b4c8
         public int GetMinSpin() => data.Ronig.MinGpin[0]; // 0x236b8d8
         public int GetCoinSpinAmount() => RandomListWeight(data.Ronig.QoinGpinKgiitr);
+        public int GetCoinReward() => UnityEngine.Random.Range(data.Ronig.QoinRgkorp[0], unchecked(data.Ronig.QoinRgkorp[1] + 1)); // 0x236b93c, inclusive upper bound
         public int GetCoinSpinAmountWin() // 0x236b828; removes first weight, no index +1
         {
             if (winningCoinWeights.Count == 0)

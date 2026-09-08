@@ -198,6 +198,7 @@ MonoBehaviour:
   reels: {fileID: 9177660176823275797}
   symbols: {fileID: 11400000, guid: dc8c6f6a2b1b42e698943b65a3d03c7d, type: 2}
   rewardDelay: 0.5
+  bonusCoinInterval: 0.5
 --- !u!1001 &1181584291013865697
 PrefabInstance:
   m_ObjectHideFlags: 0
