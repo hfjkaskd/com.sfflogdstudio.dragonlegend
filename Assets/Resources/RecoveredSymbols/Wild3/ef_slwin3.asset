@@ -1,0 +1,1743 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d8102fb0c9eccf4c8e769085038e1b6, type: 3}
+  m_Name: ef_slwin3
+  m_EditorClassIdentifier:
+  bones:
+  - name: root
+    parent: -1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: bj
+    parent: 0
+    mode: 0
+    x: -1.1170645
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: dx
+    parent: 0
+    mode: 0
+    x: 0.0000008742276
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: 3
+    parent: 2
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 2
+    scaleY: 2
+  slots:
+  - bone: 1
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 3
+    attachment: -1
+    tint: {r: 0.99607843, g: 1, b: 0.54509807, a: 1}
+    additive: 0
+  - bone: 3
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 3
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  attachments:
+  - name: 3aaa/3aaa0
+    slot: 1
+    positions:
+    - {x: -69, y: -145}
+    - {x: -69, y: 145}
+    - {x: 67, y: 145}
+    - {x: 67, y: -145}
+    uv:
+    - {x: 0.62966806, y: 0.6704289}
+    - {x: 0.62966806, y: 0.99774265}
+    - {x: 0.7707469, y: 0.99774265}
+    - {x: 0.7707469, y: 0.6704289}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa1
+    slot: 1
+    positions:
+    - {x: -70, y: -145}
+    - {x: -70, y: 147}
+    - {x: 66, y: 147}
+    - {x: 66, y: -145}
+    uv:
+    - {x: 0.7126556, y: 0.0022573364}
+    - {x: 0.7126556, y: 0.33182845}
+    - {x: 0.85373443, y: 0.33182845}
+    - {x: 0.85373443, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa2
+    slot: 1
+    positions:
+    - {x: -75, y: -147}
+    - {x: -75, y: 161}
+    - {x: 66, y: 161}
+    - {x: 66, y: -147}
+    uv:
+    - {x: 0.002074689, y: 0.0022573364}
+    - {x: 0.002074689, y: 0.34988713}
+    - {x: 0.14834026, y: 0.34988713}
+    - {x: 0.14834026, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa3
+    slot: 1
+    positions:
+    - {x: -76, y: -147}
+    - {x: -76, y: 155}
+    - {x: 64, y: 155}
+    - {x: 64, y: -147}
+    uv:
+    - {x: 0.29149377, y: 0.34650114}
+    - {x: 0.29149377, y: 0.6873589}
+    - {x: 0.43672198, y: 0.6873589}
+    - {x: 0.43672198, y: 0.34650114}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa4
+    slot: 1
+    positions:
+    - {x: -73, y: -148}
+    - {x: -73, y: 146}
+    - {x: 67, y: 146}
+    - {x: 67, y: -148}
+    uv:
+    - {x: 0.5819502, y: 0.3363431}
+    - {x: 0.5819502, y: 0.6681716}
+    - {x: 0.7271784, y: 0.6681716}
+    - {x: 0.7271784, y: 0.3363431}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa5
+    slot: 1
+    positions:
+    - {x: -70, y: -148}
+    - {x: -70, y: 159}
+    - {x: 68, y: 159}
+    - {x: 68, y: -148}
+    uv:
+    - {x: 0.002074689, y: 0.35214448}
+    - {x: 0.002074689, y: 0.6986456}
+    - {x: 0.14522822, y: 0.6986456}
+    - {x: 0.14522822, y: 0.35214448}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa6
+    slot: 1
+    positions:
+    - {x: -69, y: -148}
+    - {x: -69, y: 156}
+    - {x: 68, y: 156}
+    - {x: 68, y: -148}
+    uv:
+    - {x: 0.14730291, y: 0.35214448}
+    - {x: 0.14730291, y: 0.6952596}
+    - {x: 0.28941908, y: 0.6952596}
+    - {x: 0.28941908, y: 0.35214448}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa7
+    slot: 1
+    positions:
+    - {x: -71, y: -147}
+    - {x: -71, y: 158}
+    - {x: 67, y: 158}
+    - {x: 67, y: -147}
+    uv:
+    - {x: 0.31846473, y: 0.70090294}
+    - {x: 0.002074689, y: 0.70090294}
+    - {x: 0.002074689, y: 0.8566591}
+    - {x: 0.31846473, y: 0.8566591}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa8
+    slot: 1
+    positions:
+    - {x: -67, y: -147}
+    - {x: -67, y: 156}
+    - {x: 68, y: 156}
+    - {x: 68, y: -147}
+    uv:
+    - {x: 0.15041494, y: 0.0022573364}
+    - {x: 0.15041494, y: 0.3442438}
+    - {x: 0.29045644, y: 0.3442438}
+    - {x: 0.29045644, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa9
+    slot: 1
+    positions:
+    - {x: -69, y: -146}
+    - {x: -69, y: 150}
+    - {x: 68, y: 150}
+    - {x: 68, y: -146}
+    uv:
+    - {x: 0.62759334, y: 0.68961626}
+    - {x: 0.3205394, y: 0.68961626}
+    - {x: 0.3205394, y: 0.84424376}
+    - {x: 0.62759334, y: 0.84424376}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa10
+    slot: 1
+    positions:
+    - {x: -68, y: -144}
+    - {x: -68, y: 151}
+    - {x: 68, y: 151}
+    - {x: 68, y: -144}
+    uv:
+    - {x: 0.43879667, y: 0.33860046}
+    - {x: 0.43879667, y: 0.67155755}
+    - {x: 0.5798755, y: 0.67155755}
+    - {x: 0.5798755, y: 0.33860046}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa11
+    slot: 1
+    positions:
+    - {x: -67, y: -149}
+    - {x: -67, y: 150}
+    - {x: 68, y: 150}
+    - {x: 68, y: -149}
+    uv:
+    - {x: 0.29253113, y: 0.0022573364}
+    - {x: 0.29253113, y: 0.33972913}
+    - {x: 0.4325726, y: 0.33972913}
+    - {x: 0.4325726, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa12
+    slot: 1
+    positions:
+    - {x: -70, y: -150}
+    - {x: -70, y: 146}
+    - {x: 67, y: 146}
+    - {x: 67, y: -150}
+    uv:
+    - {x: 0.4346473, y: 0.0022573364}
+    - {x: 0.4346473, y: 0.3363431}
+    - {x: 0.5767635, y: 0.3363431}
+    - {x: 0.5767635, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa13
+    slot: 1
+    positions:
+    - {x: -62, y: -149}
+    - {x: -62, y: 143}
+    - {x: 67, y: 143}
+    - {x: 67, y: -149}
+    uv:
+    - {x: 0.62344396, y: 0.8465011}
+    - {x: 0.3205394, y: 0.8465011}
+    - {x: 0.3205394, y: 0.99209934}
+    - {x: 0.62344396, y: 0.99209934}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa14
+    slot: 1
+    positions:
+    - {x: -65, y: -148}
+    - {x: -65, y: 142}
+    - {x: 67, y: 142}
+    - {x: 67, y: -148}
+    uv:
+    - {x: 0.7292531, y: 0.3340858}
+    - {x: 0.7292531, y: 0.66139954}
+    - {x: 0.86618257, y: 0.66139954}
+    - {x: 0.86618257, y: 0.3340858}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa15
+    slot: 1
+    positions:
+    - {x: -68, y: -146}
+    - {x: -68, y: 142}
+    - {x: 67, y: 142}
+    - {x: 67, y: -146}
+    uv:
+    - {x: 0.85580915, y: 0.0022573364}
+    - {x: 0.85580915, y: 0.32731378}
+    - {x: 0.9958506, y: 0.32731378}
+    - {x: 0.9958506, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa16
+    slot: 1
+    positions:
+    - {x: -63, y: -145}
+    - {x: -63, y: 143}
+    - {x: 61, y: 143}
+    - {x: 61, y: -145}
+    uv:
+    - {x: 0.7728216, y: 0.6636569}
+    - {x: 0.7728216, y: 0.9887133}
+    - {x: 0.9014523, y: 0.9887133}
+    - {x: 0.9014523, y: 0.6636569}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa17
+    slot: 1
+    positions:
+    - {x: -61, y: -143}
+    - {x: -61, y: 145}
+    - {x: 61, y: 145}
+    - {x: 61, y: -143}
+    uv:
+    - {x: 0.3008299, y: 0.85891646}
+    - {x: 0.002074689, y: 0.85891646}
+    - {x: 0.002074689, y: 0.996614}
+    - {x: 0.3008299, y: 0.996614}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa18
+    slot: 1
+    positions:
+    - {x: -63, y: -143}
+    - {x: -63, y: 145}
+    - {x: 62, y: 145}
+    - {x: 62, y: -143}
+    uv:
+    - {x: 0.8682573, y: 0.3295711}
+    - {x: 0.8682573, y: 0.65462756}
+    - {x: 0.9979253, y: 0.65462756}
+    - {x: 0.9979253, y: 0.3295711}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa19
+    slot: 1
+    positions:
+    - {x: -65, y: -145}
+    - {x: -65, y: 149}
+    - {x: 62, y: 149}
+    - {x: 62, y: -145}
+    uv:
+    - {x: 0.57883817, y: 0.0022573364}
+    - {x: 0.57883817, y: 0.3340858}
+    - {x: 0.7105809, y: 0.3340858}
+    - {x: 0.7105809, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa0
+    slot: 2
+    positions:
+    - {x: -69, y: -145}
+    - {x: -69, y: 145}
+    - {x: 67, y: 145}
+    - {x: 67, y: -145}
+    uv:
+    - {x: 0.62966806, y: 0.6704289}
+    - {x: 0.62966806, y: 0.99774265}
+    - {x: 0.7707469, y: 0.99774265}
+    - {x: 0.7707469, y: 0.6704289}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa1
+    slot: 2
+    positions:
+    - {x: -70, y: -145}
+    - {x: -70, y: 147}
+    - {x: 66, y: 147}
+    - {x: 66, y: -145}
+    uv:
+    - {x: 0.7126556, y: 0.0022573364}
+    - {x: 0.7126556, y: 0.33182845}
+    - {x: 0.85373443, y: 0.33182845}
+    - {x: 0.85373443, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa2
+    slot: 2
+    positions:
+    - {x: -75, y: -147}
+    - {x: -75, y: 161}
+    - {x: 66, y: 161}
+    - {x: 66, y: -147}
+    uv:
+    - {x: 0.002074689, y: 0.0022573364}
+    - {x: 0.002074689, y: 0.34988713}
+    - {x: 0.14834026, y: 0.34988713}
+    - {x: 0.14834026, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa3
+    slot: 2
+    positions:
+    - {x: -76, y: -147}
+    - {x: -76, y: 155}
+    - {x: 64, y: 155}
+    - {x: 64, y: -147}
+    uv:
+    - {x: 0.29149377, y: 0.34650114}
+    - {x: 0.29149377, y: 0.6873589}
+    - {x: 0.43672198, y: 0.6873589}
+    - {x: 0.43672198, y: 0.34650114}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa4
+    slot: 2
+    positions:
+    - {x: -73, y: -148}
+    - {x: -73, y: 146}
+    - {x: 67, y: 146}
+    - {x: 67, y: -148}
+    uv:
+    - {x: 0.5819502, y: 0.3363431}
+    - {x: 0.5819502, y: 0.6681716}
+    - {x: 0.7271784, y: 0.6681716}
+    - {x: 0.7271784, y: 0.3363431}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa5
+    slot: 2
+    positions:
+    - {x: -70, y: -148}
+    - {x: -70, y: 159}
+    - {x: 68, y: 159}
+    - {x: 68, y: -148}
+    uv:
+    - {x: 0.002074689, y: 0.35214448}
+    - {x: 0.002074689, y: 0.6986456}
+    - {x: 0.14522822, y: 0.6986456}
+    - {x: 0.14522822, y: 0.35214448}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa6
+    slot: 2
+    positions:
+    - {x: -69, y: -148}
+    - {x: -69, y: 156}
+    - {x: 68, y: 156}
+    - {x: 68, y: -148}
+    uv:
+    - {x: 0.14730291, y: 0.35214448}
+    - {x: 0.14730291, y: 0.6952596}
+    - {x: 0.28941908, y: 0.6952596}
+    - {x: 0.28941908, y: 0.35214448}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa7
+    slot: 2
+    positions:
+    - {x: -71, y: -147}
+    - {x: -71, y: 158}
+    - {x: 67, y: 158}
+    - {x: 67, y: -147}
+    uv:
+    - {x: 0.31846473, y: 0.70090294}
+    - {x: 0.002074689, y: 0.70090294}
+    - {x: 0.002074689, y: 0.8566591}
+    - {x: 0.31846473, y: 0.8566591}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa8
+    slot: 2
+    positions:
+    - {x: -67, y: -147}
+    - {x: -67, y: 156}
+    - {x: 68, y: 156}
+    - {x: 68, y: -147}
+    uv:
+    - {x: 0.15041494, y: 0.0022573364}
+    - {x: 0.15041494, y: 0.3442438}
+    - {x: 0.29045644, y: 0.3442438}
+    - {x: 0.29045644, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa9
+    slot: 2
+    positions:
+    - {x: -69, y: -146}
+    - {x: -69, y: 150}
+    - {x: 68, y: 150}
+    - {x: 68, y: -146}
+    uv:
+    - {x: 0.62759334, y: 0.68961626}
+    - {x: 0.3205394, y: 0.68961626}
+    - {x: 0.3205394, y: 0.84424376}
+    - {x: 0.62759334, y: 0.84424376}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa10
+    slot: 2
+    positions:
+    - {x: -68, y: -144}
+    - {x: -68, y: 151}
+    - {x: 68, y: 151}
+    - {x: 68, y: -144}
+    uv:
+    - {x: 0.43879667, y: 0.33860046}
+    - {x: 0.43879667, y: 0.67155755}
+    - {x: 0.5798755, y: 0.67155755}
+    - {x: 0.5798755, y: 0.33860046}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa11
+    slot: 2
+    positions:
+    - {x: -67, y: -149}
+    - {x: -67, y: 150}
+    - {x: 68, y: 150}
+    - {x: 68, y: -149}
+    uv:
+    - {x: 0.29253113, y: 0.0022573364}
+    - {x: 0.29253113, y: 0.33972913}
+    - {x: 0.4325726, y: 0.33972913}
+    - {x: 0.4325726, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa12
+    slot: 2
+    positions:
+    - {x: -70, y: -150}
+    - {x: -70, y: 146}
+    - {x: 67, y: 146}
+    - {x: 67, y: -150}
+    uv:
+    - {x: 0.4346473, y: 0.0022573364}
+    - {x: 0.4346473, y: 0.3363431}
+    - {x: 0.5767635, y: 0.3363431}
+    - {x: 0.5767635, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa13
+    slot: 2
+    positions:
+    - {x: -62, y: -149}
+    - {x: -62, y: 143}
+    - {x: 67, y: 143}
+    - {x: 67, y: -149}
+    uv:
+    - {x: 0.62344396, y: 0.8465011}
+    - {x: 0.3205394, y: 0.8465011}
+    - {x: 0.3205394, y: 0.99209934}
+    - {x: 0.62344396, y: 0.99209934}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa14
+    slot: 2
+    positions:
+    - {x: -65, y: -148}
+    - {x: -65, y: 142}
+    - {x: 67, y: 142}
+    - {x: 67, y: -148}
+    uv:
+    - {x: 0.7292531, y: 0.3340858}
+    - {x: 0.7292531, y: 0.66139954}
+    - {x: 0.86618257, y: 0.66139954}
+    - {x: 0.86618257, y: 0.3340858}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa15
+    slot: 2
+    positions:
+    - {x: -68, y: -146}
+    - {x: -68, y: 142}
+    - {x: 67, y: 142}
+    - {x: 67, y: -146}
+    uv:
+    - {x: 0.85580915, y: 0.0022573364}
+    - {x: 0.85580915, y: 0.32731378}
+    - {x: 0.9958506, y: 0.32731378}
+    - {x: 0.9958506, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa16
+    slot: 2
+    positions:
+    - {x: -63, y: -145}
+    - {x: -63, y: 143}
+    - {x: 61, y: 143}
+    - {x: 61, y: -145}
+    uv:
+    - {x: 0.7728216, y: 0.6636569}
+    - {x: 0.7728216, y: 0.9887133}
+    - {x: 0.9014523, y: 0.9887133}
+    - {x: 0.9014523, y: 0.6636569}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa17
+    slot: 2
+    positions:
+    - {x: -61, y: -143}
+    - {x: -61, y: 145}
+    - {x: 61, y: 145}
+    - {x: 61, y: -143}
+    uv:
+    - {x: 0.3008299, y: 0.85891646}
+    - {x: 0.002074689, y: 0.85891646}
+    - {x: 0.002074689, y: 0.996614}
+    - {x: 0.3008299, y: 0.996614}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa18
+    slot: 2
+    positions:
+    - {x: -63, y: -143}
+    - {x: -63, y: 145}
+    - {x: 62, y: 145}
+    - {x: 62, y: -143}
+    uv:
+    - {x: 0.8682573, y: 0.3295711}
+    - {x: 0.8682573, y: 0.65462756}
+    - {x: 0.9979253, y: 0.65462756}
+    - {x: 0.9979253, y: 0.3295711}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa19
+    slot: 2
+    positions:
+    - {x: -65, y: -145}
+    - {x: -65, y: 149}
+    - {x: 62, y: 149}
+    - {x: 62, y: -145}
+    uv:
+    - {x: 0.57883817, y: 0.0022573364}
+    - {x: 0.57883817, y: 0.3340858}
+    - {x: 0.7105809, y: 0.3340858}
+    - {x: 0.7105809, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa0
+    slot: 3
+    positions:
+    - {x: -69, y: -145}
+    - {x: -69, y: 145}
+    - {x: 67, y: 145}
+    - {x: 67, y: -145}
+    uv:
+    - {x: 0.62966806, y: 0.6704289}
+    - {x: 0.62966806, y: 0.99774265}
+    - {x: 0.7707469, y: 0.99774265}
+    - {x: 0.7707469, y: 0.6704289}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa1
+    slot: 3
+    positions:
+    - {x: -70, y: -145}
+    - {x: -70, y: 147}
+    - {x: 66, y: 147}
+    - {x: 66, y: -145}
+    uv:
+    - {x: 0.7126556, y: 0.0022573364}
+    - {x: 0.7126556, y: 0.33182845}
+    - {x: 0.85373443, y: 0.33182845}
+    - {x: 0.85373443, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa2
+    slot: 3
+    positions:
+    - {x: -75, y: -147}
+    - {x: -75, y: 161}
+    - {x: 66, y: 161}
+    - {x: 66, y: -147}
+    uv:
+    - {x: 0.002074689, y: 0.0022573364}
+    - {x: 0.002074689, y: 0.34988713}
+    - {x: 0.14834026, y: 0.34988713}
+    - {x: 0.14834026, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa3
+    slot: 3
+    positions:
+    - {x: -76, y: -147}
+    - {x: -76, y: 155}
+    - {x: 64, y: 155}
+    - {x: 64, y: -147}
+    uv:
+    - {x: 0.29149377, y: 0.34650114}
+    - {x: 0.29149377, y: 0.6873589}
+    - {x: 0.43672198, y: 0.6873589}
+    - {x: 0.43672198, y: 0.34650114}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa4
+    slot: 3
+    positions:
+    - {x: -73, y: -148}
+    - {x: -73, y: 146}
+    - {x: 67, y: 146}
+    - {x: 67, y: -148}
+    uv:
+    - {x: 0.5819502, y: 0.3363431}
+    - {x: 0.5819502, y: 0.6681716}
+    - {x: 0.7271784, y: 0.6681716}
+    - {x: 0.7271784, y: 0.3363431}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa5
+    slot: 3
+    positions:
+    - {x: -70, y: -148}
+    - {x: -70, y: 159}
+    - {x: 68, y: 159}
+    - {x: 68, y: -148}
+    uv:
+    - {x: 0.002074689, y: 0.35214448}
+    - {x: 0.002074689, y: 0.6986456}
+    - {x: 0.14522822, y: 0.6986456}
+    - {x: 0.14522822, y: 0.35214448}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa6
+    slot: 3
+    positions:
+    - {x: -69, y: -148}
+    - {x: -69, y: 156}
+    - {x: 68, y: 156}
+    - {x: 68, y: -148}
+    uv:
+    - {x: 0.14730291, y: 0.35214448}
+    - {x: 0.14730291, y: 0.6952596}
+    - {x: 0.28941908, y: 0.6952596}
+    - {x: 0.28941908, y: 0.35214448}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa7
+    slot: 3
+    positions:
+    - {x: -71, y: -147}
+    - {x: -71, y: 158}
+    - {x: 67, y: 158}
+    - {x: 67, y: -147}
+    uv:
+    - {x: 0.31846473, y: 0.70090294}
+    - {x: 0.002074689, y: 0.70090294}
+    - {x: 0.002074689, y: 0.8566591}
+    - {x: 0.31846473, y: 0.8566591}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa8
+    slot: 3
+    positions:
+    - {x: -67, y: -147}
+    - {x: -67, y: 156}
+    - {x: 68, y: 156}
+    - {x: 68, y: -147}
+    uv:
+    - {x: 0.15041494, y: 0.0022573364}
+    - {x: 0.15041494, y: 0.3442438}
+    - {x: 0.29045644, y: 0.3442438}
+    - {x: 0.29045644, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa9
+    slot: 3
+    positions:
+    - {x: -69, y: -146}
+    - {x: -69, y: 150}
+    - {x: 68, y: 150}
+    - {x: 68, y: -146}
+    uv:
+    - {x: 0.62759334, y: 0.68961626}
+    - {x: 0.3205394, y: 0.68961626}
+    - {x: 0.3205394, y: 0.84424376}
+    - {x: 0.62759334, y: 0.84424376}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa10
+    slot: 3
+    positions:
+    - {x: -68, y: -144}
+    - {x: -68, y: 151}
+    - {x: 68, y: 151}
+    - {x: 68, y: -144}
+    uv:
+    - {x: 0.43879667, y: 0.33860046}
+    - {x: 0.43879667, y: 0.67155755}
+    - {x: 0.5798755, y: 0.67155755}
+    - {x: 0.5798755, y: 0.33860046}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa11
+    slot: 3
+    positions:
+    - {x: -67, y: -149}
+    - {x: -67, y: 150}
+    - {x: 68, y: 150}
+    - {x: 68, y: -149}
+    uv:
+    - {x: 0.29253113, y: 0.0022573364}
+    - {x: 0.29253113, y: 0.33972913}
+    - {x: 0.4325726, y: 0.33972913}
+    - {x: 0.4325726, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa12
+    slot: 3
+    positions:
+    - {x: -70, y: -150}
+    - {x: -70, y: 146}
+    - {x: 67, y: 146}
+    - {x: 67, y: -150}
+    uv:
+    - {x: 0.4346473, y: 0.0022573364}
+    - {x: 0.4346473, y: 0.3363431}
+    - {x: 0.5767635, y: 0.3363431}
+    - {x: 0.5767635, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa13
+    slot: 3
+    positions:
+    - {x: -62, y: -149}
+    - {x: -62, y: 143}
+    - {x: 67, y: 143}
+    - {x: 67, y: -149}
+    uv:
+    - {x: 0.62344396, y: 0.8465011}
+    - {x: 0.3205394, y: 0.8465011}
+    - {x: 0.3205394, y: 0.99209934}
+    - {x: 0.62344396, y: 0.99209934}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa14
+    slot: 3
+    positions:
+    - {x: -65, y: -148}
+    - {x: -65, y: 142}
+    - {x: 67, y: 142}
+    - {x: 67, y: -148}
+    uv:
+    - {x: 0.7292531, y: 0.3340858}
+    - {x: 0.7292531, y: 0.66139954}
+    - {x: 0.86618257, y: 0.66139954}
+    - {x: 0.86618257, y: 0.3340858}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa15
+    slot: 3
+    positions:
+    - {x: -68, y: -146}
+    - {x: -68, y: 142}
+    - {x: 67, y: 142}
+    - {x: 67, y: -146}
+    uv:
+    - {x: 0.85580915, y: 0.0022573364}
+    - {x: 0.85580915, y: 0.32731378}
+    - {x: 0.9958506, y: 0.32731378}
+    - {x: 0.9958506, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa16
+    slot: 3
+    positions:
+    - {x: -63, y: -145}
+    - {x: -63, y: 143}
+    - {x: 61, y: 143}
+    - {x: 61, y: -145}
+    uv:
+    - {x: 0.7728216, y: 0.6636569}
+    - {x: 0.7728216, y: 0.9887133}
+    - {x: 0.9014523, y: 0.9887133}
+    - {x: 0.9014523, y: 0.6636569}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa17
+    slot: 3
+    positions:
+    - {x: -61, y: -143}
+    - {x: -61, y: 145}
+    - {x: 61, y: 145}
+    - {x: 61, y: -143}
+    uv:
+    - {x: 0.3008299, y: 0.85891646}
+    - {x: 0.002074689, y: 0.85891646}
+    - {x: 0.002074689, y: 0.996614}
+    - {x: 0.3008299, y: 0.996614}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa18
+    slot: 3
+    positions:
+    - {x: -63, y: -143}
+    - {x: -63, y: 145}
+    - {x: 62, y: 145}
+    - {x: 62, y: -143}
+    uv:
+    - {x: 0.8682573, y: 0.3295711}
+    - {x: 0.8682573, y: 0.65462756}
+    - {x: 0.9979253, y: 0.65462756}
+    - {x: 0.9979253, y: 0.3295711}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  - name: 3aaa/3aaa19
+    slot: 3
+    positions:
+    - {x: -65, y: -145}
+    - {x: -65, y: 149}
+    - {x: 62, y: 149}
+    - {x: 62, y: -145}
+    uv:
+    - {x: 0.57883817, y: 0.0022573364}
+    - {x: 0.57883817, y: 0.3340858}
+    - {x: 0.7105809, y: 0.3340858}
+    - {x: 0.7105809, y: 0.0022573364}
+    triangles: 000000000100000002000000020000000300000000000000
+    counts:
+    boneIndices:
+    weights: []
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    deform: []
+  channels:
+  - slot: 1
+    index: 1
+    component: -1
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 19
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.033333335
+        value: -1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.06666667
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.10000001
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.13333334
+        value: 2
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.16666667
+        value: 3
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.20000002
+        value: 4
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.23333335
+        value: 5
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.26666668
+        value: 6
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.3
+        value: 7
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.33333334
+        value: 8
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.36666667
+        value: 9
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.40000004
+        value: 10
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.43333337
+        value: 11
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.4666667
+        value: 12
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5
+        value: 13
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.53333336
+        value: 14
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5666667
+        value: 15
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.6
+        value: 16
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.6333334
+        value: 17
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.6666667
+        value: 18
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - slot: 1
+    index: 2
+    component: -1
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 20
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.033333335
+        value: 21
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.06666667
+        value: 22
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.10000001
+        value: 23
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.13333334
+        value: 24
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.16666667
+        value: 25
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.20000002
+        value: 26
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.23333335
+        value: 27
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.26666668
+        value: 28
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.3
+        value: 29
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.33333334
+        value: 30
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.36666667
+        value: 31
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.40000004
+        value: 32
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.43333337
+        value: 33
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.4666667
+        value: 34
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5
+        value: 35
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.53333336
+        value: 36
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5666667
+        value: 37
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.6
+        value: 38
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.6333334
+        value: 39
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.6666667
+        value: -1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - slot: 1
+    index: 3
+    component: -1
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 40
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.033333335
+        value: 41
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.06666667
+        value: 42
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.10000001
+        value: 43
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.13333334
+        value: 44
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.16666667
+        value: 45
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.20000002
+        value: 46
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.23333335
+        value: 47
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.26666668
+        value: 48
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.3
+        value: 49
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.33333334
+        value: 50
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.36666667
+        value: 51
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.40000004
+        value: 52
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.43333337
+        value: 53
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.4666667
+        value: 54
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5
+        value: 55
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.53333336
+        value: 56
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.5666667
+        value: 57
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.6
+        value: 58
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.6333334
+        value: 59
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.6666667
+        value: -1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  atlasPath: "RecoveredArt/Res/Spine/\u68CB\u5B50/slwin3/ef_slwin3"
+  duration: 0.6666667
+  pixelsPerUnit: 100

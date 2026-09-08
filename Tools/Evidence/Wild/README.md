@@ -1,8 +1,9 @@
 # Three-Wild-column presentation: recovered source contract
 
-This is implementation input, not a claim that the presentation is connected or rendered.
-The current playfield stops at `WildColumnsCheckRequested`. Keep that gap explicit until
-the mesh, clipping, shake and downstream reward stages are actually implemented.
+The persistent Wild3 prefab is now converted to native world-space meshes and independently
+render-tested (see the implementation section below). The current playfield still stops at
+`WildColumnsCheckRequested`. Its clipped entry light, shake and downstream reward stages
+remain to be connected; the prefab verification does not establish completion of that chain.
 
 ## Native control flow
 
@@ -95,3 +96,54 @@ The clipping binary layout was checked against the official
 [Spine 4.1 SkeletonBinary reader](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/SkeletonBinary.cs).
 No third-party runtime assembly was added. This verification covers extraction only;
 it does not replace future Unity pose, clipping, lifecycle and fresh-frame visual tests.
+
+## Native persistent Wild3 implementation
+
+`Assets/Resources/RecoveredSymbols/Wild3.prefab` has four Transform objects and two
+MeshRenderers, with a SortingGroup at the root. The two original skeletons use separate
+native Animation clocks (`idle` 3 seconds and `animation` 20/30 seconds, looping).
+Their serialized data preserves every region/mesh attachment, influence, setup pose and
+deform frame. No CanvasRenderer is used for these core symbol visuals.
+
+`RecoveredWorldRig` evaluates the original normal, OnlyTranslation, NoScale and
+NoScaleOrReflection modes, then blends weighted vertices after applying the original
+per-influence deformation. Unweighted deformation values are absolute, as extracted;
+weighted values are offsets. A single per-frame interpolation curve is shared by all
+coordinates in a deform frame, rather than expanding thousands of coordinate curves.
+Each instance keeps its own pose and mesh buffers; the definition and AnimationCurves
+are shared immutable ScriptableObjects. Textures load by Resources path on first use.
+Slot order and PMA/additive colors are preserved in one mesh per skeleton.
+
+The scale is 100 pixels per world unit, matching the existing native reel coordinate
+system. The original GUI skeletons used scale .01 multiplied by Canvas reference pixels
+per unit 100; the target reel's world-space transform supplies the corresponding conversion.
+The source prefabs have no additional local offsets or scales in their Wild3 hierarchy.
+
+Reproduce authoring from the target project:
+
+```powershell
+& 'C:/Users/pc/AppData/Local/Programs/Python/Python314/python.exe' -X utf8 Tools/prepare_wild_mesh.py
+& 'C:/Program Files/Unity/Hub/Editor/2022.3.62f3/Editor/Unity.exe' -batchmode -projectPath C:/Projects/com.sfflogdstudio.dragonlegend -executeMethod BuildWildWorld.Save -quit -logFile C:/Projects/com.sfflogdstudio.dragonlegend/Artifacts/wild-world-author.log
+```
+
+`Tools/sample_wild_reference.py` independently evaluates the extracted source in Python
+and writes `Tools/Evidence/wild-world-samples.json`. The PlayMode test compares every
+visible vertex at six times for the dragon and four times for the border, including
+non-keyframe times .173, .73 and 2.91. It also checks a rotated/trimmed mesh UV against
+the original atlas numbers, instance isolation, native Animation pause/resume, current
+rendered pixels and steady-state managed allocations. Fresh images are written to
+`Artifacts/current-wild-world-0.png` and `current-wild-world-1.png`.
+
+While checking the original rotation rules, an existing WinBurst region UV error was
+identified and fixed: a region rotated 90 degrees maps geometric BL/TL/TR/BR to packed
+BR/BL/TL/TR after Unity's V flip. Its previous mapping was reversed by 180 degrees.
+The authored burst asset has been regenerated, and its bkbai0 UVs now have explicit
+source-number assertions. Reference geometry/UV rules were checked against official
+[Bone.cs](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/Bone.cs),
+[MeshAttachment.cs](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/Attachments/MeshAttachment.cs), and
+[RegionAttachment.cs](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/Attachments/RegionAttachment.cs).
+
+Remaining: Wild3Light clipping, native shake scheduling, reel ownership/pooling and
+actual scan integration, followed by jackpot and the other awaited post-spin branches.
+The runtime intentionally rejects unsupported bone/attachment formats during authoring;
+this conversion must not be used to silently discard the light's clipping attachment.

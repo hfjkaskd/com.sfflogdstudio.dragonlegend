@@ -37,7 +37,7 @@ public static class BuildWinBurst
                 bool rotated=region.rotate==90;if(region.rotate!=0&&!rotated)throw new InvalidDataException("Unsupported atlas rotation");
                 float u0=(float)b[0]/atlas.width,u1=(float)(b[0]+(rotated?b[3]:b[2]))/atlas.width;
                 float t1=1-(float)b[1]/atlas.height,t0=1-(float)(b[1]+(rotated?b[2]:b[3]))/atlas.height;
-                var uv=rotated?new[]{new Vector2(u0,t1),new Vector2(u1,t1),new Vector2(u1,t0),new Vector2(u0,t0)}:new[]{new Vector2(u0,t0),new Vector2(u0,t1),new Vector2(u1,t1),new Vector2(u1,t0)};
+                var uv=rotated?new[]{new Vector2(u1,t0),new Vector2(u0,t0),new Vector2(u0,t1),new Vector2(u1,t1)}:new[]{new Vector2(u0,t0),new Vector2(u0,t1),new Vector2(u1,t1),new Vector2(u1,t0)};
                 rig.regions[i]=new RecoveredRegionRig.Region{vertices=points,uv=uv,tint=ColorOf(a.color)};
             }
             rig.slots=new RecoveredRegionRig.Slot[source.slots.Length];

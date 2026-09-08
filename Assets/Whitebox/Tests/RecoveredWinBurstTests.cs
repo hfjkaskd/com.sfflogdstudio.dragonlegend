@@ -29,6 +29,13 @@ public sealed class RecoveredWinBurstTests
         var rig=burst.GetComponent<RecoveredRegionRig>();float scale=Time.timeScale,delta=Time.captureDeltaTime;
         try {
             Assert.AreEqual(66,rig.bones.Length);Assert.AreEqual(42,rig.slots.Length);Assert.AreEqual(384,rig.regions.Length);
+            // Original bkbai0: atlas bounds 2,515,331,87, rotate 90; physical size 87x331.
+            // Geometry BL/TL/TR/BR maps to packed BR/BL/TL/TR after Unity's vertical UV flip.
+            var uv=rig.regions[0].uv;
+            Assert.AreEqual(89f/934,uv[0].x,.000001f);Assert.AreEqual(1-846f/848,uv[0].y,.000001f);
+            Assert.AreEqual(2f/934,uv[1].x,.000001f);Assert.AreEqual(1-846f/848,uv[1].y,.000001f);
+            Assert.AreEqual(2f/934,uv[2].x,.000001f);Assert.AreEqual(1-515f/848,uv[2].y,.000001f);
+            Assert.AreEqual(89f/934,uv[3].x,.000001f);Assert.AreEqual(1-515f/848,uv[3].y,.000001f);
             Assert.AreEqual(1,burst.GetComponentsInChildren<CanvasRenderer>().Length);Assert.IsFalse(burst.GetComponent<CanvasRenderer>().cullTransparentMesh);
             Assert.AreEqual(new Vector2(50,50),((RectTransform)burst.transform).sizeDelta);
             var clip=burst.GetComponent<Animation>().GetClip("animation");Assert.AreEqual(35f/30,clip.length,.00001f);

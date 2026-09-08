@@ -422,3 +422,13 @@ RecoveredRegionRig 使用单个原生 MaskableGraphic/CanvasRenderer，按原 42
 最终全量 PlayMode 154 项通过、0 失败（Artifacts/win-burst-all-tests.xml）。覆盖 NoScale 的非均匀缩放/反射与位置、原第 15 骨骼关键帧和旋转、动画长度、单 CanvasRenderer、暂停与取消，以及实际入口的父节点、锚点、播放和最终回收。实际画面在同一帧关闭 Boom 后有超过 200 个像素发生明显变化；已查看最新 current-win-burst-detail.png 的原图局部，紫色光圈、闪光与飞散金币真实渲染。
 
 本轮恢复的是金币飞向底部后的抵达光效，完整奖励结算、Wild/Jackpot/免费分支、主背景和全生命周期视觉仍未完成，尚非完整 1:1。
+
+### 三连 Wild 原生网格与底部光效旋转修复（2026-09-08）
+
+- 新增 `RecoveredSymbols/Wild3.prefab`：两套独立循环的原生 MeshRenderer 动画，保留三连 Wild 的 84 根骨骼、14 个网格、完整蒙皮权重与变形；核心符号不使用 UI。原始槽位顺序、旋转/裁边图集 UV、PMA 与加法混合均进入实际渲染。
+- 骨骼支持原资源使用的 Normal / OnlyTranslation / NoScale / NoScaleOrReflection。共享配置与曲线，实例独占可复用的姿态、顶点和索引缓冲，纹理按 Resources 路径首次使用时加载。
+- 新增源数据独立数值采样与 PlayMode 验证：十组姿态逐顶点比较，旋转网格 UV、实例隔离、暂停/恢复及当前画面像素变化。原生 Animation 驱动姿态时钟。
+- 修复已接入底部 WinBurst 的 90 度旋转区域 UV 反向问题，重建 56 个旋转区域的映射，增加原图集坐标断言。
+- 本轮完整 PlayMode：`Artifacts/wild-world-all-tests.xml`，156/156 通过。当前截图：`Artifacts/current-wild-world-0.png`、`current-wild-world-1.png` 和重生成的 `current-win-burst.png`。桌面 Editor 中单套龙形网格连续采样 1000 次共 190.44 ms，稳态托管分配 0 字节；这是姿态/网格更新微基准，不代表真机完整帧耗时。
+- 三连 Wild 的持续视觉已完成原生资源转换，但入场裁剪光效、棋盘震动、转轴池归属及实际扫描接线仍待完成，后续奖池/符号/Bonus/Free/BaseEnd 链也未完成。未将这些缺口视为复刻完成，SDK 维持现状。
+- 完整原始链路、资源来源、重建命令与剩余工作见 [三连 Wild 证据与实现记录](Tools/Evidence/Wild/README.md)。
