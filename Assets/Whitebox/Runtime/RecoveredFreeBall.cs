@@ -9,6 +9,8 @@ namespace DragonLegend.Whitebox
         [Serializable] private sealed class Clips {public string idle,start;}
         [SerializeField] private RecoveredWorldAnimation art;
         [SerializeField] private Text reward;
+        [SerializeField] private RecoveredWorldRectClip clipping;
+        public RecoveredWorldRectClip Clipping=>clipping;
         [SerializeField] private Clips[] types;
         public int BallType { get; private set; }
         public RecoveredWorldAnimation Art=>art;

@@ -31,6 +31,7 @@ public static class BuildFreeBall
                 type.FindPropertyRelative("start").stringValue="start_"+suffixes[i];
             }
             settings.ApplyModifiedPropertiesWithoutUndo();
+            BuildFreeClipping.Configure(root);
             root.SetActive(true);PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredSymbols/FreeBall.prefab");AssetDatabase.SaveAssets();
         } finally {Object.DestroyImmediate(root);}
     }

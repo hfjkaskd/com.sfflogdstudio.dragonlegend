@@ -30,8 +30,8 @@ The current preview Artifacts/current-free-ball-idle-start.png shows purple,
 blue and green in native type order, idle above and start below, at .173s.
 
 Pooled CreateLongzhu and shared type-index ownership are now attached to
-FreeReels (see free-specials-pool.md). Pending: mini-reel
-clipping, collection/reward animations and the production Free gameplay loop.
+FreeReels (see free-specials-pool.md). Mini-reel clipping is connected
+(see free-specials-clipping.md). Pending: collection/reward animations and the production Free gameplay loop.
 This prefab does not claim those integrations are complete. SDKs are unchanged.
 
 Validation: Unity 2022.3.62f3 full PlayMode suite **277/277 passed** in

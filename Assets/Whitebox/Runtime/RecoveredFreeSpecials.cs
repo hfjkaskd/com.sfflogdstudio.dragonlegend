@@ -63,7 +63,7 @@ namespace DragonLegend.Whitebox
         }
         public RecoveredFreeCoin CreateCoin(RecoveredSymbolView slot,bool initial)
         {
-            var coin=coins.Get();Place(coin.transform,slot,coinScale);
+            var coin=coins.Get();Place(coin.transform,slot,coinScale);coin.Clipping.Bind(slot.EffectClip);
             if(!initial)coin.PlayShow();
             if(!coinSlots.TryGetValue(slot,out var list)){list=new List<RecoveredFreeCoin>(1);coinSlots.Add(slot,list);}
             list.Add(coin);return coin;
@@ -71,7 +71,7 @@ namespace DragonLegend.Whitebox
         public RecoveredFreeBall CreateBall(RecoveredSymbolView slot,bool initial)
         {
             if(result.RandomBallInfos(ballIndex))ballIndex=0;
-            var ball=balls.Get();Place(ball.transform,slot,ballScale);
+            var ball=balls.Get();Place(ball.transform,slot,ballScale);ball.Clipping.Bind(slot.EffectClip);
             ball.Initialize(result.GetBall(ballIndex),initial);
             if(!ballSlots.TryGetValue(slot,out var list)){list=new List<RecoveredFreeBall>(1);ballSlots.Add(slot,list);}
             list.Add(ball);ballIndex++;return ball;

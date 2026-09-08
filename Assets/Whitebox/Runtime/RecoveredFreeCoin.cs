@@ -9,6 +9,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredWorldAnimation art;
         [SerializeField] private RecoveredWorldAnimation glow;
         [SerializeField] private Text reward;
+        [SerializeField] private RecoveredWorldRectClip clipping;
+        public RecoveredWorldRectClip Clipping=>clipping;
         [SerializeField] private float scaleDuration,peakScale,restingScale;
         private Vector3 from;
         private float elapsed;

@@ -67,6 +67,54 @@ public sealed class RecoveredFreeSpecialsTests
         } finally {Object.DestroyImmediate(root.gameObject);Random.state=state;}
     }
     [UnityTest]
+    public IEnumerator MovingSpecialsAndLabelsStayInsideTheirOwnReels()
+    {
+        var state=Random.state;var root=Object.Instantiate(Resources.Load<RecoveredFreeReels>("RecoveredSymbols/FreeReels"));
+        var host=new GameObject("Moving Free clipping",typeof(Camera));var camera=host.GetComponent<Camera>();
+        camera.orthographic=true;camera.orthographicSize=5;camera.transform.position=new Vector3(0,0,-10);camera.cullingMask=33;
+        camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=Color.black;
+        var target=new RenderTexture(1200,1000,24);camera.targetTexture=target;var previous=RenderTexture.active;
+        var capture=new Texture2D(1200,1000,TextureFormat.RGB24,false);
+        try {
+            Random.InitState(938);root.Initialize(Resources.Load<RecoveredSymbolCatalog>("RecoveredSymbols/OriginalSymbolCatalog"),Result(6,7));
+            foreach(var sprite in root.GetComponentsInChildren<SpriteRenderer>(true))sprite.enabled=false;
+            foreach(var art in root.GetComponentsInChildren<RecoveredWorldAnimation>()) {art.Player.Stop();art.Rig.Sample(.173f);}
+            yield return null;
+            int initial=CaptureBright(camera,target,capture,"current-free-clipping-initial.png");Assert.Greater(initial,10000);
+            for(int col=0;col<5;col++)for(int row=0;row<3;row++)root.At(col,row).SetOffsetPixels(86);
+            yield return null;
+            int partial=CaptureBright(camera,target,capture,"current-free-clipping-half.png");Assert.Greater(partial,1000);Assert.Less(partial,initial);
+            // Every sibling SpriteMask stays enabled: none may reveal a neighbour's effect.
+            for(int col=0;col<5;col++)for(int row=0;row<3;row++)root.At(col,row).SetOffsetPixels(344);
+            yield return null;
+            Assert.AreEqual(0,CaptureBright(camera,target,capture,"current-free-clipping-outside.png"));
+            foreach(var mesh in root.GetComponentsInChildren<MeshRenderer>())mesh.enabled=false;
+            for(int col=0;col<5;col++)for(int row=0;row<3;row++)root.At(col,row).SetOffsetPixels(0);
+            yield return null;
+            Assert.Greater(CaptureBright(camera,target,capture,"current-free-clipping-labels.png"),100);
+            // Parent motion/scale must not leave a stale world-space clip rectangle.
+            root.transform.localScale=new Vector3(.8f,1.1f,1);root.transform.rotation=Quaternion.Euler(0,0,13);
+            root.transform.position=new Vector3(.2f,.3f,0);
+            for(int col=0;col<5;col++)for(int row=0;row<3;row++)root.At(col,row).SetOffsetPixels(344);
+            yield return null;
+            Assert.AreEqual(0,CaptureBright(camera,target,capture,"current-free-clipping-labels-outside.png"));
+            // Move a pooled effect between two independently transformed reels.
+            RecoveredReelView source=null;
+            for(int col=0;col<5;col++)for(int row=0;row<3;row++)if(root.Specials.CoinAt(root.At(col,row).SymbolAt(0))!=null)source=root.At(col,row);
+            var coin=root.Specials.CoinAt(source.SymbolAt(0));root.Specials.ClearCoins(source);
+            var destination=root.At(0,0);var reused=root.Specials.CreateCoin(destination.SymbolAt(2),false);
+            Assert.AreSame(coin,reused);Assert.AreSame(destination.SymbolAt(0).EffectClip,reused.Clipping.Boundary);
+        } finally {Random.state=state;RenderTexture.active=previous;camera.targetTexture=null;target.Release();Object.Destroy(target);Object.Destroy(capture);Object.Destroy(host);Object.Destroy(root.gameObject);}
+    }
+    private static int CaptureBright(Camera camera,RenderTexture target,Texture2D capture,string filename)
+    {
+        Canvas.ForceUpdateCanvases();
+        RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});RenderTexture.active=target;
+        capture.ReadPixels(new Rect(0,0,target.width,target.height),0,0);capture.Apply();
+        File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/"+filename),capture.EncodeToPNG());
+        int bright=0;foreach(var pixel in capture.GetPixels32())if(pixel.r>10||pixel.g>10||pixel.b>10)bright++;return bright;
+    }
+    [UnityTest]
     public IEnumerator CurrentInitializedFreeBoardRendersActualCoinsAndBalls()
     {
         var state=Random.state;var root=Object.Instantiate(Resources.Load<RecoveredFreeReels>("RecoveredSymbols/FreeReels"));

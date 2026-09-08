@@ -10,6 +10,7 @@ namespace DragonLegend.Whitebox
         [SerializeField] private Vector2 restingPosition;
         [SerializeField] private Vector3 normalScale;
         [SerializeField] private Vector3 blurScale;
+        public SpriteMask EffectClip { get; internal set; }
         public SpriteRenderer Symbol => symbol;
         public SpriteRenderer Cover => cover;
         // ResetRellShow reparents the image and resets anchored XY, preserving Z/scale/rotation.

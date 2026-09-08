@@ -42,8 +42,8 @@ first and second wrap events, fresh display-board consumption, next RNG value,
 and reuse of the same coin in the selected rolling slot. The current mixed
 board preview is Artifacts/current-free-board-specials.png.
 
-Remaining: clipping the world effect meshes and label canvases to each mini
-reel, native Free stop timing, collection/reward motion, complete mode view
+Per-mini-reel mesh and label clipping is now connected; see
+free-specials-clipping.md. Remaining: native Free stop timing, collection/reward motion, complete mode view
 switch and production FreeEntry binding after Bonus. The prefab can now
 initialize and refresh actual specials, but this does not establish a working
 production Free lifecycle. Reuse behavior beyond the exercised initial and

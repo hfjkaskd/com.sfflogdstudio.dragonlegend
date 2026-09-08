@@ -8,6 +8,7 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredReelView : MonoBehaviour
     {
         [SerializeField] private Transform rotationNode;
+        [SerializeField] private SpriteMask effectClip;
         [SerializeField] private RecoveredSymbolView symbolPrefab;
         [SerializeField] private int slotCount;
         [SerializeField] private float itemHeightPixels;
@@ -37,6 +38,7 @@ namespace DragonLegend.Whitebox
                 symbols = new RecoveredSymbolView[slotCount]; ids = new int[slotCount];shownEffects=new bool[slotCount];
                 for (int i = 0; i < slotCount; i++) {
                     symbols[i] = Instantiate(symbolPrefab, rotationNode, false);
+                    symbols[i].EffectClip = effectClip;
                     symbols[i].gameObject.layer = gameObject.layer;
                     symbols[i].Symbol.gameObject.layer = gameObject.layer;
                     symbols[i].Cover.gameObject.layer = gameObject.layer;

@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier:
   rotationNode: {fileID: 8504609449932073841}
+  effectClip: {fileID: 8172449657140353084}
   symbolPrefab: {fileID: 114, guid: 14a827c76d50424dba26f9c4cd91d7b5, type: 3}
   slotCount: 7
   itemHeightPixels: 172

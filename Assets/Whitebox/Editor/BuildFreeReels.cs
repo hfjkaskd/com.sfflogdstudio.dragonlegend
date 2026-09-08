@@ -28,6 +28,7 @@ public static class BuildFreeReels
             // Native anchoredPosition starts at zero. SymbolItem anchors to the bottom
             // of the 172px-high node, so world geometry starts at -86px.
             settings.FindProperty("bottomPixels").floatValue=-layout.columns[0].reels[0].height*.5f;
+            settings.FindProperty("effectClip").objectReferenceValue=mini.transform.Find("Clip").GetComponent<SpriteMask>();
             settings.ApplyModifiedPropertiesWithoutUndo();
             mini.transform.Find("Clip").localScale=new Vector3(layout.columns[0].reels[0].width,layout.columns[0].reels[0].height,1);
             PrefabUtility.SaveAsPrefabAsset(mini,miniPath);

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5572057161478680434}
   - component: {fileID: 839641768824617837}
   - component: {fileID: 3151763709293107807}
+  - component: {fileID: 8136458049048918595}
   m_Layer: 5
   m_Name: FreeBall
   m_TagString: Untagged
@@ -61,6 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   art: {fileID: 2251860003717875998}
   reward: {fileID: 2901092146955148023}
+  clipping: {fileID: 8136458049048918595}
   types:
   - idle: idle_zi
     start: start_zi
@@ -68,6 +70,24 @@ MonoBehaviour:
     start: start_lan
   - idle: idle_lv
     start: start_lv
+--- !u!114 &8136458049048918595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4371499882536638741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a46682853a5d2e4e9940e48d7032288, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  meshes:
+  - {fileID: 8099980648752442822}
+  labels:
+  - {fileID: 2901092146955148023}
+  canvasFrames:
+  - {fileID: 1518034145086547676}
 --- !u!1001 &5953401103727919087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -278,6 +298,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327bf7bf5309cf54c8718f14a95ae1b5, type: 3}
   m_Name:
   m_EditorClassIdentifier:
+--- !u!23 &8099980648752442822 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2724523236503158498, guid: 0763ca1c157ddb042ab8417b5ec60def, type: 3}
+  m_PrefabInstance: {fileID: 6172071202584793892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9095077322815929301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3143423126761335025, guid: 0763ca1c157ddb042ab8417b5ec60def, type: 3}
