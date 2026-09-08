@@ -199,3 +199,15 @@ StopSlotRoll 0x2375fbc 以 abs(offset)×2/maxSpeed 计算返回时长，使用 O
 Unity 2022.3.62f3 全量 PlayMode 127 项通过、0 失败（Artifacts/reel-stop-order-tests.xml）。新增四项实际 PlayerLoop 测试覆盖暂停、创建帧、回弹标记清除后回调、并发请求、三个不同延迟请求的尾部填补顺序，以及一个回调失败不阻断其他等待。中间普通队列版本的 126 项通过不足以证明并发顺序，已由原生指令核对后的实现和新测试替代。
 
 主 Spin 按钮、五列控制器与生成结果仍待完整接线；免费模式停轴、奖励表现和游戏全生命周期继续未完成。当前工作未宣称完整 1:1，SDK 未改动。
+
+## 本轮：基础模式 StarSpin 外层启动链
+
+按 RollReel.<StarSpin>d__23 0x23789bc 恢复基础模式启动入口 StartBaseSpin。启动先 ResetRellShow，再以原 ELF 0xdbc42c 的 7000 像素/秒启动加速；速度和自动停轴延迟 0.5 秒存于 Reel Prefab，调用参数 time 作为加速时长。
+
+传入 AccCall 时，仅当列索引等于指定 index 才立即调用，随后启动操作完成，不自动 SetStop、不调用 stopCall。未传 AccCall 时先 await SetStop(0.5)，再追加一轮 Update 的 WaitUntil(!isStop)，最后调用 stopCall。0x23777f0 与 0x2377800 都读取 0x99 停止标志，不能替换为 !isStartSpin。共用原队列尾部填补顺序，完成续接在 SetStop 完成后入队；回调期间操作仍未完成，回调异常可通过 GetResult 观察。
+
+ResetRellShow 0x23750ac 将主符号图归还原槽位父节点并复位 anchored XY，保留 Z、缩放、旋转和当前图案。当前 SpriteRenderer 实现按原中心锚点将 XY 换算为 Prefab 配置的 (0,0.86)，不会重新随机符号或重置整个转轴。
+
+Unity 2022.3.62f3 全量 PlayMode 130 项通过、0 失败（Artifacts/reel-start-tests.xml）。新增三个用例覆盖匹配/不匹配的列回调、移出中奖符号的归位、7000 速度加速、0.5 秒停轴和外层额外 Update 等待、回调异常及单次完成。本次生成的 current-reels.png 已检查，基础落位和裁切显示正常，仍属于组件测试预览。
+
+已定位实际 UIMainView.ClickSpin 0x23d1f30 逐列调用 StarSpin 后等待 _delayStartSpinTime，并传入 _accSpinTime；五列主控制器及主按钮还未接通。免费模式启动/停轴和全部奖励视觉仍待实现，本轮不代表完整生命周期 1:1。SDK 未修改。

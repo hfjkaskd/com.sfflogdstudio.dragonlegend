@@ -148,5 +148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   symbol: {fileID: 212}
   cover: {fileID: 213}
+  restingPosition: {x: 0, y: 0.86}
   normalScale: {x: 1, y: 1, z: 1}
   blurScale: {x: 2, y: 2, z: 2}

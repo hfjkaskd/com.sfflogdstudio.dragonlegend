@@ -183,3 +183,5 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   reel: {fileID: 114}
   stopOvershoot: 1.70158
+  baseSpinSpeed: 7000
+  automaticStopDelay: 0.5

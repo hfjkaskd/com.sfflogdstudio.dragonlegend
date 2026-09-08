@@ -10,6 +10,8 @@ namespace DragonLegend.Whitebox
     {
         [SerializeField] private RecoveredReelView reel;
         [SerializeField] private float stopOvershoot;
+        [SerializeField] private float baseSpinSpeed;
+        [SerializeField] private float automaticStopDelay;
         private int phase; // idle, accelerating, constant, one-frame stop wait, return tween
         private float maxSpeed, accelerationTarget, duration, elapsed, returnStart;
         private Func<IReadOnlyList<int>> resultProvider;
@@ -25,6 +27,12 @@ namespace DragonLegend.Whitebox
             phase = 1; IsSpinning = true;
             return true;
         }
+        // StarSpin base branch 0x2378d38. Controlled spins complete their startup operation immediately.
+        public RecoveredReelSpinOperation StartBaseSpin(float accelerationSeconds, int reelIndex,
+            Func<IReadOnlyList<int>> currentColumn, Action<int> accelerationCallback = null,
+            Action<int> stoppedCallback = null, int selectedIndex = -1)
+            => new RecoveredReelSpinOperation(this, reel, baseSpinSpeed, automaticStopDelay,
+                accelerationSeconds, reelIndex, currentColumn, accelerationCallback, stoppedCallback, selectedIndex);
         public void SetMaxSpeed(float speedPixelsPerSecond) => maxSpeed = speedPixelsPerSecond;
         public void RequestStop(Func<IReadOnlyList<int>> currentColumn)
         {

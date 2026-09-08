@@ -7,7 +7,9 @@ namespace DragonLegend.Whitebox
 {
     // SetStop 0x2378388: scaled Update delay, set flag, wait until !isStop, then callback.
     // Yield this operation in a native Unity coroutine; GetResult propagates callback faults.
-    public sealed class RecoveredReelStopOperation : CustomYieldInstruction
+    internal interface IRecoveredReelUpdateItem { bool Step(int frame, float scaledDeltaTime); }
+
+    public sealed class RecoveredReelStopOperation : CustomYieldInstruction, IRecoveredReelUpdateItem
     {
         private readonly RecoveredBaseReelMotion motion;
         private readonly RecoveredReelView reel;
@@ -16,6 +18,7 @@ namespace DragonLegend.Whitebox
         private readonly int initialFrame;
         private readonly float delay;
         private float elapsed;
+        internal Action Continuation;
         private int phase; // delay, flag wait, invoking, complete
         public bool IsCompleted => phase == 3;
         public Exception Error { get; private set; }
@@ -33,7 +36,7 @@ namespace DragonLegend.Whitebox
             if (!IsCompleted) throw new InvalidOperationException("Stop operation is not complete.");
             if (Error != null) throw Error;
         }
-        internal bool Step(int frame, float scaledDeltaTime)
+        bool IRecoveredReelUpdateItem.Step(int frame, float scaledDeltaTime)
         {
             if (phase >= 2) return false;
             try {
@@ -50,6 +53,7 @@ namespace DragonLegend.Whitebox
                 callback?.Invoke(reel);
                 phase = 3;
             } catch (Exception error) { Error = error; phase = 3; }
+            Continuation?.Invoke();
             return false;
         }
     }
@@ -59,8 +63,8 @@ namespace DragonLegend.Whitebox
     internal static class RecoveredReelStopLoop
     {
         private sealed class StopUpdate { }
-        private static readonly List<RecoveredReelStopOperation> pending = new List<RecoveredReelStopOperation>(8);
-        private static readonly List<RecoveredReelStopOperation> waiting = new List<RecoveredReelStopOperation>(8);
+        private static readonly List<IRecoveredReelUpdateItem> pending = new List<IRecoveredReelUpdateItem>(8);
+        private static readonly List<IRecoveredReelUpdateItem> waiting = new List<IRecoveredReelUpdateItem>(8);
         private static bool installed, running;
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void Reset() { pending.Clear(); waiting.Clear(); running = false; installed = false; }
@@ -71,8 +75,8 @@ namespace DragonLegend.Whitebox
             var operation = new RecoveredReelStopOperation(motion,reel,seconds,column,callback,Time.frameCount);
             Requeue(operation); return operation;
         }
-        internal static void Requeue(RecoveredReelStopOperation operation)
-        { if (running) waiting.Add(operation); else pending.Add(operation); }
+        internal static void Requeue(IRecoveredReelUpdateItem operation)
+        { EnsureInstalled(); if (running) waiting.Add(operation); else pending.Add(operation); }
         private static void EnsureInstalled()
         {
             if (installed) return;

@@ -45,6 +45,10 @@ namespace DragonLegend.Whitebox
             var position = rotationNode.localPosition; position.y = 0; rotationNode.localPosition = position;
             for (int i = 0; i < slotCount; i++) { ids[i] = RandomId(); symbols[i].Show(catalog, ids[i], mode); }
         }
+        public void ResetPresentation()
+        {
+            for (int i = 0; i < slotCount; i++) symbols[i].ResetPresentation();
+        }
         public void SetOffsetPixels(float value)
         {
             offsetPixels = value;
