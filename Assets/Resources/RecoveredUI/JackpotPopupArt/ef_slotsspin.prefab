@@ -1,0 +1,280 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &293462713956219800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6013016171340129884}
+  - component: {fileID: 7628002034709405623}
+  - component: {fileID: 5712957661342356874}
+  - component: {fileID: 8981935926533960999}
+  - component: {fileID: 226923644483645489}
+  m_Layer: 5
+  m_Name: ef_slotsspin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6013016171340129884
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293462713956219800}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1010.0239, y: 583.99994}
+  m_Pivot: {x: 0.4678107, y: 0.5}
+--- !u!222 &7628002034709405623
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293462713956219800}
+  m_CullTransparentMesh: 0
+--- !u!114 &5712957661342356874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293462713956219800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dad06e1c22c15241b8bd93bf1077c3a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_Material: {fileID: 2100000, guid: 601330edf059f894dbfb4541361889cd, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  bones:
+  - name: root
+    parent: -1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: bj
+    parent: 0
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: dx
+    parent: 0
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  - name: lagan
+    parent: 2
+    mode: 0
+    x: 374.21936
+    y: -61.697315
+    rotation: 54.5
+    scaleX: 1
+    scaleY: 1
+  - name: lagan2
+    parent: 3
+    mode: 4
+    x: 216.77005
+    y: 3.4897766
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+  slots:
+  - bone: 1
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 2
+    attachment: 2
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 2
+    attachment: 0
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 2
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 1
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  regions:
+  - vertices:
+    - {x: -471, y: -291}
+    - {x: -471, y: 291}
+    - {x: 472, y: 291}
+    - {x: 472, y: -291}
+    uv:
+    - {x: 0.0026385225, y: 0.0027434842}
+    - {x: 0.0026385225, y: 0.6419753}
+    - {x: 0.9973615, y: 0.6419753}
+    - {x: 0.9973615, y: 0.0027434842}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -502.93887, y: -319.59235}
+    - {x: -502.93887, y: 322.08917}
+    - {x: 502.93884, y: 322.08917}
+    - {x: 502.93884, y: -319.59235}
+    uv:
+    - {x: 0.0026385225, y: 0.64471877}
+    - {x: 0.0026385225, y: 0.9972565}
+    - {x: 0.5329815, y: 0.9972565}
+    - {x: 0.5329815, y: 0.64471877}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: 32.81943, y: 25.66675}
+    - {x: 38.11871, y: 15.79526}
+    - {x: 40.74902, y: 5.89401}
+    - {x: 40.81964, y: -6.90741}
+    - {x: 39.16791, y: -12.81046}
+    - {x: 31.64255, y: -26.8902}
+    - {x: 15.41895, y: -38.45056}
+    - {x: 0.83752, y: -40.79834}
+    - {x: -8.67636, y: -40.50125}
+    - {x: -26.28601, y: -32.44391}
+    - {x: -38.71741, y: -13.86221}
+    - {x: -0.22939, y: -10.53177}
+    - {x: -0.11543, y: 10.62595}
+    - {x: 1.49527, y: 11.77667}
+    - {x: -39.15289, y: 9.38504}
+    - {x: -30.97906, y: 26.51022}
+    - {x: -21.44568, y: 34.30804}
+    - {x: -9.54581, y: 40.14426}
+    - {x: 6.70172, y: 40.64932}
+    - {x: 12.49078, y: 39.41064}
+    - {x: 22.1694, y: 34.93384}
+    uv:
+    - {x: 0.67234236, y: 0.8937474}
+    - {x: 0.68403816, y: 0.89218765}
+    - {x: 0.6941284, y: 0.88821924}
+    - {x: 0.70513904, y: 0.8801066}
+    - {x: 0.7091871, y: 0.8748577}
+    - {x: 0.7166509, y: 0.85912746}
+    - {x: 0.71664083, y: 0.8372181}
+    - {x: 0.7097414, y: 0.8226629}
+    - {x: 0.7036729, y: 0.8143341}
+    - {x: 0.68600833, y: 0.8037128}
+    - {x: 0.6624918, y: 0.80444956}
+    - {x: 0.55367875, y: 0.6447189}
+    - {x: 0.53562164, y: 0.6583337}
+    - {x: 0.53562015, y: 0.6605107}
+    - {x: 0.6423088, y: 0.8189068}
+    - {x: 0.63263196, y: 0.8371627}
+    - {x: 0.6317772, y: 0.8506788}
+    - {x: 0.6340492, y: 0.865061}
+    - {x: 0.64354545, y: 0.8799311}
+    - {x: 0.6481445, y: 0.8843234}
+    - {x: 0.6578946, y: 0.8901302}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles: 0d0000000e0000000a0000000a0000000e00000007000000080000000900000007000000070000000e0000001200000007000000090000000a0000001200000002000000070000000700000002000000040000000400000002000000030000000100000002000000120000001400000001000000120000001200000013000000140000001400000000000000010000000e0000000f00000012000000110000001200000010000000060000000700000005000000120000000f000000100000000500000007000000040000000a0000000b0000000d0000000b0000000c0000000d000000
+    counts: 010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+    boneIndices: 040000000400000004000000040000000400000004000000040000000400000004000000040000000400000003000000030000000300000004000000040000000400000004000000040000000400000004000000
+    weights:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+  npcConstraints:
+    constraints: []
+    steps:
+  atlasPath: RecoveredArt/Res/Spine/slotsspin/ef_slotsspin
+--- !u!111 &8981935926533960999
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293462713956219800}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 39d04440501392c47b4a4b65b184cff6, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 39d04440501392c47b4a4b65b184cff6, type: 2}
+  - {fileID: 7400000, guid: af5f1466494375e45a5b1ed894bc86ed, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &226923644483645489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293462713956219800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1559611724bab9346874c5930eb40ff4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  player: {fileID: 8981935926533960999}
+  rig: {fileID: 5712957661342356874}
+  poses:
+  - clip: idle
+    animation: {fileID: 11400000, guid: d035a73235e1ab94396421a51e17b36f, type: 2}
+  - clip: start
+    animation: {fileID: 11400000, guid: 1d6ef9544bed9c048bfe9aa34bccfafc, type: 2}
+  poseTime: 0
+  playbackSpeed: 1
