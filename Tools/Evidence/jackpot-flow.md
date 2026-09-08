@@ -100,8 +100,11 @@ and source pose comparisons cover these meters, not the entire game's visual fid
 ## Claim lifecycle recovered after popup artwork
 
 `RecoveredJackpotClaim` now implements the native click/reward/window/fly-coin boundary,
-using the existing `IAdFacade` mock. It is a presentation-independent controller; the
-complete popup prefab and its actual main-flow connection are still outstanding.
+using the existing `IAdFacade` mock. It is a presentation-independent controller.
+The authored `RecoveredUI/JackpotPopup` now supplies the actual count and exit animations,
+standard buttons, native artwork, original text and dynamic CashOutTip; see
+[window evidence](JackpotPopup/window.md). Its main-flow and window-stack connections
+are still outstanding.
 `IRecoveredJackpotClaimView` requires real count/exit/flight completion from the presenter;
 it does not synthesize completion, credit, or a delay. Count must ultimately use the
 original authored 0.5-second OutQuad presentation and exit the 0.3-second InBack scale.

@@ -20,6 +20,7 @@ namespace DragonLegend.Whitebox
         public int BankCount => data.BankCount;
         public float GreenCount => data.GreenCount;
         public IReadOnlyList<int> BonusArea => data.BonusArea;
+        public IReadOnlyList<PlayerCashOutData> CashOutRecords => data.PlayerCashOutDatas;
         public event Action<float,float> GreenCountChanged;
         // Original GameData runtime flag; intentionally absent from PlayerData saves.
         public bool IsBonusGame { get; set; }
