@@ -91,9 +91,10 @@ Format references: [SkeletonBinary.cs](https://raw.githubusercontent.com/Esoteri
 [Animation.cs](https://raw.githubusercontent.com/EsotericSoftware/spine-runtimes/4.1/spine-csharp/src/Animation.cs).
 These sources inform offline decoding and native math; no Spine runtime assembly is added.
 
-Existing real Spin reward flow still ends at JackpotCheckRequested after Wild. The icon win
-API is implemented and tested, but its triggering jackpot event, popup, first-free state,
-claim-button/SDK boundary, fly-coin presentation and continuation remain to be connected.
+The real Spin reward flow now runs CheckJackPot after Wild, starts the selected icon win,
+and shows the authored popup with its captured amount. First-free state and the existing
+local ad facade are connected. The actual flow still waits for the unimplemented fly-coin
+presentation; see [main-flow integration](JackpotPopup/integration.md).
 No placeholder reward or automatic popup completion has been added. The current screenshot
 and source pose comparisons cover these meters, not the entire game's visual fidelity.
 
@@ -103,8 +104,8 @@ and source pose comparisons cover these meters, not the entire game's visual fid
 using the existing `IAdFacade` mock. It is a presentation-independent controller.
 The authored `RecoveredUI/JackpotPopup` now supplies the actual count and exit animations,
 standard buttons, native artwork, original text and dynamic CashOutTip; see
-[window evidence](JackpotPopup/window.md). Its main-flow and window-stack connections
-are still outstanding.
+[window evidence](JackpotPopup/window.md). Main-flow entry and the first modal mask are
+connected; the complete window stack and fly-coin presentation remain outstanding.
 `IRecoveredJackpotClaimView` requires real count/exit/flight completion from the presenter;
 it does not synthesize completion, credit, or a delay. Count must ultimately use the
 original authored 0.5-second OutQuad presentation and exit the 0.3-second InBack scale.

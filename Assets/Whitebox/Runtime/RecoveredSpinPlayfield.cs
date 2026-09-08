@@ -14,6 +14,19 @@ namespace DragonLegend.Whitebox
         [SerializeField] private float wildColumnInterval;
         [SerializeField] private RecoveredWildPresenter wilds;
         [SerializeField] private RecoveredJackpotMeters jackpotMeters;
+        [SerializeField] private RecoveredJackpotPopup jackpotPopup;
+        [SerializeField] private float jackpotDelay;
+        private RecoveredPlayerProgress player;
+        private IAdFacade ads;
+        private bool isA;
+        private int language;
+        public RecoveredJackpotPopup JackpotPopup=>jackpotPopup;
+        public RecoveredJackpotSequence JackpotSequence {get;private set;}
+        public event Action SymbolAnimationsRequested;
+        public event Action PauseMusicRequested,StopSound1Requested,ResumeMusicRequested,HideWheelRequested;
+        public event Action<string> SoundRequested,Sound1Requested;
+        public event Action<float,Action> FlyCoinRequested;
+        public event Action<int,int> CashOutTaskRefreshRequested;
         public RecoveredJackpotMeters JackpotMeters=>jackpotMeters;
         public RecoveredWildPresenter Wilds=>wilds;
         public RecoveredWildSequence WildSequence {get;private set;}
@@ -43,9 +56,17 @@ namespace DragonLegend.Whitebox
         public RecoveredBaseReelController Reels => reels;
         public event Action RewardSequenceRequested;
         public void Bind(RecoveredSpinEntry spinEntry, RecoveredSpinResult spinResult,
-            RecoveredPlayerProgress progress, RecoveredGameplayRules gameplayRules, bool isA, int languageType = 0)
+            RecoveredPlayerProgress progress, RecoveredGameplayRules gameplayRules, bool isA, int languageType = 0, IAdFacade adFacade = null)
         {
             Unbind(); entry = spinEntry; result = spinResult; rules = gameplayRules;
+            player=progress;ads=adFacade??new LocalAdFacade();this.isA=isA;language=languageType;
+            jackpotPopup.GetComponent<Canvas>().worldCamera=GetComponentInParent<Canvas>().worldCamera;
+            JackpotSequence=new RecoveredJackpotSequence(new RecoveredRewardBranches(rules,progress),jackpotDelay);
+            JackpotSequence.WinRequested+=PlayJackpotWin;JackpotSequence.PauseMusicRequested+=PauseMusic;
+            JackpotSequence.StopSound1Requested+=StopSound1;JackpotSequence.Sound1Requested+=Sound1;JackpotSequence.Failed+=WildFailed;
+            jackpotPopup.PauseMusicRequested+=PauseMusic;jackpotPopup.StopSound1Requested+=StopSound1;
+            jackpotPopup.ResumeMusicRequested+=ResumeMusic;jackpotPopup.Sound1Requested+=Sound1;jackpotPopup.SoundRequested+=Sound;
+            jackpotPopup.HideWheelRequested+=HideWheel;jackpotPopup.FlyCoinRequested+=FlyCoin;jackpotPopup.CashOutTaskRefreshRequested+=CashOutRefresh;
             BonusCoins = new RecoveredBonusCoinSequence(rules, progress, bonusCoinInterval);
             WildSequence=new RecoveredWildSequence(wildColumnInterval);WildSequence.Failed+=WildFailed;
             if (bonusCollection != null) bonusCollection.Initialize(progress.BonusArea);
@@ -105,8 +126,30 @@ namespace DragonLegend.Whitebox
         private void BeginWilds()
         {
             WildColumnsCheckRequested?.Invoke();
-            if(entry!=null)WildSequence.Begin(result.Board.GetSymbol,wilds.Present,count=>JackpotCheckRequested?.Invoke(count));
+            if(entry!=null)WildSequence.Begin(result.Board.GetSymbol,wilds.Present,BeginJackpot);
         }
+        private void BeginJackpot(int count)
+        {
+            JackpotCheckRequested?.Invoke(count);
+            if(entry!=null)JackpotSequence.Begin(count,ShowJackpot,()=>SymbolAnimationsRequested?.Invoke());
+        }
+        private void PlayJackpotWin(RecoveredJackpotType type)
+        {
+            // JackPotAnim 23bc60c selects Grand/Major/otherwise Mini. Its callback
+            // 23bf84c resets the persisted counter before that meter refreshes.
+            int index=type==RecoveredJackpotType.Grand?0:type==RecoveredJackpotType.Major?1:2;
+            jackpotMeters.At(index).PlayAnim(()=>player.SetJpAddCount(0));
+        }
+        private void ShowJackpot(RecoveredJackpotType type,float amount,Action<float> completed)
+            =>jackpotPopup.Show(type,amount,player,rules,ads,isA,language,completed);
+        private void PauseMusic()=>PauseMusicRequested?.Invoke();
+        private void StopSound1()=>StopSound1Requested?.Invoke();
+        private void ResumeMusic()=>ResumeMusicRequested?.Invoke();
+        private void Sound(string name)=>SoundRequested?.Invoke(name);
+        private void Sound1(string name)=>Sound1Requested?.Invoke(name);
+        private void HideWheel()=>HideWheelRequested?.Invoke();
+        private void FlyCoin(float amount,Action completed)=>FlyCoinRequested?.Invoke(amount,completed);
+        private void CashOutRefresh(int task,int amount)=>CashOutTaskRefreshRequested?.Invoke(task,amount);
         private void PresentBonusCoin(RecoveredBonusCoin coin)
         {
             if (coinStops != null) coinStops.PlayRewardReveal(coin.Column, coin.Row, coin.Reward, coin.CollectionCount);
@@ -120,6 +163,13 @@ namespace DragonLegend.Whitebox
         }
         public void Unbind()
         {
+            JackpotSequence?.Cancel();JackpotSequence=null;
+            if(jackpotPopup!=null) {
+                jackpotPopup.PauseMusicRequested-=PauseMusic;jackpotPopup.StopSound1Requested-=StopSound1;
+                jackpotPopup.ResumeMusicRequested-=ResumeMusic;jackpotPopup.Sound1Requested-=Sound1;jackpotPopup.SoundRequested-=Sound;
+                jackpotPopup.HideWheelRequested-=HideWheel;jackpotPopup.FlyCoinRequested-=FlyCoin;jackpotPopup.CashOutTaskRefreshRequested-=CashOutRefresh;
+                jackpotPopup.gameObject.SetActive(false);
+            }
             rewardWait?.Cancel(); rewardWait = null;
             BonusCoins?.CancelForProfileChange(); BonusCoins = null;
             WildSequence?.Cancel();WildSequence=null;if(wilds!=null)wilds.Unbind();
@@ -135,6 +185,7 @@ namespace DragonLegend.Whitebox
             reels.ReelsStopped -= Stopped;
             reels.AbortForProfileChange();
             entry = null; result = null; rules = null; IsBusy = false; AwaitingRewards = false; Error = null;
+            player=null;ads=null;
         }
         private void OnDestroy() => Unbind();
     }

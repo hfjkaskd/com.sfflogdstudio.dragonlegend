@@ -17,9 +17,14 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredBalancePanel balancePanelPrefab;
         private RecoveredBalancePanel balancePanel;
         [SerializeField] private RecoveredSpinPlayfield playfieldPrefab;
+        [SerializeField] private RecoveredAdSimulationControls adControls;
+        public LocalAdFacade Ads {get;private set;}
+        public RecoveredAdSimulationControls AdControls=>adControls;
         public RecoveredSpinPlayfield Playfield { get; private set; }
         private void ReleasePlayfield()
         {
+            Ads?.Complete(AdOutcome.Cancelled);Ads=null;
+            if(adControls!=null)adControls.Bind(null);
             if (Playfield == null) return;
             Playfield.Unbind(); Destroy(Playfield.gameObject); Playfield = null;
         }
@@ -124,10 +129,11 @@ namespace DragonLegend.Whitebox
             CurrentProfile = profile;
             Rules = new RecoveredGameplayRules(loader.Value);
             Settlement = new RecoveredSlotSettlement(Rules);
-            SpinResult = new RecoveredSpinResult(Rules, Settlement);
             PlayerStore = new RecoveredPlayerStore();
             PlayerStore.Load(OnPlayerLoaded);
             PlayerProgress = new RecoveredPlayerProgress(Rules, PlayerStore.Save, PlayerStore.Data);
+            SpinResult = new RecoveredSpinResult(Rules, Settlement, PlayerProgress);
+            Ads=new LocalAdFacade();if(adControls!=null)adControls.Bind(Ads);
             SpinEntry = new RecoveredSpinEntry(Rules, PlayerStore.Data, PlayerProgress, SpinResult, PlayerStore.Save);
             RewardBranches = new RecoveredRewardBranches(Rules, PlayerProgress);
             FreeSpinResult = new RecoveredFreeSpinResult(Rules);
@@ -143,7 +149,7 @@ namespace DragonLegend.Whitebox
             }
             if (playfieldPrefab != null) {
                 Playfield = Instantiate(playfieldPrefab, transform, false);
-                Playfield.Bind(SpinEntry, SpinResult, PlayerProgress, Rules, profile.isA, profile.languageType);
+                Playfield.Bind(SpinEntry, SpinResult, PlayerProgress, Rules, profile.isA, profile.languageType, Ads);
             }
             Ready?.Invoke(Rules);
         }

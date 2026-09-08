@@ -8,6 +8,7 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredSpinResult
     {
         private readonly RecoveredGameplayRules rules;
+        private readonly RecoveredPlayerProgress progress;
         private readonly List<int> columns = new List<int>(5);
         private int stage;
         private int bet;
@@ -22,10 +23,12 @@ namespace DragonLegend.Whitebox
         public bool ForceFreeSpin { get; set; }
         public bool IsGenerating => stage != 0;
 
-        public RecoveredSpinResult(RecoveredGameplayRules gameplayRules, RecoveredSlotSettlement settlement)
+        public RecoveredSpinResult(RecoveredGameplayRules gameplayRules, RecoveredSlotSettlement settlement,
+            RecoveredPlayerProgress progress = null)
         {
             rules = gameplayRules ?? throw new ArgumentNullException(nameof(gameplayRules));
             Settlement = settlement ?? throw new ArgumentNullException(nameof(settlement));
+            this.progress = progress;
             Board = new RecoveredSlotBoard(rules);
         }
 
@@ -42,6 +45,8 @@ namespace DragonLegend.Whitebox
             BonusCounter = unchecked(BonusCounter + 1);
             FirstFreeReward = isGuide;
             if (isGuide) WildCounter = rules.GetWildSpinCD();
+            // InitGameResult writes GameData +0x5a before filling any board cells.
+            if (progress != null) progress.IsFirstFreeReward = isGuide;
             Board.FillBase();
             if (WildCounter >= rules.GetWildSpinCD())
             {

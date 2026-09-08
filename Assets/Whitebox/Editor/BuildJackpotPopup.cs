@@ -78,6 +78,13 @@ public static class BuildJackpotPopup
         try
         {
             var content=(RectTransform)root.transform.Find("Content");
+            // UITools.AddBgColliderToTarget + BaseWindow.AfterAddBgMask:
+            // a first-sibling Image and standard Button, black with property alpha.
+            var mask=new GameObject("_WindowBg",typeof(RectTransform),typeof(Image),typeof(Button));
+            mask.layer=5;mask.transform.SetParent(root.transform,false);mask.transform.SetAsFirstSibling();
+            var mr=(RectTransform)mask.transform;mr.anchorMin=Vector2.zero;mr.anchorMax=Vector2.one;mr.sizeDelta=Vector2.zero;
+            var mi=mask.GetComponent<Image>();mi.color=new Color(0,0,0,.65f);
+            var mb=mask.GetComponent<Button>();mb.targetGraphic=mi;mb.transition=Selectable.Transition.None;
             SetSprite(content.Find("Btn/ClaimBtn"),"tc_btn_01");
             SetSprite(content.Find("CashOutTip/Bg"),"tc_bak_xinxi");
             SetSprite(content.Find("CashOutTip").GetChild(2),"ty_hb_meijing");

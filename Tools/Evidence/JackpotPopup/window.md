@@ -34,8 +34,9 @@ plain text object and does not request the delayed plain-button sequence.
 
 `UIJackpotView.OnInitProperty` (`23b2b0c`) reads ELF `dbb670 = (300,2)`: these are
 UIWindowType.Popup and UIWindowBgMaskMode.Black, NOT a sorting order and layer.
-The prefab retains its original Canvas fields. The original window-manager mask/stack
-and its ordering still need to be connected with the actual main-flow window presenter.
+The prefab retains its original Canvas fields. The native first-sibling black mask and
+initial depth 300 are now connected in the actual Spin prefab; full multi-window stack
+ordering remains outstanding. See [integration evidence](integration.md).
 
 ## CashOutTip
 
@@ -62,8 +63,9 @@ After initialization UIJackpotView dispatches cash-out task refresh `(2,1)`.
 Count completion hides a shown wheel via the host, then starts the exit tween. After
 deactivation it stops Sound1, resumes music and requests a fly-coin presentation with the
 native completion callback. It does not credit or automatically complete that request.
-The host must connect the existing main flow's CheckJackPot delay/event, window mask,
-audio, fly-coin presentation and later symbol stage. Those integrations remain incomplete.
+The existing main flow's CheckJackPot delay/event and window mask are now connected.
+Audio, fly-coin presentation and the later symbol stage remain incomplete; see the
+integration evidence for the exact tested boundary.
 
 Current captures are `Artifacts/current-jackpot-window-{grand,major,minor}.png`, created
 from this prefab by the current PlayMode test. The earlier `current-jackpot-popup-*`

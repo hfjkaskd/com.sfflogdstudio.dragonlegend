@@ -16,6 +16,11 @@ public static class BuildSpinPlayfield
             var jackpot=jackpotPrefab==null?null:(RecoveredJackpotMeters)PrefabUtility.InstantiatePrefab(jackpotPrefab,root.transform);
             var jackpotSettings=new SerializedObject(root.GetComponent<RecoveredSpinPlayfield>());
             jackpotSettings.FindProperty("jackpotMeters").objectReferenceValue=jackpot;jackpotSettings.ApplyModifiedPropertiesWithoutUndo();
+            var popup=(RecoveredJackpotPopup)PrefabUtility.InstantiatePrefab(
+                AssetDatabase.LoadAssetAtPath<RecoveredJackpotPopup>("Assets/Resources/RecoveredUI/JackpotPopup.prefab"),root.transform);
+            popup.GetComponent<Canvas>().sortingOrder=300;popup.gameObject.SetActive(false);
+            jackpotSettings.FindProperty("jackpotPopup").objectReferenceValue=popup;
+            jackpotSettings.FindProperty("jackpotDelay").floatValue=1.5f;jackpotSettings.ApplyModifiedPropertiesWithoutUndo();
             var board = Rect("QiPan", root.transform, new Vector2(.5f, 0), new Vector2(.5f, .5f),
                 new Vector2(-.003418f, 652), new Vector2(1080, 770.28f));
             var roll = Rect("Roll", board, new Vector2(.5f, .5f), new Vector2(.5f, .5f),
