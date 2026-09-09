@@ -34,6 +34,7 @@ namespace DragonLegend.Whitebox
         public event Action<int,int> CashOutTaskRefreshRequested;
         public event Action<string> SoundRequested,Sound1Requested,ChangeMusicRequested;
         public event Action<Exception> Failed;
+        public event Action<Component> WindowShowRequested;
         public void Bind(RecoveredSpinPlayfield playfield,RecoveredPlayerProgress player,RecoveredGameplayRules config,
             RecoveredRewardBranches rewardBranches,RecoveredFreeSpinResult freeResult,RecoveredFreeSpinEntry freeEntry,
             IReadOnlyList<int> freeSymbols,IAdFacade adFacade)
@@ -52,7 +53,7 @@ namespace DragonLegend.Whitebox
             IsRunning=true;IsFreeSpinEnd=true;InitialSpinCount=count;RewardCountersResetRequested?.Invoke();
             field.Scatters.PlayScatterAnim();field.Npc.Show(2);PauseMusicRequested?.Invoke();Sound1Requested?.Invoke("ring");
             wait=RecoveredReelWait.Delay(ringDuration,()=>{
-                wait=null;StopSound1Requested?.Invoke();window.Show(count,progress,rules,ads,AfterWindow);
+                wait=null;StopSound1Requested?.Invoke();WindowShowRequested?.Invoke(window);window.Show(count,progress,rules,ads,AfterWindow);
             },Fail);
         }
         private void AfterWindow()

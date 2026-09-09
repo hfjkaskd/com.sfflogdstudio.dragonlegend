@@ -1,8 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using DragonLegend.Whitebox;
 using DragonLegend.Whitebox.Recovered;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
@@ -14,8 +18,13 @@ public sealed class RecoveredCoreRoundFlowTests
     {
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);PlayerPrefs.DeleteKey(key);
         var random=Random.state;float scale=Time.timeScale,delta=Time.captureDeltaTime;Scene scene=default;AsyncOperation unload=null;
+        Camera camera=null;RenderTexture target=null,prior=RenderTexture.active;Texture2D capture=null;
+        UnityEngine.Events.UnityAction<Scene,LoadSceneMode> prepare=null;
         try {
             Time.timeScale=1;Time.captureDeltaTime=.05f;Random.InitState(71);
+            target=new RenderTexture(1080,1920,24);target.Create();
+            prepare=(loaded,mode)=>{if(loaded.name!="GameEntry")return;foreach(var root in loaded.GetRootGameObjects()){var entry=root.GetComponentInChildren<GameEntry>();if(entry!=null){camera=entry.GetComponent<Canvas>().worldCamera;camera.targetTexture=target;}}};
+            SceneManager.sceneLoaded+=prepare;
             yield return SceneManager.LoadSceneAsync("GameEntry",LoadSceneMode.Additive);scene=SceneManager.GetSceneByName("GameEntry");
             GameEntry game=null;foreach(var root in scene.GetRootGameObjects()){var found=root.GetComponentInChildren<GameEntry>();if(found!=null)game=found;}
             float deadline=Time.realtimeSinceStartup+10;while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
@@ -83,26 +92,35 @@ public sealed class RecoveredCoreRoundFlowTests
             var cashTask=new PlayerCashOutData{id=0,type=99,step=5,count=7,isCashout=true};
             game.PlayerStore.Data.PlayerCashOutDatas.Add(cashTask);
             game.SpinResult.ForceFreeSpin=true;spins=game.PlayerProgress.SpinCount;field.SpinButton.Button.onClick.Invoke();
+            field.SpinRecovery.MoreSpinButton.onClick.Invoke();
+            Assert.IsTrue(core.MoreSpins.gameObject.activeSelf);
             Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);
             for(int frame=0;frame<1800&&!core.Entry.Window.gameObject.activeSelf;frame++){Claim(field.BigWinPopup.PlainButton);Claim(field.JackpotPopup.PlainButton);RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;}
             Assert.IsTrue(core.Entry.Window.gameObject.activeSelf);Assert.IsTrue(field.IsBusy);Assert.Greater(core.Entry.InitialSpinCount,0);
+            Assert.Greater(core.Entry.Window.GetComponent<Canvas>().sortingOrder,core.MoreSpins.GetComponent<Canvas>().sortingOrder,"Free intro must open above an existing Popup window.");
             Assert.AreEqual(8,cashTask.count,"One actual Free entry must reach the main cash-task receiver exactly once, before its intro closes.");
             var persisted=JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString(key));
             Assert.AreEqual(8,persisted.PlayerCashOutDatas[0].count);
-            for(int i=0;i<15;i++)yield return null;core.Entry.Window.PlainButton.onClick.Invoke();
+            for(int i=0;i<15;i++)yield return null;
+            Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
+            capture=new Texture2D(1080,1920,TextureFormat.RGB24,false);RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+            File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-free-start-popup-depth.png"),capture.EncodeToPNG());
+            ClickVisible(core.Entry.Window.PlainButton,game);
             for(int frame=0;frame<1800&&!core.Exit.Window.IsShown;frame++)yield return null;
             Assert.IsNull(core.Error);Assert.IsNull(core.Exit.Error);Assert.IsNull(field.ModeView.FreeReels.Controller.Error);
             Assert.IsNull(field.ModeView.FreeReels.CoinScan.Error);Assert.IsNull(field.ModeView.FreeReels.BallScan.Error);Assert.IsNull(field.ModeView.FreeReels.RewardCollect.Error);
             Assert.IsTrue(core.Exit.Window.IsShown);Assert.AreEqual(0,game.PlayerProgress.FreeSpinCount);Assert.IsTrue(field.IsBusy);Assert.AreEqual(1,completed);
+            Assert.Greater(core.Exit.Window.GetComponent<Canvas>().sortingOrder,core.MoreSpins.GetComponent<Canvas>().sortingOrder,"Free total must open above the still-visible Popup window.");
             Assert.AreEqual("freeBg",game.CoreAudio.Manager.RequestedMusic,"Actual Free entry must reach the audio consumer.");
             Assert.Greater(reelSounds,0);Assert.Greater(speedSounds,0);Assert.AreEqual(speedSounds,speedStops);
             Assert.Greater(coinShows,0);Assert.Greater(coinReveals,0);Assert.Greater(lampSounds,0);Assert.Greater(burstSounds,0);
             for(int i=0;i<100&&!core.Exit.Window.ContinueButton.gameObject.activeInHierarchy;i++)yield return null;
             Assert.IsTrue(core.Exit.Window.ContinueButton.gameObject.activeInHierarchy);
+            for(int i=0;i<10;i++)yield return null;
             // A dirty persisted setting isolates the final save from earlier reward setters.
             game.PlayerStore.Data.IsMusic=!game.PlayerStore.Data.IsMusic;
             Assert.AreNotEqual(JsonUtility.ToJson(game.PlayerStore.Data),PlayerPrefs.GetString(key));
-            core.Exit.Window.ContinueButton.onClick.Invoke();
+            ClickVisible(core.Exit.Window.ContinueButton,game);
             Assert.IsTrue(field.IsBusy,"End-window close must not unlock Spin before return transition completes.");
             for(int frame=0;frame<150&&completed==1;frame++){RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;}
             Assert.AreEqual(2,completed);Assert.IsFalse(core.Entry.IsFreeSpinEnd);Assert.IsFalse(field.IsBusy);
@@ -115,6 +133,8 @@ public sealed class RecoveredCoreRoundFlowTests
             Assert.AreEqual(RecoveredSlotType.Base,game.PlayerProgress.GameSlotType);Assert.IsTrue(field.ModeView.BaseRoll.activeSelf);Assert.IsFalse(field.ModeView.FreeRoll.activeSelf);
             spins=game.PlayerProgress.SpinCount;field.SpinButton.Button.onClick.Invoke();Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);Assert.IsTrue(field.Reels.IsRunning);
         } finally {
+            if(prepare!=null)SceneManager.sceneLoaded-=prepare;
+            RenderTexture.active=prior;if(camera!=null)camera.targetTexture=null;if(target!=null)Object.Destroy(target);if(capture!=null)Object.Destroy(capture);
             Random.state=random;Time.timeScale=scale;Time.captureDeltaTime=delta;
             if(scene.IsValid()&&scene.isLoaded)unload=SceneManager.UnloadSceneAsync(scene);
             if(had)PlayerPrefs.SetString(key,saved);else PlayerPrefs.DeleteKey(key);
@@ -122,4 +142,12 @@ public sealed class RecoveredCoreRoundFlowTests
         if(unload!=null)yield return unload;
     }
     private static void Claim(Button button){if(button!=null&&button.gameObject.activeInHierarchy&&button.IsInteractable())button.onClick.Invoke();}
+    private static void ClickVisible(Button button,GameEntry game)
+    {
+        Canvas.ForceUpdateCanvases();var rect=(RectTransform)button.transform;
+        var pointer=new PointerEventData(EventSystem.current){button=PointerEventData.InputButton.Left,position=RectTransformUtility.WorldToScreenPoint(game.GetComponent<Canvas>().worldCamera,rect.TransformPoint(rect.rect.center))};
+        var hits=new List<RaycastResult>();EventSystem.current.RaycastAll(pointer,hits);Assert.IsNotEmpty(hits);
+        Assert.AreEqual(button.gameObject,ExecuteEvents.GetEventHandler<IPointerClickHandler>(hits[0].gameObject));
+        ExecuteEvents.ExecuteHierarchy(hits[0].gameObject,pointer,ExecuteEvents.pointerClickHandler);
+    }
 }

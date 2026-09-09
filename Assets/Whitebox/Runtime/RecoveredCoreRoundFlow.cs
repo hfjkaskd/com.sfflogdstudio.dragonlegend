@@ -77,6 +77,7 @@ namespace DragonLegend.Whitebox
             entry.InitFreeReelsRequested+=field.ModeView.InitializeFreeReels;
             entry.InitFreeSpinTimesRequested+=InitialCount;
             entry.Completed+=AfterEntry;entry.Failed+=Fail;
+            entry.WindowShowRequested+=PreparePopupDepth;
             slot.Bind(player,rules,game.Ads,game.CashFlight,game.transform,profile.isA,profile.languageType);
             wheel.Bind(player,rules,game.Ads,game.CashFlight,game.transform,field,profile.isA,profile.languageType);
             field.CashOutTaskRefreshRequested+=player.RefreshCashOutTask;
@@ -94,6 +95,7 @@ namespace DragonLegend.Whitebox
             exit.BaseViewResetRequested+=field.ModeView.ApplyCurrent;
             exit.BaseReelsInitRequested+=InitializeBase;
             exit.FreeEndFlagClearRequested+=ReturnedToBase;
+            exit.WindowShowRequested+=PreparePopupDepth;
             game.BonusFlow.Completed+=AfterBonus;
             field.SpinHint.Begin();
             game.SpinEntry.GuideHideRequested+=firstSpinGuide.Hide;
@@ -230,6 +232,7 @@ namespace DragonLegend.Whitebox
             mode.FreeReels.Controller.AbortForProfileChange();
             entry.InitShowRequested-=mode.ApplyCurrent;entry.InitFreeReelsRequested-=mode.InitializeFreeReels;
             entry.InitFreeSpinTimesRequested-=InitialCount;entry.Completed-=AfterEntry;entry.Failed-=Fail;entry.Unbind();
+            entry.WindowShowRequested-=PreparePopupDepth;exit.WindowShowRequested-=PreparePopupDepth;
             exit.BaseViewResetRequested-=mode.ApplyCurrent;exit.BaseReelsInitRequested-=InitializeBase;
             exit.FreeEndFlagClearRequested-=ReturnedToBase;exit.Unbind();game=null;
         }

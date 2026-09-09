@@ -24,6 +24,7 @@ namespace DragonLegend.Whitebox
         public Exception Error { get; private set; }
         public event Action Completed, PauseMusicRequested, BaseViewResetRequested, BaseReelsInitRequested, FreeEndFlagClearRequested;
         public event Action<string> SoundRequested, ChangeMusicRequested;
+        public event Action<Component> WindowShowRequested;
         public void Bind(RecoveredFreeReels freeReels, RecoveredPlayerProgress player, RecoveredFreeSpinResult source,
             RecoveredFreeSpinEntry spinEntry, IReadOnlyList<int> symbolIds, Func<int> originalSpinCount, Transform main, Func<int> language)
         {
@@ -54,7 +55,7 @@ namespace DragonLegend.Whitebox
                 generating=false;Completed?.Invoke();
             }catch(Exception error){Fail(error);}
         }
-        private void ShowEnd(int count)=>window.Show(count,exit.CompleteEndView);
+        private void ShowEnd(int count){WindowShowRequested?.Invoke(window);window.Show(count,exit.CompleteEndView);}
         private void LaunchTransition(){transition.Play(exit.OnTransitionEvent,exit.OnTransitionComplete);Completed?.Invoke();}
         private void Pause()=>PauseMusicRequested?.Invoke();
         private void TransitionSound()=>Sound("transform");
