@@ -471,6 +471,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier:
   content: {fileID: 8952195247212627227}
+  fingerPrefab: {fileID: 4327123525324647391, guid: 150db4a7596a59d4ab29592a88cfae26, type: 3}
   dragon: {fileID: 4082623787053682787}
   countText: {fileID: 4315405723004743113}
   advertisedText: {fileID: 1173246191454291566}

@@ -11,6 +11,16 @@ using Object=UnityEngine.Object;
 
 public static class BuildFreeStartPopup
 {
+    public static void SaveFinger()
+    {
+        const string path="Assets/Resources/RecoveredUI/FreeStartPopup.prefab";
+        var root=PrefabUtility.LoadPrefabContents(path);
+        try {
+            var settings=new SerializedObject(root.GetComponent<RecoveredFreeStartPopup>());
+            settings.FindProperty("fingerPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RectTransform>("Assets/Resources/RecoveredUI/Finger.prefab");
+            settings.ApplyModifiedPropertiesWithoutUndo();PrefabUtility.SaveAsPrefabAsset(root,path);AssetDatabase.SaveAssets();
+        } finally {PrefabUtility.UnloadPrefabContents(root);}
+    }
     private const string Folder="Assets/Resources/RecoveredUI/FreeStartPopup";
     private const string Temporary="Assets/Whitebox/Editor/FreeStartSourceImport.prefab";
     public static void Save()
@@ -59,6 +69,7 @@ public static class BuildFreeStartPopup
             var mi=mask.GetComponent<Image>();mi.color=new Color(0,0,0,.65f);
             var mb=mask.GetComponent<Button>();mb.targetGraphic=mi;mb.transition=Selectable.Transition.None;
             var popup=root.AddComponent<RecoveredFreeStartPopup>();var s=new SerializedObject(popup);
+            s.FindProperty("fingerPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RectTransform>("Assets/Resources/RecoveredUI/Finger.prefab");
             s.FindProperty("content").objectReferenceValue=content;s.FindProperty("dragon").objectReferenceValue=dragon;
             s.FindProperty("countText").objectReferenceValue=content.Find("Text (Legacy)").GetComponent<Text>();
             s.FindProperty("advertisedText").objectReferenceValue=content.Find("Btn/ClaimBtn/Text (TMP)").GetComponent<TMP_Text>();

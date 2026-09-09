@@ -12,6 +12,10 @@ namespace DragonLegend.Whitebox
     {
         private struct AdCount { public float elapsed; public bool counted; }
         [SerializeField] private RectTransform content;
+        [SerializeField] private RectTransform fingerPrefab;
+        private RectTransform finger;
+        private RecoveredRegionAnimator fingerAnimator;
+        public RectTransform Finger=>finger;
         [SerializeField] private RecoveredRegionAnimator dragon;
         [SerializeField] private Text countText;
         [SerializeField] private TMP_Text advertisedText,plainText;
@@ -46,20 +50,28 @@ namespace DragonLegend.Whitebox
             gameObject.SetActive(true);SoundRequested?.Invoke("fsstart");
             countText.text=spinCount.ToString(CultureInfo.InvariantCulture);dragon.Play(0);
             advertisedText.text=string.Format(CultureInfo.InvariantCulture,advertisedFormat,extraCount);
-            plainText.text=plainCaption;FingerRequested?.Invoke(advertisedText.transform);
+            plainText.text=plainCaption;ShowFinger();
             content.localScale=Vector3.zero;scaleElapsed=0;scalePhase=1;
         }
         private void Claim()
         {
             if(IsClicked)return;
-            IsClicked=false;FingerHideRequested?.Invoke();SoundRequested?.Invoke("click");
+            IsClicked=false;HideFinger();SoundRequested?.Invoke("click");
             ads.PlayRewardAd(AdSucceeded,()=>IsClicked=false,"freespin","freespin");
         }
         private void Plain()
         {
             if(IsClicked)return;
-            IsClicked=false;FingerHideRequested?.Invoke();SoundRequested?.Invoke("click");Hide();
+            IsClicked=false;HideFinger();SoundRequested?.Invoke("click");Hide();
         }
+        private void ShowFinger()
+        {
+            if(finger==null){finger=Instantiate(fingerPrefab,advertisedText.transform,false);fingerAnimator=finger.GetComponentInChildren<RecoveredRegionAnimator>();}
+            else finger.SetParent(advertisedText.transform,false);
+            finger.localScale=Vector3.one;finger.anchoredPosition=Vector2.zero;finger.gameObject.SetActive(true);
+            fingerAnimator.Play(0);FingerRequested?.Invoke(advertisedText.transform);
+        }
+        private void HideFinger(){if(finger!=null)finger.gameObject.SetActive(false);FingerHideRequested?.Invoke();}
         private void AdSucceeded()
         {
             progress.FreeSpinCount=spinCount+extraCount;

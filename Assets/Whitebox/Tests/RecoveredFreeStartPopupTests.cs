@@ -35,6 +35,8 @@ public sealed class RecoveredFreeStartPopupTests
             popup.FingerHideRequested+=()=>hidden++;
             Action done=()=>{Assert.IsFalse(popup.gameObject.activeSelf);completed++;};
             popup.Show(8,progress,rules,ads,done);
+            var finger=popup.Finger;Assert.IsNotNull(finger);Assert.AreSame(popup.AdvertisedText.transform,finger.parent);
+            Assert.IsTrue(finger.gameObject.activeInHierarchy);Assert.AreEqual(Vector2.zero,finger.anchoredPosition);Assert.AreEqual(Vector3.one,finger.localScale);
             for(int i=0;i<8;i++)yield return null;
             Assert.IsFalse(popup.IsTransitioning);Assert.AreEqual(Vector3.one,popup.Content.localScale);
             Assert.AreEqual("8",popup.CountText.text);Assert.AreEqual("<sprite name=\"tc_btn_bofang\">FREE+4",popup.AdvertisedText.text);
@@ -51,8 +53,10 @@ public sealed class RecoveredFreeStartPopupTests
             }
             Time.timeScale=0;yield return null;Render(popup,camera,target,capture,"initial");
             popup.ClaimButton.onClick.Invoke();Assert.IsTrue(ads.Pending);Assert.IsFalse(popup.IsClicked);
+            Assert.IsFalse(finger.gameObject.activeSelf);
             Assert.AreEqual("freespin",ads.Placement);Assert.AreEqual("freespin",ads.Scene);
             ads.Complete(AdOutcome.Failed);Assert.IsTrue(popup.gameObject.activeSelf);Assert.AreEqual(8,progress.FreeSpinCount);
+            Assert.IsFalse(finger.gameObject.activeSelf,"Native ad failure resets the flag, but does not restore the hand.");
             popup.PlainButton.onClick.Invoke();for(int i=0;i<4;i++)yield return null;
             Assert.IsTrue(popup.gameObject.activeSelf);Assert.AreEqual(0,completed);
             Time.timeScale=1;for(int i=0;i<10&&popup.gameObject.activeSelf;i++)yield return null;
@@ -60,6 +64,7 @@ public sealed class RecoveredFreeStartPopupTests
             CollectionAssert.AreEqual(new[]{"fsstart","click","click"},sounds);
 
             sounds.Clear();popup.Show(8,progress,rules,ads,done);for(int i=0;i<8;i++)yield return null;
+            Assert.AreSame(finger,popup.Finger);Assert.IsTrue(finger.gameObject.activeInHierarchy);
             Time.timeScale=0;yield return null;
             popup.ClaimButton.onClick.Invoke();ads.Complete(AdOutcome.Rewarded);
             Assert.AreEqual(12,progress.FreeSpinCount);Assert.AreEqual("8",popup.CountText.text);
