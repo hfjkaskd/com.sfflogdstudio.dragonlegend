@@ -189,7 +189,8 @@ public sealed class RecoveredCoinGlowTests
 
             // A flight can still be in transit after the reveal/glow finishes and before
             // its arrival burst exists. Wait for those independent transfers as well.
-            for (int i = 0; i < 80 && (field.BonusCoins.IsRunning || first.Glow.IsPlaying || second.Glow.IsPlaying || field.CoinStops.ActiveFlightCount>0 || field.CoinStops.ActiveFlashCount>0 || field.WinFlight.ActiveCount>0 || field.WinFlight.ActiveBurstCount>0); i++) yield return null;
+            float transferDeadline=Time.realtimeSinceStartup+5;
+            while (Time.realtimeSinceStartup<transferDeadline && (winArrivals<2 || field.BonusCoins.IsRunning || first.Glow.IsPlaying || second.Glow.IsPlaying || field.CoinStops.ActiveFlightCount>0 || field.CoinStops.ActiveFlashCount>0 || field.WinFlight.ActiveCount>0 || field.WinFlight.ActiveBurstCount>0)) yield return null;
             Assert.AreEqual(2, presentations); Assert.AreEqual(2, sounds); Assert.IsNull(field.BonusCoins.Error);
             Assert.AreEqual(2,winFlights,"Reward transfers started");Assert.AreEqual(2,winArrivals,"Reward transfers arrived");Assert.AreEqual(2,burstSounds,"Arrival sounds");Assert.AreEqual(2,winVibrations,"Arrival vibrations");
             Assert.AreEqual(0,field.WinFlight.ActiveBurstCount);

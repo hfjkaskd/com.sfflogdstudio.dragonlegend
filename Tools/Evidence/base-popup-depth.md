@@ -1,0 +1,15 @@
+# Base BigWin and Jackpot popup group
+
+Native OnInitProperty UIBigWinView 23949f4 and UIJackpotView 23b2b0c both load dbb670 into UIWindowProperty +0x10/+0x14: (300, 2), Popup and Black mask. Their base group is therefore the same as the core windows, not a separate fixed-depth layer beneath the playfield. See core-popup-groups.md for ELF literal decoding and UIManager group/max-depth behavior.
+
+CoreRoundFlow now attaches the two existing authored window instances to the configured PopupRoot during binding, preserving their serialized layout and playfield references. This is window-parent assignment, not runtime creation of UI structure or styling. BigWin exposes its pre-activation Show boundary; Jackpot reuses the boundary already added for other Jackpot instances. Both subscribe to the same group depth helper and unsubscribe during teardown. Existing playfield audio, reward, task and continuation bindings remain their owners.
+
+The real paid-spin BigWin and Jackpot tests now open More Spin before the win window and assert the win opens above it. Before the fix, Artifacts/base-popup-depth-before.xml failed 0/2: both remained 300, equal to More Spin. Unity PID 18696 exited. These tests retain the existing ad-result simulation, no-premature-continuation, payout/flight ordering, meter reset and subsequent settlement checks. SDK behavior is unchanged. This integration does not prove complete visual or lifecycle fidelity across all remaining peripheral windows.
+
+Validation exposed two fixture waiting assumptions. The first full run, base-popup-depth-regression.xml (PID 36340 exited), passed 456/457; BigWin's fixed six-frame tail expired while the main round was still busy. The fixture now waits for the actual end state under a five-second deadline and asserts no residual Bank/Free-entry flow or core error. The isolated continuation run passed 2/2 in 3.444843 seconds (PID 35308 exited), with zero additional end frames in that run, confirming timing varies rather than identifying a new deterministic production stall.
+
+The next full run, base-popup-depth-final.xml (PID 37292 exited), passed 456/457 with both win integrations passing; CoinGlow observed one of two expected transfers. Its existing drain loop could exit between independent transfers, because it only queried currently active work. It now also waits for both expected arrival events within a five-second deadline; exact counts, amounts, visual assertions and pool reuse checks remain unchanged. The targeted CoinGlow and win integrations passed 4/4 in 5.3055946 seconds in base-popup-depth-transfers.xml (PID 51540 exited). No production timing changes were made for either fixture.
+
+The freshly generated current-bigwin-spin-popup.png was inspected and shows BigWin above the retained More Spin popup. This is a current-project capture, not a fresh original-APK comparison.
+
+Final full-suite validation: Artifacts/base-popup-depth-complete.xml passed 457/457 PlayMode tests, zero failures, in 94.0540277 seconds. Unity PID 9416 exited.

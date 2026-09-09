@@ -46,6 +46,7 @@ namespace DragonLegend.Whitebox
         private Action countCompleted;
         public event Action PauseMusicRequested, StopSound1Requested, ResumeMusicRequested;
         public event Action<string> SoundRequested, Sound1Requested;
+        public event Action<Component> WindowShowRequested;
         public event Action<float> FlyCoinRequested;
         public event Action<int, int> CashOutTaskRefreshRequested;
         public RectTransform Content => content;
@@ -77,7 +78,7 @@ namespace DragonLegend.Whitebox
                 case RecoveredSlotWinType.Super: animation = 2; break;
                 default: throw new ArgumentOutOfRangeException(nameof(type));
             }
-            gameObject.SetActive(true);
+            WindowShowRequested?.Invoke(this);gameObject.SetActive(true);
             language = languageType; countCompleted = null;
             plainReveal.Cancel(); tipReveal.Cancel();
             claim = new RecoveredBigWinClaim(progress, rules, ads, this);

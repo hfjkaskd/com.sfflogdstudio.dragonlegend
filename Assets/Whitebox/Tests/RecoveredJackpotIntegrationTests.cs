@@ -44,10 +44,12 @@ public sealed class RecoveredJackpotIntegrationTests
             field.JackpotSequence.WinRequested+=type=>{Assert.AreEqual(RecoveredJackpotType.Grand,type);winTime=Time.time;};
             field.FlyCoinRequested+=(amount,completed)=>{flightAmount=amount;flight=completed;};
             field.SpinButton.Button.onClick.Invoke();Assert.IsFalse(entry.PlayerProgress.IsFirstFreeReward);
+            field.SpinRecovery.MoreSpinButton.onClick.Invoke();Assert.IsTrue(entry.CoreRound.MoreSpins.gameObject.activeSelf);
             entry.SpinResult.Board.ApplyGuaranteedWildIndex(2);
             entry.SpinResult.Board.Settle(entry.Settlement,field.Bet);
             for(int i=0;i<500&&!popup.gameObject.activeSelf;i++)yield return null;
             Assert.IsNull(field.Error);Assert.IsTrue(popup.gameObject.activeSelf);Assert.GreaterOrEqual(winTime,0);
+            Assert.Greater(popup.GetComponent<Canvas>().sortingOrder,entry.CoreRound.MoreSpins.GetComponent<Canvas>().sortingOrder);
             Assert.GreaterOrEqual(Time.time-winTime,1.5f-.001f);
             float expected=entry.Rules.GetJackpotReward(entry.Rules.GetJackPot()[0],field.Bet,9);
             Assert.AreEqual(expected,field.JackpotSequence.CapturedReward);Assert.AreEqual(expected,popup.Claim.OriginalReward);

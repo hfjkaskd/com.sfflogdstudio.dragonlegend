@@ -38,6 +38,7 @@ public sealed class RecoveredBigWinIntegrationTests
                 Assert.AreEqual(field.SymbolWin.TotalWin*entry.Rules.GetBigWinClaim(0),value);
             };
             field.SpinButton.Button.onClick.Invoke();
+            field.SpinRecovery.MoreSpinButton.onClick.Invoke();Assert.IsTrue(entry.CoreRound.MoreSpins.gameObject.activeSelf);
             for(int attempt=0;attempt<10000;attempt++) {
                 Random.InitState(719+attempt);entry.SpinResult.Board.FillBase();entry.SpinResult.Board.Settle(entry.Settlement,field.Bet);
                 float win=entry.Settlement.GetWinTotalLine();
@@ -46,6 +47,7 @@ public sealed class RecoveredBigWinIntegrationTests
             Assert.IsTrue(found);
             for(int i=0;i<700&&!field.BigWinPopup.gameObject.activeSelf;i++)yield return null;
             Assert.IsNull(field.Error);Assert.IsTrue(field.BigWinPopup.gameObject.activeSelf);
+            Assert.Greater(field.BigWinPopup.GetComponent<Canvas>().sortingOrder,entry.CoreRound.MoreSpins.GetComponent<Canvas>().sortingOrder);
             Assert.GreaterOrEqual(Time.time-began,1.1f-.001f);Assert.AreEqual(1,bursts);
             Assert.AreEqual(string.Empty,field.SymbolAmount.Label.text);Assert.AreEqual(0,completed);
             Assert.AreEqual(balance,entry.PlayerProgress.GreenCount);Assert.AreEqual(0,changes);
@@ -71,7 +73,10 @@ public sealed class RecoveredBigWinIntegrationTests
             Assert.AreEqual(1,changes);Assert.AreEqual(balance+award,entry.PlayerProgress.GreenCount);
             Assert.AreEqual(award,field.DownWin.TemporaryTotal);Assert.AreEqual(0,field.DownWin.Total);
             Assert.AreEqual(RecoveredCurrency.Format(award,entry.CurrentProfile.languageType,2),field.DownWin.Label.text);
-            for(int i=0;i<6&&field.IsBusy;i++){RecoveredCorePromptDriver.ClaimAndClose(entry.CoreRound);yield return null;}
+            int endFrames=0;float endDeadline=Time.realtimeSinceStartup+5;
+            while(field.IsBusy&&Time.realtimeSinceStartup<endDeadline){RecoveredCorePromptDriver.ClaimAndClose(entry.CoreRound);endFrames++;yield return null;}
+            TestContext.WriteLine("Core end continuation frames after reward: "+endFrames);
+            Assert.IsNull(entry.CoreRound.Error);Assert.IsFalse(entry.CoreRound.Bank.gameObject.activeSelf);Assert.IsFalse(entry.CoreRound.Entry.IsRunning);
             Assert.AreEqual(string.Empty,field.SymbolAmount.Label.text);Assert.IsFalse(field.IsBusy);Assert.IsFalse(field.AwaitingRewards);
             Capture(camera,target,capture,"current-bigwin-spin-complete.png");
         } finally {

@@ -56,6 +56,11 @@ namespace DragonLegend.Whitebox
         public void Bind(GameEntry context)
         {
             game=context;var field=game.Playfield;var reels=field.ModeView.FreeReels;
+            // Attach the existing authored window instances to their native Popup type root.
+            field.BigWinPopup.transform.SetParent(popupRoot,false);
+            field.JackpotPopup.transform.SetParent(popupRoot,false);
+            field.BigWinPopup.WindowShowRequested+=PreparePopupDepth;
+            field.JackpotPopup.WindowShowRequested+=PreparePopupDepth;
             field.ModeView.HideSpeedEffects();
             field.Reels.AnticipationVisibilityRequested+=field.ModeView.SetSpeedEffect;
             field.Reels.ShakeRequested+=field.Wilds.Shake.Begin;
@@ -229,6 +234,8 @@ namespace DragonLegend.Whitebox
         {
             if(game==null)return;
             game.Playfield.Reels.ShakeRequested-=game.Playfield.Wilds.Shake.Begin;
+            game.Playfield.BigWinPopup.WindowShowRequested-=PreparePopupDepth;
+            game.Playfield.JackpotPopup.WindowShowRequested-=PreparePopupDepth;
             ConnectBranchPopupDepth(false);
             game.BonusFlow.Window.WindowShowRequested-=PreparePopupDepth;
             game.BonusFlow.Window.RewardPopup.WindowShowRequested-=PreparePopupDepth;
