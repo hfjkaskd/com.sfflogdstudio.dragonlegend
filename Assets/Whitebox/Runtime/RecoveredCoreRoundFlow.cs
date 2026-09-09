@@ -96,6 +96,7 @@ namespace DragonLegend.Whitebox
             game.BonusFlow.Window.WindowShowRequested+=PreparePopupDepth;
             game.BonusFlow.Window.RewardPopup.WindowShowRequested+=PreparePopupDepth;
             game.BonusFlow.Window.JackpotPopup.WindowShowRequested+=PreparePopupDepth;
+            game.CollectEntry.WindowShowRequested+=PreparePopupDepth;
             router=new RecoveredFreeSmallGameRouter(rules,player,slot.Begin,wheel.Begin,treasure.Begin,lucky.Begin);
             reels.CoinScan.Bind(rules,player,game.FreeSpinResult,field.BonusCollection,Language);
             game.BonusFlow.BindFreeScan(reels.CoinScan);
@@ -240,6 +241,7 @@ namespace DragonLegend.Whitebox
             game.BonusFlow.Window.WindowShowRequested-=PreparePopupDepth;
             game.BonusFlow.Window.RewardPopup.WindowShowRequested-=PreparePopupDepth;
             game.BonusFlow.Window.JackpotPopup.WindowShowRequested-=PreparePopupDepth;
+            game.CollectEntry.WindowShowRequested-=PreparePopupDepth;
             game.Playfield.ModeView.FreeReels.Controller.ShakeRequested-=game.Playfield.Wilds.Shake.Begin;
             game.Playfield.Wilds.Shake.Cancel();
             game.Playfield.Reels.AnticipationVisibilityRequested-=game.Playfield.ModeView.SetSpeedEffect;

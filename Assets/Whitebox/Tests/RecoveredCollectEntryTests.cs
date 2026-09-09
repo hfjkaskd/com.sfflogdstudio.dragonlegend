@@ -33,6 +33,7 @@ public sealed class RecoveredCollectEntryTests
             Assert.AreSame(collect.Button.transform, collect.Destination.parent);
             int sounds = 0; collect.SoundRequested += name => { Assert.AreEqual("click", name); sounds++; };
             yield return Click(collect.Button, camera); var window = collect.Window; Assert.IsNotNull(window);
+            Assert.AreSame(entry.CoreRound.PopupRoot,window.transform.parent,"Collection belongs to the shared Popup group.");
             Assert.AreEqual(1, sounds); Assert.IsTrue(window.Green.activeSelf); Assert.IsFalse(window.Gold.activeSelf);
             for (int i=0;i<14;i++) yield return null;
             Assert.AreEqual(0, window.List.Scroll.content.anchoredPosition.y, .01f, "First opening must not manufacture scroll during zero-scale entry.");
@@ -44,6 +45,13 @@ public sealed class RecoveredCollectEntryTests
             entry.PlayerProgress.SetCollectData(entry.Rules.GetCollectInfos()[0].id, 1);
             yield return Click(collect.Button, camera); Assert.AreSame(window, collect.Window); Assert.AreSame(list, window.List);
             Assert.AreEqual(150, list.Scroll.content.anchoredPosition.y); Assert.AreEqual("1/15", window.ProgressText.text);
+            for(int i=0;i<14;i++)yield return null;
+            var shownScale=window.Content.localScale;int shownDepth=window.GetComponent<Canvas>().sortingOrder;
+            collect.Button.onClick.Invoke();
+            Assert.AreEqual(shownScale,window.Content.localScale,"Duplicate show must not restart its opening tween.");
+            Assert.AreEqual(shownDepth,window.GetComponent<Canvas>().sortingOrder);
+            entry.Playfield.SpinRecovery.MoreSpinButton.onClick.Invoke();
+            Assert.Greater(entry.CoreRound.MoreSpins.GetComponent<Canvas>().sortingOrder,shownDepth,"Other Popup windows must include the active collection in their depth query.");
             var gm = entry.GetComponent<RecoveredGmPanel>();
             yield return Click(gm.ToggleButton, camera);
             yield return Click(entry.transform.Find("SelectAlternative").GetComponent<Button>(), camera);

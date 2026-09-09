@@ -196,7 +196,7 @@ namespace DragonLegend.Whitebox
             }
             if (collectEntryPrefab != null) {
                 CollectEntry = Instantiate(collectEntryPrefab, transform, false);
-                CollectEntry.Bind(PlayerProgress, Rules, transform, profile.isA, profile.languageType);
+                CollectEntry.Bind(PlayerProgress, Rules, transform, profile.isA, profile.languageType,CoreRound!=null?CoreRound.PopupRoot:transform);
             }
             if(CoreRound!=null)CoreRound.Bind(this);
             if(coreAudioPrefab!=null){CoreAudio=Instantiate(coreAudioPrefab,transform,false);CoreAudio.Bind(this);}
