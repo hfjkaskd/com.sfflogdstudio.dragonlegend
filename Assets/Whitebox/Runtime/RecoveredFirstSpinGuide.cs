@@ -16,7 +16,7 @@ namespace DragonLegend.Whitebox
         public RectTransform Node=>node;
         public RectTransform Target=>target;
         // Source Bg has no persistent calls; Guide.Init/constructor bind no click listener.
-        public void Show(RectTransform main,RectTransform spin,Camera camera)
+        public void Show(RectTransform main,RectTransform spin,Camera camera,int step=1)
         {
             Hide();gameObject.SetActive(true);background.gameObject.SetActive(true);
             Vector2 point;
@@ -27,7 +27,7 @@ namespace DragonLegend.Whitebox
             node.anchoredPosition=new Vector2(0,y);
             target=spin;originalParent=spin.parent;
             spin.SetParent(transform,true);
-            text.SetText(1);
+            text.SetText(step);
         }
         public void Hide()
         {

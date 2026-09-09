@@ -14,6 +14,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredFreeLuckyGame lucky;
         [SerializeField] private RectTransform ballDestination;
         [SerializeField] private RecoveredMoreSpinWindow moreSpins;
+        [SerializeField] private RecoveredMoreWildWindow moreWild;
+        public RecoveredMoreWildWindow MoreWild=>moreWild;
         [SerializeField] private RecoveredTipsWindow tips;
         [SerializeField] private RecoveredFirstSpinGuide firstSpinGuide;
         public RecoveredFirstSpinGuide FirstSpinGuide=>firstSpinGuide;
@@ -31,6 +33,7 @@ namespace DragonLegend.Whitebox
         {
             game=context;var field=game.Playfield;var reels=field.ModeView.FreeReels;
             moreSpins.Bind(game);tips.Bind(game.GetComponent<Canvas>().worldCamera);
+            moreWild.Bind(game);
             field.SpinRecovery.Bind(game,moreSpins.Show);
             game.SpinEntry.MoreSpinsRequested+=moreSpins.Show;moreSpins.LimitTipRequested+=ShowMoreSpinLimit;
             var player=game.PlayerProgress;var rules=game.Rules;var profile=game.CurrentProfile;
@@ -76,6 +79,8 @@ namespace DragonLegend.Whitebox
         private void ReturnedToBase(){entry.ClearFreeEndFlag();CompleteCoreRound();}
         private void CompleteCoreRound()
         {
+            // CheckBaseEnd 23c673c..23c67c0: show free Wild before unlocking, without awaiting claim.
+            if(game.PlayerStore.Data.GuideStep==2)moreWild.Show(true);
             game.Playfield.SpinHint.Begin();
             if(game.Playfield.AwaitingRewards)game.Playfield.CompleteBaseRound();
             // CheckBaseEnd 23c67d4..23c67f4: clear the busy flag, then SavePlayerData.
@@ -89,6 +94,7 @@ namespace DragonLegend.Whitebox
             game.SpinEntry.GuideHideRequested-=firstSpinGuide.Hide;firstSpinGuide.Hide();
             game.SpinEntry.MoreSpinsRequested-=moreSpins.Show;moreSpins.LimitTipRequested-=ShowMoreSpinLimit;
             moreSpins.Cancel();tips.Cancel();
+            moreWild.Cancel();
             game.Playfield.SpinRecovery.Unbind();
             game.BonusFlow.Completed-=AfterBonus;game.BonusFlow.BindFreeScan(null);
             var mode=game.Playfield.ModeView;
