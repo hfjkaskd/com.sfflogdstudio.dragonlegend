@@ -26,6 +26,7 @@ public sealed class RecoveredJackpotPopupArtTests
     [TestCase("wheel-art-poses.json")]
     [TestCase("treasure-icon-poses.json")]
     [TestCase("cashout-entry-poses.json")]
+    [TestCase("top-withdraw-poses.json")]
     public void PopupWeightedAndSequenceGeometryMatchesAllSourceClips(string evidenceFile)
     {
         var evidence=JsonUtility.FromJson<Evidence>(File.ReadAllText(Path.Combine(Application.dataPath,"../Tools/Evidence/"+evidenceFile)));

@@ -1,0 +1,438 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3563620444862323199
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3128849784804114560}
+  - component: {fileID: 6845506607267708035}
+  - component: {fileID: 8474162025372455365}
+  - component: {fileID: 1463107627592697164}
+  - component: {fileID: 956333864465095873}
+  m_Layer: 5
+  m_Name: ef_sltxan
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3128849784804114560
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563620444862323199}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 456.99997, y: 147}
+  m_Pivot: {x: 0.5, y: 0.5034014}
+--- !u!222 &6845506607267708035
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563620444862323199}
+  m_CullTransparentMesh: 0
+--- !u!114 &8474162025372455365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563620444862323199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dad06e1c22c15241b8bd93bf1077c3a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_Material: {fileID: 2100000, guid: 601330edf059f894dbfb4541361889cd, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  bones:
+  - name: root
+    parent: -1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: bj
+    parent: 0
+    mode: 0
+    x: -0.000040099774
+    y: -917.37585
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: dx
+    parent: 0
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: an
+    parent: 2
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: sg
+    parent: 3
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 2
+    scaleY: 2
+    shearX: 0
+    shearY: 0
+  slots:
+  - bone: 1
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 3
+    attachment: 12
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 3
+    attachment: 0
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 3
+    attachment: 1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 4
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 4
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 4
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 4
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 4
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 4
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 4
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 4
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 4
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 4
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  regions:
+  - vertices:
+    - {x: -182, y: -74}
+    - {x: -182, y: 64}
+    - {x: 184, y: 64}
+    - {x: 184, y: -74}
+    uv:
+    - {x: 0.62297297, y: 0.013333334}
+    - {x: 0.62297297, y: 0.47333333}
+    - {x: 0.87027025, y: 0.47333333}
+    - {x: 0.87027025, y: 0.013333334}
+    tint: {r: 1, g: 0.7254902, b: 0.32941177, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -182, y: -74}
+    - {x: -182, y: 64}
+    - {x: 184, y: 64}
+    - {x: 184, y: -74}
+    uv:
+    - {x: 0.62297297, y: 0.013333334}
+    - {x: 0.62297297, y: 0.47333333}
+    - {x: 0.87027025, y: 0.47333333}
+    - {x: 0.87027025, y: 0.013333334}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -77.5, y: -23}
+    - {x: -77.5, y: 22}
+    - {x: -62.5, y: 22}
+    - {x: -62.5, y: -23}
+    uv:
+    - {x: 0.87702703, y: 0.42}
+    - {x: 0.87702703, y: 0.72}
+    - {x: 0.8972973, y: 0.72}
+    - {x: 0.8972973, y: 0.42}
+    tint: {r: 0.99215686, g: 1, b: 0.96862745, a: 0.29803923}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -78.5, y: -23}
+    - {x: -78.5, y: 22}
+    - {x: -40.5, y: 22}
+    - {x: -40.5, y: -23}
+    uv:
+    - {x: 0.93783784, y: 0.73333335}
+    - {x: 0.87702703, y: 0.73333335}
+    - {x: 0.87702703, y: 0.9866667}
+    - {x: 0.93783784, y: 0.9866667}
+    tint: {r: 0.99215686, g: 1, b: 0.96862745, a: 0.29803923}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -77.5, y: -23}
+    - {x: -77.5, y: 22}
+    - {x: -18.5, y: 22}
+    - {x: -18.5, y: -23}
+    uv:
+    - {x: 0.93378377, y: 0.013333334}
+    - {x: 0.87297297, y: 0.013333334}
+    - {x: 0.87297297, y: 0.40666667}
+    - {x: 0.93378377, y: 0.40666667}
+    tint: {r: 0.99215686, g: 1, b: 0.96862745, a: 0.29803923}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -66.5, y: -23}
+    - {x: -66.5, y: 22}
+    - {x: 3.5, y: 22}
+    - {x: 3.5, y: -23}
+    uv:
+    - {x: 0.68378377, y: 0.48666668}
+    - {x: 0.62297297, y: 0.48666668}
+    - {x: 0.62297297, y: 0.9533333}
+    - {x: 0.68378377, y: 0.9533333}
+    tint: {r: 0.99215686, g: 1, b: 0.96862745, a: 0.29803923}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -44.5, y: -23}
+    - {x: -44.5, y: 22}
+    - {x: 24.5, y: 22}
+    - {x: 24.5, y: -23}
+    uv:
+    - {x: 0.8743243, y: 0.48666668}
+    - {x: 0.8135135, y: 0.48666668}
+    - {x: 0.8135135, y: 0.94666666}
+    - {x: 0.8743243, y: 0.94666666}
+    tint: {r: 0.99215686, g: 1, b: 0.96862745, a: 0.29803923}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -23.5, y: -23}
+    - {x: -23.5, y: 22}
+    - {x: 46.5, y: 22}
+    - {x: 46.5, y: -23}
+    uv:
+    - {x: 0.7472973, y: 0.48666668}
+    - {x: 0.6864865, y: 0.48666668}
+    - {x: 0.6864865, y: 0.9533333}
+    - {x: 0.7472973, y: 0.9533333}
+    tint: {r: 0.99215686, g: 1, b: 0.96862745, a: 0.29803923}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -1.5, y: -23}
+    - {x: -1.5, y: 22}
+    - {x: 68.5, y: 22}
+    - {x: 68.5, y: -23}
+    uv:
+    - {x: 0.8108108, y: 0.48666668}
+    - {x: 0.75, y: 0.48666668}
+    - {x: 0.75, y: 0.9533333}
+    - {x: 0.8108108, y: 0.9533333}
+    tint: {r: 0.99215686, g: 1, b: 0.96862745, a: 0.29803923}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: 20.5, y: -23}
+    - {x: 20.5, y: 22}
+    - {x: 79.5, y: 22}
+    - {x: 79.5, y: -23}
+    uv:
+    - {x: 0.9972973, y: 0.013333334}
+    - {x: 0.9364865, y: 0.013333334}
+    - {x: 0.9364865, y: 0.40666667}
+    - {x: 0.9972973, y: 0.40666667}
+    tint: {r: 0.99215686, g: 1, b: 0.96862745, a: 0.29803923}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: 41.5, y: -23}
+    - {x: 41.5, y: 22}
+    - {x: 79.5, y: 22}
+    - {x: 79.5, y: -23}
+    uv:
+    - {x: 0.9, y: 0.42}
+    - {x: 0.9, y: 0.72}
+    - {x: 0.95135134, y: 0.72}
+    - {x: 0.95135134, y: 0.42}
+    tint: {r: 0.99215686, g: 1, b: 0.96862745, a: 0.29803923}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: 63.5, y: -23}
+    - {x: 63.5, y: 22}
+    - {x: 79.5, y: 22}
+    - {x: 79.5, y: -23}
+    uv:
+    - {x: 0.95405406, y: 0.42}
+    - {x: 0.95405406, y: 0.72}
+    - {x: 0.9756757, y: 0.72}
+    - {x: 0.9756757, y: 0.42}
+    tint: {r: 0.99215686, g: 1, b: 0.96862745, a: 0.29803923}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -228.5, y: -73}
+    - {x: -228.5, y: 73}
+    - {x: 228.5, y: 73}
+    - {x: 228.5, y: -73}
+    uv:
+    - {x: 0.0027027028, y: 0.013333334}
+    - {x: 0.0027027028, y: 0.9866667}
+    - {x: 0.62027025, y: 0.9866667}
+    - {x: 0.62027025, y: 0.013333334}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  npcConstraints:
+    constraints: []
+    steps:
+  atlasPath: "RecoveredArt/Res/Spine/\u6309\u94AE/sltxan/ef_sltxan"
+--- !u!111 &1463107627592697164
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563620444862323199}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: a8b1217b2939c9541ba6834ab777be4a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: a8b1217b2939c9541ba6834ab777be4a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &956333864465095873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563620444862323199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1559611724bab9346874c5930eb40ff4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  player: {fileID: 1463107627592697164}
+  rig: {fileID: 8474162025372455365}
+  poses:
+  - clip: animation
+    animation: {fileID: 11400000, guid: c6d3329d5c51cce4b89ecd43cccf51c6, type: 2}
+  poseTime: 0
+  playbackSpeed: 1
