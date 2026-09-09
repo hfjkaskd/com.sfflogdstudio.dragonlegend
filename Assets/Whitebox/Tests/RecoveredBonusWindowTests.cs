@@ -41,6 +41,14 @@ public sealed class RecoveredBonusWindowTests
             var window=Object.Instantiate(prefab,host.transform);
             window.Show(entry.PlayerProgress,entry.Rules,entry.Ads,entry.CashFlight,()=>1,false,0);
             for(int i=0;i<25;i++)yield return null;
+            Assert.IsNull(window.Finger,"Hand must wait for the native 1.83-second hint delay.");
+            for(int i=0;i<100&&window.Finger==null;i++)yield return null;
+            Assert.IsNotNull(window.Finger);Assert.IsTrue(window.Finger.gameObject.activeInHierarchy);
+            var firstFinger=window.Finger;
+            int fingerIndex=-1;for(int i=0;i<window.CardCount;i++)if(window.Card(i).transform==firstFinger.parent)fingerIndex=i;
+            Assert.GreaterOrEqual(fingerIndex,0);Assert.IsFalse(window.Selection.Round.WasClicked(fingerIndex));
+            Assert.AreEqual(Vector2.zero,firstFinger.anchoredPosition);Assert.AreEqual(Vector3.one,firstFinger.localScale);
+            for(int i=0;i<20;i++)yield return null; // Inspect the animated pose, not its transparent opening frame.
             Assert.AreEqual(12,window.CardCount);Assert.AreEqual("Bonus (11)",window.Card(7).name);
             Assert.GreaterOrEqual(window.Selection.Round.Count,window.CardCount,"Native result pool may contain more rewards than visible cards");
             Assert.AreEqual("LUCKY DRAW CHANCES(<gradient=\"spin\">0/"+entry.Rules.GetBonusFreeTimes()+"</gradient>)",window.Chances.text);
@@ -52,6 +60,13 @@ public sealed class RecoveredBonusWindowTests
             Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
             RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
             File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-bonus-window.png"),capture.EncodeToPNG());
+            for(int i=0;i<90&&firstFinger.gameObject.activeSelf;i++)yield return null;
+            Assert.IsFalse(firstFinger.gameObject.activeSelf);
+            for(int i=0;i<90&&!firstFinger.gameObject.activeSelf;i++)yield return null;
+            Assert.IsTrue(firstFinger.gameObject.activeSelf);Assert.AreSame(firstFinger,window.Finger);
+            window.Card(fingerIndex).Button.onClick.Invoke();
+            Assert.IsFalse(firstFinger.gameObject.activeSelf,"Selecting a card immediately hides its hint.");
+            window.CancelFingerSequence();window.HideFinger();
             Object.Destroy(window.gameObject);yield return null;
             // Fixed source-shaped configs exercise both branches through actual Buttons,
             // child popup and the GameEntry flight/balance service. No payout stub.

@@ -11,6 +11,16 @@ using Object=UnityEngine.Object;
 
 public static class BuildBonusWindow
 {
+    public static void SaveFinger()
+    {
+        const string path="Assets/Resources/RecoveredUI/BonusWindow.prefab";
+        var root=PrefabUtility.LoadPrefabContents(path);
+        try {
+            var settings=new SerializedObject(root.GetComponent<RecoveredBonusWindow>());
+            settings.FindProperty("fingerPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RectTransform>("Assets/Resources/RecoveredUI/Finger.prefab");
+            settings.ApplyModifiedPropertiesWithoutUndo();PrefabUtility.SaveAsPrefabAsset(root,path);AssetDatabase.SaveAssets();
+        } finally {PrefabUtility.UnloadPrefabContents(root);}
+    }
     private const string Temporary="Assets/Whitebox/Editor/BonusSourceImport.prefab";
     public static void Save()
     {
@@ -59,6 +69,7 @@ public static class BuildBonusWindow
             }
             var group=root.AddComponent<RecoveredJackpotMeters>();var gs=new SerializedObject(group);Array(gs.FindProperty("meters"),meters);gs.ApplyModifiedPropertiesWithoutUndo();
             var window=root.AddComponent<RecoveredBonusWindow>();var s=new SerializedObject(window);
+            s.FindProperty("fingerPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RectTransform>("Assets/Resources/RecoveredUI/Finger.prefab");
             s.FindProperty("content").objectReferenceValue=content;s.FindProperty("canvas").objectReferenceValue=root.GetComponent<Canvas>();
             s.FindProperty("meters").objectReferenceValue=group;Array(s.FindProperty("cards"),cards);
             foreach(var pair in new[]{"grandTargets|GrandP","majorTargets|MajorP","minorTargets|MiniorP"}){var p=pair.Split('|');var parent=Find(root,p[1]);var targets=new Transform[parent.childCount];for(int i=0;i<targets.Length;i++)targets[i]=parent.GetChild(i);Array(s.FindProperty(p[0]),targets);}

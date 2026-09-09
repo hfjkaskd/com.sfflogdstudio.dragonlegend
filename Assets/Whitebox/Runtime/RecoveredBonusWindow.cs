@@ -8,6 +8,9 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredBonusWindow:MonoBehaviour,IRecoveredBonusSelectionView
     {
         [SerializeField] private RectTransform content;
+        [SerializeField] private RectTransform fingerPrefab;
+        private RectTransform finger;
+        public RectTransform Finger=>finger;
         [SerializeField] private Canvas canvas;
         [SerializeField] private RecoveredBonusItemTurn[] cards;
         [SerializeField] private Transform[] grandTargets,majorTargets,minorTargets;
@@ -89,7 +92,13 @@ namespace DragonLegend.Whitebox
             float t=Mathf.Clamp01(elapsed/enterDuration);content.localScale=Vector3.one*enterEase.Evaluate(t);
             if(t>=1){entering=false;selection.AfterShow();}
         }
-        public void HideFinger()=>HideFingerRequested?.Invoke();
+        public void HideFinger(){if(finger!=null)finger.gameObject.SetActive(false);HideFingerRequested?.Invoke();}
+        private void PresentFinger(Transform target)
+        {
+            if(finger==null)finger=Instantiate(fingerPrefab,target,false);else finger.SetParent(target,false);
+            finger.anchoredPosition=Vector2.zero;finger.localScale=Vector3.one;finger.gameObject.SetActive(true);
+            FingerRequested?.Invoke(target);
+        }
         public void CancelFingerSequence(){hint?.Cancel();hint=null;}
         public void InitializeCards(){foreach(var card in cards)card.Initialize();}
         public void SetCloseVisible(bool visible)=>closeButton.gameObject.SetActive(visible);
@@ -109,7 +118,7 @@ namespace DragonLegend.Whitebox
             int index;do{index=UnityEngine.Random.Range(0,cards.Length);}while(selection.Round.WasClicked(index));
             CancelFingerSequence();
             hint=RecoveredReelWait.Delay(hintInterval,()=>{
-                FingerRequested?.Invoke(cards[index].transform);
+                PresentFinger(cards[index].transform);
                 hint=RecoveredReelWait.Delay(hintInterval,()=>{hint=null;HideFinger();ShowFinger();},Fail);
             },Fail);
         }

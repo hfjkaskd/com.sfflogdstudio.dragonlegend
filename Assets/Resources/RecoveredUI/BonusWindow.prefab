@@ -420,6 +420,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: dx
     parent: 0
     mode: 0
@@ -428,6 +430,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: bj
     parent: 0
     mode: 0
@@ -436,6 +440,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: yunz
     parent: 1
     mode: 0
@@ -444,6 +450,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: yunz2
     parent: 1
     mode: 0
@@ -452,6 +460,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: -1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: grbao
     parent: 1
     mode: 0
@@ -460,6 +470,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: lz
     parent: 1
     mode: 0
@@ -468,6 +480,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.66972333
     scaleY: 0.7419363
+    shearX: 0
+    shearY: 0
   - name: star01
     parent: 6
     mode: 1
@@ -476,6 +490,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star04
     parent: 6
     mode: 1
@@ -484,6 +500,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.25
     scaleY: 0.25
+    shearX: 0
+    shearY: 0
   - name: star06
     parent: 6
     mode: 1
@@ -492,6 +510,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star07
     parent: 6
     mode: 1
@@ -500,6 +520,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star08
     parent: 6
     mode: 1
@@ -508,6 +530,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star09
     parent: 6
     mode: 1
@@ -516,6 +540,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star10
     parent: 6
     mode: 1
@@ -524,6 +550,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star12
     parent: 6
     mode: 1
@@ -532,6 +560,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.45
     scaleY: 0.45
+    shearX: 0
+    shearY: 0
   - name: star13
     parent: 6
     mode: 1
@@ -540,6 +570,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.5
     scaleY: 0.5
+    shearX: 0
+    shearY: 0
   - name: star14
     parent: 6
     mode: 1
@@ -548,6 +580,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star15
     parent: 6
     mode: 1
@@ -556,6 +590,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star16
     parent: 6
     mode: 1
@@ -564,6 +600,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star17
     parent: 6
     mode: 1
@@ -572,6 +610,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: zi
     parent: 1
     mode: 0
@@ -580,6 +620,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: zisg
     parent: 20
     mode: 0
@@ -588,6 +630,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 2
     scaleY: 2
+    shearX: 0
+    shearY: 0
   slots:
   - bone: 2
     attachment: -1
@@ -1971,6 +2015,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: dx
     parent: 0
     mode: 0
@@ -1979,6 +2025,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: bj
     parent: 0
     mode: 0
@@ -1987,6 +2035,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: yunz
     parent: 1
     mode: 0
@@ -1995,6 +2045,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: yunz2
     parent: 1
     mode: 0
@@ -2003,6 +2055,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: -1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: grbao
     parent: 1
     mode: 0
@@ -2011,6 +2065,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: lz
     parent: 1
     mode: 0
@@ -2019,6 +2075,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.8610546
     scaleY: 0.81003046
+    shearX: 0
+    shearY: 0
   - name: star01
     parent: 6
     mode: 1
@@ -2027,6 +2085,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star04
     parent: 6
     mode: 1
@@ -2035,6 +2095,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.25
     scaleY: 0.25
+    shearX: 0
+    shearY: 0
   - name: star06
     parent: 6
     mode: 1
@@ -2043,6 +2105,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star07
     parent: 6
     mode: 1
@@ -2051,6 +2115,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star08
     parent: 6
     mode: 1
@@ -2059,6 +2125,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star09
     parent: 6
     mode: 1
@@ -2067,6 +2135,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star10
     parent: 6
     mode: 1
@@ -2075,6 +2145,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star12
     parent: 6
     mode: 1
@@ -2083,6 +2155,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.45
     scaleY: 0.45
+    shearX: 0
+    shearY: 0
   - name: star13
     parent: 6
     mode: 1
@@ -2091,6 +2165,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.5
     scaleY: 0.5
+    shearX: 0
+    shearY: 0
   - name: star14
     parent: 6
     mode: 1
@@ -2099,6 +2175,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star15
     parent: 6
     mode: 1
@@ -2107,6 +2185,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star16
     parent: 6
     mode: 1
@@ -2115,6 +2195,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star17
     parent: 6
     mode: 1
@@ -2123,6 +2205,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: zi
     parent: 1
     mode: 0
@@ -2131,6 +2215,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: zisg
     parent: 20
     mode: 0
@@ -2139,6 +2225,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 2
     scaleY: 2
+    shearX: 0
+    shearY: 0
   slots:
   - bone: 2
     attachment: -1
@@ -3986,6 +4074,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: dx
     parent: 0
     mode: 0
@@ -3994,6 +4084,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: bj
     parent: 0
     mode: 0
@@ -4002,6 +4094,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: yunz
     parent: 1
     mode: 0
@@ -4010,6 +4104,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: yunz2
     parent: 1
     mode: 0
@@ -4018,6 +4114,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: -1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: grbao
     parent: 1
     mode: 0
@@ -4026,6 +4124,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: lz
     parent: 1
     mode: 0
@@ -4034,6 +4134,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.66972333
     scaleY: 0.7419363
+    shearX: 0
+    shearY: 0
   - name: star01
     parent: 6
     mode: 1
@@ -4042,6 +4144,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star04
     parent: 6
     mode: 1
@@ -4050,6 +4154,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.25
     scaleY: 0.25
+    shearX: 0
+    shearY: 0
   - name: star06
     parent: 6
     mode: 1
@@ -4058,6 +4164,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star07
     parent: 6
     mode: 1
@@ -4066,6 +4174,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star08
     parent: 6
     mode: 1
@@ -4074,6 +4184,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star09
     parent: 6
     mode: 1
@@ -4082,6 +4194,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star10
     parent: 6
     mode: 1
@@ -4090,6 +4204,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star12
     parent: 6
     mode: 1
@@ -4098,6 +4214,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.45
     scaleY: 0.45
+    shearX: 0
+    shearY: 0
   - name: star13
     parent: 6
     mode: 1
@@ -4106,6 +4224,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.5
     scaleY: 0.5
+    shearX: 0
+    shearY: 0
   - name: star14
     parent: 6
     mode: 1
@@ -4114,6 +4234,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star15
     parent: 6
     mode: 1
@@ -4122,6 +4244,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star16
     parent: 6
     mode: 1
@@ -4130,6 +4254,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star17
     parent: 6
     mode: 1
@@ -4138,6 +4264,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: zi
     parent: 1
     mode: 0
@@ -4146,6 +4274,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: zisg
     parent: 20
     mode: 0
@@ -4154,6 +4284,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 2
     scaleY: 2
+    shearX: 0
+    shearY: 0
   slots:
   - bone: 2
     attachment: -1
@@ -5735,6 +5867,7 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier:
   content: {fileID: 4640157855603498655}
+  fingerPrefab: {fileID: 4327123525324647391, guid: 150db4a7596a59d4ab29592a88cfae26, type: 3}
   canvas: {fileID: 3277837950479054087}
   cards:
   - {fileID: 6077408740943463619}
@@ -5747,7 +5880,7 @@ MonoBehaviour:
   - {fileID: 3263847808295674873}
   - {fileID: 8492557382416511152}
   - {fileID: 2702852725175885532}
-  - {fileID: 8398201025862029408}
+  - {fileID: 241864759237308114}
   - {fileID: 1827323660459433724}
   grandTargets:
   - {fileID: 4153034342909533547}
@@ -5972,7 +6105,7 @@ RectTransform:
   - {fileID: 3887326849602966489}
   - {fileID: 7882025661756620944}
   - {fileID: 4412258103530417916}
-  - {fileID: 8398201025862029407}
+  - {fileID: 2009253948368396018}
   - {fileID: 135950582037032668}
   m_Father: {fileID: 4640157855603498655}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
@@ -10206,12 +10339,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f29bfd12d7b15241afb34d0d01821e5, type: 3}
---- !u!224 &8398201025862029407 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8029401933999460012, guid: 0f29bfd12d7b15241afb34d0d01821e5, type: 3}
-  m_PrefabInstance: {fileID: 8398201025862029406}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8398201025862029408 stripped
+--- !u!114 &241864759237308114 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8635408064798113420, guid: 0f29bfd12d7b15241afb34d0d01821e5, type: 3}
   m_PrefabInstance: {fileID: 8398201025862029406}
@@ -10222,3 +10350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cba34ea16c67e34eaaa11d2e75b0f78, type: 3}
   m_Name:
   m_EditorClassIdentifier:
+--- !u!224 &2009253948368396018 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8029401933999460012, guid: 0f29bfd12d7b15241afb34d0d01821e5, type: 3}
+  m_PrefabInstance: {fileID: 8398201025862029406}
+  m_PrefabAsset: {fileID: 0}
