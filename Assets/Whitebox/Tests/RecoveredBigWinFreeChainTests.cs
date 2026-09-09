@@ -8,7 +8,12 @@ using UnityEngine.TestTools;
 public sealed class RecoveredBigWinFreeChainTests
 {
     [UnityTest]
-    public IEnumerator OnePaidSpinRetriesBigWinThenFreeIntroAndReturnsToBase()
+    public IEnumerator OnePaidSpinRetriesBigWinThenFreeIntroAndReturnsToBase()=>Run(false);
+
+    [UnityTest]
+    public IEnumerator OnePaidSpinSettlesBigWinAndBonusBeforeItsFreeIntro()=>Run(true);
+
+    private IEnumerator Run(bool includeBonus)
     {
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);
         PlayerPrefs.DeleteKey(key);var random=Random.state;float scale=Time.timeScale,delta=Time.captureDeltaTime;
@@ -41,6 +46,7 @@ public sealed class RecoveredBigWinFreeChainTests
             float initialCash=player.GreenCount;int initialSpins=player.SpinCount;
             field.FlyCoinRequested+=(amount,callback)=>{baseFlights++;Assert.IsFalse(core.Entry.Window.gameObject.activeSelf);};
             Random.InitState(mixedSeed);game.SpinResult.ForceFreeSpin=true;
+            player.IsBonusGame=includeBonus;
             field.SpinButton.Button.onClick.Invoke();
             Assert.GreaterOrEqual(game.SpinResult.ScatterCount,3);
             Assert.AreNotEqual(RecoveredSlotWinType.None,game.Rules.GetBigWin(game.Settlement.GetWinTotalLine(),field.Bet));
@@ -54,8 +60,9 @@ public sealed class RecoveredBigWinFreeChainTests
             Assert.AreEqual(0,baseFlights);Assert.AreEqual(initialCash,player.GreenCount);Assert.IsFalse(core.Entry.IsRunning);
             float baseAward=field.SymbolWin.TotalWin*game.Rules.GetBigWinClaim(0);
             field.BigWinPopup.ClaimButton.onClick.Invoke();game.AdControls.RewardButton.onClick.Invoke();
-            for(int frame=0;frame<1000&&!core.Entry.Window.gameObject.activeSelf;frame++)yield return null;
-            Assert.IsNull(core.Error);Assert.IsTrue(core.Entry.Window.gameObject.activeSelf);
+            for(int frame=0;frame<1000&&!(includeBonus?game.BonusFlow.Window.gameObject.activeSelf:core.Entry.Window.gameObject.activeSelf);frame++)yield return null;
+            Assert.IsNull(core.Error);
+            Assert.IsTrue(includeBonus?game.BonusFlow.Window.gameObject.activeSelf:core.Entry.Window.gameObject.activeSelf);
             Assert.IsFalse(field.BigWinPopup.gameObject.activeSelf);Assert.AreEqual(1,baseFlights);
             Assert.AreEqual(0,completed);Assert.IsTrue(field.IsBusy);
             // Native popup continuation does not await cash arrival. Departure
@@ -64,7 +71,31 @@ public sealed class RecoveredBigWinFreeChainTests
             while(game.CashFlight.ActiveCashCount>0&&Time.realtimeSinceStartup<cashDeadline)yield return null;
             Assert.AreEqual(0,game.CashFlight.ActiveCashCount);Assert.AreEqual(1,credits);
             Assert.AreEqual(initialCash+baseAward,player.GreenCount);
-            Assert.IsTrue(core.Entry.Window.gameObject.activeSelf,"Cash completion must not dismiss the Free intro.");
+            if(includeBonus) {
+                var bonus=game.BonusFlow;var window=bonus.Window;
+                Assert.IsFalse(core.Entry.IsRunning);Assert.AreEqual(RecoveredSlotType.Base,player.GameSlotType);
+                Assert.IsFalse(player.IsBonusGame);CollectionAssert.AreEqual(new[]{0,0,0,0,0},player.BonusArea);
+                int scatter=game.SpinResult.ScatterCount;
+                for(int frame=0;frame<100&&bonus.Transition.IsPlaying;frame++)yield return null;
+                for(int card=0;card<game.Rules.GetBonusFreeTimes();card++) {
+                    window.Card(card).Button.onClick.Invoke();float cardDeadline=Time.realtimeSinceStartup+8;
+                    while(window.Selection.IsClicked&&Time.realtimeSinceStartup<cardDeadline) {
+                        if(window.RewardPopup.gameObject.activeInHierarchy)window.RewardPopup.PlainButton.onClick.Invoke();
+                        if(window.JackpotPopup.gameObject.activeInHierarchy)window.JackpotPopup.PlainButton.onClick.Invoke();
+                        yield return null;
+                    }
+                    Assert.IsFalse(window.Selection.IsClicked);Assert.IsFalse(core.Entry.IsRunning);
+                    Assert.AreEqual(scatter,game.SpinResult.ScatterCount,"Bonus rewards must preserve this Spin's Scatter result.");
+                }
+                float rewardDeadline=Time.realtimeSinceStartup+5;
+                while(game.CashFlight.ActiveCashCount>0&&Time.realtimeSinceStartup<rewardDeadline)yield return null;
+                Assert.AreEqual(0,game.CashFlight.ActiveCashCount);float cashAfterBonus=player.GreenCount;
+                Assert.IsTrue(window.CloseButton.gameObject.activeInHierarchy);window.CloseButton.onClick.Invoke();
+                for(int frame=0;frame<1000&&!core.Entry.Window.gameObject.activeSelf;frame++)yield return null;
+                Assert.IsFalse(bonus.IsRunning);Assert.IsFalse(window.gameObject.activeSelf);
+                Assert.AreEqual(scatter,game.SpinResult.ScatterCount);Assert.AreEqual(cashAfterBonus,player.GreenCount);
+            }
+            Assert.IsTrue(core.Entry.Window.gameObject.activeSelf,"The same Spin must reach its Free intro.");
             field.SpinButton.Button.onClick.Invoke();Assert.AreEqual(initialSpins-1,player.SpinCount,"Free intro must retain the paid Spin lock.");
             int initialFree=game.Rules.GetFreeSpins(game.SpinResult.ScatterCount);
             Assert.AreEqual(initialFree,core.Entry.InitialSpinCount);Assert.AreEqual(initialFree,player.FreeSpinCount);
