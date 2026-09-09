@@ -7,6 +7,8 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredSpinPlayfield : MonoBehaviour
     {
         [SerializeField] private RecoveredNpcPresentation npc;
+        [SerializeField] private RecoveredMainComposition composition;
+        public RecoveredMainComposition Composition => composition;
         public RecoveredNpcPresentation Npc=>npc;
         [SerializeField] private RecoveredSpinButton spinButton;
         [SerializeField] private RecoveredBaseReelController reels;
@@ -74,6 +76,7 @@ namespace DragonLegend.Whitebox
             RecoveredPlayerProgress progress, RecoveredGameplayRules gameplayRules, bool isA, int languageType = 0, IAdFacade adFacade = null)
         {
             Unbind(); entry = spinEntry; result = spinResult; rules = gameplayRules;
+            if(composition!=null)composition.Bind(GetComponentInParent<Canvas>());
             player=progress;ads=adFacade??new LocalAdFacade();this.isA=isA;language=languageType;
             SymbolWin=new RecoveredSymbolWinSelection(rules);
             symbolAmount.Bind(languageType);

@@ -25,7 +25,15 @@ public sealed class RecoveredMainBackgroundTests
             Assert.IsNotNull(game);yield return null;
             var background=game.Background;Assert.IsNotNull(background);Assert.AreEqual(0,background.transform.GetSiblingIndex());
             Assert.IsTrue(background.BackgroundCanvas.overrideSorting);
-            Assert.AreEqual(game.GetComponent<Canvas>().sortingOrder-1,background.BackgroundCanvas.sortingOrder);
+            Assert.AreEqual(game.GetComponent<Canvas>().sortingOrder-3,background.BackgroundCanvas.sortingOrder);
+            var composition=game.Playfield.Composition;Assert.IsNotNull(composition);
+            Assert.IsTrue(composition.DragonCanvas.overrideSorting);Assert.IsTrue(composition.BoardCanvas.overrideSorting);
+            Assert.Less(background.BackgroundCanvas.sortingOrder,composition.DragonCanvas.sortingOrder);
+            Assert.Less(composition.DragonCanvas.sortingOrder,composition.BoardCanvas.sortingOrder);
+            Assert.Less(composition.BoardCanvas.sortingOrder,game.GetComponent<Canvas>().sortingOrder);
+            Assert.AreEqual(new Vector2(1072,757),composition.BoardBackground.rectTransform.sizeDelta);
+            Assert.AreEqual(new Vector2(0,-26),composition.BoardBackground.rectTransform.anchoredPosition);
+            Assert.AreEqual("zjm_bg_qipan",composition.BoardBackground.sprite.name);
             Assert.AreEqual("US",game.CurrentProfile.countryCode);Assert.IsFalse(game.CurrentProfile.isA);
             Assert.IsTrue(background.BaseBackground.gameObject.activeSelf);Assert.IsFalse(background.FreeBackground.gameObject.activeSelf);
             foreach(var image in new[]{background.BaseBackground,background.FreeBackground}) {
@@ -42,6 +50,11 @@ public sealed class RecoveredMainBackgroundTests
                 Assert.AreEqual(mode!=RecoveredSlotType.Base,background.FreeBackground.gameObject.activeSelf);
                 Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
                 RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+                var pixels=capture.GetPixels32();int dragonGold=0;
+                for(int y=1100;y<1400;y++)for(int x=300;x<780;x++) {
+                    var pixel=pixels[y*1080+x];if(pixel.r>120&&pixel.g>70&&pixel.r>pixel.b*1.5f)dragonGold++;
+                }
+                Assert.Greater(dragonGold,15000,"Dragon must remain visible between jackpot and board.");
                 File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-main-background-"+(mode==RecoveredSlotType.Base?"base":"free")+".png"),capture.EncodeToPNG());
             }
             background.Apply(RecoveredSlotType.Base);Canvas.ForceUpdateCanvases();

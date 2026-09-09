@@ -9,12 +9,14 @@ GameSlotType; GM profile rebuild destroys the old instance and creates one new
 instance. Default US normal mode uses the Base background.
 
 The background owns a nested native Canvas with overrideSorting at Main's order
-minus one, on Main's sorting layer and camera. Source sibling ordering placed it
+minus three, on Main's sorting layer and camera. Source sibling ordering placed it
 behind the original UI reels. Since recovered gameplay uses native world
 Sprite/Mesh objects, sibling order on a shared Canvas cannot preserve that
 relationship: the first integration obscured the reels and failed the existing
 coin-effect rendered-pixel test. The separate background draw order preserves
-the source composition without changing image geometry or gameplay scale.
+the source composition without changing image geometry or gameplay scale. The
+later board-composition recovery reserves -2 for the dragon body and -1 for the
+source board background; see main-board-composition.md.
 
 Source UIMainView fields and original GUIDs:
 
@@ -46,6 +48,8 @@ parenting, since the standalone prefab serializes that flag off. Spin hit testin
 and GM rebuild pass. The dragon still overlaps the jackpot and board in these
 captures; overall foreground composition remains unverified and needs correction
 against source transforms/render ordering rather than arbitrary dragon resizing.
+The subsequent main-board-composition.md change restores that missing board layer
+and body order; its newer captures supersede this initial composition observation.
 
 ## Remaining SetInitShow and lifecycle work
 

@@ -76,7 +76,9 @@ public sealed class RecoveredCashFlightTests
             var oldPlayer=entry.PlayerProgress;float oldBalance=oldPlayer.GreenCount;int cancelled=0;
             entry.CashFlight.Begin(100,()=>cancelled++,root.transform,true);
             root.transform.Find("SelectUS").GetComponent<Button>().onClick.Invoke();
-            for(int i=0;i<100;i++)yield return null;
+            float rebuildDeadline=Time.realtimeSinceStartup+5;
+            while((entry.PlayerProgress==oldPlayer||entry.CashFlight==null)&&Time.realtimeSinceStartup<rebuildDeadline)yield return null;
+            Assert.IsNotNull(entry.CashFlight,"GM profile must finish rebuilding its cash flight.");
             Assert.AreEqual(0,cancelled);Assert.AreEqual(oldBalance,oldPlayer.GreenCount);
             Assert.AreEqual(0,entry.CashFlight.ActiveCashCount);Assert.AreEqual(0,entry.CashFlight.ActiveEffectCount);
         } finally {
