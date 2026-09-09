@@ -10,6 +10,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private Button cashButton,giftButton;
         [SerializeField] private GameObject cashSelection,giftSelection,cashRect,giftRect,bottom;
         [SerializeField] private RecoveredCashOutPaymentHeader header;
+        [SerializeField] private RecoveredGiftList giftList;
+        [SerializeField] private RecoveredCashOutList cashList;
         public bool IsGift { get; private set; }
         public Button CashButton=>cashButton;
         public Button GiftButton=>giftButton;
@@ -20,7 +22,8 @@ namespace DragonLegend.Whitebox
             cashButton.onClick.AddListener(SelectCash);
             giftButton.onClick.AddListener(SelectGift);
         }
-        public void Bind(RecoveredGameplayRules rules,RecoveredPlayerProgress player)=>header.Bind(rules,player);
+        public void Bind(RecoveredGameplayRules rules,RecoveredPlayerProgress player,int language=0)
+        {header.Bind(rules,player);giftList.Bind(rules,player,language,cashList.SelectionFrame);}
         public void ResetForShow(){IsGift=false;Refresh();}
         private void SelectCash()=>Select(false);
         private void SelectGift()=>Select(true);
@@ -35,6 +38,8 @@ namespace DragonLegend.Whitebox
             header.RefreshMode(IsGift);
             bottom.SetActive(!IsGift);giftRect.SetActive(IsGift);cashRect.SetActive(!IsGift);
             cashSelection.SetActive(!IsGift);giftSelection.SetActive(IsGift);
+            if(IsGift)giftList.RefreshData();
+            else if(cashList.IsCreateFinished)cashList.RefreshData();
             ItemsRefreshRequested?.Invoke(IsGift);
         }
     }

@@ -60,6 +60,7 @@ public static class BuildCashOutWindow
             animation.FindProperty("bottomEase").animationCurveValue=new AnimationCurve(new Keyframe(0,0,2,2),new Keyframe(1,1,0,0));animation.ApplyModifiedPropertiesWithoutUndo();
             foreach(var button in root.GetComponentsInChildren<Button>(true))if(button.onClick.GetPersistentEventCount()!=0)throw new InvalidDataException("Unexpected window event "+button.name);
             BuildCashOutModeView.Attach(root);
+            BuildGiftList.Attach(root);
             root.SetActive(false);PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredUI/CashOutWindow.prefab");AssetDatabase.SaveAssets();
         }
         finally{PrefabUtility.UnloadPrefabContents(root);AssetDatabase.DeleteAsset(temp);}
