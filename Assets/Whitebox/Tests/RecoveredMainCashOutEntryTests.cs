@@ -27,9 +27,19 @@ public sealed class RecoveredMainCashOutEntryTests
             core.FirstSpinGuide.Hide();game.PlayerStore.Data.GuideStep=3;game.PlayerStore.Save();
             camera=game.GetComponent<Canvas>().worldCamera;target=new RenderTexture(1080,1920,24);camera.targetTexture=target;yield return null;
             var entryView=core.CashOutEntry;var button=entryView.Button;
+            Assert.AreEqual("Tubiao",button.transform.parent.name);
+            var adapt=entryView.GetComponent<RecoveredScreenAdapt>();Assert.IsNotNull(adapt);
+            var rootRect=(RectTransform)entryView.transform;var scaler=game.GetComponentInParent<CanvasScaler>();
+            float factor=scaler.matchWidthOrHeight*scaler.referenceResolution.y/1920-scaler.referenceResolution.x*(scaler.matchWidthOrHeight-1)/1080;
+            adapt.Apply(1080,1920,new Rect(24,60,1032,1740));
+            Assert.AreEqual(24*factor,rootRect.offsetMin.x,.0002f);Assert.AreEqual(-120*factor,rootRect.offsetMax.y,.0002f);
+            // Exercise the actual raycast while the source Node is inset.
+            Click(button,camera);Assert.IsNotNull(core.CashOut);for(int i=0;i<10;i++)yield return null;
+            Click(core.CashOut.BackButton,camera);for(int i=0;i<10;i++)yield return null;
+            Assert.IsFalse(core.CashOut.gameObject.activeSelf);adapt.AdaptScreen();
             Assert.AreEqual("CashOutb",button.name);Assert.AreSame(button.transform,entryView.FingerTarget.parent);
             Assert.AreEqual(new Vector2(200,205),((RectTransform)button.transform).sizeDelta);
-            Assert.AreEqual(0,button.onClick.GetPersistentEventCount());Assert.IsNull(core.CashOut);
+            Assert.AreEqual(0,button.onClick.GetPersistentEventCount());
             Assert.IsNull(entryView.Finger);
             float threshold=game.Rules.GetCashOutCash(0);
             game.PlayerProgress.SetGreenCount(threshold);Assert.IsNull(entryView.Finger,"Native handler observes the old balance.");

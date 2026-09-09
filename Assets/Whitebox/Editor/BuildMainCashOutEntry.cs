@@ -18,10 +18,12 @@ public static class BuildMainCashOutEntry
         string source=File.ReadAllText("ReferenceOriginal/Res/ViewPrefabs/UIMainView.prefab").Replace("\r","");
         var blocks=new Dictionary<string,string>();
         foreach(Match m in Regex.Matches(source,@"^--- !u!\d+ &(\d+)\n.*?(?=^--- !u!|\z)",RegexOptions.Multiline|RegexOptions.Singleline))blocks.Add(m.Groups[1].Value,m.Value);
-        const string rootId="224587083680832752";
-        blocks[rootId]=Regex.Replace(blocks[rootId],@"  m_Children:\n.*?  m_Father:","  m_Children:\n  - {fileID: 224689876809886907}\n  m_Father:",RegexOptions.Singleline);
+        const string rootId="224901155395665742",iconsId="224587083680832752";
+        blocks[rootId]=Regex.Replace(blocks[rootId],@"  m_Children:\n.*?  m_Father:","  m_Children:\n  - {fileID: "+iconsId+"}\n  m_Father:",RegexOptions.Singleline);
+        blocks[iconsId]=Regex.Replace(blocks[iconsId],@"  m_Children:\n.*?  m_Father:","  m_Children:\n  - {fileID: 224689876809886907}\n  m_Father:",RegexOptions.Singleline);
         var text=new StringBuilder("%YAML 1.1\n%TAG !u! tag:unity3d.com,2011:\n");BuildTreasureCard.Append(rootId,rootId,blocks,text);
         var map=new Dictionary<string,string>();
+        BuildTreasureCard.Script<RecoveredScreenAdapt>(map,"3991d2bd099e12203576b2cf89b113da");
         BuildTreasureCard.Script<Image>(map,"e0b4d57e8f658b407a2ad25df85fb0d6");
         BuildTreasureCard.Script<Button>(map,"18d0a90695249463551c00f45766e642");
         BuildTreasureCard.Script<TextMeshProUGUI>(map,"3f96b1d166d19b209697e35b35d65c76");
@@ -37,7 +39,7 @@ public static class BuildMainCashOutEntry
         try{
             File.WriteAllText(temporary,yaml);AssetDatabase.ImportAsset(temporary,ImportAssetOptions.ForceSynchronousImport);
             root=Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(temporary));root.name="CashOutEntry";
-            var button=root.transform.Find("CashOutb");var old=(RectTransform)button.Find("SkeletonGraphic (ef_tixianicon)");
+            var button=root.transform.Find("Tubiao/CashOutb");var old=(RectTransform)button.Find("SkeletonGraphic (ef_tixianicon)");
             var art=(GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredUI/JackpotPopupArt/ef_tixianicon.prefab"),button);
             var rect=(RectTransform)art.transform;rect.anchorMin=old.anchorMin;rect.anchorMax=old.anchorMax;rect.pivot=old.pivot;rect.sizeDelta=old.sizeDelta;rect.anchoredPosition3D=old.anchoredPosition3D;rect.localRotation=old.localRotation;rect.localScale=old.localScale;
             rect.SetSiblingIndex(old.GetSiblingIndex());art.layer=old.gameObject.layer;art.name=old.name;Object.DestroyImmediate(old.gameObject);
