@@ -19,6 +19,7 @@ public sealed class RecoveredJackpotPopupArtTests
     [TestCase("bonus-card-poses.json")]
     [TestCase("free-start-poses.json")]
     [TestCase("free-end-poses.json")]
+    [TestCase("main-fireworks-poses.json")]
     [TestCase("lucky-spin-art-poses.json")]
     [TestCase("wheel-art-poses.json")]
     [TestCase("treasure-icon-poses.json")]

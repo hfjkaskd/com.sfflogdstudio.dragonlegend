@@ -15,7 +15,7 @@ size is 1072 x 757, centered anchors/pivot, position (0,-26), scale one, white
 Simple Image, preserveAspect false. It remains a prefab-authored visual.
 
 Native Canvas sorting preserves source order across the recovered world objects:
-Main backgrounds -3, dragon body -2, board background -1, Main/reels at the
+Main backgrounds -4, source fireworks -3, dragon body -2, board background -1, Main/reels at the
 existing Main order. Each offset is relative to the actual Main Canvas and uses
 its camera and sorting layer. Only the body receives the separate Canvas; the
 PlayFire effect remains in its original foreground path. No geometry, bone,

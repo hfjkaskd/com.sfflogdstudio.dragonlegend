@@ -1,0 +1,6238 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &698031608270270108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1562659801199488521}
+  - component: {fileID: 2728693075268504716}
+  - component: {fileID: 7224761282092519420}
+  - component: {fileID: 6415505975994123760}
+  - component: {fileID: 4120112516979547511}
+  m_Layer: 5
+  m_Name: ef_slyanhua
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1562659801199488521
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698031608270270108}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2728693075268504716
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698031608270270108}
+  m_CullTransparentMesh: 0
+--- !u!114 &7224761282092519420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698031608270270108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dad06e1c22c15241b8bd93bf1077c3a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_Material: {fileID: 2100000, guid: 601330edf059f894dbfb4541361889cd, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  bones:
+  - name: root
+    parent: -1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: dx
+    parent: 0
+    mode: 0
+    x: 0.0000051142333
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: 0
+    parent: 1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: bj
+    parent: 0
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: yh
+    parent: 1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: yh1
+    parent: 4
+    mode: 0
+    x: -356.51437
+    y: 345.5597
+    rotation: 0
+    scaleX: 1.2
+    scaleY: 1.2
+    shearX: 0
+    shearY: 0
+  - name: yhxulie1
+    parent: 5
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: glow1
+    parent: 5
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: lizixl1
+    parent: 5
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: cc
+    parent: 5
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: yh2
+    parent: 4
+    mode: 0
+    x: 289.89844
+    y: 656.8853
+    rotation: 0
+    scaleX: 1.05
+    scaleY: 1.05
+    shearX: 0
+    shearY: 0
+  - name: yhxulie2
+    parent: 10
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: glow2
+    parent: 10
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: lizixl2
+    parent: 10
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: cc2
+    parent: 10
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: yh3
+    parent: 4
+    mode: 0
+    x: -278.0426
+    y: 693.4937
+    rotation: 0
+    scaleX: 0.95
+    scaleY: 0.95
+    shearX: 0
+    shearY: 0
+  - name: yhxulie3
+    parent: 15
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: glow3
+    parent: 15
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: lizixl3
+    parent: 15
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: cc3
+    parent: 15
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: yh4
+    parent: 4
+    mode: 0
+    x: 338.84583
+    y: 220.05725
+    rotation: 0
+    scaleX: 1.1
+    scaleY: 1.1
+    shearX: 0
+    shearY: 0
+  - name: yhxulie4
+    parent: 20
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: glow4
+    parent: 20
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: lizixl4
+    parent: 20
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: cc4
+    parent: 20
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: yh5
+    parent: 4
+    mode: 0
+    x: -211.33588
+    y: 372.4302
+    rotation: 0
+    scaleX: 0.67
+    scaleY: 0.67
+    shearX: 0
+    shearY: 0
+  - name: yhxulie5
+    parent: 25
+    mode: 0
+    x: -101.6145
+    y: 87.5022
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: glow5
+    parent: 25
+    mode: 0
+    x: -101.6145
+    y: 87.5022
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: lizixl5
+    parent: 25
+    mode: 0
+    x: -101.6145
+    y: 87.5022
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: cc5
+    parent: 25
+    mode: 0
+    x: -101.6145
+    y: 87.5022
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  slots:
+  - bone: 3
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 7
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 12
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 17
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 27
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 22
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 8
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 13
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 18
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 28
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 23
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 6
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 11
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 16
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 26
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 21
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 7
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 12
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 17
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 27
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 22
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 8
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 13
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 18
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 28
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 23
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 9
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 14
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 19
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 29
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 24
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 3
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 3
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  regions:
+  - vertices:
+    - {x: -231.02438, y: -231.02438}
+    - {x: -231.02438, y: 231.0244}
+    - {x: 231.0244, y: 231.0244}
+    - {x: 231.0244, y: -231.02438}
+    uv:
+    - {x: 0.81960994, y: 0.7480916}
+    - {x: 0.81960994, y: 0.90500426}
+    - {x: 0.9198266, y: 0.90500426}
+    - {x: 0.9198266, y: 0.7480916}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -231.02438, y: -231.02438}
+    - {x: -231.02438, y: 231.0244}
+    - {x: 231.0244, y: 231.0244}
+    - {x: 231.0244, y: -231.02438}
+    uv:
+    - {x: 0.81960994, y: 0.7480916}
+    - {x: 0.81960994, y: 0.90500426}
+    - {x: 0.9198266, y: 0.90500426}
+    - {x: 0.9198266, y: 0.7480916}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -231.02438, y: -231.02438}
+    - {x: -231.02438, y: 231.0244}
+    - {x: 231.0244, y: 231.0244}
+    - {x: 231.0244, y: -231.02438}
+    uv:
+    - {x: 0.81960994, y: 0.7480916}
+    - {x: 0.81960994, y: 0.90500426}
+    - {x: 0.9198266, y: 0.90500426}
+    - {x: 0.9198266, y: 0.7480916}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -231.02438, y: -231.02438}
+    - {x: -231.02438, y: 231.0244}
+    - {x: 231.0244, y: 231.0244}
+    - {x: 231.0244, y: -231.02438}
+    uv:
+    - {x: 0.81960994, y: 0.7480916}
+    - {x: 0.81960994, y: 0.90500426}
+    - {x: 0.9198266, y: 0.90500426}
+    - {x: 0.9198266, y: 0.7480916}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -231.02438, y: -231.02438}
+    - {x: -231.02438, y: 231.0244}
+    - {x: 231.0244, y: 231.0244}
+    - {x: 231.0244, y: -231.02438}
+    uv:
+    - {x: 0.81960994, y: 0.7480916}
+    - {x: 0.81960994, y: 0.90500426}
+    - {x: 0.9198266, y: 0.90500426}
+    - {x: 0.9198266, y: 0.7480916}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -231.02438, y: -231.02438}
+    - {x: -231.02438, y: 231.0244}
+    - {x: 231.0244, y: 231.0244}
+    - {x: 231.0244, y: -231.02438}
+    uv:
+    - {x: 0.81960994, y: 0.7480916}
+    - {x: 0.81960994, y: 0.90500426}
+    - {x: 0.9198266, y: 0.90500426}
+    - {x: 0.9198266, y: 0.7480916}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -231.02438, y: -231.02438}
+    - {x: -231.02438, y: 231.0244}
+    - {x: 231.0244, y: 231.0244}
+    - {x: 231.0244, y: -231.02438}
+    uv:
+    - {x: 0.81960994, y: 0.7480916}
+    - {x: 0.81960994, y: 0.90500426}
+    - {x: 0.9198266, y: 0.90500426}
+    - {x: 0.9198266, y: 0.7480916}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -231.02438, y: -231.02438}
+    - {x: -231.02438, y: 231.0244}
+    - {x: 231.0244, y: 231.0244}
+    - {x: 231.0244, y: -231.02438}
+    uv:
+    - {x: 0.81960994, y: 0.7480916}
+    - {x: 0.81960994, y: 0.90500426}
+    - {x: 0.9198266, y: 0.90500426}
+    - {x: 0.9198266, y: 0.7480916}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -231.02438, y: -231.02438}
+    - {x: -231.02438, y: 231.0244}
+    - {x: 231.0244, y: 231.0244}
+    - {x: 231.0244, y: -231.02438}
+    uv:
+    - {x: 0.81960994, y: 0.7480916}
+    - {x: 0.81960994, y: 0.90500426}
+    - {x: 0.9198266, y: 0.90500426}
+    - {x: 0.9198266, y: 0.7480916}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -231.02438, y: -231.02438}
+    - {x: -231.02438, y: 231.0244}
+    - {x: 231.0244, y: 231.0244}
+    - {x: 231.0244, y: -231.02438}
+    uv:
+    - {x: 0.81960994, y: 0.7480916}
+    - {x: 0.81960994, y: 0.90500426}
+    - {x: 0.9198266, y: 0.90500426}
+    - {x: 0.9198266, y: 0.7480916}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -131.9682, y: -128.44962}
+    - {x: -131.9682, y: 116.93023}
+    - {x: 128.21555, y: 116.93023}
+    - {x: 128.21555, y: -128.44962}
+    uv:
+    - {x: 0.7112676, y: 0.77014416}
+    - {x: 0.6050921, y: 0.77014416}
+    - {x: 0.6050921, y: 0.9465649}
+    - {x: 0.7112676, y: 0.9465649}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -143.47287}
+    - {x: -146.9788, y: 129.44962}
+    - {x: 148.22968, y: 129.44962}
+    - {x: 148.22968, y: -143.47287}
+    uv:
+    - {x: 0.36023834, y: 0.2086514}
+    - {x: 0.24214518, y: 0.2086514}
+    - {x: 0.24214518, y: 0.40882105}
+    - {x: 0.36023834, y: 0.40882105}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -147.22868}
+    - {x: -146.9788, y: 133.20543}
+    - {x: 143.22614, y: 133.20543}
+    - {x: 143.22614, y: -147.22868}
+    uv:
+    - {x: 0.36619717, y: 0.4105174}
+    - {x: 0.24485373, y: 0.4105174}
+    - {x: 0.24485373, y: 0.6072943}
+    - {x: 0.36619717, y: 0.6072943}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -148.48062}
+    - {x: -149.48056, y: 133.20543}
+    - {x: 144.47704, y: 133.20543}
+    - {x: 144.47704, y: -148.48062}
+    uv:
+    - {x: 0.3938245, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.20101781}
+    - {x: 0.3938245, y: 0.20101781}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -150.9845}
+    - {x: -153.23322, y: 138.21318}
+    - {x: 146.9788, y: 138.21318}
+    - {x: 146.9788, y: -150.9845}
+    uv:
+    - {x: 0.12621886, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.86259544}
+    - {x: 0.12621886, y: 0.86259544}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -152.23643}
+    - {x: -153.23322, y: 131.95349}
+    - {x: 156.98587, y: 131.95349}
+    - {x: 156.98587, y: -152.23643}
+    uv:
+    - {x: 0.124052, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.6573367}
+    - {x: 0.124052, y: 0.6573367}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -147.22868}
+    - {x: -154.4841, y: 130.70155}
+    - {x: 158.23674, y: 130.70155}
+    - {x: 158.23674, y: -147.22868}
+    uv:
+    - {x: 0.12134345, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.44529262}
+    - {x: 0.12134345, y: 0.44529262}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -150.9845}
+    - {x: -154.4841, y: 133.20543}
+    - {x: 148.22968, y: 133.20543}
+    - {x: 148.22968, y: -150.9845}
+    uv:
+    - {x: 0.2708559, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.20695505}
+    - {x: 0.2708559, y: 0.20695505}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -151.98233, y: -145.97675}
+    - {x: -151.98233, y: 128.19766}
+    - {x: 151.98233, y: 128.19766}
+    - {x: 151.98233, y: -145.97675}
+    uv:
+    - {x: 0.24106176, y: 0.23324852}
+    - {x: 0.12242687, y: 0.23324852}
+    - {x: 0.12242687, y: 0.43935537}
+    - {x: 0.24106176, y: 0.43935537}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -147.22868}
+    - {x: -149.48056, y: 128.19766}
+    - {x: 143.22615, y: 128.19766}
+    - {x: 143.22615, y: -147.22868}
+    uv:
+    - {x: 0.24647887, y: 0.6437659}
+    - {x: 0.12730227, y: 0.6437659}
+    - {x: 0.12730227, y: 0.8422392}
+    - {x: 0.24647887, y: 0.8422392}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -150.73145, y: -145.97675}
+    - {x: -150.73145, y: 128.19766}
+    - {x: 145.72792, y: 128.19766}
+    - {x: 145.72792, y: -145.97675}
+    uv:
+    - {x: 0.24377032, y: 0.44105175}
+    - {x: 0.12513542, y: 0.44105175}
+    - {x: 0.12513542, y: 0.6420696}
+    - {x: 0.24377032, y: 0.6420696}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -148.22968, y: -147.22868}
+    - {x: -148.22968, y: 128.19766}
+    - {x: 139.47351, y: 128.19766}
+    - {x: 139.47351, y: -147.22868}
+    uv:
+    - {x: 0.48049837, y: 0.20271416}
+    - {x: 0.36132178, y: 0.20271416}
+    - {x: 0.36132178, y: 0.39779475}
+    - {x: 0.48049837, y: 0.39779475}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -143.22615, y: -147.22868}
+    - {x: -143.22615, y: 126.94573}
+    - {x: 138.22261, y: 126.94573}
+    - {x: 138.22261, y: -147.22868}
+    uv:
+    - {x: 0.63542795, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.19253604}
+    - {x: 0.63542795, y: 0.19253604}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -145.72792, y: -124.6938}
+    - {x: -145.72792, y: 124.44186}
+    - {x: 136.97173, y: 124.44186}
+    - {x: 136.97173, y: -124.6938}
+    uv:
+    - {x: 0.47453955, y: 0.60899067}
+    - {x: 0.3667389, y: 0.60899067}
+    - {x: 0.3667389, y: 0.80067855}
+    - {x: 0.47453955, y: 0.80067855}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -128.44962}
+    - {x: -138.22261, y: 124.44186}
+    - {x: 138.22263, y: 124.44186}
+    - {x: 138.22263, y: -128.44962}
+    uv:
+    - {x: 0.7156013, y: 0.38507208}
+    - {x: 0.60617554, y: 0.38507208}
+    - {x: 0.60617554, y: 0.57251906}
+    - {x: 0.7156013, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -144.72481}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 108.201416, y: 113.174416}
+    - {x: 108.201416, y: -144.72481}
+    uv:
+    - {x: 0.712351, y: 0.77014416}
+    - {x: 0.712351, y: 0.9448685}
+    - {x: 0.81852657, y: 0.9448685}
+    - {x: 0.81852657, y: 0.77014416}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -127.19768}
+    - {x: -138.22261, y: 111.92248}
+    - {x: 138.22263, y: 111.92248}
+    - {x: 138.22263, y: -127.19768}
+    uv:
+    - {x: 0.8201517, y: 0.38507208}
+    - {x: 0.7166847, y: 0.38507208}
+    - {x: 0.7166847, y: 0.57251906}
+    - {x: 0.8201517, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -124.6938}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 86.9364, y: 113.174416}
+    - {x: 86.9364, y: -124.6938}
+    uv:
+    - {x: 0.23022752, y: 0.84393555}
+    - {x: 0.12730227, y: 0.84393555}
+    - {x: 0.12730227, y: 0.9957591}
+    - {x: 0.23022752, y: 0.9957591}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -72.112404}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 106.95054, y: 113.174416}
+    - {x: 106.95054, y: -72.112404}
+    uv:
+    - {x: 0.0010834236, y: 0.8642918}
+    - {x: 0.0010834236, y: 0.9898219}
+    - {x: 0.10671723, y: 0.9898219}
+    - {x: 0.10671723, y: 0.8642918}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -72.112404}
+    - {x: -118.20848, y: 111.92248}
+    - {x: 41.904594, y: 111.92248}
+    - {x: 41.904594, y: -72.112404}
+    uv:
+    - {x: 0.92632717, y: 0.36132315}
+    - {x: 0.92632717, y: 0.4860051}
+    - {x: 0.9956663, y: 0.4860051}
+    - {x: 0.9956663, y: 0.36132315}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -124.6938}
+    - {x: -118.20848, y: 66.85271}
+    - {x: 16.886925, y: 66.85271}
+    - {x: 16.886925, y: -124.6938}
+    uv:
+    - {x: 0.90249187, y: 0.9067006}
+    - {x: 0.81960994, y: 0.9067006}
+    - {x: 0.81960994, y: 0.99830365}
+    - {x: 0.90249187, y: 0.99830365}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -131.9682, y: -128.44962}
+    - {x: -131.9682, y: 116.93023}
+    - {x: 128.21555, y: 116.93023}
+    - {x: 128.21555, y: -128.44962}
+    uv:
+    - {x: 0.7112676, y: 0.77014416}
+    - {x: 0.6050921, y: 0.77014416}
+    - {x: 0.6050921, y: 0.9465649}
+    - {x: 0.7112676, y: 0.9465649}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -143.47287}
+    - {x: -146.9788, y: 129.44962}
+    - {x: 148.22968, y: 129.44962}
+    - {x: 148.22968, y: -143.47287}
+    uv:
+    - {x: 0.36023834, y: 0.2086514}
+    - {x: 0.24214518, y: 0.2086514}
+    - {x: 0.24214518, y: 0.40882105}
+    - {x: 0.36023834, y: 0.40882105}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -147.22868}
+    - {x: -146.9788, y: 133.20543}
+    - {x: 143.22614, y: 133.20543}
+    - {x: 143.22614, y: -147.22868}
+    uv:
+    - {x: 0.36619717, y: 0.4105174}
+    - {x: 0.24485373, y: 0.4105174}
+    - {x: 0.24485373, y: 0.6072943}
+    - {x: 0.36619717, y: 0.6072943}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -148.48062}
+    - {x: -149.48056, y: 133.20543}
+    - {x: 144.47704, y: 133.20543}
+    - {x: 144.47704, y: -148.48062}
+    uv:
+    - {x: 0.3938245, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.20101781}
+    - {x: 0.3938245, y: 0.20101781}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -150.9845}
+    - {x: -153.23322, y: 138.21318}
+    - {x: 146.9788, y: 138.21318}
+    - {x: 146.9788, y: -150.9845}
+    uv:
+    - {x: 0.12621886, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.86259544}
+    - {x: 0.12621886, y: 0.86259544}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -152.23643}
+    - {x: -153.23322, y: 131.95349}
+    - {x: 156.98587, y: 131.95349}
+    - {x: 156.98587, y: -152.23643}
+    uv:
+    - {x: 0.124052, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.6573367}
+    - {x: 0.124052, y: 0.6573367}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -147.22868}
+    - {x: -154.4841, y: 130.70155}
+    - {x: 158.23674, y: 130.70155}
+    - {x: 158.23674, y: -147.22868}
+    uv:
+    - {x: 0.12134345, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.44529262}
+    - {x: 0.12134345, y: 0.44529262}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -150.9845}
+    - {x: -154.4841, y: 133.20543}
+    - {x: 148.22968, y: 133.20543}
+    - {x: 148.22968, y: -150.9845}
+    uv:
+    - {x: 0.2708559, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.20695505}
+    - {x: 0.2708559, y: 0.20695505}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -151.98233, y: -145.97675}
+    - {x: -151.98233, y: 128.19766}
+    - {x: 151.98233, y: 128.19766}
+    - {x: 151.98233, y: -145.97675}
+    uv:
+    - {x: 0.24106176, y: 0.23324852}
+    - {x: 0.12242687, y: 0.23324852}
+    - {x: 0.12242687, y: 0.43935537}
+    - {x: 0.24106176, y: 0.43935537}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -147.22868}
+    - {x: -149.48056, y: 128.19766}
+    - {x: 143.22615, y: 128.19766}
+    - {x: 143.22615, y: -147.22868}
+    uv:
+    - {x: 0.24647887, y: 0.6437659}
+    - {x: 0.12730227, y: 0.6437659}
+    - {x: 0.12730227, y: 0.8422392}
+    - {x: 0.24647887, y: 0.8422392}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -150.73145, y: -145.97675}
+    - {x: -150.73145, y: 128.19766}
+    - {x: 145.72792, y: 128.19766}
+    - {x: 145.72792, y: -145.97675}
+    uv:
+    - {x: 0.24377032, y: 0.44105175}
+    - {x: 0.12513542, y: 0.44105175}
+    - {x: 0.12513542, y: 0.6420696}
+    - {x: 0.24377032, y: 0.6420696}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -148.22968, y: -147.22868}
+    - {x: -148.22968, y: 128.19766}
+    - {x: 139.47351, y: 128.19766}
+    - {x: 139.47351, y: -147.22868}
+    uv:
+    - {x: 0.48049837, y: 0.20271416}
+    - {x: 0.36132178, y: 0.20271416}
+    - {x: 0.36132178, y: 0.39779475}
+    - {x: 0.48049837, y: 0.39779475}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -143.22615, y: -147.22868}
+    - {x: -143.22615, y: 126.94573}
+    - {x: 138.22261, y: 126.94573}
+    - {x: 138.22261, y: -147.22868}
+    uv:
+    - {x: 0.63542795, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.19253604}
+    - {x: 0.63542795, y: 0.19253604}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -145.72792, y: -124.6938}
+    - {x: -145.72792, y: 124.44186}
+    - {x: 136.97173, y: 124.44186}
+    - {x: 136.97173, y: -124.6938}
+    uv:
+    - {x: 0.47453955, y: 0.60899067}
+    - {x: 0.3667389, y: 0.60899067}
+    - {x: 0.3667389, y: 0.80067855}
+    - {x: 0.47453955, y: 0.80067855}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -128.44962}
+    - {x: -138.22261, y: 124.44186}
+    - {x: 138.22263, y: 124.44186}
+    - {x: 138.22263, y: -128.44962}
+    uv:
+    - {x: 0.7156013, y: 0.38507208}
+    - {x: 0.60617554, y: 0.38507208}
+    - {x: 0.60617554, y: 0.57251906}
+    - {x: 0.7156013, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -144.72481}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 108.201416, y: 113.174416}
+    - {x: 108.201416, y: -144.72481}
+    uv:
+    - {x: 0.712351, y: 0.77014416}
+    - {x: 0.712351, y: 0.9448685}
+    - {x: 0.81852657, y: 0.9448685}
+    - {x: 0.81852657, y: 0.77014416}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -127.19768}
+    - {x: -138.22261, y: 111.92248}
+    - {x: 138.22263, y: 111.92248}
+    - {x: 138.22263, y: -127.19768}
+    uv:
+    - {x: 0.8201517, y: 0.38507208}
+    - {x: 0.7166847, y: 0.38507208}
+    - {x: 0.7166847, y: 0.57251906}
+    - {x: 0.8201517, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -124.6938}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 86.9364, y: 113.174416}
+    - {x: 86.9364, y: -124.6938}
+    uv:
+    - {x: 0.23022752, y: 0.84393555}
+    - {x: 0.12730227, y: 0.84393555}
+    - {x: 0.12730227, y: 0.9957591}
+    - {x: 0.23022752, y: 0.9957591}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -72.112404}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 106.95054, y: 113.174416}
+    - {x: 106.95054, y: -72.112404}
+    uv:
+    - {x: 0.0010834236, y: 0.8642918}
+    - {x: 0.0010834236, y: 0.9898219}
+    - {x: 0.10671723, y: 0.9898219}
+    - {x: 0.10671723, y: 0.8642918}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -72.112404}
+    - {x: -118.20848, y: 111.92248}
+    - {x: 41.904594, y: 111.92248}
+    - {x: 41.904594, y: -72.112404}
+    uv:
+    - {x: 0.92632717, y: 0.36132315}
+    - {x: 0.92632717, y: 0.4860051}
+    - {x: 0.9956663, y: 0.4860051}
+    - {x: 0.9956663, y: 0.36132315}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -124.6938}
+    - {x: -118.20848, y: 66.85271}
+    - {x: 16.886925, y: 66.85271}
+    - {x: 16.886925, y: -124.6938}
+    uv:
+    - {x: 0.90249187, y: 0.9067006}
+    - {x: 0.81960994, y: 0.9067006}
+    - {x: 0.81960994, y: 0.99830365}
+    - {x: 0.90249187, y: 0.99830365}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -131.9682, y: -128.44962}
+    - {x: -131.9682, y: 116.93023}
+    - {x: 128.21555, y: 116.93023}
+    - {x: 128.21555, y: -128.44962}
+    uv:
+    - {x: 0.7112676, y: 0.77014416}
+    - {x: 0.6050921, y: 0.77014416}
+    - {x: 0.6050921, y: 0.9465649}
+    - {x: 0.7112676, y: 0.9465649}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -143.47287}
+    - {x: -146.9788, y: 129.44962}
+    - {x: 148.22968, y: 129.44962}
+    - {x: 148.22968, y: -143.47287}
+    uv:
+    - {x: 0.36023834, y: 0.2086514}
+    - {x: 0.24214518, y: 0.2086514}
+    - {x: 0.24214518, y: 0.40882105}
+    - {x: 0.36023834, y: 0.40882105}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -147.22868}
+    - {x: -146.9788, y: 133.20543}
+    - {x: 143.22614, y: 133.20543}
+    - {x: 143.22614, y: -147.22868}
+    uv:
+    - {x: 0.36619717, y: 0.4105174}
+    - {x: 0.24485373, y: 0.4105174}
+    - {x: 0.24485373, y: 0.6072943}
+    - {x: 0.36619717, y: 0.6072943}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -148.48062}
+    - {x: -149.48056, y: 133.20543}
+    - {x: 144.47704, y: 133.20543}
+    - {x: 144.47704, y: -148.48062}
+    uv:
+    - {x: 0.3938245, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.20101781}
+    - {x: 0.3938245, y: 0.20101781}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -150.9845}
+    - {x: -153.23322, y: 138.21318}
+    - {x: 146.9788, y: 138.21318}
+    - {x: 146.9788, y: -150.9845}
+    uv:
+    - {x: 0.12621886, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.86259544}
+    - {x: 0.12621886, y: 0.86259544}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -152.23643}
+    - {x: -153.23322, y: 131.95349}
+    - {x: 156.98587, y: 131.95349}
+    - {x: 156.98587, y: -152.23643}
+    uv:
+    - {x: 0.124052, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.6573367}
+    - {x: 0.124052, y: 0.6573367}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -147.22868}
+    - {x: -154.4841, y: 130.70155}
+    - {x: 158.23674, y: 130.70155}
+    - {x: 158.23674, y: -147.22868}
+    uv:
+    - {x: 0.12134345, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.44529262}
+    - {x: 0.12134345, y: 0.44529262}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -150.9845}
+    - {x: -154.4841, y: 133.20543}
+    - {x: 148.22968, y: 133.20543}
+    - {x: 148.22968, y: -150.9845}
+    uv:
+    - {x: 0.2708559, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.20695505}
+    - {x: 0.2708559, y: 0.20695505}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -151.98233, y: -145.97675}
+    - {x: -151.98233, y: 128.19766}
+    - {x: 151.98233, y: 128.19766}
+    - {x: 151.98233, y: -145.97675}
+    uv:
+    - {x: 0.24106176, y: 0.23324852}
+    - {x: 0.12242687, y: 0.23324852}
+    - {x: 0.12242687, y: 0.43935537}
+    - {x: 0.24106176, y: 0.43935537}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -147.22868}
+    - {x: -149.48056, y: 128.19766}
+    - {x: 143.22615, y: 128.19766}
+    - {x: 143.22615, y: -147.22868}
+    uv:
+    - {x: 0.24647887, y: 0.6437659}
+    - {x: 0.12730227, y: 0.6437659}
+    - {x: 0.12730227, y: 0.8422392}
+    - {x: 0.24647887, y: 0.8422392}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -150.73145, y: -145.97675}
+    - {x: -150.73145, y: 128.19766}
+    - {x: 145.72792, y: 128.19766}
+    - {x: 145.72792, y: -145.97675}
+    uv:
+    - {x: 0.24377032, y: 0.44105175}
+    - {x: 0.12513542, y: 0.44105175}
+    - {x: 0.12513542, y: 0.6420696}
+    - {x: 0.24377032, y: 0.6420696}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -148.22968, y: -147.22868}
+    - {x: -148.22968, y: 128.19766}
+    - {x: 139.47351, y: 128.19766}
+    - {x: 139.47351, y: -147.22868}
+    uv:
+    - {x: 0.48049837, y: 0.20271416}
+    - {x: 0.36132178, y: 0.20271416}
+    - {x: 0.36132178, y: 0.39779475}
+    - {x: 0.48049837, y: 0.39779475}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -143.22615, y: -147.22868}
+    - {x: -143.22615, y: 126.94573}
+    - {x: 138.22261, y: 126.94573}
+    - {x: 138.22261, y: -147.22868}
+    uv:
+    - {x: 0.63542795, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.19253604}
+    - {x: 0.63542795, y: 0.19253604}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -145.72792, y: -124.6938}
+    - {x: -145.72792, y: 124.44186}
+    - {x: 136.97173, y: 124.44186}
+    - {x: 136.97173, y: -124.6938}
+    uv:
+    - {x: 0.47453955, y: 0.60899067}
+    - {x: 0.3667389, y: 0.60899067}
+    - {x: 0.3667389, y: 0.80067855}
+    - {x: 0.47453955, y: 0.80067855}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -128.44962}
+    - {x: -138.22261, y: 124.44186}
+    - {x: 138.22263, y: 124.44186}
+    - {x: 138.22263, y: -128.44962}
+    uv:
+    - {x: 0.7156013, y: 0.38507208}
+    - {x: 0.60617554, y: 0.38507208}
+    - {x: 0.60617554, y: 0.57251906}
+    - {x: 0.7156013, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -144.72481}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 108.201416, y: 113.174416}
+    - {x: 108.201416, y: -144.72481}
+    uv:
+    - {x: 0.712351, y: 0.77014416}
+    - {x: 0.712351, y: 0.9448685}
+    - {x: 0.81852657, y: 0.9448685}
+    - {x: 0.81852657, y: 0.77014416}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -127.19768}
+    - {x: -138.22261, y: 111.92248}
+    - {x: 138.22263, y: 111.92248}
+    - {x: 138.22263, y: -127.19768}
+    uv:
+    - {x: 0.8201517, y: 0.38507208}
+    - {x: 0.7166847, y: 0.38507208}
+    - {x: 0.7166847, y: 0.57251906}
+    - {x: 0.8201517, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -124.6938}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 86.9364, y: 113.174416}
+    - {x: 86.9364, y: -124.6938}
+    uv:
+    - {x: 0.23022752, y: 0.84393555}
+    - {x: 0.12730227, y: 0.84393555}
+    - {x: 0.12730227, y: 0.9957591}
+    - {x: 0.23022752, y: 0.9957591}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -72.112404}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 106.95054, y: 113.174416}
+    - {x: 106.95054, y: -72.112404}
+    uv:
+    - {x: 0.0010834236, y: 0.8642918}
+    - {x: 0.0010834236, y: 0.9898219}
+    - {x: 0.10671723, y: 0.9898219}
+    - {x: 0.10671723, y: 0.8642918}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -72.112404}
+    - {x: -118.20848, y: 111.92248}
+    - {x: 41.904594, y: 111.92248}
+    - {x: 41.904594, y: -72.112404}
+    uv:
+    - {x: 0.92632717, y: 0.36132315}
+    - {x: 0.92632717, y: 0.4860051}
+    - {x: 0.9956663, y: 0.4860051}
+    - {x: 0.9956663, y: 0.36132315}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -124.6938}
+    - {x: -118.20848, y: 66.85271}
+    - {x: 16.886925, y: 66.85271}
+    - {x: 16.886925, y: -124.6938}
+    uv:
+    - {x: 0.90249187, y: 0.9067006}
+    - {x: 0.81960994, y: 0.9067006}
+    - {x: 0.81960994, y: 0.99830365}
+    - {x: 0.90249187, y: 0.99830365}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -131.9682, y: -128.44962}
+    - {x: -131.9682, y: 116.93023}
+    - {x: 128.21555, y: 116.93023}
+    - {x: 128.21555, y: -128.44962}
+    uv:
+    - {x: 0.7112676, y: 0.77014416}
+    - {x: 0.6050921, y: 0.77014416}
+    - {x: 0.6050921, y: 0.9465649}
+    - {x: 0.7112676, y: 0.9465649}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -143.47287}
+    - {x: -146.9788, y: 129.44962}
+    - {x: 148.22968, y: 129.44962}
+    - {x: 148.22968, y: -143.47287}
+    uv:
+    - {x: 0.36023834, y: 0.2086514}
+    - {x: 0.24214518, y: 0.2086514}
+    - {x: 0.24214518, y: 0.40882105}
+    - {x: 0.36023834, y: 0.40882105}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -147.22868}
+    - {x: -146.9788, y: 133.20543}
+    - {x: 143.22614, y: 133.20543}
+    - {x: 143.22614, y: -147.22868}
+    uv:
+    - {x: 0.36619717, y: 0.4105174}
+    - {x: 0.24485373, y: 0.4105174}
+    - {x: 0.24485373, y: 0.6072943}
+    - {x: 0.36619717, y: 0.6072943}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -148.48062}
+    - {x: -149.48056, y: 133.20543}
+    - {x: 144.47704, y: 133.20543}
+    - {x: 144.47704, y: -148.48062}
+    uv:
+    - {x: 0.3938245, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.20101781}
+    - {x: 0.3938245, y: 0.20101781}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -150.9845}
+    - {x: -153.23322, y: 138.21318}
+    - {x: 146.9788, y: 138.21318}
+    - {x: 146.9788, y: -150.9845}
+    uv:
+    - {x: 0.12621886, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.86259544}
+    - {x: 0.12621886, y: 0.86259544}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -152.23643}
+    - {x: -153.23322, y: 131.95349}
+    - {x: 156.98587, y: 131.95349}
+    - {x: 156.98587, y: -152.23643}
+    uv:
+    - {x: 0.124052, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.6573367}
+    - {x: 0.124052, y: 0.6573367}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -147.22868}
+    - {x: -154.4841, y: 130.70155}
+    - {x: 158.23674, y: 130.70155}
+    - {x: 158.23674, y: -147.22868}
+    uv:
+    - {x: 0.12134345, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.44529262}
+    - {x: 0.12134345, y: 0.44529262}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -150.9845}
+    - {x: -154.4841, y: 133.20543}
+    - {x: 148.22968, y: 133.20543}
+    - {x: 148.22968, y: -150.9845}
+    uv:
+    - {x: 0.2708559, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.20695505}
+    - {x: 0.2708559, y: 0.20695505}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -151.98233, y: -145.97675}
+    - {x: -151.98233, y: 128.19766}
+    - {x: 151.98233, y: 128.19766}
+    - {x: 151.98233, y: -145.97675}
+    uv:
+    - {x: 0.24106176, y: 0.23324852}
+    - {x: 0.12242687, y: 0.23324852}
+    - {x: 0.12242687, y: 0.43935537}
+    - {x: 0.24106176, y: 0.43935537}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -147.22868}
+    - {x: -149.48056, y: 128.19766}
+    - {x: 143.22615, y: 128.19766}
+    - {x: 143.22615, y: -147.22868}
+    uv:
+    - {x: 0.24647887, y: 0.6437659}
+    - {x: 0.12730227, y: 0.6437659}
+    - {x: 0.12730227, y: 0.8422392}
+    - {x: 0.24647887, y: 0.8422392}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -150.73145, y: -145.97675}
+    - {x: -150.73145, y: 128.19766}
+    - {x: 145.72792, y: 128.19766}
+    - {x: 145.72792, y: -145.97675}
+    uv:
+    - {x: 0.24377032, y: 0.44105175}
+    - {x: 0.12513542, y: 0.44105175}
+    - {x: 0.12513542, y: 0.6420696}
+    - {x: 0.24377032, y: 0.6420696}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -148.22968, y: -147.22868}
+    - {x: -148.22968, y: 128.19766}
+    - {x: 139.47351, y: 128.19766}
+    - {x: 139.47351, y: -147.22868}
+    uv:
+    - {x: 0.48049837, y: 0.20271416}
+    - {x: 0.36132178, y: 0.20271416}
+    - {x: 0.36132178, y: 0.39779475}
+    - {x: 0.48049837, y: 0.39779475}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -143.22615, y: -147.22868}
+    - {x: -143.22615, y: 126.94573}
+    - {x: 138.22261, y: 126.94573}
+    - {x: 138.22261, y: -147.22868}
+    uv:
+    - {x: 0.63542795, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.19253604}
+    - {x: 0.63542795, y: 0.19253604}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -145.72792, y: -124.6938}
+    - {x: -145.72792, y: 124.44186}
+    - {x: 136.97173, y: 124.44186}
+    - {x: 136.97173, y: -124.6938}
+    uv:
+    - {x: 0.47453955, y: 0.60899067}
+    - {x: 0.3667389, y: 0.60899067}
+    - {x: 0.3667389, y: 0.80067855}
+    - {x: 0.47453955, y: 0.80067855}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -128.44962}
+    - {x: -138.22261, y: 124.44186}
+    - {x: 138.22263, y: 124.44186}
+    - {x: 138.22263, y: -128.44962}
+    uv:
+    - {x: 0.7156013, y: 0.38507208}
+    - {x: 0.60617554, y: 0.38507208}
+    - {x: 0.60617554, y: 0.57251906}
+    - {x: 0.7156013, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -144.72481}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 108.201416, y: 113.174416}
+    - {x: 108.201416, y: -144.72481}
+    uv:
+    - {x: 0.712351, y: 0.77014416}
+    - {x: 0.712351, y: 0.9448685}
+    - {x: 0.81852657, y: 0.9448685}
+    - {x: 0.81852657, y: 0.77014416}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -127.19768}
+    - {x: -138.22261, y: 111.92248}
+    - {x: 138.22263, y: 111.92248}
+    - {x: 138.22263, y: -127.19768}
+    uv:
+    - {x: 0.8201517, y: 0.38507208}
+    - {x: 0.7166847, y: 0.38507208}
+    - {x: 0.7166847, y: 0.57251906}
+    - {x: 0.8201517, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -124.6938}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 86.9364, y: 113.174416}
+    - {x: 86.9364, y: -124.6938}
+    uv:
+    - {x: 0.23022752, y: 0.84393555}
+    - {x: 0.12730227, y: 0.84393555}
+    - {x: 0.12730227, y: 0.9957591}
+    - {x: 0.23022752, y: 0.9957591}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -72.112404}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 106.95054, y: 113.174416}
+    - {x: 106.95054, y: -72.112404}
+    uv:
+    - {x: 0.0010834236, y: 0.8642918}
+    - {x: 0.0010834236, y: 0.9898219}
+    - {x: 0.10671723, y: 0.9898219}
+    - {x: 0.10671723, y: 0.8642918}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -72.112404}
+    - {x: -118.20848, y: 111.92248}
+    - {x: 41.904594, y: 111.92248}
+    - {x: 41.904594, y: -72.112404}
+    uv:
+    - {x: 0.92632717, y: 0.36132315}
+    - {x: 0.92632717, y: 0.4860051}
+    - {x: 0.9956663, y: 0.4860051}
+    - {x: 0.9956663, y: 0.36132315}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -124.6938}
+    - {x: -118.20848, y: 66.85271}
+    - {x: 16.886925, y: 66.85271}
+    - {x: 16.886925, y: -124.6938}
+    uv:
+    - {x: 0.90249187, y: 0.9067006}
+    - {x: 0.81960994, y: 0.9067006}
+    - {x: 0.81960994, y: 0.99830365}
+    - {x: 0.90249187, y: 0.99830365}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -131.9682, y: -128.44962}
+    - {x: -131.9682, y: 116.93023}
+    - {x: 128.21555, y: 116.93023}
+    - {x: 128.21555, y: -128.44962}
+    uv:
+    - {x: 0.7112676, y: 0.77014416}
+    - {x: 0.6050921, y: 0.77014416}
+    - {x: 0.6050921, y: 0.9465649}
+    - {x: 0.7112676, y: 0.9465649}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -143.47287}
+    - {x: -146.9788, y: 129.44962}
+    - {x: 148.22968, y: 129.44962}
+    - {x: 148.22968, y: -143.47287}
+    uv:
+    - {x: 0.36023834, y: 0.2086514}
+    - {x: 0.24214518, y: 0.2086514}
+    - {x: 0.24214518, y: 0.40882105}
+    - {x: 0.36023834, y: 0.40882105}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -147.22868}
+    - {x: -146.9788, y: 133.20543}
+    - {x: 143.22614, y: 133.20543}
+    - {x: 143.22614, y: -147.22868}
+    uv:
+    - {x: 0.36619717, y: 0.4105174}
+    - {x: 0.24485373, y: 0.4105174}
+    - {x: 0.24485373, y: 0.6072943}
+    - {x: 0.36619717, y: 0.6072943}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -148.48062}
+    - {x: -149.48056, y: 133.20543}
+    - {x: 144.47704, y: 133.20543}
+    - {x: 144.47704, y: -148.48062}
+    uv:
+    - {x: 0.3938245, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.20101781}
+    - {x: 0.3938245, y: 0.20101781}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -150.9845}
+    - {x: -153.23322, y: 138.21318}
+    - {x: 146.9788, y: 138.21318}
+    - {x: 146.9788, y: -150.9845}
+    uv:
+    - {x: 0.12621886, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.86259544}
+    - {x: 0.12621886, y: 0.86259544}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -152.23643}
+    - {x: -153.23322, y: 131.95349}
+    - {x: 156.98587, y: 131.95349}
+    - {x: 156.98587, y: -152.23643}
+    uv:
+    - {x: 0.124052, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.6573367}
+    - {x: 0.124052, y: 0.6573367}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -147.22868}
+    - {x: -154.4841, y: 130.70155}
+    - {x: 158.23674, y: 130.70155}
+    - {x: 158.23674, y: -147.22868}
+    uv:
+    - {x: 0.12134345, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.44529262}
+    - {x: 0.12134345, y: 0.44529262}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -150.9845}
+    - {x: -154.4841, y: 133.20543}
+    - {x: 148.22968, y: 133.20543}
+    - {x: 148.22968, y: -150.9845}
+    uv:
+    - {x: 0.2708559, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.20695505}
+    - {x: 0.2708559, y: 0.20695505}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -151.98233, y: -145.97675}
+    - {x: -151.98233, y: 128.19766}
+    - {x: 151.98233, y: 128.19766}
+    - {x: 151.98233, y: -145.97675}
+    uv:
+    - {x: 0.24106176, y: 0.23324852}
+    - {x: 0.12242687, y: 0.23324852}
+    - {x: 0.12242687, y: 0.43935537}
+    - {x: 0.24106176, y: 0.43935537}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -147.22868}
+    - {x: -149.48056, y: 128.19766}
+    - {x: 143.22615, y: 128.19766}
+    - {x: 143.22615, y: -147.22868}
+    uv:
+    - {x: 0.24647887, y: 0.6437659}
+    - {x: 0.12730227, y: 0.6437659}
+    - {x: 0.12730227, y: 0.8422392}
+    - {x: 0.24647887, y: 0.8422392}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -150.73145, y: -145.97675}
+    - {x: -150.73145, y: 128.19766}
+    - {x: 145.72792, y: 128.19766}
+    - {x: 145.72792, y: -145.97675}
+    uv:
+    - {x: 0.24377032, y: 0.44105175}
+    - {x: 0.12513542, y: 0.44105175}
+    - {x: 0.12513542, y: 0.6420696}
+    - {x: 0.24377032, y: 0.6420696}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -148.22968, y: -147.22868}
+    - {x: -148.22968, y: 128.19766}
+    - {x: 139.47351, y: 128.19766}
+    - {x: 139.47351, y: -147.22868}
+    uv:
+    - {x: 0.48049837, y: 0.20271416}
+    - {x: 0.36132178, y: 0.20271416}
+    - {x: 0.36132178, y: 0.39779475}
+    - {x: 0.48049837, y: 0.39779475}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -143.22615, y: -147.22868}
+    - {x: -143.22615, y: 126.94573}
+    - {x: 138.22261, y: 126.94573}
+    - {x: 138.22261, y: -147.22868}
+    uv:
+    - {x: 0.63542795, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.19253604}
+    - {x: 0.63542795, y: 0.19253604}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -145.72792, y: -124.6938}
+    - {x: -145.72792, y: 124.44186}
+    - {x: 136.97173, y: 124.44186}
+    - {x: 136.97173, y: -124.6938}
+    uv:
+    - {x: 0.47453955, y: 0.60899067}
+    - {x: 0.3667389, y: 0.60899067}
+    - {x: 0.3667389, y: 0.80067855}
+    - {x: 0.47453955, y: 0.80067855}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -128.44962}
+    - {x: -138.22261, y: 124.44186}
+    - {x: 138.22263, y: 124.44186}
+    - {x: 138.22263, y: -128.44962}
+    uv:
+    - {x: 0.7156013, y: 0.38507208}
+    - {x: 0.60617554, y: 0.38507208}
+    - {x: 0.60617554, y: 0.57251906}
+    - {x: 0.7156013, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -144.72481}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 108.201416, y: 113.174416}
+    - {x: 108.201416, y: -144.72481}
+    uv:
+    - {x: 0.712351, y: 0.77014416}
+    - {x: 0.712351, y: 0.9448685}
+    - {x: 0.81852657, y: 0.9448685}
+    - {x: 0.81852657, y: 0.77014416}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -127.19768}
+    - {x: -138.22261, y: 111.92248}
+    - {x: 138.22263, y: 111.92248}
+    - {x: 138.22263, y: -127.19768}
+    uv:
+    - {x: 0.8201517, y: 0.38507208}
+    - {x: 0.7166847, y: 0.38507208}
+    - {x: 0.7166847, y: 0.57251906}
+    - {x: 0.8201517, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -124.6938}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 86.9364, y: 113.174416}
+    - {x: 86.9364, y: -124.6938}
+    uv:
+    - {x: 0.23022752, y: 0.84393555}
+    - {x: 0.12730227, y: 0.84393555}
+    - {x: 0.12730227, y: 0.9957591}
+    - {x: 0.23022752, y: 0.9957591}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -72.112404}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 106.95054, y: 113.174416}
+    - {x: 106.95054, y: -72.112404}
+    uv:
+    - {x: 0.0010834236, y: 0.8642918}
+    - {x: 0.0010834236, y: 0.9898219}
+    - {x: 0.10671723, y: 0.9898219}
+    - {x: 0.10671723, y: 0.8642918}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -72.112404}
+    - {x: -118.20848, y: 111.92248}
+    - {x: 41.904594, y: 111.92248}
+    - {x: 41.904594, y: -72.112404}
+    uv:
+    - {x: 0.92632717, y: 0.36132315}
+    - {x: 0.92632717, y: 0.4860051}
+    - {x: 0.9956663, y: 0.4860051}
+    - {x: 0.9956663, y: 0.36132315}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -124.6938}
+    - {x: -118.20848, y: 66.85271}
+    - {x: 16.886925, y: 66.85271}
+    - {x: 16.886925, y: -124.6938}
+    uv:
+    - {x: 0.90249187, y: 0.9067006}
+    - {x: 0.81960994, y: 0.9067006}
+    - {x: 0.81960994, y: 0.99830365}
+    - {x: 0.90249187, y: 0.99830365}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -131.9682, y: -128.44962}
+    - {x: -131.9682, y: 116.93023}
+    - {x: 128.21555, y: 116.93023}
+    - {x: 128.21555, y: -128.44962}
+    uv:
+    - {x: 0.7112676, y: 0.77014416}
+    - {x: 0.6050921, y: 0.77014416}
+    - {x: 0.6050921, y: 0.9465649}
+    - {x: 0.7112676, y: 0.9465649}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -143.47287}
+    - {x: -146.9788, y: 129.44962}
+    - {x: 148.22968, y: 129.44962}
+    - {x: 148.22968, y: -143.47287}
+    uv:
+    - {x: 0.36023834, y: 0.2086514}
+    - {x: 0.24214518, y: 0.2086514}
+    - {x: 0.24214518, y: 0.40882105}
+    - {x: 0.36023834, y: 0.40882105}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -147.22868}
+    - {x: -146.9788, y: 133.20543}
+    - {x: 143.22614, y: 133.20543}
+    - {x: 143.22614, y: -147.22868}
+    uv:
+    - {x: 0.36619717, y: 0.4105174}
+    - {x: 0.24485373, y: 0.4105174}
+    - {x: 0.24485373, y: 0.6072943}
+    - {x: 0.36619717, y: 0.6072943}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -148.48062}
+    - {x: -149.48056, y: 133.20543}
+    - {x: 144.47704, y: 133.20543}
+    - {x: 144.47704, y: -148.48062}
+    uv:
+    - {x: 0.3938245, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.20101781}
+    - {x: 0.3938245, y: 0.20101781}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -150.9845}
+    - {x: -153.23322, y: 138.21318}
+    - {x: 146.9788, y: 138.21318}
+    - {x: 146.9788, y: -150.9845}
+    uv:
+    - {x: 0.12621886, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.86259544}
+    - {x: 0.12621886, y: 0.86259544}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -152.23643}
+    - {x: -153.23322, y: 131.95349}
+    - {x: 156.98587, y: 131.95349}
+    - {x: 156.98587, y: -152.23643}
+    uv:
+    - {x: 0.124052, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.6573367}
+    - {x: 0.124052, y: 0.6573367}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -147.22868}
+    - {x: -154.4841, y: 130.70155}
+    - {x: 158.23674, y: 130.70155}
+    - {x: 158.23674, y: -147.22868}
+    uv:
+    - {x: 0.12134345, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.44529262}
+    - {x: 0.12134345, y: 0.44529262}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -150.9845}
+    - {x: -154.4841, y: 133.20543}
+    - {x: 148.22968, y: 133.20543}
+    - {x: 148.22968, y: -150.9845}
+    uv:
+    - {x: 0.2708559, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.20695505}
+    - {x: 0.2708559, y: 0.20695505}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -151.98233, y: -145.97675}
+    - {x: -151.98233, y: 128.19766}
+    - {x: 151.98233, y: 128.19766}
+    - {x: 151.98233, y: -145.97675}
+    uv:
+    - {x: 0.24106176, y: 0.23324852}
+    - {x: 0.12242687, y: 0.23324852}
+    - {x: 0.12242687, y: 0.43935537}
+    - {x: 0.24106176, y: 0.43935537}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -147.22868}
+    - {x: -149.48056, y: 128.19766}
+    - {x: 143.22615, y: 128.19766}
+    - {x: 143.22615, y: -147.22868}
+    uv:
+    - {x: 0.24647887, y: 0.6437659}
+    - {x: 0.12730227, y: 0.6437659}
+    - {x: 0.12730227, y: 0.8422392}
+    - {x: 0.24647887, y: 0.8422392}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -150.73145, y: -145.97675}
+    - {x: -150.73145, y: 128.19766}
+    - {x: 145.72792, y: 128.19766}
+    - {x: 145.72792, y: -145.97675}
+    uv:
+    - {x: 0.24377032, y: 0.44105175}
+    - {x: 0.12513542, y: 0.44105175}
+    - {x: 0.12513542, y: 0.6420696}
+    - {x: 0.24377032, y: 0.6420696}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -148.22968, y: -147.22868}
+    - {x: -148.22968, y: 128.19766}
+    - {x: 139.47351, y: 128.19766}
+    - {x: 139.47351, y: -147.22868}
+    uv:
+    - {x: 0.48049837, y: 0.20271416}
+    - {x: 0.36132178, y: 0.20271416}
+    - {x: 0.36132178, y: 0.39779475}
+    - {x: 0.48049837, y: 0.39779475}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -143.22615, y: -147.22868}
+    - {x: -143.22615, y: 126.94573}
+    - {x: 138.22261, y: 126.94573}
+    - {x: 138.22261, y: -147.22868}
+    uv:
+    - {x: 0.63542795, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.19253604}
+    - {x: 0.63542795, y: 0.19253604}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -145.72792, y: -124.6938}
+    - {x: -145.72792, y: 124.44186}
+    - {x: 136.97173, y: 124.44186}
+    - {x: 136.97173, y: -124.6938}
+    uv:
+    - {x: 0.47453955, y: 0.60899067}
+    - {x: 0.3667389, y: 0.60899067}
+    - {x: 0.3667389, y: 0.80067855}
+    - {x: 0.47453955, y: 0.80067855}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -128.44962}
+    - {x: -138.22261, y: 124.44186}
+    - {x: 138.22263, y: 124.44186}
+    - {x: 138.22263, y: -128.44962}
+    uv:
+    - {x: 0.7156013, y: 0.38507208}
+    - {x: 0.60617554, y: 0.38507208}
+    - {x: 0.60617554, y: 0.57251906}
+    - {x: 0.7156013, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -144.72481}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 108.201416, y: 113.174416}
+    - {x: 108.201416, y: -144.72481}
+    uv:
+    - {x: 0.712351, y: 0.77014416}
+    - {x: 0.712351, y: 0.9448685}
+    - {x: 0.81852657, y: 0.9448685}
+    - {x: 0.81852657, y: 0.77014416}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -127.19768}
+    - {x: -138.22261, y: 111.92248}
+    - {x: 138.22263, y: 111.92248}
+    - {x: 138.22263, y: -127.19768}
+    uv:
+    - {x: 0.8201517, y: 0.38507208}
+    - {x: 0.7166847, y: 0.38507208}
+    - {x: 0.7166847, y: 0.57251906}
+    - {x: 0.8201517, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -124.6938}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 86.9364, y: 113.174416}
+    - {x: 86.9364, y: -124.6938}
+    uv:
+    - {x: 0.23022752, y: 0.84393555}
+    - {x: 0.12730227, y: 0.84393555}
+    - {x: 0.12730227, y: 0.9957591}
+    - {x: 0.23022752, y: 0.9957591}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -72.112404}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 106.95054, y: 113.174416}
+    - {x: 106.95054, y: -72.112404}
+    uv:
+    - {x: 0.0010834236, y: 0.8642918}
+    - {x: 0.0010834236, y: 0.9898219}
+    - {x: 0.10671723, y: 0.9898219}
+    - {x: 0.10671723, y: 0.8642918}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -72.112404}
+    - {x: -118.20848, y: 111.92248}
+    - {x: 41.904594, y: 111.92248}
+    - {x: 41.904594, y: -72.112404}
+    uv:
+    - {x: 0.92632717, y: 0.36132315}
+    - {x: 0.92632717, y: 0.4860051}
+    - {x: 0.9956663, y: 0.4860051}
+    - {x: 0.9956663, y: 0.36132315}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -124.6938}
+    - {x: -118.20848, y: 66.85271}
+    - {x: 16.886925, y: 66.85271}
+    - {x: 16.886925, y: -124.6938}
+    uv:
+    - {x: 0.90249187, y: 0.9067006}
+    - {x: 0.81960994, y: 0.9067006}
+    - {x: 0.81960994, y: 0.99830365}
+    - {x: 0.90249187, y: 0.99830365}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -131.9682, y: -128.44962}
+    - {x: -131.9682, y: 116.93023}
+    - {x: 128.21555, y: 116.93023}
+    - {x: 128.21555, y: -128.44962}
+    uv:
+    - {x: 0.7112676, y: 0.77014416}
+    - {x: 0.6050921, y: 0.77014416}
+    - {x: 0.6050921, y: 0.9465649}
+    - {x: 0.7112676, y: 0.9465649}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -143.47287}
+    - {x: -146.9788, y: 129.44962}
+    - {x: 148.22968, y: 129.44962}
+    - {x: 148.22968, y: -143.47287}
+    uv:
+    - {x: 0.36023834, y: 0.2086514}
+    - {x: 0.24214518, y: 0.2086514}
+    - {x: 0.24214518, y: 0.40882105}
+    - {x: 0.36023834, y: 0.40882105}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -147.22868}
+    - {x: -146.9788, y: 133.20543}
+    - {x: 143.22614, y: 133.20543}
+    - {x: 143.22614, y: -147.22868}
+    uv:
+    - {x: 0.36619717, y: 0.4105174}
+    - {x: 0.24485373, y: 0.4105174}
+    - {x: 0.24485373, y: 0.6072943}
+    - {x: 0.36619717, y: 0.6072943}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -148.48062}
+    - {x: -149.48056, y: 133.20543}
+    - {x: 144.47704, y: 133.20543}
+    - {x: 144.47704, y: -148.48062}
+    uv:
+    - {x: 0.3938245, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.20101781}
+    - {x: 0.3938245, y: 0.20101781}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -150.9845}
+    - {x: -153.23322, y: 138.21318}
+    - {x: 146.9788, y: 138.21318}
+    - {x: 146.9788, y: -150.9845}
+    uv:
+    - {x: 0.12621886, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.86259544}
+    - {x: 0.12621886, y: 0.86259544}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -152.23643}
+    - {x: -153.23322, y: 131.95349}
+    - {x: 156.98587, y: 131.95349}
+    - {x: 156.98587, y: -152.23643}
+    uv:
+    - {x: 0.124052, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.6573367}
+    - {x: 0.124052, y: 0.6573367}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -147.22868}
+    - {x: -154.4841, y: 130.70155}
+    - {x: 158.23674, y: 130.70155}
+    - {x: 158.23674, y: -147.22868}
+    uv:
+    - {x: 0.12134345, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.44529262}
+    - {x: 0.12134345, y: 0.44529262}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -150.9845}
+    - {x: -154.4841, y: 133.20543}
+    - {x: 148.22968, y: 133.20543}
+    - {x: 148.22968, y: -150.9845}
+    uv:
+    - {x: 0.2708559, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.20695505}
+    - {x: 0.2708559, y: 0.20695505}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -151.98233, y: -145.97675}
+    - {x: -151.98233, y: 128.19766}
+    - {x: 151.98233, y: 128.19766}
+    - {x: 151.98233, y: -145.97675}
+    uv:
+    - {x: 0.24106176, y: 0.23324852}
+    - {x: 0.12242687, y: 0.23324852}
+    - {x: 0.12242687, y: 0.43935537}
+    - {x: 0.24106176, y: 0.43935537}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -147.22868}
+    - {x: -149.48056, y: 128.19766}
+    - {x: 143.22615, y: 128.19766}
+    - {x: 143.22615, y: -147.22868}
+    uv:
+    - {x: 0.24647887, y: 0.6437659}
+    - {x: 0.12730227, y: 0.6437659}
+    - {x: 0.12730227, y: 0.8422392}
+    - {x: 0.24647887, y: 0.8422392}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -150.73145, y: -145.97675}
+    - {x: -150.73145, y: 128.19766}
+    - {x: 145.72792, y: 128.19766}
+    - {x: 145.72792, y: -145.97675}
+    uv:
+    - {x: 0.24377032, y: 0.44105175}
+    - {x: 0.12513542, y: 0.44105175}
+    - {x: 0.12513542, y: 0.6420696}
+    - {x: 0.24377032, y: 0.6420696}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -148.22968, y: -147.22868}
+    - {x: -148.22968, y: 128.19766}
+    - {x: 139.47351, y: 128.19766}
+    - {x: 139.47351, y: -147.22868}
+    uv:
+    - {x: 0.48049837, y: 0.20271416}
+    - {x: 0.36132178, y: 0.20271416}
+    - {x: 0.36132178, y: 0.39779475}
+    - {x: 0.48049837, y: 0.39779475}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -143.22615, y: -147.22868}
+    - {x: -143.22615, y: 126.94573}
+    - {x: 138.22261, y: 126.94573}
+    - {x: 138.22261, y: -147.22868}
+    uv:
+    - {x: 0.63542795, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.19253604}
+    - {x: 0.63542795, y: 0.19253604}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -145.72792, y: -124.6938}
+    - {x: -145.72792, y: 124.44186}
+    - {x: 136.97173, y: 124.44186}
+    - {x: 136.97173, y: -124.6938}
+    uv:
+    - {x: 0.47453955, y: 0.60899067}
+    - {x: 0.3667389, y: 0.60899067}
+    - {x: 0.3667389, y: 0.80067855}
+    - {x: 0.47453955, y: 0.80067855}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -128.44962}
+    - {x: -138.22261, y: 124.44186}
+    - {x: 138.22263, y: 124.44186}
+    - {x: 138.22263, y: -128.44962}
+    uv:
+    - {x: 0.7156013, y: 0.38507208}
+    - {x: 0.60617554, y: 0.38507208}
+    - {x: 0.60617554, y: 0.57251906}
+    - {x: 0.7156013, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -144.72481}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 108.201416, y: 113.174416}
+    - {x: 108.201416, y: -144.72481}
+    uv:
+    - {x: 0.712351, y: 0.77014416}
+    - {x: 0.712351, y: 0.9448685}
+    - {x: 0.81852657, y: 0.9448685}
+    - {x: 0.81852657, y: 0.77014416}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -127.19768}
+    - {x: -138.22261, y: 111.92248}
+    - {x: 138.22263, y: 111.92248}
+    - {x: 138.22263, y: -127.19768}
+    uv:
+    - {x: 0.8201517, y: 0.38507208}
+    - {x: 0.7166847, y: 0.38507208}
+    - {x: 0.7166847, y: 0.57251906}
+    - {x: 0.8201517, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -124.6938}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 86.9364, y: 113.174416}
+    - {x: 86.9364, y: -124.6938}
+    uv:
+    - {x: 0.23022752, y: 0.84393555}
+    - {x: 0.12730227, y: 0.84393555}
+    - {x: 0.12730227, y: 0.9957591}
+    - {x: 0.23022752, y: 0.9957591}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -72.112404}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 106.95054, y: 113.174416}
+    - {x: 106.95054, y: -72.112404}
+    uv:
+    - {x: 0.0010834236, y: 0.8642918}
+    - {x: 0.0010834236, y: 0.9898219}
+    - {x: 0.10671723, y: 0.9898219}
+    - {x: 0.10671723, y: 0.8642918}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -72.112404}
+    - {x: -118.20848, y: 111.92248}
+    - {x: 41.904594, y: 111.92248}
+    - {x: 41.904594, y: -72.112404}
+    uv:
+    - {x: 0.92632717, y: 0.36132315}
+    - {x: 0.92632717, y: 0.4860051}
+    - {x: 0.9956663, y: 0.4860051}
+    - {x: 0.9956663, y: 0.36132315}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -124.6938}
+    - {x: -118.20848, y: 66.85271}
+    - {x: 16.886925, y: 66.85271}
+    - {x: 16.886925, y: -124.6938}
+    uv:
+    - {x: 0.90249187, y: 0.9067006}
+    - {x: 0.81960994, y: 0.9067006}
+    - {x: 0.81960994, y: 0.99830365}
+    - {x: 0.90249187, y: 0.99830365}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -131.9682, y: -128.44962}
+    - {x: -131.9682, y: 116.93023}
+    - {x: 128.21555, y: 116.93023}
+    - {x: 128.21555, y: -128.44962}
+    uv:
+    - {x: 0.7112676, y: 0.77014416}
+    - {x: 0.6050921, y: 0.77014416}
+    - {x: 0.6050921, y: 0.9465649}
+    - {x: 0.7112676, y: 0.9465649}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -143.47287}
+    - {x: -146.9788, y: 129.44962}
+    - {x: 148.22968, y: 129.44962}
+    - {x: 148.22968, y: -143.47287}
+    uv:
+    - {x: 0.36023834, y: 0.2086514}
+    - {x: 0.24214518, y: 0.2086514}
+    - {x: 0.24214518, y: 0.40882105}
+    - {x: 0.36023834, y: 0.40882105}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -147.22868}
+    - {x: -146.9788, y: 133.20543}
+    - {x: 143.22614, y: 133.20543}
+    - {x: 143.22614, y: -147.22868}
+    uv:
+    - {x: 0.36619717, y: 0.4105174}
+    - {x: 0.24485373, y: 0.4105174}
+    - {x: 0.24485373, y: 0.6072943}
+    - {x: 0.36619717, y: 0.6072943}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -148.48062}
+    - {x: -149.48056, y: 133.20543}
+    - {x: 144.47704, y: 133.20543}
+    - {x: 144.47704, y: -148.48062}
+    uv:
+    - {x: 0.3938245, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.20101781}
+    - {x: 0.3938245, y: 0.20101781}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -150.9845}
+    - {x: -153.23322, y: 138.21318}
+    - {x: 146.9788, y: 138.21318}
+    - {x: 146.9788, y: -150.9845}
+    uv:
+    - {x: 0.12621886, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.86259544}
+    - {x: 0.12621886, y: 0.86259544}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -152.23643}
+    - {x: -153.23322, y: 131.95349}
+    - {x: 156.98587, y: 131.95349}
+    - {x: 156.98587, y: -152.23643}
+    uv:
+    - {x: 0.124052, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.6573367}
+    - {x: 0.124052, y: 0.6573367}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -147.22868}
+    - {x: -154.4841, y: 130.70155}
+    - {x: 158.23674, y: 130.70155}
+    - {x: 158.23674, y: -147.22868}
+    uv:
+    - {x: 0.12134345, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.44529262}
+    - {x: 0.12134345, y: 0.44529262}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -150.9845}
+    - {x: -154.4841, y: 133.20543}
+    - {x: 148.22968, y: 133.20543}
+    - {x: 148.22968, y: -150.9845}
+    uv:
+    - {x: 0.2708559, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.20695505}
+    - {x: 0.2708559, y: 0.20695505}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -151.98233, y: -145.97675}
+    - {x: -151.98233, y: 128.19766}
+    - {x: 151.98233, y: 128.19766}
+    - {x: 151.98233, y: -145.97675}
+    uv:
+    - {x: 0.24106176, y: 0.23324852}
+    - {x: 0.12242687, y: 0.23324852}
+    - {x: 0.12242687, y: 0.43935537}
+    - {x: 0.24106176, y: 0.43935537}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -147.22868}
+    - {x: -149.48056, y: 128.19766}
+    - {x: 143.22615, y: 128.19766}
+    - {x: 143.22615, y: -147.22868}
+    uv:
+    - {x: 0.24647887, y: 0.6437659}
+    - {x: 0.12730227, y: 0.6437659}
+    - {x: 0.12730227, y: 0.8422392}
+    - {x: 0.24647887, y: 0.8422392}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -150.73145, y: -145.97675}
+    - {x: -150.73145, y: 128.19766}
+    - {x: 145.72792, y: 128.19766}
+    - {x: 145.72792, y: -145.97675}
+    uv:
+    - {x: 0.24377032, y: 0.44105175}
+    - {x: 0.12513542, y: 0.44105175}
+    - {x: 0.12513542, y: 0.6420696}
+    - {x: 0.24377032, y: 0.6420696}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -148.22968, y: -147.22868}
+    - {x: -148.22968, y: 128.19766}
+    - {x: 139.47351, y: 128.19766}
+    - {x: 139.47351, y: -147.22868}
+    uv:
+    - {x: 0.48049837, y: 0.20271416}
+    - {x: 0.36132178, y: 0.20271416}
+    - {x: 0.36132178, y: 0.39779475}
+    - {x: 0.48049837, y: 0.39779475}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -143.22615, y: -147.22868}
+    - {x: -143.22615, y: 126.94573}
+    - {x: 138.22261, y: 126.94573}
+    - {x: 138.22261, y: -147.22868}
+    uv:
+    - {x: 0.63542795, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.19253604}
+    - {x: 0.63542795, y: 0.19253604}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -145.72792, y: -124.6938}
+    - {x: -145.72792, y: 124.44186}
+    - {x: 136.97173, y: 124.44186}
+    - {x: 136.97173, y: -124.6938}
+    uv:
+    - {x: 0.47453955, y: 0.60899067}
+    - {x: 0.3667389, y: 0.60899067}
+    - {x: 0.3667389, y: 0.80067855}
+    - {x: 0.47453955, y: 0.80067855}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -128.44962}
+    - {x: -138.22261, y: 124.44186}
+    - {x: 138.22263, y: 124.44186}
+    - {x: 138.22263, y: -128.44962}
+    uv:
+    - {x: 0.7156013, y: 0.38507208}
+    - {x: 0.60617554, y: 0.38507208}
+    - {x: 0.60617554, y: 0.57251906}
+    - {x: 0.7156013, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -144.72481}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 108.201416, y: 113.174416}
+    - {x: 108.201416, y: -144.72481}
+    uv:
+    - {x: 0.712351, y: 0.77014416}
+    - {x: 0.712351, y: 0.9448685}
+    - {x: 0.81852657, y: 0.9448685}
+    - {x: 0.81852657, y: 0.77014416}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -127.19768}
+    - {x: -138.22261, y: 111.92248}
+    - {x: 138.22263, y: 111.92248}
+    - {x: 138.22263, y: -127.19768}
+    uv:
+    - {x: 0.8201517, y: 0.38507208}
+    - {x: 0.7166847, y: 0.38507208}
+    - {x: 0.7166847, y: 0.57251906}
+    - {x: 0.8201517, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -124.6938}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 86.9364, y: 113.174416}
+    - {x: 86.9364, y: -124.6938}
+    uv:
+    - {x: 0.23022752, y: 0.84393555}
+    - {x: 0.12730227, y: 0.84393555}
+    - {x: 0.12730227, y: 0.9957591}
+    - {x: 0.23022752, y: 0.9957591}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -72.112404}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 106.95054, y: 113.174416}
+    - {x: 106.95054, y: -72.112404}
+    uv:
+    - {x: 0.0010834236, y: 0.8642918}
+    - {x: 0.0010834236, y: 0.9898219}
+    - {x: 0.10671723, y: 0.9898219}
+    - {x: 0.10671723, y: 0.8642918}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -72.112404}
+    - {x: -118.20848, y: 111.92248}
+    - {x: 41.904594, y: 111.92248}
+    - {x: 41.904594, y: -72.112404}
+    uv:
+    - {x: 0.92632717, y: 0.36132315}
+    - {x: 0.92632717, y: 0.4860051}
+    - {x: 0.9956663, y: 0.4860051}
+    - {x: 0.9956663, y: 0.36132315}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -124.6938}
+    - {x: -118.20848, y: 66.85271}
+    - {x: 16.886925, y: 66.85271}
+    - {x: 16.886925, y: -124.6938}
+    uv:
+    - {x: 0.90249187, y: 0.9067006}
+    - {x: 0.81960994, y: 0.9067006}
+    - {x: 0.81960994, y: 0.99830365}
+    - {x: 0.90249187, y: 0.99830365}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -131.9682, y: -128.44962}
+    - {x: -131.9682, y: 116.93023}
+    - {x: 128.21555, y: 116.93023}
+    - {x: 128.21555, y: -128.44962}
+    uv:
+    - {x: 0.7112676, y: 0.77014416}
+    - {x: 0.6050921, y: 0.77014416}
+    - {x: 0.6050921, y: 0.9465649}
+    - {x: 0.7112676, y: 0.9465649}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -143.47287}
+    - {x: -146.9788, y: 129.44962}
+    - {x: 148.22968, y: 129.44962}
+    - {x: 148.22968, y: -143.47287}
+    uv:
+    - {x: 0.36023834, y: 0.2086514}
+    - {x: 0.24214518, y: 0.2086514}
+    - {x: 0.24214518, y: 0.40882105}
+    - {x: 0.36023834, y: 0.40882105}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -147.22868}
+    - {x: -146.9788, y: 133.20543}
+    - {x: 143.22614, y: 133.20543}
+    - {x: 143.22614, y: -147.22868}
+    uv:
+    - {x: 0.36619717, y: 0.4105174}
+    - {x: 0.24485373, y: 0.4105174}
+    - {x: 0.24485373, y: 0.6072943}
+    - {x: 0.36619717, y: 0.6072943}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -148.48062}
+    - {x: -149.48056, y: 133.20543}
+    - {x: 144.47704, y: 133.20543}
+    - {x: 144.47704, y: -148.48062}
+    uv:
+    - {x: 0.3938245, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.20101781}
+    - {x: 0.3938245, y: 0.20101781}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -150.9845}
+    - {x: -153.23322, y: 138.21318}
+    - {x: 146.9788, y: 138.21318}
+    - {x: 146.9788, y: -150.9845}
+    uv:
+    - {x: 0.12621886, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.86259544}
+    - {x: 0.12621886, y: 0.86259544}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -152.23643}
+    - {x: -153.23322, y: 131.95349}
+    - {x: 156.98587, y: 131.95349}
+    - {x: 156.98587, y: -152.23643}
+    uv:
+    - {x: 0.124052, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.6573367}
+    - {x: 0.124052, y: 0.6573367}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -147.22868}
+    - {x: -154.4841, y: 130.70155}
+    - {x: 158.23674, y: 130.70155}
+    - {x: 158.23674, y: -147.22868}
+    uv:
+    - {x: 0.12134345, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.44529262}
+    - {x: 0.12134345, y: 0.44529262}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -150.9845}
+    - {x: -154.4841, y: 133.20543}
+    - {x: 148.22968, y: 133.20543}
+    - {x: 148.22968, y: -150.9845}
+    uv:
+    - {x: 0.2708559, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.20695505}
+    - {x: 0.2708559, y: 0.20695505}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -151.98233, y: -145.97675}
+    - {x: -151.98233, y: 128.19766}
+    - {x: 151.98233, y: 128.19766}
+    - {x: 151.98233, y: -145.97675}
+    uv:
+    - {x: 0.24106176, y: 0.23324852}
+    - {x: 0.12242687, y: 0.23324852}
+    - {x: 0.12242687, y: 0.43935537}
+    - {x: 0.24106176, y: 0.43935537}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -147.22868}
+    - {x: -149.48056, y: 128.19766}
+    - {x: 143.22615, y: 128.19766}
+    - {x: 143.22615, y: -147.22868}
+    uv:
+    - {x: 0.24647887, y: 0.6437659}
+    - {x: 0.12730227, y: 0.6437659}
+    - {x: 0.12730227, y: 0.8422392}
+    - {x: 0.24647887, y: 0.8422392}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -150.73145, y: -145.97675}
+    - {x: -150.73145, y: 128.19766}
+    - {x: 145.72792, y: 128.19766}
+    - {x: 145.72792, y: -145.97675}
+    uv:
+    - {x: 0.24377032, y: 0.44105175}
+    - {x: 0.12513542, y: 0.44105175}
+    - {x: 0.12513542, y: 0.6420696}
+    - {x: 0.24377032, y: 0.6420696}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -148.22968, y: -147.22868}
+    - {x: -148.22968, y: 128.19766}
+    - {x: 139.47351, y: 128.19766}
+    - {x: 139.47351, y: -147.22868}
+    uv:
+    - {x: 0.48049837, y: 0.20271416}
+    - {x: 0.36132178, y: 0.20271416}
+    - {x: 0.36132178, y: 0.39779475}
+    - {x: 0.48049837, y: 0.39779475}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -143.22615, y: -147.22868}
+    - {x: -143.22615, y: 126.94573}
+    - {x: 138.22261, y: 126.94573}
+    - {x: 138.22261, y: -147.22868}
+    uv:
+    - {x: 0.63542795, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.19253604}
+    - {x: 0.63542795, y: 0.19253604}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -145.72792, y: -124.6938}
+    - {x: -145.72792, y: 124.44186}
+    - {x: 136.97173, y: 124.44186}
+    - {x: 136.97173, y: -124.6938}
+    uv:
+    - {x: 0.47453955, y: 0.60899067}
+    - {x: 0.3667389, y: 0.60899067}
+    - {x: 0.3667389, y: 0.80067855}
+    - {x: 0.47453955, y: 0.80067855}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -128.44962}
+    - {x: -138.22261, y: 124.44186}
+    - {x: 138.22263, y: 124.44186}
+    - {x: 138.22263, y: -128.44962}
+    uv:
+    - {x: 0.7156013, y: 0.38507208}
+    - {x: 0.60617554, y: 0.38507208}
+    - {x: 0.60617554, y: 0.57251906}
+    - {x: 0.7156013, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -144.72481}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 108.201416, y: 113.174416}
+    - {x: 108.201416, y: -144.72481}
+    uv:
+    - {x: 0.712351, y: 0.77014416}
+    - {x: 0.712351, y: 0.9448685}
+    - {x: 0.81852657, y: 0.9448685}
+    - {x: 0.81852657, y: 0.77014416}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -127.19768}
+    - {x: -138.22261, y: 111.92248}
+    - {x: 138.22263, y: 111.92248}
+    - {x: 138.22263, y: -127.19768}
+    uv:
+    - {x: 0.8201517, y: 0.38507208}
+    - {x: 0.7166847, y: 0.38507208}
+    - {x: 0.7166847, y: 0.57251906}
+    - {x: 0.8201517, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -124.6938}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 86.9364, y: 113.174416}
+    - {x: 86.9364, y: -124.6938}
+    uv:
+    - {x: 0.23022752, y: 0.84393555}
+    - {x: 0.12730227, y: 0.84393555}
+    - {x: 0.12730227, y: 0.9957591}
+    - {x: 0.23022752, y: 0.9957591}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -72.112404}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 106.95054, y: 113.174416}
+    - {x: 106.95054, y: -72.112404}
+    uv:
+    - {x: 0.0010834236, y: 0.8642918}
+    - {x: 0.0010834236, y: 0.9898219}
+    - {x: 0.10671723, y: 0.9898219}
+    - {x: 0.10671723, y: 0.8642918}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -72.112404}
+    - {x: -118.20848, y: 111.92248}
+    - {x: 41.904594, y: 111.92248}
+    - {x: 41.904594, y: -72.112404}
+    uv:
+    - {x: 0.92632717, y: 0.36132315}
+    - {x: 0.92632717, y: 0.4860051}
+    - {x: 0.9956663, y: 0.4860051}
+    - {x: 0.9956663, y: 0.36132315}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -124.6938}
+    - {x: -118.20848, y: 66.85271}
+    - {x: 16.886925, y: 66.85271}
+    - {x: 16.886925, y: -124.6938}
+    uv:
+    - {x: 0.90249187, y: 0.9067006}
+    - {x: 0.81960994, y: 0.9067006}
+    - {x: 0.81960994, y: 0.99830365}
+    - {x: 0.90249187, y: 0.99830365}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -131.9682, y: -128.44962}
+    - {x: -131.9682, y: 116.93023}
+    - {x: 128.21555, y: 116.93023}
+    - {x: 128.21555, y: -128.44962}
+    uv:
+    - {x: 0.7112676, y: 0.77014416}
+    - {x: 0.6050921, y: 0.77014416}
+    - {x: 0.6050921, y: 0.9465649}
+    - {x: 0.7112676, y: 0.9465649}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -143.47287}
+    - {x: -146.9788, y: 129.44962}
+    - {x: 148.22968, y: 129.44962}
+    - {x: 148.22968, y: -143.47287}
+    uv:
+    - {x: 0.36023834, y: 0.2086514}
+    - {x: 0.24214518, y: 0.2086514}
+    - {x: 0.24214518, y: 0.40882105}
+    - {x: 0.36023834, y: 0.40882105}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -146.9788, y: -147.22868}
+    - {x: -146.9788, y: 133.20543}
+    - {x: 143.22614, y: 133.20543}
+    - {x: 143.22614, y: -147.22868}
+    uv:
+    - {x: 0.36619717, y: 0.4105174}
+    - {x: 0.24485373, y: 0.4105174}
+    - {x: 0.24485373, y: 0.6072943}
+    - {x: 0.36619717, y: 0.6072943}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -148.48062}
+    - {x: -149.48056, y: 133.20543}
+    - {x: 144.47704, y: 133.20543}
+    - {x: 144.47704, y: -148.48062}
+    uv:
+    - {x: 0.3938245, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.0016963528}
+    - {x: 0.27193934, y: 0.20101781}
+    - {x: 0.3938245, y: 0.20101781}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -150.9845}
+    - {x: -153.23322, y: 138.21318}
+    - {x: 146.9788, y: 138.21318}
+    - {x: 146.9788, y: -150.9845}
+    uv:
+    - {x: 0.12621886, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.65903306}
+    - {x: 0.0010834236, y: 0.86259544}
+    - {x: 0.12621886, y: 0.86259544}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -153.23322, y: -152.23643}
+    - {x: -153.23322, y: 131.95349}
+    - {x: 156.98587, y: 131.95349}
+    - {x: 156.98587, y: -152.23643}
+    uv:
+    - {x: 0.124052, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.44698897}
+    - {x: 0.0010834236, y: 0.6573367}
+    - {x: 0.124052, y: 0.6573367}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -147.22868}
+    - {x: -154.4841, y: 130.70155}
+    - {x: 158.23674, y: 130.70155}
+    - {x: 158.23674, y: -147.22868}
+    uv:
+    - {x: 0.12134345, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.23324852}
+    - {x: 0.0010834236, y: 0.44529262}
+    - {x: 0.12134345, y: 0.44529262}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -154.4841, y: -150.9845}
+    - {x: -154.4841, y: 133.20543}
+    - {x: 148.22968, y: 133.20543}
+    - {x: 148.22968, y: -150.9845}
+    uv:
+    - {x: 0.2708559, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.0016963528}
+    - {x: 0.14788732, y: 0.20695505}
+    - {x: 0.2708559, y: 0.20695505}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -151.98233, y: -145.97675}
+    - {x: -151.98233, y: 128.19766}
+    - {x: 151.98233, y: 128.19766}
+    - {x: 151.98233, y: -145.97675}
+    uv:
+    - {x: 0.24106176, y: 0.23324852}
+    - {x: 0.12242687, y: 0.23324852}
+    - {x: 0.12242687, y: 0.43935537}
+    - {x: 0.24106176, y: 0.43935537}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -149.48056, y: -147.22868}
+    - {x: -149.48056, y: 128.19766}
+    - {x: 143.22615, y: 128.19766}
+    - {x: 143.22615, y: -147.22868}
+    uv:
+    - {x: 0.24647887, y: 0.6437659}
+    - {x: 0.12730227, y: 0.6437659}
+    - {x: 0.12730227, y: 0.8422392}
+    - {x: 0.24647887, y: 0.8422392}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -150.73145, y: -145.97675}
+    - {x: -150.73145, y: 128.19766}
+    - {x: 145.72792, y: 128.19766}
+    - {x: 145.72792, y: -145.97675}
+    uv:
+    - {x: 0.24377032, y: 0.44105175}
+    - {x: 0.12513542, y: 0.44105175}
+    - {x: 0.12513542, y: 0.6420696}
+    - {x: 0.24377032, y: 0.6420696}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -148.22968, y: -147.22868}
+    - {x: -148.22968, y: 128.19766}
+    - {x: 139.47351, y: 128.19766}
+    - {x: 139.47351, y: -147.22868}
+    uv:
+    - {x: 0.48049837, y: 0.20271416}
+    - {x: 0.36132178, y: 0.20271416}
+    - {x: 0.36132178, y: 0.39779475}
+    - {x: 0.48049837, y: 0.39779475}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -143.22615, y: -147.22868}
+    - {x: -143.22615, y: 126.94573}
+    - {x: 138.22261, y: 126.94573}
+    - {x: 138.22261, y: -147.22868}
+    uv:
+    - {x: 0.63542795, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.0016963528}
+    - {x: 0.5167931, y: 0.19253604}
+    - {x: 0.63542795, y: 0.19253604}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -145.72792, y: -124.6938}
+    - {x: -145.72792, y: 124.44186}
+    - {x: 136.97173, y: 124.44186}
+    - {x: 136.97173, y: -124.6938}
+    uv:
+    - {x: 0.47453955, y: 0.60899067}
+    - {x: 0.3667389, y: 0.60899067}
+    - {x: 0.3667389, y: 0.80067855}
+    - {x: 0.47453955, y: 0.80067855}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -128.44962}
+    - {x: -138.22261, y: 124.44186}
+    - {x: 138.22263, y: 124.44186}
+    - {x: 138.22263, y: -128.44962}
+    uv:
+    - {x: 0.7156013, y: 0.38507208}
+    - {x: 0.60617554, y: 0.38507208}
+    - {x: 0.60617554, y: 0.57251906}
+    - {x: 0.7156013, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -144.72481}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 108.201416, y: 113.174416}
+    - {x: 108.201416, y: -144.72481}
+    uv:
+    - {x: 0.712351, y: 0.77014416}
+    - {x: 0.712351, y: 0.9448685}
+    - {x: 0.81852657, y: 0.9448685}
+    - {x: 0.81852657, y: 0.77014416}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.22261, y: -127.19768}
+    - {x: -138.22261, y: 111.92248}
+    - {x: 138.22263, y: 111.92248}
+    - {x: 138.22263, y: -127.19768}
+    uv:
+    - {x: 0.8201517, y: 0.38507208}
+    - {x: 0.7166847, y: 0.38507208}
+    - {x: 0.7166847, y: 0.57251906}
+    - {x: 0.8201517, y: 0.57251906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -124.6938}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 86.9364, y: 113.174416}
+    - {x: 86.9364, y: -124.6938}
+    uv:
+    - {x: 0.23022752, y: 0.84393555}
+    - {x: 0.12730227, y: 0.84393555}
+    - {x: 0.12730227, y: 0.9957591}
+    - {x: 0.23022752, y: 0.9957591}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.97173, y: -72.112404}
+    - {x: -136.97173, y: 113.174416}
+    - {x: 106.95054, y: 113.174416}
+    - {x: 106.95054, y: -72.112404}
+    uv:
+    - {x: 0.0010834236, y: 0.8642918}
+    - {x: 0.0010834236, y: 0.9898219}
+    - {x: 0.10671723, y: 0.9898219}
+    - {x: 0.10671723, y: 0.8642918}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -72.112404}
+    - {x: -118.20848, y: 111.92248}
+    - {x: 41.904594, y: 111.92248}
+    - {x: 41.904594, y: -72.112404}
+    uv:
+    - {x: 0.92632717, y: 0.36132315}
+    - {x: 0.92632717, y: 0.4860051}
+    - {x: 0.9956663, y: 0.4860051}
+    - {x: 0.9956663, y: 0.36132315}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -118.20848, y: -124.6938}
+    - {x: -118.20848, y: 66.85271}
+    - {x: 16.886925, y: 66.85271}
+    - {x: 16.886925, y: -124.6938}
+    uv:
+    - {x: 0.90249187, y: 0.9067006}
+    - {x: 0.81960994, y: 0.9067006}
+    - {x: 0.81960994, y: 0.99830365}
+    - {x: 0.90249187, y: 0.99830365}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -169.52707, y: -182.73581}
+    - {x: -169.52707, y: 153.51419}
+    - {x: 169.22293, y: 153.51419}
+    - {x: 169.22293, y: -182.73581}
+    uv:
+    - {x: 0.1468039, y: 0.0016963528}
+    - {x: 0.0010834236, y: 0.0016963528}
+    - {x: 0.0010834236, y: 0.23155217}
+    - {x: 0.1468039, y: 0.23155217}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -169.52707, y: -182.73581}
+    - {x: -169.52707, y: 153.51419}
+    - {x: 169.22293, y: 153.51419}
+    - {x: 169.22293, y: -182.73581}
+    uv:
+    - {x: 0.1468039, y: 0.0016963528}
+    - {x: 0.0010834236, y: 0.0016963528}
+    - {x: 0.0010834236, y: 0.23155217}
+    - {x: 0.1468039, y: 0.23155217}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -169.52707, y: -182.73581}
+    - {x: -169.52707, y: 153.51419}
+    - {x: 169.22293, y: 153.51419}
+    - {x: 169.22293, y: -182.73581}
+    uv:
+    - {x: 0.1468039, y: 0.0016963528}
+    - {x: 0.0010834236, y: 0.0016963528}
+    - {x: 0.0010834236, y: 0.23155217}
+    - {x: 0.1468039, y: 0.23155217}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -169.52707, y: -182.73581}
+    - {x: -169.52707, y: 153.51419}
+    - {x: 169.22293, y: 153.51419}
+    - {x: 169.22293, y: -182.73581}
+    uv:
+    - {x: 0.1468039, y: 0.0016963528}
+    - {x: 0.0010834236, y: 0.0016963528}
+    - {x: 0.0010834236, y: 0.23155217}
+    - {x: 0.1468039, y: 0.23155217}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -169.52707, y: -182.73581}
+    - {x: -169.52707, y: 153.51419}
+    - {x: 169.22293, y: 153.51419}
+    - {x: 169.22293, y: -182.73581}
+    uv:
+    - {x: 0.1468039, y: 0.0016963528}
+    - {x: 0.0010834236, y: 0.0016963528}
+    - {x: 0.0010834236, y: 0.23155217}
+    - {x: 0.1468039, y: 0.23155217}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -47.5, y: -45}
+    - {x: -47.5, y: 47.5}
+    - {x: 50, y: 47.5}
+    - {x: 50, y: -45}
+    uv:
+    - {x: 0.943662, y: 0.9067006}
+    - {x: 0.9035753, y: 0.9067006}
+    - {x: 0.9035753, y: 0.97285837}
+    - {x: 0.943662, y: 0.97285837}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -76.25, y: -71.25}
+    - {x: -76.25, y: 76.25}
+    - {x: 77.5, y: 76.25}
+    - {x: 77.5, y: -71.25}
+    uv:
+    - {x: 0.92091006, y: 0.682782}
+    - {x: 0.92091006, y: 0.78286684}
+    - {x: 0.9875406, y: 0.78286684}
+    - {x: 0.9875406, y: 0.682782}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -97.5, y: -91.25}
+    - {x: -97.5, y: 96.25}
+    - {x: 97.5, y: 96.25}
+    - {x: 97.5, y: -91.25}
+    uv:
+    - {x: 0.99891657, y: 0.5487701}
+    - {x: 0.9176598, y: 0.5487701}
+    - {x: 0.9176598, y: 0.68108565}
+    - {x: 0.99891657, y: 0.68108565}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -112.5, y: -107.5}
+    - {x: -112.5, y: 111.25}
+    - {x: 111.25, y: 111.25}
+    - {x: 111.25, y: -107.5}
+    uv:
+    - {x: 0.9165764, y: 0.5487701}
+    - {x: 0.8217768, y: 0.5487701}
+    - {x: 0.8217768, y: 0.7005937}
+    - {x: 0.9165764, y: 0.7005937}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -123.75, y: -118.75}
+    - {x: -123.75, y: 121.25}
+    - {x: 122.5, y: 121.25}
+    - {x: 122.5, y: -118.75}
+    uv:
+    - {x: 0.9252438, y: 0.37998304}
+    - {x: 0.8212351, y: 0.37998304}
+    - {x: 0.8212351, y: 0.5470738}
+    - {x: 0.9252438, y: 0.5470738}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -132.5, y: -127.5}
+    - {x: -132.5, y: 131.25}
+    - {x: 131.25, y: 131.25}
+    - {x: 131.25, y: -127.5}
+    uv:
+    - {x: 0.86619717, y: 0.0016963528}
+    - {x: 0.75406283, y: 0.0016963528}
+    - {x: 0.75406283, y: 0.18066157}
+    - {x: 0.86619717, y: 0.18066157}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -132.5}
+    - {x: -137.5, y: 137.5}
+    - {x: 136.25, y: 137.5}
+    - {x: 136.25, y: -132.5}
+    uv:
+    - {x: 0.836403, y: 0.19253604}
+    - {x: 0.71939325, y: 0.19253604}
+    - {x: 0.71939325, y: 0.3782867}
+    - {x: 0.836403, y: 0.3782867}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -140, y: -137.5}
+    - {x: -140, y: 142.5}
+    - {x: 140, y: 142.5}
+    - {x: 140, y: -137.5}
+    uv:
+    - {x: 0.47562298, y: 0.5920271}
+    - {x: 0.47562298, y: 0.78201866}
+    - {x: 0.5969664, y: 0.78201866}
+    - {x: 0.5969664, y: 0.5920271}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -140, y: -138.75}
+    - {x: -140, y: 145}
+    - {x: 141.25, y: 145}
+    - {x: 141.25, y: -138.75}
+    uv:
+    - {x: 0.2475623, y: 0.80407125}
+    - {x: 0.2475623, y: 0.9966073}
+    - {x: 0.36944744, y: 0.9966073}
+    - {x: 0.36944744, y: 0.80407125}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -140}
+    - {x: -137.5, y: 146.25}
+    - {x: 141.25, y: 146.25}
+    - {x: 141.25, y: -140}
+    uv:
+    - {x: 0.39490792, y: 0.0016963528}
+    - {x: 0.39490792, y: 0.19592875}
+    - {x: 0.51570964, y: 0.19592875}
+    - {x: 0.51570964, y: 0.0016963528}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -132.5, y: -137.5}
+    - {x: -132.5, y: 147.5}
+    - {x: 140, y: 147.5}
+    - {x: 140, y: -137.5}
+    uv:
+    - {x: 0.2475623, y: 0.60899067}
+    - {x: 0.2475623, y: 0.8023749}
+    - {x: 0.36565548, y: 0.8023749}
+    - {x: 0.36565548, y: 0.60899067}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -133.75, y: -136.25}
+    - {x: -133.75, y: 145}
+    - {x: 137.5, y: 145}
+    - {x: 137.5, y: -136.25}
+    uv:
+    - {x: 0.37053087, y: 0.8023749}
+    - {x: 0.37053087, y: 0.9932146}
+    - {x: 0.48808235, y: 0.9932146}
+    - {x: 0.48808235, y: 0.8023749}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.25, y: -136.25}
+    - {x: -136.25, y: 142.5}
+    - {x: 138.75, y: 142.5}
+    - {x: 138.75, y: -136.25}
+    uv:
+    - {x: 0.48591548, y: 0.39016116}
+    - {x: 0.48591548, y: 0.5793045}
+    - {x: 0.6050921, y: 0.5793045}
+    - {x: 0.6050921, y: 0.39016116}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -126.25}
+    - {x: -137.5, y: 138.75}
+    - {x: 138.75, y: 138.75}
+    - {x: 138.75, y: -126.25}
+    uv:
+    - {x: 0.6040087, y: 0.783715}
+    - {x: 0.48916575, y: 0.783715}
+    - {x: 0.48916575, y: 0.971162}
+    - {x: 0.6040087, y: 0.971162}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.25, y: -136.25}
+    - {x: -136.25, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -136.25}
+    uv:
+    - {x: 0.7183099, y: 0.1942324}
+    - {x: 0.599675, y: 0.1942324}
+    - {x: 0.599675, y: 0.38337573}
+    - {x: 0.7183099, y: 0.38337573}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -137.5}
+    - {x: -138.75, y: 137.5}
+    - {x: 137.5, y: 137.5}
+    - {x: 137.5, y: -137.5}
+    uv:
+    - {x: 0.71722645, y: 0.58100086}
+    - {x: 0.5980498, y: 0.58100086}
+    - {x: 0.5980498, y: 0.7684478}
+    - {x: 0.71722645, y: 0.7684478}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -133.75}
+    - {x: -138.75, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -133.75}
+    uv:
+    - {x: 0.48483208, y: 0.3994911}
+    - {x: 0.3672806, y: 0.3994911}
+    - {x: 0.3672806, y: 0.5903308}
+    - {x: 0.48483208, y: 0.5903308}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -132.5}
+    - {x: -138.75, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -132.5}
+    uv:
+    - {x: 0.59859157, y: 0.1976251}
+    - {x: 0.4815818, y: 0.1976251}
+    - {x: 0.4815818, y: 0.3884648}
+    - {x: 0.59859157, y: 0.3884648}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -131.25}
+    - {x: -137.5, y: 137.5}
+    - {x: 141.25, y: 137.5}
+    - {x: 141.25, y: -131.25}
+    uv:
+    - {x: 0.7529794, y: 0.0016963528}
+    - {x: 0.6365114, y: 0.0016963528}
+    - {x: 0.6365114, y: 0.1908397}
+    - {x: 0.7529794, y: 0.1908397}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -130, y: -128.75}
+    - {x: -130, y: 135}
+    - {x: 132.5, y: 135}
+    - {x: 132.5, y: -128.75}
+    uv:
+    - {x: 0.9815818, y: 0.0016963528}
+    - {x: 0.8672806, y: 0.0016963528}
+    - {x: 0.8672806, y: 0.1798134}
+    - {x: 0.9815818, y: 0.1798134}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -130, y: -127.5}
+    - {x: -130, y: 135}
+    - {x: 132.5, y: 135}
+    - {x: 132.5, y: -127.5}
+    uv:
+    - {x: 0.8672806, y: 0.18150975}
+    - {x: 0.8672806, y: 0.3596268}
+    - {x: 0.98104006, y: 0.3596268}
+    - {x: 0.98104006, y: 0.18150975}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -105, y: -118.75}
+    - {x: -105, y: 135}
+    - {x: 131.25, y: 135}
+    - {x: 131.25, y: -118.75}
+    uv:
+    - {x: 0.7183099, y: 0.5742154}
+    - {x: 0.7183099, y: 0.74639523}
+    - {x: 0.8206934, y: 0.74639523}
+    - {x: 0.8206934, y: 0.5742154}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -47.5, y: -45}
+    - {x: -47.5, y: 47.5}
+    - {x: 50, y: 47.5}
+    - {x: 50, y: -45}
+    uv:
+    - {x: 0.943662, y: 0.9067006}
+    - {x: 0.9035753, y: 0.9067006}
+    - {x: 0.9035753, y: 0.97285837}
+    - {x: 0.943662, y: 0.97285837}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -76.25, y: -71.25}
+    - {x: -76.25, y: 76.25}
+    - {x: 77.5, y: 76.25}
+    - {x: 77.5, y: -71.25}
+    uv:
+    - {x: 0.92091006, y: 0.682782}
+    - {x: 0.92091006, y: 0.78286684}
+    - {x: 0.9875406, y: 0.78286684}
+    - {x: 0.9875406, y: 0.682782}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -97.5, y: -91.25}
+    - {x: -97.5, y: 96.25}
+    - {x: 97.5, y: 96.25}
+    - {x: 97.5, y: -91.25}
+    uv:
+    - {x: 0.99891657, y: 0.5487701}
+    - {x: 0.9176598, y: 0.5487701}
+    - {x: 0.9176598, y: 0.68108565}
+    - {x: 0.99891657, y: 0.68108565}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -112.5, y: -107.5}
+    - {x: -112.5, y: 111.25}
+    - {x: 111.25, y: 111.25}
+    - {x: 111.25, y: -107.5}
+    uv:
+    - {x: 0.9165764, y: 0.5487701}
+    - {x: 0.8217768, y: 0.5487701}
+    - {x: 0.8217768, y: 0.7005937}
+    - {x: 0.9165764, y: 0.7005937}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -123.75, y: -118.75}
+    - {x: -123.75, y: 121.25}
+    - {x: 122.5, y: 121.25}
+    - {x: 122.5, y: -118.75}
+    uv:
+    - {x: 0.9252438, y: 0.37998304}
+    - {x: 0.8212351, y: 0.37998304}
+    - {x: 0.8212351, y: 0.5470738}
+    - {x: 0.9252438, y: 0.5470738}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -132.5, y: -127.5}
+    - {x: -132.5, y: 131.25}
+    - {x: 131.25, y: 131.25}
+    - {x: 131.25, y: -127.5}
+    uv:
+    - {x: 0.86619717, y: 0.0016963528}
+    - {x: 0.75406283, y: 0.0016963528}
+    - {x: 0.75406283, y: 0.18066157}
+    - {x: 0.86619717, y: 0.18066157}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -132.5}
+    - {x: -137.5, y: 137.5}
+    - {x: 136.25, y: 137.5}
+    - {x: 136.25, y: -132.5}
+    uv:
+    - {x: 0.836403, y: 0.19253604}
+    - {x: 0.71939325, y: 0.19253604}
+    - {x: 0.71939325, y: 0.3782867}
+    - {x: 0.836403, y: 0.3782867}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -140, y: -137.5}
+    - {x: -140, y: 142.5}
+    - {x: 140, y: 142.5}
+    - {x: 140, y: -137.5}
+    uv:
+    - {x: 0.47562298, y: 0.5920271}
+    - {x: 0.47562298, y: 0.78201866}
+    - {x: 0.5969664, y: 0.78201866}
+    - {x: 0.5969664, y: 0.5920271}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -140, y: -138.75}
+    - {x: -140, y: 145}
+    - {x: 141.25, y: 145}
+    - {x: 141.25, y: -138.75}
+    uv:
+    - {x: 0.2475623, y: 0.80407125}
+    - {x: 0.2475623, y: 0.9966073}
+    - {x: 0.36944744, y: 0.9966073}
+    - {x: 0.36944744, y: 0.80407125}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -140}
+    - {x: -137.5, y: 146.25}
+    - {x: 141.25, y: 146.25}
+    - {x: 141.25, y: -140}
+    uv:
+    - {x: 0.39490792, y: 0.0016963528}
+    - {x: 0.39490792, y: 0.19592875}
+    - {x: 0.51570964, y: 0.19592875}
+    - {x: 0.51570964, y: 0.0016963528}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -132.5, y: -137.5}
+    - {x: -132.5, y: 147.5}
+    - {x: 140, y: 147.5}
+    - {x: 140, y: -137.5}
+    uv:
+    - {x: 0.2475623, y: 0.60899067}
+    - {x: 0.2475623, y: 0.8023749}
+    - {x: 0.36565548, y: 0.8023749}
+    - {x: 0.36565548, y: 0.60899067}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -133.75, y: -136.25}
+    - {x: -133.75, y: 145}
+    - {x: 137.5, y: 145}
+    - {x: 137.5, y: -136.25}
+    uv:
+    - {x: 0.37053087, y: 0.8023749}
+    - {x: 0.37053087, y: 0.9932146}
+    - {x: 0.48808235, y: 0.9932146}
+    - {x: 0.48808235, y: 0.8023749}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.25, y: -136.25}
+    - {x: -136.25, y: 142.5}
+    - {x: 138.75, y: 142.5}
+    - {x: 138.75, y: -136.25}
+    uv:
+    - {x: 0.48591548, y: 0.39016116}
+    - {x: 0.48591548, y: 0.5793045}
+    - {x: 0.6050921, y: 0.5793045}
+    - {x: 0.6050921, y: 0.39016116}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -126.25}
+    - {x: -137.5, y: 138.75}
+    - {x: 138.75, y: 138.75}
+    - {x: 138.75, y: -126.25}
+    uv:
+    - {x: 0.6040087, y: 0.783715}
+    - {x: 0.48916575, y: 0.783715}
+    - {x: 0.48916575, y: 0.971162}
+    - {x: 0.6040087, y: 0.971162}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.25, y: -136.25}
+    - {x: -136.25, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -136.25}
+    uv:
+    - {x: 0.7183099, y: 0.1942324}
+    - {x: 0.599675, y: 0.1942324}
+    - {x: 0.599675, y: 0.38337573}
+    - {x: 0.7183099, y: 0.38337573}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -137.5}
+    - {x: -138.75, y: 137.5}
+    - {x: 137.5, y: 137.5}
+    - {x: 137.5, y: -137.5}
+    uv:
+    - {x: 0.71722645, y: 0.58100086}
+    - {x: 0.5980498, y: 0.58100086}
+    - {x: 0.5980498, y: 0.7684478}
+    - {x: 0.71722645, y: 0.7684478}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -133.75}
+    - {x: -138.75, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -133.75}
+    uv:
+    - {x: 0.48483208, y: 0.3994911}
+    - {x: 0.3672806, y: 0.3994911}
+    - {x: 0.3672806, y: 0.5903308}
+    - {x: 0.48483208, y: 0.5903308}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -132.5}
+    - {x: -138.75, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -132.5}
+    uv:
+    - {x: 0.59859157, y: 0.1976251}
+    - {x: 0.4815818, y: 0.1976251}
+    - {x: 0.4815818, y: 0.3884648}
+    - {x: 0.59859157, y: 0.3884648}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -131.25}
+    - {x: -137.5, y: 137.5}
+    - {x: 141.25, y: 137.5}
+    - {x: 141.25, y: -131.25}
+    uv:
+    - {x: 0.7529794, y: 0.0016963528}
+    - {x: 0.6365114, y: 0.0016963528}
+    - {x: 0.6365114, y: 0.1908397}
+    - {x: 0.7529794, y: 0.1908397}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -130, y: -128.75}
+    - {x: -130, y: 135}
+    - {x: 132.5, y: 135}
+    - {x: 132.5, y: -128.75}
+    uv:
+    - {x: 0.9815818, y: 0.0016963528}
+    - {x: 0.8672806, y: 0.0016963528}
+    - {x: 0.8672806, y: 0.1798134}
+    - {x: 0.9815818, y: 0.1798134}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -130, y: -127.5}
+    - {x: -130, y: 135}
+    - {x: 132.5, y: 135}
+    - {x: 132.5, y: -127.5}
+    uv:
+    - {x: 0.8672806, y: 0.18150975}
+    - {x: 0.8672806, y: 0.3596268}
+    - {x: 0.98104006, y: 0.3596268}
+    - {x: 0.98104006, y: 0.18150975}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -105, y: -118.75}
+    - {x: -105, y: 135}
+    - {x: 131.25, y: 135}
+    - {x: 131.25, y: -118.75}
+    uv:
+    - {x: 0.7183099, y: 0.5742154}
+    - {x: 0.7183099, y: 0.74639523}
+    - {x: 0.8206934, y: 0.74639523}
+    - {x: 0.8206934, y: 0.5742154}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -47.5, y: -45}
+    - {x: -47.5, y: 47.5}
+    - {x: 50, y: 47.5}
+    - {x: 50, y: -45}
+    uv:
+    - {x: 0.943662, y: 0.9067006}
+    - {x: 0.9035753, y: 0.9067006}
+    - {x: 0.9035753, y: 0.97285837}
+    - {x: 0.943662, y: 0.97285837}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -76.25, y: -71.25}
+    - {x: -76.25, y: 76.25}
+    - {x: 77.5, y: 76.25}
+    - {x: 77.5, y: -71.25}
+    uv:
+    - {x: 0.92091006, y: 0.682782}
+    - {x: 0.92091006, y: 0.78286684}
+    - {x: 0.9875406, y: 0.78286684}
+    - {x: 0.9875406, y: 0.682782}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -97.5, y: -91.25}
+    - {x: -97.5, y: 96.25}
+    - {x: 97.5, y: 96.25}
+    - {x: 97.5, y: -91.25}
+    uv:
+    - {x: 0.99891657, y: 0.5487701}
+    - {x: 0.9176598, y: 0.5487701}
+    - {x: 0.9176598, y: 0.68108565}
+    - {x: 0.99891657, y: 0.68108565}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -112.5, y: -107.5}
+    - {x: -112.5, y: 111.25}
+    - {x: 111.25, y: 111.25}
+    - {x: 111.25, y: -107.5}
+    uv:
+    - {x: 0.9165764, y: 0.5487701}
+    - {x: 0.8217768, y: 0.5487701}
+    - {x: 0.8217768, y: 0.7005937}
+    - {x: 0.9165764, y: 0.7005937}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -123.75, y: -118.75}
+    - {x: -123.75, y: 121.25}
+    - {x: 122.5, y: 121.25}
+    - {x: 122.5, y: -118.75}
+    uv:
+    - {x: 0.9252438, y: 0.37998304}
+    - {x: 0.8212351, y: 0.37998304}
+    - {x: 0.8212351, y: 0.5470738}
+    - {x: 0.9252438, y: 0.5470738}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -132.5, y: -127.5}
+    - {x: -132.5, y: 131.25}
+    - {x: 131.25, y: 131.25}
+    - {x: 131.25, y: -127.5}
+    uv:
+    - {x: 0.86619717, y: 0.0016963528}
+    - {x: 0.75406283, y: 0.0016963528}
+    - {x: 0.75406283, y: 0.18066157}
+    - {x: 0.86619717, y: 0.18066157}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -132.5}
+    - {x: -137.5, y: 137.5}
+    - {x: 136.25, y: 137.5}
+    - {x: 136.25, y: -132.5}
+    uv:
+    - {x: 0.836403, y: 0.19253604}
+    - {x: 0.71939325, y: 0.19253604}
+    - {x: 0.71939325, y: 0.3782867}
+    - {x: 0.836403, y: 0.3782867}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -140, y: -137.5}
+    - {x: -140, y: 142.5}
+    - {x: 140, y: 142.5}
+    - {x: 140, y: -137.5}
+    uv:
+    - {x: 0.47562298, y: 0.5920271}
+    - {x: 0.47562298, y: 0.78201866}
+    - {x: 0.5969664, y: 0.78201866}
+    - {x: 0.5969664, y: 0.5920271}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -140, y: -138.75}
+    - {x: -140, y: 145}
+    - {x: 141.25, y: 145}
+    - {x: 141.25, y: -138.75}
+    uv:
+    - {x: 0.2475623, y: 0.80407125}
+    - {x: 0.2475623, y: 0.9966073}
+    - {x: 0.36944744, y: 0.9966073}
+    - {x: 0.36944744, y: 0.80407125}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -140}
+    - {x: -137.5, y: 146.25}
+    - {x: 141.25, y: 146.25}
+    - {x: 141.25, y: -140}
+    uv:
+    - {x: 0.39490792, y: 0.0016963528}
+    - {x: 0.39490792, y: 0.19592875}
+    - {x: 0.51570964, y: 0.19592875}
+    - {x: 0.51570964, y: 0.0016963528}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -132.5, y: -137.5}
+    - {x: -132.5, y: 147.5}
+    - {x: 140, y: 147.5}
+    - {x: 140, y: -137.5}
+    uv:
+    - {x: 0.2475623, y: 0.60899067}
+    - {x: 0.2475623, y: 0.8023749}
+    - {x: 0.36565548, y: 0.8023749}
+    - {x: 0.36565548, y: 0.60899067}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -133.75, y: -136.25}
+    - {x: -133.75, y: 145}
+    - {x: 137.5, y: 145}
+    - {x: 137.5, y: -136.25}
+    uv:
+    - {x: 0.37053087, y: 0.8023749}
+    - {x: 0.37053087, y: 0.9932146}
+    - {x: 0.48808235, y: 0.9932146}
+    - {x: 0.48808235, y: 0.8023749}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.25, y: -136.25}
+    - {x: -136.25, y: 142.5}
+    - {x: 138.75, y: 142.5}
+    - {x: 138.75, y: -136.25}
+    uv:
+    - {x: 0.48591548, y: 0.39016116}
+    - {x: 0.48591548, y: 0.5793045}
+    - {x: 0.6050921, y: 0.5793045}
+    - {x: 0.6050921, y: 0.39016116}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -126.25}
+    - {x: -137.5, y: 138.75}
+    - {x: 138.75, y: 138.75}
+    - {x: 138.75, y: -126.25}
+    uv:
+    - {x: 0.6040087, y: 0.783715}
+    - {x: 0.48916575, y: 0.783715}
+    - {x: 0.48916575, y: 0.971162}
+    - {x: 0.6040087, y: 0.971162}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.25, y: -136.25}
+    - {x: -136.25, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -136.25}
+    uv:
+    - {x: 0.7183099, y: 0.1942324}
+    - {x: 0.599675, y: 0.1942324}
+    - {x: 0.599675, y: 0.38337573}
+    - {x: 0.7183099, y: 0.38337573}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -137.5}
+    - {x: -138.75, y: 137.5}
+    - {x: 137.5, y: 137.5}
+    - {x: 137.5, y: -137.5}
+    uv:
+    - {x: 0.71722645, y: 0.58100086}
+    - {x: 0.5980498, y: 0.58100086}
+    - {x: 0.5980498, y: 0.7684478}
+    - {x: 0.71722645, y: 0.7684478}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -133.75}
+    - {x: -138.75, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -133.75}
+    uv:
+    - {x: 0.48483208, y: 0.3994911}
+    - {x: 0.3672806, y: 0.3994911}
+    - {x: 0.3672806, y: 0.5903308}
+    - {x: 0.48483208, y: 0.5903308}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -132.5}
+    - {x: -138.75, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -132.5}
+    uv:
+    - {x: 0.59859157, y: 0.1976251}
+    - {x: 0.4815818, y: 0.1976251}
+    - {x: 0.4815818, y: 0.3884648}
+    - {x: 0.59859157, y: 0.3884648}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -131.25}
+    - {x: -137.5, y: 137.5}
+    - {x: 141.25, y: 137.5}
+    - {x: 141.25, y: -131.25}
+    uv:
+    - {x: 0.7529794, y: 0.0016963528}
+    - {x: 0.6365114, y: 0.0016963528}
+    - {x: 0.6365114, y: 0.1908397}
+    - {x: 0.7529794, y: 0.1908397}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -130, y: -128.75}
+    - {x: -130, y: 135}
+    - {x: 132.5, y: 135}
+    - {x: 132.5, y: -128.75}
+    uv:
+    - {x: 0.9815818, y: 0.0016963528}
+    - {x: 0.8672806, y: 0.0016963528}
+    - {x: 0.8672806, y: 0.1798134}
+    - {x: 0.9815818, y: 0.1798134}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -130, y: -127.5}
+    - {x: -130, y: 135}
+    - {x: 132.5, y: 135}
+    - {x: 132.5, y: -127.5}
+    uv:
+    - {x: 0.8672806, y: 0.18150975}
+    - {x: 0.8672806, y: 0.3596268}
+    - {x: 0.98104006, y: 0.3596268}
+    - {x: 0.98104006, y: 0.18150975}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -105, y: -118.75}
+    - {x: -105, y: 135}
+    - {x: 131.25, y: 135}
+    - {x: 131.25, y: -118.75}
+    uv:
+    - {x: 0.7183099, y: 0.5742154}
+    - {x: 0.7183099, y: 0.74639523}
+    - {x: 0.8206934, y: 0.74639523}
+    - {x: 0.8206934, y: 0.5742154}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -47.5, y: -45}
+    - {x: -47.5, y: 47.5}
+    - {x: 50, y: 47.5}
+    - {x: 50, y: -45}
+    uv:
+    - {x: 0.943662, y: 0.9067006}
+    - {x: 0.9035753, y: 0.9067006}
+    - {x: 0.9035753, y: 0.97285837}
+    - {x: 0.943662, y: 0.97285837}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -76.25, y: -71.25}
+    - {x: -76.25, y: 76.25}
+    - {x: 77.5, y: 76.25}
+    - {x: 77.5, y: -71.25}
+    uv:
+    - {x: 0.92091006, y: 0.682782}
+    - {x: 0.92091006, y: 0.78286684}
+    - {x: 0.9875406, y: 0.78286684}
+    - {x: 0.9875406, y: 0.682782}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -97.5, y: -91.25}
+    - {x: -97.5, y: 96.25}
+    - {x: 97.5, y: 96.25}
+    - {x: 97.5, y: -91.25}
+    uv:
+    - {x: 0.99891657, y: 0.5487701}
+    - {x: 0.9176598, y: 0.5487701}
+    - {x: 0.9176598, y: 0.68108565}
+    - {x: 0.99891657, y: 0.68108565}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -112.5, y: -107.5}
+    - {x: -112.5, y: 111.25}
+    - {x: 111.25, y: 111.25}
+    - {x: 111.25, y: -107.5}
+    uv:
+    - {x: 0.9165764, y: 0.5487701}
+    - {x: 0.8217768, y: 0.5487701}
+    - {x: 0.8217768, y: 0.7005937}
+    - {x: 0.9165764, y: 0.7005937}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -123.75, y: -118.75}
+    - {x: -123.75, y: 121.25}
+    - {x: 122.5, y: 121.25}
+    - {x: 122.5, y: -118.75}
+    uv:
+    - {x: 0.9252438, y: 0.37998304}
+    - {x: 0.8212351, y: 0.37998304}
+    - {x: 0.8212351, y: 0.5470738}
+    - {x: 0.9252438, y: 0.5470738}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -132.5, y: -127.5}
+    - {x: -132.5, y: 131.25}
+    - {x: 131.25, y: 131.25}
+    - {x: 131.25, y: -127.5}
+    uv:
+    - {x: 0.86619717, y: 0.0016963528}
+    - {x: 0.75406283, y: 0.0016963528}
+    - {x: 0.75406283, y: 0.18066157}
+    - {x: 0.86619717, y: 0.18066157}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -132.5}
+    - {x: -137.5, y: 137.5}
+    - {x: 136.25, y: 137.5}
+    - {x: 136.25, y: -132.5}
+    uv:
+    - {x: 0.836403, y: 0.19253604}
+    - {x: 0.71939325, y: 0.19253604}
+    - {x: 0.71939325, y: 0.3782867}
+    - {x: 0.836403, y: 0.3782867}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -140, y: -137.5}
+    - {x: -140, y: 142.5}
+    - {x: 140, y: 142.5}
+    - {x: 140, y: -137.5}
+    uv:
+    - {x: 0.47562298, y: 0.5920271}
+    - {x: 0.47562298, y: 0.78201866}
+    - {x: 0.5969664, y: 0.78201866}
+    - {x: 0.5969664, y: 0.5920271}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -140, y: -138.75}
+    - {x: -140, y: 145}
+    - {x: 141.25, y: 145}
+    - {x: 141.25, y: -138.75}
+    uv:
+    - {x: 0.2475623, y: 0.80407125}
+    - {x: 0.2475623, y: 0.9966073}
+    - {x: 0.36944744, y: 0.9966073}
+    - {x: 0.36944744, y: 0.80407125}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -140}
+    - {x: -137.5, y: 146.25}
+    - {x: 141.25, y: 146.25}
+    - {x: 141.25, y: -140}
+    uv:
+    - {x: 0.39490792, y: 0.0016963528}
+    - {x: 0.39490792, y: 0.19592875}
+    - {x: 0.51570964, y: 0.19592875}
+    - {x: 0.51570964, y: 0.0016963528}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -132.5, y: -137.5}
+    - {x: -132.5, y: 147.5}
+    - {x: 140, y: 147.5}
+    - {x: 140, y: -137.5}
+    uv:
+    - {x: 0.2475623, y: 0.60899067}
+    - {x: 0.2475623, y: 0.8023749}
+    - {x: 0.36565548, y: 0.8023749}
+    - {x: 0.36565548, y: 0.60899067}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -133.75, y: -136.25}
+    - {x: -133.75, y: 145}
+    - {x: 137.5, y: 145}
+    - {x: 137.5, y: -136.25}
+    uv:
+    - {x: 0.37053087, y: 0.8023749}
+    - {x: 0.37053087, y: 0.9932146}
+    - {x: 0.48808235, y: 0.9932146}
+    - {x: 0.48808235, y: 0.8023749}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.25, y: -136.25}
+    - {x: -136.25, y: 142.5}
+    - {x: 138.75, y: 142.5}
+    - {x: 138.75, y: -136.25}
+    uv:
+    - {x: 0.48591548, y: 0.39016116}
+    - {x: 0.48591548, y: 0.5793045}
+    - {x: 0.6050921, y: 0.5793045}
+    - {x: 0.6050921, y: 0.39016116}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -126.25}
+    - {x: -137.5, y: 138.75}
+    - {x: 138.75, y: 138.75}
+    - {x: 138.75, y: -126.25}
+    uv:
+    - {x: 0.6040087, y: 0.783715}
+    - {x: 0.48916575, y: 0.783715}
+    - {x: 0.48916575, y: 0.971162}
+    - {x: 0.6040087, y: 0.971162}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.25, y: -136.25}
+    - {x: -136.25, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -136.25}
+    uv:
+    - {x: 0.7183099, y: 0.1942324}
+    - {x: 0.599675, y: 0.1942324}
+    - {x: 0.599675, y: 0.38337573}
+    - {x: 0.7183099, y: 0.38337573}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -137.5}
+    - {x: -138.75, y: 137.5}
+    - {x: 137.5, y: 137.5}
+    - {x: 137.5, y: -137.5}
+    uv:
+    - {x: 0.71722645, y: 0.58100086}
+    - {x: 0.5980498, y: 0.58100086}
+    - {x: 0.5980498, y: 0.7684478}
+    - {x: 0.71722645, y: 0.7684478}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -133.75}
+    - {x: -138.75, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -133.75}
+    uv:
+    - {x: 0.48483208, y: 0.3994911}
+    - {x: 0.3672806, y: 0.3994911}
+    - {x: 0.3672806, y: 0.5903308}
+    - {x: 0.48483208, y: 0.5903308}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -132.5}
+    - {x: -138.75, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -132.5}
+    uv:
+    - {x: 0.59859157, y: 0.1976251}
+    - {x: 0.4815818, y: 0.1976251}
+    - {x: 0.4815818, y: 0.3884648}
+    - {x: 0.59859157, y: 0.3884648}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -131.25}
+    - {x: -137.5, y: 137.5}
+    - {x: 141.25, y: 137.5}
+    - {x: 141.25, y: -131.25}
+    uv:
+    - {x: 0.7529794, y: 0.0016963528}
+    - {x: 0.6365114, y: 0.0016963528}
+    - {x: 0.6365114, y: 0.1908397}
+    - {x: 0.7529794, y: 0.1908397}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -130, y: -128.75}
+    - {x: -130, y: 135}
+    - {x: 132.5, y: 135}
+    - {x: 132.5, y: -128.75}
+    uv:
+    - {x: 0.9815818, y: 0.0016963528}
+    - {x: 0.8672806, y: 0.0016963528}
+    - {x: 0.8672806, y: 0.1798134}
+    - {x: 0.9815818, y: 0.1798134}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -130, y: -127.5}
+    - {x: -130, y: 135}
+    - {x: 132.5, y: 135}
+    - {x: 132.5, y: -127.5}
+    uv:
+    - {x: 0.8672806, y: 0.18150975}
+    - {x: 0.8672806, y: 0.3596268}
+    - {x: 0.98104006, y: 0.3596268}
+    - {x: 0.98104006, y: 0.18150975}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -105, y: -118.75}
+    - {x: -105, y: 135}
+    - {x: 131.25, y: 135}
+    - {x: 131.25, y: -118.75}
+    uv:
+    - {x: 0.7183099, y: 0.5742154}
+    - {x: 0.7183099, y: 0.74639523}
+    - {x: 0.8206934, y: 0.74639523}
+    - {x: 0.8206934, y: 0.5742154}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -47.5, y: -45}
+    - {x: -47.5, y: 47.5}
+    - {x: 50, y: 47.5}
+    - {x: 50, y: -45}
+    uv:
+    - {x: 0.943662, y: 0.9067006}
+    - {x: 0.9035753, y: 0.9067006}
+    - {x: 0.9035753, y: 0.97285837}
+    - {x: 0.943662, y: 0.97285837}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -76.25, y: -71.25}
+    - {x: -76.25, y: 76.25}
+    - {x: 77.5, y: 76.25}
+    - {x: 77.5, y: -71.25}
+    uv:
+    - {x: 0.92091006, y: 0.682782}
+    - {x: 0.92091006, y: 0.78286684}
+    - {x: 0.9875406, y: 0.78286684}
+    - {x: 0.9875406, y: 0.682782}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -97.5, y: -91.25}
+    - {x: -97.5, y: 96.25}
+    - {x: 97.5, y: 96.25}
+    - {x: 97.5, y: -91.25}
+    uv:
+    - {x: 0.99891657, y: 0.5487701}
+    - {x: 0.9176598, y: 0.5487701}
+    - {x: 0.9176598, y: 0.68108565}
+    - {x: 0.99891657, y: 0.68108565}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -112.5, y: -107.5}
+    - {x: -112.5, y: 111.25}
+    - {x: 111.25, y: 111.25}
+    - {x: 111.25, y: -107.5}
+    uv:
+    - {x: 0.9165764, y: 0.5487701}
+    - {x: 0.8217768, y: 0.5487701}
+    - {x: 0.8217768, y: 0.7005937}
+    - {x: 0.9165764, y: 0.7005937}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -123.75, y: -118.75}
+    - {x: -123.75, y: 121.25}
+    - {x: 122.5, y: 121.25}
+    - {x: 122.5, y: -118.75}
+    uv:
+    - {x: 0.9252438, y: 0.37998304}
+    - {x: 0.8212351, y: 0.37998304}
+    - {x: 0.8212351, y: 0.5470738}
+    - {x: 0.9252438, y: 0.5470738}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -132.5, y: -127.5}
+    - {x: -132.5, y: 131.25}
+    - {x: 131.25, y: 131.25}
+    - {x: 131.25, y: -127.5}
+    uv:
+    - {x: 0.86619717, y: 0.0016963528}
+    - {x: 0.75406283, y: 0.0016963528}
+    - {x: 0.75406283, y: 0.18066157}
+    - {x: 0.86619717, y: 0.18066157}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -132.5}
+    - {x: -137.5, y: 137.5}
+    - {x: 136.25, y: 137.5}
+    - {x: 136.25, y: -132.5}
+    uv:
+    - {x: 0.836403, y: 0.19253604}
+    - {x: 0.71939325, y: 0.19253604}
+    - {x: 0.71939325, y: 0.3782867}
+    - {x: 0.836403, y: 0.3782867}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -140, y: -137.5}
+    - {x: -140, y: 142.5}
+    - {x: 140, y: 142.5}
+    - {x: 140, y: -137.5}
+    uv:
+    - {x: 0.47562298, y: 0.5920271}
+    - {x: 0.47562298, y: 0.78201866}
+    - {x: 0.5969664, y: 0.78201866}
+    - {x: 0.5969664, y: 0.5920271}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -140, y: -138.75}
+    - {x: -140, y: 145}
+    - {x: 141.25, y: 145}
+    - {x: 141.25, y: -138.75}
+    uv:
+    - {x: 0.2475623, y: 0.80407125}
+    - {x: 0.2475623, y: 0.9966073}
+    - {x: 0.36944744, y: 0.9966073}
+    - {x: 0.36944744, y: 0.80407125}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -140}
+    - {x: -137.5, y: 146.25}
+    - {x: 141.25, y: 146.25}
+    - {x: 141.25, y: -140}
+    uv:
+    - {x: 0.39490792, y: 0.0016963528}
+    - {x: 0.39490792, y: 0.19592875}
+    - {x: 0.51570964, y: 0.19592875}
+    - {x: 0.51570964, y: 0.0016963528}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -132.5, y: -137.5}
+    - {x: -132.5, y: 147.5}
+    - {x: 140, y: 147.5}
+    - {x: 140, y: -137.5}
+    uv:
+    - {x: 0.2475623, y: 0.60899067}
+    - {x: 0.2475623, y: 0.8023749}
+    - {x: 0.36565548, y: 0.8023749}
+    - {x: 0.36565548, y: 0.60899067}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -133.75, y: -136.25}
+    - {x: -133.75, y: 145}
+    - {x: 137.5, y: 145}
+    - {x: 137.5, y: -136.25}
+    uv:
+    - {x: 0.37053087, y: 0.8023749}
+    - {x: 0.37053087, y: 0.9932146}
+    - {x: 0.48808235, y: 0.9932146}
+    - {x: 0.48808235, y: 0.8023749}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.25, y: -136.25}
+    - {x: -136.25, y: 142.5}
+    - {x: 138.75, y: 142.5}
+    - {x: 138.75, y: -136.25}
+    uv:
+    - {x: 0.48591548, y: 0.39016116}
+    - {x: 0.48591548, y: 0.5793045}
+    - {x: 0.6050921, y: 0.5793045}
+    - {x: 0.6050921, y: 0.39016116}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -126.25}
+    - {x: -137.5, y: 138.75}
+    - {x: 138.75, y: 138.75}
+    - {x: 138.75, y: -126.25}
+    uv:
+    - {x: 0.6040087, y: 0.783715}
+    - {x: 0.48916575, y: 0.783715}
+    - {x: 0.48916575, y: 0.971162}
+    - {x: 0.6040087, y: 0.971162}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -136.25, y: -136.25}
+    - {x: -136.25, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -136.25}
+    uv:
+    - {x: 0.7183099, y: 0.1942324}
+    - {x: 0.599675, y: 0.1942324}
+    - {x: 0.599675, y: 0.38337573}
+    - {x: 0.7183099, y: 0.38337573}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -137.5}
+    - {x: -138.75, y: 137.5}
+    - {x: 137.5, y: 137.5}
+    - {x: 137.5, y: -137.5}
+    uv:
+    - {x: 0.71722645, y: 0.58100086}
+    - {x: 0.5980498, y: 0.58100086}
+    - {x: 0.5980498, y: 0.7684478}
+    - {x: 0.71722645, y: 0.7684478}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -133.75}
+    - {x: -138.75, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -133.75}
+    uv:
+    - {x: 0.48483208, y: 0.3994911}
+    - {x: 0.3672806, y: 0.3994911}
+    - {x: 0.3672806, y: 0.5903308}
+    - {x: 0.48483208, y: 0.5903308}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -138.75, y: -132.5}
+    - {x: -138.75, y: 137.5}
+    - {x: 142.5, y: 137.5}
+    - {x: 142.5, y: -132.5}
+    uv:
+    - {x: 0.59859157, y: 0.1976251}
+    - {x: 0.4815818, y: 0.1976251}
+    - {x: 0.4815818, y: 0.3884648}
+    - {x: 0.59859157, y: 0.3884648}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -137.5, y: -131.25}
+    - {x: -137.5, y: 137.5}
+    - {x: 141.25, y: 137.5}
+    - {x: 141.25, y: -131.25}
+    uv:
+    - {x: 0.7529794, y: 0.0016963528}
+    - {x: 0.6365114, y: 0.0016963528}
+    - {x: 0.6365114, y: 0.1908397}
+    - {x: 0.7529794, y: 0.1908397}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -130, y: -128.75}
+    - {x: -130, y: 135}
+    - {x: 132.5, y: 135}
+    - {x: 132.5, y: -128.75}
+    uv:
+    - {x: 0.9815818, y: 0.0016963528}
+    - {x: 0.8672806, y: 0.0016963528}
+    - {x: 0.8672806, y: 0.1798134}
+    - {x: 0.9815818, y: 0.1798134}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -130, y: -127.5}
+    - {x: -130, y: 135}
+    - {x: 132.5, y: 135}
+    - {x: 132.5, y: -127.5}
+    uv:
+    - {x: 0.8672806, y: 0.18150975}
+    - {x: 0.8672806, y: 0.3596268}
+    - {x: 0.98104006, y: 0.3596268}
+    - {x: 0.98104006, y: 0.18150975}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -105, y: -118.75}
+    - {x: -105, y: 135}
+    - {x: 131.25, y: 135}
+    - {x: 131.25, y: -118.75}
+    uv:
+    - {x: 0.7183099, y: 0.5742154}
+    - {x: 0.7183099, y: 0.74639523}
+    - {x: 0.8206934, y: 0.74639523}
+    - {x: 0.8206934, y: 0.5742154}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  npcConstraints:
+    constraints: []
+    steps:
+  atlasPath: RecoveredArt/Res/Spine/yanhua/ef_slyanhua
+--- !u!111 &6415505975994123760
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698031608270270108}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b66841dc2a072a14392b67efe2b16a75, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b66841dc2a072a14392b67efe2b16a75, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &4120112516979547511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698031608270270108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1559611724bab9346874c5930eb40ff4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  player: {fileID: 6415505975994123760}
+  rig: {fileID: 7224761282092519420}
+  poses:
+  - clip: animation
+    animation: {fileID: 11400000, guid: 24106e62f5b5d4b41a9b3794004d6e7d, type: 2}
+  poseTime: 0
+  playbackSpeed: 1

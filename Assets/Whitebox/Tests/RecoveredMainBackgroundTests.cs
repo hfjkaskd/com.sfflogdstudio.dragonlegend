@@ -25,7 +25,7 @@ public sealed class RecoveredMainBackgroundTests
             Assert.IsNotNull(game);yield return null;
             var background=game.Background;Assert.IsNotNull(background);Assert.AreEqual(0,background.transform.GetSiblingIndex());
             Assert.IsTrue(background.BackgroundCanvas.overrideSorting);
-            Assert.AreEqual(game.GetComponent<Canvas>().sortingOrder-3,background.BackgroundCanvas.sortingOrder);
+            Assert.AreEqual(game.GetComponent<Canvas>().sortingOrder-4,background.BackgroundCanvas.sortingOrder);
             var composition=game.Playfield.Composition;Assert.IsNotNull(composition);
             Assert.IsTrue(composition.DragonCanvas.overrideSorting);Assert.IsTrue(composition.BoardCanvas.overrideSorting);
             Assert.Less(background.BackgroundCanvas.sortingOrder,composition.DragonCanvas.sortingOrder);

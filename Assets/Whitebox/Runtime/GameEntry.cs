@@ -174,6 +174,7 @@ namespace DragonLegend.Whitebox
                 Playfield = Instantiate(playfieldPrefab, transform, false);
                 Playfield.Bind(SpinEntry, SpinResult, PlayerProgress, Rules, profile.isA, profile.languageType, Ads);
                 Playfield.FreeBottom.Bind(PlayerProgress, FreeSpinEntry);
+                Playfield.ModeView.Bind(Background, PlayerProgress, FreeSpinResult, Playfield.Symbols);
             }
             if(cashFlightPrefab!=null) {
                 Canvas.ForceUpdateCanvases();

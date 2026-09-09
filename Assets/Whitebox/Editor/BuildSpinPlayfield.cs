@@ -127,6 +127,7 @@ public static class BuildSpinPlayfield
             BuildBonusFlow.AttachNpc(root);
             BuildMainComposition.Attach(root);
             BuildFreeBottom.Attach(root);
+            BuildMainModeView.Attach(root);
             BuildScatter.Attach(root);
             var saved = PrefabUtility.SaveAsPrefabAsset(root, destination);
             const string entryPath = "Assets/Resources/Whitebox/GameEntry.prefab";

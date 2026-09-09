@@ -9,14 +9,15 @@ GameSlotType; GM profile rebuild destroys the old instance and creates one new
 instance. Default US normal mode uses the Base background.
 
 The background owns a nested native Canvas with overrideSorting at Main's order
-minus three, on Main's sorting layer and camera. Source sibling ordering placed it
+minus four, on Main's sorting layer and camera. Source sibling ordering placed it
 behind the original UI reels. Since recovered gameplay uses native world
 Sprite/Mesh objects, sibling order on a shared Canvas cannot preserve that
 relationship: the first integration obscured the reels and failed the existing
 coin-effect rendered-pixel test. The separate background draw order preserves
 the source composition without changing image geometry or gameplay scale. The
-later board-composition recovery reserves -2 for the dragon body and -1 for the
-source board background; see main-board-composition.md.
+later composition recovery reserves -3 for source fireworks, -2 for the dragon
+body and -1 for the source board background; see main-mode-view.md and
+main-board-composition.md.
 
 Source UIMainView fields and original GUIDs:
 

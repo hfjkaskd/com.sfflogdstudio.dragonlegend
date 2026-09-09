@@ -15,7 +15,7 @@ namespace DragonLegend.Whitebox
             backgroundCanvas.overrideSorting = true;
             backgroundCanvas.worldCamera = main.worldCamera;
             backgroundCanvas.sortingLayerID = main.sortingLayerID;
-            backgroundCanvas.sortingOrder = main.sortingOrder - 3;
+            backgroundCanvas.sortingOrder = main.sortingOrder - 4;
         }
         public Image BaseBackground => baseBackground;
         public Image FreeBackground => freeBackground;

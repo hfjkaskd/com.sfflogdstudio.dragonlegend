@@ -32,6 +32,9 @@ orchestration. The transition consumer must still call RefreshCount at the sourc
 cover stage while all background/reel/result/Yanhua states switch together.
 Base/Free mode application is exercised explicitly in the test; the current
 free-bottom capture still has Base reels and is not a complete Free mode capture.
+The subsequent main-mode-view.md consumer now switches these visual nodes
+together; production entry/exit orchestration and its cover callbacks are still
+required to invoke that consumer at the original lifecycle stages.
 
 Validation: `Artifacts/free-bottom-tests.xml` passes 349/349 PlayMode tests. The
 new production fixture checks 12 before generation completion / 11 after it,
