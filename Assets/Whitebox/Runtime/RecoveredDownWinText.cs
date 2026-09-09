@@ -12,6 +12,7 @@ namespace DragonLegend.Whitebox
         private readonly Dictionary<GameObject,float> rewards=new Dictionary<GameObject,float>(15);
         private readonly List<RecoveredReelWait> pending=new List<RecoveredReelWait>(3);
         private float temporaryTotal;
+        private float coinPresentationTotal;
         private int language;
         public float Total { get; private set; }
         public float TemporaryTotal=>temporaryTotal;
@@ -23,7 +24,8 @@ namespace DragonLegend.Whitebox
         public void Bind(int languageType) { Cancel();language=languageType;Started(); }
         public void Started() { label.text="GOOD LUCK"; }
         // CheckPlayBonusAnim clears the accumulator/map, not DownWinCount or its label.
-        public void BeginScan() { temporaryTotal=0;rewards.Clear(); }
+        // Native temp_down_win (+0x230) is distinct from tempDownWinCount (+0x1e8).
+        public void BeginScan() { coinPresentationTotal=0;rewards.Clear(); }
         public void Register(GameObject effect,float reward) { rewards.Add(effect,reward); }
         public void PresentationFinished(GameObject effect)
         {
@@ -33,7 +35,7 @@ namespace DragonLegend.Whitebox
                 pending.Remove(wait);
                 // Native reads the dictionary after the delay, not a captured amount.
                 rewards.TryGetValue(effect,out float amount);
-                temporaryTotal+=amount;Total=temporaryTotal;
+                coinPresentationTotal+=amount;Total=coinPresentationTotal;
                 label.text=RecoveredCurrency.Format(Total,language);
                 Changed?.Invoke(Total);
             },error=>{pending.Remove(wait);Error=error;});

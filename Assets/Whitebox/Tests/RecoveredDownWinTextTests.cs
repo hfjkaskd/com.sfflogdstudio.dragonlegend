@@ -21,17 +21,23 @@ public sealed class RecoveredDownWinTextTests
             Assert.AreEqual(new Vector2(225.87f,59.02f),win.Label.rectTransform.sizeDelta);
             Assert.AreEqual("QuorumStd-Black_zitidi.com SDF",win.Label.font.name);
             Assert.IsTrue(win.Label.enableVertexGradient);Assert.AreEqual(.54509807f,win.Label.colorGradient.topLeft.r,.00001f);
-            win.Bind(0);Assert.AreEqual("GOOD LUCK",win.Label.text);win.Started();Assert.AreEqual("GOOD LUCK",win.Label.text);win.BeginScan();
+            win.Bind(0);Assert.AreEqual("GOOD LUCK",win.Label.text);win.Started();Assert.AreEqual("GOOD LUCK",win.Label.text);
+            win.SetTemporaryTotal(777);win.BeginScan();
+            Assert.AreEqual(777,win.TemporaryTotal,"Coin scan must not reset the separate whole-round field.");
             win.Register(coin,123);Assert.Throws<System.ArgumentException>(()=>win.Register(coin,1));
             int changes=0;win.Changed+=value=>changes++;
             win.PresentationFinished(coin);Time.timeScale=0;
+            // Ordinary settlement can store the round total before the delayed coin callback.
+            win.SetTemporaryTotal(123);
             for(int i=0;i<10;i++)yield return null;
             Assert.AreEqual(0,changes);Time.timeScale=1;float start=Time.time;
             for(int i=0;i<20&&changes==0;i++)yield return null;
             Assert.GreaterOrEqual(Time.time-start,.299f);Assert.AreEqual(123,win.Total);Assert.AreEqual("$1.23",win.Label.text);
+            Assert.AreEqual(123,win.TemporaryTotal);
             win.PresentationFinished(coin); // No deduplication: original dictionary is not consumed.
             for(int i=0;i<20&&changes<2;i++)yield return null;
             Assert.AreEqual(246,win.Total);
+            Assert.AreEqual(123,win.TemporaryTotal,"Presentation callbacks only update +0x230 and +0x248.");
             win.PresentationFinished(coin);win.BeginScan(); // Delayed read observes the cleared map.
             Assert.AreEqual(246,win.Total);Assert.AreEqual("$2.46",win.Label.text);
             for(int i=0;i<20&&changes<3;i++)yield return null;
