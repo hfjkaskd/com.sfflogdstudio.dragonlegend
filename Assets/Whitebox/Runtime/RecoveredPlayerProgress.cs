@@ -21,6 +21,20 @@ namespace DragonLegend.Whitebox
         public float GreenCount => data.GreenCount;
         public IReadOnlyList<int> BonusArea => data.BonusArea;
         public IReadOnlyList<PlayerCashOutData> CashOutRecords => data.PlayerCashOutDatas;
+        // UICashOutView.CheckItemKuang 23a714c. This differs from Main's prompt selection.
+        public int FindCashOutWindowSelection(out bool hideFrame)
+        {
+            hideFrame=data.PlayerCashOutDatas.Count>=rules.GetCashOutCount();
+            if(hideFrame)return -1;
+            for(int tier=0;tier<rules.GetCashOutCount();tier++)
+            {
+                PlayerCashOutData record=null;
+                for(int i=0;i<data.PlayerCashOutDatas.Count;i++)
+                    if(data.PlayerCashOutDatas[i].id==tier){record=data.PlayerCashOutDatas[i];break;}
+                if(record==null||record.step!=1000)return tier;
+            }
+            return -1;
+        }
         // Main.RefreshCashOutTask 23ba71c; predicate 23c3044 compares step (+0x18), not type.
         public void RefreshCashOutTask(int step,int amount)
         {

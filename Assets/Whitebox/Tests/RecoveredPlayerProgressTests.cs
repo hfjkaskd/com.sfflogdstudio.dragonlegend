@@ -5,6 +5,40 @@ using NUnit.Framework;
 
 public sealed class RecoveredPlayerProgressTests
 {
+    [Test]
+    public void CashWindowSelectionDiffersFromPromptAndSkipsOnlyCompletedSteps()
+    {
+        var data=new PlayerData {GreenCount=5000};
+        data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=0,step=7,isCashout=true});
+        var progress=new RecoveredPlayerProgress(CashRules(),()=>Assert.Fail("Window selection does not save"),data);
+        Assert.AreEqual(0,progress.FindCashOutWindowSelection(out bool hide));Assert.IsFalse(hide);
+        Assert.AreEqual(1,progress.PrepareCashOutPrompt(),"Main ignores every recorded id, regardless of step.");
+        data.PlayerCashOutDatas[0].step=1000;
+        Assert.AreEqual(1,progress.FindCashOutWindowSelection(out hide));Assert.IsFalse(hide);
+        data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=1,step=1000});
+        Assert.AreEqual(2,progress.FindCashOutWindowSelection(out hide));Assert.IsFalse(hide);
+    }
+    [Test]
+    public void CashWindowHidesFrameAtRecordCountThresholdEvenWithDuplicateOrUnfinishedRecords()
+    {
+        var data=new PlayerData();var progress=new RecoveredPlayerProgress(CashRules(),()=>Assert.Fail("No save"),data);
+        Assert.AreEqual(0,progress.FindCashOutWindowSelection(out bool hide));Assert.IsFalse(hide);
+        for(int i=0;i<3;i++)data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=0,step=0});
+        Assert.AreEqual(-1,progress.FindCashOutWindowSelection(out hide));Assert.IsTrue(hide);
+        data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=99,step=1000});
+        Assert.AreEqual(-1,progress.FindCashOutWindowSelection(out hide));Assert.IsTrue(hide);
+    }
+    [Test]
+    public void CashWindowUsesFirstMatchingDuplicateAndDoesNotRepairEmptyConfiguration()
+    {
+        var data=new PlayerData();data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=0,step=1000});data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=0,step=0});
+        var progress=new RecoveredPlayerProgress(CashRules(),()=>Assert.Fail("No save"),data);
+        Assert.AreEqual(1,progress.FindCashOutWindowSelection(out bool hide));Assert.IsFalse(hide);
+        data.PlayerCashOutDatas.Reverse();Assert.AreEqual(0,progress.FindCashOutWindowSelection(out hide));Assert.IsFalse(hide);
+        var emptyRules=new RecoveredGameplayRules(new GoldenDragonAutoGenConfig{Rgpggm=new RgpggmPoro{Qogt=new List<int>()}});
+        progress=new RecoveredPlayerProgress(emptyRules,()=>Assert.Fail("No save"),new PlayerData());
+        Assert.AreEqual(-1,progress.FindCashOutWindowSelection(out hide));Assert.IsTrue(hide);
+    }
     [TestCase(1,8)]
     [TestCase(-10,-3)]
     [TestCase(0,7)]
