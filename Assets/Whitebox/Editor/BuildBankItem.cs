@@ -32,6 +32,7 @@ public static class BuildBankItem
         {
             var ball=Replace((RectTransform)root.transform.Find("Longzhu"),"ef_longzhu");
             var reward=root.transform.Find("Reward");Replace((RectTransform)reward.Find("SkeletonGraphic (ef_shoucanggl)"),"ef_shoucanggl");
+            root.AddComponent<RecoveredBankFloat>();
             var view=root.AddComponent<RecoveredBankItem>();var settings=new SerializedObject(view);
             settings.FindProperty("ball").objectReferenceValue=ball;
             settings.FindProperty("reward").objectReferenceValue=reward;
