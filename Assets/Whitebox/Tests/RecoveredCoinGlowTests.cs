@@ -187,9 +187,11 @@ public sealed class RecoveredCoinGlowTests
             Assert.Greater(burstPixels,200,"The arrival burst must actually contribute visible pixels.");
             burstRig.enabled=true;
 
-            for (int i = 0; i < 80 && (field.BonusCoins.IsRunning || first.Glow.IsPlaying || second.Glow.IsPlaying || field.CoinStops.ActiveFlashCount>0 || field.WinFlight.ActiveBurstCount>0); i++) yield return null;
+            // A flight can still be in transit after the reveal/glow finishes and before
+            // its arrival burst exists. Wait for those independent transfers as well.
+            for (int i = 0; i < 80 && (field.BonusCoins.IsRunning || first.Glow.IsPlaying || second.Glow.IsPlaying || field.CoinStops.ActiveFlightCount>0 || field.CoinStops.ActiveFlashCount>0 || field.WinFlight.ActiveCount>0 || field.WinFlight.ActiveBurstCount>0); i++) yield return null;
             Assert.AreEqual(2, presentations); Assert.AreEqual(2, sounds); Assert.IsNull(field.BonusCoins.Error);
-            Assert.AreEqual(2,winFlights);Assert.AreEqual(2,winArrivals);Assert.AreEqual(2,burstSounds);Assert.AreEqual(2,winVibrations);
+            Assert.AreEqual(2,winFlights,"Reward transfers started");Assert.AreEqual(2,winArrivals,"Reward transfers arrived");Assert.AreEqual(2,burstSounds,"Arrival sounds");Assert.AreEqual(2,winVibrations,"Arrival vibrations");
             Assert.AreEqual(0,field.WinFlight.ActiveBurstCount);
             Assert.AreEqual(1,field.WinFlight.CreatedCount);Assert.AreEqual(0,field.WinFlight.ActiveCount);
             Assert.AreEqual(2,winUpdates);Assert.AreEqual(field.BonusCoins.TotalReward,displayedReward);
