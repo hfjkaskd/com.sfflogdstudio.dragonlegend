@@ -1,7 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using DragonLegend.Whitebox;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
@@ -23,7 +25,7 @@ public sealed class RecoveredBigWinFreeChainTests
     {
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);
         PlayerPrefs.DeleteKey(key);var random=Random.state;float scale=Time.timeScale,delta=Time.captureDeltaTime;
-        Scene scene=default;AsyncOperation unload=null;
+        Scene scene=default;AsyncOperation unload=null;Camera camera=null;RenderTexture target=null;
         try {
             Time.timeScale=1;Time.captureDeltaTime=.05f;
             yield return SceneManager.LoadSceneAsync("GameEntry",LoadSceneMode.Additive);scene=SceneManager.GetSceneByName("GameEntry");
@@ -31,6 +33,8 @@ public sealed class RecoveredBigWinFreeChainTests
             Assert.IsNotNull(game);float deadline=Time.realtimeSinceStartup+10;
             while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.CoreRound);var core=game.CoreRound;var field=game.Playfield;var player=game.PlayerProgress;
+            camera=game.GetComponent<Canvas>().worldCamera;target=new RenderTexture(1080,1920,24);
+            target.Create();camera.targetTexture=target;yield return null;Canvas.ForceUpdateCanvases();
             core.FirstSpinGuide.Hide();game.PlayerStore.Data.GuideStep=3;
             if(collectBonus) {
                 for(int col=0;col<5;col++)game.PlayerStore.Data.BonusArea[col]=col==4?1:2;
@@ -142,11 +146,14 @@ public sealed class RecoveredBigWinFreeChainTests
             int initialFree=game.Rules.GetFreeSpins(game.SpinResult.ScatterCount);
             Assert.AreEqual(initialFree,core.Entry.InitialSpinCount);Assert.AreEqual(initialFree,player.FreeSpinCount);
             for(int frame=0;frame<20;frame++)yield return null;
-            core.Entry.Window.ClaimButton.onClick.Invoke();Assert.IsTrue(game.Ads.Pending);
-            game.AdControls.FailureButton.onClick.Invoke();
+            yield return ClickVisible(core.Entry.Window.ClaimButton,game);Assert.IsTrue(game.Ads.Pending);
+            Assert.AreEqual("freespin",game.Ads.Placement);
+            yield return ClickVisible(game.AdControls.FailureButton,game);
             Assert.IsFalse(game.Ads.Pending);Assert.IsFalse(core.Entry.Window.IsClicked);
             Assert.AreEqual(initialFree,player.FreeSpinCount);Assert.IsTrue(core.Entry.Window.gameObject.activeSelf);
-            core.Entry.Window.ClaimButton.onClick.Invoke();game.AdControls.RewardButton.onClick.Invoke();
+            yield return ClickVisible(core.Entry.Window.ClaimButton,game);
+            Assert.IsTrue(game.Ads.Pending);Assert.AreEqual(initialFree,player.FreeSpinCount);
+            yield return ClickVisible(game.AdControls.RewardButton,game);
             Assert.AreEqual(initialFree+game.Rules.GetExtraFreeSpins(),player.FreeSpinCount);
             awardedFree=fullFree?player.FreeSpinCount:1;
             float freeDeadline=Time.realtimeSinceStartup+120;
@@ -181,7 +188,8 @@ public sealed class RecoveredBigWinFreeChainTests
             Assert.AreEqual(0,player.FreeSpinCount);Assert.AreEqual(initialSpins-1,player.SpinCount);
             for(int frame=0;frame<120&&!core.Exit.Window.ContinueButton.gameObject.activeInHierarchy;frame++)yield return null;
             Assert.IsTrue(core.Exit.Window.ContinueButton.gameObject.activeInHierarchy);
-            core.Exit.Window.ContinueButton.onClick.Invoke();
+            yield return ClickVisible(core.Exit.Window.ContinueButton,game);
+            Assert.IsTrue(field.IsBusy,"Visible Continue must still wait for the return transition.");
             for(int frame=0;frame<250&&completed==0;frame++){RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;}
             Assert.AreEqual(1,completed);Assert.IsFalse(field.IsBusy);Assert.IsFalse(field.AwaitingRewards);
             Assert.AreEqual(RecoveredSlotType.Base,player.GameSlotType);Assert.AreEqual("normalBg",game.CoreAudio.Manager.RequestedMusic);
@@ -189,6 +197,7 @@ public sealed class RecoveredBigWinFreeChainTests
             TestContext.WriteLine("Mixed Base result seed: "+mixedSeed+"; full Free: "+fullFree+"; completed Free rounds: "+rounds+
                 "; coins: "+coinCount+"; balls: "+ballCount+"; Free ledger: "+freeLedger+"; actual collection trigger: "+collectBonus);
         } finally {
+            if(camera!=null)camera.targetTexture=null;if(target!=null)Object.Destroy(target);
             Random.state=random;Time.timeScale=scale;Time.captureDeltaTime=delta;
             if(scene.IsValid()&&scene.isLoaded)unload=SceneManager.UnloadSceneAsync(scene);
             if(had)PlayerPrefs.SetString(key,saved);else PlayerPrefs.DeleteKey(key);
@@ -197,4 +206,23 @@ public sealed class RecoveredBigWinFreeChainTests
     }
     private static void Claim(UnityEngine.UI.Button button)
     {if(button!=null&&button.gameObject.activeInHierarchy&&button.IsInteractable())button.onClick.Invoke();}
+    private static IEnumerator ClickVisible(UnityEngine.UI.Button button,GameEntry game)
+    {
+        float deadline=Time.realtimeSinceStartup+5;
+        var hits=new List<RaycastResult>();
+        while(Time.realtimeSinceStartup<deadline) {
+            if(button.gameObject.activeInHierarchy&&button.IsInteractable()) {
+                Canvas.ForceUpdateCanvases();var rect=(RectTransform)button.transform;
+                var pointer=new PointerEventData(EventSystem.current){button=PointerEventData.InputButton.Left,
+                    position=RectTransformUtility.WorldToScreenPoint(game.GetComponent<Canvas>().worldCamera,rect.TransformPoint(rect.rect.center))};
+                hits.Clear();EventSystem.current.RaycastAll(pointer,hits);
+                if(hits.Count>0&&ExecuteEvents.GetEventHandler<IPointerClickHandler>(hits[0].gameObject)==button.gameObject) {
+                    ExecuteEvents.ExecuteHierarchy(hits[0].gameObject,pointer,ExecuteEvents.pointerClickHandler);yield break;
+                }
+            }
+            yield return null;
+        }
+        Assert.Fail("Production button must become the top scene raycast target: "+button.name+
+            "; top hit: "+(hits.Count>0?hits[0].gameObject.name:"none"));
+    }
 }
