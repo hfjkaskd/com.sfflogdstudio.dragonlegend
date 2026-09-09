@@ -22,6 +22,8 @@ public sealed class RecoveredFreeBallScanTests
         var npc=Object.Instantiate(Resources.Load<RecoveredNpcPresentation>("RecoveredUI/Npc"));
         var collection=Object.Instantiate(Resources.Load<RecoveredBonusCollection>("RecoveredUI/BonusCollection"));
         var target=new GameObject("Ball scan destination");target.transform.position=new Vector3(0,3,0);
+        var downWin=Object.Instantiate(Resources.Load<RecoveredDownWinText>("RecoveredUI/DownWinText"));downWin.Bind(0);
+        var bottom=new GameObject("Free collection bottom",typeof(RectTransform));int collected=0;
         int saves=0,done=0,requests=0;Action<float> pending=null;Exception npcError=null;npc.Failed+=error=>npcError=error;
         var player=new RecoveredPlayerProgress(rules,()=>saves++,new PlayerData{BonusArea=new List<int>{0,0,0,0,0},GreenCount=20}){GameSlotType=RecoveredSlotType.Free,TotalFreeSpinWin=10};
         try {
@@ -36,6 +38,8 @@ public sealed class RecoveredFreeBallScanTests
             }
             Assert.AreEqual(2,expected.Count);
             root.CoinScan.Bind(rules,player,result,collection,()=>0);
+            root.RewardCollect.Bind(result,player,downWin,(RectTransform)bottom.transform,300);
+            root.RewardCollect.Completed+=()=>collected++;
             root.BallScan.Bind(result,player,npc,target.transform,npc.transform.Find("PlayFire"),()=>0,(type,position,callback)=>{
                 Assert.AreEqual(0,type);Assert.AreEqual(0,root.Specials.FlightBallCount,"Clone returns before small-game handoff.");
                 requests++;pending=callback;
@@ -55,6 +59,12 @@ public sealed class RecoveredFreeBallScanTests
             for(int i=0;i<25&&done==0;i++)yield return null;
             Assert.AreEqual(1,done);Assert.IsFalse(root.BallScan.IsRunning);Assert.IsNull(root.BallScan.Error);
             Assert.AreEqual(71,player.TotalFreeSpinWin);Assert.AreEqual(0,saves);Assert.AreEqual(20,player.GreenCount);
-        } finally {Object.Destroy(root.gameObject);Object.Destroy(npc.gameObject);Object.Destroy(collection.gameObject);Object.Destroy(target);UnityEngine.Random.state=random;Time.timeScale=scale;Time.captureDeltaTime=delta;}
+            Assert.IsTrue(root.RewardCollect.IsRunning,"Ball scan completion starts actual collection.");
+            for(int i=0;i<80&&collected==0;i++)yield return null;
+            Assert.IsNull(root.RewardCollect.Error);Assert.AreEqual(1,collected);
+            Assert.AreEqual(61,root.RewardCollect.FreeReward);Assert.AreEqual(0,root.RewardCollect.CoinReward);
+            Assert.AreEqual(20,player.GreenCount);Assert.AreEqual(2,saves,"Even zero coin credit invokes the original setter.");
+            Assert.AreEqual(71,player.TotalFreeSpinWin);
+        } finally {Object.Destroy(root.gameObject);Object.Destroy(npc.gameObject);Object.Destroy(collection.gameObject);Object.Destroy(target);Object.Destroy(downWin.gameObject);Object.Destroy(bottom);UnityEngine.Random.state=random;Time.timeScale=scale;Time.captureDeltaTime=delta;}
     }
 }

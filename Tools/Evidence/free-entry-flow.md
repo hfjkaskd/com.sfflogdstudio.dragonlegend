@@ -4,9 +4,10 @@ The next native branch is materially different from a Base reel restart. The
 source Main prefab contains five FreeRoll groups, each with three independent
 RollReels. `InitFreeReels` 23bd420 initializes those fifteen reels once, guarded
 by UIMainView.isFreeInit (+1ec); FreeRoll.Init 23b8440 assigns each row and calls
-CheckFakeCoin(true). Those visuals, fake coins/balls and Free roll operations are
-still absent and must be implemented before enabling this coordinator as the
-production BonusFlow.Completed consumer.
+CheckFakeCoin(true). Those visuals, fake coins/balls and Free roll operations now
+exist in the recovered FreeReels prefab. Their production board/mode binding must
+still be completed before enabling this coordinator as the production
+BonusFlow.Completed consumer.
 
 `RecoveredFreeEntryFlow` and its authored prefab now implement the entry
 coordination using actual existing Scatter/NPC/start-popup/transition resources.
@@ -44,7 +45,8 @@ decompiler output being mistaken for a larger callback:
 The existing world transition invokes these callbacks at .8 and 3 seconds from
 launch, while its artwork finishes independently. Entry state flags and initial
 count are exposed by the coordinator; RewardCountersResetRequested represents
-the two still-pending Free view counters. It never calls CompleteBaseRound or
+the two Free view counters; RecoveredFreeRewardCollect.Bind subscribes their reset
+when supplied this entry flow. Production binding is still pending. It never calls CompleteBaseRound or
 unlocks the Base Spin button.
 
 ## Implementation and verification boundary

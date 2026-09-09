@@ -56,6 +56,27 @@ public static class BuildFreeReels
             var motions=settings.FindProperty("motions");motions.arraySize=15;
             var columns=settings.FindProperty("columns");columns.arraySize=5;
             var resultLayer=new GameObject("FreeResult").transform;resultLayer.SetParent(root.transform,false);
+            var flights=resultLayer.gameObject.AddComponent<RecoveredDownWinFlight>();
+            var flightSettings=new SerializedObject(flights);
+            flightSettings.FindProperty("flightPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredLampFlight>("Assets/Resources/RecoveredSymbols/DownWinFlight.prefab");
+            flightSettings.FindProperty("burstPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredWinBurst>("Assets/Resources/RecoveredUI/WinBurst.prefab");
+            flightSettings.ApplyModifiedPropertiesWithoutUndo();
+            var collect=root.AddComponent<RecoveredFreeRewardCollect>();
+            var collectSettings=new SerializedObject(collect);
+            collectSettings.FindProperty("reels").objectReferenceValue=root.GetComponent<RecoveredFreeReels>();
+            collectSettings.FindProperty("flights").objectReferenceValue=flights;
+            collectSettings.FindProperty("pulseDuration").floatValue=.2f;
+            collectSettings.FindProperty("coinScale").floatValue=.7f;
+            collectSettings.FindProperty("ballScale").floatValue=.8f;
+            collectSettings.FindProperty("flightWait").floatValue=.3f;
+            collectSettings.FindProperty("rewardWait").floatValue=.3f;
+            collectSettings.FindProperty("finishWait").floatValue=.2f;
+            collectSettings.FindProperty("countDuration").floatValue=.5f;
+            var outQuad=new AnimationCurve(new Keyframe(0,0,2,2),new Keyframe(1,1,0,0));
+            collectSettings.FindProperty("pulseCurve").animationCurveValue=outQuad;
+            collectSettings.FindProperty("countCurve").animationCurveValue=outQuad;
+            collectSettings.ApplyModifiedPropertiesWithoutUndo();
+            settings.FindProperty("rewardCollect").objectReferenceValue=collect;
             BuildFreeSpecials.Attach(root);
             var prefab=AssetDatabase.LoadAssetAtPath<GameObject>(miniPath);
             for(int col=0;col<layout.columns.Length;col++) {

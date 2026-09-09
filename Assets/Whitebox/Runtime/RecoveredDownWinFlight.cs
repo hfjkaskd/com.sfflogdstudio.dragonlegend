@@ -24,6 +24,10 @@ namespace DragonLegend.Whitebox
         public event Action ArrivalEffectRequested;
         public event Action CoinBurstSoundRequested;
         public event Action<int> VibrationRequested;
+        public void Bind(int order, Transform target, RectTransform bottom)
+        {
+            destination=target;burstParent=bottom;Bind(order);
+        }
         public void Bind(int order)
         {
             Cancel();canvasOrder=order;

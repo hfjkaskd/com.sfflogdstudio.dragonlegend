@@ -18,6 +18,8 @@ namespace DragonLegend.Whitebox
         public RecoveredFreeCoinScan CoinScan=>coinScan;
         [SerializeField] private RecoveredFreeBallScan ballScan;
         public RecoveredFreeBallScan BallScan=>ballScan;
+        [SerializeField] private RecoveredFreeRewardCollect rewardCollect;
+        public RecoveredFreeRewardCollect RewardCollect=>rewardCollect;
         public RecoveredFreeSpecials Specials=>specials;
         public bool IsInitialized { get; private set; }
         public RecoveredReelView At(int column, int row) => reels[column * 3 + row];
