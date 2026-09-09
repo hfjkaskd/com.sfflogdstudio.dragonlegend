@@ -9,6 +9,7 @@ namespace DragonLegend.Whitebox
     {
         [SerializeField] private RectTransform icon;
         [SerializeField] private RecoveredTreasureWindow window;
+        [SerializeField] private RecoveredTreasureDeparture departure;
         [SerializeField] private Vector3 entryScale, arrivalScale;
         [SerializeField] private float flightDuration, arcHeightRatio;
         private RecoveredPlayerProgress player;
@@ -17,12 +18,14 @@ namespace DragonLegend.Whitebox
         public int SelectedId { get; private set; }
         public RectTransform Icon => icon;
         public RecoveredTreasureWindow Window => window;
+        public RecoveredTreasureDeparture Departure => departure;
 
         public void Bind(RecoveredPlayerProgress progress, RecoveredGameplayRules gameplayRules, IAdFacade ads,
             RecoveredCashFlightPresenter cash, Transform main, bool isA, int language)
         {
             player = progress; rules = gameplayRules;
             window.Bind(progress, gameplayRules, ads, cash, main, isA, language);
+            departure.Bind(window, main);
         }
         public void Begin(Vector3 source, Action<float> completed)
         {

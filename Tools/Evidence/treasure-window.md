@@ -28,4 +28,4 @@ Full runtime regression passed **334/334** (`Artifacts/treasure-window-tests.xml
 
 ## Still pending
 
-The real small-card entry flight and RefreshCollectCard arrival are now supplied by `RecoveredFreeTreasureGame`; see [free-treasure-game.md](free-treasure-game.md) for the native branch and actual two-ball integration. Main event 7 and card departure event 14 still have exposed consumers to connect, not invented substitute effects. Production Free ball routing, full collection claims and Free-spin lifecycle remain pending. SDK facade behavior is unchanged.
+The real small-card entry flight and RefreshCollectCard arrival are now supplied by `RecoveredFreeTreasureGame`; see [free-treasure-game.md](free-treasure-game.md) for the native branch and actual two-ball integration. Card departure event 14 is connected to the original pooled image and animated target through [treasure-departure.md](treasure-departure.md). Main event 7, production Free ball routing, the collection Button action, full collection claims and Free-spin lifecycle remain pending. SDK facade behavior is unchanged.

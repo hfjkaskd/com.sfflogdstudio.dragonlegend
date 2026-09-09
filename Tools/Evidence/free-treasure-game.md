@@ -63,11 +63,8 @@ an existing Main presentation discrepancy, not evidence of complete fidelity.
 
 This branch bundle is callable by the actual Free router; full production Main
 Free-board lifecycle wiring remains incomplete. Treasure departure event 14
-still needs its original pooled `Res/Prefabs/TreasureImg.prefab` consumer:
-0x23ba190 spawns, assigns sprite/SetNativeSize, parents under Main, resets scale
-to one, sets source position, starts .6 OutQuad scale to .3 before the .6
-InOutSine arc to TreasureRect, then 0x23c2fe4 despawns. The real destination is
-`Node/Tubiao/Treasure/SkeletonGraphic (ef_shoucangicon)` (Rect
-224060176988151448), not an arbitrary placeholder. That target presentation,
-event 7(4,1) consumer, collection redemption, Free end flow and the broader
-Main visual/layout discrepancies remain unproven and unfinished.
+now uses the real pooled image and original animated destination in
+`RecoveredTreasureDeparture`; see [treasure-departure.md](treasure-departure.md).
+Its expanded full regression passed 337/337. The collection Button action,
+unlock/profile visibility, event 7(4,1) consumer, collection redemption, Free
+end flow and the broader Main visual/layout discrepancies remain unfinished.

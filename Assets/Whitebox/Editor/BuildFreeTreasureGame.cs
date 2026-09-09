@@ -34,6 +34,7 @@ public static class BuildFreeTreasureGame
         try
         {
             var rect = (RectTransform)root.transform; rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one; rect.sizeDelta = Vector2.zero;
+            var departure = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredUI/TreasureDeparture.prefab"), root.transform);
             var icon = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>(Temporary), root.transform);
             PrefabUtility.UnpackPrefabInstance(icon, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
             icon.name = "CardPrefab"; // Unity names the imported root after the temporary asset.
@@ -41,6 +42,7 @@ public static class BuildFreeTreasureGame
             var settings = new SerializedObject(root.GetComponent<RecoveredFreeTreasureGame>());
             settings.FindProperty("icon").objectReferenceValue = icon.GetComponent<RectTransform>();
             settings.FindProperty("window").objectReferenceValue = window.GetComponent<RecoveredTreasureWindow>();
+            settings.FindProperty("departure").objectReferenceValue = departure.GetComponent<RecoveredTreasureDeparture>();
             settings.FindProperty("entryScale").vector3Value = Vector3.one * .4f;
             settings.FindProperty("arrivalScale").vector3Value = Vector3.one;
             settings.FindProperty("flightDuration").floatValue = .6f;

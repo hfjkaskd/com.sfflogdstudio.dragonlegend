@@ -73,10 +73,48 @@ public sealed class RecoveredFreeTreasureGameTests
             Assert.AreEqual(taskBefore, TaskCount(entry, 4)); Assert.AreEqual(0, callbacks);
             float expectedReward = 0;
             foreach (var info in entry.Rules.GetCollectInfos()) if (info.id == expectedId) expectedReward = info.worth * game.Window.Claim.UnadvertisedMultiplier;
+            UnityEngine.UI.Image departed = null; Vector3 departureStart = default, departureEnd = default;
+            game.Window.CollectCardDepartureRequested += (position, sprite) => {
+                Assert.Greater(entry.CashFlight.ActiveCashCount, 0); Assert.AreEqual(0, callbacks);
+                Assert.AreEqual(1, game.Departure.ActiveCardCount); departed = game.Departure.ActiveCardAt(0);
+                Assert.AreSame(entry.transform, departed.transform.parent); Assert.AreSame(sprite, departed.sprite);
+                Assert.AreEqual(sprite.rect.size, departed.rectTransform.sizeDelta);
+                Assert.AreEqual(Vector3.one, departed.transform.localScale); Assert.AreEqual(position, departed.transform.position);
+                departureStart = position; departureEnd = game.Departure.Destination.position;
+            };
             game.Window.PlainButton.onClick.Invoke(); float deadline = Time.realtimeSinceStartup + 5;
+            while (departed == null && Time.realtimeSinceStartup < deadline) yield return null;
+            Assert.IsNotNull(departed); Assert.IsFalse(game.Window.gameObject.activeSelf);
+            var destination = game.Departure.Destination;
+            Assert.AreEqual(new Vector2(-9, -10), destination.anchoredPosition);
+            Assert.AreEqual(new Vector2(.5113022f, .543063f), destination.pivot);
+            Assert.IsNotNull(destination.GetComponent<RecoveredRegionAnimator>());
+            var departureControl = (departureStart + departureEnd) * .5f + Vector3.up * (Vector3.Distance(departureStart, departureEnd) * .3f);
+            Time.timeScale = 0; for (int i = 0; i < 3; i++) yield return null;
+            Assert.AreEqual(departureStart, departed.transform.position); Assert.AreEqual(Vector3.one, departed.transform.localScale);
+            Time.timeScale = 1;
+            for (int frame = 1; frame <= 12; frame++) {
+                yield return null; float t = frame * .025f / .6f, eased = (1 - Mathf.Cos(Mathf.PI * t)) * .5f;
+                var point = (1 - eased) * (1 - eased) * departureStart + 2 * (1 - eased) * eased * departureControl + eased * eased * departureEnd;
+                Assert.That(Vector3.Distance(point, departed.transform.position), Is.LessThan(.001f));
+                Assert.That(departed.transform.localScale.x, Is.EqualTo(1 - .7f * (1 - (1 - t) * (1 - t))).Within(.0001f));
+            }
+            Capture(camera, texture, "current-treasure-departure.png");
+            for (int i = 0; i < 15 && game.Departure.ActiveCardCount > 0; i++) yield return null;
+            Assert.AreEqual(0, game.Departure.ActiveCardCount); Assert.IsFalse(departed.gameObject.activeSelf);
+            Assert.AreEqual(Vector3.one * .3f, departed.transform.localScale);
+            Assert.AreEqual(1, game.Departure.CreatedCardCount);
+            deadline = Time.realtimeSinceStartup + 5;
             while (callbacks == 0 && Time.realtimeSinceStartup < deadline) yield return null;
             Assert.AreEqual(1, callbacks); Assert.AreEqual(expectedReward, paid); Assert.AreEqual(balance + paid, entry.PlayerProgress.GreenCount);
             Assert.IsFalse(game.IsRunning); Assert.IsFalse(game.Window.IsRunning);
+            // Reuse the returned image, then cancel while parented outside its owner as on Main teardown.
+            game.Departure.Begin(departureStart, game.Window.CardImage.sprite);
+            Assert.AreSame(departed, game.Departure.ActiveCardAt(0)); Assert.AreEqual(Vector3.one, departed.transform.localScale);
+            game.Departure.Unbind(); Assert.AreEqual(0, game.Departure.ActiveCardCount);
+            for (int i = 0; i < 30; i++) yield return null;
+            Assert.IsTrue(departed == null); Assert.AreEqual(1, callbacks);
+            Assert.AreEqual(balance + paid, entry.PlayerProgress.GreenCount);
         }
         finally
         {
@@ -186,13 +224,13 @@ public sealed class RecoveredFreeTreasureGameTests
         RollGlorg = new List<int> { 0, 0, 0 }, RollKtggl = new List<int> { 0, 0, 0 },
         RollRrgogirg = new List<int> { 1000000, 1000000, 1000000 }, RollLiqki = new List<int> { 0, 0, 0 }
     } });
-    private static void Capture(Camera camera, RenderTexture target)
+    private static void Capture(Camera camera, RenderTexture target, string name = "current-free-treasure-entry.png")
     {
         var previous = RenderTexture.active; var image = new Texture2D(target.width, target.height, TextureFormat.RGB24, false);
         try
         {
             Canvas.ForceUpdateCanvases(); RenderPipeline.SubmitRenderRequest(camera, new RenderPipeline.StandardRequest { destination = target }); RenderTexture.active = target;
-            image.ReadPixels(new Rect(0, 0, target.width, target.height), 0, 0); image.Apply(); File.WriteAllBytes(Path.Combine(Application.dataPath, "../Artifacts/current-free-treasure-entry.png"), image.EncodeToPNG());
+            image.ReadPixels(new Rect(0, 0, target.width, target.height), 0, 0); image.Apply(); File.WriteAllBytes(Path.Combine(Application.dataPath, "../Artifacts/" + name), image.EncodeToPNG());
         }
         finally { RenderTexture.active = previous; Object.Destroy(image); }
     }
