@@ -37,7 +37,19 @@ public sealed class RecoveredBigWinIntegrationTests
                 Assert.AreEqual(balance,entry.PlayerProgress.GreenCount);
                 Assert.AreEqual(field.SymbolWin.TotalWin*entry.Rules.GetBigWinClaim(0),value);
             };
-            field.SpinButton.Button.onClick.Invoke();
+            // This fixture checks Base BigWin settlement; a random Scatter result would
+            // legitimately enter Free and wait for its separate player interaction.
+            int baseSeed=-1;
+            for(int seed=719;seed<819;seed++){
+                Random.InitState(seed);
+                var probe=new RecoveredSpinResult(entry.Rules,new RecoveredSlotSettlement(entry.Rules));
+                probe.Begin(false,field.Bet,Mathf.Max(0,entry.PlayerProgress.MoreWild-1),entry.PlayerStore.Data.BonusArea);
+                int steps=0;while(probe.IsGenerating&&steps++<10000)probe.Step();
+                if(!probe.IsGenerating&&probe.ScatterCount<3){baseSeed=seed;break;}
+            }
+            Assert.GreaterOrEqual(baseSeed,0,"Find a Base-only input seed without changing production rules.");
+            Random.InitState(baseSeed);field.SpinButton.Button.onClick.Invoke();
+            Assert.Less(entry.SpinResult.ScatterCount,3,"The actual Spin must satisfy this Base-only fixture's premise.");
             field.SpinRecovery.MoreSpinButton.onClick.Invoke();Assert.IsTrue(entry.CoreRound.MoreSpins.gameObject.activeSelf);
             for(int attempt=0;attempt<10000;attempt++) {
                 Random.InitState(719+attempt);entry.SpinResult.Board.FillBase();entry.SpinResult.Board.Settle(entry.Settlement,field.Bet);
@@ -76,7 +88,7 @@ public sealed class RecoveredBigWinIntegrationTests
             int endFrames=0;float endDeadline=Time.realtimeSinceStartup+5;
             while(field.IsBusy&&Time.realtimeSinceStartup<endDeadline){RecoveredCorePromptDriver.ClaimAndClose(entry.CoreRound);endFrames++;yield return null;}
             TestContext.WriteLine("Core end continuation frames after reward: "+endFrames);
-            Assert.IsNull(entry.CoreRound.Error);Assert.IsFalse(entry.CoreRound.Bank.gameObject.activeSelf);Assert.IsFalse(entry.CoreRound.Entry.IsRunning);
+            Assert.IsNull(entry.CoreRound.Error);Assert.IsFalse(entry.CoreRound.Bank.gameObject.activeSelf,"Unexpected pending Bank window");Assert.IsFalse(entry.CoreRound.Entry.IsRunning,"Unexpected pending Free entry");
             Assert.AreEqual(string.Empty,field.SymbolAmount.Label.text);Assert.IsFalse(field.IsBusy);Assert.IsFalse(field.AwaitingRewards);
             Capture(camera,target,capture,"current-bigwin-spin-complete.png");
         } finally {

@@ -38,3 +38,7 @@ Main.OnClickButton 23bd4e8 routes WithdrawBtn and CashOutb into the same
 branch. NeedWithDrawOpne controls the original destination; it is not the
 IsA flag. See main-cashout-entry-audit.md. This art-only change does not
 alter that routing or the existing SDK facade.
+
+Follow-up: the missing Top/CashOut subtree and shared click callback are now
+implemented in top-withdraw-entry.md. The limitations above describe the art-only
+commit; use that follow-up for current integration and validation status.

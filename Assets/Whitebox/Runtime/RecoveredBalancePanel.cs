@@ -15,6 +15,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private TextMeshProUGUI progressText;
         [SerializeField] private Image progressFill;
         [SerializeField] private Image cashImage;
+        [SerializeField] private Button withdrawButton;
+        public Button WithdrawButton=>withdrawButton;
         private RectTransform mainViewNode;
         private Vector3 titlePosition;
         public Transform CashTarget=>cashImage.transform;

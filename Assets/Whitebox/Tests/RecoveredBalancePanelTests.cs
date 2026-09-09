@@ -88,11 +88,14 @@ public sealed class RecoveredBalancePanelTests
             var player=new RecoveredPlayerProgress(rules,()=>{},new PlayerData {Level=2,GreenCount=178900,LevelExpCount=8});
             panel.GetComponent<RecoveredBalancePanel>().Bind(player,rules,0);
             var texts=panel.GetComponentsInChildren<TextMeshProUGUI>(true);
-            Assert.AreEqual(3,texts.Length);
+            Assert.AreEqual(4,texts.Length);
             foreach(var text in texts){Assert.IsTrue(text.font != null,text.name);Assert.IsTrue(text.fontSharedMaterial != null,text.name);}
             var images=panel.GetComponentsInChildren<Image>(true);
-            Assert.AreEqual(7,images.Length);
+            Assert.AreEqual(9,images.Length);
             foreach(var image in images) {
+                if(image==panel.GetComponent<RecoveredBalancePanel>().WithdrawButton.targetGraphic){
+                    Assert.IsNull(image.sprite);Assert.AreEqual(0,image.color.a);continue;
+                }
                 Assert.IsTrue(image.sprite != null,image.name+" requires its original Sprite asset.");
                 Assert.IsTrue(image.sprite.texture != null,image.name+" requires its original texture.");
                 Assert.Greater(image.sprite.rect.width,0,image.name);

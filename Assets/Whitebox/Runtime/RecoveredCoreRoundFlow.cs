@@ -28,6 +28,7 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredCashOutWindow cashOutPrefab;
         [SerializeField] private RecoveredCashOutEntry cashOutEntry;
         public RecoveredCashOutEntry CashOutEntry=>cashOutEntry;
+        private UnityEngine.UI.Button topWithdrawButton;
         [SerializeField] private RecoveredMainCashOutStatus cashOutStatus;
         public RecoveredMainCashOutStatus CashOutStatus=>cashOutStatus;
         [SerializeField] private int popupBaseDepth;
@@ -60,6 +61,8 @@ namespace DragonLegend.Whitebox
         {
             game=context;var field=game.Playfield;var reels=field.ModeView.FreeReels;
             cashOutEntry.Bind(OpenCashOutFromMain,game.PlayerProgress,game.Rules);
+            topWithdrawButton=game.BalancePanel.WithdrawButton;
+            topWithdrawButton.onClick.AddListener(OpenCashOutFromMain);
             cashOutStatus.Bind(game.PlayerProgress,game.Rules,game.CurrentProfile.languageType);
             field.ModeView.Applied+=cashOutStatus.ApplyCurrent;
             // Attach the existing authored window instances to their native Popup type root.
@@ -243,6 +246,8 @@ namespace DragonLegend.Whitebox
             if(game==null)return;
             game.Playfield.Reels.ShakeRequested-=game.Playfield.Wilds.Shake.Begin;
             cashOutEntry.Unbind();
+            if(topWithdrawButton!=null)topWithdrawButton.onClick.RemoveListener(OpenCashOutFromMain);
+            topWithdrawButton=null;
             game.Playfield.ModeView.Applied-=cashOutStatus.ApplyCurrent;cashOutStatus.Unbind();
             game.Playfield.BigWinPopup.WindowShowRequested-=PreparePopupDepth;
             game.Playfield.JackpotPopup.WindowShowRequested-=PreparePopupDepth;

@@ -47,7 +47,8 @@ public sealed class RecoveredGmPanelTests
     private static List<RaycastResult> Hits(Button button,Camera camera)
     {
         Canvas.ForceUpdateCanvases();var hits=new List<RaycastResult>();
-        button.GetComponent<GraphicRaycaster>().Raycast(new PointerEventData(EventSystem.current){position=RectTransformUtility.WorldToScreenPoint(camera,button.transform.position)},hits);
+        var rect=(RectTransform)button.transform;
+        button.GetComponent<GraphicRaycaster>().Raycast(new PointerEventData(EventSystem.current){position=RectTransformUtility.WorldToScreenPoint(camera,rect.TransformPoint(rect.rect.center))},hits);
         return hits;
     }
     private static void Click(Button button,Camera camera)

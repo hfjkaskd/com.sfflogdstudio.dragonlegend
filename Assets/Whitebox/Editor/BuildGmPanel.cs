@@ -16,7 +16,7 @@ public static class BuildGmPanel
             var alternative=(Button)entry.FindProperty("selectAlternative").objectReferenceValue;
             var prior=root.transform.Find("GmToggle");if(prior!=null)Object.DestroyImmediate(prior.gameObject);
             var toggle=Object.Instantiate(primary,root.transform,false);toggle.name="GmToggle";
-            var rect=(RectTransform)toggle.transform;rect.anchorMin=rect.anchorMax=rect.pivot=new Vector2(.5f,1);rect.anchoredPosition=new Vector2(0,-12);rect.sizeDelta=new Vector2(96,64);
+            var rect=(RectTransform)toggle.transform;rect.anchorMin=rect.anchorMax=rect.pivot=new Vector2(0,1);rect.anchoredPosition=new Vector2(8,-125);rect.sizeDelta=new Vector2(96,64);
             var inheritedGroup=toggle.GetComponent<CanvasGroup>();if(inheritedGroup!=null)Object.DestroyImmediate(inheritedGroup);
             toggle.GetComponent<Canvas>().sortingOrder=5001;toggle.onClick=new Button.ButtonClickedEvent();
             var label=toggle.GetComponentInChildren<Text>();label.text="GM";label.fontSize=24;
