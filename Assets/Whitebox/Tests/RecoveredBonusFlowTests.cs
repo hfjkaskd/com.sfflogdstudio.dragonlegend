@@ -23,7 +23,10 @@ public sealed class RecoveredBonusFlowTests
     [UnityTest]
     public IEnumerator FailedExtraCardAdRetainsNativeLatchButCloseStillReturnsToBase()=>Run(false,true);
 
-    private IEnumerator Run(bool allCards,bool failExtraCard=false)
+    [UnityTest]
+    public IEnumerator OverfilledSavedCollectionTriggersWithoutReadyOverride()=>Run(false,false,true);
+
+    private IEnumerator Run(bool allCards,bool failExtraCard=false,bool overfilled=false)
     {
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);PlayerPrefs.DeleteKey(key);
         float scale=Time.timeScale,delta=Time.captureDeltaTime;var random=UnityEngine.Random.state;
@@ -46,7 +49,18 @@ public sealed class RecoveredBonusFlowTests
             flow.PauseMusicRequested+=()=>{if(began==0)began=Time.timeAsDouble;};
             flow.ChangeMusicRequested+=s=>{if(s=="bonusBg")secondCallback=Time.timeAsDouble;};
             flow.Completed+=()=>{completions++;completedAt=Time.timeAsDouble;};
-            entry.PlayerProgress.IsBonusGame=true;field.SpinButton.Button.onClick.Invoke();
+            if(overfilled)
+            {
+                entry.PlayerStore.Data.BonusArea=new List<int>{2,2,2,4,2};
+                entry.PlayerStore.Save();
+                var restored=new RecoveredPlayerStore();restored.Load(null);
+                CollectionAssert.AreEqual(new[]{2,2,2,4,2},restored.Data.BonusArea);
+                Assert.IsFalse(entry.PlayerProgress.IsBonusGame);
+                field.BonusCollection.Initialize(entry.PlayerProgress.BonusArea);
+                Assert.IsNull(field.BonusCollection.GetUnselectedTarget(3,4),"Overfilled data has no third or fourth visual slot.");
+            }
+            else entry.PlayerProgress.IsBonusGame=true;
+            field.SpinButton.Button.onClick.Invoke();
             for(int i=0;i<1400&&!flow.IsRunning;i++){
                 if(field.JackpotPopup.gameObject.activeInHierarchy)field.JackpotPopup.PlainButton.onClick.Invoke();
                 if(field.BigWinPopup.gameObject.activeInHierarchy)field.BigWinPopup.PlainButton.onClick.Invoke();
