@@ -13,6 +13,11 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredFreeTreasureGame treasure;
         [SerializeField] private RecoveredFreeLuckyGame lucky;
         [SerializeField] private RectTransform ballDestination;
+        [SerializeField] private RecoveredMoreSpinWindow moreSpins;
+        [SerializeField] private RecoveredTipsWindow tips;
+        [SerializeField] private string moreSpinLimitMessage;
+        public RecoveredMoreSpinWindow MoreSpins=>moreSpins;
+        public RecoveredTipsWindow Tips=>tips;
         private GameEntry game;
         private RecoveredFreeSmallGameRouter router;
         public RecoveredFreeEntryFlow Entry=>entry;
@@ -23,6 +28,8 @@ namespace DragonLegend.Whitebox
         public void Bind(GameEntry context)
         {
             game=context;var field=game.Playfield;var reels=field.ModeView.FreeReels;
+            moreSpins.Bind(game);tips.Bind(game.GetComponent<Canvas>().worldCamera);
+            game.SpinEntry.MoreSpinsRequested+=moreSpins.Show;moreSpins.LimitTipRequested+=ShowMoreSpinLimit;
             var player=game.PlayerProgress;var rules=game.Rules;var profile=game.CurrentProfile;
             var symbols=new int[field.Symbols.ModeCount(RecoveredSlotType.Free)];
             for(int i=0;i<symbols.Length;i++)symbols[i]=field.Symbols.ModeId(RecoveredSlotType.Free,i);
@@ -48,6 +55,7 @@ namespace DragonLegend.Whitebox
             field.SpinHint.Begin();
         }
         private int Language()=>game.CurrentProfile.languageType;
+        private void ShowMoreSpinLimit()=>tips.Show(moreSpinLimitMessage);
         private void InitialCount(int count)=>game.Playfield.ModeView.RefreshFreeCount();
         private void InitializeBase()=>game.Playfield.Reels.Initialize(game.Playfield.Symbols);
         private void AfterBonus()
@@ -69,6 +77,8 @@ namespace DragonLegend.Whitebox
         public void Unbind()
         {
             if(game==null)return;
+            game.SpinEntry.MoreSpinsRequested-=moreSpins.Show;moreSpins.LimitTipRequested-=ShowMoreSpinLimit;
+            moreSpins.Cancel();tips.Cancel();
             game.BonusFlow.Completed-=AfterBonus;game.BonusFlow.BindFreeScan(null);
             var mode=game.Playfield.ModeView;
             game.Playfield.SpinHint.Hide();

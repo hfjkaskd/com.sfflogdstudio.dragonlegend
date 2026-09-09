@@ -1,10 +1,11 @@
-# More Spin branch preparation
+# More Spin branch
 
 Main OnClickButton 23bd4e8 checks live SpinCount at 23bd814; count <= 0 branches
 to 23bdc34 and shows UIMoreSpinView. Current RecoveredSpinEntry emits
-MoreSpinsRequested, but production still has no subscriber. This stage prepares
-the actual window/claim behavior; production binding and the limit-tip consumer
-remain required next steps. Do not claim the zero-spin path is fixed yet.
+MoreSpinsRequested. Production CoreRoundFlow now subscribes the actual authored
+MoreSpinWindow, binds the existing ad facade/player, and connects its limit event
+to the authored TipsWindow. Core teardown removes these subscriptions and cancels
+both windows before replacing the player.
 
 UIMoreSpinView source methods:
 
@@ -40,12 +41,28 @@ and the current GameEntry ad facade, captures current-more-spin.png, retries a
 failed ad, credits once, closes and reopens. It deliberately instantiates the
 prepared prefab; it does not pretend the missing production subscriber exists.
 
-Next: add native UITipsView prefab/behavior (source Res/Prefabs/UITipsView.prefab),
-then bind MoreSpinsRequested to the actual MoreSpin window and the limit branch to
-the tip. UITipsView.CloseWindow MoveNext 23db094 waits 2 scaled seconds at original
-PlayerLoopTiming 8, then hides. Preserve the original latch behavior on the cap.
+TipsWindow copies Res/Prefabs/UITipsView.prefab, including its original full-width
+Image/TMP, VerticalLayoutGroup and ContentSizeFitter. Their original GUIDs were
+resolved using delivery/Assets/original-guid-map.json. UITipsView.CloseWindow
+MoveNext 23db094 waits 2 scaled seconds at original PlayerLoopTiming 8 (Update,
+confirmed in the original enum), then hides. The shared recovered Update wait
+runner provides this boundary; normal visibility changes do not cancel its wait.
+Explicit GM cancellation does. The limit message is serialized on CoreRoundFlow.
 
 Validation: more-spin-claim.xml passes 6/6; more-spin-regression.xml passes 364/364.
 The fresh current-more-spin.png was inspected for title, +10 label, instruction,
-ad-icon GET NOW button and close button. This is component-level visual validation;
-global window masking/stacking and the production invocation remain to be connected.
+ad-icon GET NOW button and close button. That initial validation was component-level;
+the production follow-up below extends it to the actual invocation.
+
+Production follow-up: RecoveredMoreSpinIntegrationTests now clicks the actual Spin
+Button at zero, verifies no debit/reel start, fails/retries the real simulated ad,
+then grants and starts a real subsequent spin. After GM rebuilding the actual US
+snapshot (config type organic), it sets the native limit boundary and confirms the
+real tip message, no ad dispatch, a paused timer, eventual hide and retained claim
+latch. Finally it rebuilds while an ad is pending and verifies an old success cannot
+credit the retired player. more-spin-integration.xml passes 1/1. The fresh
+current-more-spin-limit.png was inspected; the source text/background render above
+the More Spin window. The former missing invocation is now connected; general
+window-manager masking/stacking and other not-yet-restored input branches still
+require broader work and must not be claimed complete from this test.
+Full connected regression: more-spin-connected-regression.xml passes 365/365.
