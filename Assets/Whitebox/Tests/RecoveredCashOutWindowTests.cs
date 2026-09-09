@@ -24,6 +24,9 @@ public sealed class RecoveredCashOutWindowTests
             Assert.IsNotNull(game.CoreRound);var canvas=game.GetComponent<Canvas>();camera=canvas.worldCamera;target=new RenderTexture(1080,1920,24);camera.targetTexture=target;yield return null;
             window=Object.Instantiate(Resources.Load<RecoveredCashOutWindow>("RecoveredUI/CashOutWindow"),game.transform,false);
             window.Bind(game.Rules,game.PlayerProgress,game.CurrentProfile.languageType,canvas,()=>100);
+            var blocker=window.transform.Find("_WindowBg").GetComponent<Button>();
+            Assert.AreEqual(Color.clear,blocker.targetGraphic.color);Assert.IsTrue(blocker.targetGraphic.raycastTarget);
+            Assert.AreEqual(0,blocker.onClick.GetPersistentEventCount());
             var header=window.GetComponent<RecoveredCashOutPaymentHeader>();int clicks=0;window.SoundRequested+=name=>{Assert.AreEqual("click",name);clicks++;};
             Time.timeScale=1;window.Show();Assert.IsTrue(window.gameObject.activeSelf);Assert.AreEqual(Vector3.zero,window.Content.localScale);
             yield return null;var pausedScale=window.Content.localScale;Assert.Greater(pausedScale.x,0);Time.timeScale=0;

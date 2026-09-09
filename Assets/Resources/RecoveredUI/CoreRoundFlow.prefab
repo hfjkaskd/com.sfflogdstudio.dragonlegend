@@ -1,5 +1,43 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4318394378916508216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6815049871907629453}
+  m_Layer: 5
+  m_Name: PopupRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6815049871907629453
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318394378916508216}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3284233750302768555}
+  - {fileID: 7334302220787973076}
+  - {fileID: 2582970393590892762}
+  m_Father: {fileID: 1942258193237145602}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6817211039468383397
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,12 +73,10 @@ RectTransform:
   - {fileID: 1224667045449481143}
   - {fileID: 8149452303647046214}
   - {fileID: 781631618253502329}
-  - {fileID: 3284233750302768555}
-  - {fileID: 7334302220787973076}
-  - {fileID: 2582970393590892762}
   - {fileID: 6785247359996870952}
   - {fileID: 1381553164555309771}
   - {fileID: 2915364523025883469}
+  - {fileID: 6815049871907629453}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -74,6 +110,7 @@ MonoBehaviour:
   cashPromptPrefab: {fileID: 7953249754218464404, guid: 6417eb9f44b7ab046957c86a274e122f, type: 3}
   cashOutPrefab: {fileID: 1957699948973061300, guid: 9c19c0d1595bc7743bfcf99cdfe64ac2, type: 3}
   popupBaseDepth: 300
+  popupRoot: {fileID: 6815049871907629453}
   tips: {fileID: 1259411266426862337}
   firstSpinGuide: {fileID: 1359524214667469562}
   moreSpinLimitMessage: The ad isn't ready yet, please wait.
@@ -118,7 +155,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1942258193237145602}
+    m_TransformParent: {fileID: 6815049871907629453}
     m_Modifications:
     - target: {fileID: 7158000159643968752, guid: 9ea8130831ef8fe4d8ab8ad5515595de, type: 3}
       propertyPath: m_Pivot.x
@@ -570,7 +607,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1942258193237145602}
+    m_TransformParent: {fileID: 6815049871907629453}
     m_Modifications:
     - target: {fileID: 224477155628137190, guid: 38e74531c15e24f46b7123ad78320c2d, type: 3}
       propertyPath: m_Pivot.x
@@ -683,7 +720,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1942258193237145602}
+    m_TransformParent: {fileID: 6815049871907629453}
     m_Modifications:
     - target: {fileID: 437113493084752263, guid: 7081eb23581caed48b696e0673ba1812, type: 3}
       propertyPath: m_Pivot.x

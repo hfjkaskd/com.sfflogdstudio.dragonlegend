@@ -94,11 +94,14 @@ public sealed class RecoveredBankWindowTests
             game.Playfield.SpinButton.Button.onClick.Invoke();
             Assert.AreEqual(game.Rules.GetBankSpinCD()+"/"+game.Rules.GetBankSpinCD(),meter.Label.text);Assert.AreEqual(1,meter.Fill.fillAmount);
             Assert.IsTrue(game.Playfield.IsBusy);Assert.IsFalse(window.gameObject.activeSelf,"BankReady only marks the pending event during Spin entry.");
+            game.Playfield.SpinRecovery.MoreSpinButton.onClick.Invoke();
+            Assert.IsTrue(game.CoreRound.MoreSpins.gameObject.activeSelf);
             for(int i=0;i<1800&&!window.gameObject.activeSelf;i++)
             {
                 Claim(game.Playfield.BigWinPopup.PlainButton);Claim(game.Playfield.JackpotPopup.PlainButton);yield return null;
             }
             Assert.IsNull(game.CoreRound.Error);Assert.IsTrue(window.gameObject.activeSelf);Assert.IsTrue(game.Playfield.IsBusy);Assert.AreEqual(0,rounds);
+            Assert.Greater(window.GetComponent<Canvas>().sortingOrder,game.CoreRound.MoreSpins.GetComponent<Canvas>().sortingOrder,"Pending Bank opens above an existing More Spin window.");
             for(int i=0;i<12;i++)yield return null;
             Click(window.Item(0).Button.gameObject);for(int i=0;i<160&&!window.Item(1).Ad.gameObject.activeSelf;i++)yield return null;
             for(int i=0;i<15;i++)yield return null;Click(window.LeaveButton.gameObject);
@@ -106,6 +109,7 @@ public sealed class RecoveredBankWindowTests
             var review=game.CoreRound.Review;Assert.IsNotNull(review);Assert.IsTrue(review.gameObject.activeSelf);
             Assert.AreEqual(0,rounds);Assert.IsTrue(game.Playfield.IsBusy);Assert.IsFalse(game.CoreRound.MoreWild.gameObject.activeSelf);
             CollectionAssert.AreEqual(new[]{"remind"},reviewSounds);
+            Assert.Greater(review.GetComponent<Canvas>().sortingOrder,game.CoreRound.MoreSpins.GetComponent<Canvas>().sortingOrder);
             for(int i=0;i<10;i++)yield return null;
             Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
             Assert.AreSame(review.Star(3).gameObject,Hit(review.Star(3).transform,camera));Click(review.Star(3).gameObject);

@@ -28,6 +28,7 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredCashPromptWindow cashPromptPrefab;
         [SerializeField] private RecoveredCashOutWindow cashOutPrefab;
         [SerializeField] private int popupBaseDepth;
+        [SerializeField] private RectTransform popupRoot;
         private readonly List<Canvas> popupCanvases=new List<Canvas>(16);
         private RecoveredCashPromptWindow cashPrompt;
         private RecoveredCashOutWindow cashOut;
@@ -66,8 +67,8 @@ namespace DragonLegend.Whitebox
             bank.FlyRequested+=BankFly;game.PlayerProgress.BankReady+=BankReady;
             field.BankProgress.Bind(game.PlayerProgress,game.Rules,tips.Show);
             field.MoreWildEntry.Bind(game,ShowMoreWild);
-            field.SpinRecovery.Bind(game,moreSpins.Show);
-            game.SpinEntry.MoreSpinsRequested+=moreSpins.Show;moreSpins.LimitTipRequested+=ShowMoreSpinLimit;
+            field.SpinRecovery.Bind(game,ShowMoreSpins);
+            game.SpinEntry.MoreSpinsRequested+=ShowMoreSpins;moreSpins.LimitTipRequested+=ShowMoreSpinLimit;
             var player=game.PlayerProgress;var rules=game.Rules;var profile=game.CurrentProfile;
             var symbols=new int[field.Symbols.ModeCount(RecoveredSlotType.Free)];
             for(int i=0;i<symbols.Length;i++)symbols[i]=field.Symbols.ModeId(RecoveredSlotType.Free,i);
@@ -104,6 +105,7 @@ namespace DragonLegend.Whitebox
         }
         private int Language()=>game.CurrentProfile.languageType;
         private void ShowMoreWild(){PreparePopupDepth(moreWild);moreWild.Show(false);}
+        private void ShowMoreSpins(){PreparePopupDepth(moreSpins);moreSpins.Show();}
         private void ShowMoreSpinLimit()=>tips.Show(moreSpinLimitMessage);
         private void InitialCount(int count)=>game.Playfield.ModeView.RefreshFreeCount();
         private void InitializeBase()=>game.Playfield.Reels.Initialize(game.Playfield.Symbols);
@@ -119,7 +121,7 @@ namespace DragonLegend.Whitebox
             // Main.BankPop 23bc778 only sets a pending flag; CheckBaseEnd waits after Free returns.
             if(bankPending)
             {
-                bank.Show(()=>{bankPending=false;game.Playfield.BankProgress.Refresh();});
+                PreparePopupDepth(bank);bank.Show(()=>{bankPending=false;game.Playfield.BankProgress.Refresh();});
             }
             // Native waits are outside the conditional ShowWindow branches.
             bankWait=RecoveredReelWait.Until(()=>!bankPending,()=>{bankWait=null;AfterBank();},Fail);
@@ -131,10 +133,11 @@ namespace DragonLegend.Whitebox
             {
                 if(review==null)
                 {
-                    review=Instantiate(reviewPrefab,transform,false);
+                    review=Instantiate(reviewPrefab,popupRoot,false);
                     review.SoundRequested+=Sound;
                 }
                 review.Bind(game.GetComponent<Canvas>().worldCamera,Application.identifier,Application.OpenURL);
+                PreparePopupDepth(review);
                 review.Show(()=>reviewPending=false);
             }
             reviewWait=RecoveredReelWait.Until(()=>!reviewPending,()=>{reviewWait=null;AfterReview();},Fail);
@@ -149,7 +152,7 @@ namespace DragonLegend.Whitebox
                 cashPromptPending=true;
                 if(cashPrompt==null)
                 {
-                    cashPrompt=Instantiate(cashPromptPrefab,transform,false);
+                    cashPrompt=Instantiate(cashPromptPrefab,popupRoot,false);
                     cashPrompt.Bind(game.GetComponent<Canvas>().worldCamera,OpenCashOut);
                     cashPrompt.SoundRequested+=Sound;
                 }
@@ -163,7 +166,7 @@ namespace DragonLegend.Whitebox
             if(game==null)return;
             if(cashOut==null)
             {
-                cashOut=Instantiate(cashOutPrefab,transform,false);
+                cashOut=Instantiate(cashOutPrefab,popupRoot,false);
                 cashOut.Bind(game.Rules,game.PlayerProgress,Language(),game.GetComponent<Canvas>(),UtcNow);
                 cashOut.SoundRequested+=Sound;
             }
@@ -174,8 +177,8 @@ namespace DragonLegend.Whitebox
         {
             if(window.gameObject.activeSelf)return;
             // BaseUIManager.AdjustWindowDepth 33be5f4: max(baseDepth, active max + 1).
-            // These three prefabs each have one Canvas, with no independent child UIOrder.
-            GetComponentsInChildren(false,popupCanvases);int depth=popupBaseDepth;
+            // Query this window-type root, never the separate Top3/Tips group.
+            popupRoot.GetComponentsInChildren(false,popupCanvases);int depth=popupBaseDepth;
             foreach(var canvas in popupCanvases)depth=Math.Max(depth,canvas.sortingOrder+1);
             popupCanvases.Clear();window.GetComponent<Canvas>().sortingOrder=depth;
             window.transform.SetAsLastSibling();
@@ -208,7 +211,7 @@ namespace DragonLegend.Whitebox
             wheel.Window.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
             entry.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
             game.SpinEntry.GuideHideRequested-=firstSpinGuide.Hide;firstSpinGuide.Hide();
-            game.SpinEntry.MoreSpinsRequested-=moreSpins.Show;moreSpins.LimitTipRequested-=ShowMoreSpinLimit;
+            game.SpinEntry.MoreSpinsRequested-=ShowMoreSpins;moreSpins.LimitTipRequested-=ShowMoreSpinLimit;
             moreSpins.Cancel();tips.Cancel();
             moreWild.Cancel();
             game.PlayerProgress.BankReady-=BankReady;bank.FlyRequested-=BankFly;

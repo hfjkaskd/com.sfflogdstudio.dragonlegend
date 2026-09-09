@@ -15,8 +15,10 @@ public static class BuildCashOutLifecycle
         if(root.transform.Find("_WindowBg")==null){
             var mask=new GameObject("_WindowBg",typeof(RectTransform),typeof(Image),typeof(Button));mask.layer=5;mask.transform.SetParent(root.transform,false);mask.transform.SetAsFirstSibling();
             var rect=(RectTransform)mask.transform;rect.anchorMin=Vector2.zero;rect.anchorMax=Vector2.one;rect.sizeDelta=Vector2.zero;
-            var image=mask.GetComponent<Image>();image.color=new Color(0,0,0,.65f);var button=mask.GetComponent<Button>();button.targetGraphic=image;button.transition=Selectable.Transition.None;
+            var image=mask.GetComponent<Image>();var button=mask.GetComponent<Button>();button.targetGraphic=image;button.transition=Selectable.Transition.None;
         }
+        // UICashOutView.OnInitProperty: Popup + Normal (transparent input blocker).
+        root.transform.Find("_WindowBg").GetComponent<Image>().color=Color.clear;
         root.GetComponent<Canvas>().sortingOrder=300;root.GetComponent<Canvas>().overrideSorting=true;
         var view=root.GetComponent<RecoveredCashOutWindow>();if(view==null)view=root.AddComponent<RecoveredCashOutWindow>();var settings=new SerializedObject(view);
         settings.FindProperty("content").objectReferenceValue=root.transform.Find("Content");settings.FindProperty("listParent").objectReferenceValue=root.transform.Find("Content/Node/Rect");
