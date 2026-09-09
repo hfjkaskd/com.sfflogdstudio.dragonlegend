@@ -13,6 +13,7 @@ public static class BuildCashOutWindow
     public static void Save()
     {
         var map=new Dictionary<string,string>();
+        BuildTreasureCard.Script<RecoveredScreenAdapt>(map,"3991d2bd099e12203576b2cf89b113da");
         BuildTreasureCard.Script<Image>(map,"3cf5a44414476512e00c3e7a2569a919");BuildTreasureCard.Script<Button>(map,"18d0a90695249463551c00f45766e642");
         BuildTreasureCard.Script<TextMeshProUGUI>(map,"3f96b1d166d19b209697e35b35d65c76");BuildTreasureCard.Script<TMP_InputField>(map,"dfb118be96e34ebd31373e9193059731");
         BuildTreasureCard.Script<GraphicRaycaster>(map,"86fe8f3fc59dc06ea6b45a1bbee64682");BuildTreasureCard.Script<RectMask2D>(map,"69dacd7a039c12e90cde90bbae65247a");
