@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 2852547071665859263}
   - component: {fileID: 6784942043935528508}
   - component: {fileID: 8356043740882808871}
+  - component: {fileID: 8421377094870081352}
   m_Layer: 5
   m_Name: CashOutWindow
   m_TagString: Untagged
@@ -506,6 +507,26 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8421377094870081352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3079740802058610794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc28e5c225e50a04199c1f49422ad8be, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  cashButton: {fileID: 152093066887397247}
+  giftButton: {fileID: 3858070365851984730}
+  cashSelection: {fileID: 3488009559357608829}
+  giftSelection: {fileID: 9154367422821581068}
+  cashRect: {fileID: 5752162273319689240}
+  giftRect: {fileID: 5825333757151366653}
+  bottom: {fileID: 3851432625584564076}
+  header: {fileID: 6784942043935528508}
 --- !u!1 &3354700716050360651
 GameObject:
   m_ObjectHideFlags: 0
@@ -3246,6 +3267,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b82e7994acce7aa4aa81a08502fc6333, type: 3}
+--- !u!1 &3851432625584564076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2945433056727298928, guid: b82e7994acce7aa4aa81a08502fc6333, type: 3}
+  m_PrefabInstance: {fileID: 2131133168604746780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6177727689119679425 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5199683712009099229, guid: b82e7994acce7aa4aa81a08502fc6333, type: 3}
