@@ -1,0 +1,11 @@
+# Closing the main view during cash flight
+
+Current-project failure: GameEntry.OnDisable calls ReleasePlayfield, which disposes the cash presenter. Its Unbind returned checked-out cash/effects through ObjectPool.Release, whose release callback reparents them under poolRoot. When GameEntry itself is deactivating, Unity rejects this reparenting with `Cannot set the parent ... while activating or deactivating the parent GameObject 'GameEntry'`.
+
+RecoveredCashFlightTeardownTests reproduced this before the fix in Artifacts/cash-flight-teardown-before.xml (0/1, Unity PID 34904 exited). The test uses the real GameEntry scene, starts authored flights, deactivates the main object during initial scatter and during collection effects, then reactivates it. It checks cancellation, destroyed detached objects, unchanged balance after shutdown, no late completion and a fresh empty presenter after reopening. It does not expect/suppress the error log.
+
+Unbind now cancels each batch wait and completion, destroys checked-out objects in place, and disposes the inactive pool contents. Destruction unsubscribes arrival/completion events and deactivates the object before deferred Destroy. It never reparents checked-out objects into a hierarchy being deactivated. Normal cash arrival and normal collection completion still Release to their pools and retain pooled reuse. No static UI, callback order, currency rule, SDK path or device-specific fallback is introduced.
+
+Native reward behavior is retained: UIMainView PlayFlyCoin callback 23c306c invokes its caller, resets TopTitle, then reads the current balance and adds the reward. This increment repairs the official Unity pool owner's disposal lifecycle; it does not claim the local GM rebuild operation exists in the original game.
+
+Artifacts/cash-flight-teardown-fixed.xml: 8/8 PlayMode tests passed in 13.6487633 seconds; Unity PID 19968 exited. Includes the new shutdown/reopen regression, both profile flights with unscaled departures and pooled reuse, actual paid-Spin BigWin and jackpot credits, qualifying settlement prompt/Wild continuation, pending prompt GM cleanup, forced Free return, and Free partial-stop GM teardown. The previous full-suite baseline remains 455/455 from d88d72c; this increment ran the affected integration suites, not a new full suite. Whole-game 1:1 completion remains unproven.

@@ -50,8 +50,10 @@ namespace DragonLegend.Whitebox
         }
         private void ReleaseCash(RecoveredCashFlightItem item){item.gameObject.SetActive(false);item.transform.SetParent(poolRoot,false);}
         private void ReleaseEffect(RecoveredCashCollectionEffect item){item.gameObject.SetActive(false);item.transform.SetParent(poolRoot,false);}
-        private void DestroyCash(RecoveredCashFlightItem item)=>Destroy(item.gameObject);
-        private void DestroyEffect(RecoveredCashCollectionEffect item)=>Destroy(item.gameObject);
+        private void DestroyCash(RecoveredCashFlightItem item)
+        {item.Arrived-=Arrive;item.gameObject.SetActive(false);Destroy(item.gameObject);}
+        private void DestroyEffect(RecoveredCashCollectionEffect item)
+        {item.Completed-=CollectFinished;item.gameObject.SetActive(false);Destroy(item.gameObject);}
         public void Begin(float amount,Action completed,Transform topWindow,bool isMainWindow,Transform source=null)
         {
             if(!isMainWindow)title.MoveToWindow(topWindow);
@@ -81,12 +83,15 @@ namespace DragonLegend.Whitebox
         private void CollectFinished(RecoveredCashCollectionEffect effect){effects.Remove(effect);collectionPool.Release(effect);}
         public void Unbind()
         {
+            // The pools are being disposed. Destroy checked-out objects where they are:
+            // GameEntry.OnDisable may run while their parent hierarchy is deactivating.
             for(int b=0;b<batches.Count;b++) {
                 var batch=batches[b];batch.wait?.Cancel();
-                for(int i=0;i<batch.items.Length;i++)if(batch.items[i]!=null)cashPool.Release(batch.items[i]);
+                batch.completed=null;
+                for(int i=0;i<batch.items.Length;i++)if(batch.items[i]!=null)DestroyCash(batch.items[i]);
             }
             batches.Clear();
-            for(int i=0;i<effects.Count;i++)collectionPool.Release(effects[i]);effects.Clear();
+            for(int i=0;i<effects.Count;i++)DestroyEffect(effects[i]);effects.Clear();
             cashPool?.Dispose();collectionPool?.Dispose();cashPool=null;collectionPool=null;title=null;rewards=null;
         }
         private void OnDestroy()=>Unbind();
