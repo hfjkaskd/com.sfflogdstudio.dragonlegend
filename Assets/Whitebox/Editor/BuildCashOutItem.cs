@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using TMPro;
+using DragonLegend.Whitebox;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -52,6 +53,30 @@ public static class BuildCashOutItem
             var children=new List<Transform>();foreach(Transform child in root.transform)if(child!=button.transform)children.Add(child);
             // Preserve authored positions while placing all card visuals under its standard Button.
             foreach(var child in children)child.SetParent(button.transform,true);
+            var view=root.AddComponent<RecoveredCashOutItem>();var settings=new SerializedObject(view);
+            settings.FindProperty("button").objectReferenceValue=button;
+            foreach(var pair in new Dictionary<string,string>{{"background","Image"},{"icon","Img"}})settings.FindProperty(pair.Key).objectReferenceValue=button.transform.Find(pair.Value).GetComponent<Image>();
+            foreach(var pair in new Dictionary<string,string>{{"amountText","Text (TMP)"},{"progressText","Progress/Text (TMP)"},{"taskTip","Task/tip/Text (TMP)"},{"detailText","Detail/Text (TMP) (1)"}})settings.FindProperty(pair.Key).objectReferenceValue=button.transform.Find(pair.Value).GetComponent<TMP_Text>();
+            settings.FindProperty("taskText").objectReferenceValue=button.transform.Find("Task").GetChild(1).GetComponent<TMP_Text>();
+            settings.FindProperty("timeText").objectReferenceValue=button.transform.Find("Task").GetChild(2).GetComponent<TMP_Text>();
+            foreach(var pair in new Dictionary<string,string>{{"progress","Progress"},{"fill","Progress/Fill"},{"task","Task"}})settings.FindProperty(pair.Key).objectReferenceValue=button.transform.Find(pair.Value);
+            settings.FindProperty("progressWidth").floatValue=726;
+            settings.FindProperty("progressing").stringValue="Progressing";
+            settings.FindProperty("timeFormat").stringValue="Pending Review {0:D2}:{1:D2}:{2:D2}";
+            settings.FindProperty("expiredInitial").stringValue="Pending Review00:00:00";settings.FindProperty("expiredRefresh").stringValue="Pending Review 00:00:00";
+            var formats=settings.FindProperty("taskFormats");var descriptions=new[]{"Spin {0}/{1} times","Watch {0}/{1} ads","Claim {0}/{1} Jackpots","Claim {0}/{1} BigWins","Claim {0}/{1} Treasures","Play {0}/{1} FreeGames","Collect {0}/{1} Treasures"};formats.arraySize=descriptions.Length;for(int i=0;i<descriptions.Length;i++)formats.GetArrayElementAtIndex(i).stringValue=descriptions[i];
+            foreach(var kind in new[]{"backgroundPaths","iconPaths"})
+            {
+                var paths=settings.FindProperty(kind);paths.arraySize=5;
+                for(int i=0;i<5;i++)
+                {
+                    string prefix=(kind=="backgroundPaths"?"tx_bak_0":"tx_icon_0")+i;var files=Directory.GetFiles("Assets/Resources/RecoveredArt/IndividualSprites",prefix+"_*.png");
+                    if(files.Length==0){paths.GetArrayElementAtIndex(i).stringValue="";continue;}if(files.Length!=1)throw new InvalidDataException(prefix);
+                    string path=files[0].Replace('\\','/');var importer=(TextureImporter)AssetImporter.GetAtPath(path);importer.textureType=TextureImporterType.Sprite;importer.spriteImportMode=SpriteImportMode.Single;importer.mipmapEnabled=false;importer.alphaIsTransparency=true;importer.textureCompression=TextureImporterCompression.Uncompressed;importer.SaveAndReimport();
+                    paths.GetArrayElementAtIndex(i).stringValue=path.Substring("Assets/Resources/".Length).Replace(".png","");
+                }
+            }
+            settings.ApplyModifiedPropertiesWithoutUndo();
             PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredUI/CashOutItem.prefab");AssetDatabase.SaveAssets();
         }
         finally{PrefabUtility.UnloadPrefabContents(root);AssetDatabase.DeleteAsset(temp);}

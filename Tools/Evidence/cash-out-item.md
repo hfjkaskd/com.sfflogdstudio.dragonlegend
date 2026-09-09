@@ -8,7 +8,7 @@ The card uses the original Microsoft YaHei Bold SDF asset, face/glyph metrics an
 
 All existing card visuals are moved below the original standard Btn while preserving world positions. This implements the user's button/visual hierarchy rule without changing their authored appearance. Static structures are authored offline, not created by production runtime logic.
 
-This increment is the authored visual prefab only. The recovered custom CashOutItem MonoBehaviour is removed because its assembly is unavailable; its runtime presentation and events are still to be implemented and bound. There are no placeholder click actions, simulated orders or claims of a working cash-out window.
+The initial art increment removed the unavailable original CashOutItem MonoBehaviour. The runtime increment below now attaches RecoveredCashOutItem; full withdrawal-window integration remains pending.
 
 ## Verified runtime contracts for the next integration
 
@@ -23,3 +23,15 @@ This increment is the authored visual prefab only. The recovered custom CashOutI
 - OnClickBtn 23a6590 emits click sound and dispatches the original selection event with id plus the shared frame; it does not itself submit a cash request.
 
 Validation uses RecoveredCashOutItemArtTests and a fresh Artifacts/current-cash-item-art.png render. This tests authored resources and hierarchy, not runtime task transitions or completed window integration. Final focused PlayMode test passed 1/1 (Artifacts/cash-item-art-final.xml); Unity PID 43436 exited. Both current-cash-item-art.png and current-cash-item-task-art.png were inspected. These are explicitly configured art previews retaining source example text, not live gameplay values. The initial raw preview exposed overlapping authored states; the test previews them separately. It also exposed missing Sprite borders: tx_bar_03 now preserves (24,0,24,0), and tx_bar_04 preserves (18,0,18,0), with assertions on those values. The original card retains its source example text until runtime binding is implemented.
+
+## Runtime binding increment
+
+RecoveredCashOutItem now owns the authored field references and implements no-record balance/progress, recorded payment styling, local task descriptions/counts, elapsed-time initialization and scaled remaining-time callbacks. BuildCashOutItem configures the original width and seven task formats in the prefab. It also imports the complete available payment background/icon set and serializes Resources paths, avoiding strong atlas references on the component.
+
+RefreshPaymentType follows 23a526c: a record with the same id prevents changing its payment visuals. RefreshSelection moves the shared frame only for the matching id. The code-bound Button emits click then SelectionRequested(id, frame). No cash submission occurs on item selection.
+
+TimeShow uses one constant-size update-runner object, rather than allocating one tween interval/callback pair for each second. Negative input preserves the previous countdown, zero cancels it without emitting completion, and a new positive countdown replaces it. The timer continues while the card is inactive, pauses with scaled time, and emits CountdownCompleted only on reaching zero. Cancel/Destroy removes outstanding work. Initial-expired and refreshed-expired strings remain distinct. Native InitUI does not reactivate TaskText1/2 after a prior step-1000 hide, and the recovered component preserves that reuse behavior rather than adding an implicit reset.
+
+At step 1000 the local view reproduces progress/task visibility changes, then leaves SDK order lookup/display unimplemented under the user's SDK exclusion. It does not fabricate a successful order. The complete withdrawal window still needs to route selection/time events and bind cards to its list; this is a working card component, not a completed main-window route.
+
+RecoveredCashOutItemTests checks the actual prefab with live player/config data: partial/over-target fill, recorded and unrecorded payment changes, success/failure task targets, raw collection-record counts, shared frame/click arguments, hidden/inactive states, pause, replacement/cancellation and both expiry strings. The art test now calls this same runtime Initialize to render live balance and task fixtures instead of manually hiding branches. Final focused suite passed 3/3 (Artifacts/cash-item-verified.xml); Unity PID 32216 exited. Fresh runtime images were inspected: the 3500/20000 balance fixture renders $35.00/$200 with 17.5% fill, and the type-3 task fixture renders the Coinbase style, Spin 7/20 times and Pending Review 00:00:02. These verify the current component with injected data, not the still-pending full withdrawal window.

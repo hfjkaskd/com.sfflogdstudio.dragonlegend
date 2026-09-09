@@ -1,5 +1,8 @@
 using System.Collections;
 using System.IO;
+using System.Collections.Generic;
+using DragonLegend.Whitebox;
+using DragonLegend.Whitebox.Recovered;
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
@@ -26,12 +29,14 @@ public sealed class RecoveredCashOutItemArtTests
             Assert.AreEqual(new Vector4(24,0,24,0),button.transform.Find("Progress").GetComponent<Image>().sprite.border);
             Assert.AreEqual(new Vector4(18,0,18,0),button.transform.Find("Progress/Fill").GetComponent<Image>().sprite.border);
             foreach(var label in card.GetComponentsInChildren<TMP_Text>(true)){Assert.IsNotNull(label.font);Assert.AreEqual("Microsoft YaHei",label.font.faceInfo.familyName);Assert.IsNotNull(label.fontSharedMaterial);Assert.IsNotNull(label.font.atlasTexture);}
-            // Explicit preview of the native no-record branch; runtime binding is not supplied by this art test.
-            button.transform.Find("Task").gameObject.SetActive(false);button.transform.Find("Detail").gameObject.SetActive(false);
+            var rules=new RecoveredGameplayRules(new GoldenDragonAutoGenConfig{Rgpggm=new RgpggmPoro{Qogt=new List<int>{20000},Rogk1roil=new List<int>{20},Rimgg1=new List<int>{3600}}});
+            var playerData=new PlayerData{GreenCount=3500};var view=card.GetComponent<RecoveredCashOutItem>();
+            view.Bind(new RecoveredPlayerProgress(rules,()=>Assert.Fail("View must not save"),playerData),rules,()=>102);
+            view.Initialize(0,-1,1,null,0);
             for(int i=0;i<3;i++)yield return null;
             Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
             capture=new Texture2D(1080,600,TextureFormat.RGB24,false);RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,600),0,0);capture.Apply();File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-cash-item-art.png"),capture.EncodeToPNG());
-            button.transform.Find("Progress").gameObject.SetActive(false);button.transform.Find("Task").gameObject.SetActive(true);
+            playerData.PlayerCashOutDatas.Add(new PlayerCashOutData{id=0,type=3,step=0,count=7,time=100});view.Initialize(0,-1,1,null,0);
             Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
             capture.ReadPixels(new Rect(0,0,1080,600),0,0);capture.Apply();File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-cash-item-task-art.png"),capture.EncodeToPNG());
         }
