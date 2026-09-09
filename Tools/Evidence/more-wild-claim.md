@@ -1,6 +1,6 @@
 # Extra Wild claim logic
 
-Native source: current `mumu-current/native/game` ARM64 disassembly and ELF relocation-backed literals. The initial increment restored the claim model and configuration accessor. The subsequent increment below connects the production window and free second guide. The main paid entry and progress display remain pending.
+Native source: current `mumu-current/native/game` ARM64 disassembly and ELF relocation-backed literals. The initial increment restored the claim model and configuration accessor. The subsequent increment below connects the production window and free second guide. The main paid entry and progress display are now connected in the later `more-wild-entry.md` increment.
 
 - `ConfigManager.GetMoreWild` 236b7a0: configuration +18, Gimrol +18, list +C0, first integer. Recovered field is `Gimrol.MorgKilpRimgg[0]`.
 - `OnBeforeShow` 23d5c54 reads the free flag and clears isClick. Free claim text is `CLAIM`; paid text is `<sprite name="tc_btn_bofang">CLAIM`.

@@ -29,6 +29,8 @@ public sealed class RecoveredMoreWildWindowTests
             GameEntry game=null;foreach(var root in scene.GetRootGameObjects()){var found=root.GetComponentInChildren<GameEntry>();if(found!=null)game=found;}
             float deadline=Time.realtimeSinceStartup+10;while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.CoreRound);var core=game.CoreRound;var field=game.Playfield;var window=core.MoreWild;
+            var wildEntry=field.MoreWildEntry;
+            Assert.IsTrue(wildEntry.Word.gameObject.activeSelf);Assert.IsFalse(wildEntry.Progress.activeSelf);
             int completed=0;core.CoreRoundCompleted+=()=>completed++;
             field.SpinButton.Button.onClick.Invoke();
             for(int frame=0;frame<1800&&completed==0;frame++){Claim(field.BigWinPopup.PlainButton);Claim(field.JackpotPopup.PlainButton);yield return null;}
@@ -53,7 +55,23 @@ public sealed class RecoveredMoreWildWindowTests
             Assert.AreSame(window.transform.Find("Content/Btn"),window.ClaimButton.transform.parent);
             Assert.IsFalse(game.Ads.Pending);
             Time.timeScale=1;for(int i=0;i<10;i++)yield return null;Assert.IsFalse(window.gameObject.activeSelf);
-            window.Show(false);for(int i=0;i<10;i++)yield return null;
+            Assert.IsTrue(wildEntry.Progress.activeSelf);Assert.IsFalse(wildEntry.Word.gameObject.activeSelf);
+            Assert.AreEqual(game.Rules.GetMoreWild()+"/"+game.Rules.GetMoreWild(),wildEntry.Label.text);
+            Assert.AreEqual(1,wildEntry.Fill.fillAmount);
+            game.PlayerProgress.SetMoreWild(2);
+            Assert.AreEqual("2/"+game.Rules.GetMoreWild(),wildEntry.Label.text);
+            Assert.AreEqual(Mathf.Clamp01(2f/game.Rules.GetMoreWild()),wildEntry.Fill.fillAmount);
+            game.PlayerProgress.SetMoreWild(0);Assert.IsTrue(wildEntry.Word.gameObject.activeSelf);Assert.IsFalse(wildEntry.Progress.activeSelf);
+            game.PlayerProgress.SetMoreWild(2);
+            game.PlayerProgress.GameSlotType=RecoveredSlotType.Free;field.ModeView.ApplyCurrent();
+            Assert.IsTrue(wildEntry.Button.gameObject.activeInHierarchy,"Original Tubiao remains outside the mode-switched Bottom/Main.");
+            Assert.AreEqual(2,game.PlayerProgress.MoreWild);
+            game.PlayerProgress.GameSlotType=RecoveredSlotType.Base;field.ModeView.ApplyCurrent();
+            Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
+            Assert.AreSame(wildEntry.Button.gameObject,Hit(wildEntry.Button.transform,camera));
+            RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+            File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-more-wild-entry.png"),capture.EncodeToPNG());
+            Click(wildEntry.Button.gameObject);for(int i=0;i<10;i++)yield return null;
             Assert.IsFalse(window.Guide.gameObject.activeSelf);Assert.IsFalse(window.Finger.gameObject.activeSelf);
             Assert.AreEqual("<sprite name=\"tc_btn_bofang\">CLAIM",window.ClaimText.text);
             Click(window.ClaimButton.gameObject);Assert.IsTrue(game.Ads.Pending);game.Ads.Complete(AdOutcome.Failed);
@@ -61,6 +79,15 @@ public sealed class RecoveredMoreWildWindowTests
             Assert.AreEqual(3,game.PlayerStore.Data.GuideStep);for(int i=0;i<10;i++)yield return null;
             int balance=game.PlayerProgress.MoreWild,spins=game.PlayerProgress.SpinCount;
             Click(field.SpinButton.gameObject);Assert.IsTrue(field.IsBusy);Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);Assert.AreEqual(balance-1,game.PlayerProgress.MoreWild);
+            Assert.AreEqual((balance-1)+"/"+game.Rules.GetMoreWild(),wildEntry.Label.text);
+            Click(wildEntry.Button.gameObject);Assert.IsTrue(window.gameObject.activeSelf,"Native MoreWild entry has no Spin busy guard.");
+            string oldLabel=wildEntry.Label.text;var oldPlayer=game.PlayerProgress;
+            game.transform.Find("SelectUS").GetComponent<Button>().onClick.Invoke();
+            oldPlayer.SetMoreWild(1);
+            Assert.AreEqual(oldLabel,wildEntry.Label.text,"GM teardown detaches the discarded entry immediately.");
+            deadline=Time.realtimeSinceStartup+10;while((game.CoreRound==null||game.CoreRound==core)&&Time.realtimeSinceStartup<deadline)yield return null;
+            Assert.AreNotSame(core,game.CoreRound);Assert.AreEqual(1,game.PlayerProgress.MoreWild);
+            Assert.AreEqual("1/"+game.Rules.GetMoreWild(),game.Playfield.MoreWildEntry.Label.text);
         }
         finally
         {

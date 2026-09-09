@@ -34,6 +34,7 @@ namespace DragonLegend.Whitebox
             game=context;var field=game.Playfield;var reels=field.ModeView.FreeReels;
             moreSpins.Bind(game);tips.Bind(game.GetComponent<Canvas>().worldCamera);
             moreWild.Bind(game);
+            field.MoreWildEntry.Bind(game,ShowMoreWild);
             field.SpinRecovery.Bind(game,moreSpins.Show);
             game.SpinEntry.MoreSpinsRequested+=moreSpins.Show;moreSpins.LimitTipRequested+=ShowMoreSpinLimit;
             var player=game.PlayerProgress;var rules=game.Rules;var profile=game.CurrentProfile;
@@ -67,6 +68,7 @@ namespace DragonLegend.Whitebox
             }
         }
         private int Language()=>game.CurrentProfile.languageType;
+        private void ShowMoreWild()=>moreWild.Show(false);
         private void ShowMoreSpinLimit()=>tips.Show(moreSpinLimitMessage);
         private void InitialCount(int count)=>game.Playfield.ModeView.RefreshFreeCount();
         private void InitializeBase()=>game.Playfield.Reels.Initialize(game.Playfield.Symbols);
@@ -95,6 +97,7 @@ namespace DragonLegend.Whitebox
             game.SpinEntry.MoreSpinsRequested-=moreSpins.Show;moreSpins.LimitTipRequested-=ShowMoreSpinLimit;
             moreSpins.Cancel();tips.Cancel();
             moreWild.Cancel();
+            game.Playfield.MoreWildEntry.Unbind();
             game.Playfield.SpinRecovery.Unbind();
             game.BonusFlow.Completed-=AfterBonus;game.BonusFlow.BindFreeScan(null);
             var mode=game.Playfield.ModeView;

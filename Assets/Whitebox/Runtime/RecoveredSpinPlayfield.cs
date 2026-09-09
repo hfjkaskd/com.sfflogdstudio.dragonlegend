@@ -18,6 +18,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredSpinButton spinButton;
         [SerializeField] private RecoveredSpinRecoveryView spinRecovery;
         public RecoveredSpinRecoveryView SpinRecovery=>spinRecovery;
+        [SerializeField] private RecoveredMoreWildEntry moreWildEntry;
+        public RecoveredMoreWildEntry MoreWildEntry=>moreWildEntry;
         [SerializeField] private RecoveredBaseReelController reels;
         [SerializeField] private RecoveredSymbolCatalog symbols;
         [SerializeField] private float rewardDelay;
