@@ -1,0 +1,259 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8681292006368463800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6450018522898035813}
+  - component: {fileID: 7925529940161621873}
+  - component: {fileID: 378610427218059580}
+  - component: {fileID: 8247571239484776064}
+  - component: {fileID: 5240543428368478417}
+  m_Layer: 5
+  m_Name: ef_tixianicon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6450018522898035813
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8681292006368463800}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 187.14287, y: 187.14285}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7925529940161621873
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8681292006368463800}
+  m_CullTransparentMesh: 0
+--- !u!114 &378610427218059580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8681292006368463800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dad06e1c22c15241b8bd93bf1077c3a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  m_Material: {fileID: 2100000, guid: 601330edf059f894dbfb4541361889cd, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  bones:
+  - name: root
+    parent: -1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: dx
+    parent: 0
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  - name: cash
+    parent: 1
+    mode: 0
+    x: 0.0000004218531
+    y: -4.7750015
+    rotation: 0
+    scaleX: 1.2
+    scaleY: 1.2
+    shearX: 0
+    shearY: 0
+  - name: paypal
+    parent: 1
+    mode: 0
+    x: 0.0000004218531
+    y: -4.7750015
+    rotation: 0
+    scaleX: 1.2
+    scaleY: 1.2
+    shearX: 0
+    shearY: 0
+  - name: waiglow
+    parent: 1
+    mode: 0
+    x: 0
+    y: 0
+    rotation: 0
+    scaleX: 2
+    scaleY: 2
+    shearX: 0
+    shearY: 0
+  - name: bj
+    parent: 0
+    mode: 0
+    x: -446.0661
+    y: -461.16586
+    rotation: 0
+    scaleX: 1
+    scaleY: 1
+    shearX: 0
+    shearY: 0
+  slots:
+  - bone: 5
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 1
+    attachment: 0
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 4
+    attachment: 3
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 1
+  - bone: 2
+    attachment: -1
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  - bone: 3
+    attachment: 2
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    additive: 0
+  regions:
+  - vertices:
+    - {x: -81, y: -81}
+    - {x: -81, y: 81}
+    - {x: 81, y: 81}
+    - {x: 81, y: -81}
+    uv:
+    - {x: 0.009478673, y: 0.008547009}
+    - {x: 0.009478673, y: 0.5641026}
+    - {x: 0.6255924, y: 0.5641026}
+    - {x: 0.6255924, y: 0.008547009}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -59.7551, y: -60.747475}
+    - {x: -59.7551, y: 62}
+    - {x: 59.755104, y: 62}
+    - {x: 59.755104, y: -60.747475}
+    uv:
+    - {x: 0.009478673, y: 0.5726496}
+    - {x: 0.009478673, y: 0.991453}
+    - {x: 0.46445498, y: 0.991453}
+    - {x: 0.46445498, y: 0.5726496}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -59.7551, y: -60.747475}
+    - {x: -59.7551, y: 62}
+    - {x: 59.755104, y: 62}
+    - {x: 59.755104, y: -60.747475}
+    uv:
+    - {x: 0.93838865, y: 0.5726496}
+    - {x: 0.47393364, y: 0.5726496}
+    - {x: 0.47393364, y: 0.982906}
+    - {x: 0.93838865, y: 0.982906}
+    tint: {r: 1, g: 1, b: 1, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  - vertices:
+    - {x: -46.785713, y: -46.785713}
+    - {x: -46.785713, y: 46.785717}
+    - {x: 46.785717, y: 46.785717}
+    - {x: 46.785717, y: -46.785713}
+    uv:
+    - {x: 0.6350711, y: 0.008547009}
+    - {x: 0.6350711, y: 0.32905984}
+    - {x: 0.9905213, y: 0.32905984}
+    - {x: 0.9905213, y: 0.008547009}
+    tint: {r: 1, g: 0.65882355, b: 0.3529412, a: 1}
+    sequenceFrames:
+    setupIndex: 0
+    triangles:
+    counts:
+    boneIndices:
+    weights: []
+  npcConstraints:
+    constraints: []
+    steps:
+  atlasPath: "RecoveredArt/Res/Spine/\u6309\u94AE/tixian/ef_tixianicon"
+--- !u!111 &8247571239484776064
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8681292006368463800}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b8651bff0d94b6b48bc8797dbdd9bd78, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b8651bff0d94b6b48bc8797dbdd9bd78, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &5240543428368478417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8681292006368463800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1559611724bab9346874c5930eb40ff4, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  player: {fileID: 8247571239484776064}
+  rig: {fileID: 378610427218059580}
+  poses:
+  - clip: idle
+    animation: {fileID: 11400000, guid: dfc6c1c34d4641047aa20df6e45f7efb, type: 2}
+  poseTime: 0
+  playbackSpeed: 1
