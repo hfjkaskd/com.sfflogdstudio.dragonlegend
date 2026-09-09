@@ -1,0 +1,67 @@
+{
+  "function_rva": "0x23ad898",
+  "elf_sha256": "28e37caa1f182a8ac31596f3eeb0569c4cd7b1179a45a2769cfbf35038fc85e1",
+  "source_sha256": "a75e19dc4e5a0e3956b3dbfd42460e7c6858de3fdc557ffd7757bb740318c2b6",
+  "references": [
+    {
+      "ghidra_pointer": "0501b6b0",
+      "metadata_address": "0x500b780",
+      "kind": "ScriptMetadata",
+      "value": "UnityEngine.Debug_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501bb58",
+      "metadata_address": "0x5027360",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Singleton<EventDispatcher>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501bb68",
+      "metadata_address": "0x5008bb8",
+      "kind": "ScriptMetadata",
+      "value": "Singleton<EventDispatcher>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501bdb0",
+      "metadata_address": "0x504aff8",
+      "kind": "ScriptString",
+      "value": "13"
+    },
+    {
+      "ghidra_pointer": "0501d350",
+      "metadata_address": "0x500bfc8",
+      "kind": "ScriptMetadata",
+      "value": "Game.UI.EventAction_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501dc80",
+      "metadata_address": "0x50387e8",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$UIDailyTaskView.RefreshGoldTime()"
+    },
+    {
+      "ghidra_pointer": "0501f798",
+      "metadata_address": "0x501a958",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$System.Collections.Generic.Dictionary<string, EventAction>.set_Item()"
+    },
+    {
+      "ghidra_pointer": "0501f7a0",
+      "metadata_address": "0x502f7f0",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$System.Linq.Enumerable.Contains<Delegate>()"
+    },
+    {
+      "ghidra_pointer": "0501f7b0",
+      "metadata_address": "0x50607c8",
+      "kind": "ScriptString",
+      "value": "handler:handler has already exist with evtId "
+    },
+    {
+      "ghidra_pointer": "0501f7b8",
+      "metadata_address": "0x504a440",
+      "kind": "ScriptString",
+      "value": ",you can not add again"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "function_rva": "0x23a4bb8",
+  "elf_sha256": "28e37caa1f182a8ac31596f3eeb0569c4cd7b1179a45a2769cfbf35038fc85e1",
+  "source_sha256": "55cfa7499c9cf84095cf1104a7d4b7f8a56516b5899c2070a8acc89b377fe195",
+  "references": [
+    {
+      "ghidra_pointer": "0501bb58",
+      "metadata_address": "0x5027360",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Singleton<EventDispatcher>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501bb68",
+      "metadata_address": "0x5008bb8",
+      "kind": "ScriptMetadata",
+      "value": "Singleton<EventDispatcher>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501bdb0",
+      "metadata_address": "0x504aff8",
+      "kind": "ScriptString",
+      "value": "13"
+    },
+    {
+      "ghidra_pointer": "0501cf40",
+      "metadata_address": "0x504b248",
+      "kind": "ScriptString",
+      "value": "8"
+    },
+    {
+      "ghidra_pointer": "0501cff8",
+      "metadata_address": "0x5011090",
+      "kind": "ScriptMetadata",
+      "value": "UnityEngine.Events.UnityAction_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501d350",
+      "metadata_address": "0x500bfc8",
+      "kind": "ScriptMetadata",
+      "value": "Game.UI.EventAction_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501d928",
+      "metadata_address": "0x502ca28",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$CashOutItem.OnClickBtn()"
+    },
+    {
+      "ghidra_pointer": "0501d930",
+      "metadata_address": "0x502ca30",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$CashOutItem.RefreshCashOutItemBg()"
+    },
+    {
+      "ghidra_pointer": "0501d938",
+      "metadata_address": "0x502ca38",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$CashOutItem.RefreshCashOutItemSelectKuang()"
+    },
+    {
+      "ghidra_pointer": "0501d940",
+      "metadata_address": "0x502ca40",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$CashOutItem.RefreshGoldTime()"
+    },
+    {
+      "ghidra_pointer": "0501d948",
+      "metadata_address": "0x504b250",
+      "kind": "ScriptString",
+      "value": "9"
+    },
+    {
+      "ghidra_pointer": "05071808",
+      "metadata_address": "0x50208b8",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$System.Collections.Generic.List<BaseInvokableCall>.Add()"
+    }
+  ]
+}

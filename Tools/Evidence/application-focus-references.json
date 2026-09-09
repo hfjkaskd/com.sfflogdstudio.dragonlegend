@@ -1,0 +1,55 @@
+{
+  "function_rva": "0x2370de4",
+  "elf_sha256": "28e37caa1f182a8ac31596f3eeb0569c4cd7b1179a45a2769cfbf35038fc85e1",
+  "source_sha256": "982244a46a1e1d5446d010128eba7d8e0a2c83ab29c4df81ae227c620c859981",
+  "references": [
+    {
+      "ghidra_pointer": "0501b6b0",
+      "metadata_address": "0x500b780",
+      "kind": "ScriptMetadata",
+      "value": "UnityEngine.Debug_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b9b8",
+      "metadata_address": "0x502a498",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$System.Array.Empty<object>()"
+    },
+    {
+      "ghidra_pointer": "0501bb58",
+      "metadata_address": "0x5027360",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Singleton<EventDispatcher>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501bb68",
+      "metadata_address": "0x5008bb8",
+      "kind": "ScriptMetadata",
+      "value": "Singleton<EventDispatcher>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501bda8",
+      "metadata_address": "0x50663a0",
+      "kind": "ScriptString",
+      "value": "��ý���"
+    },
+    {
+      "ghidra_pointer": "0501bdb0",
+      "metadata_address": "0x504aff8",
+      "kind": "ScriptString",
+      "value": "13"
+    },
+    {
+      "ghidra_pointer": "0501bdb8",
+      "metadata_address": "0x50663a8",
+      "kind": "ScriptString",
+      "value": "��ʧ����"
+    },
+    {
+      "ghidra_pointer": "050395c8",
+      "metadata_address": "0x500d078",
+      "kind": "ScriptMetadata",
+      "value": "UnityEngine.ILogger_TypeInfo"
+    }
+  ]
+}
