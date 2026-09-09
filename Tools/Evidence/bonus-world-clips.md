@@ -1,0 +1,9 @@
+# Bonus world-mesh clip conversion
+
+`BuildBonusWorld.SaveClips` converts all 13 animations from the verified `RecoveredCoinEffect.json` source into `RecoveredSymbols/BonusWorld` assets and inspectable prefabs. These contain Unity MeshFilter, MeshRenderer, Animation and RecoveredWorldRig rather than a CanvasRenderer. Conversion reuses the existing source-region, mesh, deformation and timeline authoring logic in BuildWildWorld. The shared atlas importer is preserved; existing callers retain their previous authoring default.
+
+The converted clips include glow, five holds, five turns, appearance and concealed idle. Each clip contains the 29-bone, 59-attachment source structure. `RecoveredBonusWorldTests` selects all clips on one rig, samples five times per clip, checks finite vertices, valid triangle indices and UV counts, and verifies reuse of the same instance Mesh. Unity process 13688 exited with 1/1 passed in `Artifacts/bonus-world-tests.xml` (0.0859286 seconds).
+
+This is an intermediate migration resource set. The production Bonus card still uses its existing UI rig; no gameplay connection or Android build was changed. Pixel parity, interpolation accuracy against independent source evaluation, coherent standard-Button interaction, popup ordering/clipping and 12-card performance remain to be verified before connection. Sampling topology is not proof of those properties.
+
+The intended runtime uses shared clip assets and reusable per-instance buffers, without per-frame skeleton reconstruction. The current clip assets repeat static skeleton descriptions, matching the existing world-rig format; memory for loading the complete set and all card instances still needs measurement. Do not interpret this conversion as acceptance of that unmeasured cost or as completion of the no-UI-gameplay requirement.
