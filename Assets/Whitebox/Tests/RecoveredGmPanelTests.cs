@@ -23,8 +23,10 @@ public sealed class RecoveredGmPanelTests
             var panel=entry.GetComponent<RecoveredGmPanel>();var camera=entry.GetComponent<Canvas>().worldCamera;
             var primary=entry.transform.Find("SelectUS").GetComponent<Button>();var alternate=entry.transform.Find("SelectAlternative").GetComponent<Button>();
             var configTest=entry.transform.Find("SelectConfigTest").GetComponent<Button>();
+            var bundledDefault=entry.transform.Find("SelectBundledDefault").GetComponent<Button>();
+            var bundledOrganic=entry.transform.Find("SelectBundledOrganic").GetComponent<Button>();
             Assert.IsFalse(panel.IsOpen);Assert.IsFalse(entry.CurrentProfile.isA);Assert.AreEqual("US",entry.CurrentProfile.countryCode);
-            foreach(var button in new[]{primary,alternate,configTest}) {
+            foreach(var button in new[]{primary,alternate,configTest,bundledDefault,bundledOrganic}) {
                 var group=button.GetComponent<CanvasGroup>();Assert.AreEqual(0,group.alpha);Assert.IsFalse(group.blocksRaycasts);Assert.IsFalse(button.IsInteractable());
                 Assert.IsEmpty(Hits(button,camera),"Hidden GM controls must not intercept touches over the game.");
             }
@@ -51,6 +53,25 @@ public sealed class RecoveredGmPanelTests
             Click(panel.ToggleButton,camera);yield return null;Click(primary,camera);
             deadline=Time.realtimeSinceStartup+5;while(entry.Playfield==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(entry.Playfield);Assert.AreEqual("US_Default",entry.CurrentProfile.profileId);
+            foreach(var button in new[]{bundledDefault,bundledOrganic}) {
+                Click(panel.ToggleButton,camera);yield return null;Click(button,camera);Assert.IsFalse(panel.IsOpen);
+                deadline=Time.realtimeSinceStartup+5;while(entry.Playfield==null&&Time.realtimeSinceStartup<deadline)yield return null;
+                Assert.IsNotNull(entry.Playfield);
+                string type=button==bundledDefault?"default":"organic";
+                Assert.AreEqual("RecoveredConfig/Bundled/GoldenDragon_"+type+".json",entry.CurrentProfile.snapshotPath);
+                Assert.AreEqual(type,entry.Rules.GetConfigType());
+                entry.PlayerProgress.SetSpinCount(entry.Rules.GetMaxSpinCount());
+                int beforeSpin=entry.PlayerProgress.SpinCount;
+                entry.Playfield.SpinButton.Button.onClick.Invoke();
+                Assert.AreEqual(beforeSpin-1,entry.PlayerProgress.SpinCount);Assert.IsTrue(entry.Playfield.IsBusy);
+                var recovery=entry.Playfield.SpinRecovery.Recovery;
+                Assert.AreEqual(type=="default",recovery.IsRunning);
+                if(type=="default")Assert.AreEqual(entry.Rules.GetSpinCD(entry.PlayerProgress.Level),recovery.RemainingSeconds);
+                Click(panel.ToggleButton,camera);yield return null;Click(primary,camera);
+                Assert.IsFalse(recovery.IsRunning,"Switching must dispose the previous profile's countdown.");
+                deadline=Time.realtimeSinceStartup+5;while(entry.Playfield==null&&Time.realtimeSinceStartup<deadline)yield return null;
+                Assert.IsNotNull(entry.Playfield);Assert.AreEqual("US_Default",entry.CurrentProfile.profileId);
+            }
         } finally {
             if(scene.IsValid())unload=SceneManager.UnloadSceneAsync(scene);Random.state=random;
             if(had)PlayerPrefs.SetString(key,saved);else PlayerPrefs.DeleteKey(key);

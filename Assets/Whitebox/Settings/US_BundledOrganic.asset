@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d94d21287ddd136499a14282c17b1a30, type: 3}
-  m_Name: US_ConfigTest
+  m_Name: US_BundledOrganic
   m_EditorClassIdentifier:
-  profileId: US_ConfigTest
+  profileId: US_BundledOrganic
   countryCode: US
   languageType: 0
   isA: 0
-  snapshotPath: RecoveredConfig/Remote/cp_test.json
+  snapshotPath: RecoveredConfig/Bundled/GoldenDragon_organic.json
   cashPresentationEnabled: 1
   advertisementPresentationEnabled: 1
   evidenceNote: Explicit local snapshot selection; not an assertion of server country

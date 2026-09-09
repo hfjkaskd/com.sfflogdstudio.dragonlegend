@@ -1,0 +1,18 @@
+[
+  {
+    "name": "GoldenDragon_default",
+    "source": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\delivery\\UnityFramework\\ReferenceOriginal\\Res\\Config\\GoldenDragon_default.txt",
+    "encoded_sha256": "3314c320c1130d760b2f102647114729acedd84d2a4fea7d0d04398ae1b8dc40",
+    "decoded_sha256": "4b147426c0240d6da551360c6258be290b71d3e6e47ad189a60cdd4dfc3dcd6f",
+    "snapshot_sha256": "5cba47a8ecedf4d2f680d0ac3bd724844526893dac8b2abbd03af03f717f3132",
+    "reference_json_sha256": "5cba47a8ecedf4d2f680d0ac3bd724844526893dac8b2abbd03af03f717f3132"
+  },
+  {
+    "name": "GoldenDragon_organic",
+    "source": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\delivery\\UnityFramework\\ReferenceOriginal\\Res\\Config\\GoldenDragon_organic.txt",
+    "encoded_sha256": "8a7ebf2504c92b5a3ad0816432be03a4ee65a4738a256fafef9b122dfd4d6f3c",
+    "decoded_sha256": "0d95bde901dede03b20ae978abfaee0590e4076b52626d27217099a5a6159fad",
+    "snapshot_sha256": "14bc5cf702d8e8d78c959b270baa1e4d1183b44f9b75750701cf41196a8e577c",
+    "reference_json_sha256": "14bc5cf702d8e8d78c959b270baa1e4d1183b44f9b75750701cf41196a8e577c"
+  }
+]
