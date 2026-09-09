@@ -9,6 +9,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredNpcPresentation npc;
         [SerializeField] private RecoveredMainComposition composition;
         public RecoveredMainComposition Composition => composition;
+        [SerializeField] private RecoveredFreeBottom freeBottom;
+        public RecoveredFreeBottom FreeBottom => freeBottom;
         public RecoveredNpcPresentation Npc=>npc;
         [SerializeField] private RecoveredSpinButton spinButton;
         [SerializeField] private RecoveredBaseReelController reels;
