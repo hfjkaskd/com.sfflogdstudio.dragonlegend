@@ -27,6 +27,12 @@ The latest mixed suite passed 4/4 in collected-bonus-free-final-tests.xml;
 see mixed-bigwin-free.md. Collection from zero and broader random/profile
 coverage remain unproven.
 
+Further follow-up at 63369cd: zero-collection-session.md now verifies a
+post-guide session starting with five zero counts, with no count/readiness
+or board overrides. Eight actual paid Spins reach Bonus, finish all eight
+core rounds and persist the returned Base state. This is one observed session,
+not all random/profile/lifecycle combinations.
+
 Spin routing now exercises 21 real scene-raycast click-handler deliveries with
 one debit/start and no busy-click state mutation (spin-input-routing.md).
 This does not cover physical multi-touch or long press. Main scene/camera
