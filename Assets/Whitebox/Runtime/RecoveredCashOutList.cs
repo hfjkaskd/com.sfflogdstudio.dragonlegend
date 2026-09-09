@@ -28,6 +28,8 @@ namespace DragonLegend.Whitebox
         public int CreatedCount=>created.Count;
         public RecoveredCashOutItem ItemAt(int index)=>shown[index];
         public event Action<string> SoundRequested;
+        public void SetPaymentTypeForRefresh(int paymentType)=>type=paymentType;
+        public void CancelTimers(){foreach(var item in created)item.Cancel();bottom?.Cancel();}
         public void Initialize(RecoveredGameplayRules config,RecoveredPlayerProgress model,RecoveredCashOutBottom panel,Func<int> utcClock,Vector2 size,int paymentType,int currencyLanguage)
         {
             rules=config;player=model;bottom=panel;clock=utcClock;type=paymentType;language=currencyLanguage;viewSize=size;IsCreateFinished=false;

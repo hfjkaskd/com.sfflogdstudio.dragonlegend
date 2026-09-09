@@ -29,6 +29,9 @@ namespace DragonLegend.Whitebox
         }
         public void Bind(RecoveredGameplayRules config,RecoveredPlayerProgress progress)
         {rules=config;player=progress;}
+        public void PrepareCashShow(){gift=false;type=1;RefreshAccount(type);}
+        public void ResetPaymentFrame()
+        {paymentFrame.SetParent(transform,false);paymentFrame.SetParent(paymentLayout.GetChild(type-1),false);}
         public void RefreshMode(bool giftMode)
         {
             gift=giftMode;paymentLayout.gameObject.SetActive(!gift&&rules.GetConfigType()==visibleConfigType);RefreshAccount(type);
@@ -37,7 +40,7 @@ namespace DragonLegend.Whitebox
         // the saved initial selection, not the most recently clicked card.
         public void RefreshPaymentType(int paymentType)
         {
-            type=paymentType;paymentFrame.SetParent(transform,false);paymentFrame.SetParent(paymentLayout.GetChild(type-1),false);
+            type=paymentType;ResetPaymentFrame();
             RefreshAccount(type);list.RefreshPaymentType(type);
         }
         public void RefreshAccount(int paymentType)

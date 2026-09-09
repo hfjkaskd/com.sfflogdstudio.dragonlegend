@@ -61,6 +61,7 @@ public static class BuildCashOutWindow
             foreach(var button in root.GetComponentsInChildren<Button>(true))if(button.onClick.GetPersistentEventCount()!=0)throw new InvalidDataException("Unexpected window event "+button.name);
             BuildCashOutModeView.Attach(root);
             BuildGiftList.Attach(root);
+            BuildCashOutLifecycle.Attach(root);
             root.SetActive(false);PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredUI/CashOutWindow.prefab");AssetDatabase.SaveAssets();
         }
         finally{PrefabUtility.UnloadPrefabContents(root);AssetDatabase.DeleteAsset(temp);}
