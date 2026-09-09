@@ -29,6 +29,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredCashOutWindow cashOutPrefab;
         [SerializeField] private RecoveredCashOutEntry cashOutEntry;
         public RecoveredCashOutEntry CashOutEntry=>cashOutEntry;
+        [SerializeField] private RecoveredMainCashOutStatus cashOutStatus;
+        public RecoveredMainCashOutStatus CashOutStatus=>cashOutStatus;
         [SerializeField] private int popupBaseDepth;
         [SerializeField] private RectTransform popupRoot;
         public RectTransform PopupRoot=>popupRoot;
@@ -59,6 +61,8 @@ namespace DragonLegend.Whitebox
         {
             game=context;var field=game.Playfield;var reels=field.ModeView.FreeReels;
             cashOutEntry.Bind(OpenCashOutFromMain,game.PlayerProgress,game.Rules);
+            cashOutStatus.Bind(game.PlayerProgress,game.Rules,game.CurrentProfile.languageType);
+            field.ModeView.Applied+=cashOutStatus.ApplyCurrent;
             // Attach the existing authored window instances to their native Popup type root.
             field.BigWinPopup.transform.SetParent(popupRoot,false);
             field.JackpotPopup.transform.SetParent(popupRoot,false);
@@ -240,6 +244,7 @@ namespace DragonLegend.Whitebox
             if(game==null)return;
             game.Playfield.Reels.ShakeRequested-=game.Playfield.Wilds.Shake.Begin;
             cashOutEntry.Unbind();
+            game.Playfield.ModeView.Applied-=cashOutStatus.ApplyCurrent;cashOutStatus.Unbind();
             game.Playfield.BigWinPopup.WindowShowRequested-=PreparePopupDepth;
             game.Playfield.JackpotPopup.WindowShowRequested-=PreparePopupDepth;
             ConnectBranchPopupDepth(false);

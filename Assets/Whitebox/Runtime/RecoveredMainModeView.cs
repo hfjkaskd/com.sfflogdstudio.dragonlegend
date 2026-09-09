@@ -5,6 +5,7 @@ namespace DragonLegend.Whitebox
     // Visual consumers of Main.SetInitShow; initialization/count calls remain separate.
     public sealed class RecoveredMainModeView : MonoBehaviour
     {
+        public event System.Action Applied;
         [SerializeField] private GameObject baseRoll,baseResult,freeRoll;
         [SerializeField] private RecoveredFreeReels freeReels;
         [SerializeField] private GameObject[] speedEffects;
@@ -42,6 +43,7 @@ namespace DragonLegend.Whitebox
             // FreeResult is an authored child of the native FreeReels container.
             if(isBase&&downWin.TemporaryTotal!=0)downWin.ShowAmountOnly(downWin.TemporaryTotal);
             else downWin.Started();
+            Applied?.Invoke();
         }
         public void InitializeFreeReels()=>freeReels.Initialize(symbols,result);
         public void RefreshFreeCount()=>bottom.RefreshCount();

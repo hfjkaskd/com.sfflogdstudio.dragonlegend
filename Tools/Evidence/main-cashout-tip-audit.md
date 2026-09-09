@@ -1,6 +1,6 @@
 # Missing Base-mode cash-out status loop
 
-The current `RecoveredMainModeView.ApplyCurrent` switches the board/background/bottom but has no consumer for native Main.CashOutTipTxt (+0x1b0) or CashOutTipSeq (+0x208). This is a confirmed missing main-game presentation, separate from the cash-out entry finger, UICashOutTipView claim prompt, and reward-window CashOutTip component. Runtime implementation remains required.
+The initial audit found that `RecoveredMainModeView.ApplyCurrent` had no consumer for native Main.CashOutTipTxt (+0x1b0) or CashOutTipSeq (+0x208). This is separate from the cash-out entry finger, UICashOutTipView claim prompt, and reward-window CashOutTip component. The subsequent implementation below restores this main-game presentation.
 
 ## Authoritative native sequence
 
@@ -26,4 +26,14 @@ Evidence root: `C:/Projects/Nut Sort Relax/reconstruction/mumu-current`.
 
 `Tools/audit_main_click_references.py` now accepts `--function`. It resolves actual ELF relative relocations into script metadata instead of guessing string pointers. `--function 23bc108` resolves 16 references, including all three callbacks and both messages. The generated JSON records ELF/source SHA-256 hashes. Re-running the default Main click audit generated a byte-identical result to its committed evidence (SHA-256 A127C190446A6DA210E4204F3390A525CCBAA68EF42CCBFE31AC6B97D8BEC254).
 
-Next implementation must author the source subtree as a prefab, drive the lifecycle from every actual SetInitShow-equivalent mode application, use the shared native Unity animation timing infrastructure, and validate first versus repeated reveal, stale text during the initial delay, all-recorded stop, Free cancellation, Base restart, and GM teardown. No Unity runtime change or new visual-parity claim is made by this audit. Region/A/B visibility remains separately unproven; SDK handling stays unchanged.
+## Runtime implementation
+
+`BuildMainCashOutStatus.Save` extracts the original Node transform with only the CashOutTip subtree, maps standard Image/TMP components, and retains the original layout and text styling. The main background sprite maps to the recovered `zjm_s9g_spin_bg.png` with its existing sliced border. Timings and text templates are serialized on the prefab. The full CoreRound author also includes this prefab.
+
+`RecoveredMainCashOutStatus` uses the existing `RecoveredTreasureCardRunner` to keep the hidden-panel delay alive. A generation token cancels old enumerators on each mode application or teardown. The runtime preserves scale across cancellation, computes text at scheduling time, and recursively schedules a fresh cycle after hiding. Each cycle scans record IDs without filtering record status. No IsA guard was invented.
+
+`RecoveredMainModeView.Applied` is emitted after every mode application; CoreRound subscribes after binding the status component and unsubscribes during GM teardown. Initial binding explicitly applies the current mode because the initial ModeView binding precedes CoreRound binding.
+
+The initial full run (PID 3804) exposed a queued enumerator reading its panel before checking teardown, and an imported PNG reference retaining the original native-asset reference type. The first was fixed by checking cancellation before the iterator's first transform access; the second by authoring the PNG sprite reference as type 3. The initial and intermediate full runs are retained in `Artifacts/main-status-tests.xml` and `Artifacts/main-status-fixed-tests.xml`; neither is a passing validation claim. Author PID 51528 then regenerated the corrected prefab successfully.
+
+Final validation: PID 35068 terminated with 460/460 PlayMode tests passing in 97.3139827 seconds (`Artifacts/main-status-complete-tests.xml`). The real-scene test covers first/repeated reveal, frozen text during the delay, fresh next-cycle text, scale preservation on interruption, Free cancellation lasting beyond one full cycle, Base restart, all-recorded stop, and GM teardown. The newly rendered `Artifacts/current-main-cashout-status.png` was inspected: the source red sliced background now renders correctly with the rich text. This is current reconstruction evidence, not proof of complete visual parity against the original application. Region/A/B visibility remains separately unproven; SDK handling stays unchanged.
