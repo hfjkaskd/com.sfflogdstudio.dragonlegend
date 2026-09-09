@@ -30,6 +30,8 @@ public sealed class RecoveredMainModeViewTests
             var fieldRect=(RectTransform)field.transform;var board=(RectTransform)field.transform.Find("QiPan");
             Vector3 boardBefore=board.position,spinBefore=field.SpinButton.transform.position;
             Vector3 backgroundBefore=game.Background.BaseBackground.transform.position;
+            Assert.AreSame(field.transform,game.BalancePanel.transform.parent);
+            Vector3 cashBefore=game.BalancePanel.CashTarget.position;
             Vector2 boardLocal=board.anchoredPosition;
             var scaler=game.GetComponentInParent<UnityEngine.UI.CanvasScaler>();
             float factor=scaler.matchWidthOrHeight*scaler.referenceResolution.y/1920-scaler.referenceResolution.x*(scaler.matchWidthOrHeight-1)/1080;
@@ -37,6 +39,7 @@ public sealed class RecoveredMainModeViewTests
             Assert.AreEqual(60*factor,fieldRect.offsetMin.y,.0002f);Assert.AreEqual(-120*factor,fieldRect.offsetMax.y,.0002f);
             Assert.AreNotEqual(boardBefore,board.position);Assert.AreNotEqual(spinBefore,field.SpinButton.transform.position);
             Assert.AreEqual(boardLocal,board.anchoredPosition);Assert.AreEqual(backgroundBefore,game.Background.BaseBackground.transform.position);
+            Assert.AreNotEqual(cashBefore,game.BalancePanel.CashTarget.position,"Top and the cash endpoint follow the common Node.");
             Render(camera,target,capture);File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-main-safe-area.png"),capture.EncodeToPNG());
             adapt.AdaptScreen();Canvas.ForceUpdateCanvases();
             for(int i=0;i<5;i++) {

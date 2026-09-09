@@ -182,9 +182,13 @@ namespace DragonLegend.Whitebox
                 Playfield.FreeBottom.Bind(PlayerProgress, FreeSpinEntry);
                 Playfield.ModeView.Bind(Background, PlayerProgress, FreeSpinResult, Playfield.Symbols);
             }
+            if(balancePanel!=null){
+                balancePanel.transform.SetParent(Playfield.transform,false);
+                balancePanel.transform.SetAsFirstSibling();
+            }
             if(cashFlightPrefab!=null) {
                 Canvas.ForceUpdateCanvases();
-                balancePanel.InitializePlacement((RectTransform)transform,GetComponent<Canvas>().worldCamera);
+                balancePanel.InitializePlacement((RectTransform)Playfield.transform,GetComponent<Canvas>().worldCamera);
                 CashFlight=Instantiate(cashFlightPrefab,transform,false);
                 CashFlight.Bind(RewardBranches,balancePanel,profile.isA);
                 Playfield.FlyCoinRequested+=FlyCoin;

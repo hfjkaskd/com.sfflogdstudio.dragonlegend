@@ -101,7 +101,7 @@ public sealed class RecoveredBonusWindowTests
                     while(entry.CashFlight.ActiveCashCount>0&&Time.realtimeSinceStartup<deadline)yield return null;
                     Assert.AreEqual(0,entry.CashFlight.ActiveCashCount);Assert.IsFalse(window.Selection.IsClicked);
                     Assert.AreEqual(before+(jump==0?963:1926),entry.PlayerProgress.GreenCount);
-                    Assert.AreSame(entryRoot.transform,entry.BalancePanel.transform.parent);
+                    Assert.AreSame(entry.Playfield.transform,entry.BalancePanel.transform.parent);
                 }
                 Assert.IsNull(failure);Object.Destroy(window.gameObject);yield return null;
             }
