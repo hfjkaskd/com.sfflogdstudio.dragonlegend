@@ -22,6 +22,7 @@ namespace DragonLegend.Whitebox
         private Vector2 viewSize;private Vector3 previousPosition;private bool dirty;
         private int selected,type,language;
         public ScrollRect Scroll=>scroll;
+        public bool IsCreateFinished { get; private set; }
         public RectTransform SelectionFrame=>selectionFrame;
         public int InitialSelection=>selected;
         public int CreatedCount=>created.Count;
@@ -29,7 +30,7 @@ namespace DragonLegend.Whitebox
         public event Action<string> SoundRequested;
         public void Initialize(RecoveredGameplayRules config,RecoveredPlayerProgress model,RecoveredCashOutBottom panel,Func<int> utcClock,Vector2 size,int paymentType,int currencyLanguage)
         {
-            rules=config;player=model;bottom=panel;clock=utcClock;type=paymentType;language=currencyLanguage;viewSize=size;
+            rules=config;player=model;bottom=panel;clock=utcClock;type=paymentType;language=currencyLanguage;viewSize=size;IsCreateFinished=false;
             bottom.Bind(player,rules,clock);bottom.RefreshRequested+=RefreshData;
             ((RectTransform)transform).sizeDelta=size;
             int total=rules.GetCashOutCount();shown=new RecoveredCashOutItem[total];positions=new Vector3[total];hidden.Capacity=total;
@@ -80,7 +81,7 @@ namespace DragonLegend.Whitebox
                 shown[index]=item;if(index==0||shown[index-1]==null)item.transform.SetAsFirstSibling();else item.transform.SetAsLastSibling();
                 item.transform.localPosition=positions[index];RefreshItem(item,index);
             }
-            dirty=false;
+            dirty=false;IsCreateFinished=true;
         }
         private bool Visible(int index,Vector3 position)
         {

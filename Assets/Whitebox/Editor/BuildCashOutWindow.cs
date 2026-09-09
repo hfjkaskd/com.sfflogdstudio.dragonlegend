@@ -52,6 +52,11 @@ public static class BuildCashOutWindow
             var buttons=settings.FindProperty("paymentButtons");buttons.arraySize=4;var names=new[]{"PaypalBtn","CashAppBtn","CoinBaseBtn","ZelleBtn"};for(int i=0;i<4;i++)buttons.GetArrayElementAtIndex(i).objectReferenceValue=content.Find("Node/Layout/"+names[i]).GetComponent<Button>();
             var providers=settings.FindProperty("providerNames");providers.arraySize=4;var labels=new[]{"Paypal","CashApp","CoinBase","Zelle"};for(int i=0;i<4;i++)providers.GetArrayElementAtIndex(i).stringValue=labels[i];
             settings.FindProperty("visibleConfigType").stringValue="default";settings.FindProperty("promptPrefix").stringValue="Please enter your ";settings.FindProperty("promptSuffix").stringValue=" account here.";settings.FindProperty("giftPrompt").stringValue="Please enter your account here.";settings.ApplyModifiedPropertiesWithoutUndo();
+            var entrance=root.AddComponent<RecoveredCashOutEntrance>();var animation=new SerializedObject(entrance);
+            animation.FindProperty("list").objectReferenceValue=list;animation.FindProperty("bottom").objectReferenceValue=bottom.transform;
+            animation.FindProperty("cardDuration").floatValue=.2f;animation.FindProperty("cardInterval").floatValue=.05f;animation.FindProperty("bottomDuration").floatValue=.3f;animation.FindProperty("bottomOffset").floatValue=450;
+            animation.FindProperty("cardEase").animationCurveValue=new AnimationCurve(new Keyframe(0,0,4.70158f,4.70158f),new Keyframe(1,1,0,0));
+            animation.FindProperty("bottomEase").animationCurveValue=new AnimationCurve(new Keyframe(0,0,2,2),new Keyframe(1,1,0,0));animation.ApplyModifiedPropertiesWithoutUndo();
             foreach(var button in root.GetComponentsInChildren<Button>(true))if(button.onClick.GetPersistentEventCount()!=0)throw new InvalidDataException("Unexpected window event "+button.name);
             root.SetActive(false);PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredUI/CashOutWindow.prefab");AssetDatabase.SaveAssets();
         }
