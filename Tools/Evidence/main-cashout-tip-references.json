@@ -1,0 +1,103 @@
+{
+  "function_rva": "0x23bc108",
+  "elf_sha256": "28e37caa1f182a8ac31596f3eeb0569c4cd7b1179a45a2769cfbf35038fc85e1",
+  "source_sha256": "1de0932bc9d0abcf3d13fbb77d7ef2feb8fd0b91de84dfc7b5d5a0ccbae4fe9f",
+  "references": [
+    {
+      "ghidra_pointer": "0501b918",
+      "metadata_address": "0x5008bc8",
+      "kind": "ScriptMetadata",
+      "value": "Singleton<GameDataManager>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b950",
+      "metadata_address": "0x5027380",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Singleton<GameDataManager>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501baf8",
+      "metadata_address": "0x5008bb0",
+      "kind": "ScriptMetadata",
+      "value": "Singleton<ConfigManager>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501bb60",
+      "metadata_address": "0x5027350",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Singleton<ConfigManager>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501bd18",
+      "metadata_address": "0x500b358",
+      "kind": "ScriptMetadata",
+      "value": "DG.Tweening.DOTween_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501bd20",
+      "metadata_address": "0x5010cc8",
+      "kind": "ScriptMetadata",
+      "value": "DG.Tweening.TweenCallback_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501c2c8",
+      "metadata_address": "0x5038138",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$DG.Tweening.TweenSettingsExtensions.OnComplete<TweenerCore<Vector3, Vector3, VectorOptions>>()"
+    },
+    {
+      "ghidra_pointer": "0501c600",
+      "metadata_address": "0x5022720",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$System.Collections.Generic.List<PlayerCashOutData>.Find()"
+    },
+    {
+      "ghidra_pointer": "0501c608",
+      "metadata_address": "0x50088a0",
+      "kind": "ScriptMetadata",
+      "value": "System.Predicate<PlayerCashOutData>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501d840",
+      "metadata_address": "0x505be10",
+      "kind": "ScriptString",
+      "value": "You Can Cash Out Now!"
+    },
+    {
+      "ghidra_pointer": "0501e1e8",
+      "metadata_address": "0x50158c8",
+      "kind": "ScriptMetadata",
+      "value": "UIMainView.<>c__DisplayClass76_0_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501e1f0",
+      "metadata_address": "0x5046328",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$UIMainView.<>c__DisplayClass76_0.<ShowCashOutTip>b__3()"
+    },
+    {
+      "ghidra_pointer": "0501e1f8",
+      "metadata_address": "0x50388f0",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$UIMainView.<ShowCashOutTip>b__76_0()"
+    },
+    {
+      "ghidra_pointer": "0501e200",
+      "metadata_address": "0x50388f8",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$UIMainView.<ShowCashOutTip>b__76_1()"
+    },
+    {
+      "ghidra_pointer": "0501e208",
+      "metadata_address": "0x5038900",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$UIMainView.<ShowCashOutTip>b__76_2()"
+    },
+    {
+      "ghidra_pointer": "0501e210",
+      "metadata_address": "0x504fe60",
+      "kind": "ScriptString",
+      "value": "Earn <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> To Withdraw <material=\"#003815_3\"><gradient=\"cash\">{1}</gradient></material>"
+    }
+  ]
+}

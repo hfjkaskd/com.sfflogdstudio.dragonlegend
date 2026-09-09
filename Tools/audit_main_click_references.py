@@ -9,10 +9,12 @@ import struct
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("reverse_root", type=Path)
 parser.add_argument("output", type=Path)
+parser.add_argument("--function", default="23bd4e8", help="Game function RVA in hexadecimal")
 args = parser.parse_args()
 root = args.reverse_root
 elf_path = root / "exports/com.sfflogdstudio.dragonlegend-20260907/unpacked/split_config.arm64_v8a/lib/arm64-v8a/libil2cpp.so"
-source_path = root / "reconstruction/mumu-current/native-functions/game/23bd4e8.c"
+assert re.fullmatch(r"[0-9a-fA-F]+", args.function), "Expected hexadecimal RVA"
+source_path = root / f"reconstruction/mumu-current/native-functions/game/{args.function.lower()}.c"
 script_path = root / "reconstruction/mumu-current/analysis/script.json"
 elf = elf_path.read_bytes()
 assert elf[:6] == b"\x7fELF\x02\x01", "Expected little-endian ELF64"
@@ -39,11 +41,12 @@ for address in sorted(set(re.findall(r"PTR_DAT_([0-9a-f]+)", source))):
     if target in metadata:
         references.append({"ghidra_pointer": address, "metadata_address": hex(target), **metadata[target]})
 by_pointer = {row["ghidra_pointer"]: row["value"] for row in references}
-assert by_pointer["0501e330"] == "CashOutb"
-assert by_pointer["0501e318"] == "WithdrawBtn"
-assert by_pointer["0501bcf0"] == "Method$Game.UI.UIManager.ShowWindow<UICashOutView>()"
-args.output.write_text(json.dumps({"function_rva": "0x23bd4e8",
+if args.function.lower() == "23bd4e8":
+    assert by_pointer["0501e330"] == "CashOutb"
+    assert by_pointer["0501e318"] == "WithdrawBtn"
+    assert by_pointer["0501bcf0"] == "Method$Game.UI.UIManager.ShowWindow<UICashOutView>()"
+args.output.write_text(json.dumps({"function_rva": "0x" + args.function.lower(),
     "elf_sha256": hashlib.sha256(elf).hexdigest(),
     "source_sha256": hashlib.sha256(source_path.read_bytes()).hexdigest(),
     "references": references}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-print(f"Resolved {len(references)} Main click references; withdrawal route symbols verified.")
+print(f"Resolved {len(references)} references for RVA {args.function}.")
