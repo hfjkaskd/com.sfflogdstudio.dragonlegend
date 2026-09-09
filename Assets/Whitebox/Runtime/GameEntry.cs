@@ -24,12 +24,15 @@ namespace DragonLegend.Whitebox
         public RecoveredBonusFlow BonusFlow {get;private set;}
         [SerializeField] private RecoveredCollectEntry collectEntryPrefab;
         public RecoveredCollectEntry CollectEntry { get; private set; }
+        [SerializeField] private RecoveredMainBackground backgroundPrefab;
+        public RecoveredMainBackground Background { get; private set; }
         public RecoveredBalancePanel BalancePanel=>balancePanel;
         public LocalAdFacade Ads {get;private set;}
         public RecoveredAdSimulationControls AdControls=>adControls;
         public RecoveredSpinPlayfield Playfield { get; private set; }
         private void ReleasePlayfield()
         {
+            if (Background != null) { Destroy(Background.gameObject); Background = null; }
             if (CollectEntry != null) { Destroy(CollectEntry.gameObject); CollectEntry = null; }
             if(BonusFlow!=null){BonusFlow.Unbind();Destroy(BonusFlow.gameObject);BonusFlow=null;}
             if(CashFlight!=null){CashFlight.Unbind();Destroy(CashFlight.gameObject);CashFlight=null;}
@@ -157,6 +160,12 @@ namespace DragonLegend.Whitebox
                 + "\nLines: " + Rules.GetLines() + "\nCash tiers: " + Rules.GetCashOutCount()
                 + "\n\n" + profile.evidenceNote;
             loading = null;
+            if (backgroundPrefab != null) {
+                Background = Instantiate(backgroundPrefab, transform, false);
+                Background.Bind(GetComponent<Canvas>());
+                Background.transform.SetAsFirstSibling();
+                Background.Apply(PlayerProgress.GameSlotType);
+            }
             if (balancePanelPrefab != null) {
                 balancePanel = Instantiate(balancePanelPrefab, transform, false);
                 balancePanel.Bind(PlayerProgress, Rules, profile.languageType);

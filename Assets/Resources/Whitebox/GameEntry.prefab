@@ -1494,6 +1494,7 @@ MonoBehaviour:
   cashFlightPrefab: {fileID: 3496523774249698004, guid: 28e56ad672b796f48835ceb487427047, type: 3}
   bonusFlowPrefab: {fileID: 7761479274615700034, guid: 99279d91208a2f742a891c38668f63fe, type: 3}
   collectEntryPrefab: {fileID: 7749353999170228770, guid: 4c348b64e4a5b5145b4d8de328f82798, type: 3}
+  backgroundPrefab: {fileID: 5024489222902620698, guid: 20644c92e96ac6a4f850927a257bb806, type: 3}
 --- !u!114 &8942328160057530511
 MonoBehaviour:
   m_ObjectHideFlags: 0
