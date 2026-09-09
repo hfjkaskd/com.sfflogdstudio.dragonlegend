@@ -56,8 +56,9 @@ production core before installing their own entry/counter event harness; otherwi
 they would drive duplicate Free controllers without the normal cover initialization.
 The final full run also passes existing RNG pause and wheel timing assertions.
 
-Remaining core verification includes mixed production ball branches; the no-ball
-shortened session test does not cover those cases.
+The no-ball shortened session test does not cover ball branches. The additional
+production-scene branch test below covers each branch in a separate Free session;
+mixed multiple-ball and multiple-round sessions still need end-to-end verification.
 
 GM teardown follow-up: free-gm-before.xml reproduced a running old Free controller
 after the actual SelectUS button rebuilt the profile. FreeColumn now retains the
@@ -73,3 +74,34 @@ column-stop phases: immediate stopped state, no later old stop/sound callbacks,
 no old balance/count mutation, and a working Spin button after rebuilding.
 Full follow-up regression: Artifacts/free-gm-regression.xml passes 353/353 PlayMode
 tests, including normal Base/Free round completion and existing reel timing tests.
+
+## Production ball branch verification
+
+RecoveredCoreBallBranchesTests drives the actual Spin button through the initial
+ordinary round and four further ForceFreeSpin rounds. Each waits for the actual
+start window, Free reels, coin/Bonus scan, ball flight/activation and production
+router. Slot, Wheel, Treasure and Lucky each open their real bound prefab and
+claim through their actual plain Button. The test checks one ledger entry, matching
+Free reward collection/session total, one balance credit, zero remaining spins,
+the end window, the return transition lock, and a subsequent working Spin button.
+Duplicate Spin clicks also consume only one spin.
+
+Fixture-only controls: Free music callback sets one remaining spin and selects a
+zero-coin/one-ball generation seed. Once the actual ball scan starts, the test
+selects a seed whose first reward draw for the stopped ball's type chooses the
+requested branch. It does not replace the router, callbacks, claim/flight code,
+windows or production configuration. This validates four real single-ball sessions,
+not all country distributions, advertisement outcomes or mixed-ball combinations.
+
+An initial balance assertion exposed the preceding BigWin flight still arriving
+after the Free intro appeared (648 units in the diagnostic run). This is not a
+duplicate ball reward: native UIBigWinView.OnAfterHide 2395548 invokes the main
+callback before dispatching the independent event-1 cash flight. The fixture now
+waits for that existing flight to drain before taking its per-ball balance baseline;
+runtime ordering is unchanged. Another fixture correction gates its RNG selection
+on an active ball scan, since the Base Bonus completion can enter Free before later
+subscribers run. No runtime fixes were needed for these four verified branches.
+
+Focused validation: Artifacts/core-ball-final.xml passes 1/1, containing all four
+branches and their actual Spin-to-return sequences.
+Full validation: Artifacts/core-ball-regression.xml passes 354/354 PlayMode tests.
