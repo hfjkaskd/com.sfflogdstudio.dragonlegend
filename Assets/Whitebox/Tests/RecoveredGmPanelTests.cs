@@ -22,8 +22,9 @@ public sealed class RecoveredGmPanelTests
             while(entry.Playfield==null&&Time.realtimeSinceStartup<deadline)yield return null;Assert.IsNotNull(entry.Playfield);
             var panel=entry.GetComponent<RecoveredGmPanel>();var camera=entry.GetComponent<Canvas>().worldCamera;
             var primary=entry.transform.Find("SelectUS").GetComponent<Button>();var alternate=entry.transform.Find("SelectAlternative").GetComponent<Button>();
+            var configTest=entry.transform.Find("SelectConfigTest").GetComponent<Button>();
             Assert.IsFalse(panel.IsOpen);Assert.IsFalse(entry.CurrentProfile.isA);Assert.AreEqual("US",entry.CurrentProfile.countryCode);
-            foreach(var button in new[]{primary,alternate}) {
+            foreach(var button in new[]{primary,alternate,configTest}) {
                 var group=button.GetComponent<CanvasGroup>();Assert.AreEqual(0,group.alpha);Assert.IsFalse(group.blocksRaycasts);Assert.IsFalse(button.IsInteractable());
                 Assert.IsEmpty(Hits(button,camera),"Hidden GM controls must not intercept touches over the game.");
             }
@@ -38,6 +39,18 @@ public sealed class RecoveredGmPanelTests
             Click(panel.ToggleButton,camera);yield return null;Click(primary,camera);Assert.IsFalse(panel.IsOpen);
             deadline=Time.realtimeSinceStartup+5;while(entry.Playfield==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(entry.Playfield);Assert.IsFalse(entry.CurrentProfile.isA);Assert.AreEqual("US",entry.CurrentProfile.countryCode);
+            oldField=entry.Playfield;
+            Click(panel.ToggleButton,camera);yield return null;Click(configTest,camera);Assert.IsFalse(panel.IsOpen);
+            deadline=Time.realtimeSinceStartup+5;while(entry.Playfield==null&&Time.realtimeSinceStartup<deadline)yield return null;
+            Assert.IsNotNull(entry.Playfield);Assert.AreNotSame(oldField,entry.Playfield);
+            Assert.AreEqual("RecoveredConfig/Remote/cp_test.json",entry.CurrentProfile.snapshotPath);
+            Assert.IsFalse(entry.CurrentProfile.isA);Assert.IsEmpty(Hits(configTest,camera));
+            int testSpins=entry.PlayerProgress.SpinCount;
+            entry.Playfield.SpinButton.Button.onClick.Invoke();
+            Assert.AreEqual(testSpins-1,entry.PlayerProgress.SpinCount);Assert.IsTrue(entry.Playfield.IsBusy);
+            Click(panel.ToggleButton,camera);yield return null;Click(primary,camera);
+            deadline=Time.realtimeSinceStartup+5;while(entry.Playfield==null&&Time.realtimeSinceStartup<deadline)yield return null;
+            Assert.IsNotNull(entry.Playfield);Assert.AreEqual("US_Default",entry.CurrentProfile.profileId);
         } finally {
             if(scene.IsValid())unload=SceneManager.UnloadSceneAsync(scene);Random.state=random;
             if(had)PlayerPrefs.SetString(key,saved);else PlayerPrefs.DeleteKey(key);

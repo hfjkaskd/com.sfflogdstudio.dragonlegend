@@ -33,5 +33,6 @@ public static class BuildGmPanel
             }
             settings.ApplyModifiedPropertiesWithoutUndo();PrefabUtility.SaveAsPrefabAsset(root,path);AssetDatabase.SaveAssets();
         } finally {PrefabUtility.UnloadPrefabContents(root);}
+        BuildGmTestProfile.Save();
     }
 }
