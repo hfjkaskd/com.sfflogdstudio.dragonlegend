@@ -16,6 +16,7 @@ namespace DragonLegend.Whitebox
         private Vector3 scatterStart,scatterEnd,start,control,end;
         private float scatterElapsed,delayElapsed,delay,flightElapsed;
         private bool scattering,scheduled,flying;
+        private int lastAdvanceFrame=-1;
         public event Action<RecoveredCashFlightItem> Arrived;
         public bool IsFlying=>flying;
         public bool IsScheduled=>scheduled;
@@ -35,12 +36,15 @@ namespace DragonLegend.Whitebox
             if(source!=null)cachedTransform.position=source.position;
             cachedTransform.SetAsLastSibling();scatterStart=cachedTransform.localPosition;
             scatterEnd=scatterStart+new Vector3(offset.x,offset.y,0);
-            scatterElapsed=0;scattering=true;scheduled=false;flying=false;
+            scatterElapsed=0;scattering=true;scheduled=false;flying=false;lastAdvanceFrame=-1;
         }
         public void Schedule(float seconds,Transform target)
         {delay=seconds;delayElapsed=0;destination=target;scheduled=true;}
-        private void Update()
+        private void Update()=>Advance();
+        internal void Advance()
         {
+            if(lastAdvanceFrame==Time.frameCount)return;
+            lastAdvanceFrame=Time.frameCount;
             if(scattering) {
                 scatterElapsed+=Time.deltaTime;float t=Mathf.Clamp01(scatterElapsed/scatterDuration);
                 cachedTransform.localPosition=Vector3.LerpUnclamped(scatterStart,scatterEnd,scatterEase.Evaluate(t));
@@ -61,6 +65,7 @@ namespace DragonLegend.Whitebox
             if(progress<1)return;
             flying=false;Arrived?.Invoke(this);
         }
-        private void OnDisable(){scattering=false;scheduled=false;flying=false;destination=null;}
+        internal void Cancel(){scattering=false;scheduled=false;flying=false;destination=null;}
+        private void OnDestroy()=>Cancel();
     }
 }

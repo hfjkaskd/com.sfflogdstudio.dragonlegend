@@ -13,7 +13,10 @@ using UnityEngine.UI;
 public sealed class RecoveredBankWindowTests
 {
     [UnityTest]
-    public IEnumerator ActualWindowSelectsPaysContinuesAndClosesUsingAuthoredButtons()
+    public IEnumerator ActualWindowSelectsPaysContinuesAndClosesUsingAuthoredButtons()=>Run(false);
+    [UnityTest]
+    public IEnumerator OverlappingBankFlightsFinishCreditingAfterWindowCloses()=>Run(true);
+    private IEnumerator Run(bool overlap)
     {
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);PlayerPrefs.DeleteKey(key);
         var random=Random.state;float scale=Time.timeScale,delta=Time.captureDeltaTime;Scene scene=default;AsyncOperation unload=null;
@@ -76,8 +79,11 @@ public sealed class RecoveredBankWindowTests
             yield return ClickVisible(window.Item(1).Button,camera);
             yield return ClickVisible(game.AdControls.RewardButton,camera);
             for(int i=0;i<160&&flights<2;i++)yield return null;
-            for(int i=0;i<160&&game.CashFlight.ActiveCashCount>0;i++)yield return null;
-            Assert.AreEqual(0,game.CashFlight.ActiveCashCount,"Wait for the second reward to arrive before opening the last ball.");
+            if(overlap) { for(int i=0;i<30;i++)yield return null; }
+            else {
+                for(int i=0;i<160&&game.CashFlight.ActiveCashCount>0;i++)yield return null;
+                Assert.AreEqual(0,game.CashFlight.ActiveCashCount,"Wait for the second reward to arrive before opening the last ball.");
+            }
             Assert.AreEqual(2,flights);Assert.IsFalse(window.Selection.IsContinue);Assert.IsTrue(window.gameObject.activeSelf);
             beforeFailed=game.PlayerProgress.GreenCount;
             yield return ClickVisible(window.OpenButton,camera);Assert.IsTrue(game.Ads.Pending);
@@ -88,8 +94,11 @@ public sealed class RecoveredBankWindowTests
             yield return ClickVisible(game.AdControls.RewardButton,camera);
             for(int i=0;i<180&&closed==0;i++)yield return null;
             Assert.AreEqual(3,flights);Assert.AreEqual(1,closed);Assert.IsFalse(window.gameObject.activeSelf);
-            Assert.AreEqual(bankStart+bankRewards,game.PlayerProgress.GreenCount,.001f,"Each bank flight pays once; failed ads pay nothing.");
             Assert.AreNotEqual(yAtClose,window.Item(0).transform.localPosition.y,"Native close continuation precedes float restoration.");
+            float flightDeadline=Time.realtimeSinceStartup+3;
+            while(game.CashFlight.ActiveCashCount>0&&Time.realtimeSinceStartup<flightDeadline)yield return null;
+            Assert.AreEqual(0,game.CashFlight.ActiveCashCount,"Closing the bank must not strand pending cash flights.");
+            Assert.AreEqual(bankStart+bankRewards,game.PlayerProgress.GreenCount,.001f,"Each bank flight pays once; failed ads pay nothing.");
             window.Show(()=>closed++);for(int i=0;i<12;i++)yield return null;
             window.Item(0).Button.onClick.Invoke();for(int i=0;i<160&&!window.Item(1).Ad.gameObject.activeSelf;i++)yield return null;
             for(int i=0;i<15;i++)yield return null;

@@ -48,10 +48,24 @@ namespace DragonLegend.Whitebox
         {
             var item=Instantiate(collectionPrefab,poolRoot,false);item.Completed+=CollectFinished;item.gameObject.SetActive(false);return item;
         }
-        private void ReleaseCash(RecoveredCashFlightItem item){item.gameObject.SetActive(false);item.transform.SetParent(poolRoot,false);}
+        private void ReleaseCash(RecoveredCashFlightItem item){item.Cancel();item.gameObject.SetActive(false);item.transform.SetParent(poolRoot,false);}
         private void ReleaseEffect(RecoveredCashCollectionEffect item){item.gameObject.SetActive(false);item.transform.SetParent(poolRoot,false);}
         private void DestroyCash(RecoveredCashFlightItem item)
-        {item.Arrived-=Arrive;item.gameObject.SetActive(false);Destroy(item.gameObject);}
+        {item.Arrived-=Arrive;item.Cancel();item.gameObject.SetActive(false);Destroy(item.gameObject);}
+        private void Update()
+        {
+            // Native DOTween flights continue when their window parent is hidden.
+            // Walk backwards because an arrival can remove its completed batch.
+            for(int b=batches.Count-1;b>=0;b--)
+            {
+                var batch=batches[b];
+                for(int i=0;i<batch.items.Length;i++)
+                {
+                    var item=batch.items[i];
+                    if(item!=null&&!item.gameObject.activeInHierarchy)item.Advance();
+                }
+            }
+        }
         private void DestroyEffect(RecoveredCashCollectionEffect item)
         {item.Completed-=CollectFinished;item.gameObject.SetActive(false);Destroy(item.gameObject);}
         public void Begin(float amount,Action completed,Transform topWindow,bool isMainWindow,Transform source=null)

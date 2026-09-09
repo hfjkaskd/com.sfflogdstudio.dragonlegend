@@ -1,0 +1,11 @@
+# Hidden bank window must not stop outstanding cash flights
+
+The follow-up to `bank-scene-ad-retry.md` confirmed a runtime defect. `RecoveredBankWindowTests.OverlappingBankFlightsFinishCreditingAfterWindowCloses` preserves overlapping second/third selections, waits for automatic bank close, then gives pending flights a three-second realtime deadline. Before the fix it retained five active cash objects indefinitely (`Artifacts/bank-overlap-before.xml`: sequential case passed, overlapping case failed).
+
+Cash objects are parented to the bank window. Its normal hide deactivates the hierarchy. Previously `RecoveredCashFlightItem.OnDisable` cleared its animation state, and its own MonoBehaviour Update no longer ran. Outstanding batches could therefore never finish crediting. Native `23c3188.c` starts `FlyAnimUtils.Fly` (`238c74c.c`), which uses DOTween.To with OnUpdate and completion; that path is not tied to the bank object's MonoBehaviour Update or an OnDisable cancellation.
+
+The presenter now advances outstanding items whose hierarchy is inactive. Normal visible items keep their existing Update path. A frame guard prevents double advancement on a visibility transition. Cancellation is explicit at pool release/destruction; hiding a reward window no longer cancels the flight. The small existing batch/item arrays are scanned without allocation. Native selection-count closing behavior, scaled flight time, unscaled departure time, callback-before-credit order and SDK handling remain unchanged.
+
+The regression waits after window close for all active cash objects to return, then compares actual balance against the sum of all three emitted rewards. Both advertisement failures and retries still use top scene raycast targets. The separate sequential variant remains covered.
+
+Targeted PlayMode validation: `Artifacts/bank-overlap-fixed.xml`, 5/5 passed in 11.9179933 seconds, Unity process 26652 exited. Includes both bank variants, both-profile flight/pause/pool behavior, trajectory curve, and GameEntry deactivation/rebuild teardown. This fixes the reproduced missing-credit path; it is not proof of all original lifecycle or visual parity. Android APK installation is not updated by these Editor tests.
