@@ -14,7 +14,10 @@ public sealed class RecoveredZeroCollectionSessionTests
     [UnityTest]
     public IEnumerator FreshGuideContinuesThroughFreeWildAndNaturalBonus()=>Run(true);
 
-    private IEnumerator Run(bool keepGuide)
+    [UnityTest]
+    public IEnumerator TwoNaturalBonusesReuseWindowAndRetainNativeAdState()=>Run(false,2);
+
+    private IEnumerator Run(bool keepGuide,int targetBonuses=1)
     {
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);
         PlayerPrefs.DeleteKey(key);var random=Random.state;float scale=Time.timeScale,delta=Time.captureDeltaTime;
@@ -34,10 +37,11 @@ public sealed class RecoveredZeroCollectionSessionTests
             var treasure=core.GetComponentInChildren<RecoveredFreeTreasureGame>(true);
             var lucky=core.GetComponentInChildren<RecoveredFreeLuckyGame>(true);
             int completed=0,paid=0,bonusShown=0;bool inBonus=false,wildClaimed=false;
+            RecoveredBonusWindow firstWindow=null;RecoveredBonusSelection firstSelection=null;int bonusAds=0;
             core.CoreRoundCompleted+=()=>completed++;
             System.Exception bonusError=null;game.BonusFlow.Failed+=error=>bonusError=error;
             float sessionDeadline=Time.realtimeSinceStartup+120;
-            while((bonusShown==0||field.IsBusy)&&Time.realtimeSinceStartup<sessionDeadline&&paid<60) {
+            while((bonusShown<targetBonuses||field.IsBusy)&&Time.realtimeSinceStartup<sessionDeadline&&paid<60) {
                 if(!field.IsBusy&&!core.MoreSpins.gameObject.activeSelf&&!core.MoreWild.gameObject.activeSelf) {
                     int before=player.SpinCount;field.SpinButton.Button.onClick.Invoke();
                     if(before>0){paid++;Assert.AreEqual(before-1,player.SpinCount);Assert.IsTrue(field.IsBusy);}
@@ -60,12 +64,26 @@ public sealed class RecoveredZeroCollectionSessionTests
                 Claim(wheel.Window.JackpotPopup.PlainButton);Claim(treasure.Window.PlainButton);Claim(lucky.Popup.PlainButton);
                 var bonus=game.BonusFlow;var window=bonus.Window;
                 if(window.gameObject.activeInHierarchy) {
-                    if(!inBonus){bonusShown++;inBonus=true;CollectionAssert.AreEqual(new[]{0,0,0,0,0},player.BonusArea);Assert.IsFalse(player.IsBonusGame);}
+                    if(!inBonus){
+                        bonusShown++;inBonus=true;CollectionAssert.AreEqual(new[]{0,0,0,0,0},player.BonusArea);Assert.IsFalse(player.IsBonusGame);
+                        Assert.AreEqual(0,window.Selection.Round.ClickedCount);Assert.IsFalse(window.Selection.IsClicked);
+                        if(bonusShown==1){firstWindow=window;firstSelection=window.Selection;}
+                        else {Assert.AreSame(firstWindow,window);Assert.AreSame(firstSelection,window.Selection);Assert.IsTrue(window.Selection.NeedsAd);}
+                    }
                     if(!bonus.Transition.IsPlaying) {
                         Claim(window.RewardPopup.PlainButton);Claim(window.JackpotPopup.PlainButton);
                         if(!window.Selection.IsClicked&&!window.Selection.IsEnd) {
                             if(window.Selection.Round.ClickedCount<game.Rules.GetBonusFreeTimes())Claim(window.Card(window.Selection.Round.ClickedCount).Button);
                             else Claim(window.CloseButton);
+                        }
+                        if(game.Ads.Pending) {
+                            Assert.AreEqual("bonusCoin",game.Ads.Placement);Assert.Greater(bonusShown,1);
+                            int before=window.Selection.Round.ClickedCount;
+                            Assert.IsTrue(window.Selection.IsClicked);
+                            if(game.AdControls.RewardButton.gameObject.activeInHierarchy) {
+                                Claim(game.AdControls.RewardButton);bonusAds++;
+                                Assert.IsFalse(game.Ads.Pending);Assert.AreEqual(before+1,window.Selection.Round.ClickedCount);
+                            }
                         }
                     }
                 } else inBonus=false;
@@ -78,7 +96,8 @@ public sealed class RecoveredZeroCollectionSessionTests
                 Assert.IsNull(field.Error);Assert.IsNull(core.Error);Assert.IsNull(bonusError);
                 yield return null;
             }
-            Assert.Greater(bonusShown,0,"Actual generated collection must reach Bonus within the bounded session.");
+            Assert.AreEqual(targetBonuses,bonusShown,"Actual generated collection must reach each Bonus within the bounded session.");
+            Assert.AreEqual((targetBonuses-1)*game.Rules.GetBonusFreeTimes(),bonusAds);
             Assert.IsFalse(field.IsBusy);Assert.AreEqual(paid,completed);
             Assert.AreEqual(RecoveredSlotType.Base,player.GameSlotType);
             if(keepGuide){Assert.IsTrue(wildClaimed);Assert.AreEqual(3,game.PlayerStore.Data.GuideStep);Assert.IsFalse(core.MoreWild.Guide.gameObject.activeSelf);}
@@ -99,6 +118,15 @@ public sealed class RecoveredZeroCollectionSessionTests
             Assert.IsFalse(restored.CoreRound.MoreWild.gameObject.activeSelf);
             Assert.IsFalse(restored.Playfield.IsBusy);Assert.IsFalse(restored.BonusFlow.IsRunning);
             int restoredSpins=restored.PlayerProgress.SpinCount;
+            if(restoredSpins==0) {
+                restored.Playfield.SpinButton.Button.onClick.Invoke();
+                Assert.IsFalse(restored.Playfield.IsBusy);Assert.AreEqual(0,restored.PlayerProgress.SpinCount);
+                deadline=Time.realtimeSinceStartup+5;
+                while(!restored.CoreRound.MoreSpins.ClaimButton.gameObject.activeInHierarchy&&Time.realtimeSinceStartup<deadline)yield return null;
+                Claim(restored.CoreRound.MoreSpins.ClaimButton);Assert.IsTrue(restored.Ads.Pending);
+                restored.AdControls.RewardButton.onClick.Invoke();Assert.IsFalse(restored.Ads.Pending);
+                restoredSpins=restored.PlayerProgress.SpinCount;
+            }
             Assert.Greater(restoredSpins,0);
             restored.Playfield.SpinButton.Button.onClick.Invoke();
             Assert.AreEqual(restoredSpins-1,restored.PlayerProgress.SpinCount);Assert.IsTrue(restored.Playfield.IsBusy);
