@@ -67,11 +67,18 @@ public sealed class RecoveredMoreWildWindowTests
             Assert.IsTrue(wildEntry.Button.gameObject.activeInHierarchy,"Original Tubiao remains outside the mode-switched Bottom/Main.");
             Assert.AreEqual(2,game.PlayerProgress.MoreWild);
             game.PlayerProgress.GameSlotType=RecoveredSlotType.Base;field.ModeView.ApplyCurrent();
+            var adapt=wildEntry.GetComponent<RecoveredScreenAdapt>();Assert.IsNotNull(adapt);
+            Assert.AreEqual("Tubiao",wildEntry.Button.transform.parent.name);
+            var entryRect=(RectTransform)wildEntry.transform;var scaler=game.GetComponentInParent<CanvasScaler>();
+            float factor=scaler.matchWidthOrHeight*scaler.referenceResolution.y/1920-scaler.referenceResolution.x*(scaler.matchWidthOrHeight-1)/1080;
+            adapt.Apply(1080,1920,new Rect(24,60,1032,1740));
+            Assert.AreEqual(24*factor,entryRect.offsetMin.x,.0002f);Assert.AreEqual(-120*factor,entryRect.offsetMax.y,.0002f);
             Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
             Assert.AreSame(wildEntry.Button.gameObject,Hit(wildEntry.Button.transform,camera));
             RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
             File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-more-wild-entry.png"),capture.EncodeToPNG());
             Click(wildEntry.Button.gameObject);for(int i=0;i<10;i++)yield return null;
+            adapt.AdaptScreen();
             Assert.IsFalse(window.Guide.gameObject.activeSelf);Assert.IsFalse(window.Finger.gameObject.activeSelf);
             Assert.AreEqual("<sprite name=\"tc_btn_bofang\">CLAIM",window.ClaimText.text);
             Click(window.ClaimButton.gameObject);Assert.IsTrue(game.Ads.Pending);game.Ads.Complete(AdOutcome.Failed);

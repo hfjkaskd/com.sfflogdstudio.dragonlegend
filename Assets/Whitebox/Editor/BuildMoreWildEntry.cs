@@ -14,6 +14,10 @@ public static class BuildMoreWildEntry
     public static void Save()
     {
         BuildJackpotPopupArt.Create("ef_morewildicon","按钮/morewild",Vector2.zero,new Vector2(.5f,.5f),"Tools/Evidence/","Artifacts/MoreWildAuthoring/");
+        SaveEntry();
+    }
+    public static void SaveEntry()
+    {
         const string path="Assets/Resources/RecoveredUI/SpinPlayfield.prefab";
         var field=PrefabUtility.LoadPrefabContents(path);
         try {Attach(field);PrefabUtility.SaveAsPrefabAsset(field,path);AssetDatabase.SaveAssets();}
@@ -28,8 +32,10 @@ public static class BuildMoreWildEntry
         foreach(Match m in Regex.Matches(source,@"^--- !u!\d+ &(\d+)\n.*?(?=^--- !u!|\z)",RegexOptions.Multiline|RegexOptions.Singleline))blocks.Add(m.Groups[1].Value,m.Value);
         // Keep the original Tubiao parent rectangle, but only its recovered MoreWild child here.
         blocks["224587083680832752"]=Regex.Replace(blocks["224587083680832752"],@"  m_Children:\n.*?  m_Father:","  m_Children:\n  - {fileID: 224534964404139401}\n  m_Father:",RegexOptions.Singleline);
-        var yaml=new StringBuilder("%YAML 1.1\n%TAG !u! tag:unity3d.com,2011:\n");BuildTreasureCard.Append("224587083680832752","224587083680832752",blocks,yaml);
+        blocks["224901155395665742"]=Regex.Replace(blocks["224901155395665742"],@"  m_Children:\n.*?  m_Father:","  m_Children:\n  - {fileID: 224587083680832752}\n  m_Father:",RegexOptions.Singleline);
+        var yaml=new StringBuilder("%YAML 1.1\n%TAG !u! tag:unity3d.com,2011:\n");BuildTreasureCard.Append("224901155395665742","224901155395665742",blocks,yaml);
         var map=new Dictionary<string,string>();BuildTreasureCard.Script<Image>(map,"3cf5a44414476512e00c3e7a2569a919");
+        BuildTreasureCard.Script<RecoveredScreenAdapt>(map,"3991d2bd099e12203576b2cf89b113da");
         BuildTreasureCard.Script<TextMeshProUGUI>(map,"3f96b1d166d19b209697e35b35d65c76");BuildTreasureCard.Script<Button>(map,"18d0a90695249463551c00f45766e642");
         BuildTreasureCard.Script<RecoveredEmptyRaycastGraphic>(map,"e0b4d57e8f658b407a2ad25df85fb0d6");
         string text=yaml.ToString();var removed=new List<string>();
@@ -41,7 +47,7 @@ public static class BuildMoreWildEntry
         GameObject root;
         try {File.WriteAllText(temporary,text);AssetDatabase.ImportAsset(temporary,ImportAssetOptions.ForceSynchronousImport);root=Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(temporary),field.transform,false);root.name="MoreWildEntry";}
         finally {AssetDatabase.DeleteAsset(temporary);}
-        var entry=root.transform.Find("MoreWild");var old=(RectTransform)entry.Find("SkeletonGraphic (ef_morewildicon)");
+        var entry=root.transform.Find("Tubiao/MoreWild");var old=(RectTransform)entry.Find("SkeletonGraphic (ef_morewildicon)");
         var icon=(GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Resources/RecoveredUI/JackpotPopupArt/ef_morewildicon.prefab"),entry);
         var rect=(RectTransform)icon.transform;rect.anchorMin=old.anchorMin;rect.anchorMax=old.anchorMax;rect.pivot=old.pivot;rect.sizeDelta=old.sizeDelta;rect.anchoredPosition=old.anchoredPosition;rect.localScale=old.localScale;
         rect.SetSiblingIndex(old.GetSiblingIndex());icon.layer=old.gameObject.layer;icon.name=old.name;Object.DestroyImmediate(old.gameObject);
