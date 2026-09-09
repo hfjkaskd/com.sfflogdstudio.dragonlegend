@@ -59,6 +59,8 @@ namespace DragonLegend.Whitebox
         private void CompleteCoreRound()
         {
             if(game.Playfield.AwaitingRewards)game.Playfield.CompleteBaseRound();
+            // CheckBaseEnd 23c67d4..23c67f4: clear the busy flag, then SavePlayerData.
+            game.PlayerStore.Save();
             CoreRoundCompleted?.Invoke();
         }
         private void Fail(Exception error)=>Error=error;

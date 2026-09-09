@@ -38,10 +38,15 @@ public sealed class RecoveredCoreRoundFlowTests
             Assert.IsNull(field.ModeView.FreeReels.CoinScan.Error);Assert.IsNull(field.ModeView.FreeReels.BallScan.Error);Assert.IsNull(field.ModeView.FreeReels.RewardCollect.Error);
             Assert.IsTrue(core.Exit.Window.IsShown);Assert.AreEqual(0,game.PlayerProgress.FreeSpinCount);Assert.IsTrue(field.IsBusy);Assert.AreEqual(1,completed);
             for(int i=0;i<100&&!core.Exit.Window.ContinueButton.gameObject.activeInHierarchy;i++)yield return null;
-            Assert.IsTrue(core.Exit.Window.ContinueButton.gameObject.activeInHierarchy);core.Exit.Window.ContinueButton.onClick.Invoke();
+            Assert.IsTrue(core.Exit.Window.ContinueButton.gameObject.activeInHierarchy);
+            // A dirty persisted setting isolates the final save from earlier reward setters.
+            game.PlayerStore.Data.IsMusic=!game.PlayerStore.Data.IsMusic;
+            Assert.AreNotEqual(JsonUtility.ToJson(game.PlayerStore.Data),PlayerPrefs.GetString(key));
+            core.Exit.Window.ContinueButton.onClick.Invoke();
             Assert.IsTrue(field.IsBusy,"End-window close must not unlock Spin before return transition completes.");
             for(int frame=0;frame<150&&completed==1;frame++)yield return null;
             Assert.AreEqual(2,completed);Assert.IsFalse(core.Entry.IsFreeSpinEnd);Assert.IsFalse(field.IsBusy);
+            Assert.AreEqual(JsonUtility.ToJson(game.PlayerStore.Data),PlayerPrefs.GetString(key),"Return completion must persist the current player record.");
             Assert.AreEqual(RecoveredSlotType.Base,game.PlayerProgress.GameSlotType);Assert.IsTrue(field.ModeView.BaseRoll.activeSelf);Assert.IsFalse(field.ModeView.FreeRoll.activeSelf);
             spins=game.PlayerProgress.SpinCount;field.SpinButton.Button.onClick.Invoke();Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);Assert.IsTrue(field.Reels.IsRunning);
         } finally {

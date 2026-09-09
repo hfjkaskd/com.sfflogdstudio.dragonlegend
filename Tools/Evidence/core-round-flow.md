@@ -33,7 +33,7 @@ without recreating/resetting already initialized symbols. Free return callback
 entry flow's corresponding flag at this callback.
 
 Important remaining scope: this is the core-gameplay continuation, not the full
-native CheckBaseEnd implementation. Its later upgrade/cash-out/peripheral popup
+native CheckBaseEnd implementation. Its later bank/review/cash-out popup
 checks and waits are still absent. They must be inserted before final unlock for
 complete lifecycle fidelity. CoreRoundCompleted currently records core completion;
 it does not claim the peripheral checks ran. Common audio event playback also
@@ -135,3 +135,33 @@ generation. No runtime configuration, generation callbacks or reward consumers a
 replaced. This checks the selected repeated path, not every possible mixed outcome.
 Focused Artifacts/core-repeated-free.xml passes 1/1; no runtime fix was required.
 Full Artifacts/core-repeated-regression.xml passes 355/355 PlayMode tests.
+
+## Native final save and remaining end-flow work
+
+CheckBaseEnd MoveNext 23c56f0 was inspected directly in ARM, including its closure
+predicates. The final successful path calls InitSpinSequence at 23c67cc, clears
+Main.isSpin (+1ee) at 23c67d4, then calls SavePlayerData at 23c67f4. Core completion
+now saves the current PlayerStore after releasing the busy state and before
+notifying CoreRoundCompleted. This recovers a missing final persistence boundary;
+it does not replace or claim completion of the earlier native popup checks.
+
+The actual Spin/Free/end-window test now changes a persisted setting after all
+reward writes, confirms the record is dirty, and checks the full saved JSON after
+the return transition. This prevents earlier reward setters from accidentally
+masking a missing final save.
+
+End-flow audit corrects the earlier generic description: Main +218 is isReview,
++219 is isBank. The routine first awaits !isFreeSpinEnd (+1e0; predicate 23c2ef4),
+then checks bank (+219 at 23c5b90) and review (+218 at 23c5df8), waiting for their
+callbacks. Bank callback 23c2f14 clears +219 and tail-calls InitBank 23bbb5c; review
+callback 23c2f4c clears +218. It then iterates configured cash-out entries, including
+the cash threshold and already-shown indices, before its final path. These existing
+source branches still need their real native-prefab consumers before full fidelity.
+
+The final InitSpinSequence is also not implemented: 23ba59c allocates a sequence
+and appends exactly 2 scaled seconds, then callback 23bf46c requests PoolManager
+ShowFinger on the Spin presentation's parent, reusing Main.SpineFingerObj (+210).
+This is a next core guidance implementation target. Do not describe it as auto-spin.
+Adding the final save does not make the current shortened end flow complete.
+Validation: Artifacts/core-final-save.xml passes 355/355 PlayMode tests, including
+the actual Free return persistence assertion.
