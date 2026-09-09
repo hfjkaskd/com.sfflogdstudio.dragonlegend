@@ -43,6 +43,7 @@ public static class BuildMainCashOutEntry
             rect.SetSiblingIndex(old.GetSiblingIndex());art.layer=old.gameObject.layer;art.name=old.name;Object.DestroyImmediate(old.gameObject);
             var settings=new SerializedObject(root.AddComponent<RecoveredCashOutEntry>());
             settings.FindProperty("button").objectReferenceValue=button.GetComponent<Button>();
+            settings.FindProperty("fingerPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RectTransform>("Assets/Resources/RecoveredUI/Finger.prefab");
             settings.FindProperty("fingerTarget").objectReferenceValue=button.Find("finger");settings.ApplyModifiedPropertiesWithoutUndo();
             PrefabUtility.SaveAsPrefabAsset(root,Output);
         }finally{if(root!=null)Object.DestroyImmediate(root);AssetDatabase.DeleteAsset(temporary);}

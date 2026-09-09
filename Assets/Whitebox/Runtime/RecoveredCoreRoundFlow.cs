@@ -58,7 +58,7 @@ namespace DragonLegend.Whitebox
         public void Bind(GameEntry context)
         {
             game=context;var field=game.Playfield;var reels=field.ModeView.FreeReels;
-            cashOutEntry.Bind(OpenCashOutFromMain);
+            cashOutEntry.Bind(OpenCashOutFromMain,game.PlayerProgress,game.Rules);
             // Attach the existing authored window instances to their native Popup type root.
             field.BigWinPopup.transform.SetParent(popupRoot,false);
             field.JackpotPopup.transform.SetParent(popupRoot,false);

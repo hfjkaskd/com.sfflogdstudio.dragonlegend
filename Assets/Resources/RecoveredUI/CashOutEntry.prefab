@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   button: {fileID: 4527675561910954274}
   fingerTarget: {fileID: 5887025428631669424}
+  fingerPrefab: {fileID: 4327123525324647391, guid: 150db4a7596a59d4ab29592a88cfae26, type: 3}
 --- !u!1 &1149090716649155197
 GameObject:
   m_ObjectHideFlags: 0
