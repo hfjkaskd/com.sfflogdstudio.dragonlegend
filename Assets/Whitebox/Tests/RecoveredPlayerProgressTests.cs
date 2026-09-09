@@ -5,6 +5,51 @@ using NUnit.Framework;
 
 public sealed class RecoveredPlayerProgressTests
 {
+    private static RecoveredGameplayRules CashRules() => new RecoveredGameplayRules(new GoldenDragonAutoGenConfig {
+        Rgpggm=new RgpggmPoro {Qogt=new List<int>{100,3000,5000}}
+    });
+    [TestCase(99.99f,-1)]
+    [TestCase(100f,0)]
+    [TestCase(10000f,0)]
+    [TestCase(float.NaN,-1)]
+    public void CoreCashPromptChecksFirstUnrecordedTierAndOnlyMarksItOnce(float balance,int expected)
+    {
+        var data=new PlayerData {GreenCount=balance};
+        var progress=new RecoveredPlayerProgress(CashRules(),()=>Assert.Fail("Ordinary check must not save"),data);
+        Assert.AreEqual(expected,progress.PrepareCashOutPrompt());
+        CollectionAssert.AreEqual(expected<0?new int[0]:new[]{0},data.CashOutTipIndexs);
+        Assert.AreEqual(-1,progress.PrepareCashOutPrompt(),"Do not search later tiers after an already shown first absent tier");
+        Assert.AreEqual(0,data.PlayerCashOutDatas.Count);
+    }
+    [Test]
+    public void CashPromptIgnoresRecordStatusAndDoesNotConsumeLaterTierBeforeItsThreshold()
+    {
+        var data=new PlayerData {GreenCount=2999};
+        data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=0,isCashout=false,step=0});
+        data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=2,isCashout=true});
+        var progress=new RecoveredPlayerProgress(CashRules(),()=>Assert.Fail("No save"),data);
+        Assert.AreEqual(-1,progress.PrepareCashOutPrompt());
+        data.GreenCount=3000;
+        Assert.AreEqual(1,progress.PrepareCashOutPrompt());
+        CollectionAssert.AreEqual(new[]{1},data.CashOutTipIndexs);
+        data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=1});
+        Assert.AreEqual(-1,progress.PrepareCashOutPrompt());
+    }
+    [Test]
+    public void MissingPromptListIsSavedBeforeEligibilityAndOnlyWhenAnAbsentTierExists()
+    {
+        var data=new PlayerData {GreenCount=100,CashOutTipIndexs=null};int saves=0;
+        var progress=new RecoveredPlayerProgress(CashRules(),()=>{
+            saves++;Assert.IsNotNull(data.CashOutTipIndexs);Assert.IsEmpty(data.CashOutTipIndexs);
+        },data);
+        Assert.AreEqual(0,progress.PrepareCashOutPrompt());Assert.AreEqual(1,saves);
+        Assert.AreEqual(-1,progress.PrepareCashOutPrompt());Assert.AreEqual(1,saves);
+        data.CashOutTipIndexs=null;data.GreenCount=0;
+        Assert.AreEqual(-1,progress.PrepareCashOutPrompt());Assert.AreEqual(2,saves);
+        for(int i=0;i<3;i++)data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=i});
+        data.CashOutTipIndexs=null;
+        Assert.AreEqual(-1,progress.PrepareCashOutPrompt());Assert.IsNull(data.CashOutTipIndexs);Assert.AreEqual(2,saves);
+    }
     private static RecoveredGameplayRules Rules() => new RecoveredGameplayRules(new GoldenDragonAutoGenConfig {
         Qonrii=new QonriiPoro {MojGping=new List<int>{10},Rgtigk=new List<int>{2},
             Lgtgl=new List<int>{1,2,3},NggpGpin=new List<int>{5,10,20}}

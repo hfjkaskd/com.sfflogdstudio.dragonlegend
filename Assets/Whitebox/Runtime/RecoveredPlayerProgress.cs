@@ -21,6 +21,29 @@ namespace DragonLegend.Whitebox
         public float GreenCount => data.GreenCount;
         public IReadOnlyList<int> BonusArea => data.BonusArea;
         public IReadOnlyList<PlayerCashOutData> CashOutRecords => data.PlayerCashOutDatas;
+        // Main.CheckBaseEnd 23c60b4..23c64fc: stop at the first absent record,
+        // even if its prompt was already shown. Record state does not affect selection.
+        public int PrepareCashOutPrompt()
+        {
+            for (int tier=0;tier<rules.GetCashOutCount();tier++)
+            {
+                bool found=false;
+                for (int i=0;i<data.PlayerCashOutDatas.Count;i++)
+                    if (data.PlayerCashOutDatas[i].id==tier) { found=true;break; }
+                if (found) continue;
+                if (data.CashOutTipIndexs==null)
+                {
+                    data.CashOutTipIndexs=new List<int>();
+                    save();
+                }
+                // ARM fcmp GreenCount,target / b.lt also rejects unordered NaN.
+                if (!(GreenCount>=rules.GetCashOutCash(tier)) || data.CashOutTipIndexs.Contains(tier)) return -1;
+                data.CashOutTipIndexs.Add(tier);
+                // The outer core continuation saves after the prompt, not here.
+                return tier;
+            }
+            return -1;
+        }
         public IReadOnlyList<PlayerCollectData> CollectRecords => data.PlayerCollectDatas;
         public int RandomIndex => data.RandomIndex;
         public PlayerCollectData GetPlayerCollectData(int id)
