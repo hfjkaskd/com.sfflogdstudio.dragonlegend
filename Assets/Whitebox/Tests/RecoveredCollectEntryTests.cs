@@ -24,6 +24,7 @@ public sealed class RecoveredCollectEntryTests
             yield return SceneManager.LoadSceneAsync("GameEntry", LoadSceneMode.Additive); scene = SceneManager.GetSceneByName("GameEntry");
             GameEntry entry = null; foreach (var root in scene.GetRootGameObjects()) { var value = root.GetComponentInChildren<GameEntry>(); if (value != null) entry = value; }
             Assert.IsNotNull(entry); yield return null;
+            entry.PlayerStore.Data.GuideStep=3;entry.PlayerStore.Save();entry.CoreRound.FirstSpinGuide.Hide();
             camera = entry.GetComponent<Canvas>().worldCamera; target = new RenderTexture(1080,1920,24); camera.targetTexture = target;
             Canvas.ForceUpdateCanvases(); yield return null;
             var collect = entry.CollectEntry; Assert.IsNotNull(collect); Assert.IsNull(collect.Window);

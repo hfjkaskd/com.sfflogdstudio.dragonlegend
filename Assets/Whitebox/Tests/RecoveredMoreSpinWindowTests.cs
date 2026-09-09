@@ -24,6 +24,8 @@ public sealed class RecoveredMoreSpinWindowTests
             GameEntry game=null;foreach(var root in scene.GetRootGameObjects()){var found=root.GetComponentInChildren<GameEntry>();if(found!=null)game=found;}
             float deadline=Time.realtimeSinceStartup+10;while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.CoreRound);game.PlayerProgress.SetSpinCount(0);
+            // This fixture isolates the window; actual first-guide input is covered separately.
+            game.CoreRound.FirstSpinGuide.Hide();
             var window=Object.Instantiate(Resources.Load<RecoveredMoreSpinWindow>("RecoveredUI/MoreSpinWindow"),game.transform,false);
             window.Bind(game);window.Show();for(int frame=0;frame<10;frame++)yield return null;
             Assert.AreEqual("+"+game.Rules.GetAddSpins(),window.Amount.text);

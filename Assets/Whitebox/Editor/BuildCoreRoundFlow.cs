@@ -20,6 +20,7 @@ public static class BuildCoreRoundFlow
             Add<RecoveredFreeLuckyGame>(settings,"lucky","FreeLuckyGame",root.transform);
             Add<RecoveredMoreSpinWindow>(settings,"moreSpins","MoreSpinWindow",root.transform);
             Add<RecoveredTipsWindow>(settings,"tips","TipsWindow",root.transform);
+            Add<RecoveredFirstSpinGuide>(settings,"firstSpinGuide","FirstSpinGuide",root.transform);
             settings.FindProperty("moreSpinLimitMessage").stringValue="The ad isn't ready yet, please wait.";
             var target=new GameObject("LongzhuPos",typeof(RectTransform));target.layer=5;target.transform.SetParent(root.transform,false);
             var destination=(RectTransform)target.transform;destination.anchorMin=destination.anchorMax=new Vector2(.5f,0);

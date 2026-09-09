@@ -15,6 +15,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RectTransform ballDestination;
         [SerializeField] private RecoveredMoreSpinWindow moreSpins;
         [SerializeField] private RecoveredTipsWindow tips;
+        [SerializeField] private RecoveredFirstSpinGuide firstSpinGuide;
+        public RecoveredFirstSpinGuide FirstSpinGuide=>firstSpinGuide;
         [SerializeField] private string moreSpinLimitMessage;
         public RecoveredMoreSpinWindow MoreSpins=>moreSpins;
         public RecoveredTipsWindow Tips=>tips;
@@ -54,7 +56,12 @@ namespace DragonLegend.Whitebox
             exit.FreeEndFlagClearRequested+=ReturnedToBase;
             game.BonusFlow.Completed+=AfterBonus;
             field.SpinHint.Begin();
-            if(game.PlayerStore.Data.GuideStep==1)field.SpinHint.ShowImmediate();
+            game.SpinEntry.GuideHideRequested+=firstSpinGuide.Hide;
+            if(game.PlayerStore.Data.GuideStep==1)
+            {
+                firstSpinGuide.Show((RectTransform)game.transform,(RectTransform)field.SpinButton.transform,game.GetComponent<Canvas>().worldCamera);
+                field.SpinHint.ShowImmediate();
+            }
         }
         private int Language()=>game.CurrentProfile.languageType;
         private void ShowMoreSpinLimit()=>tips.Show(moreSpinLimitMessage);
@@ -79,6 +86,7 @@ namespace DragonLegend.Whitebox
         public void Unbind()
         {
             if(game==null)return;
+            game.SpinEntry.GuideHideRequested-=firstSpinGuide.Hide;firstSpinGuide.Hide();
             game.SpinEntry.MoreSpinsRequested-=moreSpins.Show;moreSpins.LimitTipRequested-=ShowMoreSpinLimit;
             moreSpins.Cancel();tips.Cancel();
             game.Playfield.SpinRecovery.Unbind();

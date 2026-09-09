@@ -62,6 +62,8 @@ public sealed class RecoveredCoinGlowTests
             Time.timeScale = 1; Time.captureDeltaTime = .05f;
             { float resourceDeadline=Time.realtimeSinceStartup+5; while(entry.Playfield==null&&Time.realtimeSinceStartup<resourceDeadline)yield return null; }
             var field = entry.Playfield; Assert.IsNotNull(field); Assert.AreEqual("GOOD LUCK",field.DownWin.Label.text); var board = entry.SpinResult.Board;
+            // Isolate reward pixels from the separately tested first-player guide overlay.
+            entry.CoreRound.FirstSpinGuide.Hide();
             // This fixture inspects the bonus-coin layer after all independent effects
             // finish. Stop the newly connected next stage so its popup does not cover
             // the glyph pixels under inspection; BigWinIntegrationTests covers that path.
