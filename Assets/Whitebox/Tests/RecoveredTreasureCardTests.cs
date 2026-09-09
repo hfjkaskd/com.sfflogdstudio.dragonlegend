@@ -12,7 +12,7 @@ using Object=UnityEngine.Object;
 public sealed class RecoveredTreasureCardTests
 {
     [UnityTest]
-    public IEnumerator OriginalCardFacesFollowQuadraticCloseAndBounceOpenBeforeCallbacks()
+    public IEnumerator OriginalCardFacesFollowQuadraticCloseAndOutBackOpenBeforeCallbacks()
     {
         float timeScale=Time.timeScale,delta=Time.captureDeltaTime;
         var host=new GameObject("Treasure capture",typeof(RectTransform),typeof(Canvas));
@@ -50,11 +50,12 @@ public sealed class RecoveredTreasureCardTests
             // Inspect the actual native Unity Update animation at each captured frame.
             for(int frame=1;frame<=32;frame++) {
                 yield return null;
-                float t=frame/16f;float expected=t<1?1-t*t:Bounce(t-1);
+                float t=frame/16f;float expected=t<1?1-t*t:OutBack(t-1);
                 Assert.That(card.transform.localScale.x,Is.EqualTo(expected).Within(.00002f),"frame "+frame);
                 Assert.AreEqual(1,card.transform.localScale.y);Assert.AreEqual(1,card.transform.localScale.z);
                 Assert.AreEqual(frame<16,card.Back.activeSelf);Assert.AreEqual(frame>=16,card.Front.activeSelf);
                 Assert.AreEqual(frame<32?1:3,order.Count);
+                if(frame==26)Assert.Greater(card.transform.localScale.x,1.09f,"Native OutBack overshoots; Bounce would remain below one.");
             }
             CollectionAssert.AreEqual(new[]{"cardReavel","event","callback"},order);
             Capture(camera,target,"current-treasure-card-front.png");
@@ -87,12 +88,10 @@ public sealed class RecoveredTreasureCardTests
             Assert.AreEqual(1,callbacks);
         } finally {if(card!=null)Object.Destroy(card.gameObject);Time.timeScale=scale;Time.captureDeltaTime=delta;}
     }
-    private static float Bounce(float t)
+    private static float OutBack(float t)
     {
-        if(t<1/2.75f)return 7.5625f*t*t;
-        if(t<2/2.75f){t-=1.5f/2.75f;return 7.5625f*t*t+.75f;}
-        if(t<2.5f/2.75f){t-=2.25f/2.75f;return 7.5625f*t*t+.9375f;}
-        t-=2.625f/2.75f;return 7.5625f*t*t+.984375f;
+        t-=1;
+        return t*t*(2.70158f*t+1.70158f)+1;
     }
     private static void Capture(Camera camera,RenderTexture target,string name)
     {

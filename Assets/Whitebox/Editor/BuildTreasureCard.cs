@@ -57,16 +57,17 @@ public static class BuildTreasureCard
             var settings=new SerializedObject(root.GetComponent<RecoveredTreasureCard>());
             if(!Regex.IsMatch(source,@"closeEase: 5\n  openEase: 27"))throw new InvalidDataException("Unexpected card easing");
             settings.FindProperty("closeCurve").animationCurveValue=new AnimationCurve(new Keyframe(0,0,0,0),new Keyframe(1,1,2,2));
+            // Original Ease enum TypeDefIndex 11651: 27=OutBack, 30=OutBounce.
+            // Default overshoot 1.70158 gives this exact cubic's initial derivative.
             settings.FindProperty("openCurve").animationCurveValue=new AnimationCurve(
-                new Keyframe(0,0,0,0),new Keyframe(4f/11,1,5.5f,-2.75f),
-                new Keyframe(8f/11,1,2.75f,-1.375f),new Keyframe(10f/11,1,1.375f,-.6875f),new Keyframe(1,1,.6875f,.6875f));
+                new Keyframe(0,0,4.70158f,4.70158f),new Keyframe(1,1,0,0));
             settings.ApplyModifiedPropertiesWithoutUndo();
             foreach(var button in root.GetComponentsInChildren<Button>(true))if(button.onClick.GetPersistentEventCount()!=0)throw new InvalidDataException("Unexpected persistent card button binding");
             PrefabUtility.SaveAsPrefabAsset(root,Path);
         } finally {PrefabUtility.UnloadPrefabContents(root);}
         AssetDatabase.SaveAssets();
     }
-    private static void Append(string rect,string root,Dictionary<string,string> blocks,StringBuilder output)
+    internal static void Append(string rect,string root,Dictionary<string,string> blocks,StringBuilder output)
     {
         string transform=blocks[rect],go=Regex.Match(transform,@"m_GameObject: \{fileID: (\d+)").Groups[1].Value;
         output.Append(blocks[go]);
@@ -78,9 +79,9 @@ public static class BuildTreasureCard
         string children=Regex.Match(transform,@"m_Children:\n(.*?)  m_Father:",RegexOptions.Singleline).Groups[1].Value;
         foreach(Match m in Regex.Matches(children,@"fileID: (\d+)"))Append(m.Groups[1].Value,root,blocks,output);
     }
-    private static void Map(Dictionary<string,string> map,string id,string path)
+    internal static void Map(Dictionary<string,string> map,string id,string path)
     {string guid=AssetDatabase.AssetPathToGUID(path);if(string.IsNullOrEmpty(guid))throw new InvalidDataException(path);map[id]=guid;}
-    private static void Script<T>(Dictionary<string,string> map,string id) where T:MonoBehaviour
+    internal static void Script<T>(Dictionary<string,string> map,string id) where T:MonoBehaviour
     {
         var host=new GameObject("Script lookup",typeof(RectTransform));
         try {Map(map,id,AssetDatabase.GetAssetPath(MonoScript.FromMonoBehaviour(host.AddComponent<T>())));}
