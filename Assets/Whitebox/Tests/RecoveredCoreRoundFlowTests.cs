@@ -20,6 +20,8 @@ public sealed class RecoveredCoreRoundFlowTests
             GameEntry game=null;foreach(var root in scene.GetRootGameObjects()){var found=root.GetComponentInChildren<GameEntry>();if(found!=null)game=found;}
             float deadline=Time.realtimeSinceStartup+10;while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.CoreRound);var field=game.Playfield;var core=game.CoreRound;int completed=0;core.CoreRoundCompleted+=()=>completed++;
+            Assert.IsNotNull(game.CoreAudio);
+            Assert.AreEqual("normalBg",game.CoreAudio.Manager.MusicSource.clip.name);
             int spins=game.PlayerProgress.SpinCount;field.SpinButton.Button.onClick.Invoke();field.SpinButton.Button.onClick.Invoke();
             Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);Assert.IsTrue(field.IsBusy);
             for(int frame=0;frame<1800&&completed==0;frame++){Claim(field.BigWinPopup.PlainButton);Claim(field.JackpotPopup.PlainButton);yield return null;}
@@ -43,6 +45,7 @@ public sealed class RecoveredCoreRoundFlowTests
             Assert.IsNull(core.Error);Assert.IsNull(core.Exit.Error);Assert.IsNull(field.ModeView.FreeReels.Controller.Error);
             Assert.IsNull(field.ModeView.FreeReels.CoinScan.Error);Assert.IsNull(field.ModeView.FreeReels.BallScan.Error);Assert.IsNull(field.ModeView.FreeReels.RewardCollect.Error);
             Assert.IsTrue(core.Exit.Window.IsShown);Assert.AreEqual(0,game.PlayerProgress.FreeSpinCount);Assert.IsTrue(field.IsBusy);Assert.AreEqual(1,completed);
+            Assert.AreEqual("freeBg",game.CoreAudio.Manager.RequestedMusic,"Actual Free entry must reach the audio consumer.");
             for(int i=0;i<100&&!core.Exit.Window.ContinueButton.gameObject.activeInHierarchy;i++)yield return null;
             Assert.IsTrue(core.Exit.Window.ContinueButton.gameObject.activeInHierarchy);
             // A dirty persisted setting isolates the final save from earlier reward setters.
@@ -52,6 +55,7 @@ public sealed class RecoveredCoreRoundFlowTests
             Assert.IsTrue(field.IsBusy,"End-window close must not unlock Spin before return transition completes.");
             for(int frame=0;frame<150&&completed==1;frame++)yield return null;
             Assert.AreEqual(2,completed);Assert.IsFalse(core.Entry.IsFreeSpinEnd);Assert.IsFalse(field.IsBusy);
+            Assert.AreEqual("normalBg",game.CoreAudio.Manager.RequestedMusic,"Return must update requested music even after the fixture mutes it.");
             Assert.AreEqual(JsonUtility.ToJson(game.PlayerStore.Data),PlayerPrefs.GetString(key),"Return completion must persist the current player record.");
             Assert.AreEqual(RecoveredSlotType.Base,game.PlayerProgress.GameSlotType);Assert.IsTrue(field.ModeView.BaseRoll.activeSelf);Assert.IsFalse(field.ModeView.FreeRoll.activeSelf);
             spins=game.PlayerProgress.SpinCount;field.SpinButton.Button.onClick.Invoke();Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);Assert.IsTrue(field.Reels.IsRunning);

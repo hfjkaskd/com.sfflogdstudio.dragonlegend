@@ -1333,6 +1333,7 @@ MonoBehaviour:
   collectEntryPrefab: {fileID: 7749353999170228770, guid: 4c348b64e4a5b5145b4d8de328f82798, type: 3}
   backgroundPrefab: {fileID: 5024489222902620698, guid: 20644c92e96ac6a4f850927a257bb806, type: 3}
   coreRoundPrefab: {fileID: 5129222735343711202, guid: 15444e76ec8159b46914c84b895bc142, type: 3}
+  coreAudioPrefab: {fileID: 6689452325145220552, guid: 7b68656101bba244da8e5f837b53843e, type: 3}
 --- !u!114 &8942328160057530511
 MonoBehaviour:
   m_ObjectHideFlags: 0
