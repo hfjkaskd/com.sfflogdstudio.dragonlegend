@@ -42,3 +42,9 @@ fireworks pixel comparison verifies the source effect actually contributes to
 the production render. Fresh current-main-free-mode.png and
 current-main-base-return.png were inspected. These exercise the production
 visual consumer directly; they do not exercise the pending entry/exit orchestration.
+
+Current follow-up: symbol-catalog-audit.md verifies original list membership,
+ordering, shared definitions and exact Sprite/texture payloads against the scene
+and native InitSymbols. Later core-round-flow.md and mixed-bigwin-free.md cover
+production entry/exit integration; main-cashout-tip-audit.md covers the status
+sequence. The incomplete items above describe this document's original revision.

@@ -1,0 +1,414 @@
+{
+  "sourceSceneSha256": "21cec6bff13b8d9f604c0a85d73b153c57e5adbb9ac2bb96fe6db9be28c1765a",
+  "catalogSha256": "1fd7af982456fa4c35e16fca46834f4c5f034a0559be1f1c29938ebaf75ee23f",
+  "baseOrder": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10
+  ],
+  "freeOrder": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "definitions": [
+    {
+      "id": 0,
+      "name": "A",
+      "sprites": [
+        {
+          "field": "sprite",
+          "sourceGuid": "2d48de2d1100f734ba5a0f325f06a947",
+          "resource": "RecoveredSymbols/Sprites/a",
+          "normalizedSpriteSha256": "a47f4a25eca3d5ca1556da1b7b7df575c59b77317993d3efcfaa36513e3f3de3",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/a.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/a.png",
+              "sha256": "51a09185db247c94461d2021bb2b84f19b153f51455116022bb98682ccdc8dfa"
+            }
+          ]
+        },
+        {
+          "field": "blurSprite",
+          "sourceGuid": "58a9e15e64ff828468b1ecc5c7f419ff",
+          "resource": "RecoveredSymbols/Sprites/a_m",
+          "normalizedSpriteSha256": "fb22f39921157c62da16b1a8727cde1d23efcab3aa8df93a8e875a5445dc44b3",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/a_m.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/a_m.png",
+              "sha256": "54d40104d470f01ef4c9a93bfb0d64120c835644e81d92317786c918b919a6f7"
+            }
+          ]
+        }
+      ],
+      "originalEffectPaths": [
+        "Res/Prefabs/A.prefab"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "10",
+      "sprites": [
+        {
+          "field": "sprite",
+          "sourceGuid": "ad44241a6824b22459796e4c88cffa81",
+          "resource": "RecoveredSymbols/Sprites/10",
+          "normalizedSpriteSha256": "0f349fe01dc20f43c1f57b81ef953aba3ba1cb435ac99b565f219236dcd9a754",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/10.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/10.png",
+              "sha256": "fdd549691d8135b8203d4c667a1704a38e6efca1840c708c73f0e8aadf89b556"
+            }
+          ]
+        },
+        {
+          "field": "blurSprite",
+          "sourceGuid": "6e8ab2cb7cc7e2e408073473871b7398",
+          "resource": "RecoveredSymbols/Sprites/10_m",
+          "normalizedSpriteSha256": "ceb39d8f985464eba8c35b2d1974e7c0fc8ba2cbad4d71e415b2ea247098fe4c",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/10_m.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/10_m.png",
+              "sha256": "39fb09778a95fc3120d910c612c3cf1822b5207b32e431e2e81a545c18ec1d9e"
+            }
+          ]
+        }
+      ],
+      "originalEffectPaths": [
+        "Res/Prefabs/10.prefab"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "J",
+      "sprites": [
+        {
+          "field": "sprite",
+          "sourceGuid": "79db91f51ffe9af458c8edc8a91ad7e6",
+          "resource": "RecoveredSymbols/Sprites/j",
+          "normalizedSpriteSha256": "a685c50bae01aef47ce30582a21950d1d8fbb2571720aba41de2270cd5e815b8",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/j.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/j.png",
+              "sha256": "c6985ba5d63fd6d5e2d14a8f1b624e33353f28359ee05af71706a86ebf8666fd"
+            }
+          ]
+        },
+        {
+          "field": "blurSprite",
+          "sourceGuid": "b5dd22dcd3092a642ba2b07693a77e78",
+          "resource": "RecoveredSymbols/Sprites/j_m",
+          "normalizedSpriteSha256": "2181f37f0de26e90cb5bd32635f042bee756bb3e9afb67cea3a725dca7f1c343",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/j_m.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/j_m.png",
+              "sha256": "d62b4383ae5b01b0e210857ba1581b8d056b4cad27f6a0e93109c4e892d97e56"
+            }
+          ]
+        }
+      ],
+      "originalEffectPaths": [
+        "Res/Prefabs/J.prefab"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Q",
+      "sprites": [
+        {
+          "field": "sprite",
+          "sourceGuid": "219d9c4d228f9be4298f303541d36812",
+          "resource": "RecoveredSymbols/Sprites/q",
+          "normalizedSpriteSha256": "0a742196203599763c8380b1e4f1208e3707ef09964b8ce70c3f674f249aba31",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/q.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/q.png",
+              "sha256": "ae66574002df1d66452a66d374c5254bf4d102379e6b6bf18f5db62ddb102fa6"
+            }
+          ]
+        },
+        {
+          "field": "blurSprite",
+          "sourceGuid": "1381e4203f508c94ba10f240c68fc390",
+          "resource": "RecoveredSymbols/Sprites/q_m",
+          "normalizedSpriteSha256": "a0159ddc03a6712ebb9326f5df3520f54d0585d300b1ce7b93f8acaf1433d143",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/q_m.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/q_m.png",
+              "sha256": "ab60ddc658177bd340837b0aa5d08a5308f64b196aa7b2ed0e7dad46d08caf8b"
+            }
+          ]
+        }
+      ],
+      "originalEffectPaths": [
+        "Res/Prefabs/Q.prefab"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "K",
+      "sprites": [
+        {
+          "field": "sprite",
+          "sourceGuid": "3032f2c636dd42047951f287e5ffc55c",
+          "resource": "RecoveredSymbols/Sprites/k",
+          "normalizedSpriteSha256": "76bd5f6f663d0a6865e77ef65b9690e8299901d4905ab5e65e77fe5c01df3bf8",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/k.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/k.png",
+              "sha256": "ba22ff78e3741690143ce10d220826ab3ec4b632de67d0c3f19dc0db1b84d47b"
+            }
+          ]
+        },
+        {
+          "field": "blurSprite",
+          "sourceGuid": "875daebfa3441b6459bea64230ccb6ce",
+          "resource": "RecoveredSymbols/Sprites/k_m",
+          "normalizedSpriteSha256": "8e596b4a80bdc267dca8307579eb9acd5a1ccd9587dad52972ba8d919ab9d83f",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/k_m.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/k_m.png",
+              "sha256": "7c7c12e7331339427b0c81ba46d479f52adb4be0e025413d3b2902e02d135768"
+            }
+          ]
+        }
+      ],
+      "originalEffectPaths": [
+        "Res/Prefabs/K.prefab"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Yu",
+      "sprites": [
+        {
+          "field": "sprite",
+          "sourceGuid": "3637accfe2d96f64aa9780cbc454dacd",
+          "resource": "RecoveredSymbols/Sprites/yu",
+          "normalizedSpriteSha256": "8e3b04beaa7a3faeb4a246e5334c480e1026a3cc0f0a4524ffa8c2b06ff9aa98",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/yu.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/yu.png",
+              "sha256": "5df973a856e5c0fa9f9bf901cb3250fd1609b7fa66ed50379b5614a4cbd8ee7d"
+            }
+          ]
+        },
+        {
+          "field": "blurSprite",
+          "sourceGuid": "2e60aa5876f2a8e4ea89856cc5e74781",
+          "resource": "RecoveredSymbols/Sprites/yu_m",
+          "normalizedSpriteSha256": "86e1534b814cc354e0bdee19a00ade6afa18c348b43d686af80d634d277ae478",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/yu_m.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/yu_m.png",
+              "sha256": "d1140e7851113239c7f0d28666de34872a39b8bd748a8fda4338761bf4617a04"
+            }
+          ]
+        }
+      ],
+      "originalEffectPaths": [
+        "Res/Prefabs/Yu.prefab"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Gui",
+      "sprites": [
+        {
+          "field": "sprite",
+          "sourceGuid": "106c955bf11498142b9da81d50ca39ee",
+          "resource": "RecoveredSymbols/Sprites/gui",
+          "normalizedSpriteSha256": "c389d530bc200499f59345f543d1ef8c50f270a172a9fa54cd4a8516be8262b5",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/gui.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/gui.png",
+              "sha256": "c95548e56a36ef364b8d682534b3bb5b80b969236173952326fa0ee042b6bc9e"
+            }
+          ]
+        },
+        {
+          "field": "blurSprite",
+          "sourceGuid": "9ae2dcd212e77ca46b4f6587ff4b1ea4",
+          "resource": "RecoveredSymbols/Sprites/gui_m",
+          "normalizedSpriteSha256": "cba8c29c200fe2553982d17a6dd2a771388a939c351b6a01b97bf4a884fb60d1",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/gui_m.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/gui_m.png",
+              "sha256": "8758839263102aeb507a665114175279c2e07f9d7a3e16a9f61cbad9a28d34ff"
+            }
+          ]
+        }
+      ],
+      "originalEffectPaths": [
+        "Res/Prefabs/Gui.prefab"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Wild",
+      "sprites": [
+        {
+          "field": "sprite",
+          "sourceGuid": "0ba0856260a87b54aa4763e7f1a1b5b7",
+          "resource": "RecoveredSymbols/Sprites/x_wild",
+          "normalizedSpriteSha256": "669d95303f00f50631bf1867a9706ab151f31925872756691611adf624f50a24",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/x_wild.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/x_wild.png",
+              "sha256": "d9ef086d86d059eab8cfe3a9c4b84a46ff2326f3a7e25419889be36a9b34ef85"
+            }
+          ]
+        },
+        {
+          "field": "blurSprite",
+          "sourceGuid": "4b434ebf4da8270438a178dfe4a129d7",
+          "resource": "RecoveredSymbols/Sprites/x_wild_m",
+          "normalizedSpriteSha256": "51097d1262f9d2ca9165074e9949362bdb074ee543e04be153c972b8c789c37b",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/x_wild_m.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/x_wild_m.png",
+              "sha256": "21c29c83bdcbed2fa95eedf363c0a984e5c554c57397d0889644eb3a76c0db10"
+            }
+          ]
+        }
+      ],
+      "originalEffectPaths": [
+        "Res/Prefabs/Wild1.prefab",
+        "Res/Prefabs/Wild3.prefab",
+        "Res/Prefabs/Wild3Light.prefab"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Men",
+      "sprites": [
+        {
+          "field": "sprite",
+          "sourceGuid": "9bb9cac7ef14e6c44b93d5dcef1fa21a",
+          "resource": "RecoveredSymbols/Sprites/men",
+          "normalizedSpriteSha256": "e1b66ef57683db40b7fd00fbc564fb8cdf583b7b0b5067c134ced1a25ef2672d",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/men.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/men.png",
+              "sha256": "d9705f5d0a1b4fb041eb6e88c65bebcc2c6189c285e7663e3cd9f20e1fb4fded"
+            }
+          ]
+        },
+        {
+          "field": "blurSprite",
+          "sourceGuid": "10749ddf653c7f246ad8c5661e780554",
+          "resource": "RecoveredSymbols/Sprites/men_m",
+          "normalizedSpriteSha256": "31c70d9c5d6955bd4e7adc681acad5632f4d4b0c28aff57209a720ee3cc93d8f",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/men_m.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/men_m.png",
+              "sha256": "92d613e4e797873410424217b08fae5461dd4649f311fe04806b538d69c97b2e"
+            }
+          ]
+        }
+      ],
+      "originalEffectPaths": [
+        "Res/Prefabs/Men.prefab"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Jinbi",
+      "sprites": [
+        {
+          "field": "sprite",
+          "sourceGuid": "96d2b7b55fc89a34489a6c0bd8a86376",
+          "resource": "RecoveredSymbols/Sprites/qizi_jb_01",
+          "normalizedSpriteSha256": "d402b41d861d318866f0fddc9045745f3df4eead0655b07729a3fbb053e12024",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/qizi_jb_01.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/qizi_jb_01.png",
+              "sha256": "83ce482d232afb11494ef5a2babf89faa109dced2ded71a0cb0991fc81a588e6"
+            }
+          ]
+        },
+        {
+          "field": "blurSprite",
+          "sourceGuid": "bad9b2f710eaeda4fbd6a7cd958cde31",
+          "resource": "RecoveredSymbols/Sprites/qizi_jb_01_m",
+          "normalizedSpriteSha256": "97a2ab7be772601b38ea5878b679211abb24062541b03594c549f291661e8ba4",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/qizi_jb_01_m.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/qizi_jb_01_m.png",
+              "sha256": "9f0453ed43897b3af9b8783bbf0fc9438b57a533bdc9e417f1a19b1837f5b411"
+            }
+          ]
+        }
+      ],
+      "originalEffectPaths": [
+        "Res/Prefabs/Jinbi.prefab"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Scatter",
+      "sprites": [
+        {
+          "field": "sprite",
+          "sourceGuid": "47e042fb1c2687248867950a72ed4288",
+          "resource": "RecoveredSymbols/Sprites/scatter",
+          "normalizedSpriteSha256": "9be99779c23a4057bd7f88f169d8d83b1ffab5bacfc82651fb4dc5375a40a627",
+          "textures": [
+            {
+              "source": "Res/UI/font_img/scatter.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/font_img/scatter.png",
+              "sha256": "bac9a91de6aa6f64ca768aec325ee2d3dadf78974637468ebf7c4a61a3397238"
+            }
+          ]
+        },
+        {
+          "field": "blurSprite",
+          "sourceGuid": "58adf0eb1bd1d424bafcd68545fb3a04",
+          "resource": "RecoveredSymbols/Sprites/scatter_m",
+          "normalizedSpriteSha256": "405b23e17149cb7267bcae2da00b0fd1503c729f576c9a8ec8e002cad1077629",
+          "textures": [
+            {
+              "source": "Res/UI/zhujiemian/qizi/scatter_m.png",
+              "active": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/scatter_m.png",
+              "sha256": "788b15215ed993549972aea4a6f2b88b8196de2d8949cf408742b63ca9943165"
+            }
+          ]
+        }
+      ],
+      "originalEffectPaths": [
+        "Res/Prefabs/Scatter.prefab"
+      ]
+    }
+  ]
+}
