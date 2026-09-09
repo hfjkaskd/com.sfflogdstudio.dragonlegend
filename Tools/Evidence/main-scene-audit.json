@@ -6,7 +6,7 @@
     },
     {
       "path": "Assets/Whitebox/Scenes/GameEntry.unity",
-      "sha256": "4007166be470703df399c16204be345a3adc8e79b84c992d35a6f9c36f3feda9"
+      "sha256": "60152120e7a13cb50eff2a27a221ba602a37ee4738451bb2cde265a778ecd929"
     },
     {
       "path": "ReferenceOriginal/Scenes/Main/LightingData.asset",
@@ -21,46 +21,49 @@
     "sourceGuid": "b15cdfbb15089e87868c39e7284c9c96",
     "officialPackageGuid": "a79441f348de89743a2939f4d699eac1"
   },
-  "uiAncestorChildrenDifference": {
-    "source": "- {fileID: 23}\n  - {fileID: 13}\n  - {fileID: 11}",
-    "active": "- {fileID: 4000000013}"
+  "additionalLocalIdMap": {
+    "5": 806453279,
+    "11": 806453282,
+    "23": 1807628492,
+    "24": 806453281,
+    "32": 806453280
   },
   "checks": [
     {
       "name": "RenderSettings",
-      "normalizedSha256": "b18e74f0eac66a4f9bf179ac133a731341da517c7935efc622c612715b5c9d87"
+      "normalizedSha256": "fe493473065a21790d93bd84bdc93f83970fe0018edb903c870c37e63527b8f1"
     },
     {
       "name": "LightmapSettings",
-      "normalizedSha256": "91b012520b7be065dcdeb022f37b7598e35c7e98bcbb0f2171cfe27f67732bd2"
+      "normalizedSha256": "9a3039597786f1b667ba5994364bbcf86e01929b74be2b5d6dcf0d5b29c4109f"
     },
     {
       "name": "LightingData",
-      "normalizedSha256": "c38336f5d5e87605d7754db354314d83d224c0b2cf638ed9888207dabf5b3c3a"
+      "normalizedSha256": "18c934ee9cda5477952d8e62597a2394644cdd66d16262f382770bea71ee769f"
     },
     {
       "name": "Scene component 3 (class 1)",
-      "normalizedSha256": "30fb6a9f9a05d8f876d704a9b7c8a5492820ef2471ab83439fd59a30e9b72a5f"
+      "normalizedSha256": "1771c79d3de0f1b2063645c32d567126084dd7d558be76d4f3e9f1f33580b3c7"
     },
     {
       "name": "Scene component 7 (class 1)",
-      "normalizedSha256": "43c8382d4dbf72535f4c9bcd2a20efd2f0d73b63919fd26a1dc1b7a4285f03cd"
+      "normalizedSha256": "9d0ccfb56e234fecd3085b158f7a8c3efd73e90453477e7d06c5e1b825571d3a"
     },
     {
       "name": "Scene component 10 (class 4)",
-      "normalizedSha256": "41eb1f24d958a664d02c8075783994f108e684f5286e0d0ebae5152f4304a055"
+      "normalizedSha256": "573ee764e306fcbfb02e3676b583bfb588a3c43475236eb6efa2c9560ccc82bd"
     },
     {
       "name": "Scene component 13 (class 4)",
-      "normalizedSha256": "53d4bd1f0bf8b776250558afc1ec71ff6b899c4719a75ce03a85a2910d0fb318"
+      "normalizedSha256": "d908624149c0643eb52ee10c73bcf44ebfa5de9fea05e1370f57e63a18aaea4e"
     },
     {
       "name": "Scene component 14 (class 20)",
-      "normalizedSha256": "44f7f48b929221f3a6f24d2bd092d58efc28fa57664342184311c12874360696"
+      "normalizedSha256": "841bc2fd21b5675b1637ec9527fec96ac46d7427aa38565b77818255826a1ea2"
     },
     {
       "name": "Scene component 15 (class 20)",
-      "normalizedSha256": "2db3e221754d7f7c1a7f04549d75bfc5228dd7da57a2ec8ceb47850481bd6dd8"
+      "normalizedSha256": "7f46bfaad6b9508d880dc7dd0a18de0bbc0e1f9726445c2900bc0b83c57683b2"
     },
     {
       "name": "Scene component 27 (class 114)",
@@ -71,8 +74,16 @@
       "normalizedSha256": "3aba90a990c6ee2c91c7be6ab14a29245c328341c3d0312403d7409cc00db3a6"
     },
     {
-      "name": "UI camera ancestor pose (children checked separately)",
-      "normalizedSha256": "c1282bb7b68b26c62d90fbd9e950338b7011ec6077600647fd9435d55c889274"
+      "name": "UI camera ancestor including source child order",
+      "normalizedSha256": "234ab9e16c7c21039293ea272ba5a34ce1b70d451cf34c0ec5203e5001ed8a1b"
+    },
+    {
+      "name": "EventSystem hierarchy record 5",
+      "normalizedSha256": "9aa34aa080922fd49f5ec3042caedfe37605581f4ac7923e0b8e0d7c65b3d387"
+    },
+    {
+      "name": "EventSystem hierarchy record 11",
+      "normalizedSha256": "0b49f4ace575ab2096a7232cb5a241e8382bb98e1d7ff42f13c3d5e818a2c8d0"
     }
   ]
 }

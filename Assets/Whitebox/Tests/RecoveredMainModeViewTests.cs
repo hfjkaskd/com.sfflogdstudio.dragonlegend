@@ -16,15 +16,32 @@ public sealed class RecoveredMainModeViewTests
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);PlayerPrefs.DeleteKey(key);
         var random=Random.state;Scene scene=default;AsyncOperation unload=null;
         Camera camera=null;RenderTexture target=null;Texture2D capture=null;var previous=RenderTexture.active;
+        UnityEngine.Events.UnityAction<Scene,LoadSceneMode> prepare=null;
         try {
+            target=new RenderTexture(1080,1920,24);target.Create();
+            prepare=(loaded,loadedMode)=>{
+                if(loaded.name!="GameEntry")return;
+                foreach(var root in loaded.GetRootGameObjects()){
+                    var entry=root.GetComponentInChildren<GameEntry>();
+                    if(entry!=null){camera=entry.GetComponent<Canvas>().worldCamera;camera.targetTexture=target;}
+                }
+            };
+            SceneManager.sceneLoaded+=prepare;
             yield return SceneManager.LoadSceneAsync("GameEntry",LoadSceneMode.Additive);scene=SceneManager.GetSceneByName("GameEntry");
             GameEntry game=null;foreach(var root in scene.GetRootGameObjects()){var found=root.GetComponentInChildren<GameEntry>();if(found!=null)game=found;}
             float deadline=Time.realtimeSinceStartup+5;while(game.Playfield==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.Playfield);var field=game.Playfield;var mode=field.ModeView;Assert.IsNotNull(mode);
+            var uiRoot=game.transform.parent;Assert.IsNotNull(uiRoot);Assert.AreEqual("[UI]Main",uiRoot.name);
+            Assert.AreEqual(3,uiRoot.childCount);Assert.AreSame(game.transform,uiRoot.GetChild(0));
+            Assert.AreSame(game.GetComponent<Canvas>().worldCamera.transform,uiRoot.GetChild(1));
+            var events=uiRoot.GetChild(2).GetComponent<UnityEngine.EventSystems.EventSystem>();
+            Assert.IsNotNull(events);Assert.AreEqual(5,events.gameObject.layer);
+            Assert.AreEqual(Vector3.zero,events.transform.localPosition);Assert.AreEqual(Vector3.one,events.transform.localScale);
+            Assert.AreEqual(new Vector3(100,0,-10),uiRoot.position);
             Assert.IsTrue(mode.BaseRoll.activeSelf);Assert.IsTrue(mode.BaseResult.activeSelf);Assert.IsFalse(mode.FreeRoll.activeSelf);
             Assert.IsFalse(mode.Fireworks.gameObject.activeSelf);Assert.IsFalse(mode.FreeReels.IsInitialized);
-            camera=game.GetComponent<Canvas>().worldCamera;target=new RenderTexture(1080,1920,24);capture=new Texture2D(1080,1920,TextureFormat.RGB24,false);
-            camera.targetTexture=target;yield return null;
+            camera=game.GetComponent<Canvas>().worldCamera;capture=new Texture2D(1080,1920,TextureFormat.RGB24,false);
+            yield return null;
             game.CoreRound.FirstSpinGuide.Hide();
             var adapt=field.GetComponent<RecoveredScreenAdapt>();Assert.IsNotNull(adapt);
             var fieldRect=(RectTransform)field.transform;var board=(RectTransform)field.transform.Find("QiPan");
@@ -89,6 +106,7 @@ public sealed class RecoveredMainModeViewTests
             field.DownWin.SetTemporaryTotal(0);mode.ApplyCurrent();Assert.AreEqual("GOOD LUCK",field.DownWin.Label.text);
             game.PlayerProgress.GameSlotType=(RecoveredSlotType)2;mode.ApplyCurrent();Assert.IsTrue(mode.FreeRoll.activeSelf);Assert.IsTrue(mode.Fireworks.gameObject.activeSelf);
         } finally {
+            if(prepare!=null)SceneManager.sceneLoaded-=prepare;
             Random.state=random;RenderTexture.active=previous;if(camera!=null)camera.targetTexture=null;
             if(target!=null)Object.Destroy(target);if(capture!=null)Object.Destroy(capture);
             if(scene.IsValid()&&scene.isLoaded)unload=SceneManager.UnloadSceneAsync(scene);

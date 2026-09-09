@@ -48,3 +48,10 @@ No scene, game logic, SDK or rendering asset was changed. No Unity run was
 necessary for these serialized-record comparisons. Runtime camera changes,
 project-wide quality/pipeline settings, material/shader behavior and full visual
 equivalence need separate evidence; passing these 12 records does not prove them.
+
+Follow-up: main-ui-hierarchy.md restores the Canvas/EventSystem parent and order
+in the actual scene. The audit now compares 14 records, including the full UI
+ancestor child list and EventSystem hierarchy. Unity save ordering of the root
+serializedVersion property and numeric negative zero are normalized without
+dropping their values. The hierarchy-difference section above describes the
+pre-fix baseline; the current report no longer excludes the child list.
