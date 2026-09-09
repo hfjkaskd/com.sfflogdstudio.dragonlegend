@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using DragonLegend.Whitebox;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
@@ -86,13 +88,20 @@ public sealed class RecoveredCoreBallBranchesTests
                 Assert.AreEqual(0,game.CashFlight.ActiveCashCount);
                 float balance=game.PlayerProgress.GreenCount;
                 core.Entry.Window.PlainButton.onClick.Invoke();
-                bool seen=false;int claims=0,adStage=0;float expectedAdReward=0;
+                bool seen=false,captured=false;int claims=0,adStage=0;float expectedAdReward=0;double visibleAt=-1;
                 for(int frame=0;frame<1800&&!core.Exit.Window.IsShown;frame++) {
                     seen|=branch==0?slot.IsRunning:branch==1?wheel.IsRunning:branch==2?treasure.IsRunning:lucky.IsRunning;
                     Above(slot.Window.Window,core.MoreSpins.gameObject);Above(wheel.Window.Window,core.MoreSpins.gameObject);
                     Above(treasure.Window.gameObject,core.MoreSpins.gameObject);Above(lucky.Popup.gameObject,core.MoreSpins.gameObject);
                     Above(slot.Window.Popup.gameObject,core.MoreSpins.gameObject);Above(wheel.Window.CashPopup.gameObject,core.MoreSpins.gameObject);Above(wheel.Window.JackpotPopup.gameObject,core.MoreSpins.gameObject);
                     Above(slot.Window.Popup.gameObject,slot.Window.Window);Above(wheel.Window.CashPopup.gameObject,wheel.Window.Window);Above(wheel.Window.JackpotPopup.gameObject,wheel.Window.Window);
+                    if(!captured) {
+                        bool ready=slot.Window.Popup.PlainButton.gameObject.activeInHierarchy||wheel.Window.CashPopup.PlainButton.gameObject.activeInHierarchy||
+                            wheel.Window.JackpotPopup.PlainButton.gameObject.activeInHierarchy||treasure.Window.PlainButton.gameObject.activeInHierarchy||lucky.Popup.PlainButton.gameObject.activeInHierarchy;
+                        if(ready&&visibleAt<0)visibleAt=Time.timeAsDouble;
+                        if(visibleAt<0||Time.timeAsDouble-visibleAt<.6){yield return null;continue;}
+                        Capture(camera,target,"current-core-ball-"+branch+(advertised?"-advertised":"-plain")+".png");captured=true;
+                    }
                     if(!advertised) {
                         claims+=ClickVisible(slot.Window.Popup.PlainButton,camera)+ClickVisible(wheel.Window.CashPopup.PlainButton,camera);
                         claims+=ClickVisible(wheel.Window.JackpotPopup.PlainButton,camera)+ClickVisible(treasure.Window.PlainButton,camera)+ClickVisible(lucky.Popup.PlainButton,camera);
@@ -159,6 +168,15 @@ public sealed class RecoveredCoreBallBranchesTests
     }
     private static void Claim(Button button)
     {if(button!=null&&button.gameObject.activeInHierarchy&&button.IsInteractable())button.onClick.Invoke();}
+    private static void Capture(Camera camera,RenderTexture target,string name)
+    {
+        Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
+        var previous=RenderTexture.active;var image=new Texture2D(target.width,target.height,TextureFormat.RGB24,false);
+        try {
+            RenderTexture.active=target;image.ReadPixels(new Rect(0,0,target.width,target.height),0,0);image.Apply();
+            File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/",name),image.EncodeToPNG());
+        } finally {RenderTexture.active=previous;Object.Destroy(image);}
+    }
     private static void Above(GameObject shown,GameObject behind)
     {
         if(!shown.activeInHierarchy||!behind.activeInHierarchy)return;

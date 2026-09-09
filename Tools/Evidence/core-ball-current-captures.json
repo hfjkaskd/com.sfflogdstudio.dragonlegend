@@ -1,0 +1,34 @@
+[
+  {
+    "file": "current-core-ball-0-advertised.png",
+    "sha256": "494a0a1502d37313094490ef6de8df74e87ed4f7e53b3eeedb8c0b7182c4f23e"
+  },
+  {
+    "file": "current-core-ball-0-plain.png",
+    "sha256": "d93f0d9db2857dd64bf2e05093e0d48bc48bcb35dd98df732d67dcece7814dd5"
+  },
+  {
+    "file": "current-core-ball-1-advertised.png",
+    "sha256": "67827e34ffa094c68c77e17a6cafed3bcf6ab3bef1d3e56bb148ca8a6e4141d4"
+  },
+  {
+    "file": "current-core-ball-1-plain.png",
+    "sha256": "b897a952f5a3a1c3555cb9f4f6ffba65663c13bd55115aa562f981e91a0cd5ab"
+  },
+  {
+    "file": "current-core-ball-2-advertised.png",
+    "sha256": "60c19fbf03816d65026c666ef5db89d2b6fdb6bd396c55f3d6923a3ab2ca2c24"
+  },
+  {
+    "file": "current-core-ball-2-plain.png",
+    "sha256": "06a55e8899f9c85a98fc13d5f4e82349b2612b96b0a729c3e668fa9aa7ec2566"
+  },
+  {
+    "file": "current-core-ball-3-advertised.png",
+    "sha256": "0e43fda1b31d758ec7ed1a0c9737060a46b32eeb906aa53be390808853c4e3ad"
+  },
+  {
+    "file": "current-core-ball-3-plain.png",
+    "sha256": "83609a5ce7e7175d773c74e76da98e44c2d129e01f093ef8eeae4566a3685ab6"
+  }
+]
