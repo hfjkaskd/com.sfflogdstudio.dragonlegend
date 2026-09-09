@@ -12,6 +12,7 @@ namespace DragonLegend.Whitebox
         void PlayItem(int itemIndex, float reward, bool firstSelection, Action<float> completed);
         void RevealButtons(float duration);
         void ShowContinueFinger();
+        void PlaySound(string name);
         void Hide();
     }
 
@@ -27,6 +28,7 @@ namespace DragonLegend.Whitebox
         public IReadOnlyList<int> Selected => selected;
         // Native tempIndex belongs to the window, not to the per-click closure.
         public int TempIndex { get; private set; }
+        public bool IsContinue { get; private set; }
 
         public RecoveredBankSelection(RecoveredGameplayRules config, IAdFacade facade, IRecoveredBankSelectionView presenter)
         {
@@ -34,7 +36,7 @@ namespace DragonLegend.Whitebox
             ads = facade ?? throw new ArgumentNullException(nameof(facade));
             view = presenter ?? throw new ArgumentNullException(nameof(presenter));
         }
-        public void Reset() { lifetime++; selected.Clear(); cancelled = false; }
+        public void Reset() { lifetime++; selected.Clear(); cancelled = false; IsContinue = false; }
         public void Cancel() { lifetime++; cancelled = true; }
         public void Click(int index)
         {
@@ -57,6 +59,43 @@ namespace DragonLegend.Whitebox
             }
         }
         private bool IsCurrent(int generation) => !cancelled && generation == lifetime;
+        // OnClickButton 2391e78: the continue latch gates these buttons, not individual balls.
+        public void ClickButton(string name)
+        {
+            if (cancelled || IsContinue) return;
+            if (name == "OpenBtn")
+            {
+                view.PlaySound("click"); IsContinue = true;
+                int generation = lifetime;
+                ads.PlayRewardAd(() => { if (IsCurrent(generation)) OpenRemaining(generation); },
+                    () => { if (IsCurrent(generation)) IsContinue = false; }, "bank", "Openbank");
+            }
+            else if (name == "UnPlayBtn")
+            {
+                view.PlaySound("click"); ads.PlayInterAd("iv_close", "bank");
+                IsContinue = true; view.Hide();
+            }
+        }
+        // PlayAd 2392128 uses the SAME random offset into two differently filtered lists.
+        private void OpenRemaining(int generation)
+        {
+            var remaining = new List<int>(); var categories = new List<int>();
+            for (int i = 0; i < view.WinCount; i++)
+            {
+                if (!selected.Contains(i)) remaining.Add(i);
+                if (i != TempIndex) categories.Add(i);
+            }
+            int offset = UnityEngine.Random.Range(0, remaining.Count);
+            int index = remaining[offset];
+            float reward = rules.GetBankReward(categories[offset]);
+            selected.Add(index); view.ShowAdIndicators(selected);
+            view.PlayItem(index, reward, false, value => {
+                if (!IsCurrent(generation)) return;
+                // 2392ec8: release only after the flight, unless all selections are now filled.
+                if (selected.Count != view.WinCount) IsContinue = false;
+                else RecoveredReelWait.Delay(.5f, () => { if (IsCurrent(generation)) view.Hide(); }, UnityEngine.Debug.LogException);
+            });
+        }
         // Native first/later flight continuations: 2393454 and 2393870.
         private void ItemCompleted(bool first, int generation)
         {
