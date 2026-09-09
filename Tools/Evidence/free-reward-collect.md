@@ -4,8 +4,8 @@
 MoveNext 23ceeb4). It is serialized on FreeReels; its pooled DownWin flights are
 children of the existing FreeResult. Bind supplies the actual Main DownWin text,
 Bottom, window order, player/result, and optionally FreeEntryFlow. BallScan.Completed
-starts collection; collection.Completed is the continuation for the still-pending
-production Free spin-end chain. This does not make the production Main Free lifecycle
+starts collection; collection.Completed now connects to RecoveredFreeExitFlow's
+Free spin-end chain when bound. This does not make the production Main Free lifecycle
 complete: GameEntry still needs the board/mode/counter/entry/exit consumers.
 
 ## Native evidence

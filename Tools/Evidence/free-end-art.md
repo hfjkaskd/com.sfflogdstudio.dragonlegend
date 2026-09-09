@@ -40,7 +40,7 @@ pose samples and allocated 0 managed bytes (pose sampling only, not full renderi
 Both newly generated `current-free-end-art-start.png` and
 `current-free-end-art-idle.png` were visually inspected in this run.
 
-## Window behavior to connect next
+## Window behavior (now implemented by FreeEndWindow; production binding pending)
 
 - OnInitProperty 23afcdc: ELF dbb670 contains (300,2).
 - OnBeforeShow 23afcfc: play `fsend`, retain completion source and initial spin
@@ -56,7 +56,8 @@ Both newly generated `current-free-end-art-start.png` and
   Setter 23b03ac formats two currency decimals. This does not credit any money.
 - Tween completion 23b03e4 invokes PlayBtnAnim(CtnBtn,.5). Native 2370318 hides
   the button, appends .5 interval, then its activation/reset-scale callback and
-  a .3 default-OutQuad scale-to-one tween. Audit callback 2370c6c before wiring.
+  a .3 default-OutQuad scale-to-one tween. Callback 2370c6c activates the button
+  and resets its localScale to Vector3.zero before that tween.
 - OnClickButton 23b0020 recognizes `ContinueBtn`, plays click and calls BaseWindow
   Hide. OnAfterHide 23b00ec completes the retained source. Do not substitute the
   FreeStart PopupWindow's Back scale animation without BaseWindow evidence.
@@ -66,5 +67,6 @@ Both newly generated `current-free-end-art-start.png` and
   Transition callbacks separately reset view/init Base reels and clear the Free
   end flag/change music. Nonzero delegates to FreeAutoSpin.
 
-The complete window prefab/controller, collector-to-exit connection and production
-GameEntry board/mode/entry/exit consumers remain required. SDK handling is unchanged.
+The window prefab/controller and collector-to-exit connection are now implemented;
+see free-end-window.md. Production GameEntry board/mode/entry/exit consumers remain
+required. SDK handling is unchanged.

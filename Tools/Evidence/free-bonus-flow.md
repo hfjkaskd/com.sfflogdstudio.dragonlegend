@@ -27,7 +27,9 @@ Artifacts/free-bonus-flow-tests.xml.
 
 Production FreeEntry still needs to instantiate and bind its board/context,
 including this connection. Subsequent CheckPlayLongzhuAnim, CheckRewardCollect
-and CheckFreeSpinEnd continuations remain pending, as do actual audio playback
+and CheckFreeSpinEnd now have recovered components and connected integration
+tests (free-ball-scan.md, free-reward-collect.md, free-end-window.md). Their
+production context binding remains pending, as do actual audio playback
 consumers and the previously recorded full UI/lifecycle gaps. The integration
 test exercises the new connection but does not imply that the unfinished
 production FreeEntry chain already reaches it. SDK handling is unchanged.

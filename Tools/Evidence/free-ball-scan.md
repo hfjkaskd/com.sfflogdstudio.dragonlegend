@@ -36,7 +36,10 @@ original-ball animation, shared ledger, total accumulation and no save/credit.
 Unity 2022.3.62f3 full PlayMode suite **301/301 passed** in
 Artifacts/free-ball-scan-tests.xml; prefab authoring exited successfully in
 Artifacts/free-ball-scan-author.log.
-This is a protocol integration test, not evidence that real small-game UI is
-implemented. The production consumer/windows and FreeEntry context binding
-remain pending, as do the complete FireAnimRect/world-space visual integration,
-CheckRewardCollect/CheckFreeSpinEnd and broader lifecycle gaps. SDK unchanged.
+The original protocol test did not prove real small-game UI. Subsequent work
+added the Lucky/Slot/Wheel/Treasure prefabs and integrations. The two-ball test
+now also verifies automatic reward collection and zero coin-credit behavior.
+CheckRewardCollect and CheckFreeSpinEnd have connected components (see
+free-reward-collect.md and free-end-window.md). Production FreeEntry context
+binding, complete FireAnimRect/world-space integration and broader lifecycle
+gaps remain. SDK unchanged.
