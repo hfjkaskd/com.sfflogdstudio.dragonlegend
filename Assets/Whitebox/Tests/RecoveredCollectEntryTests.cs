@@ -31,8 +31,16 @@ public sealed class RecoveredCollectEntryTests
             Assert.AreEqual(1, entry.GetComponentsInChildren<RecoveredCollectEntry>(true).Length);
             Assert.IsTrue(collect.Button.gameObject.activeInHierarchy); Assert.AreEqual("Treasure", collect.Button.name);
             Assert.AreSame(collect.Button.transform, collect.Destination.parent);
+            var adapt=collect.GetComponent<RecoveredScreenAdapt>();Assert.IsNotNull(adapt);
+            var parentRect=(RectTransform)collect.transform;var scaler=entry.GetComponentInParent<CanvasScaler>();
+            float factor=scaler.matchWidthOrHeight*scaler.referenceResolution.y/1920-scaler.referenceResolution.x*(scaler.matchWidthOrHeight-1)/1080;
+            Vector3 destinationBefore=collect.Destination.position;Vector2 childPosition=collect.Destination.anchoredPosition;
+            adapt.Apply(1080,1920,new Rect(24,60,1032,1740));Canvas.ForceUpdateCanvases();
+            Assert.AreEqual(24*factor,parentRect.offsetMin.x,.0002f);Assert.AreEqual(-120*factor,parentRect.offsetMax.y,.0002f);
+            Assert.AreEqual(childPosition,collect.Destination.anchoredPosition);Assert.AreNotEqual(destinationBefore,collect.Destination.position,"The flight destination follows the safe-area parent.");
             int sounds = 0; collect.SoundRequested += name => { Assert.AreEqual("click", name); sounds++; };
             yield return Click(collect.Button, camera); var window = collect.Window; Assert.IsNotNull(window);
+            adapt.AdaptScreen();
             Assert.AreSame(entry.CoreRound.PopupRoot,window.transform.parent,"Collection belongs to the shared Popup group.");
             Assert.AreEqual(1, sounds); Assert.IsTrue(window.Green.activeSelf); Assert.IsFalse(window.Gold.activeSelf);
             for (int i=0;i<14;i++) yield return null;

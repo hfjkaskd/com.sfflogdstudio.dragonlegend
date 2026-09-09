@@ -80,3 +80,9 @@ branch based solely on the misleading CheckRewardCollect name.
 This does not complete production Free board orchestration, complete-set award
 flow, general multi-window stack handling, full audio playback or Main visual
 fidelity. Those requirements remain active.
+
+## Source Node safe-area adaptation
+
+The original Main Node (224901155395665742) owns Top, fireworks, QiPan, Tubiao, JackPot, CashOutTip, Bottom, TempWin and FreeSmallGame. Bg and FreeBg are siblings outside Node. The recovered CollectEntry root already reproduces the full-stretch unit-scale Node rectangle above Tubiao but lacked Adapt. BuildTreasureDeparture now adds RecoveredScreenAdapt to that root. SaveEntry permits reauthoring with existing icon art; Save still recovers the art first. Other Main branches require a separate source-hierarchy audit before applying a blanket inset to SpinPlayfield.
+
+The actual-scene test verifies parent offsets for a 1080x1920 safe area inset by 24 on both sides, 60 at bottom and 120 at top. It verifies unchanged icon-local coordinates, changed world-space flight destination and an actual pointer opening the collection window while inset, then restores the real safe area. Author PID 45108 exited successfully. PlayMode PID 16736 terminated with 7/7 passing in 16.2391703 seconds (Artifacts/collect-entry-adapt-tests.xml): CollectEntry, ScreenAdapt and CoreBallBranches. This is not a whole-Main safe-area or physical-device parity claim. SDK handling remains unchanged.

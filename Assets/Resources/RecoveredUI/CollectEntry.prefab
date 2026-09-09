@@ -302,6 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6397342992001962868}
   - component: {fileID: 7749353999170228770}
+  - component: {fileID: 218371549273728391}
   m_Layer: 5
   m_Name: CollectEntry
   m_TagString: Untagged
@@ -344,6 +345,19 @@ MonoBehaviour:
   button: {fileID: 6498401748788596915}
   destination: {fileID: 1932389834610799245}
   windowPrefab: {fileID: 6216343736754456707, guid: 3550a51baae57bd4bb28883469d1a239, type: 3}
+--- !u!114 &218371549273728391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9053039835569424363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62552d1aaac7774cbec97a763daeff2, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  uiRootScaler: {fileID: 0}
 --- !u!1001 &10890814382044043
 PrefabInstance:
   m_ObjectHideFlags: 0

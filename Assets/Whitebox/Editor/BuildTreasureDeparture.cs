@@ -16,6 +16,10 @@ public static class BuildTreasureDeparture
     {
         BuildJackpotPopupArt.Create("ef_shoucangicon", "按钮/shoucang", new Vector2(305.9997f, 264.99994f),
             new Vector2(.5113022f, .543063f), "Tools/Evidence/");
+        SaveEntry();
+    }
+    public static void SaveEntry()
+    {
         var map = new Dictionary<string, string>();
         BuildTreasureCard.Script<Image>(map, "3cf5a44414476512e00c3e7a2569a919");
         BuildTreasureCard.Script<Image>(map, "e0b4d57e8f658b407a2ad25df85fb0d6");
@@ -46,7 +50,7 @@ public static class BuildTreasureDeparture
         foreach (Match m in Regex.Matches(yaml, @"guid: (\w+)"))
             if (string.IsNullOrEmpty(AssetDatabase.GUIDToAssetPath(m.Groups[1].Value))) throw new InvalidDataException("Unmapped Treasure destination " + m.Groups[1].Value);
         File.WriteAllText(Temporary, yaml); AssetDatabase.ImportAsset(Temporary, ImportAssetOptions.ForceSynchronousImport);
-        var root = new GameObject("CollectEntry", typeof(RectTransform), typeof(RecoveredCollectEntry)); root.layer = 5;
+        var root = new GameObject("CollectEntry", typeof(RectTransform), typeof(RecoveredCollectEntry), typeof(RecoveredScreenAdapt)); root.layer = 5;
         try
         {
             var rect = (RectTransform)root.transform; rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one; rect.sizeDelta = Vector2.zero;
