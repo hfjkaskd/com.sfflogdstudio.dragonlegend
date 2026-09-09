@@ -19,7 +19,7 @@ RecoveredTreasureClaimTests checks cancelled/unavailable/failed ads, retry and d
 
 Full Unity 2022.3.62f3 PlayMode regression passed **333/333**, `Artifacts/treasure-claim-tests.xml`. No visual asset was changed in this increment.
 
-The tests use a claim-view recorder; they do not prove the actual Treasure window animation or flight. The native prefab presenter, its .5-second count and .3-second InBack exit, and real cash/card consumers still need connecting. Existing standalone card and collection-tip prefabs remain the required presentation components.
+These controller tests use a claim-view recorder. The native TreasureWindow presenter now connects the .5-second count, .3-second InBack exit and actual shared cash flight; see `treasure-window.md` for its GameEntry integration test and fresh renders. The main card-departure consumer and entry flight still need connecting.
 
 ## Window continuation evidence
 

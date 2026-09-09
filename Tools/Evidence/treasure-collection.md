@@ -20,10 +20,10 @@ Full Unity 2022.3.62f3 PlayMode regression: **323/323 passed**, `Artifacts/colle
 
 ## Next presentation evidence
 
-Raw `023dbe7c.asm` is authoritative for RefreshCollectCard; its decompilation incorrectly includes neighboring/inlined paths after a type-failure branch. The real method takes a GameObject from event arguments, resets its local position, restores its small scale, hides it, activates CardTreasure and BlackBg, then tail-calls TreasureCard.Flip(null). Thus the flight-completion event triggers the flip, not OnAfterShow alone. Verify the scale constant's third component from ELF before authoring this reset.
+Raw `023dbe7c.asm` is authoritative for RefreshCollectCard; its decompilation incorrectly includes neighboring/inlined paths after a type-failure branch. The real method takes a GameObject from event arguments, resets its local position, restores scale (.4,.4,.4), hides it, activates CardTreasure and BlackBg, then tail-calls TreasureCard.Flip(null). Thus the flight-completion event triggers the flip, not OnAfterShow alone. The third scale component at ELF dbc6e8 was verified as .4 during window restoration.
 
 `023db960.asm` OnClickCard checks the flipped flag and otherwise tail-calls Flip(null). `023dbc34.asm` OnDestroy kills transform tweens without completing them. These method bodies do not establish a prefab click binding or that a containing sequence is killed; those details still need checking.
 
 ## Remaining integration
 
-TreasureCard's native subtree and flip are now recovered separately; see `treasure-card.md`. UITreasureView presentation, the card flight, collection claim window, and the production Free loop still need implementation/connection. These data rules alone do not establish that the Treasure branch or full lifecycle matches the original. Existing Lucky, Slot and Wheel branch prefabs do not fill this gap.
+TreasureCard and UITreasureView presentation, collection tip and Treasure cash claim are now recovered; see `treasure-window.md`. Main card flight/departure, the full collection redemption window, and the production Free loop still need implementation/connection. These data rules alone do not establish that the Treasure branch or full lifecycle matches the original.

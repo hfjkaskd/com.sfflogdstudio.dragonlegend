@@ -30,4 +30,4 @@ Fresh 1080 x 1920 renders from the current prefab: `Artifacts/current-treasure-c
 
 ## Remaining lifecycle work
 
-UITreasureView, main-card flight and its RefreshCollectCard event, claim/ad branches, actual payout and production Free-loop binding remain pending. The live collection-tip component and prefab are now recovered separately (see `collect-tip.md`); the window still must invoke it on flip completion. This prefab is the native card component required by that window, not a finished Treasure mini-game.
+UITreasureView now connects this card, collection tip, claim/ad controller and actual cash payout; see `treasure-window.md`. Main-card flight, the production RefreshCollectCard event, card departure and production Free-loop binding remain pending. This prefab and window do not establish a finished Treasure lifecycle.

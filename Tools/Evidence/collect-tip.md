@@ -26,4 +26,4 @@ RecoveredCollectTipTests checks the actual prefab, duplicate/unknown/received re
 
 Full Unity 2022.3.62f3 PlayMode regression passed **327/327**, `Artifacts/collect-tip-tests.xml`, including the corrected TreasureCard OutBack test. The fresh collection-tip render was visually inspected: native bottom panel, animated glow, live 3/4 progress and $1,000 reward card are visible.
 
-The Treasure window must still call this component when its card finishes flipping. Window flight, live card selection/display, claim branches and actual cash flight remain pending; this component does not substitute for their integration.
+The Treasure window now calls this component when its card finishes flipping; see `treasure-window.md`. Main entry flight and card-departure consumers remain pending. The isolated tip test alone does not prove full lifecycle integration.
