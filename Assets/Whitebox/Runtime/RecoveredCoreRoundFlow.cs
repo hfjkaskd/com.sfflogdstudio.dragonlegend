@@ -29,6 +29,7 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredCashOutWindow cashOutPrefab;
         [SerializeField] private int popupBaseDepth;
         [SerializeField] private RectTransform popupRoot;
+        public RectTransform PopupRoot=>popupRoot;
         private readonly List<Canvas> popupCanvases=new List<Canvas>(16);
         private RecoveredCashPromptWindow cashPrompt;
         private RecoveredCashOutWindow cashOut;
@@ -87,6 +88,9 @@ namespace DragonLegend.Whitebox
             treasure.Bind(player,rules,game.Ads,game.CashFlight,game.transform,profile.isA,profile.languageType,game.CollectEntry.Destination);
             lucky.Bind(player,rules,game.Ads,game.CashFlight,game.transform,profile.isA,profile.languageType);
             ConnectBranchPopupDepth(true);
+            game.BonusFlow.Window.WindowShowRequested+=PreparePopupDepth;
+            game.BonusFlow.Window.RewardPopup.WindowShowRequested+=PreparePopupDepth;
+            game.BonusFlow.Window.JackpotPopup.WindowShowRequested+=PreparePopupDepth;
             router=new RecoveredFreeSmallGameRouter(rules,player,slot.Begin,wheel.Begin,treasure.Begin,lucky.Begin);
             reels.CoinScan.Bind(rules,player,game.FreeSpinResult,field.BonusCollection,Language);
             game.BonusFlow.BindFreeScan(reels.CoinScan);
@@ -226,6 +230,9 @@ namespace DragonLegend.Whitebox
             if(game==null)return;
             game.Playfield.Reels.ShakeRequested-=game.Playfield.Wilds.Shake.Begin;
             ConnectBranchPopupDepth(false);
+            game.BonusFlow.Window.WindowShowRequested-=PreparePopupDepth;
+            game.BonusFlow.Window.RewardPopup.WindowShowRequested-=PreparePopupDepth;
+            game.BonusFlow.Window.JackpotPopup.WindowShowRequested-=PreparePopupDepth;
             game.Playfield.ModeView.FreeReels.Controller.ShakeRequested-=game.Playfield.Wilds.Shake.Begin;
             game.Playfield.Wilds.Shake.Cancel();
             game.Playfield.Reels.AnticipationVisibilityRequested-=game.Playfield.ModeView.SetSpeedEffect;

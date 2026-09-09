@@ -40,6 +40,9 @@ namespace DragonLegend.Whitebox
         public RecoveredBonusItemTurn Card(int index)=>cards[index];
         public TMP_Text Chances=>chances;
         public Button CloseButton=>closeButton;
+        public RecoveredBonusRewardPopup RewardPopup=>rewardPopup;
+        public RecoveredJackpotPopup JackpotPopup=>jackpotPopup;
+        public event Action<Component> WindowShowRequested;
         public event Action CloseRequested,ExitRequested,HideFingerRequested;
         public event Action HideWheelRequested;
         public event Action<int,int> CashOutTaskRefreshRequested;
@@ -74,7 +77,7 @@ namespace DragonLegend.Whitebox
             RecoveredCashFlightPresenter flight,Func<int> readBet,bool versionA,int languageType)
         {
             progress=data;rules=config;ads=adFacade;cashFlight=flight;language=languageType;isA=versionA;
-            gameObject.SetActive(true);characters.Cancel();cash.Cancel();
+            WindowShowRequested?.Invoke(this);gameObject.SetActive(true);characters.Cancel();cash.Cancel();
             if(selection==null)selection=new RecoveredBonusSelection(rules,ads,this,cards.Length);
             meters.Initialize(progress,rules,readBet,language);
             ResetTargets(grandTargets);ResetTargets(majorTargets);ResetTargets(minorTargets);

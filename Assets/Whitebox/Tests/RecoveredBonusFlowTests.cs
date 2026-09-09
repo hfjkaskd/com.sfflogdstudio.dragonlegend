@@ -42,6 +42,7 @@ public sealed class RecoveredBonusFlowTests
                 yield return null;
             }
             Assert.IsNull(field.Error);Assert.IsNull(failure);Assert.IsTrue(flow.IsRunning);
+            field.SpinRecovery.MoreSpinButton.onClick.Invoke();Assert.IsTrue(entry.CoreRound.MoreSpins.gameObject.activeSelf);
             Assert.IsFalse(entry.PlayerProgress.IsBonusGame);CollectionAssert.AreEqual(new[]{0,0,0,0,0},entry.PlayerProgress.BonusArea);
             Assert.IsFalse(flow.Window.gameObject.activeSelf);Assert.AreEqual(2,field.Npc.State);
             for(int i=0;i<120&&!flow.Transition.IsPlaying;i++)yield return null;
@@ -53,6 +54,7 @@ public sealed class RecoveredBonusFlowTests
             for(int i=0;i<120&&secondCallback==0;i++)yield return null;
             Assert.Greater(secondCallback,0);Assert.That(secondCallback-began,Is.InRange(4.8,4.95));
             Assert.IsTrue(flow.Window.gameObject.activeSelf);Assert.AreEqual(0,completions);
+            Assert.Greater(flow.Window.GetComponent<Canvas>().sortingOrder,entry.CoreRound.MoreSpins.GetComponent<Canvas>().sortingOrder,"Bonus must open above the existing Popup window.");
             for(int i=0;i<25;i++)yield return null;
             for(int card=0;card<flow.Window.CardCount;card++){
                 var position=RectTransformUtility.WorldToScreenPoint(camera,flow.Window.Card(card).transform.position);
@@ -67,8 +69,8 @@ public sealed class RecoveredBonusFlowTests
                 flow.Window.Card(card).Button.onClick.Invoke();
                 float deadline=Time.realtimeSinceStartup+8;
                 while(flow.Window.Selection.IsClicked&&Time.realtimeSinceStartup<deadline){
-                    if(reward.gameObject.activeInHierarchy)reward.PlainButton.onClick.Invoke();
-                    if(jackpot.gameObject.activeInHierarchy)jackpot.PlainButton.onClick.Invoke();
+                    if(reward.gameObject.activeInHierarchy){Assert.Greater(reward.GetComponent<Canvas>().sortingOrder,flow.Window.GetComponent<Canvas>().sortingOrder);reward.PlainButton.onClick.Invoke();}
+                    if(jackpot.gameObject.activeInHierarchy){Assert.Greater(jackpot.GetComponent<Canvas>().sortingOrder,flow.Window.GetComponent<Canvas>().sortingOrder);jackpot.PlainButton.onClick.Invoke();}
                     yield return null;
                 }
                 Assert.IsNull(failure);Assert.IsFalse(flow.Window.Selection.IsClicked);

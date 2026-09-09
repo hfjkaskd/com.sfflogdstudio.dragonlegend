@@ -189,15 +189,16 @@ namespace DragonLegend.Whitebox
                 CashFlight.Bind(RewardBranches,balancePanel,profile.isA);
                 Playfield.FlyCoinRequested+=FlyCoin;
             }
+            if(coreRoundPrefab!=null)CoreRound=Instantiate(coreRoundPrefab,transform,false);
             if(bonusFlowPrefab!=null){
-                BonusFlow=Instantiate(bonusFlowPrefab,transform,false);
+                BonusFlow=Instantiate(bonusFlowPrefab,CoreRound!=null?CoreRound.PopupRoot:transform,false);
                 BonusFlow.Bind(Playfield,PlayerProgress,Rules,CashFlight,Ads,profile.isA,profile.languageType);
             }
             if (collectEntryPrefab != null) {
                 CollectEntry = Instantiate(collectEntryPrefab, transform, false);
                 CollectEntry.Bind(PlayerProgress, Rules, transform, profile.isA, profile.languageType);
             }
-            if(coreRoundPrefab!=null){CoreRound=Instantiate(coreRoundPrefab,transform,false);CoreRound.Bind(this);}
+            if(CoreRound!=null)CoreRound.Bind(this);
             if(coreAudioPrefab!=null){CoreAudio=Instantiate(coreAudioPrefab,transform,false);CoreAudio.Bind(this);}
             Ready?.Invoke(Rules);
         }
