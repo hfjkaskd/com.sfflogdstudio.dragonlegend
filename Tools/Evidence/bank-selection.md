@@ -1,0 +1,20 @@
+# Bank selection and pending production integration
+
+This increment restores the native selection controller and two missing configuration methods. It is not yet wired to a Bank popup: item animation, reward continuation, popup assets and core end-flow suspension remain pending. No SDK implementation changed.
+
+## Authoritative behavior
+
+- Main.BankPop 23bc778 sets Main +219 to true, then tail-calls InitBank. It does not immediately show the popup. InitBank 23bbb5c formats live BankCount/GetBankSpinCD as `{0}/{1}` (GOT 4f1d9c8) and assigns Image.fillAmount from their float ratio. BankProgressChanged only refreshes; BankReady also marks the pending popup.
+- Bank.OnBeforeShow 2391768 plays sound, stores showData.data as Action, **sets BankCount to zero before initialization**, initializes jackpot displays from ConfigManager.GetJackPot, then initializes items. OnAfterHide 2392ab0 hides the finger, invokes the stored callback, then stops item float animations. These lifecycle actions are not part of the selection-only model yet.
+- InitBankItems 2391a70 clears selected indices and isContinue, sets Btn scale to zero, then gives the item list types 2,1,0,0... (ARM w21 starts at one and decrements through the loop). Do not infer that the three visible item types determine their reward category.
+- Constructor 2392c40 initializes WinList to [0,1,2] and a separate empty selected-index list. RandFinger 2391c60 chooses uniformly from BankItems.Count and calls ShowFinger at that item's transform. No reward is drawn at this point.
+- OnClickLongZhu MoveNext 2393dbc first rejects an already-selected index. It then hides the finger and records the index **before** drawing the random category and reward. Category is stored in the window's shared tempIndex +C8; the reward float is captured in the per-click closure. Keep the shared category distinct from the captured reward for future animation callback integration.
+- RandBankIndex 236b228 reads configuration.Qonrii +B0 = RonkKgiitr and uses the existing native RandomListWeight routine. GetBankReward 236b24c reads Qonrii.RonkMini +A0 and RonkMoj +A8 at that category, calls integer Random.Range(min, unchecked(max+1)), then converts to float. It is an inclusive integer reward, not a continuous float draw.
+- Selected.Count==1 starts BankItem.PlayAnim immediately with the first-selection continuation. Later selections first run ShowAd, then request the reward ad. ELF relocation-backed literals: GOT4f1d048=`bank`, GOT4f1d0f0=`itembank`.
+- Success 2393384 starts PlayAnim with the **captured pre-ad reward** and its later-selection continuation. Failure 23933f8 only removes the clicked index; it does not refresh ad icons or roll back random state. Thus a retry draws a new category/reward.
+- ShowAd 2392630 iterates WinList and toggles each item's ad marker according to whether it is absent from the selected list. The selection view receives the live selected list synchronously to implement this when the prefab is connected.
+- Selection has no added global busy latch. The existing LocalAdFacade's concurrent-request policy is unchanged. GM cancellation prevents discarded model callbacks from starting item presentation, consistent with existing reconstructed lifecycle boundaries.
+
+`RecoveredBankSelectionTests` exercises first free selection, duplicate rejection without RNG consumption, all three ad failure outcomes, retry reroll, captured reward despite configuration change while the ad is pending, and cancellation/reset. A 64-seed comparison checks the two native random calls and final Unity Random.state, reusing the already recovered weighted sampler while independently composing the expected category/range calls.
+
+Unity 2022.3.62f3 focused PlayMode result: `Artifacts/bank-selection.xml`, **4/4 passed**, process 43936 exited. An initial test compile error used an instance to call the static weighted sampler; corrected the test qualification before this successful run. This increment does not change the production UI path, and the full suite was not rerun (previous production regression: 379/379 in `more-wild-entry-regression.xml`).
