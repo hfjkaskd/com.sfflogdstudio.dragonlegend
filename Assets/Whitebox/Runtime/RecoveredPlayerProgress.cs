@@ -21,6 +21,13 @@ namespace DragonLegend.Whitebox
         public float GreenCount => data.GreenCount;
         public IReadOnlyList<int> BonusArea => data.BonusArea;
         public IReadOnlyList<PlayerCashOutData> CashOutRecords => data.PlayerCashOutDatas;
+        // Captured-record callback 23a278c, invoked only after the owning flow succeeds.
+        // Do not reselect by id: the native closure retains the original record object.
+        public void ApplyCashOutTaskStep(PlayerCashOutData record,int nextStep,int unixSeconds)
+        {
+            record.step=nextStep;record.count=0;record.time=unixSeconds;
+            save();
+        }
         // CashOutBottom.InitUI 23a0eb8: local conditions only; step 1000 enters SDK order handling.
         public RecoveredCashOutConditions GetCashOutConditions(int tier,int utcSeconds)
         {

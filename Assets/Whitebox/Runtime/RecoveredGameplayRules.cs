@@ -245,5 +245,27 @@ namespace DragonLegend.Whitebox
             switch (step) { case 0: values = c.Rimgg1; break; case 1: values = c.Rimg2; break; case 2: values = c.Rimg3; break; case 3: values = c.Rimg4; break; case 4: values = c.Rimg5; break; case 5: values = c.Rimg6; break; default: values = c.Rimg7; break; }
             return values[TaskTier(index)];
         }
+        // CashOutBottom async continuation 23a41f8..23a4460. The success branch
+        // really passes candidate as index and selected tier as step (ARM w1/w2).
+        public int GetNextCashOutTaskStep(int index,int currentStep,bool success)
+        {
+            int one=success?GetSuccessTaskCount(1,index):GetFailTaskCount(index,1);
+            int two=success?GetSuccessTaskCount(2,index):GetFailTaskCount(index,2);
+            int three=success?GetSuccessTaskCount(3,index):GetFailTaskCount(index,3);
+            int four=success?GetSuccessTaskCount(4,index):GetFailTaskCount(index,4);
+            int five=success?GetSuccessTaskCount(5,index):GetFailTaskCount(index,5);
+            switch(currentStep)
+            {
+                case 0: if(one>0)return 1;goto case 1;
+                case 1: if(two>0)return 2;goto case 2;
+                case 2: if(three>0)return 3;goto case 3;
+                case 3: if(four>0)return 4;goto case 4;
+                case 4: if(five>0)return 5;break;
+                // Native GetTime7 reads the tier directly, even though both outcomes
+                // retain the failure branch's initial nextStep=6.
+                case 5: if(!success && data.Rgpggm.Rimg7[index]>0)return 6;break;
+            }
+            return success?1000:6;
+        }
     }
 }
