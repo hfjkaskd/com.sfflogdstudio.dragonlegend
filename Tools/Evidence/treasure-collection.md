@@ -26,4 +26,4 @@ Raw `023dbe7c.asm` is authoritative for RefreshCollectCard; its decompilation in
 
 ## Remaining integration
 
-TreasureCard and UITreasureView presentation, the card flight, collection claim window, and the production Free loop still need implementation/connection. These data rules alone do not establish that the Treasure branch or full lifecycle matches the original. Existing Lucky, Slot and Wheel branch prefabs do not fill this gap.
+TreasureCard's native subtree and flip are now recovered separately; see `treasure-card.md`. UITreasureView presentation, the card flight, collection claim window, and the production Free loop still need implementation/connection. These data rules alone do not establish that the Treasure branch or full lifecycle matches the original. Existing Lucky, Slot and Wheel branch prefabs do not fill this gap.
