@@ -1,0 +1,373 @@
+{
+  "function_rva": "0x23bd4e8",
+  "elf_sha256": "28e37caa1f182a8ac31596f3eeb0569c4cd7b1179a45a2769cfbf35038fc85e1",
+  "source_sha256": "0ec879e09b7f0066473cd44d7fff72b139795aaa0f9896d96e9cc41016e0d676",
+  "references": [
+    {
+      "ghidra_pointer": "0501b660",
+      "metadata_address": "0x5009f10",
+      "kind": "ScriptMetadata",
+      "value": "System.Action_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b6a8",
+      "metadata_address": "0x500a828",
+      "kind": "ScriptMetadata",
+      "value": "bool_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b6f8",
+      "metadata_address": "0x50097c8",
+      "kind": "ScriptMetadata",
+      "value": "object[]_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b700",
+      "metadata_address": "0x500d828",
+      "kind": "ScriptMetadata",
+      "value": "int_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b798",
+      "metadata_address": "0x50041e8",
+      "kind": "ScriptMetadata",
+      "value": "System.Action<bool, List<PayoutOrder>, PayoutError>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b918",
+      "metadata_address": "0x5008bc8",
+      "kind": "ScriptMetadata",
+      "value": "Singleton<GameDataManager>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b948",
+      "metadata_address": "0x50273d8",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Singleton<SdkAdManager>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501b950",
+      "metadata_address": "0x5027380",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Singleton<GameDataManager>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501b958",
+      "metadata_address": "0x5008bf8",
+      "kind": "ScriptMetadata",
+      "value": "Singleton<SdkAdManager>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501baf8",
+      "metadata_address": "0x5008bb0",
+      "kind": "ScriptMetadata",
+      "value": "Singleton<ConfigManager>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501bb58",
+      "metadata_address": "0x5027360",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Singleton<EventDispatcher>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501bb60",
+      "metadata_address": "0x5027350",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Singleton<ConfigManager>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501bb68",
+      "metadata_address": "0x5008bb8",
+      "kind": "ScriptMetadata",
+      "value": "Singleton<EventDispatcher>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501bb78",
+      "metadata_address": "0x5003f60",
+      "kind": "ScriptMetadata",
+      "value": "System.Action<int>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501bcd0",
+      "metadata_address": "0x5022690",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$System.Collections.Generic.List<PayoutOrder>..ctor()"
+    },
+    {
+      "ghidra_pointer": "0501bcd8",
+      "metadata_address": "0x5007dc0",
+      "kind": "ScriptMetadata",
+      "value": "System.Collections.Generic.List<PayoutOrder>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501bce0",
+      "metadata_address": "0x5041bc8",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$GameDataManager.<>c.<OpenWithDrawWindow>b__10_0()"
+    },
+    {
+      "ghidra_pointer": "0501bce8",
+      "metadata_address": "0x5013838",
+      "kind": "ScriptMetadata",
+      "value": "GameDataManager.<>c_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501bcf0",
+      "metadata_address": "0x50389c0",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Game.UI.UIManager.ShowWindow<UICashOutView>()"
+    },
+    {
+      "ghidra_pointer": "0501bcf8",
+      "metadata_address": "0x5038a60",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Game.UI.UIManager.ShowWindow<UIWaitingView>()"
+    },
+    {
+      "ghidra_pointer": "0501bd00",
+      "metadata_address": "0x5010f28",
+      "kind": "ScriptMetadata",
+      "value": "Game.UI.UIWindowContextData_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501bd08",
+      "metadata_address": "0x5029260",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Game.UnitySingleton<UIManager>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501bd70",
+      "metadata_address": "0x5038a50",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Game.UI.UIManager.ShowWindow<UITipsView>()"
+    },
+    {
+      "ghidra_pointer": "0501bf98",
+      "metadata_address": "0x505f568",
+      "kind": "ScriptString",
+      "value": "default"
+    },
+    {
+      "ghidra_pointer": "0501c090",
+      "metadata_address": "0x500b748",
+      "kind": "ScriptMetadata",
+      "value": "System.DateTimeOffset_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501c190",
+      "metadata_address": "0x5029240",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Game.UnitySingleton<PoolManager>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501c370",
+      "metadata_address": "0x5029250",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Game.UnitySingleton<SoundManager>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501c440",
+      "metadata_address": "0x50273e8",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Singleton<SlotGameResult>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501c448",
+      "metadata_address": "0x5008c00",
+      "kind": "ScriptMetadata",
+      "value": "Singleton<SlotGameResult>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501c520",
+      "metadata_address": "0x504b238",
+      "kind": "ScriptString",
+      "value": "7"
+    },
+    {
+      "ghidra_pointer": "0501cf38",
+      "metadata_address": "0x505ebf8",
+      "kind": "ScriptString",
+      "value": "click"
+    },
+    {
+      "ghidra_pointer": "0501dd00",
+      "metadata_address": "0x5063b40",
+      "kind": "ScriptString",
+      "value": "start"
+    },
+    {
+      "ghidra_pointer": "0501e198",
+      "metadata_address": "0x504ba38",
+      "kind": "ScriptString",
+      "value": "<gradient=\"spin\">SPIN {0}</gradient>"
+    },
+    {
+      "ghidra_pointer": "0501e2a0",
+      "metadata_address": "0x50388e0",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$UIMainView.<OnClickButton>b__95_0()"
+    },
+    {
+      "ghidra_pointer": "0501e2a8",
+      "metadata_address": "0x50388e8",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$UIMainView.<OnClickButton>b__95_1()"
+    },
+    {
+      "ghidra_pointer": "0501e2b0",
+      "metadata_address": "0x50389c8",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Game.UI.UIManager.ShowWindow<UICollectView>()"
+    },
+    {
+      "ghidra_pointer": "0501e2b8",
+      "metadata_address": "0x50389d0",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Game.UI.UIManager.ShowWindow<UIDailyTaskView>()"
+    },
+    {
+      "ghidra_pointer": "0501e2c0",
+      "metadata_address": "0x50389f0",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Game.UI.UIManager.ShowWindow<UIHelpView>()"
+    },
+    {
+      "ghidra_pointer": "0501e2c8",
+      "metadata_address": "0x5038a10",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Game.UI.UIManager.ShowWindow<UIMoreSpinView>()"
+    },
+    {
+      "ghidra_pointer": "0501e2d0",
+      "metadata_address": "0x5038a18",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Game.UI.UIManager.ShowWindow<UIMoreWildView>()"
+    },
+    {
+      "ghidra_pointer": "0501e2d8",
+      "metadata_address": "0x5038a48",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Game.UI.UIManager.ShowWindow<UISettingView>()"
+    },
+    {
+      "ghidra_pointer": "0501e2e0",
+      "metadata_address": "0x5059e98",
+      "kind": "ScriptString",
+      "value": "Treasure"
+    },
+    {
+      "ghidra_pointer": "0501e2e8",
+      "metadata_address": "0x50581b8",
+      "kind": "ScriptString",
+      "value": "Task"
+    },
+    {
+      "ghidra_pointer": "0501e2f0",
+      "metadata_address": "0x5063a70",
+      "kind": "ScriptString",
+      "value": "spin20"
+    },
+    {
+      "ghidra_pointer": "0501e2f8",
+      "metadata_address": "0x5051a90",
+      "kind": "ScriptString",
+      "value": "HelpBtn"
+    },
+    {
+      "ghidra_pointer": "0501e300",
+      "metadata_address": "0x50544a8",
+      "kind": "ScriptString",
+      "value": "MoreWild"
+    },
+    {
+      "ghidra_pointer": "0501e308",
+      "metadata_address": "0x505f6d0",
+      "kind": "ScriptString",
+      "value": "dianji"
+    },
+    {
+      "ghidra_pointer": "0501e310",
+      "metadata_address": "0x5057128",
+      "kind": "ScriptString",
+      "value": "SettingBtn"
+    },
+    {
+      "ghidra_pointer": "0501e318",
+      "metadata_address": "0x505b9f8",
+      "kind": "ScriptString",
+      "value": "WithdrawBtn"
+    },
+    {
+      "ghidra_pointer": "0501e320",
+      "metadata_address": "0x505e478",
+      "kind": "ScriptString",
+      "value": "bankBtn"
+    },
+    {
+      "ghidra_pointer": "0501e328",
+      "metadata_address": "0x5063a68",
+      "kind": "ScriptString",
+      "value": "spin10"
+    },
+    {
+      "ghidra_pointer": "0501e330",
+      "metadata_address": "0x504e0d0",
+      "kind": "ScriptString",
+      "value": "CashOutb"
+    },
+    {
+      "ghidra_pointer": "0501e338",
+      "metadata_address": "0x50547b8",
+      "kind": "ScriptString",
+      "value": "Need more spins to trigger the rewards."
+    },
+    {
+      "ghidra_pointer": "0501e340",
+      "metadata_address": "0x50544a0",
+      "kind": "ScriptString",
+      "value": "MoreSpinBtn"
+    },
+    {
+      "ghidra_pointer": "0501e348",
+      "metadata_address": "0x5057618",
+      "kind": "ScriptString",
+      "value": "SpinBtn"
+    },
+    {
+      "ghidra_pointer": "0501e350",
+      "metadata_address": "0x5063a60",
+      "kind": "ScriptString",
+      "value": "spin"
+    },
+    {
+      "ghidra_pointer": "0501e358",
+      "metadata_address": "0x502b638",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<UIMainView.<AutoFreeSpin>d__96>()"
+    },
+    {
+      "ghidra_pointer": "0501f128",
+      "metadata_address": "0x5010d00",
+      "kind": "ScriptMetadata",
+      "value": "System.Type_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501f998",
+      "metadata_address": "0x50183f8",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Game.UI.Core.BaseUIManager<UIManager>.Base_ShowWindow()"
+    },
+    {
+      "ghidra_pointer": "050393d8",
+      "metadata_address": "0x500ec90",
+      "kind": "ScriptMetadata",
+      "value": "Publish.Payout_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "050393f8",
+      "metadata_address": "0x500d1d8",
+      "kind": "ScriptMetadata",
+      "value": "Publish.IPayout_TypeInfo"
+    }
+  ]
+}
