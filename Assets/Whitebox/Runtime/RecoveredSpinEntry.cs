@@ -14,6 +14,7 @@ namespace DragonLegend.Whitebox
         private readonly RecoveredSpinResult result;
         private readonly Action save;
         public event Action MoreSpinsRequested;
+        public event Action ClickSoundRequested, SpinSoundRequested;
         public event Action StartVisualsRequested;
         public event Action GuideHideRequested;
         public event Action WinResetRequested;
@@ -35,9 +36,11 @@ namespace DragonLegend.Whitebox
         // now is supplied by the caller's UTC clock, identically on all platforms.
         public bool TryBegin(bool isSpinning, int bet, string configType, long now, Action<int> onReelsReady = null)
         {
+            ClickSoundRequested?.Invoke();
             if (isSpinning || result.IsGenerating) return false;
             if (progress.SpinCount <= 0) { MoreSpinsRequested?.Invoke(); return false; }
             data.isStartSpin = true;
+            SpinSoundRequested?.Invoke();
             StartVisualsRequested?.Invoke();
             bool isGuide = data.GuideStep == 1;
             if (isGuide) { data.GuideStep++; GuideHideRequested?.Invoke(); }

@@ -311,6 +311,8 @@ MonoBehaviour:
   coinRevealSound: coinReveal
   lampArrivalSound: exp
   coinBurstSound: coinBrust
+  clickSound: click
+  spinSound: spin
 --- !u!114 &554098096442691605
 MonoBehaviour:
   m_ObjectHideFlags: 0

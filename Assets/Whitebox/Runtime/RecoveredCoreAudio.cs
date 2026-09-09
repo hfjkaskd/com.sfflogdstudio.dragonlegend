@@ -7,6 +7,7 @@ namespace DragonLegend.Whitebox
     {
         [SerializeField] private RecoveredSoundManager audioManager;
         [SerializeField] private string reelStopSound, speedupSound, coinShowSound, coinRevealSound, lampArrivalSound, coinBurstSound;
+        [SerializeField] private string clickSound, spinSound;
         private GameEntry game;
         public RecoveredSoundManager Manager => audioManager;
         public void Bind(GameEntry context) { Unbind(); game = context; audioManager.Bind(game.PlayerStore.Data); Connect(true); }
@@ -18,6 +19,8 @@ namespace DragonLegend.Whitebox
             var baseFlights = game.Playfield.WinFlight;
             var freeFlights = game.Playfield.ModeView.FreeReels.RewardCollect.Flights;
             if (bind) {
+                game.SpinEntry.ClickSoundRequested += SpinClick;
+                game.SpinEntry.SpinSoundRequested += SpinStart;
                 reels.ReelStopSoundRequested += ReelStop;
                 reels.SpeedupSoundRequested += Speedup;
                 reels.SpeedupSoundStopRequested += audioManager.StopSound1;
@@ -27,6 +30,8 @@ namespace DragonLegend.Whitebox
                 baseFlights.CoinBurstSoundRequested += CoinBurst;
                 freeFlights.CoinBurstSoundRequested += CoinBurst;
             } else {
+                game.SpinEntry.ClickSoundRequested -= SpinClick;
+                game.SpinEntry.SpinSoundRequested -= SpinStart;
                 reels.ReelStopSoundRequested -= ReelStop;
                 reels.SpeedupSoundRequested -= Speedup;
                 reels.SpeedupSoundStopRequested -= audioManager.StopSound1;
@@ -97,6 +102,8 @@ namespace DragonLegend.Whitebox
         }
         private void OnDestroy() => Unbind();
         private void ReelStop() => audioManager.PlaySound(reelStopSound);
+        private void SpinClick() => audioManager.PlaySound(clickSound);
+        private void SpinStart() => audioManager.PlaySound(spinSound);
         private void Speedup() => audioManager.PlaySound1(speedupSound);
         private void CoinShow() => audioManager.PlaySound(coinShowSound);
         private void CoinReveal() => audioManager.PlaySound(coinRevealSound);

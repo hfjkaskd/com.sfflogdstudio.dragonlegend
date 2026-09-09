@@ -23,6 +23,8 @@ public sealed class RecoveredSpinEntryTests
             var progress = new RecoveredPlayerProgress(rules,save,data);
             var result = new RecoveredSpinResult(rules,new RecoveredSlotSettlement(rules));
             var entry = new RecoveredSpinEntry(rules,data,progress,result,save);
+            entry.ClickSoundRequested += () => { if(events.Count==0)Assert.IsFalse(data.isStartSpin); events.Add("click"); };
+            entry.SpinSoundRequested += () => { Assert.IsTrue(data.isStartSpin); events.Add("spinSound"); };
             entry.StartVisualsRequested += () => events.Add("start");
             entry.GuideHideRequested += () => events.Add("guide");
             progress.SpinCountChanged += _ => events.Add("spin");
@@ -36,7 +38,7 @@ public sealed class RecoveredSpinEntryTests
                 Assert.AreEqual(rules.GetSpinCD(progress.Level),seconds); events.Add("timer");
             };
             Assert.IsTrue(entry.TryBegin(false,1,"default",123456));
-            CollectionAssert.AreEqual(new[]{"start","guide","save","spin","xp","save",
+            CollectionAssert.AreEqual(new[]{"click","spinSound","start","guide","save","spin","xp","save",
                 "save","bank","save","reset","jackpots","wild","save","timer"},events);
             Assert.AreEqual(2,data.GuideStep);
             Assert.AreEqual(0,progress.MoreWild);
@@ -49,6 +51,7 @@ public sealed class RecoveredSpinEntryTests
             int previousSpinCount = progress.SpinCount;
             Assert.IsFalse(entry.TryBegin(false,1,"default",999));
             Assert.AreEqual(previousSpinCount,progress.SpinCount);
+            Assert.AreEqual("click",events[events.Count-1],"A generating request still clicks, without starting another spin sound.");
         }
         finally { UnityEngine.Random.state=state; }
     }
@@ -65,6 +68,9 @@ public sealed class RecoveredSpinEntryTests
         var progress=new RecoveredPlayerProgress(rules,save,data);
         var result=new RecoveredSpinResult(rules,new RecoveredSlotSettlement(rules));
         var entry=new RecoveredSpinEntry(rules,data,progress,result,save);
+        var sounds=new List<string>();
+        entry.ClickSoundRequested+=()=>sounds.Add("click");
+        entry.SpinSoundRequested+=()=>sounds.Add("spin");
         entry.MoreSpinsRequested+=()=>more++;
         string before=UnityEngine.JsonUtility.ToJson(data);
         Assert.IsFalse(entry.TryBegin(true,1,"default",100));
@@ -74,6 +80,7 @@ public sealed class RecoveredSpinEntryTests
         Assert.AreEqual(0,saves);
         Assert.AreEqual(before,UnityEngine.JsonUtility.ToJson(data));
         Assert.IsFalse(result.IsGenerating);
+        CollectionAssert.AreEqual(new[]{"click","click"},sounds);
     }
 
     [TestCase(-1,false)] [TestCase(3,true)] [TestCase(8,true)]

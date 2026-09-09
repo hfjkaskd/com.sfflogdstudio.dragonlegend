@@ -26,6 +26,8 @@ public sealed class RecoveredCoreRoundFlowTests
             // one-shot cannot hide a missing or incorrectly routed audio binding.
             var audio=game.CoreAudio.Manager;
             game.CoreAudio.Unbind();
+            game.SpinEntry.ClickSoundRequested+=audio.StopSound;
+            game.SpinEntry.SpinSoundRequested+=audio.StopSound;
             field.Reels.ReelStopSoundRequested+=audio.StopSound;
             field.Reels.SpeedupSoundRequested+=audio.StopSound1;
             field.CoinStops.CoinShowSoundRequested+=audio.StopSound;
@@ -34,6 +36,9 @@ public sealed class RecoveredCoreRoundFlowTests
             field.WinFlight.CoinBurstSoundRequested+=audio.StopSound;
             field.ModeView.FreeReels.RewardCollect.Flights.CoinBurstSoundRequested+=audio.StopSound;
             game.CoreAudio.Bind(game);
+            int clickSounds=0,startSounds=0;
+            game.SpinEntry.ClickSoundRequested+=()=>{if(game.PlayerStore.Data.IsMusic){Assert.IsTrue(audio.SoundSource.isPlaying);clickSounds++;}};
+            game.SpinEntry.SpinSoundRequested+=()=>{if(game.PlayerStore.Data.IsMusic){Assert.IsTrue(audio.SoundSource.isPlaying);startSounds++;}};
             int reelSounds=0,speedSounds=0,speedStops=0,coinShows=0,coinReveals=0,lampSounds=0,burstSounds=0;
             field.Reels.ReelStopSoundRequested+=()=>{if(game.PlayerStore.Data.IsMusic){Assert.IsTrue(audio.SoundSource.isPlaying);reelSounds++;}};
             field.Reels.SpeedupSoundRequested+=()=>{if(game.PlayerStore.Data.IsMusic){Assert.IsTrue(audio.Sound1Source.isPlaying);speedSounds++;}};
@@ -53,6 +58,7 @@ public sealed class RecoveredCoreRoundFlowTests
             Assert.AreEqual(1,coinShows);Assert.AreEqual(1,coinReveals);
             Assert.AreEqual(1,lampSounds);Assert.AreEqual(1,burstSounds);
             int spins=game.PlayerProgress.SpinCount;field.SpinButton.Button.onClick.Invoke();field.SpinButton.Button.onClick.Invoke();
+            Assert.AreEqual(2,clickSounds);Assert.AreEqual(1,startSounds);
             Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);Assert.IsTrue(field.IsBusy);
             for(int frame=0;frame<1800&&completed==0;frame++){Claim(field.BigWinPopup.PlainButton);Claim(field.JackpotPopup.PlainButton);yield return null;}
             Assert.IsNull(core.Error);Assert.AreEqual(1,completed);Assert.IsFalse(field.IsBusy);Assert.IsFalse(field.AwaitingRewards);

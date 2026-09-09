@@ -33,6 +33,8 @@ public static class BuildCoreAudio
             for (int i = 0; i < files.Length; i++) names.GetArrayElementAtIndex(i).stringValue = Path.GetFileNameWithoutExtension(files[i]);
             settings.ApplyModifiedPropertiesWithoutUndo();
             var binding = new SerializedObject(root.GetComponent<RecoveredCoreAudio>());
+            binding.FindProperty("clickSound").stringValue = "click";
+            binding.FindProperty("spinSound").stringValue = "spin";
             string[] eventFields = { "reelStopSound", "speedupSound", "coinShowSound", "coinRevealSound", "lampArrivalSound", "coinBurstSound" };
             string[] eventClips = { "reelstop", "speedup", "coinshow", "coinReveal", "exp", "coinBrust" };
             for (int i = 0; i < eventFields.Length; i++) binding.FindProperty(eventFields[i]).stringValue = eventClips[i];
