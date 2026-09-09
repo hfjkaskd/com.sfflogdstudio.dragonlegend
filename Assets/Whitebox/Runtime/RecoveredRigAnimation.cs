@@ -41,7 +41,7 @@ namespace DragonLegend.Whitebox
                     } else slot.tint[channel.component]=value;
                 } else {
                     var bone=rig.bones[channel.index];
-                    switch(channel.component){case 0:bone.rotation=value;break;case 1:bone.x=value;break;case 2:bone.y=value;break;case 3:bone.scaleX=value;break;case 4:bone.scaleY=value;break;}
+                    switch(channel.component){case 0:bone.rotation=value;break;case 1:bone.x=value;break;case 2:bone.y=value;break;case 3:bone.scaleX=value;break;case 4:bone.scaleY=value;break;case 5:bone.shearX=value;break;case 6:bone.shearY=value;break;}
                 }
             }
             if(sequences!=null)foreach(var sequence in sequences) {

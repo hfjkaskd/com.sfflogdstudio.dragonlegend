@@ -8,7 +8,7 @@ namespace DragonLegend.Whitebox
     [RequireComponent(typeof(CanvasRenderer))]
     public sealed class RecoveredRegionRig : MaskableGraphic
     {
-        [Serializable] public sealed class Bone {public string name;public int parent,mode;public float x,y,rotation,scaleX=1,scaleY=1;}
+        [Serializable] public sealed class Bone {public string name;public int parent,mode;public float x,y,rotation,scaleX=1,scaleY=1,shearX,shearY;}
         [Serializable] public sealed class Slot {public int bone;public float attachment;public Color tint=Color.white;public bool additive;[NonSerialized] public int sequenceIndex=-1;}
         [Serializable] public sealed class Region {
             public Vector2[] vertices,uv;public Color tint=Color.white;public int[] sequenceFrames;public int setupIndex;
@@ -43,6 +43,12 @@ namespace DragonLegend.Whitebox
             else for(int i=0;i<bones.Length;i++) {
                 var bone=bones[i];if(bone.mode!=0&&bone.mode!=1&&bone.mode!=3&&bone.mode!=4)throw new InvalidOperationException("Unsupported bone inheritance");var parent=bone.parent<0?Matrix4x4.identity:matrices[bone.parent];
                 var local=Matrix4x4.TRS(new Vector3(bone.x,bone.y,0),Quaternion.Euler(0,0,bone.rotation),new Vector3(bone.scaleX,bone.scaleY,1));
+                if(bone.shearX!=0||bone.shearY!=0) {
+                    float xAngle=(bone.rotation+bone.shearX)*Mathf.Deg2Rad;
+                    float yAngle=(bone.rotation+90+bone.shearY)*Mathf.Deg2Rad;
+                    local.SetColumn(0,new Vector4(Mathf.Cos(xAngle)*bone.scaleX,Mathf.Sin(xAngle)*bone.scaleX,0,0));
+                    local.SetColumn(1,new Vector4(Mathf.Cos(yAngle)*bone.scaleY,Mathf.Sin(yAngle)*bone.scaleY,0,0));
+                }
                 if(bone.mode==0)matrices[i]=parent*local;
                 else if(bone.mode==1) {
                     // OnlyTranslation: inherit the transformed origin, not parent axes.
@@ -59,6 +65,13 @@ namespace DragonLegend.Whitebox
                     var matrix=Matrix4x4.identity;
                     matrix.SetColumn(0,new Vector4(direction.x*bone.scaleX,direction.y*bone.scaleX,0,0));
                     matrix.SetColumn(1,new Vector4(-direction.y*reflection*bone.scaleY,direction.x*reflection*bone.scaleY,0,0));
+                    if(bone.shearX!=0||bone.shearY!=0) {
+                        float xAngle=bone.shearX*Mathf.Deg2Rad,yAngle=(90+bone.shearY)*Mathf.Deg2Rad;
+                        var perpendicular=new Vector3(-direction.y*reflection,direction.x*reflection,0);
+                        var xAxis=(direction*Mathf.Cos(xAngle)+perpendicular*Mathf.Sin(xAngle))*bone.scaleX;
+                        var yAxis=(direction*Mathf.Cos(yAngle)+perpendicular*Mathf.Sin(yAngle))*bone.scaleY;
+                        matrix.SetColumn(0,new Vector4(xAxis.x,xAxis.y,0,0));matrix.SetColumn(1,new Vector4(yAxis.x,yAxis.y,0,0));
+                    }
                     matrix.SetColumn(3,new Vector4(position.x,position.y,0,1));matrices[i]=matrix;
                 }
             }

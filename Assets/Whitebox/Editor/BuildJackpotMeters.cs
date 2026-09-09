@@ -149,9 +149,9 @@ public static class BuildJackpotMeters
                 foreach(var f in t.frames)keys.Add(new Keyframe(f.time,string.IsNullOrEmpty(f.attachment)?-1:ids[t.index+"/"+f.attachment],float.PositiveInfinity,float.PositiveInfinity));
                 channels.Add(new RecoveredRigAnimation.Channel{slot=true,index=t.index,component=-1,curve=new AnimationCurve(keys.ToArray())});continue;
             }
-            if(slot?t.kind!=1:t.domain!="bone"||(t.kind!=0&&t.kind!=1&&t.kind!=4))throw new InvalidDataException("Unexpected jackpot timeline");
+            if(slot?t.kind!=1:t.domain!="bone"||(t.kind!=0&&t.kind!=1&&t.kind!=4&&t.kind!=7))throw new InvalidDataException("Unexpected jackpot timeline");
             for(int c=0;c<t.frames[0].values.Length;c++) {
-                int component=slot?c:t.kind==0?0:t.kind==1?c+1:c+3;float original=slot?source.slots[t.index].color[c]:source.bones[t.index].values[component];
+                int component=slot?c:t.kind==0?0:t.kind==1?c+1:t.kind==7?c+5:c+3;float original=slot?source.slots[t.index].color[c]:source.bones[t.index].values[component];
                 var curve=BuildCoinAppearance.Curve(t.frames,c,slot||t.kind==4?0:original,!slot&&t.kind==4?original:1);
                 if(t.frames[0].time>0)curve.AddKey(new Keyframe(0,original,float.PositiveInfinity,float.PositiveInfinity));
                 channels.Add(new RecoveredRigAnimation.Channel{slot=slot,index=t.index,component=component,curve=curve});

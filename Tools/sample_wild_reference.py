@@ -13,10 +13,17 @@ def transform(m, p):
     return [a*p[0]+b*p[1]+x,c*p[0]+d*p[1]+y]
 
 def matrix(parent, mode, pose):
-    rotation,x,y,sx,sy = pose
+    rotation,x,y,sx,sy = pose[:5]
+    shear_x,shear_y = pose[5:7] if len(pose)>5 else (0,0)
     r = math.radians(rotation); co,si = math.cos(r),math.sin(r)
     a,b,c,d,_,_ = parent
     px,py = transform(parent,(x,y))
+    if shear_x or shear_y:
+        rx,ry=math.radians(rotation+shear_x),math.radians(rotation+90+shear_y)
+        la,lb,lc,ld=math.cos(rx)*sx,math.cos(ry)*sy,math.sin(rx)*sx,math.sin(ry)*sy
+        if mode==0:return [a*la+b*lc,a*lb+b*ld,c*la+d*lc,c*lb+d*ld,px,py]
+        if mode==1:return [la,lb,lc,ld,px,py]
+        raise ValueError('Sheared no-scale reference needs conversion')
     if mode == 0:
         return [(a*co+b*si)*sx,(-a*si+b*co)*sy,(c*co+d*si)*sx,(-c*si+d*co)*sy,px,py]
     if mode == 1:
@@ -47,7 +54,7 @@ def evaluate(frames,time,component,percent=False):
     return p1
 
 def sample(data,time,geometry=False,world_matrices=None):
-    pose=[b['values'][:5] for b in data['bones']]
+    pose=[b['values'][:7] for b in data['bones']]
     active=[s['attachment'] for s in data['slots']]
     deforms={}
     for t in data['animations'][0]['timelines']:
@@ -56,7 +63,7 @@ def sample(data,time,geometry=False,world_matrices=None):
             for c in range(len(frames[0]['values'])):
                 v=evaluate(frames,time,c)
                 if v is None:continue
-                component=0 if t['kind']==0 else c+1 if t['kind']==1 else c+3
+                component=0 if t['kind']==0 else c+1 if t['kind']==1 else c+5 if t['kind']==7 else c+3
                 base=data['bones'][t['index']]['values'][component]
                 pose[t['index']][component]=base*v if t['kind']==4 else base+v
         elif t['domain']=='slot' and t['kind']==0:

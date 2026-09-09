@@ -105,7 +105,7 @@ def timeline(domain,index,kind,count):
  d={'domain':domain,'index':index,'kind':kind,'frames':[]}
  if domain=='slot' and kind==0:
   d['frames']=[{'time':num(),'attachment':ref()} for _ in range(count)];return d
- dimensions=({1:4,2:3,5:1} if domain=='slot' else {0:1,1:2,2:1,3:1,4:2,5:1,6:1})[kind]
+ dimensions=({1:4,2:3,5:1} if domain=='slot' else {0:1,1:2,2:1,3:1,4:2,5:1,6:1,7:2,8:1,9:1})[kind]
  var() # number of allocated Bezier channels
  values=(lambda:[u8()/255 for _ in range(dimensions)]) if domain=='slot' else (lambda:[num() for _ in range(dimensions)])
  frame={'time':num(),'values':values()}
