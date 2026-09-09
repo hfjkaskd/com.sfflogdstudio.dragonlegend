@@ -67,6 +67,7 @@ namespace DragonLegend.Whitebox
             if(game==null)return;
             game.BonusFlow.Completed-=AfterBonus;game.BonusFlow.BindFreeScan(null);
             var mode=game.Playfield.ModeView;
+            mode.FreeReels.Controller.AbortForProfileChange();
             entry.InitShowRequested-=mode.ApplyCurrent;entry.InitFreeReelsRequested-=mode.InitializeFreeReels;
             entry.InitFreeSpinTimesRequested-=InitialCount;entry.Completed-=AfterEntry;entry.Failed-=Fail;entry.Unbind();
             exit.BaseViewResetRequested-=mode.ApplyCurrent;exit.BaseReelsInitRequested-=InitializeBase;

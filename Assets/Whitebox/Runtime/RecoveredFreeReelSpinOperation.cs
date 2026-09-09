@@ -21,8 +21,14 @@ namespace DragonLegend.Whitebox
         }
         public void Forget(){forgotten=true;if(IsCompleted&&Error!=null)Debug.LogException(Error);}
         public void GetResult(){if(!IsCompleted)throw new InvalidOperationException("Free startup is pending.");if(Error!=null)throw Error;}
+        internal void CancelForProfileChange()
+        {
+            if(IsCompleted)return;
+            Error=new OperationCanceledException("GM profile changed.");IsCompleted=true;
+        }
         bool IRecoveredReelUpdateItem.Step(int frame,float delta)
         {
+            if(IsCompleted)return false;
             if(movement.StopRequested)return true;
             try {stopped?.Invoke(column);}catch(Exception error){Error=error;}
             IsCompleted=true;if(forgotten&&Error!=null)Debug.LogException(Error);return false;

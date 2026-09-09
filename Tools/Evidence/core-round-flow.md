@@ -56,6 +56,20 @@ production core before installing their own entry/counter event harness; otherwi
 they would drive duplicate Free controllers without the normal cover initialization.
 The final full run also passes existing RNG pause and wheel timing assertions.
 
-Remaining core verification includes mixed production ball branches and GM switching
-during an active Free reel phase; the no-ball shortened session test does not cover
-those cases. Follow-up must check outstanding Free operation cancellation on teardown.
+Remaining core verification includes mixed production ball branches; the no-ball
+shortened session test does not cover those cases.
+
+GM teardown follow-up: free-gm-before.xml reproduced a running old Free controller
+after the actual SelectUS button rebuilt the profile. FreeColumn now retains the
+three startup and three stop operations, preserving the synchronous first-child
+AccCall ordering. Explicit profile teardown cancels those operations and resets
+movement before destroying the old playfield. The controller also cancels its
+five-column completion wait. This is local GM lifetime handling, not a claim that
+the original game exposes this GM profile switch. Ordinary mode visibility changes
+do not cancel the operations or change normal reel timing.
+
+free-gm-after.xml passes the production-scene test in both acceleration and partial
+column-stop phases: immediate stopped state, no later old stop/sound callbacks,
+no old balance/count mutation, and a working Spin button after rebuilding.
+Full follow-up regression: Artifacts/free-gm-regression.xml passes 353/353 PlayMode
+tests, including normal Base/Free round completion and existing reel timing tests.

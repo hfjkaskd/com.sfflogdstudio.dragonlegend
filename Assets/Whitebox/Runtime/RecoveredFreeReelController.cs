@@ -32,6 +32,15 @@ namespace DragonLegend.Whitebox
             SoundRequested?.Invoke(reelStopSound);ShakeRequested?.Invoke();
         }
         private void Complete(){IsRunning=false;ReelsStopped?.Invoke();}
-        private void OnDestroy()=>wait?.Cancel();
+        internal void AbortForProfileChange()
+        {
+            wait?.Cancel();wait=null;IsRunning=false;
+            if(reels==null)return;
+            for(int column=0;column<5;column++) {
+                var value=reels.ColumnAt(column);
+                if(value!=null)value.AbortForProfileChange();
+            }
+        }
+        private void OnDestroy()=>AbortForProfileChange();
     }
 }

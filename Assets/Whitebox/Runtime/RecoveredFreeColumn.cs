@@ -11,6 +11,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private float stopDelay,stopDelayPerColumn;
         [SerializeField] private RecoveredFreeSpecials specials;
         [SerializeField] private Transform resultLayer;
+        private readonly RecoveredFreeReelSpinOperation[] starts=new RecoveredFreeReelSpinOperation[3];
+        private readonly RecoveredReelStopOperation[] stops=new RecoveredReelStopOperation[3];
         public int Index=>column;
         public Transform ResultLayer=>resultLayer;
         public void StartSpin(float seconds,Action<int> acceleration,Action<int> stopped)
@@ -19,7 +21,10 @@ namespace DragonLegend.Whitebox
             // all three stops before the other two child spins have started.
             bool issued=false;
             Action<int> beginStop=index=>{if(issued)return;issued=true;StopSpin(stopDelay+index*stopDelayPerColumn,stopped);};
-            for(int i=0;i<rows.Length;i++)rows[i].StartSpin(seconds,beginStop,null).Forget();
+            for(int i=0;i<rows.Length;i++) {
+                starts[i]=rows[i].StartSpin(seconds,beginStop,null);
+                starts[i].Forget();
+            }
         }
         public void StopSpin(float seconds,Action<int> completed)
         {
@@ -30,6 +35,7 @@ namespace DragonLegend.Whitebox
             };
             for(int i=0;i<rows.Length;i++) {
                 var operation=rows[i].SetStop(seconds,afterRow);
+                stops[i]=operation;
                 operation.Continuation=()=>{if(operation.Error!=null)Debug.LogException(operation.Error);};
             }
         }
@@ -37,5 +43,16 @@ namespace DragonLegend.Whitebox
         {for(int i=0;i<rows.Length;i++)specials.PlayStopAnimation(rows[i].Reel);}
         public void ShowFreeEffects()
         {for(int i=0;i<rows.Length;i++)specials.ShowStoppedEffect(rows[i].Reel,resultLayer);}
+        internal void AbortForProfileChange()
+        {
+            for(int i=0;i<starts.Length;i++) {
+                starts[i]?.CancelForProfileChange();starts[i]=null;
+                stops[i]?.CancelForProfileChange();stops[i]=null;
+            }
+            if(rows==null)return;
+            for(int i=0;i<rows.Length;i++)
+                if(rows[i]!=null&&rows[i].Movement!=null)rows[i].Movement.AbortForProfileChange();
+        }
+        private void OnDestroy()=>AbortForProfileChange();
     }
 }
