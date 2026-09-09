@@ -73,6 +73,7 @@ namespace DragonLegend.Whitebox
         }
         public int GetMaxSpinCount() => data.Qonrii.MojGping[0]; // 0x236a638
         public int GetLimitMaxSpinCount() => data.Qonrii.MojGping[1]; // 0x236a69c
+        public int GetAddSpins() => data.Qonrii.OppGping[0]; // 0x236a700
         public int GetBankSpinCD() => data.Qonrii.RonkGpinQP[0]; // 0x236af8c
         public int GetSpinCD(int level) // 0x236a764
         {
