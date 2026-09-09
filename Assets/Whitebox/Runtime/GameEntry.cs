@@ -26,12 +26,15 @@ namespace DragonLegend.Whitebox
         public RecoveredCollectEntry CollectEntry { get; private set; }
         [SerializeField] private RecoveredMainBackground backgroundPrefab;
         public RecoveredMainBackground Background { get; private set; }
+        [SerializeField] private RecoveredCoreRoundFlow coreRoundPrefab;
+        public RecoveredCoreRoundFlow CoreRound {get;private set;}
         public RecoveredBalancePanel BalancePanel=>balancePanel;
         public LocalAdFacade Ads {get;private set;}
         public RecoveredAdSimulationControls AdControls=>adControls;
         public RecoveredSpinPlayfield Playfield { get; private set; }
         private void ReleasePlayfield()
         {
+            if(CoreRound!=null){CoreRound.Unbind();Destroy(CoreRound.gameObject);CoreRound=null;}
             if (Background != null) { Destroy(Background.gameObject); Background = null; }
             if (CollectEntry != null) { Destroy(CollectEntry.gameObject); CollectEntry = null; }
             if(BonusFlow!=null){BonusFlow.Unbind();Destroy(BonusFlow.gameObject);BonusFlow=null;}
@@ -191,6 +194,7 @@ namespace DragonLegend.Whitebox
                 CollectEntry = Instantiate(collectEntryPrefab, transform, false);
                 CollectEntry.Bind(PlayerProgress, Rules, transform, profile.isA, profile.languageType);
             }
+            if(coreRoundPrefab!=null){CoreRound=Instantiate(coreRoundPrefab,transform,false);CoreRound.Bind(this);}
             Ready?.Invoke(Rules);
         }
     }

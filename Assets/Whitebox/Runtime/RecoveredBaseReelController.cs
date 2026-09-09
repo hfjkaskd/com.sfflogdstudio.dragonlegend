@@ -47,8 +47,11 @@ namespace DragonLegend.Whitebox
 
         public void Initialize(RecoveredSymbolCatalog catalog)
         {
+            if(IsInitialized)return;
+            IsInitialized=true;
             for (int i = 0; i < reels.Length; i++) reels[i].Initialize(catalog, RecoveredSlotType.Base);
         }
+        public bool IsInitialized {get;private set;}
         public void Begin(int accelerationStartIndex, Func<int, IReadOnlyList<int>> currentColumn)
         {
             if (IsRunning) throw new InvalidOperationException("Reel sequence is already running.");

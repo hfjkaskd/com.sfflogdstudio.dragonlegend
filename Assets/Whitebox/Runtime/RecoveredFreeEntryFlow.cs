@@ -24,6 +24,7 @@ namespace DragonLegend.Whitebox
         private int generationPhase;
         public bool IsRunning {get;private set;}
         public bool IsFreeSpinEnd {get;private set;}
+        public void ClearFreeEndFlag()=>IsFreeSpinEnd=false;
         public int InitialSpinCount {get;private set;}
         public RecoveredFreeStartPopup Window=>window;
         public RecoveredSceneTransition Transition=>transition;

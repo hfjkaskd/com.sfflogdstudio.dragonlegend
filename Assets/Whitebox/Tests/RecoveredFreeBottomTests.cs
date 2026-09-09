@@ -22,6 +22,8 @@ public sealed class RecoveredFreeBottomTests
             GameEntry game=null;foreach(var root in scene.GetRootGameObjects()){var found=root.GetComponentInChildren<GameEntry>();if(found!=null)game=found;}
             float deadline=Time.realtimeSinceStartup+5;while(game.Playfield==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.Playfield);var bottom=game.Playfield.FreeBottom;Assert.IsNotNull(bottom);
+            // Isolate the counter from the complete loop, which now starts reels on this event.
+            game.CoreRound.Unbind();
             Assert.IsTrue(bottom.Main.activeSelf);Assert.IsFalse(bottom.Free.activeSelf);
             var bg=bottom.Free.transform.Find("Bg").GetComponent<Image>();
             Assert.AreEqual(Image.Type.Sliced,bg.type);Assert.AreEqual(new Vector2(640,86),bg.rectTransform.sizeDelta);

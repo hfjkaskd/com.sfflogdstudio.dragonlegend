@@ -24,6 +24,8 @@ public sealed class RecoveredFreeEntryFlowTests
             GameEntry game=null;foreach(var root in scene.GetRootGameObjects()){var item=root.GetComponentInChildren<GameEntry>();if(item!=null)game=item;}
             Assert.IsNotNull(game);for(int i=0;i<200&&game.Playfield==null;i++)yield return null;
             var field=game.Playfield;Assert.IsNotNull(field);
+            // This fixture owns a separate entry flow and observes its callback boundaries.
+            game.CoreRound.Unbind();
             var flow=Object.Instantiate(Resources.Load<RecoveredFreeEntryFlow>("RecoveredUI/FreeEntryFlow"),game.transform);
             var catalog=Resources.Load<RecoveredSymbolCatalog>("RecoveredSymbols/OriginalSymbolCatalog");var ids=new List<int>();
             for(int i=0;i<catalog.ModeCount(RecoveredSlotType.Free);i++)ids.Add(catalog.ModeId(RecoveredSlotType.Free,i));
