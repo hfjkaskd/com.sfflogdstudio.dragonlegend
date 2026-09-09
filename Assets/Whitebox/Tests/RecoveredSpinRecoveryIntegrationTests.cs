@@ -28,9 +28,21 @@ public sealed class RecoveredSpinRecoveryIntegrationTests
             Assert.IsNotNull(game.CoreRound);var view=game.Playfield.SpinRecovery;
             Assert.IsFalse(view.Recovery.IsRunning);Assert.AreEqual(60,view.Label.fontSize);
             Assert.AreEqual("<gradient=\"spin\">SPIN "+game.PlayerProgress.SpinCount+"</gradient>",view.Label.text);
+            var sounds=new System.Collections.Generic.List<string>();
+            view.SoundRequested+=name=>sounds.Add(name);game.CoreRound.MoreSpins.SoundRequested+=name=>sounds.Add(name);
+            game.CoreAudio.Manager.StopSound();
             view.MoreSpinButton.onClick.Invoke();Assert.IsTrue(game.CoreRound.MoreSpins.gameObject.activeSelf);
+            game.CoreAudio.Manager.StopSound();view.MoreSpinButton.onClick.Invoke();
+            Assert.IsTrue(game.CoreAudio.Manager.SoundSource.isPlaying,"Click while already open must sound without another popup remind masking it.");
+            CollectionAssert.AreEqual(new[]{"click","remind","click"},sounds);
+            game.PlayerStore.Data.IsMusic=false;game.CoreAudio.Manager.StopSound();view.MoreSpinButton.onClick.Invoke();
+            Assert.IsFalse(game.CoreAudio.Manager.SoundSource.isPlaying);game.PlayerStore.Data.IsMusic=true;
             game.CoreRound.MoreSpins.CloseButton.onClick.Invoke();for(int f=0;f<10;f++)yield return null;
             game.Playfield.SpinButton.Button.onClick.Invoke();
+            Assert.IsTrue(game.Playfield.IsBusy);int spinningCount=game.PlayerProgress.SpinCount;
+            view.MoreSpinButton.onClick.Invoke();Assert.IsTrue(game.CoreRound.MoreSpins.gameObject.activeSelf,"Native plus entry has no busy guard.");
+            Assert.AreEqual(spinningCount,game.PlayerProgress.SpinCount);
+            game.CoreRound.MoreSpins.CloseButton.onClick.Invoke();
             Assert.AreEqual("<gradient=\"spin\">SPIN "+game.PlayerProgress.SpinCount+"</gradient>",view.Label.text);
             // Both shipped comparison snapshots are organic. Exercise the source default branch
             // through the actual loader using an explicitly synthetic, temporary test snapshot.
@@ -39,7 +51,8 @@ public sealed class RecoveredSpinRecoveryIntegrationTests
             string fixtureName="spin-recovery-test-"+Guid.NewGuid().ToString("N")+".json";
             fixturePath=Path.Combine(Application.streamingAssetsPath,fixtureName);File.WriteAllText(fixturePath,JsonUtility.ToJson(config));
             testProfile=UnityEngine.Object.Instantiate(game.CurrentProfile);testProfile.profileId="SyntheticDefaultRecoveryTest";testProfile.snapshotPath=fixtureName;
-            var oldCore=game.CoreRound;game.Select(testProfile);
+            var oldCore=game.CoreRound;var oldView=view;int oldSoundCount=sounds.Count;game.Select(testProfile);
+            oldView.MoreSpinButton.onClick.Invoke();Assert.AreEqual(oldSoundCount,sounds.Count,"GM detaches discarded plus-button events.");
             deadline=Time.realtimeSinceStartup+10;while((game.CoreRound==null||game.CoreRound==oldCore)&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.AreEqual("default",game.Rules.GetConfigType());view=game.Playfield.SpinRecovery;
             game.PlayerProgress.SetSpinCount(game.Rules.GetMaxSpinCount());

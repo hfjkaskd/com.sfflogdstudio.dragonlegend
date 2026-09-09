@@ -15,6 +15,7 @@ namespace DragonLegend.Whitebox
         public RecoveredSpinRecovery Recovery {get;private set;}
         public TMP_Text Label=>label;
         public Button MoreSpinButton=>moreSpinButton;
+        public event Action<string> SoundRequested;
         public void Bind(GameEntry game,Action openMore)
         {
             Unbind();entry=game.SpinEntry;showMore=openMore;
@@ -23,7 +24,7 @@ namespace DragonLegend.Whitebox
             entry.SpinCountDisplayRequested+=Recovery.ShowCount;
             moreSpinButton.onClick.AddListener(OpenMore);Recovery.Initialize(Now());
         }
-        private void OpenMore()=>showMore?.Invoke();
+        private void OpenMore(){SoundRequested?.Invoke("click");showMore?.Invoke();}
         private static int Now()=>unchecked((int)DateTimeOffset.UtcNow.ToUnixTimeSeconds());
         private void Update()=>Recovery?.Advance(Time.deltaTime,Now());
         private void Display(int count,int? remaining)

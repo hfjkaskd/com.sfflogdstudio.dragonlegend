@@ -22,7 +22,12 @@ public sealed class RecoveredMoreSpinIntegrationTests
             GameEntry game=null;foreach(var root in scene.GetRootGameObjects()){var found=root.GetComponentInChildren<GameEntry>();if(found!=null)game=found;}
             float deadline=Time.realtimeSinceStartup+10;while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.CoreRound);game.PlayerProgress.SetSpinCount(0);var window=game.CoreRound.MoreSpins;
+            var openingSounds=new System.Collections.Generic.List<string>();
+            game.SpinEntry.ClickSoundRequested+=()=>openingSounds.Add("click");
+            game.Playfield.SpinRecovery.SoundRequested+=name=>openingSounds.Add(name);
+            window.SoundRequested+=name=>openingSounds.Add(name);
             game.Playfield.SpinButton.Button.onClick.Invoke();Assert.IsTrue(window.gameObject.activeSelf);
+            CollectionAssert.AreEqual(new[]{"click","remind"},openingSounds,"Empty Spin must not also invoke the plus-button click path.");
             Assert.IsFalse(game.Playfield.IsBusy);Assert.IsFalse(game.Playfield.Reels.IsRunning);Assert.AreEqual(0,game.PlayerProgress.SpinCount);
             for(int frame=0;frame<10;frame++)yield return null;window.ClaimButton.onClick.Invoke();
             Assert.IsTrue(game.Ads.Pending);Assert.AreEqual("extraspin",game.Ads.Placement);game.Ads.Complete(AdOutcome.Failed);

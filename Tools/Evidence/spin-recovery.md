@@ -69,3 +69,16 @@ the fixture, not in production data. Fresh current-spin-recovery.png was inspect
 the source bottom count bar renders `SPIN 9 01:30` and its plus button below the
 GOOD LUCK label beside the Spin button. Common sound playback remains part of the
 broader unfinished audio work; this gate does not certify every lifecycle branch.
+
+
+## Plus-button click audio audit
+
+The actual MoreSpinBtn branch (resolved 4f1e340 in Main.OnClickButton 23bd4e8) plays click before showing the More Spin window, without a busy guard. RecoveredSpinRecoveryView previously invoked only the show callback. The window's BeforeShow already played remind, so the first-open sound masked the missing click in a simple isPlaying check.
+
+The initial Artifacts/spin-plus-audio-before.xml test passed 1/1 but was too weak: it heard remind. The isolated check clicks again with the window already open after clearing the audio source. Before the fix, Artifacts/spin-plus-audio-isolated.xml failed 0/1 at that check (Unity PID 52228 exited). No runtime bypass or expected-error suppression was used.
+
+RecoveredSpinRecoveryView now emits click before its show callback. CoreAudio subscribes/unsubscribes the view's sound event with the rest of the current playfield graph. The empty paid-Spin branch keeps its own existing click event; the More Spin window itself still emits remind on first show and does not add a second click.
+
+Artifacts/spin-plus-audio-fixed.xml passed 9/9 in 5.2515535 seconds; PID 5940 exited. Tests assert exact plus opening order click/remind, click again without a second remind, muted playback, opening during active Spin without consuming an extra count, old button detachment during GM replacement, and exact empty-Spin click/remind without duplicate plus audio. Existing count recovery cases, actual More Spin ad failure/success/limit flow, window lifecycle and Base/Free return also passed. This is affected-suite validation, not a new complete-project regression.
+
+The same audit checked the presumed player bet-switch operation against the supplied original: GameData.SetBet 236f98c obtains GetBet(IsA), assigns element zero only when IsA is false, and is called from GManager.Start 237110c. The supplied UIMainView hierarchy and click handler have no bet-switch control; no invented bet button or new bet-change behavior was added. This supports the current startup assignment only, not a blanket proof of all reward calculation/routing.
