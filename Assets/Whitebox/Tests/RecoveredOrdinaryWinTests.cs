@@ -41,9 +41,10 @@ public sealed class RecoveredOrdinaryWinTests
             field.DownWin.Register(coin,5);field.DownWin.PresentationFinished(coin);
             for(int i=0;i<15&&field.DownWin.Total!=5;i++)yield return null;
             Assert.AreEqual(5,field.DownWin.Total);field.SymbolAmount.Label.text=RecoveredCurrency.Format(7,0,2);
-            bool arrived=false;float finished=-1,began=Time.time;
+            // Avoid cancellation error in large float timestamps late in the full suite.
+            bool arrived=false;double finished=-1,began=Time.timeAsDouble;
             sequence.FlightArrived+=()=>{arrived=true;Assert.AreEqual(string.Empty,field.SymbolAmount.Label.text);};
-            sequence.Begin(12,()=>{Assert.AreEqual(112,data.GreenCount);Assert.AreEqual(2,saves);return 5;},player,()=>finished=Time.time);
+            sequence.Begin(12,()=>{Assert.AreEqual(112,data.GreenCount);Assert.AreEqual(2,saves);return 5;},player,()=>finished=Time.timeAsDouble);
             Assert.AreEqual(112,data.GreenCount);Assert.IsTrue(sequence.IsFlying);Assert.AreEqual(12,field.DownWin.TemporaryTotal);
             Assert.AreEqual((sequence.Origin+sequence.Destination)*.5f+Vector3.up,sequence.Control);
             yield return null;yield return null;
