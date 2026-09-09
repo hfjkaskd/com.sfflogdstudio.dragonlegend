@@ -15,7 +15,12 @@ using Object=UnityEngine.Object;
 public sealed class RecoveredBonusFlowTests
 {
     [UnityTest]
-    public IEnumerator RealSpinEntersBonusThroughTheAuthoredCameraStackAndWaitsForExit()
+    public IEnumerator RealSpinEntersBonusThroughTheAuthoredCameraStackAndWaitsForExit()=>Run(false);
+
+    [UnityTest]
+    public IEnumerator AllTwelveSceneClickedCardsWaitForAdsAndAutomaticallyReturnToBase()=>Run(true);
+
+    private IEnumerator Run(bool allCards)
     {
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);PlayerPrefs.DeleteKey(key);
         float scale=Time.timeScale,delta=Time.captureDeltaTime;var random=UnityEngine.Random.state;
@@ -68,8 +73,20 @@ public sealed class RecoveredBonusFlowTests
             File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-bonus-flow-window.png"),capture.EncodeToPNG());
             var reward=flow.Window.GetComponentInChildren<RecoveredBonusRewardPopup>(true);
             var jackpot=flow.Window.GetComponentInChildren<RecoveredJackpotPopup>(true);
-            for(int card=0;card<entry.Rules.GetBonusFreeTimes();card++){
+            int freeCards=entry.Rules.GetBonusFreeTimes(),adClaims=0;
+            double endedAt=0;
+            for(int card=0;card<(allCards?flow.Window.CardCount:freeCards);card++){
                 Assert.IsTrue(ClickVisible(flow.Window.Card(card).Button,camera),"The top scene raycast must reach Bonus card "+card);
+                if(card>=freeCards){
+                    Assert.IsTrue(entry.Ads.Pending);Assert.AreEqual("bonusCoin",entry.Ads.Placement);
+                    Assert.AreEqual(card,flow.Window.Selection.Round.ClickedCount,"A pending advertisement must not reveal the selected card");
+                    float adDeadline=Time.realtimeSinceStartup+5;
+                    while(entry.Ads.Pending&&Time.realtimeSinceStartup<adDeadline){
+                        if(ClickVisible(entry.AdControls.RewardButton,camera))adClaims++;
+                        yield return null;
+                    }
+                    Assert.IsFalse(entry.Ads.Pending);
+                }
                 Assert.AreEqual(card+1,flow.Window.Selection.Round.ClickedCount);
                 float deadline=Time.realtimeSinceStartup+8;
                 while(flow.Window.Selection.IsClicked&&Time.realtimeSinceStartup<deadline){
@@ -78,14 +95,18 @@ public sealed class RecoveredBonusFlowTests
                     yield return null;
                 }
                 Assert.IsNull(failure);Assert.IsFalse(flow.Window.Selection.IsClicked);
+                if(flow.Window.Selection.IsEnd)endedAt=Time.timeAsDouble;
             }
+            Assert.AreEqual(allCards?flow.Window.CardCount-freeCards:0,adClaims);
             float arrivalDeadline=Time.realtimeSinceStartup+5;
             while(entry.CashFlight.ActiveCashCount>0&&Time.realtimeSinceStartup<arrivalDeadline)yield return null;
             Assert.AreEqual(0,entry.CashFlight.ActiveCashCount);Assert.IsTrue(flow.Window.CloseButton.gameObject.activeInHierarchy);
-            double closed=Time.timeAsDouble;Assert.IsTrue(ClickVisible(flow.Window.CloseButton,camera),"The top scene raycast must reach Bonus Close");
+            double closed=Time.timeAsDouble;
+            if(allCards){Assert.IsTrue(flow.Window.Selection.IsEnd);Assert.Greater(endedAt,0);closed=endedAt;}
+            else Assert.IsTrue(ClickVisible(flow.Window.CloseButton,camera),"The top scene raycast must reach Bonus Close");
             for(int i=0;i<240&&completions==0;i++)yield return null;
             Assert.AreEqual(1,completions);Assert.IsFalse(flow.IsRunning);Assert.IsFalse(flow.Window.gameObject.activeSelf);
-            Assert.That(completedAt-closed,Is.InRange(3.7,3.9));
+            Assert.That(completedAt-closed,allCards?Is.InRange(5.65,5.95):Is.InRange(3.7,3.9));
             // Bonus completion precedes the native Bank and review Update waits.
             for(int i=0;i<6&&field.IsBusy;i++){RecoveredCorePromptDriver.ClaimAndClose(entry.CoreRound);yield return null;}
             Assert.IsFalse(field.IsBusy,"The production no-Free core continuation must release the round after its end-flow waits");
