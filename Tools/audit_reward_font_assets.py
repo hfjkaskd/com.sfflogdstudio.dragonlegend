@@ -63,6 +63,14 @@ def run():
     for window in ("BonusRewardPopup", "JackpotPopup"):
         compare(window + " claim material", material_dir / "#0A5902_4.mat",
                 ROOT / f"Assets/Resources/RecoveredUI/{window}/#0A5902_4.mat", shader_remap)
+    green_font = ROOT / "Assets/Resources/RecoveredUI/CoinRewardText/Green.asset"
+    green_material = ROOT / "Assets/Resources/RecoveredUI/CoinRewardText/Green_Material.mat"
+    green_atlas = ROOT / "Assets/Resources/RecoveredArt/Res/UI/pop-up/font_b.png"
+    assert f"guid: {guid(green_material)}" in text(green_font)
+    assert f"guid: {guid(green_atlas)}" in text(green_material)
+    compare("Complete legacy Green font serialization", SOURCE / "Res/Font/Green.asset", green_font)
+    compare("Legacy Green material", SOURCE / "Res/Font/Green_Material.mat", green_material)
+    compare("Legacy Green atlas PNG bytes", SOURCE / "Res/UI/pop-up/font_b.png", green_atlas, binary=True)
     (ROOT / "Tools/Evidence/reward-font-assets-audit.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(f"{len(report['checks'])} matching payloads; {len(report['differences'])} differences")
     return len(report["differences"])

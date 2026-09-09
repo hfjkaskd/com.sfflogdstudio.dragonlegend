@@ -59,6 +59,30 @@
     {
       "path": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\RecoveredUI\\JackpotPopup\\#0A5902_4.mat",
       "sha256": "60bbba3036f80889ea5427f8bb71dd5f3427a9c07b799d069a154bea497880c3"
+    },
+    {
+      "path": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\reference-unity\\ExportedProject\\Assets\\Res\\Font\\Green.asset",
+      "sha256": "b33d19a4f08e6120b87280ee6ccdcd499e4fdaa7aac6efd7813e742ee2125e7e"
+    },
+    {
+      "path": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\RecoveredUI\\CoinRewardText\\Green.asset",
+      "sha256": "b33d19a4f08e6120b87280ee6ccdcd499e4fdaa7aac6efd7813e742ee2125e7e"
+    },
+    {
+      "path": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\reference-unity\\ExportedProject\\Assets\\Res\\Font\\Green_Material.mat",
+      "sha256": "cb62e76266f837f81060db8679782deecd805f5fbd685a6b20765ae71025cc6d"
+    },
+    {
+      "path": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\RecoveredUI\\CoinRewardText\\Green_Material.mat",
+      "sha256": "cb62e76266f837f81060db8679782deecd805f5fbd685a6b20765ae71025cc6d"
+    },
+    {
+      "path": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\reference-unity\\ExportedProject\\Assets\\Res\\UI\\pop-up\\font_b.png",
+      "sha256": "2029d177a9e7e33566745fad5ec6fbba3d69306d8ae4fe7d25994c7994f6a0b3"
+    },
+    {
+      "path": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\RecoveredArt\\Res\\UI\\pop-up\\font_b.png",
+      "sha256": "2029d177a9e7e33566745fad5ec6fbba3d69306d8ae4fe7d25994c7994f6a0b3"
     }
   ],
   "checks": [
@@ -111,6 +135,21 @@
         "a495248e59fa6714793dae46034b0996": "68e6db2ebdc24f95958faec2be5558d6"
       },
       "payloadSha256": "7a2536f08775535a42d61ed11e1b9a4670a75138b2f28c5c647a33f5126e7f5b"
+    },
+    {
+      "name": "Complete legacy Green font serialization",
+      "remaps": {},
+      "payloadSha256": "16a9462ca15cfeb085147ad0cb1092a2aca0715433adfe0f5d1965a4ebda4ccc"
+    },
+    {
+      "name": "Legacy Green material",
+      "remaps": {},
+      "payloadSha256": "4fe31159b52561457ebb73badf8ddff0691782a561abdb86be6f4bcd379abdda"
+    },
+    {
+      "name": "Legacy Green atlas PNG bytes",
+      "remaps": {},
+      "payloadSha256": "2029d177a9e7e33566745fad5ec6fbba3d69306d8ae4fe7d25994c7994f6a0b3"
     }
   ],
   "differences": []

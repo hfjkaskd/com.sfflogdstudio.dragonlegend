@@ -41,3 +41,10 @@ not silently classified as an identical source field.
 Both local Python audits exited zero. No runtime, prefab, package or SDK was
 changed, so no Unity regression was rerun this round. Complete visual parity
 remains unproven.
+
+Follow-up at baseline 8ebaae2: the script also compares complete Green.asset,
+Green_Material.mat and font_b.png from the current reverse export, verifying
+the actual font-to-material and material-to-atlas GUID references first. All
+three match without remapping. This covers legacy character rectangles,
+UV/advance/spacing and material serialization, bringing the payload checks
+to 11. It does not prove legacy texture import or GPU rendering equivalence.
