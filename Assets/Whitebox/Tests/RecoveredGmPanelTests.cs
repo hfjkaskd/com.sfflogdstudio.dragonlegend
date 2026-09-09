@@ -25,8 +25,9 @@ public sealed class RecoveredGmPanelTests
             var configTest=entry.transform.Find("SelectConfigTest").GetComponent<Button>();
             var bundledDefault=entry.transform.Find("SelectBundledDefault").GetComponent<Button>();
             var bundledOrganic=entry.transform.Find("SelectBundledOrganic").GetComponent<Button>();
+            var brazil=entry.transform.Find("SelectBR").GetComponent<Button>();
             Assert.IsFalse(panel.IsOpen);Assert.IsFalse(entry.CurrentProfile.isA);Assert.AreEqual("US",entry.CurrentProfile.countryCode);
-            foreach(var button in new[]{primary,alternate,configTest,bundledDefault,bundledOrganic}) {
+            foreach(var button in new[]{primary,alternate,configTest,bundledDefault,bundledOrganic,brazil}) {
                 var group=button.GetComponent<CanvasGroup>();Assert.AreEqual(0,group.alpha);Assert.IsFalse(group.blocksRaycasts);Assert.IsFalse(button.IsInteractable());
                 Assert.IsEmpty(Hits(button,camera),"Hidden GM controls must not intercept touches over the game.");
             }
@@ -72,6 +73,18 @@ public sealed class RecoveredGmPanelTests
                 deadline=Time.realtimeSinceStartup+5;while(entry.Playfield==null&&Time.realtimeSinceStartup<deadline)yield return null;
                 Assert.IsNotNull(entry.Playfield);Assert.AreEqual("US_Default",entry.CurrentProfile.profileId);
             }
+            entry.PlayerProgress.SetGreenCount(1234.5f);
+            Click(panel.ToggleButton,camera);yield return null;Click(brazil,camera);Assert.IsFalse(panel.IsOpen);
+            deadline=Time.realtimeSinceStartup+5;while(entry.Playfield==null&&Time.realtimeSinceStartup<deadline)yield return null;
+            Assert.IsNotNull(entry.Playfield);Assert.AreEqual("BR",entry.CurrentProfile.countryCode);
+            Assert.AreEqual(1,entry.CurrentProfile.languageType);Assert.AreEqual(1234.5f,entry.PlayerProgress.GreenCount);
+            Assert.AreEqual("R$12,35",entry.BalancePanel.BalanceText);
+            int brazilSpins=entry.PlayerProgress.SpinCount;entry.Playfield.SpinButton.Button.onClick.Invoke();
+            Assert.AreEqual(brazilSpins-1,entry.PlayerProgress.SpinCount);Assert.IsTrue(entry.Playfield.IsBusy);
+            Click(panel.ToggleButton,camera);yield return null;Click(primary,camera);
+            deadline=Time.realtimeSinceStartup+5;while(entry.Playfield==null&&Time.realtimeSinceStartup<deadline)yield return null;
+            Assert.IsNotNull(entry.Playfield);Assert.AreEqual(0,entry.CurrentProfile.languageType);
+            Assert.AreEqual("$12.35",entry.BalancePanel.BalanceText);
         } finally {
             if(scene.IsValid())unload=SceneManager.UnloadSceneAsync(scene);Random.state=random;
             if(had)PlayerPrefs.SetString(key,saved);else PlayerPrefs.DeleteKey(key);

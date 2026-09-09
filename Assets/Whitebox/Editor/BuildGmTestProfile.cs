@@ -7,10 +7,12 @@ public static class BuildGmTestProfile
 {
     public static void Save()
     {
-        string[] ids={"US_ConfigTest","US_BundledDefault","US_BundledOrganic"};
-        string[] names={"SelectConfigTest","SelectBundledDefault","SelectBundledOrganic"};
-        string[] paths={"Remote/cp_test","Bundled/GoldenDragon_default","Bundled/GoldenDragon_organic"};
-        string[] captions={"US / cp_test (local)","US / bundled default","US / bundled organic"};
+        string[] ids={"US_ConfigTest","US_BundledDefault","US_BundledOrganic","BR_Comparison"};
+        string[] names={"SelectConfigTest","SelectBundledDefault","SelectBundledOrganic","SelectBR"};
+        string[] paths={"Remote/cp_test","Bundled/GoldenDragon_default","Bundled/GoldenDragon_organic","Remote/cp_default_1"};
+        string[] captions={"US / cp_test (local)","US / bundled default","US / bundled organic","BR / cash (local)"};
+        string[] countries={"US","US","US","BR"};
+        int[] languages={0,0,0,1};
         const string path="Assets/Resources/Whitebox/GameEntry.prefab";
         var root=PrefabUtility.LoadPrefabContents(path);
         try {
@@ -21,7 +23,7 @@ public static class BuildGmTestProfile
                 string profilePath="Assets/Whitebox/Settings/"+ids[i]+".asset";
                 var profile=AssetDatabase.LoadAssetAtPath<LaunchProfile>(profilePath);
                 if(profile==null){profile=ScriptableObject.CreateInstance<LaunchProfile>();AssetDatabase.CreateAsset(profile,profilePath);}
-                profile.profileId=ids[i];profile.countryCode="US";profile.languageType=0;profile.isA=false;
+                profile.profileId=ids[i];profile.countryCode=countries[i];profile.languageType=languages[i];profile.isA=false;
                 profile.snapshotPath="RecoveredConfig/"+paths[i]+".json";
                 profile.cashPresentationEnabled=true;profile.advertisementPresentationEnabled=true;
                 profile.evidenceNote="Explicit local snapshot selection; not an assertion of server country or AB routing.";
@@ -42,7 +44,7 @@ public static class BuildGmTestProfile
                 serialized.ApplyModifiedPropertiesWithoutUndo();
                 buttons.GetArrayElementAtIndex(i+2).objectReferenceValue=button;
                 groups.GetArrayElementAtIndex(i+2).objectReferenceValue=button.GetComponent<CanvasGroup>();
-                }
+            }
             panel.ApplyModifiedPropertiesWithoutUndo();
             PrefabUtility.SaveAsPrefabAsset(root,path);AssetDatabase.SaveAssets();
         } finally {PrefabUtility.UnloadPrefabContents(root);}
