@@ -36,6 +36,7 @@ namespace DragonLegend.Whitebox
         public RecoveredLuckySpinColumn Column(int i)=>columns[i];
         public IReadOnlyList<int> Digits=>digits;
         public event Action<string> SoundRequested;
+        public event Action<Component> WindowShowRequested;
         private void Awake()
         {
             startShake.Initialize();bounceShake.Initialize();
@@ -52,7 +53,7 @@ namespace DragonLegend.Whitebox
         {
             if(IsRunning)throw new InvalidOperationException("Lucky Spin is already running.");
             Error=null;IsRunning=true;reward=amount;completed=callback;IsSpinning=false;StoppedCount=0;
-            window.SetActive(true);Sound("jump");
+            WindowShowRequested?.Invoke(window.transform);window.SetActive(true);Sound("jump");
             for(int i=0;i<columns.Length;i++)if(columns[i]!=null)columns[i].Initialize(i,9);
             art.Play(0);content.localScale=Vector3.zero;scaleElapsed=0;scalePhase=1;
         }

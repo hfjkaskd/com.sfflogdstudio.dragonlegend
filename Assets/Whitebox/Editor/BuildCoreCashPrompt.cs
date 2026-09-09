@@ -15,7 +15,7 @@ public static class BuildCoreCashPrompt
             group.SetParent(owner.transform,false);group.anchorMin=Vector2.zero;group.anchorMax=Vector2.one;group.sizeDelta=Vector2.zero;
         }
         // Free start/end share Popup=300; keep their prefab-owned flow wrappers intact.
-        foreach(var field in new[]{"moreSpins","moreWild","bank","entry","exit"})
+        foreach(var field in new[]{"moreSpins","moreWild","bank","entry","exit","slot","wheel","treasure","lucky"})
             ((Component)settings.FindProperty(field).objectReferenceValue).transform.SetParent(group,false);
         settings.FindProperty("popupRoot").objectReferenceValue=group;
         settings.FindProperty("cashPromptPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredCashPromptWindow>("Assets/Resources/RecoveredUI/CashPromptWindow.prefab");

@@ -33,6 +33,10 @@ RectTransform:
   - {fileID: 2582970393590892762}
   - {fileID: 8366797211836912674}
   - {fileID: 2361148577815302967}
+  - {fileID: 1754060435459737122}
+  - {fileID: 1224667045449481143}
+  - {fileID: 8149452303647046214}
+  - {fileID: 781631618253502329}
   m_Father: {fileID: 1942258193237145602}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -69,10 +73,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1754060435459737122}
-  - {fileID: 1224667045449481143}
-  - {fileID: 8149452303647046214}
-  - {fileID: 781631618253502329}
   - {fileID: 6785247359996870952}
   - {fileID: 1381553164555309771}
   - {fileID: 2915364523025883469}
@@ -494,7 +494,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1942258193237145602}
+    m_TransformParent: {fileID: 6815049871907629453}
     m_Modifications:
     - target: {fileID: 169573002686259560, guid: 6ae651a3df8de0f468163a731d73e62e, type: 3}
       propertyPath: m_Pivot.x
@@ -833,7 +833,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1942258193237145602}
+    m_TransformParent: {fileID: 6815049871907629453}
     m_Modifications:
     - target: {fileID: 4683719005139961911, guid: b905c47a872e7af4385efd5933440e8c, type: 3}
       propertyPath: m_Pivot.x
@@ -1172,7 +1172,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1942258193237145602}
+    m_TransformParent: {fileID: 6815049871907629453}
     m_Modifications:
     - target: {fileID: 125746182860163519, guid: c462cf86969e37146bc17d3d1bd80614, type: 3}
       propertyPath: m_Pivot.x
@@ -1285,7 +1285,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1942258193237145602}
+    m_TransformParent: {fileID: 6815049871907629453}
     m_Modifications:
     - target: {fileID: 2273874484340666526, guid: 71ac5dc1373892a4690c1b4e09cf02b7, type: 3}
       propertyPath: m_Name

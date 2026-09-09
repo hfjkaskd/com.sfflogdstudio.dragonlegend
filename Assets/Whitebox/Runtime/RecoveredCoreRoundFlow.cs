@@ -86,6 +86,7 @@ namespace DragonLegend.Whitebox
             entry.CashOutTaskRefreshRequested+=player.RefreshCashOutTask;
             treasure.Bind(player,rules,game.Ads,game.CashFlight,game.transform,profile.isA,profile.languageType,game.CollectEntry.Destination);
             lucky.Bind(player,rules,game.Ads,game.CashFlight,game.transform,profile.isA,profile.languageType);
+            ConnectBranchPopupDepth(true);
             router=new RecoveredFreeSmallGameRouter(rules,player,slot.Begin,wheel.Begin,treasure.Begin,lucky.Begin);
             reels.CoinScan.Bind(rules,player,game.FreeSpinResult,field.BonusCollection,Language);
             game.BonusFlow.BindFreeScan(reels.CoinScan);
@@ -186,6 +187,26 @@ namespace DragonLegend.Whitebox
             window.transform.SetAsLastSibling();
         }
         private static int UtcNow()=>unchecked((int)DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+        private void ConnectBranchPopupDepth(bool bind)
+        {
+            if(bind){
+                slot.Window.WindowShowRequested+=PreparePopupDepth;
+                slot.Window.Popup.WindowShowRequested+=PreparePopupDepth;
+                wheel.Window.WindowShowRequested+=PreparePopupDepth;
+                wheel.Window.CashPopup.WindowShowRequested+=PreparePopupDepth;
+                wheel.Window.JackpotPopup.WindowShowRequested+=PreparePopupDepth;
+                treasure.Window.WindowShowRequested+=PreparePopupDepth;
+                lucky.Popup.WindowShowRequested+=PreparePopupDepth;
+            }else{
+                slot.Window.WindowShowRequested-=PreparePopupDepth;
+                slot.Window.Popup.WindowShowRequested-=PreparePopupDepth;
+                wheel.Window.WindowShowRequested-=PreparePopupDepth;
+                wheel.Window.CashPopup.WindowShowRequested-=PreparePopupDepth;
+                wheel.Window.JackpotPopup.WindowShowRequested-=PreparePopupDepth;
+                treasure.Window.WindowShowRequested-=PreparePopupDepth;
+                lucky.Popup.WindowShowRequested-=PreparePopupDepth;
+            }
+        }
         private void Sound(string name)=>SoundRequested?.Invoke(name);
         private void BankReady()=>bankPending=true;
         private void BankFly(float amount,Action completed,Transform source)=>game.CashFlight.Begin(amount,completed,bank.transform,false,source);
@@ -204,6 +225,7 @@ namespace DragonLegend.Whitebox
         {
             if(game==null)return;
             game.Playfield.Reels.ShakeRequested-=game.Playfield.Wilds.Shake.Begin;
+            ConnectBranchPopupDepth(false);
             game.Playfield.ModeView.FreeReels.Controller.ShakeRequested-=game.Playfield.Wilds.Shake.Begin;
             game.Playfield.Wilds.Shake.Cancel();
             game.Playfield.Reels.AnticipationVisibilityRequested-=game.Playfield.ModeView.SetSpeedEffect;

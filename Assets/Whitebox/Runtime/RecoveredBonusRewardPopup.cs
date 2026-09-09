@@ -46,6 +46,7 @@ namespace DragonLegend.Whitebox
         private Action countCompleted;
         public event Action HideWheelRequested;
         public event Action<string> SoundRequested;
+        public event Action<Component> WindowShowRequested;
         public event Action<float, Action> FlyCoinRequested;
         public RectTransform Content => content;
         public Text RewardText => rewardText;
@@ -67,7 +68,7 @@ namespace DragonLegend.Whitebox
         public void Show(float amount, RecoveredPlayerProgress progress,
             RecoveredGameplayRules rules, IAdFacade ads, bool isA, int languageType, Action<float> completed)
         {
-            gameObject.SetActive(true);
+            WindowShowRequested?.Invoke(this);gameObject.SetActive(true);
             language=languageType;countCompleted=null;plainReveal.Cancel();tipReveal.Cancel();
             claim=new RecoveredBonusRewardClaim(ads,this,advertisedMultiplier,plainMultiplier);
             claim.BeforeShow(amount,completed);

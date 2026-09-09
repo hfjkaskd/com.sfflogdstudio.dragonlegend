@@ -1,7 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using DragonLegend.Whitebox;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
@@ -13,8 +15,12 @@ public sealed class RecoveredCoreBallBranchesTests
     {
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);PlayerPrefs.DeleteKey(key);
         var random=Random.state;float scale=Time.timeScale,delta=Time.captureDeltaTime;Scene scene=default;AsyncOperation unload=null;
+        Camera camera=null;RenderTexture target=null;UnityEngine.Events.UnityAction<Scene,LoadSceneMode> prepare=null;
         try {
             Time.timeScale=1;Time.captureDeltaTime=.05f;Random.InitState(71);
+            target=new RenderTexture(1080,1920,24);target.Create();
+            prepare=(loaded,mode)=>{if(loaded.name!="GameEntry")return;foreach(var root in loaded.GetRootGameObjects()){var entry=root.GetComponentInChildren<GameEntry>();if(entry!=null){camera=entry.GetComponent<Canvas>().worldCamera;camera.targetTexture=target;}}};
+            SceneManager.sceneLoaded+=prepare;
             yield return SceneManager.LoadSceneAsync("GameEntry",LoadSceneMode.Additive);scene=SceneManager.GetSceneByName("GameEntry");
             GameEntry game=null;foreach(var root in scene.GetRootGameObjects()){var found=root.GetComponentInChildren<GameEntry>();if(found!=null)game=found;}
             float deadline=Time.realtimeSinceStartup+10;while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
@@ -56,6 +62,7 @@ public sealed class RecoveredCoreBallBranchesTests
             for(branch=0;branch<4;branch++) {
                 game.SpinResult.ForceFreeSpin=true;int before=game.PlayerProgress.SpinCount;
                 game.Playfield.SpinButton.Button.onClick.Invoke();game.Playfield.SpinButton.Button.onClick.Invoke();
+                game.Playfield.SpinRecovery.MoreSpinButton.onClick.Invoke();
                 Assert.AreEqual(before-1,game.PlayerProgress.SpinCount);
                 for(int frame=0;frame<1800&&!core.Entry.Window.gameObject.activeSelf;frame++) {
                     Claim(game.Playfield.BigWinPopup.PlainButton);Claim(game.Playfield.JackpotPopup.PlainButton);RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;
@@ -66,16 +73,21 @@ public sealed class RecoveredCoreBallBranchesTests
                 Assert.AreEqual(0,game.CashFlight.ActiveCashCount);
                 float balance=game.PlayerProgress.GreenCount;
                 core.Entry.Window.PlainButton.onClick.Invoke();
-                bool seen=false;
+                bool seen=false;int claims=0;
                 for(int frame=0;frame<1800&&!core.Exit.Window.IsShown;frame++) {
                     seen|=branch==0?slot.IsRunning:branch==1?wheel.IsRunning:branch==2?treasure.IsRunning:lucky.IsRunning;
-                    Claim(slot.Window.Popup.PlainButton);Claim(wheel.Window.CashPopup.PlainButton);
-                    Claim(wheel.Window.JackpotPopup.PlainButton);Claim(treasure.Window.PlainButton);Claim(lucky.Popup.PlainButton);
+                    Above(slot.Window.Window,core.MoreSpins.gameObject);Above(wheel.Window.Window,core.MoreSpins.gameObject);
+                    Above(treasure.Window.gameObject,core.MoreSpins.gameObject);Above(lucky.Popup.gameObject,core.MoreSpins.gameObject);
+                    Above(slot.Window.Popup.gameObject,core.MoreSpins.gameObject);Above(wheel.Window.CashPopup.gameObject,core.MoreSpins.gameObject);Above(wheel.Window.JackpotPopup.gameObject,core.MoreSpins.gameObject);
+                    Above(slot.Window.Popup.gameObject,slot.Window.Window);Above(wheel.Window.CashPopup.gameObject,wheel.Window.Window);Above(wheel.Window.JackpotPopup.gameObject,wheel.Window.Window);
+                    claims+=ClickVisible(slot.Window.Popup.PlainButton,camera)+ClickVisible(wheel.Window.CashPopup.PlainButton,camera);
+                    claims+=ClickVisible(wheel.Window.JackpotPopup.PlainButton,camera)+ClickVisible(treasure.Window.PlainButton,camera)+ClickVisible(lucky.Popup.PlainButton,camera);
                     yield return null;
                 }
                 Assert.IsNull(core.Error);Assert.IsNull(reels.Controller.Error);Assert.IsNull(reels.BallScan.Error);Assert.IsNull(reels.RewardCollect.Error);
                 Assert.IsNull(slot.Error);Assert.IsNull(wheel.Error);Assert.IsNull(lucky.Error);
                 Assert.IsTrue(seen,"Actual requested game did not start: "+branch);
+                Assert.Greater(claims,0,"Each branch must complete through a real raycasted claim.");
                 Assert.AreEqual(branch+1,routed);Assert.IsTrue(core.Exit.Window.IsShown,"Free session did not reach its end window: "+branch);
                 Assert.AreEqual(1,reels.CoinScan.Rewards.Count);float reward=0;foreach(var value in reels.CoinScan.Rewards.Values)reward+=value;
                 Assert.AreEqual(reward,reels.RewardCollect.FreeReward);Assert.AreEqual(0,reels.RewardCollect.CoinReward);
@@ -92,6 +104,8 @@ public sealed class RecoveredCoreBallBranchesTests
             int spins=game.PlayerProgress.SpinCount;game.Playfield.SpinButton.Button.onClick.Invoke();
             Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);Assert.IsTrue(game.Playfield.Reels.IsRunning);
         } finally {
+            if(prepare!=null)SceneManager.sceneLoaded-=prepare;
+            if(camera!=null)camera.targetTexture=null;if(target!=null)Object.Destroy(target);
             Random.state=random;Time.timeScale=scale;Time.captureDeltaTime=delta;
             if(scene.IsValid()&&scene.isLoaded)unload=SceneManager.UnloadSceneAsync(scene);
             if(had)PlayerPrefs.SetString(key,saved);else PlayerPrefs.DeleteKey(key);
@@ -100,4 +114,19 @@ public sealed class RecoveredCoreBallBranchesTests
     }
     private static void Claim(Button button)
     {if(button!=null&&button.gameObject.activeInHierarchy&&button.IsInteractable())button.onClick.Invoke();}
+    private static void Above(GameObject shown,GameObject behind)
+    {
+        if(!shown.activeInHierarchy||!behind.activeInHierarchy)return;
+        Assert.Greater(shown.GetComponent<Canvas>().sortingOrder,behind.GetComponent<Canvas>().sortingOrder,shown.name+" must open above "+behind.name);
+    }
+    private static int ClickVisible(Button button,Camera camera)
+    {
+        if(!button.gameObject.activeInHierarchy||!button.IsInteractable())return 0;
+        Canvas.ForceUpdateCanvases();var rect=(RectTransform)button.transform;
+        var pointer=new PointerEventData(EventSystem.current){button=PointerEventData.InputButton.Left,position=RectTransformUtility.WorldToScreenPoint(camera,rect.TransformPoint(rect.rect.center))};
+        var hits=new List<RaycastResult>();EventSystem.current.RaycastAll(pointer,hits);
+        // Wait for the authored entrance/reveal animation to expose the button.
+        if(hits.Count==0||ExecuteEvents.GetEventHandler<IPointerClickHandler>(hits[0].gameObject)!=button.gameObject)return 0;
+        ExecuteEvents.ExecuteHierarchy(hits[0].gameObject,pointer,ExecuteEvents.pointerClickHandler);return 1;
+    }
 }

@@ -39,6 +39,7 @@ namespace DragonLegend.Whitebox
         public RecoveredJackpotPopup JackpotPopup => jackpotPopup;
         public RecoveredJackpotMeter Meter(int index) => meters[index];
         public event Action<string> SoundRequested, Sound1Requested;
+        public event Action<Component> WindowShowRequested;
         public event Action PauseMusicRequested, ResumeMusicRequested, StopSound1Requested;
         public event Action<int, int> CashOutTaskRefreshRequested;
 
@@ -64,7 +65,7 @@ namespace DragonLegend.Whitebox
         {
             if (IsRunning) throw new InvalidOperationException("Wheel is already running.");
             Error = null; IsRunning = true; completed = callback;
-            window.SetActive(true); Sound("jump"); frame.Play(0); pointer.Play(0);
+            WindowShowRequested?.Invoke(window.transform);window.SetActive(true); Sound("jump"); frame.Play(0); pointer.Play(0);
             rotor.Prepare(rules, isA, language);
             var fans = rules.GetJackPot();
             for (int i = 0; i < fans.Count; i++) meters[i == 0 ? 0 : i == 1 ? 1 : 2].Initialize(i, fans[i], progress, rules, ReadBet, language);

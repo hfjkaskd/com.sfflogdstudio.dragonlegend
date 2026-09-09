@@ -42,6 +42,7 @@ namespace DragonLegend.Whitebox
         public Button ClaimButton=>claimButton;
         public Button PlainButton=>plainButton;
         public event Action<string> SoundRequested;
+        public event Action<Component> WindowShowRequested;
         public event Action<int,int> MainAnimationRequested;
         public event Action<Vector3,Sprite> CollectCardDepartureRequested;
         private void Awake()
@@ -60,7 +61,7 @@ namespace DragonLegend.Whitebox
         }
         public void Show(int id,Action<float> completed,Action<Transform> flyCard)
         {
-            IsRunning=true;gameObject.SetActive(true);PlaySound("jump");content.localScale=Vector3.one;
+            IsRunning=true;WindowShowRequested?.Invoke(this);gameObject.SetActive(true);PlaySound("jump");content.localScale=Vector3.one;
             card.Init(id);collectTip.gameObject.SetActive(false);title.gameObject.SetActive(false);
             light.gameObject.SetActive(false);confetti.gameObject.SetActive(false);
             RecoveredCollectInfo info=null;var records=rules.GetCollectInfos();
