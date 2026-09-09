@@ -23,6 +23,13 @@ namespace DragonLegend.Whitebox
         public IReadOnlyList<PlayerCashOutData> CashOutRecords => data.PlayerCashOutDatas;
         public IReadOnlyList<PlayerCollectData> CollectRecords => data.PlayerCollectDatas;
         public int RandomIndex => data.RandomIndex;
+        public PlayerCollectData GetPlayerCollectData(int id)
+        {
+            var records = data.PlayerCollectDatas;
+            if (records == null) return null;
+            for (int i = 0; i < records.Count; i++) if (records[i].id == id) return records[i];
+            return null;
+        }
         public event Action<float,float> GreenCountChanged;
         // Original GameData runtime flag; intentionally absent from PlayerData saves.
         public bool IsBonusGame { get; set; }
