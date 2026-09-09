@@ -129,7 +129,11 @@ namespace DragonLegend.Whitebox
         {
             if(reviewPending)
             {
-                if(review==null)review=Instantiate(reviewPrefab,transform,false);
+                if(review==null)
+                {
+                    review=Instantiate(reviewPrefab,transform,false);
+                    review.SoundRequested+=Sound;
+                }
                 review.Bind(game.GetComponent<Canvas>().worldCamera,Application.identifier,Application.OpenURL);
                 review.Show(()=>reviewPending=false);
             }
@@ -211,7 +215,7 @@ namespace DragonLegend.Whitebox
             bankWait?.Cancel();bankWait=null;bank.Cancel();bankPending=false;
             game.Playfield.BankProgress.Unbind();
             game.PlayerProgress.ReviewRequested-=ReviewReady;reviewWait?.Cancel();reviewWait=null;
-            if(review!=null)review.Cancel();reviewPending=false;
+            if(review!=null){review.Cancel();review.SoundRequested-=Sound;}reviewPending=false;
             cashPromptWait?.Cancel();cashPromptWait=null;cashPromptPending=false;
             if(cashPrompt!=null){cashPrompt.Cancel();cashPrompt.SoundRequested-=Sound;}
             if(cashOut!=null){cashOut.Unbind();cashOut.SoundRequested-=Sound;}

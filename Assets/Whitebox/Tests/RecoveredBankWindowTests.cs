@@ -80,6 +80,12 @@ public sealed class RecoveredBankWindowTests
             Click(window.LeaveButton.gameObject);Assert.AreEqual(1,game.Ads.InterstitialCount);
             for(int i=0;i<10;i++)yield return null;Assert.AreEqual(2,closed);Assert.IsFalse(window.gameObject.activeSelf);
             int rounds=0;game.CoreRound.CoreRoundCompleted+=()=>rounds++;
+            var reviewSounds=new List<string>();var audio=game.CoreAudio.Manager;
+            // Clear before the production receiver, so old bank sounds cannot hide a missing binding.
+            game.CoreAudio.Unbind();game.CoreRound.SoundRequested+=name=>audio.StopSound();game.CoreAudio.Bind(game);
+            game.CoreRound.SoundRequested+=name=>{
+                reviewSounds.Add(name);Assert.AreEqual(game.PlayerStore.Data.IsMusic,audio.SoundSource.isPlaying);
+            };
             Assert.Less(game.PlayerProgress.Level,game.Rules.GetReview());
             game.PlayerStore.Data.Level=game.Rules.GetReview()-1;
             game.PlayerProgress.SetExperience(game.Rules.GetNeedPro(game.PlayerProgress.Level));
@@ -99,17 +105,24 @@ public sealed class RecoveredBankWindowTests
             for(int i=0;i<20&&game.CoreRound.Review==null;i++)yield return null;
             var review=game.CoreRound.Review;Assert.IsNotNull(review);Assert.IsTrue(review.gameObject.activeSelf);
             Assert.AreEqual(0,rounds);Assert.IsTrue(game.Playfield.IsBusy);Assert.IsFalse(game.CoreRound.MoreWild.gameObject.activeSelf);
+            CollectionAssert.AreEqual(new[]{"remind"},reviewSounds);
             for(int i=0;i<10;i++)yield return null;
             Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
             Assert.AreSame(review.Star(3).gameObject,Hit(review.Star(3).transform,camera));Click(review.Star(3).gameObject);
-            Assert.AreEqual(4,review.StarCount);RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
+            Assert.AreEqual(4,review.StarCount);
+            game.PlayerStore.Data.IsMusic=false;Click(review.Star(1).gameObject);Assert.AreEqual(2,review.StarCount);
+            game.PlayerStore.Data.IsMusic=true;Click(review.Star(3).gameObject);
+            RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
             RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-review-window.png"),capture.EncodeToPNG());
             Assert.AreSame(review.ClaimButton.gameObject,Hit(review.ClaimButton.transform,camera));Click(review.ClaimButton.gameObject);
+            CollectionAssert.AreEqual(new[]{"remind","click","click","click","click"},reviewSounds);
             for(int i=0;i<20&&rounds==0;i++){RecoveredCorePromptDriver.ClaimAndClose(game.CoreRound);yield return null;}
             Assert.AreEqual(1,rounds);Assert.IsFalse(game.Playfield.IsBusy);Assert.IsFalse(window.gameObject.activeSelf);
             Assert.IsTrue(game.CoreRound.MoreWild.gameObject.activeSelf,"The first-spin ExtraWild guide comes after Bank closes.");
             var oldPlayer=game.PlayerProgress;var oldCore=game.CoreRound;string oldLabel=meter.Label.text;
+            int oldSoundCount=reviewSounds.Count;
             game.transform.Find("SelectUS").GetComponent<Button>().onClick.Invoke();oldPlayer.SetBankCount(2);
+            review.Star(0).onClick.Invoke();Assert.AreEqual(oldSoundCount,reviewSounds.Count,"Discarded review must detach from core audio immediately.");
             Assert.AreEqual(oldLabel,meter.Label.text,"GM teardown detaches the old progress subscriptions immediately.");
             deadline=Time.realtimeSinceStartup+10;while((game.CoreRound==null||game.CoreRound==oldCore)&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.AreNotSame(oldCore,game.CoreRound);Assert.AreEqual("2/"+game.Rules.GetBankSpinCD(),game.Playfield.BankProgress.Label.text);
