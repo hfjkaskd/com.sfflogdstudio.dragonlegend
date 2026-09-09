@@ -105,7 +105,7 @@ public sealed class RecoveredBankWindowTests
             Assert.AreEqual(4,review.StarCount);RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
             RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-review-window.png"),capture.EncodeToPNG());
             Assert.AreSame(review.ClaimButton.gameObject,Hit(review.ClaimButton.transform,camera));Click(review.ClaimButton.gameObject);
-            for(int i=0;i<20&&rounds==0;i++)yield return null;
+            for(int i=0;i<20&&rounds==0;i++){RecoveredCorePromptDriver.ClaimAndClose(game.CoreRound);yield return null;}
             Assert.AreEqual(1,rounds);Assert.IsFalse(game.Playfield.IsBusy);Assert.IsFalse(window.gameObject.activeSelf);
             Assert.IsTrue(game.CoreRound.MoreWild.gameObject.activeSelf,"The first-spin ExtraWild guide comes after Bank closes.");
             var oldPlayer=game.PlayerProgress;var oldCore=game.CoreRound;string oldLabel=meter.Label.text;

@@ -34,8 +34,8 @@ RectTransform:
   - {fileID: 1754060435459737122}
   - {fileID: 1224667045449481143}
   - {fileID: 8149452303647046214}
-  - {fileID: 3740111027598206896}
-  - {fileID: 1648852181071868835}
+  - {fileID: 781631618253502329}
+  - {fileID: 3284233750302768555}
   - {fileID: 7334302220787973076}
   - {fileID: 2582970393590892762}
   - {fileID: 6785247359996870952}
@@ -65,12 +65,15 @@ MonoBehaviour:
   slot: {fileID: 6964702588353212419}
   wheel: {fileID: 988317761620926311}
   treasure: {fileID: 1639788192995316449}
-  lucky: {fileID: 3734006392533301246}
+  lucky: {fileID: 787771489239279415}
   ballDestination: {fileID: 2915364523025883469}
-  moreSpins: {fileID: 5093181380135689910}
+  moreSpins: {fileID: 9069275592252231870}
   moreWild: {fileID: 2701870150418208910}
   bank: {fileID: 9120080337173907450}
   reviewPrefab: {fileID: 7238073543630784373, guid: 27e5c6639dc01ab48a4bb9567a879d10, type: 3}
+  cashPromptPrefab: {fileID: 7953249754218464404, guid: 6417eb9f44b7ab046957c86a274e122f, type: 3}
+  cashOutPrefab: {fileID: 1957699948973061300, guid: 9c19c0d1595bc7743bfcf99cdfe64ac2, type: 3}
+  popupBaseDepth: 300
   tips: {fileID: 1259411266426862337}
   firstSpinGuide: {fileID: 1359524214667469562}
   moreSpinLimitMessage: The ad isn't ready yet, please wait.
@@ -771,12 +774,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7081eb23581caed48b696e0673ba1812, type: 3}
---- !u!224 &1648852181071868835 stripped
+--- !u!224 &3284233750302768555 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 437113493084752263, guid: 7081eb23581caed48b696e0673ba1812, type: 3}
   m_PrefabInstance: {fileID: 3135351234727113772}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5093181380135689910 stripped
+--- !u!114 &9069275592252231870 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6223846383912051858, guid: 7081eb23581caed48b696e0673ba1812, type: 3}
   m_PrefabInstance: {fileID: 3135351234727113772}
@@ -884,7 +887,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b905c47a872e7af4385efd5933440e8c, type: 3}
---- !u!114 &3734006392533301246 stripped
+--- !u!224 &781631618253502329 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4683719005139961911, guid: b905c47a872e7af4385efd5933440e8c, type: 3}
+  m_PrefabInstance: {fileID: 5343239819754192718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &787771489239279415 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4668466656633297017, guid: b905c47a872e7af4385efd5933440e8c, type: 3}
   m_PrefabInstance: {fileID: 5343239819754192718}
@@ -895,11 +903,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa880ab4399ff0a4085ee679a9e35004, type: 3}
   m_Name:
   m_EditorClassIdentifier:
---- !u!224 &3740111027598206896 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4683719005139961911, guid: b905c47a872e7af4385efd5933440e8c, type: 3}
-  m_PrefabInstance: {fileID: 5343239819754192718}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5580408391861958329
 PrefabInstance:
   m_ObjectHideFlags: 0

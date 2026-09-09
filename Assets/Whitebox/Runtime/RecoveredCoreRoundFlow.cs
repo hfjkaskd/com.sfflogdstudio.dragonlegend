@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DragonLegend.Whitebox
@@ -24,6 +25,18 @@ namespace DragonLegend.Whitebox
         private bool reviewPending;
         private RecoveredReelWait reviewWait;
         public RecoveredReviewWindow Review=>review;
+        [SerializeField] private RecoveredCashPromptWindow cashPromptPrefab;
+        [SerializeField] private RecoveredCashOutWindow cashOutPrefab;
+        [SerializeField] private int popupBaseDepth;
+        private readonly List<Canvas> popupCanvases=new List<Canvas>(16);
+        private RecoveredCashPromptWindow cashPrompt;
+        private RecoveredCashOutWindow cashOut;
+        private bool cashPromptPending;
+        private RecoveredReelWait cashPromptWait;
+        public RecoveredCashPromptWindow CashPrompt=>cashPrompt;
+        public bool IsCashPromptPending=>cashPromptPending;
+        public RecoveredCashOutWindow CashOut=>cashOut;
+        public event Action<string> SoundRequested;
         public RecoveredMoreWildWindow MoreWild=>moreWild;
         [SerializeField] private RecoveredTipsWindow tips;
         [SerializeField] private RecoveredFirstSpinGuide firstSpinGuide;
@@ -90,7 +103,7 @@ namespace DragonLegend.Whitebox
             }
         }
         private int Language()=>game.CurrentProfile.languageType;
-        private void ShowMoreWild()=>moreWild.Show(false);
+        private void ShowMoreWild(){PreparePopupDepth(moreWild);moreWild.Show(false);}
         private void ShowMoreSpinLimit()=>tips.Show(moreSpinLimitMessage);
         private void InitialCount(int count)=>game.Playfield.ModeView.RefreshFreeCount();
         private void InitializeBase()=>game.Playfield.Reels.Initialize(game.Playfield.Symbols);
@@ -120,14 +133,57 @@ namespace DragonLegend.Whitebox
                 review.Bind(game.GetComponent<Canvas>().worldCamera,Application.identifier,Application.OpenURL);
                 review.Show(()=>reviewPending=false);
             }
-            reviewWait=RecoveredReelWait.Until(()=>!reviewPending,()=>{reviewWait=null;FinishCoreRound();},Fail);
+            reviewWait=RecoveredReelWait.Until(()=>!reviewPending,()=>{reviewWait=null;AfterReview();},Fail);
         }
+        private void AfterReview()
+        {
+            // CheckBaseEnd 23c6068..23c6500: first unrecorded tier, then an unconditional wait.
+            cashPromptPending=false;
+            int tier=game.PlayerProgress.PrepareCashOutPrompt();
+            if(tier>=0)
+            {
+                cashPromptPending=true;
+                if(cashPrompt==null)
+                {
+                    cashPrompt=Instantiate(cashPromptPrefab,transform,false);
+                    cashPrompt.Bind(game.GetComponent<Canvas>().worldCamera,OpenCashOut);
+                    cashPrompt.SoundRequested+=Sound;
+                }
+                PreparePopupDepth(cashPrompt);
+                cashPrompt.Show(tier,game.Rules,Language(),()=>cashPromptPending=false);
+            }
+            cashPromptWait=RecoveredReelWait.Until(()=>!cashPromptPending,()=>{cashPromptWait=null;FinishCoreRound();},Fail);
+        }
+        private void OpenCashOut()
+        {
+            if(game==null)return;
+            if(cashOut==null)
+            {
+                cashOut=Instantiate(cashOutPrefab,transform,false);
+                cashOut.Bind(game.Rules,game.PlayerProgress,Language(),game.GetComponent<Canvas>(),UtcNow);
+                cashOut.SoundRequested+=Sound;
+            }
+            PreparePopupDepth(cashOut);
+            cashOut.Show();
+        }
+        private void PreparePopupDepth(Component window)
+        {
+            if(window.gameObject.activeSelf)return;
+            // BaseUIManager.AdjustWindowDepth 33be5f4: max(baseDepth, active max + 1).
+            // These three prefabs each have one Canvas, with no independent child UIOrder.
+            GetComponentsInChildren(false,popupCanvases);int depth=popupBaseDepth;
+            foreach(var canvas in popupCanvases)depth=Math.Max(depth,canvas.sortingOrder+1);
+            popupCanvases.Clear();window.GetComponent<Canvas>().sortingOrder=depth;
+            window.transform.SetAsLastSibling();
+        }
+        private static int UtcNow()=>unchecked((int)DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+        private void Sound(string name)=>SoundRequested?.Invoke(name);
         private void BankReady()=>bankPending=true;
         private void BankFly(float amount,Action completed,Transform source)=>game.CashFlight.Begin(amount,completed,bank.transform,false,source);
         private void FinishCoreRound()
         {
             // CheckBaseEnd 23c673c..23c67c0: show free Wild before unlocking, without awaiting claim.
-            if(game.PlayerStore.Data.GuideStep==2)moreWild.Show(true);
+            if(game.PlayerStore.Data.GuideStep==2){PreparePopupDepth(moreWild);moreWild.Show(true);}
             game.Playfield.SpinHint.Begin();
             if(game.Playfield.AwaitingRewards)game.Playfield.CompleteBaseRound();
             // CheckBaseEnd 23c67d4..23c67f4: clear the busy flag, then SavePlayerData.
@@ -156,6 +212,9 @@ namespace DragonLegend.Whitebox
             game.Playfield.BankProgress.Unbind();
             game.PlayerProgress.ReviewRequested-=ReviewReady;reviewWait?.Cancel();reviewWait=null;
             if(review!=null)review.Cancel();reviewPending=false;
+            cashPromptWait?.Cancel();cashPromptWait=null;cashPromptPending=false;
+            if(cashPrompt!=null){cashPrompt.Cancel();cashPrompt.SoundRequested-=Sound;}
+            if(cashOut!=null){cashOut.Unbind();cashOut.SoundRequested-=Sound;}
             game.Playfield.MoreWildEntry.Unbind();
             game.Playfield.SpinRecovery.Unbind();
             game.BonusFlow.Completed-=AfterBonus;game.BonusFlow.BindFreeScan(null);

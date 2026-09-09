@@ -71,6 +71,7 @@ public sealed class RecoveredBigWinIntegrationTests
             Assert.AreEqual(1,changes);Assert.AreEqual(balance+award,entry.PlayerProgress.GreenCount);
             Assert.AreEqual(award,field.DownWin.TemporaryTotal);Assert.AreEqual(0,field.DownWin.Total);
             Assert.AreEqual(RecoveredCurrency.Format(award,entry.CurrentProfile.languageType,2),field.DownWin.Label.text);
+            for(int i=0;i<6&&field.IsBusy;i++){RecoveredCorePromptDriver.ClaimAndClose(entry.CoreRound);yield return null;}
             Assert.AreEqual(string.Empty,field.SymbolAmount.Label.text);Assert.IsFalse(field.IsBusy);Assert.IsFalse(field.AwaitingRewards);
             Capture(camera,target,capture,"current-bigwin-spin-complete.png");
         } finally {

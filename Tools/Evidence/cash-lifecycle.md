@@ -13,3 +13,5 @@ Verification:
 - Fresh Artifacts/current-cash-window.png was inspected in the current main scene: account prompt, cash tiers, selection and bottom condition are rendered. This controlled current-project screenshot is not a fresh APK comparison or pixel-perfect proof.
 
 Still pending: account-entry/claim continuations and the main settlement CashPrompt-to-window route. The window is exercised with the actual GameEntry context by the test but is not yet reachable from the production main button or prompt. Whole-game 1:1 completion remains unproven.
+
+Subsequent production connection: see core-cash-prompt.md. The settlement prompt now opens this local window; main CashOut buttons and account/task continuations remain pending.

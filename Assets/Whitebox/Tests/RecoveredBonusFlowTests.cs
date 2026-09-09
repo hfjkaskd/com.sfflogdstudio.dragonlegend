@@ -81,7 +81,7 @@ public sealed class RecoveredBonusFlowTests
             Assert.AreEqual(1,completions);Assert.IsFalse(flow.IsRunning);Assert.IsFalse(flow.Window.gameObject.activeSelf);
             Assert.That(completedAt-closed,Is.InRange(3.7,3.9));
             // Bonus completion precedes the native Bank and review Update waits.
-            for(int i=0;i<4&&field.IsBusy;i++)yield return null;
+            for(int i=0;i<6&&field.IsBusy;i++){RecoveredCorePromptDriver.ClaimAndClose(entry.CoreRound);yield return null;}
             Assert.IsFalse(field.IsBusy,"The production no-Free core continuation must release the round after its end-flow waits");
             Assert.IsNull(failure);Assert.IsNull(field.Error);
             // The no-Bonus branch returns synchronously without replaying presentation.

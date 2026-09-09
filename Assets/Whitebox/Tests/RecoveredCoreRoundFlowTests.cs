@@ -73,7 +73,7 @@ public sealed class RecoveredCoreRoundFlowTests
             int spins=game.PlayerProgress.SpinCount;field.SpinButton.Button.onClick.Invoke();field.SpinButton.Button.onClick.Invoke();
             Assert.AreEqual(2,clickSounds);Assert.AreEqual(1,startSounds);
             Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);Assert.IsTrue(field.IsBusy);
-            for(int frame=0;frame<1800&&completed==0;frame++){Claim(field.BigWinPopup.PlainButton);Claim(field.JackpotPopup.PlainButton);yield return null;}
+            for(int frame=0;frame<1800&&completed==0;frame++){Claim(field.BigWinPopup.PlainButton);Claim(field.JackpotPopup.PlainButton);RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;}
             Assert.IsNull(core.Error);Assert.AreEqual(1,completed);Assert.IsFalse(field.IsBusy);Assert.IsFalse(field.AwaitingRewards);
             int seed=-1;var beforeSearch=Random.state;
             for(int candidate=0;candidate<10000;candidate++){Random.InitState(candidate);game.Rules.GetFreeCoinAmount();if(game.Rules.GetFreeBallAmount()==0){seed=candidate;break;}}
@@ -84,7 +84,7 @@ public sealed class RecoveredCoreRoundFlowTests
             game.PlayerStore.Data.PlayerCashOutDatas.Add(cashTask);
             game.SpinResult.ForceFreeSpin=true;spins=game.PlayerProgress.SpinCount;field.SpinButton.Button.onClick.Invoke();
             Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);
-            for(int frame=0;frame<1800&&!core.Entry.Window.gameObject.activeSelf;frame++){Claim(field.BigWinPopup.PlainButton);Claim(field.JackpotPopup.PlainButton);yield return null;}
+            for(int frame=0;frame<1800&&!core.Entry.Window.gameObject.activeSelf;frame++){Claim(field.BigWinPopup.PlainButton);Claim(field.JackpotPopup.PlainButton);RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;}
             Assert.IsTrue(core.Entry.Window.gameObject.activeSelf);Assert.IsTrue(field.IsBusy);Assert.Greater(core.Entry.InitialSpinCount,0);
             Assert.AreEqual(8,cashTask.count,"One actual Free entry must reach the main cash-task receiver exactly once, before its intro closes.");
             var persisted=JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString(key));
@@ -104,7 +104,7 @@ public sealed class RecoveredCoreRoundFlowTests
             Assert.AreNotEqual(JsonUtility.ToJson(game.PlayerStore.Data),PlayerPrefs.GetString(key));
             core.Exit.Window.ContinueButton.onClick.Invoke();
             Assert.IsTrue(field.IsBusy,"End-window close must not unlock Spin before return transition completes.");
-            for(int frame=0;frame<150&&completed==1;frame++)yield return null;
+            for(int frame=0;frame<150&&completed==1;frame++){RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;}
             Assert.AreEqual(2,completed);Assert.IsFalse(core.Entry.IsFreeSpinEnd);Assert.IsFalse(field.IsBusy);
             Assert.AreEqual(10,baseShakes);Assert.AreEqual(5,freeShakes);Assert.Greater(maximumShakeOffset,.001f);
             Assert.Greater(visibleAnticipations,0);

@@ -50,7 +50,7 @@ public sealed class RecoveredCoreBallBranchesTests
             core.CoreRoundCompleted+=()=>finished++;
             Random.InitState(71);game.Playfield.SpinButton.Button.onClick.Invoke();
             for(int frame=0;frame<1800&&finished==0;frame++) {
-                Claim(game.Playfield.BigWinPopup.PlainButton);Claim(game.Playfield.JackpotPopup.PlainButton);yield return null;
+                Claim(game.Playfield.BigWinPopup.PlainButton);Claim(game.Playfield.JackpotPopup.PlainButton);RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;
             }
             Assert.AreEqual(1,finished);Assert.IsFalse(game.Playfield.IsBusy);
             for(branch=0;branch<4;branch++) {
@@ -58,7 +58,7 @@ public sealed class RecoveredCoreBallBranchesTests
                 game.Playfield.SpinButton.Button.onClick.Invoke();game.Playfield.SpinButton.Button.onClick.Invoke();
                 Assert.AreEqual(before-1,game.PlayerProgress.SpinCount);
                 for(int frame=0;frame<1800&&!core.Entry.Window.gameObject.activeSelf;frame++) {
-                    Claim(game.Playfield.BigWinPopup.PlainButton);Claim(game.Playfield.JackpotPopup.PlainButton);yield return null;
+                    Claim(game.Playfield.BigWinPopup.PlainButton);Claim(game.Playfield.JackpotPopup.PlainButton);RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;
                 }
                 Assert.IsTrue(core.Entry.Window.gameObject.activeSelf);for(int frame=0;frame<20;frame++)yield return null;
                 // BigWin AfterHide resumes the main flow before its independent cash flight.
@@ -85,7 +85,7 @@ public sealed class RecoveredCoreBallBranchesTests
                 for(int frame=0;frame<120&&!core.Exit.Window.ContinueButton.gameObject.activeInHierarchy;frame++)yield return null;
                 Assert.IsTrue(core.Exit.Window.ContinueButton.gameObject.activeInHierarchy);core.Exit.Window.ContinueButton.onClick.Invoke();
                 Assert.IsTrue(game.Playfield.IsBusy);
-                for(int frame=0;frame<150&&finished<=branch+1;frame++)yield return null;
+                for(int frame=0;frame<150&&finished<=branch+1;frame++){RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;}
                 Assert.AreEqual(branch+2,finished);Assert.AreEqual(RecoveredSlotType.Base,game.PlayerProgress.GameSlotType);
                 Assert.IsFalse(game.Playfield.IsBusy);
             }

@@ -99,6 +99,8 @@ namespace DragonLegend.Whitebox
             if (bind) node16.SoundRequested += audioManager.PlaySound; else node16.SoundRequested -= audioManager.PlaySound;
             var node17 = game.Playfield.BankProgress;
             if (bind) node17.SoundRequested += audioManager.PlaySound; else node17.SoundRequested -= audioManager.PlaySound;
+            var node18 = game.CoreRound;
+            if (bind) node18.SoundRequested += audioManager.PlaySound; else node18.SoundRequested -= audioManager.PlaySound;
         }
         private void OnDestroy() => Unbind();
         private void ReelStop() => audioManager.PlaySound(reelStopSound);

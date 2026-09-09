@@ -33,7 +33,7 @@ public sealed class RecoveredMoreWildWindowTests
             Assert.IsTrue(wildEntry.Word.gameObject.activeSelf);Assert.IsFalse(wildEntry.Progress.activeSelf);
             int completed=0;core.CoreRoundCompleted+=()=>completed++;
             field.SpinButton.Button.onClick.Invoke();
-            for(int frame=0;frame<1800&&completed==0;frame++){Claim(field.BigWinPopup.PlainButton);Claim(field.JackpotPopup.PlainButton);yield return null;}
+            for(int frame=0;frame<1800&&completed==0;frame++){Claim(field.BigWinPopup.PlainButton);Claim(field.JackpotPopup.PlainButton);RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;}
             Assert.IsNull(core.Error);Assert.AreEqual(1,completed);Assert.IsFalse(field.IsBusy);
             Assert.IsTrue(window.gameObject.activeSelf);Assert.AreEqual(2,game.PlayerStore.Data.GuideStep);
             for(int frame=0;frame<80;frame++)yield return null;

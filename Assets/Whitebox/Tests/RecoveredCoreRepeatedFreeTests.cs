@@ -24,7 +24,7 @@ public sealed class RecoveredCoreRepeatedFreeTests
             int finished=0;core.CoreRoundCompleted+=()=>finished++;
             game.Playfield.SpinButton.Button.onClick.Invoke();
             for(int frame=0;frame<1800&&finished==0;frame++) {
-                Claim(game.Playfield.BigWinPopup.PlainButton);Claim(game.Playfield.JackpotPopup.PlainButton);yield return null;
+                Claim(game.Playfield.BigWinPopup.PlainButton);Claim(game.Playfield.JackpotPopup.PlainButton);RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;
             }
             Assert.AreEqual(1,finished);
             int seed=-1;var beforeSearch=Random.state;
@@ -56,7 +56,7 @@ public sealed class RecoveredCoreRepeatedFreeTests
             };
             game.SpinResult.ForceFreeSpin=true;game.Playfield.SpinButton.Button.onClick.Invoke();
             for(int frame=0;frame<1800&&!core.Entry.Window.gameObject.activeSelf;frame++) {
-                Claim(game.Playfield.BigWinPopup.PlainButton);Claim(game.Playfield.JackpotPopup.PlainButton);yield return null;
+                Claim(game.Playfield.BigWinPopup.PlainButton);Claim(game.Playfield.JackpotPopup.PlainButton);RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;
             }
             Assert.IsTrue(core.Entry.Window.gameObject.activeSelf);for(int frame=0;frame<20;frame++)yield return null;
             for(int frame=0;frame<200&&game.CashFlight.ActiveCashCount>0;frame++)yield return null;
@@ -80,7 +80,7 @@ public sealed class RecoveredCoreRepeatedFreeTests
             Assert.AreEqual(total,game.PlayerProgress.TotalFreeSpinWin);Assert.AreEqual(balance+credit,game.PlayerProgress.GreenCount);
             for(int frame=0;frame<120&&!core.Exit.Window.ContinueButton.gameObject.activeInHierarchy;frame++)yield return null;
             Assert.IsTrue(core.Exit.Window.ContinueButton.gameObject.activeInHierarchy);core.Exit.Window.ContinueButton.onClick.Invoke();Assert.IsTrue(game.Playfield.IsBusy);
-            for(int frame=0;frame<150&&finished<2;frame++)yield return null;
+            for(int frame=0;frame<150&&finished<2;frame++){RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;}
             Assert.AreEqual(2,finished);Assert.IsFalse(game.Playfield.IsBusy);Assert.AreEqual(RecoveredSlotType.Base,game.PlayerProgress.GameSlotType);
             int spins=game.PlayerProgress.SpinCount;game.Playfield.SpinButton.Button.onClick.Invoke();Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);
         } finally {
