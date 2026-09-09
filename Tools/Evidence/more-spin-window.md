@@ -39,7 +39,7 @@ setter clamping/notification/save, exact limit boundary, default exemption, clic
 latching, close and cancellation. The authored-window fixture uses real Buttons
 and the current GameEntry ad facade, captures current-more-spin.png, retries a
 failed ad, credits once, closes and reopens. It deliberately instantiates the
-prepared prefab; it does not pretend the missing production subscriber exists.
+prepared prefab; the separate integration fixture verifies the production subscriber.
 
 TipsWindow copies Res/Prefabs/UITipsView.prefab, including its original full-width
 Image/TMP, VerticalLayoutGroup and ContentSizeFitter. Their original GUIDs were
@@ -66,3 +66,38 @@ the More Spin window. The former missing invocation is now connected; general
 window-manager masking/stacking and other not-yet-restored input branches still
 require broader work and must not be claimed complete from this test.
 Full connected regression: more-spin-connected-regression.xml passes 365/365.
+
+## Native mask and Tips depth audit
+
+UIMoreSpinView.OnInitProperty 23d55b4 loads the ELF literal at dbb670:
+two little-endian integers (300, 2), i.e. Popup / Black. The property constructor
+23f99b0 writes alpha 0x3f266666 (0.65). UITipsView.OnInitProperty 23daf60 loads
+dbba90: (2000, 0), i.e. Top3 / None. Tips was incorrectly authored at 400;
+the More Spin prefab was missing its window background entirely.
+
+BaseUIManager.AddColliderBgForWindow 33be790 maps mode Black to the non-transparent
+argument of UITools.AddBgColliderToTarget 23fd9dc. ARM 23fdb88 places the child
+first, 23fdb9c adds Image, and 23fdba4..23fdbc8 sets black RGB with the property
+alpha. 23fdbd8 fills the parent canvas through FillInCanvas 23fb154. Relocation
+4f1fba8 resolves to the exact name `_WindowBg`; 4f1fba0 resolves to AddComponent<Image>.
+AfterAddBgMask 23f8ffc adds the standard Button and disables transitions at
+23f90c4. BaseWindow.OnClickBgMask 23f9334 returns without action; More Spin has no
+override, so clicking the background must not dismiss or claim.
+
+BuildMoreSpinWindow now authors this static first-child Image/Button mask with
+the source alpha in the prefab, per the project Prefab-First constraint. It sits
+outside animated Content and follows the window's active lifetime. Tips uses
+the source 2000 sorting tier and receives no added mask. This is limited to the
+zero-Spin branch; it does not establish a complete native window stack manager.
+
+The window fixture now uses EventSystem.RaycastAll at the real Spin, claim and
+close positions, executes a background pointer click, and checks that hiding
+the popup restores Spin's hit. It also checks Tips' corrected tier. Captures use
+the current project after authoring.
+
+Validation: more-spin-mask-fixed.xml passes 1/1 and more-spin-mask-regression.xml
+passes 365/365. The first raycast fixture used Transform.position, which is the
+original CloseBtn's top-right pivot (1,1), and missed its rectangle. It now uses
+RectTransform.rect.center transformed to world/screen coordinates; no source
+button geometry was changed. The fresh current-more-spin.png was inspected:
+the full background is dimmed while the popup and its buttons remain undimmed.

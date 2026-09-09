@@ -48,9 +48,22 @@ public static class BuildMoreSpinWindow
             settings.FindProperty("duration").floatValue=.3f;
             settings.FindProperty("enterEase").animationCurveValue=new AnimationCurve(new Keyframe(0,0,4.70158f,4.70158f),new Keyframe(1,1,0,0));
             settings.FindProperty("exitEase").animationCurveValue=new AnimationCurve(new Keyframe(0,0,0,0),new Keyframe(1,1,4.70158f,4.70158f));
-            settings.ApplyModifiedPropertiesWithoutUndo();root.GetComponent<Canvas>().sortingOrder=300;root.SetActive(false);
+            settings.ApplyModifiedPropertiesWithoutUndo();root.GetComponent<Canvas>().sortingOrder=300;
+            // BaseUIManager.AddColliderBgForWindow / UITools.AddBgColliderToTarget.
+            // Author the native Image + Button structure in the prefab instead of rebuilding it on show.
+            var background=new GameObject("_WindowBg",typeof(RectTransform),typeof(Image),typeof(Button));background.layer=root.layer;
+            background.transform.SetParent(root.transform,false);background.transform.SetAsFirstSibling();
+            var backgroundRect=(RectTransform)background.transform;
+            backgroundRect.anchorMin=Vector2.zero;backgroundRect.anchorMax=Vector2.one;
+            backgroundRect.offsetMin=backgroundRect.offsetMax=Vector2.zero;
+            var backgroundImage=background.GetComponent<Image>();backgroundImage.color=new Color(0,0,0,.65f);
+            var backgroundButton=background.GetComponent<Button>();backgroundButton.targetGraphic=backgroundImage;
+            backgroundButton.transition=Selectable.Transition.None;
+            // Native BaseWindow.OnClickBgMask is empty: absorb clicks without dismissing.
+            root.SetActive(false);
             PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredUI/MoreSpinWindow.prefab");AssetDatabase.SaveAssets();
         } finally {PrefabUtility.UnloadPrefabContents(root);AssetDatabase.DeleteAsset(temporary);}
+        BuildTipsWindow.Save();
     }
     private static void Script<T>(Dictionary<string,string> map,string original) where T:MonoBehaviour
     {

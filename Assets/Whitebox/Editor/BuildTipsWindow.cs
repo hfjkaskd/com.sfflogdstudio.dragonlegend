@@ -31,7 +31,7 @@ public static class BuildTipsWindow
             var view=root.AddComponent<RecoveredTipsWindow>();var settings=new SerializedObject(view);
             settings.FindProperty("label").objectReferenceValue=root.GetComponentInChildren<TextMeshProUGUI>();
             settings.FindProperty("visibleSeconds").floatValue=2;settings.ApplyModifiedPropertiesWithoutUndo();
-            root.GetComponent<Canvas>().sortingOrder=400;root.SetActive(false);
+            root.GetComponent<Canvas>().sortingOrder=2000;root.SetActive(false);
             PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredUI/TipsWindow.prefab");AssetDatabase.SaveAssets();
         } finally {PrefabUtility.UnloadPrefabContents(root);AssetDatabase.DeleteAsset(temporary);}
         BuildCoreRoundFlow.Save();
