@@ -15,6 +15,10 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RectTransform ballDestination;
         [SerializeField] private RecoveredMoreSpinWindow moreSpins;
         [SerializeField] private RecoveredMoreWildWindow moreWild;
+        [SerializeField] private RecoveredBankWindow bank;
+        public RecoveredBankWindow Bank=>bank;
+        private bool bankPending;
+        private RecoveredReelWait bankWait;
         public RecoveredMoreWildWindow MoreWild=>moreWild;
         [SerializeField] private RecoveredTipsWindow tips;
         [SerializeField] private RecoveredFirstSpinGuide firstSpinGuide;
@@ -34,6 +38,9 @@ namespace DragonLegend.Whitebox
             game=context;var field=game.Playfield;var reels=field.ModeView.FreeReels;
             moreSpins.Bind(game);tips.Bind(game.GetComponent<Canvas>().worldCamera);
             moreWild.Bind(game);
+            bankPending=false;
+            bank.Bind(game.PlayerProgress,game.Rules,game.Ads,()=>game.Playfield.Bet,game.CurrentProfile.languageType,game.GetComponent<Canvas>().worldCamera);
+            bank.FlyRequested+=BankFly;game.PlayerProgress.BankReady+=BankReady;
             field.MoreWildEntry.Bind(game,ShowMoreWild);
             field.SpinRecovery.Bind(game,moreSpins.Show);
             game.SpinEntry.MoreSpinsRequested+=moreSpins.Show;moreSpins.LimitTipRequested+=ShowMoreSpinLimit;
@@ -81,6 +88,19 @@ namespace DragonLegend.Whitebox
         private void ReturnedToBase(){entry.ClearFreeEndFlag();CompleteCoreRound();}
         private void CompleteCoreRound()
         {
+            // Main.BankPop 23bc778 only sets a pending flag; CheckBaseEnd waits after Free returns.
+            if(bankPending)
+            {
+                bank.Show(()=>bankPending=false);
+                bankWait=RecoveredReelWait.Until(()=>!bankPending,()=>{bankWait=null;FinishCoreRound();},Fail);
+                return;
+            }
+            FinishCoreRound();
+        }
+        private void BankReady()=>bankPending=true;
+        private void BankFly(float amount,Action completed,Transform source)=>game.CashFlight.Begin(amount,completed,bank.transform,false,source);
+        private void FinishCoreRound()
+        {
             // CheckBaseEnd 23c673c..23c67c0: show free Wild before unlocking, without awaiting claim.
             if(game.PlayerStore.Data.GuideStep==2)moreWild.Show(true);
             game.Playfield.SpinHint.Begin();
@@ -97,6 +117,8 @@ namespace DragonLegend.Whitebox
             game.SpinEntry.MoreSpinsRequested-=moreSpins.Show;moreSpins.LimitTipRequested-=ShowMoreSpinLimit;
             moreSpins.Cancel();tips.Cancel();
             moreWild.Cancel();
+            game.PlayerProgress.BankReady-=BankReady;bank.FlyRequested-=BankFly;
+            bankWait?.Cancel();bankWait=null;bank.Cancel();bankPending=false;
             game.Playfield.MoreWildEntry.Unbind();
             game.Playfield.SpinRecovery.Unbind();
             game.BonusFlow.Completed-=AfterBonus;game.BonusFlow.BindFreeScan(null);
