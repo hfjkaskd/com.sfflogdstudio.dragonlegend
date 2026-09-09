@@ -75,6 +75,7 @@ refreshes their data; data-dirty refreshes already visible cells. Remaining
 ListView geometry, ScrollRect initialization and refresh scheduling are
 now documented in `collect-list.md` with their recovered prefab/controller.
 
-The full collection window, its Close and main entry binding, complete-set
-reward branch, production Free lifecycle and whole-screen visual fidelity
-remain unfinished. These item checks do not establish those requirements.
+The collection window and Close are now restored separately in collect-window.md.
+Main entry binding, complete-set reward branch, production Free lifecycle and
+whole-screen visual fidelity remain unfinished. These item checks do not
+establish those requirements.

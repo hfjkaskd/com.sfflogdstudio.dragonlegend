@@ -46,8 +46,8 @@ The freshly generated capture was inspected: three-column cards scroll and
 clip at the viewport top/bottom. Main's existing dominant dragon/background
 and layout gaps remain visible behind this deliberately isolated fixture.
 
-The collection window still needs its original Adapt safe-area behavior,
-popup animation, A/normal header/progress branches, Close and Main entry
-binding. Complete-set rewards and production Free lifecycle remain separate
+The collection window now includes Adapt safe-area behavior, popup animation,
+A/normal header/progress branches and Close; see collect-window.md. Main entry
+binding, complete-set rewards and production Free lifecycle remain separate
 unfinished integrations. This implementation does not claim to restore every
 generic ListView direction, dynamic sizing or optional strategy.
