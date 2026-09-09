@@ -41,6 +41,7 @@ namespace DragonLegend.Whitebox
             bankPending=false;
             bank.Bind(game.PlayerProgress,game.Rules,game.Ads,()=>game.Playfield.Bet,game.CurrentProfile.languageType,game.GetComponent<Canvas>().worldCamera);
             bank.FlyRequested+=BankFly;game.PlayerProgress.BankReady+=BankReady;
+            field.BankProgress.Bind(game.PlayerProgress,game.Rules,tips.Show);
             field.MoreWildEntry.Bind(game,ShowMoreWild);
             field.SpinRecovery.Bind(game,moreSpins.Show);
             game.SpinEntry.MoreSpinsRequested+=moreSpins.Show;moreSpins.LimitTipRequested+=ShowMoreSpinLimit;
@@ -91,7 +92,7 @@ namespace DragonLegend.Whitebox
             // Main.BankPop 23bc778 only sets a pending flag; CheckBaseEnd waits after Free returns.
             if(bankPending)
             {
-                bank.Show(()=>bankPending=false);
+                bank.Show(()=>{bankPending=false;game.Playfield.BankProgress.Refresh();});
                 bankWait=RecoveredReelWait.Until(()=>!bankPending,()=>{bankWait=null;FinishCoreRound();},Fail);
                 return;
             }
@@ -119,6 +120,7 @@ namespace DragonLegend.Whitebox
             moreWild.Cancel();
             game.PlayerProgress.BankReady-=BankReady;bank.FlyRequested-=BankFly;
             bankWait?.Cancel();bankWait=null;bank.Cancel();bankPending=false;
+            game.Playfield.BankProgress.Unbind();
             game.Playfield.MoreWildEntry.Unbind();
             game.Playfield.SpinRecovery.Unbind();
             game.BonusFlow.Completed-=AfterBonus;game.BonusFlow.BindFreeScan(null);

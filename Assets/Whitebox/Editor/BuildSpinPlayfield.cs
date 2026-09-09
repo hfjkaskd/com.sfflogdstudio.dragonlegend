@@ -129,6 +129,7 @@ public static class BuildSpinPlayfield
             BuildFreeBottom.Attach(root);
             BuildSpinRecovery.Attach(root);
             BuildMoreWildEntry.Attach(root);
+            BuildBankProgress.Attach(root);
             BuildMainModeView.Attach(root);
             BuildScatter.Attach(root);
             BuildSpinHint.Attach(root);

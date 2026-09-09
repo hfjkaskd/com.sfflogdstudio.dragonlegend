@@ -29,17 +29,35 @@ public sealed class RecoveredBankWindowTests
             float deadline=Time.realtimeSinceStartup+10;while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.CoreRound);game.CoreRound.FirstSpinGuide.Hide();
             window=game.CoreRound.Bank;Assert.IsNotNull(window);
+            var meter=game.Playfield.BankProgress;Assert.IsNotNull(meter);
+            Assert.AreEqual("0/"+game.Rules.GetBankSpinCD(),meter.Label.text);
+            Assert.AreSame(meter.Button.transform,meter.Fill.transform.parent.parent);
+            Assert.AreEqual(0,meter.Button.onClick.GetPersistentEventCount());
+            Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
+            Assert.AreSame(meter.Button.gameObject,Hit(meter.Button.transform,camera));
+            var beforeTip=Random.state;Click(meter.Button.gameObject);
+            Assert.AreEqual("Need more spins to trigger the rewards.",game.CoreRound.Tips.Label.text);Assert.IsTrue(game.CoreRound.Tips.gameObject.activeSelf);
+            Assert.IsFalse(window.gameObject.activeSelf);Assert.AreEqual(beforeTip,Random.state);
+            game.CoreRound.Tips.Cancel();
+            game.PlayerProgress.GameSlotType=RecoveredSlotType.Free;game.Playfield.ModeView.ApplyCurrent();Assert.IsFalse(meter.gameObject.activeInHierarchy);
+            game.PlayerProgress.GameSlotType=RecoveredSlotType.Base;game.Playfield.ModeView.ApplyCurrent();Assert.IsTrue(meter.gameObject.activeInHierarchy);
             int flights=0,closed=0;float yAtClose=0;string sound=null;
             window.SoundRequested+=value=>sound=value;
             window.FlyRequested+=(amount,callback,source)=>flights++;
-            game.PlayerProgress.SetBankCount(1);window.Show(()=>{closed++;yAtClose=window.Item(0).transform.localPosition.y;});
+            game.PlayerProgress.SetBankCount(1);
+            Assert.AreEqual("1/"+game.Rules.GetBankSpinCD(),meter.Label.text);Assert.AreEqual(Mathf.Clamp01(1f/game.Rules.GetBankSpinCD()),meter.Fill.fillAmount);
+            Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
+            capture=new Texture2D(1080,1920,TextureFormat.RGB24,false);RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+            File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-bank-progress.png"),capture.EncodeToPNG());
+            window.Show(()=>{closed++;yAtClose=window.Item(0).transform.localPosition.y;});
             Assert.AreEqual(0,game.PlayerProgress.BankCount);Assert.AreEqual("jump",sound);
+            Assert.AreEqual("0/"+game.Rules.GetBankSpinCD(),meter.Label.text);Assert.AreEqual(0,meter.Fill.fillAmount);
             Assert.AreEqual(4,window.Item(0).Ball.Selected);Assert.AreEqual(3,window.Item(1).Ball.Selected);Assert.AreEqual(5,window.Item(2).Ball.Selected);
             for(int i=0;i<12;i++)yield return null;
             Assert.IsTrue(window.Finger.gameObject.activeSelf);
             Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
             Assert.AreSame(window.Item(0).Button.gameObject,Hit(window.Item(0).Button.transform,camera));
-            capture=new Texture2D(1080,1920,TextureFormat.RGB24,false);RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
+            RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
             File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-bank-window.png"),capture.EncodeToPNG());
             Click(window.Item(0).Button.gameObject);Assert.IsFalse(window.Finger.gameObject.activeSelf);Assert.IsFalse(game.Ads.Pending);
             for(int i=0;i<160&&!window.Item(1).Ad.gameObject.activeSelf;i++)yield return null;
@@ -64,6 +82,7 @@ public sealed class RecoveredBankWindowTests
             int rounds=0;game.CoreRound.CoreRoundCompleted+=()=>rounds++;
             game.PlayerProgress.SetBankCount(game.Rules.GetBankSpinCD()-1);
             game.Playfield.SpinButton.Button.onClick.Invoke();
+            Assert.AreEqual(game.Rules.GetBankSpinCD()+"/"+game.Rules.GetBankSpinCD(),meter.Label.text);Assert.AreEqual(1,meter.Fill.fillAmount);
             Assert.IsTrue(game.Playfield.IsBusy);Assert.IsFalse(window.gameObject.activeSelf,"BankReady only marks the pending event during Spin entry.");
             for(int i=0;i<1800&&!window.gameObject.activeSelf;i++)
             {
@@ -76,6 +95,11 @@ public sealed class RecoveredBankWindowTests
             for(int i=0;i<20&&rounds==0;i++)yield return null;
             Assert.AreEqual(1,rounds);Assert.IsFalse(game.Playfield.IsBusy);Assert.IsFalse(window.gameObject.activeSelf);
             Assert.IsTrue(game.CoreRound.MoreWild.gameObject.activeSelf,"The first-spin ExtraWild guide comes after Bank closes.");
+            var oldPlayer=game.PlayerProgress;var oldCore=game.CoreRound;string oldLabel=meter.Label.text;
+            game.transform.Find("SelectUS").GetComponent<Button>().onClick.Invoke();oldPlayer.SetBankCount(2);
+            Assert.AreEqual(oldLabel,meter.Label.text,"GM teardown detaches the old progress subscriptions immediately.");
+            deadline=Time.realtimeSinceStartup+10;while((game.CoreRound==null||game.CoreRound==oldCore)&&Time.realtimeSinceStartup<deadline)yield return null;
+            Assert.AreNotSame(oldCore,game.CoreRound);Assert.AreEqual("2/"+game.Rules.GetBankSpinCD(),game.Playfield.BankProgress.Label.text);
         }
         finally
         {

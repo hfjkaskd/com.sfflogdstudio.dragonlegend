@@ -6,6 +6,8 @@ namespace DragonLegend.Whitebox
 {
     public sealed class RecoveredSpinPlayfield : MonoBehaviour
     {
+        [SerializeField] private RecoveredBankProgress bankProgress;
+        public RecoveredBankProgress BankProgress=>bankProgress;
         [SerializeField] private RecoveredNpcPresentation npc;
         [SerializeField] private RecoveredMainComposition composition;
         public RecoveredMainComposition Composition => composition;
