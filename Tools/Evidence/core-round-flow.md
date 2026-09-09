@@ -58,7 +58,9 @@ The final full run also passes existing RNG pause and wheel timing assertions.
 
 The no-ball shortened session test does not cover ball branches. The additional
 production-scene branch test below covers each branch in a separate Free session;
-mixed multiple-ball and multiple-round sessions still need end-to-end verification.
+the repeated-session test below additionally covers two rounds with multiple balls.
+Larger sessions, all Bonus interleavings and advertisement outcomes remain unverified
+as complete production sequences.
 
 GM teardown follow-up: free-gm-before.xml reproduced a running old Free controller
 after the actual SelectUS button rebuilt the profile. FreeColumn now retains the
@@ -105,3 +107,31 @@ subscribers run. No runtime fixes were needed for these four verified branches.
 Focused validation: Artifacts/core-ball-final.xml passes 1/1, containing all four
 branches and their actual Spin-to-return sequences.
 Full validation: Artifacts/core-ball-regression.xml passes 354/354 PlayMode tests.
+
+## Repeated Free session
+
+RecoveredCoreRepeatedFreeTests drives the actual initial Spin, then ForceFreeSpin,
+start window, two automatically connected Free rounds and final return. Each round
+contains one coin and two dragon balls. All four ball rewards pass through actual
+production minigames and claim Buttons; only one minigame runs at a time. The second
+round begins from RewardCollect -> FreeExit.Check -> FreeSpinEntry -> result generation
+-> PresentationRequested without a test call to restart the controller.
+
+At each RoundStarted, the per-round dictionary is empty and the prior session totals
+remain intact. At each BallScan.Completed, the three stopped special symbols each
+have one reward entry. Final verification compares four observed game entries, two
+round starts/scans, four ball rewards, session total, reward collector counters and
+the actual wallet. Spin stays locked through both rounds and the return transition.
+
+Native coin accounting is deliberately retained: ARM 23cfb34..23cfb48 credits the
+current cumulative CoinReward at each collection end. For round coin amounts c1/c2
+and total ball awards b, the two-round wallet increment is b+c1+(c1+c2), while the
+session reward display records b+c1+c2. The test computes this from actual ledger
+entries; it does not normalize the source behavior into per-round-only credit.
+
+Fixture controls set two remaining spins at Free music change and seed a 1-coin,
+2-ball board. During reward collection the fixture restores that seed for the next
+generation. No runtime configuration, generation callbacks or reward consumers are
+replaced. This checks the selected repeated path, not every possible mixed outcome.
+Focused Artifacts/core-repeated-free.xml passes 1/1; no runtime fix was required.
+Full Artifacts/core-repeated-regression.xml passes 355/355 PlayMode tests.
