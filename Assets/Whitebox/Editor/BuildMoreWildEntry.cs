@@ -20,7 +20,7 @@ public static class BuildMoreWildEntry
     {
         const string path="Assets/Resources/RecoveredUI/SpinPlayfield.prefab";
         var field=PrefabUtility.LoadPrefabContents(path);
-        try {Attach(field);PrefabUtility.SaveAsPrefabAsset(field,path);AssetDatabase.SaveAssets();}
+        try {Attach(field);BuildMainSafeArea.Attach(field);PrefabUtility.SaveAsPrefabAsset(field,path);AssetDatabase.SaveAssets();}
         finally {PrefabUtility.UnloadPrefabContents(field);}
     }
     public static void Attach(GameObject field)
@@ -35,7 +35,7 @@ public static class BuildMoreWildEntry
         blocks["224901155395665742"]=Regex.Replace(blocks["224901155395665742"],@"  m_Children:\n.*?  m_Father:","  m_Children:\n  - {fileID: 224587083680832752}\n  m_Father:",RegexOptions.Singleline);
         var yaml=new StringBuilder("%YAML 1.1\n%TAG !u! tag:unity3d.com,2011:\n");BuildTreasureCard.Append("224901155395665742","224901155395665742",blocks,yaml);
         var map=new Dictionary<string,string>();BuildTreasureCard.Script<Image>(map,"3cf5a44414476512e00c3e7a2569a919");
-        BuildTreasureCard.Script<RecoveredScreenAdapt>(map,"3991d2bd099e12203576b2cf89b113da");
+        // The common SpinPlayfield Node owns Adapt; do not apply the inset twice.
         BuildTreasureCard.Script<TextMeshProUGUI>(map,"3f96b1d166d19b209697e35b35d65c76");BuildTreasureCard.Script<Button>(map,"18d0a90695249463551c00f45766e642");
         BuildTreasureCard.Script<RecoveredEmptyRaycastGraphic>(map,"e0b4d57e8f658b407a2ad25df85fb0d6");
         string text=yaml.ToString();var removed=new List<string>();

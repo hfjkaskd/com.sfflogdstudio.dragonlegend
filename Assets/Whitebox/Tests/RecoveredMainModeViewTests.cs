@@ -25,6 +25,20 @@ public sealed class RecoveredMainModeViewTests
             Assert.IsFalse(mode.Fireworks.gameObject.activeSelf);Assert.IsFalse(mode.FreeReels.IsInitialized);
             camera=game.GetComponent<Canvas>().worldCamera;target=new RenderTexture(1080,1920,24);capture=new Texture2D(1080,1920,TextureFormat.RGB24,false);
             camera.targetTexture=target;yield return null;
+            game.CoreRound.FirstSpinGuide.Hide();
+            var adapt=field.GetComponent<RecoveredScreenAdapt>();Assert.IsNotNull(adapt);
+            var fieldRect=(RectTransform)field.transform;var board=(RectTransform)field.transform.Find("QiPan");
+            Vector3 boardBefore=board.position,spinBefore=field.SpinButton.transform.position;
+            Vector3 backgroundBefore=game.Background.BaseBackground.transform.position;
+            Vector2 boardLocal=board.anchoredPosition;
+            var scaler=game.GetComponentInParent<UnityEngine.UI.CanvasScaler>();
+            float factor=scaler.matchWidthOrHeight*scaler.referenceResolution.y/1920-scaler.referenceResolution.x*(scaler.matchWidthOrHeight-1)/1080;
+            adapt.Apply(1080,1920,new Rect(24,60,1032,1740));Canvas.ForceUpdateCanvases();
+            Assert.AreEqual(60*factor,fieldRect.offsetMin.y,.0002f);Assert.AreEqual(-120*factor,fieldRect.offsetMax.y,.0002f);
+            Assert.AreNotEqual(boardBefore,board.position);Assert.AreNotEqual(spinBefore,field.SpinButton.transform.position);
+            Assert.AreEqual(boardLocal,board.anchoredPosition);Assert.AreEqual(backgroundBefore,game.Background.BaseBackground.transform.position);
+            Render(camera,target,capture);File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-main-safe-area.png"),capture.EncodeToPNG());
+            adapt.AdaptScreen();Canvas.ForceUpdateCanvases();
             for(int i=0;i<5;i++) {
                 var effect=mode.SpeedEffectAt(i);Assert.IsFalse(effect.activeSelf);
                 var rect=(RectTransform)effect.transform;

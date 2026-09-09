@@ -10807,7 +10807,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5870719808486127172}
-  - component: {fileID: 7441973996423566241}
   - component: {fileID: 3643235329961252665}
   m_Layer: 5
   m_Name: MoreWildEntry
@@ -10836,19 +10835,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7441973996423566241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5490574153153709407}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d62552d1aaac7774cbec97a763daeff2, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  uiRootScaler: {fileID: 0}
 --- !u!114 &3643235329961252665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13946,6 +13932,7 @@ GameObject:
   - component: {fileID: 4934534616736951173}
   - component: {fileID: 3884060580341289348}
   - component: {fileID: 5203672363596827660}
+  - component: {fileID: 3136944336307232232}
   m_Layer: 5
   m_Name: SpinPlayfield
   m_TagString: Untagged
@@ -14229,6 +14216,19 @@ MonoBehaviour:
   countFormat: <gradient="spin">SPIN {0}</gradient>
   timeFormat: '{0:D2}:{1:D2}'
   countdownFormat: <gradient="spin">SPIN {0}</gradient> <size=#48>{1}</size>
+--- !u!114 &3136944336307232232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842712680581577391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62552d1aaac7774cbec97a763daeff2, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  uiRootScaler: {fileID: 0}
 --- !u!1 &8986257030650635991
 GameObject:
   m_ObjectHideFlags: 0

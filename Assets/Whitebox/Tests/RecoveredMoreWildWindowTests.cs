@@ -67,9 +67,10 @@ public sealed class RecoveredMoreWildWindowTests
             Assert.IsTrue(wildEntry.Button.gameObject.activeInHierarchy,"Original Tubiao remains outside the mode-switched Bottom/Main.");
             Assert.AreEqual(2,game.PlayerProgress.MoreWild);
             game.PlayerProgress.GameSlotType=RecoveredSlotType.Base;field.ModeView.ApplyCurrent();
-            var adapt=wildEntry.GetComponent<RecoveredScreenAdapt>();Assert.IsNotNull(adapt);
+            var adapt=field.GetComponent<RecoveredScreenAdapt>();Assert.IsNotNull(adapt);
+            Assert.IsNull(wildEntry.GetComponent<RecoveredScreenAdapt>(),"Common Node applies the inset once.");
             Assert.AreEqual("Tubiao",wildEntry.Button.transform.parent.name);
-            var entryRect=(RectTransform)wildEntry.transform;var scaler=game.GetComponentInParent<CanvasScaler>();
+            var entryRect=(RectTransform)field.transform;var scaler=game.GetComponentInParent<CanvasScaler>();
             float factor=scaler.matchWidthOrHeight*scaler.referenceResolution.y/1920-scaler.referenceResolution.x*(scaler.matchWidthOrHeight-1)/1080;
             adapt.Apply(1080,1920,new Rect(24,60,1032,1740));
             Assert.AreEqual(24*factor,entryRect.offsetMin.x,.0002f);Assert.AreEqual(-120*factor,entryRect.offsetMax.y,.0002f);
