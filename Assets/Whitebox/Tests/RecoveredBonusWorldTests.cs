@@ -8,6 +8,35 @@ using UnityEngine.TestTools;
 
 public sealed class RecoveredBonusWorldTests
 {
+    [UnityTest]
+    public IEnumerator AuthoredWorldPlayerPreservesTurnSpeedPauseAndCancellation()
+    {
+        float scale=Time.timeScale,delta=Time.captureDeltaTime;
+        var root=Object.Instantiate(Resources.Load<GameObject>("RecoveredSymbols/BonusWorld/BonusWorld"));
+        try
+        {
+            Time.timeScale=1;Time.captureDeltaTime=.025f;
+            var driver=root.GetComponent<RecoveredWorldAnimation>();
+            Assert.AreEqual(13,driver.Player.GetClipCount());
+            int completed=0;driver.PlaybackSpeed=3;
+            driver.Play("zcjb_b_zhao",false,()=>{completed++;driver.Play("idle_zhao",true);driver.PlaybackSpeed=1;});
+            Time.timeScale=0;for(int i=0;i<5;i++)yield return null;
+            Assert.AreEqual(0,completed);Assert.AreEqual(0,driver.Player["zcjb_b_zhao"].time);
+            Time.timeScale=1;
+            for(int i=0;i<5;i++)yield return null;
+            Assert.AreEqual(0,completed,"The .667 second turn at 3x must not finish by .125 seconds.");
+            for(int i=0;i<15&&completed==0;i++)yield return null;
+            Assert.AreEqual(1,completed);Assert.IsTrue(driver.Player.IsPlaying("idle_zhao"));
+            Assert.AreEqual(1,driver.Player["idle_zhao"].speed);
+            for(int i=0;i<10;i++)yield return null;Assert.AreEqual(1,completed);
+            driver.Play("zcjb_b_bao",false,()=>completed++);root.SetActive(false);
+            for(int i=0;i<35;i++)yield return null;Assert.AreEqual(1,completed);
+            root.SetActive(true);Assert.IsTrue(driver.Player.IsPlaying("zcjb_idle"));
+            driver.Play("glow",false,()=>completed++);driver.Stop();
+            for(int i=0;i<35;i++)yield return null;Assert.AreEqual(1,completed);
+        }
+        finally {Time.timeScale=scale;Time.captureDeltaTime=delta;Object.Destroy(root);}
+    }
     [System.Serializable] private sealed class Samples {public RigSamples[] rigs;}
     [System.Serializable] private sealed class RigSamples {public string name;public Frame[] frames;}
     [System.Serializable] private sealed class Frame {public float time;public float[] vertices;}

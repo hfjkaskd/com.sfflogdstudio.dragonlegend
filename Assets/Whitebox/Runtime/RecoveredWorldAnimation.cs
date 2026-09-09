@@ -15,21 +15,28 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredWorldRig rig;
         [SerializeField] private Clip[] clips;
         [SerializeField] private string initialClip;
+        [SerializeField] private float playbackSpeed=1;
+        private AnimationState current;
         private AnimationState once;
         private Action completed;
         public RecoveredWorldRig Rig=>rig;
         public Animation Player=>player;
+        public float PlaybackSpeed
+        {
+            get=>playbackSpeed;
+            set {playbackSpeed=value;if(current!=null)current.speed=value;}
+        }
         public void Play(string name,bool loop,Action callback=null)
         {
             Clip clip=null;
             for(int i=0;i<clips.Length;i++)if(clips[i].name==name){clip=clips[i];break;}
             if(clip==null)throw new ArgumentOutOfRangeException(nameof(name),name,"No authored world animation.");
             Stop();rig.SelectClipData(clip.data);
-            var state=player[name];state.time=0;state.speed=1;
+            var state=player[name];current=state;state.time=0;state.speed=playbackSpeed;
             state.wrapMode=loop?WrapMode.Loop:WrapMode.ClampForever;player.Play(name);
             if(!loop){once=state;completed=callback;}
         }
-        public void Stop(){once=null;completed=null;player.Stop();}
+        public void Stop(){once=null;completed=null;current=null;player.Stop();}
         private void LateUpdate()
         {
             if(once==null || once.time<once.length)return;
