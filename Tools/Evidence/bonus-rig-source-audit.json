@@ -1,0 +1,146 @@
+{
+  "binary_sha256": "4fcccd704b829375fb6e496b585a79e09de0b4f102825a5965b6ef23b127cea1",
+  "extraction_sha256": "0bee8de4eae118ddb45632afd838f9bc3314c9c19b8da9904a689854714f6793",
+  "bones": 29,
+  "slots": 46,
+  "attachments": 59,
+  "meshes": [
+    {
+      "slot": 1,
+      "key": "coin_c",
+      "vertices": 70
+    },
+    {
+      "slot": 45,
+      "key": "ringadd",
+      "vertices": 45
+    }
+  ],
+  "clips": [
+    {
+      "name": "glow",
+      "duration": 0.7333333492279053,
+      "timelines": {
+        "bone/1": 1,
+        "bone/4": 6,
+        "deform/0": 1,
+        "slot/0": 8,
+        "slot/1": 8
+      }
+    },
+    {
+      "name": "idle_bao",
+      "duration": 1.0,
+      "timelines": {
+        "bone/4": 1,
+        "slot/0": 5,
+        "slot/1": 2
+      }
+    },
+    {
+      "name": "idle_cai",
+      "duration": 1.0,
+      "timelines": {
+        "bone/4": 1,
+        "slot/0": 5,
+        "slot/1": 3
+      }
+    },
+    {
+      "name": "idle_chun",
+      "duration": 1.0,
+      "timelines": {
+        "slot/0": 12,
+        "slot/1": 11
+      }
+    },
+    {
+      "name": "idle_jin",
+      "duration": 1.0,
+      "timelines": {
+        "bone/4": 1,
+        "slot/0": 5,
+        "slot/1": 3
+      }
+    },
+    {
+      "name": "idle_zhao",
+      "duration": 1.0,
+      "timelines": {
+        "bone/4": 1,
+        "slot/0": 5,
+        "slot/1": 3
+      }
+    },
+    {
+      "name": "zcjb_b_bao",
+      "duration": 0.6666666865348816,
+      "timelines": {
+        "bone/1": 2,
+        "bone/4": 2,
+        "deform/0": 1,
+        "slot/0": 3
+      }
+    },
+    {
+      "name": "zcjb_b_cai",
+      "duration": 0.6666666865348816,
+      "timelines": {
+        "bone/1": 3,
+        "bone/4": 3,
+        "deform/0": 1,
+        "slot/0": 3
+      }
+    },
+    {
+      "name": "zcjb_b_chun",
+      "duration": 0.6666666865348816,
+      "timelines": {
+        "bone/1": 2,
+        "bone/4": 2,
+        "deform/0": 1,
+        "slot/0": 3
+      }
+    },
+    {
+      "name": "zcjb_b_jin",
+      "duration": 0.6666666865348816,
+      "timelines": {
+        "bone/1": 2,
+        "bone/4": 2,
+        "deform/0": 1,
+        "slot/0": 3
+      }
+    },
+    {
+      "name": "zcjb_b_zhao",
+      "duration": 0.6666666865348816,
+      "timelines": {
+        "bone/1": 3,
+        "bone/4": 3,
+        "deform/0": 1,
+        "slot/0": 4
+      }
+    },
+    {
+      "name": "zcjb_chuxian",
+      "duration": 0.5,
+      "timelines": {
+        "bone/1": 5,
+        "bone/4": 3,
+        "slot/0": 4,
+        "slot/1": 4
+      }
+    },
+    {
+      "name": "zcjb_idle",
+      "duration": 1.0,
+      "timelines": {
+        "bone/4": 2,
+        "slot/0": 3,
+        "slot/1": 3
+      }
+    }
+  ],
+  "scope": "Input compatibility only; does not prove rendered parity or complete migration."
+}
