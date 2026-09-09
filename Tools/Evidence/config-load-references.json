@@ -1,0 +1,127 @@
+{
+  "function_rva": "0x2369c20",
+  "elf_sha256": "28e37caa1f182a8ac31596f3eeb0569c4cd7b1179a45a2769cfbf35038fc85e1",
+  "source_sha256": "a84b98516ed5171d7453ea232e9535d52b84dee6031ed613c30b1fc623531911",
+  "references": [
+    {
+      "ghidra_pointer": "0501b6b0",
+      "metadata_address": "0x500b780",
+      "kind": "ScriptMetadata",
+      "value": "UnityEngine.Debug_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b918",
+      "metadata_address": "0x5008bc8",
+      "kind": "ScriptMetadata",
+      "value": "Singleton<GameDataManager>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b920",
+      "metadata_address": "0x500b110",
+      "kind": "ScriptMetadata",
+      "value": "System.Convert_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b928",
+      "metadata_address": "0x5032650",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$LitJson.JsonMapper.ToObject<GoldenDragonAutoGenConfig>()"
+    },
+    {
+      "ghidra_pointer": "0501b930",
+      "metadata_address": "0x500db18",
+      "kind": "ScriptMetadata",
+      "value": "LitJson.JsonMapper_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b938",
+      "metadata_address": "0x50353a0",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$ResManager.LoadAsset<TextAsset>()"
+    },
+    {
+      "ghidra_pointer": "0501b940",
+      "metadata_address": "0x50273b8",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Singleton<ResManager>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501b948",
+      "metadata_address": "0x50273d8",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Singleton<SdkAdManager>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501b950",
+      "metadata_address": "0x5027380",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$Singleton<GameDataManager>.get_Instance()"
+    },
+    {
+      "ghidra_pointer": "0501b958",
+      "metadata_address": "0x5008bf8",
+      "kind": "ScriptMetadata",
+      "value": "Singleton<SdkAdManager>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b960",
+      "metadata_address": "0x5008be8",
+      "kind": "ScriptMetadata",
+      "value": "Singleton<ResManager>_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "0501b968",
+      "metadata_address": "0x5051610",
+      "kind": "ScriptString",
+      "value": "GoldenDragon"
+    },
+    {
+      "ghidra_pointer": "0501b970",
+      "metadata_address": "0x5051618",
+      "kind": "ScriptString",
+      "value": "GoldenDragonA"
+    },
+    {
+      "ghidra_pointer": "0501b978",
+      "metadata_address": "0x505dcd8",
+      "kind": "ScriptString",
+      "value": "_organic"
+    },
+    {
+      "ghidra_pointer": "0501b980",
+      "metadata_address": "0x504afd0",
+      "kind": "ScriptString",
+      "value": "111111111111"
+    },
+    {
+      "ghidra_pointer": "0501b988",
+      "metadata_address": "0x5048790",
+      "kind": "ScriptString",
+      "value": ""
+    },
+    {
+      "ghidra_pointer": "0501b990",
+      "metadata_address": "0x505dca0",
+      "kind": "ScriptString",
+      "value": "_default"
+    },
+    {
+      "ghidra_pointer": "0501b9b8",
+      "metadata_address": "0x502a498",
+      "kind": "ScriptMetadataMethod",
+      "value": "Method$System.Array.Empty<object>()"
+    },
+    {
+      "ghidra_pointer": "050395b0",
+      "metadata_address": "0x500f160",
+      "kind": "ScriptMetadata",
+      "value": "Publish.PublishSDK_TypeInfo"
+    },
+    {
+      "ghidra_pointer": "050395d0",
+      "metadata_address": "0x500d2b0",
+      "kind": "ScriptMetadata",
+      "value": "Publish.IPublishSDK_TypeInfo"
+    }
+  ]
+}
