@@ -62,3 +62,24 @@ The fresh case covers the current scene's guide-to-collection session, not
 the original app's SDK boot screens, physical taps, every random result or
 all fresh-install region profiles. It keeps the single seed and accelerated
 frame timing described above. No production/SDK changes were needed.
+
+## Reload the completed session from its real save
+
+Follow-up baseline e85bd971e94d526b93f35390ca5bd1cedd5a88a6 extends both cases
+after the final Base completion. Each snapshots the actual saved JSON,
+unloads the production scene, verifies its GameEntry was destroyed and the
+save was unchanged, then loads a new production scene. The test checks a
+new PlayerProgress instance, complete deserialized-record equality and saved
+JSON equality, no first-Spin/MoreWild guide, no busy or Bonus-running state,
+and one subsequent paid Spin with exactly one debit and guide step still 3.
+
+The reload goes through GameEntry's normal ConfigSnapshotLoader and
+RecoveredPlayerStore.Load; it does not transplant the old progress object,
+write a synthetic save or call a test-only recovery path. Default US organic
+configuration remains selected. No runtime changes were needed.
+
+Unity process 26568 exited: Artifacts/session-reload-tests.xml passed 2/2 in
+11.9816461 seconds, retaining the eight-Spin and 27-Spin session results.
+This proves scene destruction/recreation with the completed real save, not
+an Android process kill, interrupted mid-reward recovery, disk corruption,
+offline elapsed-time recovery or every configuration's startup behavior.

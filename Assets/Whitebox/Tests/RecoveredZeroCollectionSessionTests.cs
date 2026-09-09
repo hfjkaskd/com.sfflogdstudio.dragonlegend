@@ -83,6 +83,26 @@ public sealed class RecoveredZeroCollectionSessionTests
             Assert.AreEqual(RecoveredSlotType.Base,player.GameSlotType);
             if(keepGuide){Assert.IsTrue(wildClaimed);Assert.AreEqual(3,game.PlayerStore.Data.GuideStep);Assert.IsFalse(core.MoreWild.Guide.gameObject.activeSelf);}
             Assert.AreEqual(JsonUtility.ToJson(game.PlayerStore.Data),PlayerPrefs.GetString(key));
+            string completedSave=PlayerPrefs.GetString(key);
+            var previousProgress=player;
+            yield return SceneManager.UnloadSceneAsync(scene);scene=default;
+            Assert.IsTrue(game==null,"The old GameEntry must be destroyed before loading again.");
+            Assert.AreEqual(completedSave,PlayerPrefs.GetString(key));
+            yield return SceneManager.LoadSceneAsync("GameEntry",LoadSceneMode.Additive);scene=SceneManager.GetSceneByName("GameEntry");
+            GameEntry restored=null;foreach(var root in scene.GetRootGameObjects()){var value=root.GetComponentInChildren<GameEntry>();if(value!=null)restored=value;}
+            Assert.IsNotNull(restored);deadline=Time.realtimeSinceStartup+10;
+            while(restored.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
+            Assert.IsNotNull(restored.CoreRound);Assert.AreNotSame(previousProgress,restored.PlayerProgress);
+            Assert.AreEqual(completedSave,JsonUtility.ToJson(restored.PlayerStore.Data),"Reload must deserialize the completed gameplay record.");
+            Assert.AreEqual(completedSave,PlayerPrefs.GetString(key));
+            Assert.IsFalse(restored.CoreRound.FirstSpinGuide.gameObject.activeSelf);
+            Assert.IsFalse(restored.CoreRound.MoreWild.gameObject.activeSelf);
+            Assert.IsFalse(restored.Playfield.IsBusy);Assert.IsFalse(restored.BonusFlow.IsRunning);
+            int restoredSpins=restored.PlayerProgress.SpinCount;
+            Assert.Greater(restoredSpins,0);
+            restored.Playfield.SpinButton.Button.onClick.Invoke();
+            Assert.AreEqual(restoredSpins-1,restored.PlayerProgress.SpinCount);Assert.IsTrue(restored.Playfield.IsBusy);
+            Assert.AreEqual(3,restored.PlayerStore.Data.GuideStep);
             TestContext.WriteLine("Paid Spins: "+paid+"; completed: "+completed+"; Bonus windows: "+bonusShown+"; original guide: "+keepGuide);
         } finally {
             Random.state=random;Time.timeScale=scale;Time.captureDeltaTime=delta;
