@@ -5,10 +5,14 @@ namespace DragonLegend.Whitebox
 {
     public interface IRecoveredBankSelectionView
     {
+        int WinCount { get; }
         void HideFinger();
         void ShowAdIndicators(IReadOnlyList<int> selected);
-        // The real item animation owns its completion and subsequent reward presentation.
-        void PlayItem(int itemIndex, float reward, bool firstSelection);
+        // Pass completed to RecoveredBankItem.Play: only flight arrival runs it.
+        void PlayItem(int itemIndex, float reward, bool firstSelection, Action<float> completed);
+        void RevealButtons(float duration);
+        void ShowContinueFinger();
+        void Hide();
     }
 
     // UIBankView.OnClickLongZhu MoveNext 2393dbc; ad callbacks 2393384 / 23933f8.
@@ -19,6 +23,7 @@ namespace DragonLegend.Whitebox
         private readonly IRecoveredBankSelectionView view;
         private readonly List<int> selected = new List<int>();
         private bool cancelled;
+        private int lifetime;
         public IReadOnlyList<int> Selected => selected;
         // Native tempIndex belongs to the window, not to the per-click closure.
         public int TempIndex { get; private set; }
@@ -29,8 +34,8 @@ namespace DragonLegend.Whitebox
             ads = facade ?? throw new ArgumentNullException(nameof(facade));
             view = presenter ?? throw new ArgumentNullException(nameof(presenter));
         }
-        public void Reset() { selected.Clear(); cancelled = false; }
-        public void Cancel() => cancelled = true;
+        public void Reset() { lifetime++; selected.Clear(); cancelled = false; }
+        public void Cancel() { lifetime++; cancelled = true; }
         public void Click(int index)
         {
             if (cancelled || selected.Contains(index)) return;
@@ -39,15 +44,30 @@ namespace DragonLegend.Whitebox
             TempIndex = rules.RandBankIndex();
             float reward = rules.GetBankReward(TempIndex);
             bool first = selected.Count == 1;
-            if (first) view.PlayItem(index, reward, true);
+            int generation = lifetime;
+            Action<float> completed = value => { if (IsCurrent(generation)) ItemCompleted(first, generation); };
+            if (first) view.PlayItem(index, reward, true, completed);
             else
             {
                 view.ShowAdIndicators(selected);
                 ads.PlayRewardAd(
-                    () => { if (!cancelled) view.PlayItem(index, reward, false); },
-                    () => { if (!cancelled) selected.Remove(index); },
+                    () => { if (IsCurrent(generation)) view.PlayItem(index, reward, false, completed); },
+                    () => { if (IsCurrent(generation)) selected.Remove(index); },
                     "bank", "itembank");
             }
+        }
+        private bool IsCurrent(int generation) => !cancelled && generation == lifetime;
+        // Native first/later flight continuations: 2393454 and 2393870.
+        private void ItemCompleted(bool first, int generation)
+        {
+            if (first)
+            {
+                view.ShowAdIndicators(selected);
+                view.RevealButtons(.5f);
+                RecoveredReelWait.Delay(1, () => { if (IsCurrent(generation)) view.ShowContinueFinger(); }, UnityEngine.Debug.LogException);
+            }
+            else if (selected.Count == view.WinCount)
+                RecoveredReelWait.Delay(.5f, () => { if (IsCurrent(generation)) view.Hide(); }, UnityEngine.Debug.LogException);
         }
     }
 }
