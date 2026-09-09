@@ -43,7 +43,8 @@ public sealed class RecoveredBankWindowTests
             game.PlayerProgress.GameSlotType=RecoveredSlotType.Base;game.Playfield.ModeView.ApplyCurrent();Assert.IsTrue(meter.gameObject.activeInHierarchy);
             int flights=0,closed=0;float yAtClose=0;string sound=null;
             window.SoundRequested+=value=>sound=value;
-            window.FlyRequested+=(amount,callback,source)=>flights++;
+            float bankStart=game.PlayerProgress.GreenCount,bankRewards=0;
+            window.FlyRequested+=(amount,callback,source)=>{flights++;bankRewards+=amount;};
             game.PlayerProgress.SetBankCount(1);
             Assert.AreEqual("1/"+game.Rules.GetBankSpinCD(),meter.Label.text);Assert.AreEqual(Mathf.Clamp01(1f/game.Rules.GetBankSpinCD()),meter.Fill.fillAmount);
             Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
@@ -59,20 +60,35 @@ public sealed class RecoveredBankWindowTests
             Assert.AreSame(window.Item(0).Button.gameObject,Hit(window.Item(0).Button.transform,camera));
             RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();
             File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-bank-window.png"),capture.EncodeToPNG());
-            Click(window.Item(0).Button.gameObject);Assert.IsFalse(window.Finger.gameObject.activeSelf);Assert.IsFalse(game.Ads.Pending);
+            yield return ClickVisible(window.Item(0).Button,camera);Assert.IsFalse(window.Finger.gameObject.activeSelf);Assert.IsFalse(game.Ads.Pending);
             for(int i=0;i<160&&!window.Item(1).Ad.gameObject.activeSelf;i++)yield return null;
             Assert.AreEqual(1,flights);Assert.IsTrue(window.Item(1).Ad.gameObject.activeSelf);Assert.IsTrue(window.Item(2).Ad.gameObject.activeSelf);
             for(int i=0;i<25;i++)yield return null;
             Assert.AreSame(window.OpenButton.transform,window.Finger.parent);
             Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
             Assert.AreSame(window.OpenButton.gameObject,Hit(window.OpenButton.transform,camera));
-            Click(window.OpenButton.gameObject);Assert.IsTrue(game.Ads.Pending);game.Ads.Complete(AdOutcome.Failed);Assert.IsFalse(window.Selection.IsContinue);
-            Click(window.OpenButton.gameObject);game.Ads.Complete(AdOutcome.Rewarded);
-            for(int i=0;i<160&&window.Selection.IsContinue;i++)yield return null;
+            float beforeFailed=game.PlayerProgress.GreenCount;
+            yield return ClickVisible(window.Item(1).Button,camera);Assert.IsTrue(game.Ads.Pending);
+            Assert.AreEqual("itembank",game.Ads.Scene);
+            yield return ClickVisible(game.AdControls.FailureButton,camera);
+            CollectionAssert.AreEqual(new[]{0},window.Selection.Selected);
+            Assert.AreEqual(beforeFailed,game.PlayerProgress.GreenCount);Assert.AreEqual(1,flights);
+            yield return ClickVisible(window.Item(1).Button,camera);
+            yield return ClickVisible(game.AdControls.RewardButton,camera);
+            for(int i=0;i<160&&flights<2;i++)yield return null;
+            for(int i=0;i<160&&game.CashFlight.ActiveCashCount>0;i++)yield return null;
+            Assert.AreEqual(0,game.CashFlight.ActiveCashCount,"Wait for the second reward to arrive before opening the last ball.");
             Assert.AreEqual(2,flights);Assert.IsFalse(window.Selection.IsContinue);Assert.IsTrue(window.gameObject.activeSelf);
-            Click(window.OpenButton.gameObject);game.Ads.Complete(AdOutcome.Rewarded);
+            beforeFailed=game.PlayerProgress.GreenCount;
+            yield return ClickVisible(window.OpenButton,camera);Assert.IsTrue(game.Ads.Pending);
+            Assert.AreEqual("Openbank",game.Ads.Scene);
+            yield return ClickVisible(game.AdControls.FailureButton,camera);Assert.IsFalse(window.Selection.IsContinue);
+            Assert.AreEqual(beforeFailed,game.PlayerProgress.GreenCount);Assert.AreEqual(2,flights);
+            yield return ClickVisible(window.OpenButton,camera);
+            yield return ClickVisible(game.AdControls.RewardButton,camera);
             for(int i=0;i<180&&closed==0;i++)yield return null;
             Assert.AreEqual(3,flights);Assert.AreEqual(1,closed);Assert.IsFalse(window.gameObject.activeSelf);
+            Assert.AreEqual(bankStart+bankRewards,game.PlayerProgress.GreenCount,.001f,"Each bank flight pays once; failed ads pay nothing.");
             Assert.AreNotEqual(yAtClose,window.Item(0).transform.localPosition.y,"Native close continuation precedes float restoration.");
             window.Show(()=>closed++);for(int i=0;i<12;i++)yield return null;
             window.Item(0).Button.onClick.Invoke();for(int i=0;i<160&&!window.Item(1).Ad.gameObject.activeSelf;i++)yield return null;
@@ -142,6 +158,27 @@ public sealed class RecoveredBankWindowTests
         if(unload!=null)yield return unload;
     }
     private static void Click(GameObject obj)=>ExecuteEvents.Execute(obj,new PointerEventData(EventSystem.current),ExecuteEvents.pointerClickHandler);
+    private static IEnumerator ClickVisible(Button button,Camera camera)
+    {
+        float deadline=Time.realtimeSinceStartup+5;
+        var hits=new List<RaycastResult>();
+        while(Time.realtimeSinceStartup<deadline)
+        {
+            if(button.gameObject.activeInHierarchy&&button.IsInteractable())
+            {
+                Canvas.ForceUpdateCanvases();var rect=(RectTransform)button.transform;
+                var pointer=new PointerEventData(EventSystem.current){button=PointerEventData.InputButton.Left,
+                    position=RectTransformUtility.WorldToScreenPoint(camera,rect.TransformPoint(rect.rect.center))};
+                hits.Clear();EventSystem.current.RaycastAll(pointer,hits);
+                if(hits.Count>0&&ExecuteEvents.GetEventHandler<IPointerClickHandler>(hits[0].gameObject)==button.gameObject)
+                {
+                    ExecuteEvents.ExecuteHierarchy(hits[0].gameObject,pointer,ExecuteEvents.pointerClickHandler);yield break;
+                }
+            }
+            yield return null;
+        }
+        Assert.Fail("Bank button must be the top scene raycast target: "+button.name);
+    }
     private static void Claim(Button button){if(button!=null&&button.gameObject.activeInHierarchy&&button.IsInteractable())button.onClick.Invoke();}
     private static GameObject Hit(Transform target,Camera camera)
     {
