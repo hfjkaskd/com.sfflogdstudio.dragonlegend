@@ -24,6 +24,7 @@ namespace DragonLegend.Whitebox
         }
 
         public int GetWildSpinCD() => data.Gimrol.KilpGpinQP[0]; // 0x236b4c8
+        public int GetMoreWild() => data.Gimrol.MorgKilpRimgg[0]; // 0x236b7a0
         // 236ab70: reverse configured order, signed integer multiply BEFORE float conversion.
         // A matching extra index returns None immediately instead of falling through.
         public RecoveredSlotWinType GetBigWin(float amount,int bet)
