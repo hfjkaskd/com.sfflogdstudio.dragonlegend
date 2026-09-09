@@ -53,7 +53,8 @@ default for a new window; do not accidentally normalize this native branch.
 
 OnClickButton 0x23acab0 handles only `CloseBtn` (0x4f1cf30), plays `click`
 (0x4f1cf38) and hides. There is no direct collection reward claim in this
-window. Complete-set rewards belong to a different Main branch.
+window. Treasure-set eligibility must be traced through GiftItem/UICashOutView;
+Main.CheckRewardCollect actually handles Free reel rewards (see collect-entry.md).
 
 InitCollectCard 0x23ac6ec creates the original ListView once with cell 310x360,
 Direction.Vertical (1), repeat count 3, actual config item count, ScRect as
@@ -76,6 +77,6 @@ ListView geometry, ScrollRect initialization and refresh scheduling are
 now documented in `collect-list.md` with their recovered prefab/controller.
 
 The collection window and Close are now restored separately in collect-window.md.
-Main entry binding, complete-set reward branch, production Free lifecycle and
-whole-screen visual fidelity remain unfinished. These item checks do not
+Main entry binding is now connected in collect-entry.md. Treasure-set eligibility,
+production Free lifecycle and whole-screen visual fidelity remain unfinished. These item checks do not
 establish those requirements.

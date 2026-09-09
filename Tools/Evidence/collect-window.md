@@ -78,8 +78,7 @@ retains scroll offset 150 and shows unclamped 18/15 progress; this is a raw-data
 edge-case fixture, not an assertion that ordinary players have duplicate records.
 
 Main's native Treasure click is located at 0x23bd4e8: string Treasure
-(0x4f1e2e0), PlaySound(click), ShowWindow<UICollectView> (0x4f1e2b0). Connecting
-that production entry requires sharing the original icon/destination currently
-inside the callable FreeTreasure bundle, plus auditing original visibility and
-window ownership. That binding, complete-set award branch, production Free
-lifecycle and remaining Main visual/layout gaps are not claimed complete here.
+(0x4f1e2e0), PlaySound(click), ShowWindow<UICollectView> (0x4f1e2b0). The entry
+and shared destination are now connected in collect-entry.md. Complete-set
+awards, production Free lifecycle and remaining Main visual/layout gaps are
+not claimed complete here.

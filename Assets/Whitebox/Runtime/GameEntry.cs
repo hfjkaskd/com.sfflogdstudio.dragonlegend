@@ -22,12 +22,15 @@ namespace DragonLegend.Whitebox
         public RecoveredCashFlightPresenter CashFlight {get;private set;}
         [SerializeField] private RecoveredBonusFlow bonusFlowPrefab;
         public RecoveredBonusFlow BonusFlow {get;private set;}
+        [SerializeField] private RecoveredCollectEntry collectEntryPrefab;
+        public RecoveredCollectEntry CollectEntry { get; private set; }
         public RecoveredBalancePanel BalancePanel=>balancePanel;
         public LocalAdFacade Ads {get;private set;}
         public RecoveredAdSimulationControls AdControls=>adControls;
         public RecoveredSpinPlayfield Playfield { get; private set; }
         private void ReleasePlayfield()
         {
+            if (CollectEntry != null) { Destroy(CollectEntry.gameObject); CollectEntry = null; }
             if(BonusFlow!=null){BonusFlow.Unbind();Destroy(BonusFlow.gameObject);BonusFlow=null;}
             if(CashFlight!=null){CashFlight.Unbind();Destroy(CashFlight.gameObject);CashFlight=null;}
             Ads?.Complete(AdOutcome.Cancelled);Ads=null;
@@ -136,6 +139,8 @@ namespace DragonLegend.Whitebox
             (operation as IDisposable)?.Dispose();
             activeLoad = null;
             CurrentProfile = profile;
+            // Native Main creates its initial tween sequence before any popup can open.
+            RecoveredTreasureCardRunner.EnsureCreated();
             Rules = new RecoveredGameplayRules(loader.Value);
             Settlement = new RecoveredSlotSettlement(Rules);
             PlayerStore = new RecoveredPlayerStore();
@@ -170,6 +175,10 @@ namespace DragonLegend.Whitebox
             if(bonusFlowPrefab!=null){
                 BonusFlow=Instantiate(bonusFlowPrefab,transform,false);
                 BonusFlow.Bind(Playfield,PlayerProgress,Rules,CashFlight,Ads,profile.isA,profile.languageType);
+            }
+            if (collectEntryPrefab != null) {
+                CollectEntry = Instantiate(collectEntryPrefab, transform, false);
+                CollectEntry.Bind(PlayerProgress, Rules, transform, profile.isA, profile.languageType);
             }
             Ready?.Invoke(Rules);
         }

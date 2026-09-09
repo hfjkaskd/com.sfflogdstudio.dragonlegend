@@ -48,6 +48,6 @@ and layout gaps remain visible behind this deliberately isolated fixture.
 
 The collection window now includes Adapt safe-area behavior, popup animation,
 A/normal header/progress branches and Close; see collect-window.md. Main entry
-binding, complete-set rewards and production Free lifecycle remain separate
+is connected in collect-entry.md. Treasure-set eligibility and production Free lifecycle remain separate
 unfinished integrations. This implementation does not claim to restore every
 generic ListView direction, dynamic sizing or optional strategy.

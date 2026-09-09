@@ -46,7 +46,7 @@ public static class BuildTreasureDeparture
         foreach (Match m in Regex.Matches(yaml, @"guid: (\w+)"))
             if (string.IsNullOrEmpty(AssetDatabase.GUIDToAssetPath(m.Groups[1].Value))) throw new InvalidDataException("Unmapped Treasure destination " + m.Groups[1].Value);
         File.WriteAllText(Temporary, yaml); AssetDatabase.ImportAsset(Temporary, ImportAssetOptions.ForceSynchronousImport);
-        var root = new GameObject("TreasureDeparture", typeof(RectTransform), typeof(RecoveredTreasureDeparture)); root.layer = 5;
+        var root = new GameObject("CollectEntry", typeof(RectTransform), typeof(RecoveredCollectEntry)); root.layer = 5;
         try
         {
             var rect = (RectTransform)root.transform; rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one; rect.sizeDelta = Vector2.zero;
@@ -58,16 +58,34 @@ public static class BuildTreasureDeparture
             target.anchorMin = old.anchorMin; target.anchorMax = old.anchorMax; target.pivot = old.pivot; target.sizeDelta = old.sizeDelta;
             target.anchoredPosition3D = old.anchoredPosition3D; target.localRotation = old.localRotation; target.localScale = old.localScale;
             target.SetSiblingIndex(old.GetSiblingIndex()); art.name = old.name; art.layer = old.gameObject.layer; Object.DestroyImmediate(old.gameObject);
+            var settings = new SerializedObject(root.GetComponent<RecoveredCollectEntry>());
+            settings.FindProperty("destination").objectReferenceValue = target;
+            settings.FindProperty("button").objectReferenceValue = icons.transform.Find("Treasure").GetComponent<Button>();
+            settings.FindProperty("windowPrefab").objectReferenceValue = AssetDatabase.LoadAssetAtPath<RecoveredCollectWindow>("Assets/Resources/RecoveredUI/CollectWindow.prefab");
+            settings.ApplyModifiedPropertiesWithoutUndo();
+            PrefabUtility.SaveAsPrefabAsset(root, "Assets/Resources/RecoveredUI/CollectEntry.prefab");
+        }
+        finally { Object.DestroyImmediate(root); AssetDatabase.DeleteAsset(Temporary); }
+        root = new GameObject("TreasureDeparture", typeof(RectTransform), typeof(RecoveredTreasureDeparture)); root.layer = 5;
+        try {
+            var rect = (RectTransform)root.transform; rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one; rect.sizeDelta = Vector2.zero;
             var settings = new SerializedObject(root.GetComponent<RecoveredTreasureDeparture>());
             settings.FindProperty("cardPrefab").objectReferenceValue = AssetDatabase.LoadAssetAtPath<Image>(cardPath);
-            settings.FindProperty("destination").objectReferenceValue = target;
             settings.FindProperty("duration").floatValue = .6f; settings.FindProperty("arcHeightRatio").floatValue = .3f;
             settings.FindProperty("initialScale").vector3Value = Vector3.one; settings.FindProperty("endScale").vector3Value = Vector3.one * .3f;
             settings.FindProperty("scaleEase").animationCurveValue = new AnimationCurve(new Keyframe(0, 0, 2, 2), new Keyframe(1, 1, 0, 0));
             settings.ApplyModifiedPropertiesWithoutUndo();
             PrefabUtility.SaveAsPrefabAsset(root, "Assets/Resources/RecoveredUI/TreasureDeparture.prefab"); AssetDatabase.SaveAssets();
         }
-        finally { Object.DestroyImmediate(root); AssetDatabase.DeleteAsset(Temporary); }
+        finally { Object.DestroyImmediate(root); }
         BuildFreeTreasureGame.Save();
+        const string mainPath = "Assets/Resources/Whitebox/GameEntry.prefab";
+        var main = PrefabUtility.LoadPrefabContents(mainPath);
+        try {
+            var binding = new SerializedObject(main.GetComponent<GameEntry>());
+            binding.FindProperty("collectEntryPrefab").objectReferenceValue = AssetDatabase.LoadAssetAtPath<RecoveredCollectEntry>("Assets/Resources/RecoveredUI/CollectEntry.prefab");
+            binding.ApplyModifiedPropertiesWithoutUndo(); PrefabUtility.SaveAsPrefabAsset(main, mainPath); AssetDatabase.SaveAssets();
+        }
+        finally { PrefabUtility.UnloadPrefabContents(main); }
     }
 }

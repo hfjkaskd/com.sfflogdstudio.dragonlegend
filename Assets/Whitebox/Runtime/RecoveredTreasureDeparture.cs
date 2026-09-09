@@ -10,7 +10,7 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredTreasureDeparture : MonoBehaviour
     {
         [SerializeField] private Image cardPrefab;
-        [SerializeField] private RectTransform destination;
+        private RectTransform destination;
         [SerializeField] private float duration, arcHeightRatio;
         [SerializeField] private Vector3 initialScale, endScale;
         [SerializeField] private AnimationCurve scaleEase;
@@ -24,9 +24,9 @@ namespace DragonLegend.Whitebox
         public int CreatedCardCount => pool == null ? 0 : pool.CountAll;
         public Image ActiveCardAt(int index) => flights[index].image;
 
-        public void Bind(RecoveredTreasureWindow treasureWindow, Transform mainWindow)
+        public void Bind(RecoveredTreasureWindow treasureWindow, Transform mainWindow, RectTransform mainDestination)
         {
-            Unbind(); main = mainWindow; window = treasureWindow;
+            Unbind(); main = mainWindow; window = treasureWindow; destination = mainDestination;
             pool = new ObjectPool<Image>(Create, null, Release, DestroyCard);
             window.CollectCardDepartureRequested += Begin;
         }

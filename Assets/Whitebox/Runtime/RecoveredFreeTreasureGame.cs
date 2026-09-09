@@ -21,11 +21,11 @@ namespace DragonLegend.Whitebox
         public RecoveredTreasureDeparture Departure => departure;
 
         public void Bind(RecoveredPlayerProgress progress, RecoveredGameplayRules gameplayRules, IAdFacade ads,
-            RecoveredCashFlightPresenter cash, Transform main, bool isA, int language)
+            RecoveredCashFlightPresenter cash, Transform main, bool isA, int language, RectTransform collectionDestination)
         {
             player = progress; rules = gameplayRules;
             window.Bind(progress, gameplayRules, ads, cash, main, isA, language);
-            departure.Bind(window, main);
+            departure.Bind(window, main, collectionDestination);
         }
         public void Begin(Vector3 source, Action<float> completed)
         {

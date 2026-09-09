@@ -61,9 +61,9 @@ this measures pose sampling, not total rendering cost. The newly rendered
 selected treasure flies toward the animated left-hand collection icon while
 cash flies separately.
 
-The collection Button's full collection-window action and Main unlock/profile
-visibility rules remain to be restored and bound. The destination currently
-belongs to the callable FreeTreasureGame bundle, pending production Main Free
-lifecycle wiring. Event 7(4,1), collection redemption, Free end flow, missing
+The collection Button now opens the recovered window from Main, and the
+destination belongs to that shared Main entry (see collect-entry.md). Full
+lifecycle visibility and production Main Free wiring still need completion.
+Event 7(4,1), collection redemption, Free end flow, missing
 main artwork/layout and the visually dominant dragon remain incomplete.
 This validation does not establish full lifecycle or whole-screen 1:1 fidelity.

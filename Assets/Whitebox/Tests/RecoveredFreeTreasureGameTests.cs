@@ -26,7 +26,8 @@ public sealed class RecoveredFreeTreasureGameTests
             yield return SceneManager.LoadSceneAsync("GameEntry", LoadSceneMode.Additive); scene = SceneManager.GetSceneByName("GameEntry");
             var entry = Entry(scene); yield return null; Assert.IsNotNull(entry.CashFlight);
             game = Object.Instantiate(Resources.Load<RecoveredFreeTreasureGame>("RecoveredUI/FreeTreasureGame"), entry.transform, false);
-            game.Bind(entry.PlayerProgress, entry.Rules, entry.Ads, entry.CashFlight, entry.transform, false, 0);
+            game.Bind(entry.PlayerProgress, entry.Rules, entry.Ads, entry.CashFlight, entry.transform, false, 0, entry.CollectEntry.Destination);
+            Assert.AreSame(entry.CollectEntry.Destination, game.Departure.Destination);
             camera = entry.GetComponent<Canvas>().worldCamera; texture = new RenderTexture(1080, 1920, 24); camera.targetTexture = texture;
             // Force one or more native rejection draws, and independently verify the remaining RNG stream.
             Random.InitState(97); entry.PlayerStore.Data.RandomIndex = entry.Rules.RandomCollectIndex();
@@ -146,7 +147,7 @@ public sealed class RecoveredFreeTreasureGameTests
             npc = Object.Instantiate(Resources.Load<RecoveredNpcPresentation>("RecoveredUI/Npc"));
             target = new GameObject("Treasure ball destination"); target.transform.position = new Vector3(0, 3, 0);
             game = Object.Instantiate(Resources.Load<RecoveredFreeTreasureGame>("RecoveredUI/FreeTreasureGame"), entry.transform, false);
-            game.Bind(entry.PlayerProgress, entry.Rules, entry.Ads, entry.CashFlight, entry.transform, false, 0);
+            game.Bind(entry.PlayerProgress, entry.Rules, entry.Ads, entry.CashFlight, entry.transform, false, 0, entry.CollectEntry.Destination);
             entry.PlayerProgress.GameSlotType = RecoveredSlotType.Free;
             float initialBalance = entry.PlayerProgress.GreenCount, initialTotal = entry.PlayerProgress.TotalFreeSpinWin, paid = 0;
             int requests = 0, done = 0;

@@ -82,7 +82,7 @@ namespace DragonLegend.Whitebox
         private readonly List<IEnumerator> pending = new List<IEnumerator>(2);
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void Reset() => instance = null;
-        internal static void Run(IEnumerator animation)
+        internal static void EnsureCreated()
         {
             if (instance == null)
             {
@@ -90,6 +90,10 @@ namespace DragonLegend.Whitebox
                 DontDestroyOnLoad(host);
                 instance = host.AddComponent<RecoveredTreasureCardRunner>();
             }
+        }
+        internal static void Run(IEnumerator animation)
+        {
+            EnsureCreated();
             instance.pending.Add(animation);
         }
         private void Update()

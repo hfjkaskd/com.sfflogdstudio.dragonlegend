@@ -35,6 +35,8 @@ namespace DragonLegend.Whitebox
             player = progress; rules = config;
             GetComponent<Canvas>().worldCamera = main.GetComponent<Canvas>().worldCamera;
             safeArea.BindRootScaler(main.GetComponentInParent<CanvasScaler>());
+            // Original active-prefab Awake applies Adapt before UICollectView.OnInit.
+            safeArea.AdaptScreen();
             if (isA) { gold.SetActive(true); green.SetActive(false); return; }
             gold.SetActive(false); green.SetActive(true);
             rewardText.text = rules.GetCollectReward(language);
@@ -42,7 +44,6 @@ namespace DragonLegend.Whitebox
         }
         public void Show()
         {
-            gameObject.SetActive(true);
             if (List == null) {
                 // Original CreateList initializes the unparented prefab before SetParent(false).
                 List = Instantiate(listPrefab);
@@ -53,6 +54,8 @@ namespace DragonLegend.Whitebox
             int count = player.CollectRecords.Count;
             progressText.text = string.Format(progressFormat, count, rules.GetCollectInfos().Count);
             fill.sizeDelta = new Vector2(fillWidth * count / rules.GetCollectInfos().Count, fill.rect.height);
+            // BaseUIManager.Base_ShowWindow calls BeforeShow before activating the window.
+            gameObject.SetActive(true);
             content.localScale = Vector3.one * fromScale;
             RecoveredTreasureCardRunner.Run(Animate(fromScale, toScale, enterEase, false));
         }
