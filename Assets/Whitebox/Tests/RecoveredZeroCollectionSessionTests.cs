@@ -9,7 +9,12 @@ using UnityEngine.UI;
 public sealed class RecoveredZeroCollectionSessionTests
 {
     [UnityTest]
-    public IEnumerator ActualPaidSpinsCollectFromZeroAndReturnAfterBonus()
+    public IEnumerator ActualPaidSpinsCollectFromZeroAndReturnAfterBonus()=>Run(false);
+
+    [UnityTest]
+    public IEnumerator FreshGuideContinuesThroughFreeWildAndNaturalBonus()=>Run(true);
+
+    private IEnumerator Run(bool keepGuide)
     {
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);
         PlayerPrefs.DeleteKey(key);var random=Random.state;float scale=Time.timeScale,delta=Time.captureDeltaTime;
@@ -21,20 +26,28 @@ public sealed class RecoveredZeroCollectionSessionTests
             Assert.IsNotNull(game);float deadline=Time.realtimeSinceStartup+10;
             while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.CoreRound);var core=game.CoreRound;var field=game.Playfield;var player=game.PlayerProgress;
-            core.FirstSpinGuide.Hide();game.PlayerStore.Data.GuideStep=3;
+            if(!keepGuide){core.FirstSpinGuide.Hide();game.PlayerStore.Data.GuideStep=3;}
+            else {Assert.AreEqual(1,game.PlayerStore.Data.GuideStep);Assert.IsTrue(core.FirstSpinGuide.gameObject.activeInHierarchy);}
             CollectionAssert.AreEqual(new[]{0,0,0,0,0},player.BonusArea);Assert.IsFalse(player.IsBonusGame);
             var slot=core.GetComponentInChildren<RecoveredFreeSlotGame>(true);
             var wheel=core.GetComponentInChildren<RecoveredFreeWheelGame>(true);
             var treasure=core.GetComponentInChildren<RecoveredFreeTreasureGame>(true);
             var lucky=core.GetComponentInChildren<RecoveredFreeLuckyGame>(true);
-            int completed=0,paid=0,bonusShown=0;bool inBonus=false;
+            int completed=0,paid=0,bonusShown=0;bool inBonus=false,wildClaimed=false;
             core.CoreRoundCompleted+=()=>completed++;
             System.Exception bonusError=null;game.BonusFlow.Failed+=error=>bonusError=error;
             float sessionDeadline=Time.realtimeSinceStartup+120;
             while((bonusShown==0||field.IsBusy)&&Time.realtimeSinceStartup<sessionDeadline&&paid<60) {
-                if(!field.IsBusy&&!core.MoreSpins.gameObject.activeSelf) {
+                if(!field.IsBusy&&!core.MoreSpins.gameObject.activeSelf&&!core.MoreWild.gameObject.activeSelf) {
                     int before=player.SpinCount;field.SpinButton.Button.onClick.Invoke();
                     if(before>0){paid++;Assert.AreEqual(before-1,player.SpinCount);Assert.IsTrue(field.IsBusy);}
+                    if(keepGuide&&paid==1){Assert.AreEqual(2,game.PlayerStore.Data.GuideStep);Assert.IsFalse(core.FirstSpinGuide.gameObject.activeSelf);}
+                }
+                if(keepGuide&&!wildClaimed&&core.MoreWild.Guide.gameObject.activeInHierarchy) {
+                    Assert.AreEqual(2,game.PlayerStore.Data.GuideStep);Assert.AreEqual(1,completed);
+                    Claim(core.MoreWild.ClaimButton);wildClaimed=true;
+                    Assert.AreEqual(3,game.PlayerStore.Data.GuideStep);
+                    Assert.AreEqual(game.Rules.GetMoreWild(),player.MoreWild);Assert.IsFalse(game.Ads.Pending);
                 }
                 if(core.MoreSpins.gameObject.activeInHierarchy) {
                     Claim(core.MoreSpins.ClaimButton);
@@ -68,8 +81,9 @@ public sealed class RecoveredZeroCollectionSessionTests
             Assert.Greater(bonusShown,0,"Actual generated collection must reach Bonus within the bounded session.");
             Assert.IsFalse(field.IsBusy);Assert.AreEqual(paid,completed);
             Assert.AreEqual(RecoveredSlotType.Base,player.GameSlotType);
+            if(keepGuide){Assert.IsTrue(wildClaimed);Assert.AreEqual(3,game.PlayerStore.Data.GuideStep);Assert.IsFalse(core.MoreWild.Guide.gameObject.activeSelf);}
             Assert.AreEqual(JsonUtility.ToJson(game.PlayerStore.Data),PlayerPrefs.GetString(key));
-            TestContext.WriteLine("Paid Spins: "+paid+"; completed: "+completed+"; Bonus windows: "+bonusShown);
+            TestContext.WriteLine("Paid Spins: "+paid+"; completed: "+completed+"; Bonus windows: "+bonusShown+"; original guide: "+keepGuide);
         } finally {
             Random.state=random;Time.timeScale=scale;Time.captureDeltaTime=delta;
             if(scene.IsValid()&&scene.isLoaded)unload=SceneManager.UnloadSceneAsync(scene);
