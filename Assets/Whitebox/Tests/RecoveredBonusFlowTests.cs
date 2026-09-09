@@ -1,12 +1,15 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using DragonLegend.Whitebox;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
+using UnityEngine.UI;
 using Object=UnityEngine.Object;
 
 public sealed class RecoveredBonusFlowTests
@@ -66,11 +69,12 @@ public sealed class RecoveredBonusFlowTests
             var reward=flow.Window.GetComponentInChildren<RecoveredBonusRewardPopup>(true);
             var jackpot=flow.Window.GetComponentInChildren<RecoveredJackpotPopup>(true);
             for(int card=0;card<entry.Rules.GetBonusFreeTimes();card++){
-                flow.Window.Card(card).Button.onClick.Invoke();
+                Assert.IsTrue(ClickVisible(flow.Window.Card(card).Button,camera),"The top scene raycast must reach Bonus card "+card);
+                Assert.AreEqual(card+1,flow.Window.Selection.Round.ClickedCount);
                 float deadline=Time.realtimeSinceStartup+8;
                 while(flow.Window.Selection.IsClicked&&Time.realtimeSinceStartup<deadline){
-                    if(reward.gameObject.activeInHierarchy){Assert.Greater(reward.GetComponent<Canvas>().sortingOrder,flow.Window.GetComponent<Canvas>().sortingOrder);reward.PlainButton.onClick.Invoke();}
-                    if(jackpot.gameObject.activeInHierarchy){Assert.Greater(jackpot.GetComponent<Canvas>().sortingOrder,flow.Window.GetComponent<Canvas>().sortingOrder);jackpot.PlainButton.onClick.Invoke();}
+                    if(reward.gameObject.activeInHierarchy){Assert.Greater(reward.GetComponent<Canvas>().sortingOrder,flow.Window.GetComponent<Canvas>().sortingOrder);ClickVisible(reward.PlainButton,camera);}
+                    if(jackpot.gameObject.activeInHierarchy){Assert.Greater(jackpot.GetComponent<Canvas>().sortingOrder,flow.Window.GetComponent<Canvas>().sortingOrder);ClickVisible(jackpot.PlainButton,camera);}
                     yield return null;
                 }
                 Assert.IsNull(failure);Assert.IsFalse(flow.Window.Selection.IsClicked);
@@ -78,7 +82,7 @@ public sealed class RecoveredBonusFlowTests
             float arrivalDeadline=Time.realtimeSinceStartup+5;
             while(entry.CashFlight.ActiveCashCount>0&&Time.realtimeSinceStartup<arrivalDeadline)yield return null;
             Assert.AreEqual(0,entry.CashFlight.ActiveCashCount);Assert.IsTrue(flow.Window.CloseButton.gameObject.activeInHierarchy);
-            double closed=Time.timeAsDouble;flow.Window.CloseButton.onClick.Invoke();
+            double closed=Time.timeAsDouble;Assert.IsTrue(ClickVisible(flow.Window.CloseButton,camera),"The top scene raycast must reach Bonus Close");
             for(int i=0;i<240&&completions==0;i++)yield return null;
             Assert.AreEqual(1,completions);Assert.IsFalse(flow.IsRunning);Assert.IsFalse(flow.Window.gameObject.activeSelf);
             Assert.That(completedAt-closed,Is.InRange(3.7,3.9));
@@ -96,5 +100,17 @@ public sealed class RecoveredBonusFlowTests
             if(had)PlayerPrefs.SetString(key,saved);else PlayerPrefs.DeleteKey(key);
         }
         if(unload!=null)yield return unload;
+    }
+    private static bool ClickVisible(Button button,Camera camera)
+    {
+        if(!button.gameObject.activeInHierarchy||!button.IsInteractable())return false;
+        Canvas.ForceUpdateCanvases();var rect=(RectTransform)button.transform;
+        var pointer=new PointerEventData(EventSystem.current){button=PointerEventData.InputButton.Left,
+            position=RectTransformUtility.WorldToScreenPoint(camera,rect.TransformPoint(rect.rect.center))};
+        var hits=new List<RaycastResult>();EventSystem.current.RaycastAll(pointer,hits);
+        // A reward button can still be hidden by its authored reveal or entrance.
+        // Deliver only to the actual top hit; never bypass a covering window.
+        if(hits.Count==0||ExecuteEvents.GetEventHandler<IPointerClickHandler>(hits[0].gameObject)!=button.gameObject)return false;
+        ExecuteEvents.ExecuteHierarchy(hits[0].gameObject,pointer,ExecuteEvents.pointerClickHandler);return true;
     }
 }
