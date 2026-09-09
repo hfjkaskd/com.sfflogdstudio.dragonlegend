@@ -79,8 +79,17 @@ public sealed class RecoveredCoreRoundFlowTests
             for(int frame=0;frame<100&&(lampSounds==0||burstSounds==0);frame++)yield return null;
             Assert.AreEqual(1,coinShows);Assert.AreEqual(1,coinReveals);
             Assert.AreEqual(1,lampSounds);Assert.AreEqual(1,burstSounds);
-            int spins=game.PlayerProgress.SpinCount;field.SpinButton.Button.onClick.Invoke();field.SpinButton.Button.onClick.Invoke();
-            Assert.AreEqual(2,clickSounds);Assert.AreEqual(1,startSounds);
+            int spins=game.PlayerProgress.SpinCount;
+            ClickVisible(field.SpinButton.Button,game);
+            string afterAccepted=JsonUtility.ToJson(game.PlayerStore.Data);
+            string savedAfterAccepted=PlayerPrefs.GetString(key);
+            var generated=new int[15];
+            for(int col=0;col<5;col++)for(int row=0;row<3;row++)generated[col*3+row]=game.SpinResult.Board.GetSymbol(col,row);
+            for(int click=0;click<20;click++)ClickVisible(field.SpinButton.Button,game);
+            Assert.AreEqual(21,clickSounds);Assert.AreEqual(1,startSounds);
+            Assert.AreEqual(afterAccepted,JsonUtility.ToJson(game.PlayerStore.Data),"Busy clicks cannot mutate the player record.");
+            Assert.AreEqual(savedAfterAccepted,PlayerPrefs.GetString(key),"Busy clicks cannot write another save.");
+            for(int col=0;col<5;col++)for(int row=0;row<3;row++)Assert.AreEqual(generated[col*3+row],game.SpinResult.Board.GetSymbol(col,row));
             Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);Assert.IsTrue(field.IsBusy);
             for(int frame=0;frame<1800&&completed==0;frame++){Claim(field.BigWinPopup.PlainButton);Claim(field.JackpotPopup.PlainButton);RecoveredCorePromptDriver.ClaimAndClose(core);yield return null;}
             Assert.IsNull(core.Error);Assert.AreEqual(1,completed);Assert.IsFalse(field.IsBusy);Assert.IsFalse(field.AwaitingRewards);
