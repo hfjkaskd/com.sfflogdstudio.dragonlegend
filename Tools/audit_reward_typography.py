@@ -9,7 +9,7 @@ EXPORT = ROOT.parent / "Nut Sort Relax/reconstruction/mumu-current/reference-uni
 PAIRS = [("UIRewardView", "BonusRewardPopup"), ("UIJackpotView", "JackpotPopup"),
          ("UITreasureView", "TreasureWindow")]
 RECT = "m_LocalRotation m_LocalPosition m_LocalScale m_AnchorMin m_AnchorMax m_AnchoredPosition m_SizeDelta m_Pivot".split()
-TEXT = """m_Color m_fontColor32 m_fontColor m_enableVertexGradient m_colorMode
+TEXT = """m_fontAsset m_sharedMaterial m_fontColorGradientPreset m_Color m_fontColor32 m_fontColor m_enableVertexGradient m_colorMode
 m_fontColorGradient m_fontSize m_fontSizeBase m_fontWeight m_enableAutoSizing
 m_fontSizeMin m_fontSizeMax m_fontStyle m_HorizontalAlignment m_VerticalAlignment
 m_textAlignment m_characterSpacing m_wordSpacing m_lineSpacing m_lineSpacingMax
@@ -95,6 +95,12 @@ def run():
                         continue
                     before, after = node[group][key], active[name][group].get(key)
                     item = {"prefab": current, "path": name, "field": key}
+                    if key == "m_sharedMaterial" and "39211f061913f054f84255431c8dce45" in before:
+                        material_window = "BonusRewardPopup" if current == "TreasureWindow" else current
+                        material = ROOT / f"Assets/Resources/RecoveredUI/{material_window}/#0A5902_4.mat"
+                        material_guid = re.search(r"^guid: (\w+)", Path(str(material) + ".meta").read_text(), re.M)[1]
+                        item["verifiedReferenceRemap"] = {"source": before, "asset": str(material)}
+                        before = before.replace("39211f061913f054f84255431c8dce45", material_guid)
                     if before == after:
                         report["checks"].append(item)
                     else:

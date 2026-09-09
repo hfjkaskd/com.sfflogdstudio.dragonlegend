@@ -99,6 +99,21 @@
     {
       "prefab": "BonusRewardPopup",
       "path": "/Content/Text (TMP)",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_sharedMaterial"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_fontColorGradientPreset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
       "field": "m_Color"
     },
     {
@@ -344,6 +359,21 @@
     {
       "prefab": "BonusRewardPopup",
       "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_sharedMaterial"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontColorGradientPreset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
       "field": "m_Color"
     },
     {
@@ -589,6 +619,25 @@
     {
       "prefab": "BonusRewardPopup",
       "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_sharedMaterial",
+      "verifiedReferenceRemap": {
+        "source": "{fileID: 2100000, guid: 39211f061913f054f84255431c8dce45, type: 2}",
+        "asset": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\RecoveredUI\\BonusRewardPopup\\#0A5902_4.mat"
+      }
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontColorGradientPreset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
       "field": "m_Color"
     },
     {
@@ -834,6 +883,21 @@
     {
       "prefab": "BonusRewardPopup",
       "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_sharedMaterial"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontColorGradientPreset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
       "field": "m_Color"
     },
     {
@@ -1075,6 +1139,21 @@
       "prefab": "BonusRewardPopup",
       "path": "/Content/CashOutTip/Text (TMP)",
       "field": "m_Pivot"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_sharedMaterial"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontColorGradientPreset"
     },
     {
       "prefab": "BonusRewardPopup",
@@ -1374,6 +1453,25 @@
     {
       "prefab": "JackpotPopup",
       "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_sharedMaterial",
+      "verifiedReferenceRemap": {
+        "source": "{fileID: 2100000, guid: 39211f061913f054f84255431c8dce45, type: 2}",
+        "asset": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\RecoveredUI\\JackpotPopup\\#0A5902_4.mat"
+      }
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontColorGradientPreset"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
       "field": "m_Color"
     },
     {
@@ -1619,6 +1717,21 @@
     {
       "prefab": "JackpotPopup",
       "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_sharedMaterial"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontColorGradientPreset"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
       "field": "m_Color"
     },
     {
@@ -1864,6 +1977,21 @@
     {
       "prefab": "JackpotPopup",
       "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_sharedMaterial"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontColorGradientPreset"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
       "field": "m_Color"
     },
     {
@@ -2105,6 +2233,21 @@
       "prefab": "JackpotPopup",
       "path": "/Content/CashOutTip/Text (TMP)",
       "field": "m_Pivot"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_sharedMaterial"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontColorGradientPreset"
     },
     {
       "prefab": "JackpotPopup",
@@ -2404,6 +2547,21 @@
     {
       "prefab": "TreasureWindow",
       "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_sharedMaterial"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_fontColorGradientPreset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
       "field": "m_Color"
     },
     {
@@ -2649,6 +2807,21 @@
     {
       "prefab": "TreasureWindow",
       "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_sharedMaterial"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontColorGradientPreset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
       "field": "m_Color"
     },
     {
@@ -2894,6 +3067,25 @@
     {
       "prefab": "TreasureWindow",
       "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_sharedMaterial",
+      "verifiedReferenceRemap": {
+        "source": "{fileID: 2100000, guid: 39211f061913f054f84255431c8dce45, type: 2}",
+        "asset": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\RecoveredUI\\BonusRewardPopup\\#0A5902_4.mat"
+      }
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontColorGradientPreset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
       "field": "m_Color"
     },
     {
@@ -3139,6 +3331,21 @@
     {
       "prefab": "TreasureWindow",
       "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_sharedMaterial"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_fontColorGradientPreset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
       "field": "m_Color"
     },
     {
@@ -3384,6 +3591,21 @@
     {
       "prefab": "TreasureWindow",
       "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_sharedMaterial"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_fontColorGradientPreset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
       "field": "m_Color"
     },
     {
@@ -3625,6 +3847,21 @@
       "prefab": "TreasureWindow",
       "path": "/Content/CollectTip/Slider/ProgressTxt",
       "field": "m_Pivot"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_fontAsset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_sharedMaterial"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_fontColorGradientPreset"
     },
     {
       "prefab": "TreasureWindow",

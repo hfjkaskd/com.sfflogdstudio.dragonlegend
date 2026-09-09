@@ -33,3 +33,9 @@ Comparison of local text rectangles alone does not prove final world bounds.
 The script exits nonzero on differences, missing paths or unresolved text
 overrides. No Unity runtime, SDK, prefab or scene file changed; no Unity suite
 rerun was necessary for these read-only serialized comparisons.
+
+Follow-up: reward-font-assets-audit.md verifies the shared SDF/font/material
+payloads and adds font/material/gradient resource references to this script.
+The current report contains 810 equal fields with zero differences. The earlier
+765-field scope above records the initial audit; whole-screen pixel parity and
+ancestor/runtime-transform limits still apply.

@@ -1,0 +1,117 @@
+{
+  "inputs": [
+    {
+      "path": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Library\\PackageCache\\com.unity.textmeshpro@3.0.9\\Package Resources\\TMP Essential Resources.unitypackage",
+      "sha256": "b1b2848548e67592087fa906f90c4ca4102ccad75d64942053c1762b2c07a754"
+    },
+    {
+      "path": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\reference-unity\\ExportedProject\\Assets\\Res\\Font\\QuorumStd-Black_zitidi.com.otf",
+      "sha256": "4b477434411a252a697a3c7af4093bce446a94e7adc91b4bd1b7b66f330ac33c"
+    },
+    {
+      "path": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\RecoveredArt\\Res\\Font\\QuorumStd-Black_zitidi.com.otf",
+      "sha256": "4b477434411a252a697a3c7af4093bce446a94e7adc91b4bd1b7b66f330ac33c"
+    },
+    {
+      "path": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\reference-unity\\ExportedProject\\Assets\\Res\\Font\\QuorumStd-Black_zitidi.com Atlas.png",
+      "sha256": "a0104c75b74b4ae0f704c664154117d3ef24946c8ddecfe40082c87137eaa03e"
+    },
+    {
+      "path": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\RecoveredArt\\Res\\Font\\QuorumStd-Black_zitidi.com Atlas.png",
+      "sha256": "a0104c75b74b4ae0f704c664154117d3ef24946c8ddecfe40082c87137eaa03e"
+    },
+    {
+      "path": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\reference-unity\\ExportedProject\\Assets\\Res\\Font\\QuorumStd-Black_zitidi.com SDF.asset",
+      "sha256": "c9c0827b3167a880a468c05c90fe0673e051c3f22a25d4d8766675cfbf4c11a0"
+    },
+    {
+      "path": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\RecoveredText\\Res\\Font\\QuorumStd-Black_zitidi.com SDF.asset",
+      "sha256": "ccf07bf1c4b7c76e159ea3f25509e2bc1145889829d8a8a04ee924476b7a7830"
+    },
+    {
+      "path": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\reference-unity\\ExportedProject\\Assets\\Res\\Font\\QuorumStd-Black_zitidi.com Atlas Material.mat",
+      "sha256": "04d5451e015ae216451bc6bedd62bb0230b3ef9b44d11c37b4a187c88315042d"
+    },
+    {
+      "path": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\RecoveredText\\Res\\Font\\QuorumStd-Black_zitidi.com Atlas Material.mat",
+      "sha256": "68986c7da3fbe62394a4741a7b3f367e70b44db89cab9059a1c0722a6213449d"
+    },
+    {
+      "path": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\reference-unity\\ExportedProject\\Assets\\TextMesh Pro\\Resources\\Fonts & Materials\\#000000_3.mat",
+      "sha256": "b00a5f4c43c59a9e7c2369b42df5e80670b105e5b9375b5d5cdc4f17159ca539"
+    },
+    {
+      "path": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\Fonts & Materials\\#000000_3.mat",
+      "sha256": "c8876720e0a48d7c7531eb59370af15701e5154b56700b3162f97b422888fc4e"
+    },
+    {
+      "path": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\reference-unity\\ExportedProject\\Assets\\TextMesh Pro\\Resources\\Fonts & Materials\\#0A5902_4.mat",
+      "sha256": "a54159fa67c1ee11fb4fedf81478f5362e0dc1fd5c66e6fdcc32ded1a144f4af"
+    },
+    {
+      "path": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\RecoveredUI\\BonusRewardPopup\\#0A5902_4.mat",
+      "sha256": "60bbba3036f80889ea5427f8bb71dd5f3427a9c07b799d069a154bea497880c3"
+    },
+    {
+      "path": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\reference-unity\\ExportedProject\\Assets\\TextMesh Pro\\Resources\\Fonts & Materials\\#0A5902_4.mat",
+      "sha256": "a54159fa67c1ee11fb4fedf81478f5362e0dc1fd5c66e6fdcc32ded1a144f4af"
+    },
+    {
+      "path": "C:\\Projects\\com.sfflogdstudio.dragonlegend\\Assets\\Resources\\RecoveredUI\\JackpotPopup\\#0A5902_4.mat",
+      "sha256": "60bbba3036f80889ea5427f8bb71dd5f3427a9c07b799d069a154bea497880c3"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Official TMP SDF shader bytes",
+      "payloadSha256": "bbae422625f31bfa560ac5ce44c402fafd16dba55d496c6279ca985b652b58bf"
+    },
+    {
+      "name": "Original font bytes",
+      "remaps": {},
+      "payloadSha256": "4b477434411a252a697a3c7af4093bce446a94e7adc91b4bd1b7b66f330ac33c"
+    },
+    {
+      "name": "Atlas PNG bytes",
+      "remaps": {},
+      "payloadSha256": "a0104c75b74b4ae0f704c664154117d3ef24946c8ddecfe40082c87137eaa03e"
+    },
+    {
+      "name": "Complete SDF font serialization",
+      "remaps": {
+        "eef129d5e40c07af534a8e24da6b5c16": "71c1514a6bd24e1e882cebbe1904ce04",
+        "m_SourceFontFileGUID: 73588d9165a7c5a4e8befbf84c0b178c": "m_SourceFontFileGUID: 83a0c6f40746cee418b341acfcb6f545"
+      },
+      "payloadSha256": "7bd3347511dbc4c1d6620c3529020d96492d115ed405ebc323ce216a467dd6cb"
+    },
+    {
+      "name": "Font atlas material",
+      "remaps": {
+        "a495248e59fa6714793dae46034b0996": "68e6db2ebdc24f95958faec2be5558d6"
+      },
+      "payloadSha256": "74b035bee5afcc7bf2af36829b9484e8f8cbe91137187a403938db0b33625d5d"
+    },
+    {
+      "name": "Shared black-outline material",
+      "remaps": {
+        "a495248e59fa6714793dae46034b0996": "68e6db2ebdc24f95958faec2be5558d6"
+      },
+      "payloadSha256": "e208bf361ed30aa7951e605a7946a2bb0af76ffc249f3c84b3d3b00a4780d115"
+    },
+    {
+      "name": "BonusRewardPopup claim material",
+      "remaps": {
+        "a495248e59fa6714793dae46034b0996": "68e6db2ebdc24f95958faec2be5558d6"
+      },
+      "payloadSha256": "7a2536f08775535a42d61ed11e1b9a4670a75138b2f28c5c647a33f5126e7f5b"
+    },
+    {
+      "name": "JackpotPopup claim material",
+      "remaps": {
+        "a495248e59fa6714793dae46034b0996": "68e6db2ebdc24f95958faec2be5558d6"
+      },
+      "payloadSha256": "7a2536f08775535a42d61ed11e1b9a4670a75138b2f28c5c647a33f5126e7f5b"
+    }
+  ],
+  "differences": []
+}
