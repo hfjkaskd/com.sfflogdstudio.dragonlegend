@@ -56,3 +56,28 @@ time-based multi-character catch-up loop: a slow frame resumes one iteration.
 
 Full guide-hint-regression.xml passes 371/371. This proves the immediate-hand
 change and its regression coverage, not the still missing complete Guide overlay.
+
+## Recovered text component
+
+RecoveredGuideText now ports the native coroutine with Unity StartCoroutine and
+WaitForSeconds. It preserves the source Substring progression (including layout
+changes as text grows), first character in the initial synchronous coroutine step,
+scaled waits, and a wait after the last character before callback. SetText changes
+stored text only for steps 1/2; other steps reuse its previous text. Like the
+source, another SetText does not cancel earlier coroutines, and RevealAll stops
+only the latest handle without invoking its callback. Explicit Cancel is for
+recovered lifetime teardown and stops all remaining work.
+
+BuildGuideText extracts original text Rect 224632457200066912 from the Guide
+prefab, keeps its original TMP font, material, layout and styling, and replaces
+only the unavailable GuideTxtAnim script. Runtime literals and 100 chars/second
+are authored Inspector fields. GuideText.prefab is prepared for nesting into the
+full guide; it is not yet connected to the main guide mask or target reparenting.
+No claim of a completed first-Spin guide follows from this standalone component.
+
+RecoveredGuideTextTests exercises the actual authored component: initial character
+while paused, scaled-time suspension, at most one character per slow frame,
+completion delayed beyond the final character, background reveal suppressing
+completion, unknown-step text reuse and explicit cancellation.
+Focused PlayMode validation: guide-text.xml passes 1/1. The full 371-test result
+above predates this component; no new full-suite claim is made for this change.
