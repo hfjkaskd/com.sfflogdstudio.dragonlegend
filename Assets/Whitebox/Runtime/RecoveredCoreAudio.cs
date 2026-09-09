@@ -6,12 +6,36 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredCoreAudio : MonoBehaviour
     {
         [SerializeField] private RecoveredSoundManager audioManager;
+        [SerializeField] private string reelStopSound, speedupSound, coinShowSound, coinRevealSound, lampArrivalSound, coinBurstSound;
         private GameEntry game;
         public RecoveredSoundManager Manager => audioManager;
         public void Bind(GameEntry context) { Unbind(); game = context; audioManager.Bind(game.PlayerStore.Data); Connect(true); }
         public void Unbind() { if (game == null) return; Connect(false); audioManager.StopAll(); game = null; }
         private void Connect(bool bind)
         {
+            var reels = game.Playfield.Reels;
+            var coins = game.Playfield.CoinStops;
+            var baseFlights = game.Playfield.WinFlight;
+            var freeFlights = game.Playfield.ModeView.FreeReels.RewardCollect.Flights;
+            if (bind) {
+                reels.ReelStopSoundRequested += ReelStop;
+                reels.SpeedupSoundRequested += Speedup;
+                reels.SpeedupSoundStopRequested += audioManager.StopSound1;
+                coins.CoinShowSoundRequested += CoinShow;
+                coins.CoinRevealSoundRequested += CoinReveal;
+                coins.ExpSoundRequested += LampArrival;
+                baseFlights.CoinBurstSoundRequested += CoinBurst;
+                freeFlights.CoinBurstSoundRequested += CoinBurst;
+            } else {
+                reels.ReelStopSoundRequested -= ReelStop;
+                reels.SpeedupSoundRequested -= Speedup;
+                reels.SpeedupSoundStopRequested -= audioManager.StopSound1;
+                coins.CoinShowSoundRequested -= CoinShow;
+                coins.CoinRevealSoundRequested -= CoinReveal;
+                coins.ExpSoundRequested -= LampArrival;
+                baseFlights.CoinBurstSoundRequested -= CoinBurst;
+                freeFlights.CoinBurstSoundRequested -= CoinBurst;
+            }
             var node0 = game.Playfield;
             if (bind) node0.SoundRequested += audioManager.PlaySound; else node0.SoundRequested -= audioManager.PlaySound;
             if (bind) node0.Sound1Requested += audioManager.PlaySound1; else node0.Sound1Requested -= audioManager.PlaySound1;
@@ -72,6 +96,11 @@ namespace DragonLegend.Whitebox
             if (bind) node17.SoundRequested += audioManager.PlaySound; else node17.SoundRequested -= audioManager.PlaySound;
         }
         private void OnDestroy() => Unbind();
+        private void ReelStop() => audioManager.PlaySound(reelStopSound);
+        private void Speedup() => audioManager.PlaySound1(speedupSound);
+        private void CoinShow() => audioManager.PlaySound(coinShowSound);
+        private void CoinReveal() => audioManager.PlaySound(coinRevealSound);
+        private void LampArrival() => audioManager.PlaySound(lampArrivalSound);
+        private void CoinBurst() => audioManager.PlaySound(coinBurstSound);
     }
 }
-

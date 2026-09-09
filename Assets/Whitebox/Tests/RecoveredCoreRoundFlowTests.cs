@@ -22,6 +22,36 @@ public sealed class RecoveredCoreRoundFlowTests
             Assert.IsNotNull(game.CoreRound);var field=game.Playfield;var core=game.CoreRound;int completed=0;core.CoreRoundCompleted+=()=>completed++;
             Assert.IsNotNull(game.CoreAudio);
             Assert.AreEqual("normalBg",game.CoreAudio.Manager.MusicSource.clip.name);
+            // Clear channels immediately before each observed real event so an older
+            // one-shot cannot hide a missing or incorrectly routed audio binding.
+            var audio=game.CoreAudio.Manager;
+            game.CoreAudio.Unbind();
+            field.Reels.ReelStopSoundRequested+=audio.StopSound;
+            field.Reels.SpeedupSoundRequested+=audio.StopSound1;
+            field.CoinStops.CoinShowSoundRequested+=audio.StopSound;
+            field.CoinStops.CoinRevealSoundRequested+=audio.StopSound;
+            field.CoinStops.ExpSoundRequested+=audio.StopSound;
+            field.WinFlight.CoinBurstSoundRequested+=audio.StopSound;
+            field.ModeView.FreeReels.RewardCollect.Flights.CoinBurstSoundRequested+=audio.StopSound;
+            game.CoreAudio.Bind(game);
+            int reelSounds=0,speedSounds=0,speedStops=0,coinShows=0,coinReveals=0,lampSounds=0,burstSounds=0;
+            field.Reels.ReelStopSoundRequested+=()=>{if(game.PlayerStore.Data.IsMusic){Assert.IsTrue(audio.SoundSource.isPlaying);reelSounds++;}};
+            field.Reels.SpeedupSoundRequested+=()=>{if(game.PlayerStore.Data.IsMusic){Assert.IsTrue(audio.Sound1Source.isPlaying);speedSounds++;}};
+            field.Reels.SpeedupSoundStopRequested+=()=>{Assert.IsFalse(audio.Sound1Source.isPlaying);speedStops++;};
+            field.CoinStops.CoinShowSoundRequested+=()=>{Assert.IsTrue(audio.SoundSource.isPlaying);coinShows++;};
+            field.CoinStops.CoinRevealSoundRequested+=()=>{Assert.IsTrue(audio.SoundSource.isPlaying);coinReveals++;};
+            field.CoinStops.ExpSoundRequested+=()=>{Assert.IsTrue(audio.SoundSource.isPlaying);lampSounds++;};
+            field.WinFlight.CoinBurstSoundRequested+=()=>{Assert.IsTrue(audio.SoundSource.isPlaying);burstSounds++;};
+            field.ModeView.FreeReels.RewardCollect.Flights.CoinBurstSoundRequested+=()=>{Assert.IsTrue(audio.SoundSource.isPlaying);burstSounds++;};
+            // This seed's real Spin path has no Base coins. Exercise a stopped coin
+            // through the production presenter/flight bindings before that path.
+            // Only the board cell and reward input are fixture-controlled.
+            field.Reels.ReelAt(0).ApplyBaseColumn(new[]{9,0,0});
+            field.CoinStops.ShowColumn(0);
+            field.CoinStops.PlayRewardReveal(0,0,100,1);
+            for(int frame=0;frame<100&&(lampSounds==0||burstSounds==0);frame++)yield return null;
+            Assert.AreEqual(1,coinShows);Assert.AreEqual(1,coinReveals);
+            Assert.AreEqual(1,lampSounds);Assert.AreEqual(1,burstSounds);
             int spins=game.PlayerProgress.SpinCount;field.SpinButton.Button.onClick.Invoke();field.SpinButton.Button.onClick.Invoke();
             Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);Assert.IsTrue(field.IsBusy);
             for(int frame=0;frame<1800&&completed==0;frame++){Claim(field.BigWinPopup.PlainButton);Claim(field.JackpotPopup.PlainButton);yield return null;}
@@ -46,6 +76,8 @@ public sealed class RecoveredCoreRoundFlowTests
             Assert.IsNull(field.ModeView.FreeReels.CoinScan.Error);Assert.IsNull(field.ModeView.FreeReels.BallScan.Error);Assert.IsNull(field.ModeView.FreeReels.RewardCollect.Error);
             Assert.IsTrue(core.Exit.Window.IsShown);Assert.AreEqual(0,game.PlayerProgress.FreeSpinCount);Assert.IsTrue(field.IsBusy);Assert.AreEqual(1,completed);
             Assert.AreEqual("freeBg",game.CoreAudio.Manager.RequestedMusic,"Actual Free entry must reach the audio consumer.");
+            Assert.Greater(reelSounds,0);Assert.Greater(speedSounds,0);Assert.AreEqual(speedSounds,speedStops);
+            Assert.Greater(coinShows,0);Assert.Greater(coinReveals,0);Assert.Greater(lampSounds,0);Assert.Greater(burstSounds,0);
             for(int i=0;i<100&&!core.Exit.Window.ContinueButton.gameObject.activeInHierarchy;i++)yield return null;
             Assert.IsTrue(core.Exit.Window.ContinueButton.gameObject.activeInHierarchy);
             // A dirty persisted setting isolates the final save from earlier reward setters.

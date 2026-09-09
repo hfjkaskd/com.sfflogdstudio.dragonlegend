@@ -48,6 +48,9 @@ The full original clips-array membership has not been recovered from the strippe
 Loading MonoBehaviour; available exported clip names currently supply the catalog.
 This change does not establish complete audio or game lifecycle parity.
 
+Follow-up: the parameterless reel/coin/flight mappings listed above are now
+implemented and validated in core-reel-audio.md. Other stated limitations remain.
+
 Validation: Unity 2022.3.62f3 with graphics enabled, Artifacts/core-audio.xml,
 5/5 passed (21.3633249 seconds), process 7520 exited. The sound-manager test
 checks real AudioSource playing state, isolated second-channel stop, shared mute
