@@ -80,5 +80,10 @@ public static class BuildCashOutItem
             PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredUI/CashOutItem.prefab");AssetDatabase.SaveAssets();
         }
         finally{PrefabUtility.UnloadPrefabContents(root);AssetDatabase.DeleteAsset(temp);}
+        // An unquoted empty first sequence entry is lost on nested prefab import
+        // after trailing whitespace normalization. Preserve the explicit empty string.
+        const string output="Assets/Resources/RecoveredUI/CashOutItem.prefab";
+        File.WriteAllText(output,Regex.Replace(File.ReadAllText(output),@"(  iconPaths:\r?\n)  -[ \t]*\r?\n","$1  - ''\n"));
+        AssetDatabase.ImportAsset(output,ImportAssetOptions.ForceSynchronousImport);
     }
 }
