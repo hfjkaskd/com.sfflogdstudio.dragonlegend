@@ -47,6 +47,18 @@ public sealed class RecoveredFreeStartPopupTests
             Assert.AreEqual(193,zero.advance);Assert.AreEqual(126,zero.maxY);Assert.AreEqual(-126,zero.minY);
             Assert.AreEqual(new Vector3(1.3f,1.3f,1.3f),popup.CountText.transform.localScale);
             Assert.AreEqual(new Vector2(0,107),popup.CountText.rectTransform.anchoredPosition);
+            var description=popup.Content.Find("Text (TMP)").GetComponent<TMPro.TMP_Text>();
+            // Original UIFreeSpinStart TMP 114918264173551851 and Rect 224946936116752871.
+            Assert.AreEqual("Watch an ad to get more free spins.",description.text);
+            Assert.AreEqual(58,description.fontSize);Assert.IsFalse(description.enableAutoSizing);
+            Assert.AreEqual(TMPro.FontStyles.Bold,description.fontStyle);
+            Assert.IsFalse(description.enableWordWrapping);Assert.AreEqual(TMPro.TextOverflowModes.Overflow,description.overflowMode);
+            Assert.AreEqual(TMPro.HorizontalAlignmentOptions.Center,description.horizontalAlignment);
+            Assert.AreEqual(TMPro.VerticalAlignmentOptions.Middle,description.verticalAlignment);
+            Assert.AreEqual(Vector4.zero,description.margin);
+            Assert.AreEqual(new Vector2(200,50),description.rectTransform.sizeDelta);
+            Assert.AreEqual(new Vector2(0,-394),description.rectTransform.anchoredPosition);
+            Assert.AreEqual(Vector3.one,description.transform.localScale);
             foreach(var c in popup.GetComponentsInChildren<Component>(true))Assert.IsNotNull(c);
             foreach(var button in popup.GetComponentsInChildren<Button>(true)){
                 Assert.AreEqual(0,button.onClick.GetPersistentEventCount());Assert.IsNotNull(button.targetGraphic);Assert.Greater(button.targetGraphic.color.a,0);
