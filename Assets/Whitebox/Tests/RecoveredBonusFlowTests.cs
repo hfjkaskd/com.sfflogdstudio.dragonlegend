@@ -20,7 +20,10 @@ public sealed class RecoveredBonusFlowTests
     [UnityTest]
     public IEnumerator AllTwelveSceneClickedCardsWaitForAdsAndAutomaticallyReturnToBase()=>Run(true);
 
-    private IEnumerator Run(bool allCards)
+    [UnityTest]
+    public IEnumerator FailedExtraCardAdRetainsNativeLatchButCloseStillReturnsToBase()=>Run(false,true);
+
+    private IEnumerator Run(bool allCards,bool failExtraCard=false)
     {
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);PlayerPrefs.DeleteKey(key);
         float scale=Time.timeScale,delta=Time.captureDeltaTime;var random=UnityEngine.Random.state;
@@ -98,6 +101,24 @@ public sealed class RecoveredBonusFlowTests
                 if(flow.Window.Selection.IsEnd)endedAt=Time.timeAsDouble;
             }
             Assert.AreEqual(allCards?flow.Window.CardCount-freeCards:0,adClaims);
+            if(failExtraCard){
+                var extra=flow.Window.Card(freeCards).Button;
+                float balance=entry.PlayerProgress.GreenCount;
+                Assert.IsTrue(ClickVisible(extra,camera));Assert.IsTrue(entry.Ads.Pending);
+                Assert.AreEqual("bonusCoin",entry.Ads.Placement);
+                Assert.AreEqual(freeCards,flow.Window.Selection.Round.ClickedCount);
+                float failureDeadline=Time.realtimeSinceStartup+5;int failureClicks=0;
+                while(entry.Ads.Pending&&Time.realtimeSinceStartup<failureDeadline){
+                    if(ClickVisible(entry.AdControls.FailureButton,camera))failureClicks++;
+                    yield return null;
+                }
+                Assert.AreEqual(1,failureClicks);Assert.IsFalse(entry.Ads.Pending);
+                Assert.IsTrue(extra.enabled);Assert.IsTrue(flow.Window.Selection.IsClicked,"Native failure callback does not clear isClick");
+                Assert.AreEqual(freeCards,flow.Window.Selection.Round.ClickedCount);
+                Assert.AreEqual(balance,entry.PlayerProgress.GreenCount);
+                Assert.IsTrue(ClickVisible(extra,camera),"The source restores the Button even though the selection latch remains set");
+                Assert.IsFalse(entry.Ads.Pending);Assert.AreEqual(freeCards,flow.Window.Selection.Round.ClickedCount);
+            }
             float arrivalDeadline=Time.realtimeSinceStartup+5;
             while(entry.CashFlight.ActiveCashCount>0&&Time.realtimeSinceStartup<arrivalDeadline)yield return null;
             Assert.AreEqual(0,entry.CashFlight.ActiveCashCount);Assert.IsTrue(flow.Window.CloseButton.gameObject.activeInHierarchy);
