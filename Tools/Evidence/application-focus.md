@@ -57,3 +57,9 @@ coverage takes precedence over implementing these peripheral focus refreshes.
 No production assets/code changed and no new Unity run was made for this
 audit. The previous full 463/463 run recorded in main-ui-hierarchy.md remains
 historical evidence, not new verification of background/resume behavior.
+
+Follow-up: mixed-bigwin-free.md now records a third combined-path case that
+preserves the full awarded count and completes six Free rounds, including
+four coin and six ball rewards. The two earlier shortened cases remain.
+This addresses the specific full-count coverage gap above for that session;
+the peripheral focus-hook difference remains deferred.

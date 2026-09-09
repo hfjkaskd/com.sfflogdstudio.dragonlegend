@@ -80,3 +80,43 @@ Unity process 22092 exited. Artifacts/mixed-bonus-free-tests.xml passed both
 cases, 2/2, 5.8129854 seconds. No production implementation or SDK change was
 needed. This expands actual combined-path coverage; it does not establish
 all possible mixed rewards or complete 1:1 lifecycle equivalence.
+
+## Full awarded Free session after BigWin and Bonus
+
+Runtime baseline d91b85057a051cf410c8c2d159b56ad55ac26a82; only this evidence
+and RecoveredBigWinFreeChainTests change in this round. The new third case
+retains all awarded initial + ad-extra Free spins. It does not install the
+ChangeMusicRequested count/RNG override used by the two shorter cases, reseed
+subsequent rounds, change rules or replace generated symbols. The existing
+ForceFreeSpin setup and pre-Spin Bonus readiness flag remain explicit fixture
+inputs, as described above.
+
+The fixture uses active, interactable standard Button callbacks to claim
+encountered ball-game rewards and handle any Free Bonus window. It observes
+each Free reel start, all-reels-stopped callback and completed ball scan,
+checks remaining count equals awarded count minus rounds started, keeps the
+paid Spin busy until the total window is continued, and verifies exactly one
+core completion and acceptance of the next paid Spin.
+
+The independent scan ledger reads each actual special symbol's recorded
+reward, then checks the complete session's FreeReward, CoinReward and
+TotalFreeSpinWin at the total window. It also checks no simultaneous ball
+games and no errors in the core, exit, reel, coin scan, ball scan, reward
+collection, slot, wheel or lucky controllers. This preserves the native
+cumulative coin-credit behavior; it does not replace that behavior with an
+assumed per-round credit rule.
+
+The first targeted process 38496 exited with 3/3 passed in 11.36897 seconds
+(Artifacts/full-mixed-free-tests.xml). After adding reward-ledger checks,
+process 51304 produced 3/3 passed in 11.2906468 seconds
+(Artifacts/full-mixed-free-ledger-tests.xml). Its full case recorded:
+
+- Mixed Base result seed 2578, followed by BigWin and ready Bonus.
+- All 6 awarded Free rounds started, stopped and completed their scans.
+- 4 coin symbols and 6 ball symbols processed; total Free ledger 129.
+- Total window continued, Base music restored, next paid Spin accepted.
+
+The two shortened cases still pass with one Free round each. This adds
+continuous full-count coverage for the observed mixed session, not every
+random outcome, every ball type, region profile, lifecycle interruption or
+pixel-level visual result. No SDK or production implementation changed.

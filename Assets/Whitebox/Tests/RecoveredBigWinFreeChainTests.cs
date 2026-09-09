@@ -13,7 +13,10 @@ public sealed class RecoveredBigWinFreeChainTests
     [UnityTest]
     public IEnumerator OnePaidSpinSettlesBigWinAndBonusBeforeItsFreeIntro()=>Run(true);
 
-    private IEnumerator Run(bool includeBonus)
+    [UnityTest]
+    public IEnumerator OnePaidSpinCompletesEveryAwardedFreeRoundAfterBigWinAndBonus()=>Run(true,true);
+
+    private IEnumerator Run(bool includeBonus,bool fullFree=false)
     {
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);
         PlayerPrefs.DeleteKey(key);var random=Random.state;float scale=Time.timeScale,delta=Time.captureDeltaTime;
@@ -40,7 +43,29 @@ public sealed class RecoveredBigWinFreeChainTests
             Assert.GreaterOrEqual(freeSeed,0);
             // Bound the later Free loop to one actual round without a minigame. The
             // intro's native initial/extra count is checked before this fixture override.
-            core.Entry.ChangeMusicRequested+=name=>{player.FreeSpinCount=1;Random.InitState(freeSeed);};
+            if(!fullFree)core.Entry.ChangeMusicRequested+=name=>{player.FreeSpinCount=1;Random.InitState(freeSeed);};
+            var reels=field.ModeView.FreeReels;
+            var slot=core.GetComponentInChildren<RecoveredFreeSlotGame>(true);
+            var wheel=core.GetComponentInChildren<RecoveredFreeWheelGame>(true);
+            var treasure=core.GetComponentInChildren<RecoveredFreeTreasureGame>(true);
+            var lucky=core.GetComponentInChildren<RecoveredFreeLuckyGame>(true);
+            int awardedFree=0,rounds=0,stops=0,scans=0,ballCount=0,coinCount=0;
+            float freeLedger=0,coinLedger=0;
+            reels.Controller.RoundStarted+=()=>{
+                rounds++;Assert.LessOrEqual(rounds,awardedFree);
+                Assert.AreEqual(awardedFree-rounds,player.FreeSpinCount);
+                Assert.IsTrue(field.IsBusy);Assert.IsFalse(core.Exit.Window.IsShown);
+            };
+            reels.Controller.ReelsStopped+=()=>stops++;
+            reels.BallScan.Completed+=()=>{
+                scans++;
+                for(int col=0;col<5;col++)for(int row=0;row<3;row++) {
+                    int id=game.FreeSpinResult.GetSymbol(col,row);if(id!=9&&id!=11)continue;
+                    Assert.IsTrue(reels.CoinScan.Rewards.TryGetValue(reels.At(col,row).gameObject,out float reward));
+                    freeLedger+=reward;
+                    if(id==9){coinCount++;coinLedger+=reward;}else ballCount++;
+                }
+            };
             int completed=0,baseFlights=0,credits=0;core.CoreRoundCompleted+=()=>completed++;
             player.GreenCountChanged+=(before,after)=>credits++;
             float initialCash=player.GreenCount;int initialSpins=player.SpinCount;
@@ -106,9 +131,36 @@ public sealed class RecoveredBigWinFreeChainTests
             Assert.AreEqual(initialFree,player.FreeSpinCount);Assert.IsTrue(core.Entry.Window.gameObject.activeSelf);
             core.Entry.Window.ClaimButton.onClick.Invoke();game.AdControls.RewardButton.onClick.Invoke();
             Assert.AreEqual(initialFree+game.Rules.GetExtraFreeSpins(),player.FreeSpinCount);
-            for(int frame=0;frame<1800&&!core.Exit.Window.IsShown;frame++)yield return null;
+            awardedFree=fullFree?player.FreeSpinCount:1;
+            float freeDeadline=Time.realtimeSinceStartup+120;
+            while(!core.Exit.Window.IsShown&&Time.realtimeSinceStartup<freeDeadline) {
+                if(fullFree) {
+                    int active=(slot.IsRunning?1:0)+(wheel.IsRunning?1:0)+(treasure.IsRunning?1:0)+(lucky.IsRunning?1:0);
+                    Assert.LessOrEqual(active,1,"Ball minigames must run serially throughout the awarded session.");
+                    Claim(slot.Window.Popup.PlainButton);Claim(wheel.Window.CashPopup.PlainButton);
+                    Claim(wheel.Window.JackpotPopup.PlainButton);Claim(treasure.Window.PlainButton);Claim(lucky.Popup.PlainButton);
+                    var bonus=game.BonusFlow;var window=bonus.Window;
+                    if(window.gameObject.activeInHierarchy&&!bonus.Transition.IsPlaying) {
+                        Claim(window.RewardPopup.PlainButton);Claim(window.JackpotPopup.PlainButton);
+                        if(!window.Selection.IsClicked&&!window.Selection.IsEnd) {
+                            if(window.Selection.Round.ClickedCount<game.Rules.GetBonusFreeTimes())
+                                Claim(window.Card(window.Selection.Round.ClickedCount).Button);
+                            else Claim(window.CloseButton);
+                        }
+                    }
+                }
+                Assert.IsTrue(field.IsBusy);Assert.AreEqual(0,completed);
+                yield return null;
+            }
             Assert.IsNull(core.Error);Assert.IsNull(core.Exit.Error);Assert.IsNull(field.ModeView.FreeReels.Controller.Error);
             Assert.IsTrue(core.Exit.Window.IsShown);Assert.IsTrue(field.IsBusy);Assert.AreEqual(0,completed);
+            Assert.AreEqual(awardedFree,rounds);Assert.AreEqual(rounds,stops);
+            Assert.AreEqual(rounds,scans);
+            Assert.AreEqual(freeLedger,reels.RewardCollect.FreeReward);
+            Assert.AreEqual(coinLedger,reels.RewardCollect.CoinReward);
+            Assert.AreEqual(freeLedger,player.TotalFreeSpinWin);
+            Assert.IsNull(reels.CoinScan.Error);Assert.IsNull(reels.BallScan.Error);Assert.IsNull(reels.RewardCollect.Error);
+            Assert.IsNull(slot.Error);Assert.IsNull(wheel.Error);Assert.IsNull(lucky.Error);
             Assert.AreEqual(0,player.FreeSpinCount);Assert.AreEqual(initialSpins-1,player.SpinCount);
             for(int frame=0;frame<120&&!core.Exit.Window.ContinueButton.gameObject.activeInHierarchy;frame++)yield return null;
             Assert.IsTrue(core.Exit.Window.ContinueButton.gameObject.activeInHierarchy);
@@ -117,7 +169,8 @@ public sealed class RecoveredBigWinFreeChainTests
             Assert.AreEqual(1,completed);Assert.IsFalse(field.IsBusy);Assert.IsFalse(field.AwaitingRewards);
             Assert.AreEqual(RecoveredSlotType.Base,player.GameSlotType);Assert.AreEqual("normalBg",game.CoreAudio.Manager.RequestedMusic);
             field.SpinButton.Button.onClick.Invoke();Assert.AreEqual(initialSpins-2,player.SpinCount);
-            TestContext.WriteLine("Mixed Base result seed: "+mixedSeed+"; shortened Free seed: "+freeSeed);
+            TestContext.WriteLine("Mixed Base result seed: "+mixedSeed+"; full Free: "+fullFree+"; completed Free rounds: "+rounds+
+                "; coins: "+coinCount+"; balls: "+ballCount+"; Free ledger: "+freeLedger);
         } finally {
             Random.state=random;Time.timeScale=scale;Time.captureDeltaTime=delta;
             if(scene.IsValid()&&scene.isLoaded)unload=SceneManager.UnloadSceneAsync(scene);
@@ -125,4 +178,6 @@ public sealed class RecoveredBigWinFreeChainTests
         }
         if(unload!=null)yield return unload;
     }
+    private static void Claim(UnityEngine.UI.Button button)
+    {if(button!=null&&button.gameObject.activeInHierarchy&&button.IsInteractable())button.onClick.Invoke();}
 }
