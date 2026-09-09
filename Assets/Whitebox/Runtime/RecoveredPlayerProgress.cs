@@ -21,6 +21,23 @@ namespace DragonLegend.Whitebox
         public float GreenCount => data.GreenCount;
         public IReadOnlyList<int> BonusArea => data.BonusArea;
         public IReadOnlyList<PlayerCashOutData> CashOutRecords => data.PlayerCashOutDatas;
+        // CashOutBottom.InitUI 23a0eb8: local conditions only; step 1000 enters SDK order handling.
+        public RecoveredCashOutConditions GetCashOutConditions(int tier,int utcSeconds)
+        {
+            float target=rules.GetCashOutCash(tier);
+            PlayerCashOutData record=null;
+            for(int i=0;i<data.PlayerCashOutDatas.Count;i++)
+                if(data.PlayerCashOutDatas[i].id==tier){record=data.PlayerCashOutDatas[i];break;}
+            if(record==null)
+                return new RecoveredCashOutConditions(false,false,GreenCount>=target,false,false,0,0,0,target-GreenCount);
+            if(record.step==1000)
+                return new RecoveredCashOutConditions(true,true,false,false,false,0,0,0,0);
+            int count=record.count;
+            int goal=record.isCashout?rules.GetSuccessTaskCount(tier,record.step):rules.GetFailTaskCount(tier,record.step);
+            if(record.step==6){count=data.PlayerCollectDatas.Count;goal=rules.GetCollectInfoCount();}
+            int remaining=unchecked(rules.GetWaitTime(tier,record.step)+record.time-utcSeconds);
+            return new RecoveredCashOutConditions(true,false,true,count>=goal,remaining<=0,count,goal,remaining,0);
+        }
         // UICashOutView.CheckItemKuang 23a714c. This differs from Main's prompt selection.
         public int FindCashOutWindowSelection(out bool hideFrame)
         {
