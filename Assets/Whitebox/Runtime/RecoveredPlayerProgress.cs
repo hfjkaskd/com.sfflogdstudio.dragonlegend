@@ -21,6 +21,8 @@ namespace DragonLegend.Whitebox
         public float GreenCount => data.GreenCount;
         public IReadOnlyList<int> BonusArea => data.BonusArea;
         public IReadOnlyList<PlayerCashOutData> CashOutRecords => data.PlayerCashOutDatas;
+        public IReadOnlyList<Account> CashOutAccounts => data.PlayerAccount;
+        public GiftAccount GiftDeliveryAccount => data.GiftAccount;
         // Captured-record callback 23a278c, invoked only after the owning flow succeeds.
         // Do not reselect by id: the native closure retains the original record object.
         public void ApplyCashOutTaskStep(PlayerCashOutData record,int nextStep,int unixSeconds)

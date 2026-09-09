@@ -32,7 +32,8 @@ public sealed class RecoveredCashOutWindowArtTests
             content.Find("Node/GiftRect").gameObject.SetActive(false);content.Find("Top/CashBtn").GetChild(2).gameObject.SetActive(true);content.Find("Top/GiftBtn").GetChild(2).gameObject.SetActive(false);
             var list=window.GetComponentInChildren<RecoveredCashOutList>();var bottom=window.GetComponentInChildren<RecoveredCashOutBottom>();Assert.IsNotNull(list);Assert.IsNotNull(bottom);
             Canvas.ForceUpdateCanvases();var size=((RectTransform)content.Find("Node/Rect")).rect.size;
-            var rules=new RecoveredGameplayRules(new GoldenDragonAutoGenConfig{Rgpggm=new RgpggmPoro{Qogt=new List<int>{20000,30000,50000,100000}}});var data=new PlayerData{GreenCount=3500};list.Initialize(rules,new RecoveredPlayerProgress(rules,()=>Assert.Fail("Preview must not save"),data),bottom,()=>102,size,1,0);
+            var rules=new RecoveredGameplayRules(new GoldenDragonAutoGenConfig{Qonrii=new QonriiPoro{Ripg=new List<string>{"default"}},Rgpggm=new RgpggmPoro{Qogt=new List<int>{20000,30000,50000,100000}}});var data=new PlayerData{GreenCount=3500};var player=new RecoveredPlayerProgress(rules,()=>Assert.Fail("Preview must not save"),data);list.Initialize(rules,player,bottom,()=>102,size,1,0);
+            var header=window.GetComponent<RecoveredCashOutPaymentHeader>();header.Bind(rules,player);header.RefreshMode(false);
             for(int i=0;i<4;i++)yield return null;Canvas.ForceUpdateCanvases();
             eventHost=new GameObject("Cash window events",typeof(EventSystem));var events=eventHost.GetComponent<EventSystem>();
             foreach(var name in new[]{"PaypalBtn","CashAppBtn","CoinBaseBtn","ZelleBtn"})
@@ -42,6 +43,7 @@ public sealed class RecoveredCashOutWindowArtTests
                 Assert.IsNotNull(button.GetComponent<Image>().sprite,name);
             }
             list.ItemAt(1).Button.onClick.Invoke();Assert.AreSame(list.ItemAt(1).transform,list.SelectionFrame.parent);StringAssert.EndsWith(RecoveredCurrency.Format(30000,0,0),bottom.DetailText.text);
+            content.Find("Node/Layout/CoinBaseBtn").GetComponent<Button>().onClick.Invoke();Assert.AreEqual("Please enter your CoinBase account here.",input.text);StringAssert.EndsWith(RecoveredCurrency.Format(20000,0,0),bottom.DetailText.text);
             Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});capture=new Texture2D(1080,1920,TextureFormat.RGB24,false);RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-cash-window.png"),capture.EncodeToPNG());
         }
         finally{RenderTexture.active=prior;if(host!=null)Object.Destroy(host);if(cameraObject!=null)Object.Destroy(cameraObject);if(eventHost!=null)Object.Destroy(eventHost);if(target!=null)Object.Destroy(target);if(capture!=null)Object.Destroy(capture);}
