@@ -1,0 +1,7 @@
+# Bonus world geometry and current rendered poses
+
+`Tools/sample_bonus_world_reference.py` verifies the extracted source's skeleton hash and uses the independent Python timeline/matrix evaluator to generate 91 samples across all 13 clips. The evaluator reads extracted source data, not authored Unity assets. `EveryClipMatchesIndependentSourceGeometrySamples` compares active-attachment vertex count and each x/y coordinate with the world renderer at those times (tolerance 0.0001 world units).
+
+`RenderAllConvertedClipsAtMidpoint` renders the current generated prefabs through Unity's actual camera/render pipeline into `Artifacts/current-bonus-world-midpoints.png`. Every clip must contribute visible pixels. Inspected the fresh image: five hold faces, glow, concealed/appearance faces are visible; five turn midpoint poses show their narrow edge. Grid order, left to right then top to bottom: glow, idle_bao, idle_cai, idle_chun, idle_jin; idle_zhao, zcjb_b_bao, zcjb_b_cai, zcjb_b_chun, zcjb_b_jin; zcjb_b_zhao, zcjb_chuxian, zcjb_idle.
+
+Unity 2022.3.62f3 process 20508 exited; `Artifacts/bonus-world-source-tests.xml`: 3/3 passed in 0.3311329 seconds. This covers topology/reuse, sampled geometric fidelity and visible midpoint rendering. It does not compare source raster pixels, all interpolated frames, colors/UVs numerically, UI occlusion, interaction or performance of the final integrated card. Production Bonus cards remain on the prior UI implementation until those integration steps are completed.
