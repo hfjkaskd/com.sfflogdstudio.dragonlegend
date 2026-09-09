@@ -19,6 +19,7 @@ namespace DragonLegend.Whitebox
         public event Action WinResetRequested;
         public event Action JackpotAnimationsRequested;
         public event Action<int> CountdownRequested;
+        public event Action SpinCountDisplayRequested;
 
         public RecoveredSpinEntry(RecoveredGameplayRules rules, PlayerData data,
             RecoveredPlayerProgress progress, RecoveredSpinResult result, Action save)
@@ -56,6 +57,7 @@ namespace DragonLegend.Whitebox
             WinResetRequested?.Invoke();
             JackpotAnimationsRequested?.Invoke();
             if (progress.MoreWild > 0) progress.SetMoreWild(progress.MoreWild - 1);
+            if(configType!="default")SpinCountDisplayRequested?.Invoke();
             if (configType == "default" && progress.SpinCount == unchecked(rules.GetMaxSpinCount() - 1))
             {
                 // Original writes directly, without an additional Save here.

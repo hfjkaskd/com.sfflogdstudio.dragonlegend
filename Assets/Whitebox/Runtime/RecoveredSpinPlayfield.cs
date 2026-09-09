@@ -16,6 +16,8 @@ namespace DragonLegend.Whitebox
         public RecoveredSymbolCatalog Symbols=>symbols;
         public RecoveredNpcPresentation Npc=>npc;
         [SerializeField] private RecoveredSpinButton spinButton;
+        [SerializeField] private RecoveredSpinRecoveryView spinRecovery;
+        public RecoveredSpinRecoveryView SpinRecovery=>spinRecovery;
         [SerializeField] private RecoveredBaseReelController reels;
         [SerializeField] private RecoveredSymbolCatalog symbols;
         [SerializeField] private float rewardDelay;

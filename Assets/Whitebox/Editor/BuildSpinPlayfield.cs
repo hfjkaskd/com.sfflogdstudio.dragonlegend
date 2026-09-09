@@ -127,6 +127,7 @@ public static class BuildSpinPlayfield
             BuildBonusFlow.AttachNpc(root);
             BuildMainComposition.Attach(root);
             BuildFreeBottom.Attach(root);
+            BuildSpinRecovery.Attach(root);
             BuildMainModeView.Attach(root);
             BuildScatter.Attach(root);
             BuildSpinHint.Attach(root);

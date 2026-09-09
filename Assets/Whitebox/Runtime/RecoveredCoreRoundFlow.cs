@@ -29,6 +29,7 @@ namespace DragonLegend.Whitebox
         {
             game=context;var field=game.Playfield;var reels=field.ModeView.FreeReels;
             moreSpins.Bind(game);tips.Bind(game.GetComponent<Canvas>().worldCamera);
+            field.SpinRecovery.Bind(game,moreSpins.Show);
             game.SpinEntry.MoreSpinsRequested+=moreSpins.Show;moreSpins.LimitTipRequested+=ShowMoreSpinLimit;
             var player=game.PlayerProgress;var rules=game.Rules;var profile=game.CurrentProfile;
             var symbols=new int[field.Symbols.ModeCount(RecoveredSlotType.Free)];
@@ -79,6 +80,7 @@ namespace DragonLegend.Whitebox
             if(game==null)return;
             game.SpinEntry.MoreSpinsRequested-=moreSpins.Show;moreSpins.LimitTipRequested-=ShowMoreSpinLimit;
             moreSpins.Cancel();tips.Cancel();
+            game.Playfield.SpinRecovery.Unbind();
             game.BonusFlow.Completed-=AfterBonus;game.BonusFlow.BindFreeScan(null);
             var mode=game.Playfield.ModeView;
             game.Playfield.SpinHint.Hide();
