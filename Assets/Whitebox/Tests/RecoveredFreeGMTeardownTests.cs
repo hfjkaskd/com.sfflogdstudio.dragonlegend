@@ -29,10 +29,13 @@ public sealed class RecoveredFreeGMTeardownTests
                 Assert.IsTrue(controller.IsRunning);Assert.IsTrue(reels.IsInitialized);
                 if(phase==1)for(int frame=0;frame<100&&controller.StoppedCount==0;frame++)yield return null;
                 Assert.Less(controller.StoppedCount,5);if(phase==1)Assert.Greater(controller.StoppedCount,0);
+                var oldShake=game.Playfield.Wilds.Shake;
+                if(phase==1)Assert.IsTrue(oldShake.IsShaking,"Partial Free stop must have started its board shake.");
                 int completions=0,sounds=0;controller.ReelsStopped+=()=>completions++;controller.SoundRequested+=name=>sounds++;
                 float cash=player.GreenCount,total=player.TotalFreeSpinWin;int count=player.FreeSpinCount;
                 var motions=new RecoveredBaseReelMotion[15];for(int col=0;col<5;col++)for(int row=0;row<3;row++)motions[col*3+row]=reels.MotionAt(col,row).Movement;
                 game.transform.Find("SelectUS").GetComponent<Button>().onClick.Invoke();
+                Assert.IsFalse(oldShake.IsShaking);Assert.AreEqual(oldShake.OriginalPosition,oldShake.Target.anchoredPosition);
                 Assert.IsFalse(controller.IsRunning,"GM must abort the old Free controller immediately.");
                 foreach(var motion in motions){Assert.IsFalse(motion.IsSpinning);Assert.IsFalse(motion.StopRequested);}
                 deadline=Time.realtimeSinceStartup+10;while((game.PlayerProgress==player||game.CoreRound==null)&&Time.realtimeSinceStartup<deadline)yield return null;

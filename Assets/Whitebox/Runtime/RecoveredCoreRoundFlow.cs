@@ -41,6 +41,8 @@ namespace DragonLegend.Whitebox
         public void Bind(GameEntry context)
         {
             game=context;var field=game.Playfield;var reels=field.ModeView.FreeReels;
+            field.Reels.ShakeRequested+=field.Wilds.Shake.Begin;
+            reels.Controller.ShakeRequested+=field.Wilds.Shake.Begin;
             moreSpins.Bind(game);tips.Bind(game.GetComponent<Canvas>().worldCamera);
             moreWild.Bind(game);
             bankPending=false;
@@ -134,6 +136,9 @@ namespace DragonLegend.Whitebox
         public void Unbind()
         {
             if(game==null)return;
+            game.Playfield.Reels.ShakeRequested-=game.Playfield.Wilds.Shake.Begin;
+            game.Playfield.ModeView.FreeReels.Controller.ShakeRequested-=game.Playfield.Wilds.Shake.Begin;
+            game.Playfield.Wilds.Shake.Cancel();
             game.Playfield.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
             game.BonusFlow.Window.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
             wheel.Window.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
