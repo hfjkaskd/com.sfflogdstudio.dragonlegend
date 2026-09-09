@@ -28,6 +28,14 @@ public sealed class RecoveredMainCashOutStatusTests
             Assert.AreEqual(new Vector2(251,-116.04309f),status.Panel.anchoredPosition);
             Assert.AreEqual(new Vector2(359.5136f,113.80737f),status.Panel.sizeDelta);
             Assert.IsNotNull(status.Panel.GetComponent<Image>().sprite);
+            var adapt=status.GetComponent<RecoveredScreenAdapt>();Assert.IsNotNull(adapt,"Original Node owns Adapt.");
+            var statusRect=(RectTransform)status.transform;var scaler=game.GetComponentInParent<CanvasScaler>();
+            Assert.IsNotNull(scaler);float factor=scaler.matchWidthOrHeight*scaler.referenceResolution.y/1920-scaler.referenceResolution.x*(scaler.matchWidthOrHeight-1)/1080;
+            adapt.Apply(1080,1920,new Rect(24,60,1032,1740));
+            Assert.AreEqual(24*factor,statusRect.offsetMin.x,.0002f);Assert.AreEqual(60*factor,statusRect.offsetMin.y,.0002f);
+            Assert.AreEqual(-24*factor,statusRect.offsetMax.x,.0002f);Assert.AreEqual(-120*factor,statusRect.offsetMax.y,.0002f);
+            Assert.AreEqual(new Vector2(251,-116.04309f),status.Panel.anchoredPosition,"Adapt changes the source parent, not child layout.");
+            adapt.AdaptScreen();
             mode.ApplyCurrent();string original=status.Label.text;
             game.PlayerProgress.SetGreenCount(game.Rules.GetCashOutCash(0));
             for(int i=0;i<110;i++)yield return null;

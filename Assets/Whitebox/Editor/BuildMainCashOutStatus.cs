@@ -19,11 +19,9 @@ public static class BuildMainCashOutStatus
         foreach(Match m in Regex.Matches(source,@"^--- !u!\d+ &(\d+)\n.*?(?=^--- !u!|\z)",RegexOptions.Multiline|RegexOptions.Singleline))blocks.Add(m.Groups[1].Value,m.Value);
         const string rootId="224901155395665742";
         blocks[rootId]=Regex.Replace(blocks[rootId],@"  m_Children:\n.*?  m_Father:","  m_Children:\n  - {fileID: 224440584996359664}\n  m_Father:",RegexOptions.Singleline);
-        // Node has unrelated native behaviours: retain only its source RectTransform.
-        const string rootGo="1618682377417806";
-        blocks[rootGo]=Regex.Replace(blocks[rootGo],@"  m_Component:\n.*?  m_Layer:","  m_Component:\n  - component: {fileID: "+rootId+"}\n  m_Layer:",RegexOptions.Singleline);
         var text=new StringBuilder("%YAML 1.1\n%TAG !u! tag:unity3d.com,2011:\n");BuildTreasureCard.Append(rootId,rootId,blocks,text);
         var map=new Dictionary<string,string>();BuildTreasureCard.Script<Image>(map,"3cf5a44414476512e00c3e7a2569a919");BuildTreasureCard.Script<TextMeshProUGUI>(map,"3f96b1d166d19b209697e35b35d65c76");
+        BuildTreasureCard.Script<RecoveredScreenAdapt>(map,"3991d2bd099e12203576b2cf89b113da");
         BuildTreasureCard.Map(map,"17c564eadab8a3940aac81ae943b3097","Assets/Resources/RecoveredArt/Res/UI/zhujiemian/zjm_s9g_spin_bg.png");
         string yaml=text.ToString();foreach(var pair in map)yaml=yaml.Replace(pair.Key,pair.Value);
         string spriteGuid=map["17c564eadab8a3940aac81ae943b3097"];
