@@ -1,0 +1,3876 @@
+{
+  "inputs": [
+    {
+      "path": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\reference-unity\\ExportedProject\\Assets\\Res\\ViewPrefabs\\UIRewardView.prefab",
+      "sha256": "ad81c5c9f01d1ff0a99a9c54135cb29dfb50af16c89ffbcee0f6f859a014234a"
+    },
+    {
+      "path": "ReferenceOriginal/Res/ViewPrefabs/UIRewardView.prefab",
+      "sha256": "ad81c5c9f01d1ff0a99a9c54135cb29dfb50af16c89ffbcee0f6f859a014234a"
+    },
+    {
+      "path": "Assets/Resources/RecoveredUI/BonusRewardPopup.prefab",
+      "sha256": "60557e049c0c43633088ab1931566423db724a442841c2eca52bef866b62fd2c"
+    },
+    {
+      "path": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\reference-unity\\ExportedProject\\Assets\\Res\\ViewPrefabs\\UIJackpotView.prefab",
+      "sha256": "d76fb8ef74e8e4ed62d0e70ec6f99207b595e9c2574d576c8ddae2cd7449f160"
+    },
+    {
+      "path": "ReferenceOriginal/Res/ViewPrefabs/UIJackpotView.prefab",
+      "sha256": "d76fb8ef74e8e4ed62d0e70ec6f99207b595e9c2574d576c8ddae2cd7449f160"
+    },
+    {
+      "path": "Assets/Resources/RecoveredUI/JackpotPopup.prefab",
+      "sha256": "1b2577633380c986af26ccfc2e720f6ecdaaeb0721024870c4ef583c1fb0d036"
+    },
+    {
+      "path": "C:\\Projects\\Nut Sort Relax\\reconstruction\\mumu-current\\reference-unity\\ExportedProject\\Assets\\Res\\ViewPrefabs\\UITreasureView.prefab",
+      "sha256": "18113e37f41c682e88e0c83e82a8f87d4d49a637813c6a9735851f71599a63cb"
+    },
+    {
+      "path": "ReferenceOriginal/Res/ViewPrefabs/UITreasureView.prefab",
+      "sha256": "18113e37f41c682e88e0c83e82a8f87d4d49a637813c6a9735851f71599a63cb"
+    },
+    {
+      "path": "Assets/Resources/RecoveredUI/TreasureWindow.prefab",
+      "sha256": "042d37867aebc067e5fa6b3e58b3ef71e72e23b636456b4f6ae5e1c054ddb6eb"
+    },
+    {
+      "path": "Assets/Resources/RecoveredUI/TreasureCard.prefab",
+      "sha256": "e3e4e20ab5068a1f137d903c21ef0c0ab532940554dfbfd746d77522d05cba2d"
+    },
+    {
+      "path": "Assets/Resources/RecoveredUI/CollectTip.prefab",
+      "sha256": "78184a89e8569557892a72e87066c57c64493d09553cefe0164e353351fe45f5"
+    }
+  ],
+  "checks": [
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_FontData"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Text (TMP)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "BonusRewardPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_FontData"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Text (Legacy)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Text (TMP)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "JackpotPopup",
+      "path": "/Content/CashOutTip/Slider/ProgressTxt",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (Legacy)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (Legacy)",
+      "field": "m_FontData"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (Legacy)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (Legacy)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (Legacy)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (Legacy)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (Legacy)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (Legacy)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (Legacy)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (Legacy)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Text (TMP)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/UnPlayBtn/Text (TMP)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/TreasureCard/CardFont/Info/Btn/ClaimBtn/Text (TMP)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Text (TMP)",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Slider/ProgressTxt",
+      "field": "m_Pivot"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_Color"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_fontColor32"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_fontColor"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_enableVertexGradient"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_colorMode"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_fontColorGradient"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_fontSize"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_fontSizeBase"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_fontWeight"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_enableAutoSizing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_fontSizeMin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_fontSizeMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_fontStyle"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_HorizontalAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_VerticalAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_textAlignment"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_characterSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_wordSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_lineSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_lineSpacingMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_paragraphSpacing"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_charWidthMaxAdj"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_enableWordWrapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_wordWrappingRatios"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_overflowMode"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_enableKerning"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_enableExtraPadding"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_isRichText"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_parseCtrlCharacters"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_isOrthographic"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_isCullingEnabled"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_horizontalMapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_verticalMapping"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_uvLineOffset"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_geometrySortingOrder"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_IsTextObjectScaleStatic"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_VertexBufferAutoSizeReduction"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_useMaxVisibleDescender"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_pageToDisplay"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_margin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_isVolumetricText"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_LocalRotation"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_LocalPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_LocalScale"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_AnchorMin"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_AnchorMax"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_AnchoredPosition"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_SizeDelta"
+    },
+    {
+      "prefab": "TreasureWindow",
+      "path": "/Content/CollectTip/Image (1)/Text (TMP) (1)",
+      "field": "m_Pivot"
+    }
+  ],
+  "differences": []
+}
