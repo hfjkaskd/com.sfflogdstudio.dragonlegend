@@ -63,16 +63,17 @@ at +0x11c; it does not recreate the list or reset scrolling. Callback
 add item-specific behavior. CollectItemData.ResetItem 0x23acd58 is empty.
 
 The native ListView uses official ScrollRect with visible-item reuse, not a
-fully instantiated grid. Initial cache capacity at 0x237ec7c is
-min(total, repeat * truncate(view height / cell height)) for the vertical
-case. It can allocate more on demand. AddItemToCache 0x237f4dc calls ResetItem,
+fully instantiated grid. The separate CreateCacheItemData helper at 0x237ec7c
+computes min(total, repeat * truncate(view height / cell height)), but is NOT
+called by the initial CreateList/Init path. Initial cells are allocated on
+demand in the first refresh. AddItemToCache 0x237f4dc calls ResetItem,
 moves to the configured offscreen hide position, and appends if absent;
 GetItemFromCache 0x237f788 takes index 0 (FIFO), allocating when empty.
 CheckSingleItem 0x237f83c compares each positioned cell to the viewport using
 half extents, hides/recycles offscreen cells, positions newly shown cells and
 refreshes their data; data-dirty refreshes already visible cells. Remaining
-ListView geometry, ScrollRect initialization and refresh scheduling still
-need direct source verification before integration.
+ListView geometry, ScrollRect initialization and refresh scheduling are
+now documented in `collect-list.md` with their recovered prefab/controller.
 
 The full collection window, its Close and main entry binding, complete-set
 reward branch, production Free lifecycle and whole-screen visual fidelity
