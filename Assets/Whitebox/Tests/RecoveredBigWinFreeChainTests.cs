@@ -16,7 +16,10 @@ public sealed class RecoveredBigWinFreeChainTests
     [UnityTest]
     public IEnumerator OnePaidSpinCompletesEveryAwardedFreeRoundAfterBigWinAndBonus()=>Run(true,true);
 
-    private IEnumerator Run(bool includeBonus,bool fullFree=false)
+    [UnityTest]
+    public IEnumerator ActualBaseCoinCompletesCollectionThenBonusAndAllFreeRounds()=>Run(true,true,true);
+
+    private IEnumerator Run(bool includeBonus,bool fullFree=false,bool collectBonus=false)
     {
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);
         PlayerPrefs.DeleteKey(key);var random=Random.state;float scale=Time.timeScale,delta=Time.captureDeltaTime;
@@ -29,13 +32,21 @@ public sealed class RecoveredBigWinFreeChainTests
             while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.CoreRound);var core=game.CoreRound;var field=game.Playfield;var player=game.PlayerProgress;
             core.FirstSpinGuide.Hide();game.PlayerStore.Data.GuideStep=3;
+            if(collectBonus) {
+                for(int col=0;col<5;col++)game.PlayerStore.Data.BonusArea[col]=col==4?1:2;
+                field.BonusCollection.Initialize(player.BonusArea);
+                Assert.IsFalse(player.IsBonusGame);
+                Assert.IsFalse(field.BonusCollection.GetUnselectedTarget(4,2).GetChild(0).gameObject.activeSelf);
+            }
             int mixedSeed=-1;
-            for(int seed=0;seed<10000;seed++) {
+            for(int seed=0;seed<(collectBonus?200000:10000);seed++) {
                 Random.InitState(seed);var settlement=new RecoveredSlotSettlement(game.Rules);
                 var probe=new RecoveredSpinResult(game.Rules,settlement){ForceFreeSpin=true};
                 probe.Begin(false,field.Bet,Mathf.Max(0,player.MoreWild-1),game.PlayerStore.Data.BonusArea);
                 int steps=0;while(probe.IsGenerating&&steps++<10000)probe.Step();
-                if(!probe.IsGenerating&&probe.ScatterCount>=3&&game.Rules.GetBigWin(settlement.GetWinTotalLine(),field.Bet)!=RecoveredSlotWinType.None){mixedSeed=seed;break;}
+                bool completesCollection=!collectBonus;
+                if(collectBonus)for(int row=0;row<3;row++)if(probe.Board.GetSymbol(4,row)==9)completesCollection=true;
+                if(!probe.IsGenerating&&completesCollection&&probe.ScatterCount>=3&&game.Rules.GetBigWin(settlement.GetWinTotalLine(),field.Bet)!=RecoveredSlotWinType.None){mixedSeed=seed;break;}
             }
             Assert.GreaterOrEqual(mixedSeed,0,"Find a real BigWin plus Scatter result without replacing cells.");
             int freeSeed=-1;
@@ -71,12 +82,18 @@ public sealed class RecoveredBigWinFreeChainTests
             float initialCash=player.GreenCount;int initialSpins=player.SpinCount;
             field.FlyCoinRequested+=(amount,callback)=>{baseFlights++;Assert.IsFalse(core.Entry.Window.gameObject.activeSelf);};
             Random.InitState(mixedSeed);game.SpinResult.ForceFreeSpin=true;
-            player.IsBonusGame=includeBonus;
+            if(!collectBonus)player.IsBonusGame=includeBonus;
             field.SpinButton.Button.onClick.Invoke();
+            if(collectBonus){Assert.IsFalse(player.IsBonusGame);Assert.AreEqual(1,player.BonusArea[4]);}
             Assert.GreaterOrEqual(game.SpinResult.ScatterCount,3);
             Assert.AreNotEqual(RecoveredSlotWinType.None,game.Rules.GetBigWin(game.Settlement.GetWinTotalLine(),field.Bet));
             for(int frame=0;frame<1000&&!field.BigWinPopup.gameObject.activeSelf;frame++)yield return null;
             Assert.IsNull(field.Error);Assert.IsTrue(field.BigWinPopup.gameObject.activeSelf);
+            if(collectBonus) {
+                Assert.GreaterOrEqual(player.BonusArea[4],2,"Actual Base coin scan must fill the missing collection slot.");
+                Assert.IsTrue(field.BonusCollection.GetUnselectedTarget(4,2).GetChild(0).gameObject.activeSelf,"The real coin flight must light the collection target.");
+                Assert.IsFalse(player.IsBonusGame,"Readiness is evaluated later, at CheckBonusGame.");
+            }
             Assert.IsFalse(core.Entry.IsRunning);Assert.AreEqual(initialCash,player.GreenCount);
             for(int frame=0;frame<30;frame++)yield return null;
             field.BigWinPopup.ClaimButton.onClick.Invoke();Assert.IsTrue(game.Ads.Pending);
@@ -170,7 +187,7 @@ public sealed class RecoveredBigWinFreeChainTests
             Assert.AreEqual(RecoveredSlotType.Base,player.GameSlotType);Assert.AreEqual("normalBg",game.CoreAudio.Manager.RequestedMusic);
             field.SpinButton.Button.onClick.Invoke();Assert.AreEqual(initialSpins-2,player.SpinCount);
             TestContext.WriteLine("Mixed Base result seed: "+mixedSeed+"; full Free: "+fullFree+"; completed Free rounds: "+rounds+
-                "; coins: "+coinCount+"; balls: "+ballCount+"; Free ledger: "+freeLedger);
+                "; coins: "+coinCount+"; balls: "+ballCount+"; Free ledger: "+freeLedger+"; actual collection trigger: "+collectBonus);
         } finally {
             Random.state=random;Time.timeScale=scale;Time.captureDeltaTime=delta;
             if(scene.IsValid()&&scene.isLoaded)unload=SceneManager.UnloadSceneAsync(scene);

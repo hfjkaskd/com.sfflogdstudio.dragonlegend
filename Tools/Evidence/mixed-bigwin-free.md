@@ -120,3 +120,28 @@ The two shortened cases still pass with one Free round each. This adds
 continuous full-count coverage for the observed mixed session, not every
 random outcome, every ball type, region profile, lifecycle interruption or
 pixel-level visual result. No SDK or production implementation changed.
+
+## Actual Base collection triggers Bonus
+
+The fourth case starts from [2,2,2,2,1], with the final lamp off and
+IsBonusGame false. Its probe requires an actual column-4 coin, BigWin and
+Scatter. The first 10,000 candidates found none (process 18704: 3/4 passed,
+new case failed before gameplay). Expanding the bounded search found 29858;
+process 32616 passed that case in 6.107358 seconds. No rules, board cells,
+callbacks or readiness flags were substituted to satisfy the search.
+
+After the actual Spin, column 4 initially stays at 1. At BigWin it has reached
+at least 2, and the real flight has lit the previously dark lamp, while
+IsBonusGame remains false. CheckPlayBonusAnim increments during its scan;
+the visual arrival lights the target; CheckBonusGame later tests the counts
+and consumes/resets the area. The data increment is not moved to arrival.
+
+The existing continuation then completes Bonus, preserves Scatter, and runs
+all 6 awarded Free rounds without shortening or per-round reseeding. It
+processes 5 coins and 4 balls with Free ledger 103, continues through the
+total window, returns to Base and accepts the next paid Spin.
+
+With the lamp assertions, process 6824 exited: 4/4 passed in 15.9393685 seconds
+(Artifacts/collected-bonus-free-final-tests.xml). This verifies last-coin
+collection to Bonus/Free in the observed session, not the entire collection
+from zero or all outcomes/profiles. Production and SDK code are unchanged.

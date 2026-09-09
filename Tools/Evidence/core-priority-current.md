@@ -15,10 +15,17 @@ rounds, four coins, six balls, total and Base return. The latest targeted run
 passed 3/3 (full-mixed-free-ledger-tests.xml); see mixed-bigwin-free.md. That
 fixture still sets IsBonusGame before the Base Spin. It does not prove the
 preceding actual Base coin collection causes Bonus readiness in that same
-continuous mixed path. This is the next concrete core coverage target: start
+continuous mixed path. The next target identified at that review was to start
 from defined collection progress, use actual generated Base coins and arrival
 callbacks to complete it, and observe Bonus consumption before the pending Free
 branch without setting the readiness flag or replacing board cells.
+
+Follow-up at ab31f6a: that target now passes in the fourth mixed-chain case,
+using actual Base seed 29858 from [2,2,2,2,1], with the final lamp observed
+off then on, automatic Bonus consumption and all six awarded Free rounds.
+The latest mixed suite passed 4/4 in collected-bonus-free-final-tests.xml;
+see mixed-bigwin-free.md. Collection from zero and broader random/profile
+coverage remain unproven.
 
 Spin routing now exercises 21 real scene-raycast click-handler deliveries with
 one debit/start and no busy-click state mutation (spin-input-routing.md).
