@@ -54,6 +54,7 @@ namespace DragonLegend.Whitebox
             exit.FreeEndFlagClearRequested+=ReturnedToBase;
             game.BonusFlow.Completed+=AfterBonus;
             field.SpinHint.Begin();
+            if(game.PlayerStore.Data.GuideStep==1)field.SpinHint.ShowImmediate();
         }
         private int Language()=>game.CurrentProfile.languageType;
         private void ShowMoreSpinLimit()=>tips.Show(moreSpinLimitMessage);

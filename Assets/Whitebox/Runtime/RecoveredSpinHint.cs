@@ -20,6 +20,11 @@ namespace DragonLegend.Whitebox
         private void Show()
         {
             wait=null;
+            ShowImmediate();
+        }
+        // OnAfterShow 23bbfc0 shows the same pooled hand without killing InitSpinSequence.
+        public void ShowImmediate()
+        {
             if(finger==null)finger=Instantiate(fingerPrefab,destination,false);
             else finger.SetParent(destination,false);
             finger.localScale=Vector3.one;finger.anchoredPosition=Vector2.zero;

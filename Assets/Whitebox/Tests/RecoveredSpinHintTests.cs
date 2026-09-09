@@ -21,11 +21,14 @@ public sealed class RecoveredSpinHintTests
             yield return SceneManager.LoadSceneAsync("GameEntry",LoadSceneMode.Additive);scene=SceneManager.GetSceneByName("GameEntry");
             GameEntry game=null;foreach(var root in scene.GetRootGameObjects()){var found=root.GetComponentInChildren<GameEntry>();if(found!=null)game=found;}
             float deadline=Time.realtimeSinceStartup+10;while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
-            Assert.IsNotNull(game.CoreRound);var hint=game.Playfield.SpinHint;Assert.IsTrue(hint.IsWaiting);Assert.IsNull(hint.Finger);
-            hint.Hide();hint.Begin();for(int frame=0;frame<20;frame++)yield return null;Assert.IsNull(hint.Finger);
-            Time.timeScale=0;for(int frame=0;frame<30;frame++)yield return null;Assert.IsNull(hint.Finger);
+            Assert.IsNotNull(game.CoreRound);var hint=game.Playfield.SpinHint;Assert.IsTrue(hint.IsWaiting);
+            Assert.AreEqual(1,game.PlayerStore.Data.GuideStep);Assert.IsNotNull(hint.Finger);Assert.IsTrue(hint.Finger.gameObject.activeSelf);
+            var initialFinger=hint.Finger;
+            hint.Hide();hint.Begin();for(int frame=0;frame<20;frame++)yield return null;Assert.IsFalse(hint.Finger.gameObject.activeSelf);
+            Time.timeScale=0;for(int frame=0;frame<30;frame++)yield return null;Assert.IsFalse(hint.Finger.gameObject.activeSelf);
             Time.timeScale=1;for(int frame=0;frame<25;frame++)yield return null;
             var finger=hint.Finger;Assert.IsNotNull(finger);Assert.IsTrue(finger.gameObject.activeInHierarchy);Assert.IsFalse(hint.IsWaiting);
+            Assert.AreSame(initialFinger,finger);
             Assert.AreEqual(game.Playfield.SpinButton.transform,finger.parent);Assert.AreEqual(Vector2.zero,finger.anchoredPosition);
             Assert.AreEqual(Vector3.one,finger.localScale);Assert.AreEqual(Vector2.one*100,finger.sizeDelta);
             var art=finger.GetComponentInChildren<RecoveredRegionAnimator>();Assert.IsNotNull(art);Assert.IsFalse(art.Rig.raycastTarget);
@@ -46,6 +49,9 @@ public sealed class RecoveredSpinHintTests
             for(int frame=0;frame<45;frame++)yield return null;
             Assert.AreSame(finger,hint.Finger);Assert.IsTrue(finger.gameObject.activeInHierarchy);
             game.transform.Find("SelectUS").GetComponent<Button>().onClick.Invoke();Assert.IsFalse(hint.IsWaiting);Assert.IsFalse(finger.gameObject.activeSelf);
+            deadline=Time.realtimeSinceStartup+10;while((game.CoreRound==null||game.Playfield.SpinHint==hint)&&Time.realtimeSinceStartup<deadline)yield return null;
+            Assert.GreaterOrEqual(game.PlayerStore.Data.GuideStep,2);
+            Assert.IsTrue(game.Playfield.SpinHint.IsWaiting);Assert.IsNull(game.Playfield.SpinHint.Finger,"Returning player only starts the idle timer.");
         } finally {
             Random.state=random;Time.timeScale=scale;Time.captureDeltaTime=delta;RenderTexture.active=prior;if(camera!=null)camera.targetTexture=null;
             if(target!=null)Object.Destroy(target);if(capture!=null)Object.Destroy(capture);
