@@ -1,0 +1,25 @@
+# CashOutItem prefab and runtime audit
+
+## Authored asset
+
+BuildCashOutItem imports ReferenceOriginal/Res/Prefabs/CashOutItem.prefab using official Unity Image, Button and TextMeshProUGUI. Its five original sprites are tx_bak_01, tx_icon_01, tx_bar_03, tx_bar_04 and tx_progressing02. Individual PNGs must be imported as single sprites, rather than merely replacing GUIDs with ordinary texture assets.
+
+The card uses the original Microsoft YaHei Bold SDF asset, face/glyph metrics and atlas material, not the game's decorative popup font. The source font asset and material are recovered into CashOutItemArt; script, shader, source TTF and atlas references resolve to current official Unity assets. Source font/material GUIDs are retained. No new font rasterization or system-font substitution is performed by the author.
+
+All existing card visuals are moved below the original standard Btn while preserving world positions. This implements the user's button/visual hierarchy rule without changing their authored appearance. Static structures are authored offline, not created by production runtime logic.
+
+This increment is the authored visual prefab only. The recovered custom CashOutItem MonoBehaviour is removed because its assembly is unavailable; its runtime presentation and events are still to be implemented and bound. There are no placeholder click actions, simulated orders or claims of a working cash-out window.
+
+## Verified runtime contracts for the next integration
+
+- InitUI 23a54ec stores id and the shared ItemKuang, formats configured cash with zero decimals, then calls RefreshKuang. Matching items reparent/activate the shared frame; nonmatching items leave it alone (23a63f0).
+- No player record: Detail is hidden, Progress shown, Task hidden. Background/icon use the current payment type via tx_bak_0{0}/tx_icon_0{0} and SetNativeSize. Label is live balance (two decimals), slash, target (zero decimals). Fill width is Clamp01(balance/target) times the original constructor width, **726** (23a6750 writes float bits 0x44358000); height comes from the live Fill rect. It is not derived from a new layout width.
+- Existing record: background/icon use record.type, irrespective of the currently selected payment type. step != 1000 hides Detail/Progress and shows Task, with TaskTip `Progressing`. The task target comes from GetSuccessTaskCount when isCashout=true and GetFailTaskCount otherwise. At step 6, both current and target are replaced by raw collect-record Count and configured collection Count, rather than total collected copies.
+- Task text is ConfigManager.GetCashOutDetail(step), formatted with current/target. The original descriptions are Spin, Watch ads, Claim Jackpots, Claim BigWins, Claim Treasures, Play FreeGames for steps 0..5, and Collect Treasures for all other values.
+- Initial pending text formats elapsed UTC seconds, then schedules the remaining duration. InitUI's already-expired string is `Pending Review00:00:00` (no space); RefreshGoldTime's expired string is `Pending Review 00:00:00`. The two native strings differ and should not be silently normalized.
+- TimeShow 23a50e8 ignores negative durations. For nonnegative durations it kills the previous sequence, then schedules one scaled-second interval and one callback for each second. Callback 23a680c decrements remaining first, formats the remaining time, and dispatches its completion event only at zero. This differs from InitUI's initial elapsed-time display.
+- The original sequence allocates work proportional to the number of seconds. A constant-size item in the existing Unity update runner can preserve interval/callback behavior without preallocating potentially hours of callbacks; that implementation is not part of this asset-only increment.
+- step == 1000 hides Progress, shows Task, sets Progressing, then hides TaskText1/2 and checks order data. Missing local orders or matching order returns without introducing an approval result. SDK/order-state integration remains subject to the user's SDK exclusion.
+- OnClickBtn 23a6590 emits click sound and dispatches the original selection event with id plus the shared frame; it does not itself submit a cash request.
+
+Validation uses RecoveredCashOutItemArtTests and a fresh Artifacts/current-cash-item-art.png render. This tests authored resources and hierarchy, not runtime task transitions or completed window integration. Final focused PlayMode test passed 1/1 (Artifacts/cash-item-art-final.xml); Unity PID 43436 exited. Both current-cash-item-art.png and current-cash-item-task-art.png were inspected. These are explicitly configured art previews retaining source example text, not live gameplay values. The initial raw preview exposed overlapping authored states; the test previews them separately. It also exposed missing Sprite borders: tx_bar_03 now preserves (24,0,24,0), and tx_bar_04 preserves (18,0,18,0), with assertions on those values. The original card retains its source example text until runtime binding is implemented.
