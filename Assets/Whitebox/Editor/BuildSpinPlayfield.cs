@@ -129,6 +129,7 @@ public static class BuildSpinPlayfield
             BuildFreeBottom.Attach(root);
             BuildMainModeView.Attach(root);
             BuildScatter.Attach(root);
+            BuildSpinHint.Attach(root);
             var saved = PrefabUtility.SaveAsPrefabAsset(root, destination);
             const string entryPath = "Assets/Resources/Whitebox/GameEntry.prefab";
             var entryRoot = PrefabUtility.LoadPrefabContents(entryPath);

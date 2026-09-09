@@ -158,10 +158,11 @@ callback 23c2f4c clears +218. It then iterates configured cash-out entries, incl
 the cash threshold and already-shown indices, before its final path. These existing
 source branches still need their real native-prefab consumers before full fidelity.
 
-The final InitSpinSequence is also not implemented: 23ba59c allocates a sequence
+The final InitSpinSequence audit found: 23ba59c allocates a sequence
 and appends exactly 2 scaled seconds, then callback 23bf46c requests PoolManager
 ShowFinger on the Spin presentation's parent, reusing Main.SpineFingerObj (+210).
-This is a next core guidance implementation target. Do not describe it as auto-spin.
+This is now connected by RecoveredSpinHint; see spin-hint.md for source hierarchy,
+timing, asset conversion and current-scene verification. It is not auto-spin.
 Adding the final save does not make the current shortened end flow complete.
 Validation: Artifacts/core-final-save.xml passes 355/355 PlayMode tests, including
 the actual Free return persistence assertion.

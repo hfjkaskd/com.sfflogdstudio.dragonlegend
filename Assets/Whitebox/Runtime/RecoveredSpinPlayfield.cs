@@ -131,7 +131,9 @@ namespace DragonLegend.Whitebox
                 while (result.IsGenerating) result.Step();
             }
         }
-        private void Started() { IsBusy = true; AwaitingRewards = false; Error = null; downWin.Started(); spinButton.PlayAcceptedClick(); }
+        [SerializeField] private RecoveredSpinHint spinHint;
+        public RecoveredSpinHint SpinHint=>spinHint;
+        private void Started() { IsBusy = true; AwaitingRewards = false; Error = null; downWin.Started(); spinButton.PlayAcceptedClick(); spinHint.Hide(); }
         private void ResultReady(int index) => reels.Begin(index, ReadColumn);
         private IReadOnlyList<int> ReadColumn(int index)
         {

@@ -1141,6 +1141,7 @@ GameObject:
   - component: {fileID: 937160779504809209}
   - component: {fileID: 1077988670691143041}
   - component: {fileID: 4934534616736951173}
+  - component: {fileID: 3884060580341289348}
   m_Layer: 5
   m_Name: SpinPlayfield
   m_TagString: Untagged
@@ -1210,6 +1211,7 @@ MonoBehaviour:
   scatters: {fileID: 5115973546109213641}
   downWin: {fileID: 3672362072098529445}
   winFlight: {fileID: 8181082882740074449}
+  spinHint: {fileID: 3884060580341289348}
 --- !u!114 &7340944292854852083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1381,6 +1383,21 @@ MonoBehaviour:
   fireworksCanvas: {fileID: 6762213665518020951}
   bottom: {fileID: 540184927151760628}
   downWin: {fileID: 3672362072098529445}
+--- !u!114 &3884060580341289348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8842712680581577391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5d7cb018c59a54ba5807b20dcf734a, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  fingerPrefab: {fileID: 4327123525324647391, guid: 150db4a7596a59d4ab29592a88cfae26, type: 3}
+  destination: {fileID: 8803700774986108143}
+  delay: 2
 --- !u!1001 &42646711000093973
 PrefabInstance:
   m_ObjectHideFlags: 0

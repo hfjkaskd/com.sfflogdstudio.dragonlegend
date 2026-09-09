@@ -45,6 +45,7 @@ namespace DragonLegend.Whitebox
             exit.BaseReelsInitRequested+=InitializeBase;
             exit.FreeEndFlagClearRequested+=ReturnedToBase;
             game.BonusFlow.Completed+=AfterBonus;
+            field.SpinHint.Begin();
         }
         private int Language()=>game.CurrentProfile.languageType;
         private void InitialCount(int count)=>game.Playfield.ModeView.RefreshFreeCount();
@@ -58,6 +59,7 @@ namespace DragonLegend.Whitebox
         private void ReturnedToBase(){entry.ClearFreeEndFlag();CompleteCoreRound();}
         private void CompleteCoreRound()
         {
+            game.Playfield.SpinHint.Begin();
             if(game.Playfield.AwaitingRewards)game.Playfield.CompleteBaseRound();
             // CheckBaseEnd 23c67d4..23c67f4: clear the busy flag, then SavePlayerData.
             game.PlayerStore.Save();
@@ -69,6 +71,7 @@ namespace DragonLegend.Whitebox
             if(game==null)return;
             game.BonusFlow.Completed-=AfterBonus;game.BonusFlow.BindFreeScan(null);
             var mode=game.Playfield.ModeView;
+            game.Playfield.SpinHint.Hide();
             mode.FreeReels.Controller.AbortForProfileChange();
             entry.InitShowRequested-=mode.ApplyCurrent;entry.InitFreeReelsRequested-=mode.InitializeFreeReels;
             entry.InitFreeSpinTimesRequested-=InitialCount;entry.Completed-=AfterEntry;entry.Failed-=Fail;entry.Unbind();
