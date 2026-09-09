@@ -1,5 +1,6 @@
 using System.Collections;
 using DragonLegend.Whitebox;
+using DragonLegend.Whitebox.Recovered;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -28,10 +29,15 @@ public sealed class RecoveredCoreRoundFlowTests
             Random.state=beforeSearch;Assert.GreaterOrEqual(seed,0,"Fixture needs one Free result without a ball branch.");
             // Keep this core-loop fixture short. Other suites cover all four ball routes.
             core.Entry.ChangeMusicRequested+=name=>{game.PlayerProgress.FreeSpinCount=1;Random.InitState(seed);};
+            var cashTask=new PlayerCashOutData{id=0,type=99,step=5,count=7,isCashout=true};
+            game.PlayerStore.Data.PlayerCashOutDatas.Add(cashTask);
             game.SpinResult.ForceFreeSpin=true;spins=game.PlayerProgress.SpinCount;field.SpinButton.Button.onClick.Invoke();
             Assert.AreEqual(spins-1,game.PlayerProgress.SpinCount);
             for(int frame=0;frame<1800&&!core.Entry.Window.gameObject.activeSelf;frame++){Claim(field.BigWinPopup.PlainButton);Claim(field.JackpotPopup.PlainButton);yield return null;}
             Assert.IsTrue(core.Entry.Window.gameObject.activeSelf);Assert.IsTrue(field.IsBusy);Assert.Greater(core.Entry.InitialSpinCount,0);
+            Assert.AreEqual(8,cashTask.count,"One actual Free entry must reach the main cash-task receiver exactly once, before its intro closes.");
+            var persisted=JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString(key));
+            Assert.AreEqual(8,persisted.PlayerCashOutDatas[0].count);
             for(int i=0;i<15;i++)yield return null;core.Entry.Window.PlainButton.onClick.Invoke();
             for(int frame=0;frame<1800&&!core.Exit.Window.IsShown;frame++)yield return null;
             Assert.IsNull(core.Error);Assert.IsNull(core.Exit.Error);Assert.IsNull(field.ModeView.FreeReels.Controller.Error);

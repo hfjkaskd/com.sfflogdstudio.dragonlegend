@@ -5,6 +5,29 @@ using NUnit.Framework;
 
 public sealed class RecoveredPlayerProgressTests
 {
+    [TestCase(1,8)]
+    [TestCase(-10,-3)]
+    [TestCase(0,7)]
+    [TestCase(int.MaxValue,int.MinValue+6)]
+    public void CashTasksUpdateEveryMatchingStepRegardlessOfTypeOrPaidStateThenSave(int amount,int expected)
+    {
+        var data=new PlayerData();
+        data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=0,type=9,step=2,count=7,isCashout=true});
+        data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=1,type=2,step=3,count=13});
+        data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=2,type=0,step=2,count=7});
+        int saves=0;var progress=new RecoveredPlayerProgress(CashRules(),()=>{
+            saves++;Assert.AreEqual(expected,data.PlayerCashOutDatas[0].count);Assert.AreEqual(expected,data.PlayerCashOutDatas[2].count);
+        },data);
+        progress.RefreshCashOutTask(2,amount);Assert.AreEqual(13,data.PlayerCashOutDatas[1].count);Assert.AreEqual(1,saves);
+        progress.RefreshCashOutTask(99,1);Assert.AreEqual(2,saves);
+    }
+    [Test]
+    public void CashTasksSaveEvenForMissingOrEmptyRecordsWithoutCreatingAny()
+    {
+        var data=new PlayerData();int saves=0;var progress=new RecoveredPlayerProgress(CashRules(),()=>saves++,data);
+        progress.RefreshCashOutTask(2,1);Assert.IsEmpty(data.PlayerCashOutDatas);Assert.AreEqual(1,saves);
+        data.PlayerCashOutDatas=null;progress.RefreshCashOutTask(2,1);Assert.IsNull(data.PlayerCashOutDatas);Assert.AreEqual(2,saves);
+    }
     private static RecoveredGameplayRules CashRules() => new RecoveredGameplayRules(new GoldenDragonAutoGenConfig {
         Rgpggm=new RgpggmPoro {Qogt=new List<int>{100,3000,5000}}
     });

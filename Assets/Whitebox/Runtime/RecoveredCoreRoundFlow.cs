@@ -61,6 +61,10 @@ namespace DragonLegend.Whitebox
             entry.Completed+=AfterEntry;entry.Failed+=Fail;
             slot.Bind(player,rules,game.Ads,game.CashFlight,game.transform,profile.isA,profile.languageType);
             wheel.Bind(player,rules,game.Ads,game.CashFlight,game.transform,field,profile.isA,profile.languageType);
+            field.CashOutTaskRefreshRequested+=player.RefreshCashOutTask;
+            game.BonusFlow.Window.CashOutTaskRefreshRequested+=player.RefreshCashOutTask;
+            wheel.Window.CashOutTaskRefreshRequested+=player.RefreshCashOutTask;
+            entry.CashOutTaskRefreshRequested+=player.RefreshCashOutTask;
             treasure.Bind(player,rules,game.Ads,game.CashFlight,game.transform,profile.isA,profile.languageType,game.CollectEntry.Destination);
             lucky.Bind(player,rules,game.Ads,game.CashFlight,game.transform,profile.isA,profile.languageType);
             router=new RecoveredFreeSmallGameRouter(rules,player,slot.Begin,wheel.Begin,treasure.Begin,lucky.Begin);
@@ -130,6 +134,10 @@ namespace DragonLegend.Whitebox
         public void Unbind()
         {
             if(game==null)return;
+            game.Playfield.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
+            game.BonusFlow.Window.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
+            wheel.Window.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
+            entry.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
             game.SpinEntry.GuideHideRequested-=firstSpinGuide.Hide;firstSpinGuide.Hide();
             game.SpinEntry.MoreSpinsRequested-=moreSpins.Show;moreSpins.LimitTipRequested-=ShowMoreSpinLimit;
             moreSpins.Cancel();tips.Cancel();

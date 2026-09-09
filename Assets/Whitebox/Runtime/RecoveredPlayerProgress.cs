@@ -21,6 +21,17 @@ namespace DragonLegend.Whitebox
         public float GreenCount => data.GreenCount;
         public IReadOnlyList<int> BonusArea => data.BonusArea;
         public IReadOnlyList<PlayerCashOutData> CashOutRecords => data.PlayerCashOutDatas;
+        // Main.RefreshCashOutTask 23ba71c; predicate 23c3044 compares step (+0x18), not type.
+        public void RefreshCashOutTask(int step,int amount)
+        {
+            if(data.PlayerCashOutDatas!=null)
+                for(int i=0;i<data.PlayerCashOutDatas.Count;i++)
+                {
+                    var record=data.PlayerCashOutDatas[i];
+                    if(record.step==step)record.count=unchecked(record.count+amount);
+                }
+            save();
+        }
         // Main.CheckBaseEnd 23c60b4..23c64fc: stop at the first absent record,
         // even if its prompt was already shown. Record state does not affect selection.
         public int PrepareCashOutPrompt()
