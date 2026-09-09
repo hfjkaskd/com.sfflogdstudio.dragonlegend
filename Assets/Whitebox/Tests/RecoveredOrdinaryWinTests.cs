@@ -98,7 +98,10 @@ public sealed class RecoveredOrdinaryWinTests
             for(int i=0;i<30&&(completed==0||field.OrdinaryWin.IsCounting);i++)yield return null;
             Assert.AreEqual(1,completed);Assert.GreaterOrEqual(finished-began,.8f-.0001f);Assert.AreEqual(string.Empty,field.SymbolAmount.Label.text);
             Assert.AreEqual(RecoveredCurrency.Format(field.SymbolWin.TotalWin,entry.CurrentProfile.languageType,2),field.DownWin.Label.text);
-            Assert.AreEqual(1,changes);Assert.IsFalse(field.IsBusy);Assert.IsFalse(field.AwaitingRewards);Assert.IsFalse(field.JackpotPopup.gameObject.activeSelf);
+            Assert.AreEqual(1,changes);
+            // Symbol/Bonus callbacks do not bypass the unconditional end-flow waits.
+            for(int i=0;i<4&&field.IsBusy;i++)yield return null;
+            Assert.IsFalse(field.IsBusy);Assert.IsFalse(field.AwaitingRewards);Assert.IsFalse(field.JackpotPopup.gameObject.activeSelf);
             Capture(camera,target,capture,"current-ordinary-win-complete.png");
         } finally {
             Time.timeScale=scale;Time.captureDeltaTime=delta;Random.state=random;RenderTexture.active=previous;

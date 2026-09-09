@@ -19,6 +19,11 @@ namespace DragonLegend.Whitebox
         public RecoveredBankWindow Bank=>bank;
         private bool bankPending;
         private RecoveredReelWait bankWait;
+        [SerializeField] private RecoveredReviewWindow reviewPrefab;
+        private RecoveredReviewWindow review;
+        private bool reviewPending;
+        private RecoveredReelWait reviewWait;
+        public RecoveredReviewWindow Review=>review;
         public RecoveredMoreWildWindow MoreWild=>moreWild;
         [SerializeField] private RecoveredTipsWindow tips;
         [SerializeField] private RecoveredFirstSpinGuide firstSpinGuide;
@@ -39,6 +44,7 @@ namespace DragonLegend.Whitebox
             moreSpins.Bind(game);tips.Bind(game.GetComponent<Canvas>().worldCamera);
             moreWild.Bind(game);
             bankPending=false;
+            reviewPending=false;game.PlayerProgress.ReviewRequested+=ReviewReady;
             bank.Bind(game.PlayerProgress,game.Rules,game.Ads,()=>game.Playfield.Bet,game.CurrentProfile.languageType,game.GetComponent<Canvas>().worldCamera);
             bank.FlyRequested+=BankFly;game.PlayerProgress.BankReady+=BankReady;
             field.BankProgress.Bind(game.PlayerProgress,game.Rules,tips.Show);
@@ -93,10 +99,20 @@ namespace DragonLegend.Whitebox
             if(bankPending)
             {
                 bank.Show(()=>{bankPending=false;game.Playfield.BankProgress.Refresh();});
-                bankWait=RecoveredReelWait.Until(()=>!bankPending,()=>{bankWait=null;FinishCoreRound();},Fail);
-                return;
             }
-            FinishCoreRound();
+            // Native waits are outside the conditional ShowWindow branches.
+            bankWait=RecoveredReelWait.Until(()=>!bankPending,()=>{bankWait=null;AfterBank();},Fail);
+        }
+        private void ReviewReady()=>reviewPending=true;
+        private void AfterBank()
+        {
+            if(reviewPending)
+            {
+                if(review==null)review=Instantiate(reviewPrefab,transform,false);
+                review.Bind(game.GetComponent<Canvas>().worldCamera,Application.identifier,Application.OpenURL);
+                review.Show(()=>reviewPending=false);
+            }
+            reviewWait=RecoveredReelWait.Until(()=>!reviewPending,()=>{reviewWait=null;FinishCoreRound();},Fail);
         }
         private void BankReady()=>bankPending=true;
         private void BankFly(float amount,Action completed,Transform source)=>game.CashFlight.Begin(amount,completed,bank.transform,false,source);
@@ -121,6 +137,8 @@ namespace DragonLegend.Whitebox
             game.PlayerProgress.BankReady-=BankReady;bank.FlyRequested-=BankFly;
             bankWait?.Cancel();bankWait=null;bank.Cancel();bankPending=false;
             game.Playfield.BankProgress.Unbind();
+            game.PlayerProgress.ReviewRequested-=ReviewReady;reviewWait?.Cancel();reviewWait=null;
+            if(review!=null)review.Cancel();reviewPending=false;
             game.Playfield.MoreWildEntry.Unbind();
             game.Playfield.SpinRecovery.Unbind();
             game.BonusFlow.Completed-=AfterBonus;game.BonusFlow.BindFreeScan(null);

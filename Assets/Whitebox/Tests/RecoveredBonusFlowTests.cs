@@ -79,7 +79,10 @@ public sealed class RecoveredBonusFlowTests
             double closed=Time.timeAsDouble;flow.Window.CloseButton.onClick.Invoke();
             for(int i=0;i<240&&completions==0;i++)yield return null;
             Assert.AreEqual(1,completions);Assert.IsFalse(flow.IsRunning);Assert.IsFalse(flow.Window.gameObject.activeSelf);
-            Assert.That(completedAt-closed,Is.InRange(3.7,3.9));Assert.IsFalse(field.IsBusy,"The production no-Free core continuation must release the round");
+            Assert.That(completedAt-closed,Is.InRange(3.7,3.9));
+            // Bonus completion precedes the native Bank and review Update waits.
+            for(int i=0;i<4&&field.IsBusy;i++)yield return null;
+            Assert.IsFalse(field.IsBusy,"The production no-Free core continuation must release the round after its end-flow waits");
             Assert.IsNull(failure);Assert.IsNull(field.Error);
             // The no-Bonus branch returns synchronously without replaying presentation.
             began=0;flow.Begin();Assert.AreEqual(2,completions);Assert.AreEqual(0,began);

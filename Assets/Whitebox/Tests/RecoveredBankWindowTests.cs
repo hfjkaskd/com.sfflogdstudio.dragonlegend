@@ -80,6 +80,10 @@ public sealed class RecoveredBankWindowTests
             Click(window.LeaveButton.gameObject);Assert.AreEqual(1,game.Ads.InterstitialCount);
             for(int i=0;i<10;i++)yield return null;Assert.AreEqual(2,closed);Assert.IsFalse(window.gameObject.activeSelf);
             int rounds=0;game.CoreRound.CoreRoundCompleted+=()=>rounds++;
+            Assert.Less(game.PlayerProgress.Level,game.Rules.GetReview());
+            game.PlayerStore.Data.Level=game.Rules.GetReview()-1;
+            game.PlayerProgress.SetExperience(game.Rules.GetNeedPro(game.PlayerProgress.Level));
+            Assert.IsNull(game.CoreRound.Review,"ReviewRequested only marks the pending event.");
             game.PlayerProgress.SetBankCount(game.Rules.GetBankSpinCD()-1);
             game.Playfield.SpinButton.Button.onClick.Invoke();
             Assert.AreEqual(game.Rules.GetBankSpinCD()+"/"+game.Rules.GetBankSpinCD(),meter.Label.text);Assert.AreEqual(1,meter.Fill.fillAmount);
@@ -92,6 +96,15 @@ public sealed class RecoveredBankWindowTests
             for(int i=0;i<12;i++)yield return null;
             Click(window.Item(0).Button.gameObject);for(int i=0;i<160&&!window.Item(1).Ad.gameObject.activeSelf;i++)yield return null;
             for(int i=0;i<15;i++)yield return null;Click(window.LeaveButton.gameObject);
+            for(int i=0;i<20&&game.CoreRound.Review==null;i++)yield return null;
+            var review=game.CoreRound.Review;Assert.IsNotNull(review);Assert.IsTrue(review.gameObject.activeSelf);
+            Assert.AreEqual(0,rounds);Assert.IsTrue(game.Playfield.IsBusy);Assert.IsFalse(game.CoreRound.MoreWild.gameObject.activeSelf);
+            for(int i=0;i<10;i++)yield return null;
+            Canvas.ForceUpdateCanvases();RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
+            Assert.AreSame(review.Star(3).gameObject,Hit(review.Star(3).transform,camera));Click(review.Star(3).gameObject);
+            Assert.AreEqual(4,review.StarCount);RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});
+            RenderTexture.active=target;capture.ReadPixels(new Rect(0,0,1080,1920),0,0);capture.Apply();File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-review-window.png"),capture.EncodeToPNG());
+            Assert.AreSame(review.ClaimButton.gameObject,Hit(review.ClaimButton.transform,camera));Click(review.ClaimButton.gameObject);
             for(int i=0;i<20&&rounds==0;i++)yield return null;
             Assert.AreEqual(1,rounds);Assert.IsFalse(game.Playfield.IsBusy);Assert.IsFalse(window.gameObject.activeSelf);
             Assert.IsTrue(game.CoreRound.MoreWild.gameObject.activeSelf,"The first-spin ExtraWild guide comes after Bank closes.");
