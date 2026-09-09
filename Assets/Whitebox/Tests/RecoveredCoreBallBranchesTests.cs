@@ -26,6 +26,14 @@ public sealed class RecoveredCoreBallBranchesTests
             float deadline=Time.realtimeSinceStartup+10;while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.CoreRound);
             var core=game.CoreRound;var reels=game.Playfield.ModeView.FreeReels;
+            var destination=game.Playfield.BallDestination;var board=(RectTransform)game.Playfield.transform.Find("QiPan");
+            Assert.AreSame(board,destination.parent);Assert.IsNull(core.transform.Find("LongzhuPos"));
+            Assert.AreEqual(new Vector2(-1.6201172f,100),destination.anchoredPosition);Assert.AreEqual(Vector2.one*.5f,destination.anchorMin);
+            Canvas.ForceUpdateCanvases();Vector3 beforeTarget=destination.position,beforeBoard=board.position;
+            var adapt=game.Playfield.GetComponent<RecoveredScreenAdapt>();adapt.Apply(1080,1920,new Rect(24,60,1032,1740));Canvas.ForceUpdateCanvases();
+            Assert.AreNotEqual(beforeTarget,destination.position);Assert.Less(Vector3.Distance(destination.position-beforeTarget,board.position-beforeBoard),.0001f);
+            Vector2 boardPosition=board.anchoredPosition;Vector3 targetPosition=destination.position;board.anchoredPosition+=new Vector2(13,-7);Canvas.ForceUpdateCanvases();
+            Assert.AreNotEqual(targetPosition,destination.position,"The native target follows board shake.");board.anchoredPosition=boardPosition;adapt.AdaptScreen();
             var slot=core.GetComponentInChildren<RecoveredFreeSlotGame>(true);
             var wheel=core.GetComponentInChildren<RecoveredFreeWheelGame>(true);
             var treasure=core.GetComponentInChildren<RecoveredFreeTreasureGame>(true);

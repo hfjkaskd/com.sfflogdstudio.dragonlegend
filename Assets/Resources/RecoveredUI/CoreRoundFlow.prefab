@@ -75,7 +75,6 @@ RectTransform:
   m_Children:
   - {fileID: 6785247359996870952}
   - {fileID: 1381553164555309771}
-  - {fileID: 2915364523025883469}
   - {fileID: 6815049871907629453}
   - {fileID: 1112353431950011132}
   - {fileID: 4460164230639466997}
@@ -104,7 +103,6 @@ MonoBehaviour:
   wheel: {fileID: 988317761620926311}
   treasure: {fileID: 1639788192995316449}
   lucky: {fileID: 787771489239279415}
-  ballDestination: {fileID: 2915364523025883469}
   moreSpins: {fileID: 9069275592252231870}
   moreWild: {fileID: 2701870150418208910}
   bank: {fileID: 9120080337173907450}
@@ -118,41 +116,6 @@ MonoBehaviour:
   tips: {fileID: 1259411266426862337}
   firstSpinGuide: {fileID: 1359524214667469562}
   moreSpinLimitMessage: The ad isn't ready yet, please wait.
---- !u!1 &8895572818160278174
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2915364523025883469}
-  m_Layer: 5
-  m_Name: LongzhuPos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2915364523025883469
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8895572818160278174}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1942258193237145602}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -1.6235352, y: 752}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &477098138304798500
 PrefabInstance:
   m_ObjectHideFlags: 0

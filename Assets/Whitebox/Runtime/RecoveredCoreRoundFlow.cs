@@ -13,7 +13,6 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredFreeWheelGame wheel;
         [SerializeField] private RecoveredFreeTreasureGame treasure;
         [SerializeField] private RecoveredFreeLuckyGame lucky;
-        [SerializeField] private RectTransform ballDestination;
         [SerializeField] private RecoveredMoreSpinWindow moreSpins;
         [SerializeField] private RecoveredMoreWildWindow moreWild;
         [SerializeField] private RecoveredBankWindow bank;
@@ -107,7 +106,7 @@ namespace DragonLegend.Whitebox
             router=new RecoveredFreeSmallGameRouter(rules,player,slot.Begin,wheel.Begin,treasure.Begin,lucky.Begin);
             reels.CoinScan.Bind(rules,player,game.FreeSpinResult,field.BonusCollection,Language);
             game.BonusFlow.BindFreeScan(reels.CoinScan);
-            reels.BallScan.Bind(game.FreeSpinResult,player,field.Npc,ballDestination,field.Npc.transform.Find("PlayFire"),Language,router.Open,game.BonusFlow);
+            reels.BallScan.Bind(game.FreeSpinResult,player,field.Npc,field.BallDestination,field.Npc.transform.Find("PlayFire"),Language,router.Open,game.BonusFlow);
             reels.RewardCollect.Bind(game.FreeSpinResult,player,field.DownWin,(RectTransform)field.FreeBottom.transform,game.GetComponent<Canvas>().sortingOrder,entry);
             exit.Bind(reels,player,game.FreeSpinResult,game.FreeSpinEntry,symbols,()=>entry.InitialSpinCount,game.transform,Language);
             exit.BaseViewResetRequested+=field.ModeView.ApplyCurrent;
