@@ -11,7 +11,12 @@ using UnityEngine.UI;
 public sealed class RecoveredCoreBallBranchesTests
 {
     [UnityTest]
-    public IEnumerator ActualFreeBallRoutesAllFourGamesAndReturnsTheirRewardsToSettlement()
+    public IEnumerator ActualFreeBallRoutesAllFourGamesAndReturnsTheirRewardsToSettlement()=>Run(false);
+
+    [UnityTest]
+    public IEnumerator AllFourBallGamesRetryFailedRewardAdsBeforeReturningToSettlement()=>Run(true);
+
+    private IEnumerator Run(bool advertised)
     {
         string key=RecoveredPlayerStore.OriginalKey;bool had=PlayerPrefs.HasKey(key);string saved=PlayerPrefs.GetString(key);PlayerPrefs.DeleteKey(key);
         var random=Random.state;float scale=Time.timeScale,delta=Time.captureDeltaTime;Scene scene=default;AsyncOperation unload=null;
@@ -81,23 +86,55 @@ public sealed class RecoveredCoreBallBranchesTests
                 Assert.AreEqual(0,game.CashFlight.ActiveCashCount);
                 float balance=game.PlayerProgress.GreenCount;
                 core.Entry.Window.PlainButton.onClick.Invoke();
-                bool seen=false;int claims=0;
+                bool seen=false;int claims=0,adStage=0;float expectedAdReward=0;
                 for(int frame=0;frame<1800&&!core.Exit.Window.IsShown;frame++) {
                     seen|=branch==0?slot.IsRunning:branch==1?wheel.IsRunning:branch==2?treasure.IsRunning:lucky.IsRunning;
                     Above(slot.Window.Window,core.MoreSpins.gameObject);Above(wheel.Window.Window,core.MoreSpins.gameObject);
                     Above(treasure.Window.gameObject,core.MoreSpins.gameObject);Above(lucky.Popup.gameObject,core.MoreSpins.gameObject);
                     Above(slot.Window.Popup.gameObject,core.MoreSpins.gameObject);Above(wheel.Window.CashPopup.gameObject,core.MoreSpins.gameObject);Above(wheel.Window.JackpotPopup.gameObject,core.MoreSpins.gameObject);
                     Above(slot.Window.Popup.gameObject,slot.Window.Window);Above(wheel.Window.CashPopup.gameObject,wheel.Window.Window);Above(wheel.Window.JackpotPopup.gameObject,wheel.Window.Window);
-                    claims+=ClickVisible(slot.Window.Popup.PlainButton,camera)+ClickVisible(wheel.Window.CashPopup.PlainButton,camera);
-                    claims+=ClickVisible(wheel.Window.JackpotPopup.PlainButton,camera)+ClickVisible(treasure.Window.PlainButton,camera)+ClickVisible(lucky.Popup.PlainButton,camera);
+                    if(!advertised) {
+                        claims+=ClickVisible(slot.Window.Popup.PlainButton,camera)+ClickVisible(wheel.Window.CashPopup.PlainButton,camera);
+                        claims+=ClickVisible(wheel.Window.JackpotPopup.PlainButton,camera)+ClickVisible(treasure.Window.PlainButton,camera)+ClickVisible(lucky.Popup.PlainButton,camera);
+                    } else if(adStage==0||adStage==2) {
+                        int clicked=ClickVisible(slot.Window.Popup.ClaimButton,camera)+ClickVisible(wheel.Window.CashPopup.ClaimButton,camera)+
+                            ClickVisible(wheel.Window.JackpotPopup.ClaimButton,camera)+ClickVisible(treasure.Window.ClaimButton,camera)+ClickVisible(lucky.Popup.ClaimButton,camera);
+                        if(clicked>0) {
+                            Assert.AreEqual(1,clicked);claims+=clicked;Assert.IsTrue(game.Ads.Pending);
+                            Assert.AreEqual(branch==2?"treasure":wheel.Window.JackpotPopup.gameObject.activeInHierarchy?"jackpot":"lucky",game.Ads.Placement);
+                            if(adStage==0) {
+                                if(branch==2) {
+                                    bool found=false;
+                                    foreach(var info in game.Rules.GetCollectInfos())if(info.id==treasure.SelectedId){expectedAdReward=(float)info.worth*treasure.Window.Claim.AdvertisedMultiplier;found=true;break;}
+                                    Assert.IsTrue(found);
+                                } else if(branch==1&&wheel.Window.JackpotPopup.gameObject.activeInHierarchy) {
+                                    var claim=wheel.Window.JackpotPopup.Claim;expectedAdReward=claim.OriginalReward*claim.AdvertisedMultiplier;
+                                } else {
+                                    var claim=branch==0?slot.Window.Popup.Claim:branch==1?wheel.Window.CashPopup.Claim:lucky.Popup.Claim;
+                                    expectedAdReward=claim.OriginalReward*claim.AdvertisedMultiplier;
+                                }
+                            }
+                            Assert.AreEqual(balance,game.PlayerProgress.GreenCount);Assert.IsTrue(reels.BallScan.IsRunning);adStage++;
+                        }
+                    } else if(adStage==1) {
+                        if(ClickVisible(game.AdControls.FailureButton,camera)>0) {
+                            Assert.IsFalse(game.Ads.Pending);Assert.AreEqual(balance,game.PlayerProgress.GreenCount);
+                            Assert.IsTrue(reels.BallScan.IsRunning);Assert.AreEqual(0,reels.CoinScan.Rewards.Count);adStage=2;
+                        }
+                    } else if(adStage==3) {
+                        Assert.AreEqual(balance,game.PlayerProgress.GreenCount);Assert.IsTrue(reels.BallScan.IsRunning);
+                        if(ClickVisible(game.AdControls.RewardButton,camera)>0){Assert.IsFalse(game.Ads.Pending);adStage=4;}
+                    }
                     yield return null;
                 }
                 Assert.IsNull(core.Error);Assert.IsNull(reels.Controller.Error);Assert.IsNull(reels.BallScan.Error);Assert.IsNull(reels.RewardCollect.Error);
                 Assert.IsNull(slot.Error);Assert.IsNull(wheel.Error);Assert.IsNull(lucky.Error);
                 Assert.IsTrue(seen,"Actual requested game did not start: "+branch);
                 Assert.Greater(claims,0,"Each branch must complete through a real raycasted claim.");
+                if(advertised){Assert.AreEqual(4,adStage);Assert.AreEqual(2,claims);}
                 Assert.AreEqual(branch+1,routed);Assert.IsTrue(core.Exit.Window.IsShown,"Free session did not reach its end window: "+branch);
                 Assert.AreEqual(1,reels.CoinScan.Rewards.Count);float reward=0;foreach(var value in reels.CoinScan.Rewards.Values)reward+=value;
+                if(advertised)Assert.AreEqual(expectedAdReward,reward,"Paid ball reward must match the original offer and advertised multiplier.");
                 Assert.AreEqual(reward,reels.RewardCollect.FreeReward);Assert.AreEqual(0,reels.RewardCollect.CoinReward);
                 Assert.AreEqual(reward,game.PlayerProgress.TotalFreeSpinWin);Assert.AreEqual(0,game.PlayerProgress.FreeSpinCount);
                 Assert.AreEqual(balance+reward,game.PlayerProgress.GreenCount,"Ball payout must be credited exactly once.");
