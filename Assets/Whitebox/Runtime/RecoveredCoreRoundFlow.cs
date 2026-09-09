@@ -41,6 +41,8 @@ namespace DragonLegend.Whitebox
         public void Bind(GameEntry context)
         {
             game=context;var field=game.Playfield;var reels=field.ModeView.FreeReels;
+            field.ModeView.HideSpeedEffects();
+            field.Reels.AnticipationVisibilityRequested+=field.ModeView.SetSpeedEffect;
             field.Reels.ShakeRequested+=field.Wilds.Shake.Begin;
             reels.Controller.ShakeRequested+=field.Wilds.Shake.Begin;
             moreSpins.Bind(game);tips.Bind(game.GetComponent<Canvas>().worldCamera);
@@ -139,6 +141,8 @@ namespace DragonLegend.Whitebox
             game.Playfield.Reels.ShakeRequested-=game.Playfield.Wilds.Shake.Begin;
             game.Playfield.ModeView.FreeReels.Controller.ShakeRequested-=game.Playfield.Wilds.Shake.Begin;
             game.Playfield.Wilds.Shake.Cancel();
+            game.Playfield.Reels.AnticipationVisibilityRequested-=game.Playfield.ModeView.SetSpeedEffect;
+            game.Playfield.ModeView.HideSpeedEffects();
             game.Playfield.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
             game.BonusFlow.Window.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
             wheel.Window.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;

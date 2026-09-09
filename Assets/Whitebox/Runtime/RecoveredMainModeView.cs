@@ -7,6 +7,10 @@ namespace DragonLegend.Whitebox
     {
         [SerializeField] private GameObject baseRoll,baseResult,freeRoll;
         [SerializeField] private RecoveredFreeReels freeReels;
+        [SerializeField] private GameObject[] speedEffects;
+        public GameObject SpeedEffectAt(int index)=>speedEffects[index];
+        public void SetSpeedEffect(int index,bool visible)=>speedEffects[index].SetActive(visible);
+        public void HideSpeedEffects(){foreach(var effect in speedEffects)effect.SetActive(false);}
         [SerializeField] private RecoveredRegionAnimator fireworks;
         [SerializeField] private Canvas fireworksCanvas;
         [SerializeField] private RecoveredFreeBottom bottom;

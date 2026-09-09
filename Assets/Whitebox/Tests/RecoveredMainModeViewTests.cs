@@ -23,6 +23,25 @@ public sealed class RecoveredMainModeViewTests
             Assert.IsNotNull(game.Playfield);var field=game.Playfield;var mode=field.ModeView;Assert.IsNotNull(mode);
             Assert.IsTrue(mode.BaseRoll.activeSelf);Assert.IsTrue(mode.BaseResult.activeSelf);Assert.IsFalse(mode.FreeRoll.activeSelf);
             Assert.IsFalse(mode.Fireworks.gameObject.activeSelf);Assert.IsFalse(mode.FreeReels.IsInitialized);
+            camera=game.GetComponent<Canvas>().worldCamera;target=new RenderTexture(1080,1920,24);capture=new Texture2D(1080,1920,TextureFormat.RGB24,false);
+            camera.targetTexture=target;yield return null;
+            for(int i=0;i<5;i++) {
+                var effect=mode.SpeedEffectAt(i);Assert.IsFalse(effect.activeSelf);
+                var rect=(RectTransform)effect.transform;
+                Assert.AreEqual(new Vector2(267.50006f,606),rect.sizeDelta);
+                Assert.AreEqual(new Vector2(.49532714f,.5f),rect.pivot);
+                Assert.AreEqual(Vector2.zero,rect.anchoredPosition);
+                Assert.AreEqual(new Vector2(-380+190*i,-1),((RectTransform)rect.parent).anchoredPosition);
+                Assert.IsNotNull(rect.parent.GetComponent<UnityEngine.UI.RectMask2D>());
+                Assert.IsNull(effect.GetComponent<Animation>(),"Original empty startingAnimation preserves setup pose.");
+            }
+            Canvas.ForceUpdateCanvases();Render(camera,target,capture);var withoutSpeed=capture.GetPixels32();
+            mode.SetSpeedEffect(2,true);Canvas.ForceUpdateCanvases();Render(camera,target,capture);
+            var withSpeed=capture.GetPixels32();int speedPixels=0;
+            for(int i=0;i<withSpeed.Length;i++)if(!withSpeed[i].Equals(withoutSpeed[i]))speedPixels++;
+            Assert.Greater(speedPixels,200,"Source setup-pose highlight must visibly render in the real board.");
+            File.WriteAllBytes(Path.Combine(Application.dataPath,"../Artifacts/current-reel-anticipation.png"),capture.EncodeToPNG());
+            mode.HideSpeedEffects();camera.targetTexture=null;Object.Destroy(target);Object.Destroy(capture);target=null;capture=null;
             field.DownWin.SetTemporaryTotal(123.45f);game.PlayerProgress.GameSlotType=RecoveredSlotType.Free;game.PlayerProgress.FreeSpinCount=12;
             game.FreeSpinResult.Begin(new[]{0});int steps=0;while(game.FreeSpinResult.IsGenerating&&steps++<10000)game.FreeSpinResult.Step();
             Assert.IsFalse(game.FreeSpinResult.IsGenerating);

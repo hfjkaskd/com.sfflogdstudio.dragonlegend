@@ -20,6 +20,11 @@ public sealed class RecoveredCoreRoundFlowTests
             GameEntry game=null;foreach(var root in scene.GetRootGameObjects()){var found=root.GetComponentInChildren<GameEntry>();if(found!=null)game=found;}
             float deadline=Time.realtimeSinceStartup+10;while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.CoreRound);var field=game.Playfield;var core=game.CoreRound;int completed=0;core.CoreRoundCompleted+=()=>completed++;
+            int visibleAnticipations=0;
+            field.Reels.AnticipationVisibilityRequested+=(index,visible)=>{
+                Assert.AreEqual(visible,field.ModeView.SpeedEffectAt(index).activeInHierarchy);
+                if(visible)visibleAnticipations++;
+            };
             var boardShake=field.Wilds.Shake;int baseShakes=0,freeShakes=0;float maximumShakeOffset=0;
             System.Action checkShake=()=>{
                 Assert.IsTrue(boardShake.IsShaking,"Real stop event must start the authored board shake.");
@@ -102,6 +107,8 @@ public sealed class RecoveredCoreRoundFlowTests
             for(int frame=0;frame<150&&completed==1;frame++)yield return null;
             Assert.AreEqual(2,completed);Assert.IsFalse(core.Entry.IsFreeSpinEnd);Assert.IsFalse(field.IsBusy);
             Assert.AreEqual(10,baseShakes);Assert.AreEqual(5,freeShakes);Assert.Greater(maximumShakeOffset,.001f);
+            Assert.Greater(visibleAnticipations,0);
+            for(int i=0;i<5;i++)Assert.IsFalse(field.ModeView.SpeedEffectAt(i).activeSelf);
             Assert.IsFalse(boardShake.IsShaking);Assert.AreEqual(boardShake.OriginalPosition,boardShake.Target.anchoredPosition);
             Assert.AreEqual("normalBg",game.CoreAudio.Manager.RequestedMusic,"Return must update requested music even after the fixture mutes it.");
             Assert.AreEqual(JsonUtility.ToJson(game.PlayerStore.Data),PlayerPrefs.GetString(key),"Return completion must persist the current player record.");
