@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: WKY SDK
+  m_EditorClassIdentifier: 
+  m_GroupName: WKY SDK
+  m_Data:
+    m_SerializedData: []
+  m_GUID: dbae3540bcc83b44da8e1f79874e99e8
+  m_SerializeEntries:
+  - m_GUID: cfbd09e5e54b907438baa39e45662d36
+    m_Address: SDKPanel/CommonConfirmTipsPanel
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a6b916c180c692244b83da57d6e6fde5, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 51cd2566f2058694f897b37feb9c5280, type: 2}
+    - {fileID: 11400000, guid: 958c2dce2d1a2f542bdd9b1fbb1e2935, type: 2}

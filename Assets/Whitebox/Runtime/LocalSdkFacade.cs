@@ -13,6 +13,12 @@ namespace DragonLegend.Whitebox
         void PlayInterAd(string posId, string sceneId);
     }
 
+    public interface IAdTransport
+    {
+        void ShowReward(string placement, string scene, Action<AdOutcome> completed);
+        void ShowInterstitial(string placement, string scene, Action<bool> completed);
+    }
+
     public sealed class LocalAdFacade : IAdFacade
     {
         private Action success;
@@ -21,28 +27,76 @@ namespace DragonLegend.Whitebox
         public string Placement { get; private set; }
         public string Scene { get; private set; }
         public int InterstitialCount { get; private set; }
+        public event Action RewardAdStarted;
+        public event Action<AdOutcome> RewardAdCompleted;
+        private readonly IAdTransport transport;
+        private int rewardRequest;
+        private int interstitialRequest;
+        public bool InterstitialPending { get; private set; }
+        public event Action InterstitialStarted;
+        public event Action<bool> InterstitialCompleted;
+        public LocalAdFacade(IAdTransport transport=null)
+        {this.transport=transport;}
 
         public void PlayRewardAd(Action successfulBack, Action failedBack, string posId, string sceneId)
         {
-            if (Pending) throw new InvalidOperationException("A mock advertisement is already pending.");
+            if (Pending || InterstitialPending) { failedBack?.Invoke(); return; }
             Placement = posId; Scene = sceneId;
             success = successfulBack; failure = failedBack; Pending = true;
+            RewardAdStarted?.Invoke();
+            int request = ++rewardRequest;
+            if (transport != null)
+            {
+                try { transport.ShowReward(posId, sceneId, outcome =>
+                { if (request == rewardRequest) CompleteReward(outcome); }); }
+                catch { CompleteReward(AdOutcome.Failed); throw; }
+            }
         }
 
         public bool Complete(AdOutcome outcome)
+        {
+            if (transport != null && outcome == AdOutcome.Rewarded) return false;
+            return CompleteReward(outcome);
+        }
+
+        private bool CompleteReward(AdOutcome outcome)
         {
             if (!Pending) return false;
             if (outcome < AdOutcome.Rewarded || outcome > AdOutcome.Failed)
                 throw new ArgumentOutOfRangeException(nameof(outcome));
             Action callback = outcome == AdOutcome.Rewarded ? success : failure;
             Pending = false; success = null; failure = null;
+            ++rewardRequest;
+            RewardAdCompleted?.Invoke(outcome);
             callback?.Invoke();
             return true;
         }
 
         public void PlayInterAd(string posId, string sceneId)
         {
+            // The local transport cannot display two ads at once.
+            if(Pending||InterstitialPending)return;
             Placement = posId; Scene = sceneId; InterstitialCount++;
+            InterstitialPending=true;InterstitialStarted?.Invoke();
+            int request = ++interstitialRequest;
+            if (transport != null)
+            {
+                try { transport.ShowInterstitial(posId, sceneId, shown =>
+                { if (request == interstitialRequest) FinishInterstitial(shown); }); }
+                catch { FinishInterstitial(false); throw; }
+            }
+        }
+        public bool CompleteInterstitial(bool shown)
+        {
+            if (transport != null && shown) return false;
+            return FinishInterstitial(shown);
+        }
+        private bool FinishInterstitial(bool shown)
+        {
+            if(!InterstitialPending)return false;
+            InterstitialPending=false;
+            ++interstitialRequest;
+            InterstitialCompleted?.Invoke(shown);return true;
         }
     }
 

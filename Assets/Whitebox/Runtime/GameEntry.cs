@@ -42,7 +42,7 @@ namespace DragonLegend.Whitebox
             if (CollectEntry != null) { Destroy(CollectEntry.gameObject); CollectEntry = null; }
             if(BonusFlow!=null){BonusFlow.Unbind();Destroy(BonusFlow.gameObject);BonusFlow=null;}
             if(CashFlight!=null){CashFlight.Unbind();Destroy(CashFlight.gameObject);CashFlight=null;}
-            Ads?.Complete(AdOutcome.Cancelled);Ads=null;
+            Ads?.Complete(AdOutcome.Cancelled);Ads?.CompleteInterstitial(false);Ads=null;
             if(adControls!=null)adControls.Bind(null);
             if (Playfield == null) return;
             Playfield.FlyCoinRequested-=FlyCoin;
@@ -62,6 +62,7 @@ namespace DragonLegend.Whitebox
         public RecoveredSpinEntry SpinEntry { get; private set; }
         public RecoveredRewardBranches RewardBranches { get; private set; }
         public LaunchProfile CurrentProfile { get; private set; }
+        private LaunchProfile runtimeProfile;
         public event Action<RecoveredGameplayRules> Ready;
 
         public void Configure(LaunchProfile primary, LaunchProfile alternative, Button primaryButton, Button alternativeButton, Text label)
@@ -69,12 +70,14 @@ namespace DragonLegend.Whitebox
 
         private void OnEnable()
         {
+            WkyRuntime.LanguageChanged += OnSdkLanguageChanged;
             selectDefault.onClick.AddListener(SelectDefault);
             selectAlternative.onClick.AddListener(SelectAlternative);
             SelectDefault();
         }
         private void OnDisable()
         {
+            WkyRuntime.LanguageChanged -= OnSdkLanguageChanged;
             selectDefault.onClick.RemoveListener(SelectDefault);
             selectAlternative.onClick.RemoveListener(SelectAlternative);
             if (loading != null) StopCoroutine(loading);
@@ -83,6 +86,7 @@ namespace DragonLegend.Whitebox
             loading = null;
             if (balancePanel != null) { balancePanel.Unbind(); Destroy(balancePanel.gameObject); balancePanel = null; }
             ReleasePlayfield();
+            if (runtimeProfile != null) { Destroy(runtimeProfile); runtimeProfile = null; }
             Rules = null;
             Settlement = null;
             SpinResult = null;
@@ -101,6 +105,10 @@ namespace DragonLegend.Whitebox
         }
         private void SelectDefault() => Select(defaultProfile);
         private void SelectAlternative() => Select(alternativeProfile);
+        private void OnSdkLanguageChanged(int language)
+        {
+            if (CurrentProfile != null) CurrentProfile.languageType = language;
+        }
         public void Select(LaunchProfile profile)
         {
             if (profile == null) throw new ArgumentNullException(nameof(profile));
@@ -109,6 +117,7 @@ namespace DragonLegend.Whitebox
             activeLoad = null;
             if (balancePanel != null) { balancePanel.Unbind(); Destroy(balancePanel.gameObject); balancePanel = null; }
             ReleasePlayfield();
+            if (runtimeProfile != null) { Destroy(runtimeProfile); runtimeProfile = null; }
             Rules = null;
             Settlement = null;
             SpinResult = null;
@@ -124,6 +133,19 @@ namespace DragonLegend.Whitebox
         }
         private IEnumerator Load(LaunchProfile profile)
         {
+            status.text = "Connecting...";
+            var sdkInitialization = WkyRuntime.InitializeAsync();
+            while (!sdkInitialization.IsCompleted) yield return null;
+            if (sdkInitialization.IsFaulted || sdkInitialization.IsCanceled)
+            {
+                status.text = "Connection failed. Please restart the game.";
+                if (sdkInitialization.Exception != null) Debug.LogException(sdkInitialization.Exception);
+                loading = null;
+                yield break;
+            }
+            profile = Instantiate(profile);
+            runtimeProfile = profile;
+            profile.languageType = WkyRuntime.LanguageType;
             status.text = "Loading configuration...";
             var loader = new ConfigSnapshotLoader();
             // Manually step the loader to report faults consistently on device and Editor.
@@ -156,7 +178,8 @@ namespace DragonLegend.Whitebox
             PlayerStore.Load(OnPlayerLoaded);
             PlayerProgress = new RecoveredPlayerProgress(Rules, PlayerStore.Save, PlayerStore.Data);
             SpinResult = new RecoveredSpinResult(Rules, Settlement, PlayerProgress);
-            Ads=new LocalAdFacade();if(adControls!=null)adControls.Bind(Ads);
+            Ads=new LocalAdFacade(transport:new WkyAdTransport());
+            if(adControls!=null){adControls.Bind(null);adControls.gameObject.SetActive(false);}
             SpinEntry = new RecoveredSpinEntry(Rules, PlayerStore.Data, PlayerProgress, SpinResult, PlayerStore.Save);
             RewardBranches = new RecoveredRewardBranches(Rules, PlayerProgress);
             FreeSpinResult = new RecoveredFreeSpinResult(Rules);

@@ -1,0 +1,6 @@
+{
+  "name": "WKY.Integration.EditorTests",
+  "references": ["Whitebox.Runtime", "WKY_SDK"],
+  "includePlatforms": ["Editor"],
+  "optionalUnityReferences": ["TestAssemblies"]
+}

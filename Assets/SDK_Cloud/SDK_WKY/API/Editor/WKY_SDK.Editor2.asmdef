@@ -1,0 +1,23 @@
+{
+  "name": "WKY_SDK.Editor2",
+  "references": [
+    "UniTask",
+    "UniTask.Addressables",
+    "Unity.Addressables",
+    "Unity.ResourceManager",
+    "Unity.TextMeshPro",
+    "UnityEngine.UI",
+    "Newtonsoft.Json",
+    "Obfuz.Runtime",
+    "MaxSdk.Scripts",
+    "AdjustSdk.Scripts",
+    "Bizza.Common.DeviceInfo",
+    "Bizza.Common.UI",
+    "Bizza.UserInformationVerification.Contracts",
+    "WKY_SDK"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "autoReferenced": true
+}

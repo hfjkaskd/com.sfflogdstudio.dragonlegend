@@ -1,6 +1,12 @@
 {
   "name": "Whitebox.Runtime",
   "rootNamespace": "DragonLegend.Whitebox",
-  "references": ["Unity.ugui", "Unity.TextMeshPro"],
+  "references": [
+    "UnityEngine.UI",
+    "Unity.TextMeshPro",
+    "WKY_SDK",
+    "UniTask",
+    "Bizza.Common.DeviceInfo"
+  ],
   "autoReferenced": true
 }
