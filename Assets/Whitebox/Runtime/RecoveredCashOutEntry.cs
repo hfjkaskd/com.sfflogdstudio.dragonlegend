@@ -7,6 +7,7 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredCashOutEntry : MonoBehaviour
     {
         [SerializeField] private Button button;
+        [SerializeField] private RectTransform sideEntriesRoot;
         [SerializeField] private RectTransform fingerTarget;
         [SerializeField] private RectTransform fingerPrefab;
         private RectTransform finger;
@@ -15,6 +16,7 @@ namespace DragonLegend.Whitebox
         private RecoveredGameplayRules rules;
         private Action open;
         public Button Button=>button;
+        public RectTransform SideEntriesRoot=>sideEntriesRoot;
         public RectTransform FingerTarget=>fingerTarget;
         public RectTransform Finger=>finger;
         public void Bind(Action show,RecoveredPlayerProgress progress,RecoveredGameplayRules config)

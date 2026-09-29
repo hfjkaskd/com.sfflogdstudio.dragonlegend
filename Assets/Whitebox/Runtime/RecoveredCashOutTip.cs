@@ -33,8 +33,8 @@ namespace DragonLegend.Whitebox
             progressSlider.minValue = 0; progressSlider.maxValue = 1;
             progressSlider.value = target <= player.GreenCount ? 1 : player.GreenCount / target;
             string goal = RecoveredCurrency.Format(target, language, 0);
-            tips.text = target <= player.GreenCount ? string.Format(readyFormat, goal) :
-                string.Format(remainingFormat, RecoveredCurrency.Format(target - player.GreenCount, language, 2), goal);
+            tips.text = target <= player.GreenCount ? GameLocalization.Format(readyFormat, language, goal) :
+                GameLocalization.Format(remainingFormat, language, RecoveredCurrency.Format(target - player.GreenCount, language, 2), goal);
             progressText.text = RecoveredCurrency.Format(player.GreenCount, language, 2) + "/" + goal;
             return true;
         }

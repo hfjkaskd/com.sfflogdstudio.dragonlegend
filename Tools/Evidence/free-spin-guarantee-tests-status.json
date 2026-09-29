@@ -1,0 +1,15 @@
+{
+    "status": "PASS",
+    "mode": "PlayMode",
+    "error": "",
+    "fixtures": [
+        "RecoveredFreeSpinGuaranteeTests",
+        "RecoveredFreeSpinGuaranteeIntegrationTests",
+        "RecoveredFreeSpinResultTests",
+        "RecoveredFreeSpinEntryTests"
+    ],
+    "expected": 24,
+    "passed": 24,
+    "failed": 0,
+    "skipped": 0
+}

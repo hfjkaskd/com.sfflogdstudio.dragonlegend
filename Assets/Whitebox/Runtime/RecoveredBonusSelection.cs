@@ -25,6 +25,7 @@ namespace DragonLegend.Whitebox
         private readonly IRecoveredBonusSelectionView view;
         private readonly int visibleCardCount;
         public RecoveredBonusRound Round {get;}=new RecoveredBonusRound();
+        public int ActiveCardCount=>Math.Min(visibleCardCount,Round.Count);
         public bool IsClicked {get;private set;}
         public bool NeedsAd {get;private set;}
         public bool IsEnd {get;private set;}
@@ -49,10 +50,9 @@ namespace DragonLegend.Whitebox
         }
         public void Select(int index)
         {
-            if(IsClicked)return;
+            if(IsClicked || index<0 || index>=visibleCardCount || index>=Round.Count || Round.WasClicked(index))return;
             view.HideFinger();view.CancelFingerSequence();IsClicked=true;
             view.SetCardEnabled(index,false);
-            if(Round.WasClicked(index))return;
             if(!NeedsAd){Accept(index);return;}
             ads.PlayRewardAd(()=>{view.ShowCardAd(index,false);Accept(index);},()=>{
                 // Exact source behavior: restore the Button and hint, but retain
@@ -70,13 +70,13 @@ namespace DragonLegend.Whitebox
             int free=rules.GetBonusFreeTimes();
             if(Round.ClickedCount==free){
                 view.SetCloseVisible(true);NeedsAd=true;
-                for(int i=0;i<visibleCardCount;i++)if(!Round.WasClicked(i))view.ShowCardAd(i,true);
+                for(int i=0;i<ActiveCardCount;i++)if(!Round.WasClicked(i))view.ShowCardAd(i,true);
             }
             view.SetChances(Round.ClickedCount,free);
         }
         private void ReleaseInput()
         {
-            if(Round.ClickedCount==visibleCardCount){IsEnd=true;view.HideBonus();}
+            if(Round.ClickedCount==ActiveCardCount){IsEnd=true;view.HideBonus();}
             IsClicked=false;view.ShowFinger();
         }
     }

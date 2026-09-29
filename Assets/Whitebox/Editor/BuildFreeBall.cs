@@ -12,6 +12,8 @@ public static class BuildFreeBall
         try {
             root.transform.localScale=Vector3.one*.8f;
             var settings=new SerializedObject(root.AddComponent<RecoveredFreeBall>());
+            settings.FindProperty("sortingGroup").objectReferenceValue=root.GetComponent<SortingGroup>();
+            settings.FindProperty("flightSortingOffset").intValue=1;
             settings.FindProperty("flightDuration").floatValue=.3f;
             settings.FindProperty("flightArcRatio").floatValue=.3f;
             settings.FindProperty("activationDelay").floatValue=.7f;

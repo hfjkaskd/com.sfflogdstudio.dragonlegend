@@ -29,7 +29,7 @@ namespace DragonLegend.Whitebox
             label.text=string.Format(countFormat,player.BankCount,rules.GetBankSpinCD());
             fill.fillAmount=(float)player.BankCount/rules.GetBankSpinCD();
         }
-        private void Click(){SoundRequested?.Invoke("click");showTip(tip);}
+        private void Click(){SoundRequested?.Invoke("click");showTip(GameLocalization.Text(tip));}
         public void Unbind()
         {
             if(player!=null){player.BankReady-=Refresh;player.BankProgressChanged-=Refresh;}

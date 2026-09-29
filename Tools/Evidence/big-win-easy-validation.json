@@ -1,0 +1,181 @@
+{
+    "status": "PASS",
+    "error": "",
+    "scope": "10,000 consecutive BASE result generations, GuideStep=2, MoreWild=0, bet=1000 raw ($10). Persistent base Wild/Bonus counters and base-coin collection advance between samples; full bonus collection resets to zero. Same board and coin award are classified against both threshold sets. Includes this base board's line award and coin award only; excludes all later free spins, bonus minigame rewards, jackpots, task payouts, ad multipliers and elapsed-time/UI behavior. This is a base-spin sampling comparison, not a full player-session or popup-per-minute estimate.",
+    "randomnessCaveat": "UnityEngine.Random has fixed seed 16092026. Production RecoveredSlotBoard also creates System.Random() internally for Wild row/column order and guaranteed Bonus selection; its clock-based seed cannot be injected through RecoveredSpinResult. Repeated runs can therefore differ. These are sample frequencies, not exact theoretical probabilities. The old/new comparison is paired on exactly the same sampled amounts and does not redraw boards.",
+    "coinUnits": "Rules.GetCoinReward returns raw cents. Each final-board symbol id=9 is sampled once in column-major order, matching RecoveredBonusCoinSequence; sum is added directly to Settlement.GetWinTotalLine(), matching RecoveredSymbolWinSelection.TotalWin. Dollar reporting divides by 100, with no extra bet multiplier.",
+    "baselineSha256": "ac9a3bcd8e8d9aea4434a57964c0b264119be80c96eb6a6ca623757c97a078b4",
+    "currentSha256": "a69681770cca3dd44d75ac02ba84fbe9981f272e20a6ed16737fdc53fda4bda6",
+    "hybridValidationPassed": true,
+    "onlyBigWinThresholdChanged": true,
+    "allBoundariesPassed": true,
+    "pairedClassificationPassed": true,
+    "legacyFallbackPassed": true,
+    "betScalingPassed": true,
+    "samples": 10000,
+    "unitySeed": 16092026,
+    "guideStep": 2,
+    "moreWild": 0,
+    "betRaw": 1000,
+    "positiveRewardSpins": 7289,
+    "coinBearingSpins": 4716,
+    "coinCount": 7003,
+    "scatterEntryBoards": 313,
+    "guaranteedWildBranches": 100,
+    "bonusCollectionResets": 417,
+    "positiveRewardRate": 0.7289,
+    "addedPopupRate": 0.3443,
+    "averageBaseRewardDollars": 5.319340216840743,
+    "averageLineRewardDollars": 1.4345722168407343,
+    "averageCoinRewardDollars": 3.8847680000000088,
+    "oldThresholds": {
+        "thresholdsDollars": "$10/$20/$30",
+        "none": 8714,
+        "big": 943,
+        "mega": 200,
+        "super": 143,
+        "any": 1286,
+        "noneRate": 0.8714,
+        "bigRate": 0.0943,
+        "megaRate": 0.02,
+        "superRate": 0.0143,
+        "anyRate": 0.1286
+    },
+    "newThresholds": {
+        "thresholdsDollars": "$2/$5/$10",
+        "none": 5271,
+        "big": 1260,
+        "mega": 2183,
+        "super": 1286,
+        "any": 4729,
+        "noneRate": 0.5271,
+        "bigRate": 0.126,
+        "megaRate": 0.2183,
+        "superRate": 0.1286,
+        "anyRate": 0.4729
+    },
+    "allBaseRewardDollars": {
+        "count": 10000,
+        "minimum": 0.0,
+        "p10": 0.0,
+        "p25": 0.0,
+        "p50": 1.3849999999999998,
+        "p75": 7.228333282470704,
+        "p90": 12.06,
+        "p95": 17.06,
+        "p99": 38.29030000000045,
+        "maximum": 162.0,
+        "mean": 5.31934021325683
+    },
+    "positiveBaseRewardDollars": {
+        "count": 7289,
+        "minimum": 0.1111111068725586,
+        "p10": 0.2222222137451172,
+        "p25": 0.7777777862548828,
+        "p50": 4.5966665649414069,
+        "p75": 8.76,
+        "p90": 14.453333740234376,
+        "p95": 19.507333496093719,
+        "p99": 90.0,
+        "maximum": 162.0,
+        "mean": 7.297764046174826
+    },
+    "boundaries": [
+        {
+            "betRaw": 1000,
+            "dollars": 0.0,
+            "expected": "NONE",
+            "current": "NONE"
+        },
+        {
+            "betRaw": 1000,
+            "dollars": 1.9900000095367432,
+            "expected": "NONE",
+            "current": "NONE"
+        },
+        {
+            "betRaw": 1000,
+            "dollars": 2.0,
+            "expected": "BIG",
+            "current": "BIG"
+        },
+        {
+            "betRaw": 1000,
+            "dollars": 4.989999771118164,
+            "expected": "BIG",
+            "current": "BIG"
+        },
+        {
+            "betRaw": 1000,
+            "dollars": 5.0,
+            "expected": "MEGA",
+            "current": "MEGA"
+        },
+        {
+            "betRaw": 1000,
+            "dollars": 9.989999771118164,
+            "expected": "MEGA",
+            "current": "MEGA"
+        },
+        {
+            "betRaw": 1000,
+            "dollars": 10.0,
+            "expected": "SUPER",
+            "current": "SUPER"
+        },
+        {
+            "betRaw": 1000,
+            "dollars": 10000.0,
+            "expected": "SUPER",
+            "current": "SUPER"
+        },
+        {
+            "betRaw": 2000,
+            "dollars": 0.0,
+            "expected": "NONE",
+            "current": "NONE"
+        },
+        {
+            "betRaw": 2000,
+            "dollars": 3.9800000190734865,
+            "expected": "NONE",
+            "current": "NONE"
+        },
+        {
+            "betRaw": 2000,
+            "dollars": 4.0,
+            "expected": "BIG",
+            "current": "BIG"
+        },
+        {
+            "betRaw": 2000,
+            "dollars": 9.979999542236329,
+            "expected": "BIG",
+            "current": "BIG"
+        },
+        {
+            "betRaw": 2000,
+            "dollars": 10.0,
+            "expected": "MEGA",
+            "current": "MEGA"
+        },
+        {
+            "betRaw": 2000,
+            "dollars": 19.979999542236329,
+            "expected": "MEGA",
+            "current": "MEGA"
+        },
+        {
+            "betRaw": 2000,
+            "dollars": 20.0,
+            "expected": "SUPER",
+            "current": "SUPER"
+        },
+        {
+            "betRaw": 2000,
+            "dollars": 20000.0,
+            "expected": "SUPER",
+            "current": "SUPER"
+        }
+    ]
+}

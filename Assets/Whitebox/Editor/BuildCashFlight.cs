@@ -15,6 +15,7 @@ public static class BuildCashFlight
         try {
             item.layer=5;var rect=(RectTransform)item.transform;rect.sizeDelta=new Vector2(73,76);
             var image=item.GetComponent<Image>();image.sprite=AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Resources/RecoveredArt/Res/UI/zhujiemian/zjm_hb_a.png");
+            image.raycastTarget=false;
             var s=new SerializedObject(item.GetComponent<RecoveredCashFlightItem>());
             s.FindProperty("image").objectReferenceValue=image;
             s.FindProperty("spriteA").stringValue="RecoveredArt/Res/UI/zhujiemian/zjm_hb_a";
@@ -39,7 +40,7 @@ public static class BuildCashFlight
             s.FindProperty("poolRoot").objectReferenceValue=pool.transform;s.FindProperty("preload").intValue=10;s.FindProperty("itemCount").intValue=10;
             s.FindProperty("scatterMin").intValue=-150;s.FindProperty("scatterMax").intValue=150;
             s.FindProperty("scatterWait").floatValue=.3f;s.FindProperty("departureInterval").floatValue=.03f;
-            s.ApplyModifiedPropertiesWithoutUndo();PrefabUtility.SaveAsPrefabAsset(host,Folder+"/CashFlight.prefab");
+            s.ApplyModifiedPropertiesWithoutUndo();ConfigureMainFlightLayer(host);PrefabUtility.SaveAsPrefabAsset(host,Folder+"/CashFlight.prefab");
         } finally{Object.DestroyImmediate(host);}
         const string balancePath="Assets/Resources/RecoveredUI/BalancePanel.prefab";
         var balance=PrefabUtility.LoadPrefabContents(balancePath);
@@ -56,6 +57,24 @@ public static class BuildCashFlight
             s.ApplyModifiedPropertiesWithoutUndo();PrefabUtility.SaveAsPrefabAsset(entry,entryPath);
         } finally{PrefabUtility.UnloadPrefabContents(entry);}
         AssetDatabase.SaveAssets();
+    }
+    public static void ConfigureMainFlightLayer(GameObject root)
+    {
+        var layer=root.transform.Find("MainFlightLayer");
+        if(layer==null)
+        {
+            var created=new GameObject("MainFlightLayer",typeof(RectTransform),typeof(Canvas));
+            created.layer=root.layer;created.transform.SetParent(root.transform,false);layer=created.transform;
+        }
+        var rect=(RectTransform)layer;
+        rect.anchorMin=Vector2.zero;rect.anchorMax=Vector2.one;
+        rect.offsetMin=rect.offsetMax=Vector2.zero;rect.localScale=Vector3.one;
+        var canvas=layer.GetComponent<Canvas>();
+        canvas.overrideSorting=true;canvas.sortingOrder=50;
+        var settings=new SerializedObject(root.GetComponent<RecoveredCashFlightPresenter>());
+        settings.FindProperty("mainFlightCanvas").objectReferenceValue=canvas;
+        settings.FindProperty("mainFlightSortingOffset").intValue=50;
+        settings.ApplyModifiedPropertiesWithoutUndo();
     }
     public static void SaveFlightCurve()
     {

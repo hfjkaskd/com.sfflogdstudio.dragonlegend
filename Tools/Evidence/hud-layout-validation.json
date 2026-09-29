@@ -1,0 +1,4381 @@
+{
+  "passed": true,
+  "error": "",
+  "cases": [
+    {
+      "name": "camera-1080x1920-full",
+      "mode": "ScreenSpaceCamera",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 1920,
+      "topInset": 0,
+      "bottomInset": 0,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 1920.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 19.9998779296875,
+          "width": 383.0,
+          "height": 85.0001220703125
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 13.4671630859375,
+          "width": 315.8939208984375,
+          "height": 74.227294921875
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 109.9998779296875,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 123.3427734375,
+          "width": 252.67886352539062,
+          "height": 70.779052734375
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 31.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 106.0,
+          "width": 273.7281494140625,
+          "height": 110.9998779296875
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 21.9998779296875,
+          "width": 98.99993896484375,
+          "height": 83.0001220703125
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 21.9998779296875,
+          "width": 103.0,
+          "height": 83.0001220703125
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 156.9998779296875,
+          "width": 263.0,
+          "height": 48.0001220703125
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 387.794921875,
+          "width": 200.0,
+          "height": 205.0001220703125
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 404.7235107421875,
+          "width": 187.142822265625,
+          "height": 187.142822265625
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 621.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 621.4200439453125,
+          "width": 162.0,
+          "height": 190.0892333984375
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:110.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:123.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48.00012"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69446"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:621.42, width:171.70, height:212.50); artwork=(x:904.00, y:621.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:621.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:785.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        }
+      ]
+    },
+    {
+      "name": "camera-1080x1920-safe",
+      "mode": "ScreenSpaceCamera",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 1920,
+      "topInset": 120,
+      "bottomInset": 60,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 1740.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 139.9998779296875,
+          "width": 383.0,
+          "height": 85.0001220703125
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 133.4671630859375,
+          "width": 315.8939208984375,
+          "height": 74.227294921875
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 229.9998779296875,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 243.3427734375,
+          "width": 252.67886352539062,
+          "height": 70.779052734375
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 151.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 226.0,
+          "width": 273.7281494140625,
+          "height": 110.9998779296875
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 141.9998779296875,
+          "width": 98.99993896484375,
+          "height": 83.0001220703125
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 141.9998779296875,
+          "width": 103.0,
+          "height": 83.0001220703125
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 276.9998779296875,
+          "width": 263.0,
+          "height": 48.0001220703125
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 417.794921875,
+          "width": 200.0,
+          "height": 205.0001220703125
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 434.7235107421875,
+          "width": 187.142822265625,
+          "height": 187.142822265625
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 651.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 651.4200439453125,
+          "width": 162.0,
+          "height": 190.0892333984375
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:230.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:243.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48.00012"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69446"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:651.42, width:171.70, height:212.50); artwork=(x:904.00, y:651.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:651.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:815.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        }
+      ]
+    },
+    {
+      "name": "camera-1080x2160-full",
+      "mode": "ScreenSpaceCamera",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 2160,
+      "topInset": 0,
+      "bottomInset": 0,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 2160.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 20.0,
+          "width": 383.0,
+          "height": 85.0
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 13.467041015625,
+          "width": 315.8939208984375,
+          "height": 74.2275390625
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 110.0,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 123.3427734375,
+          "width": 252.67886352539062,
+          "height": 70.7789306640625
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 31.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 106.0,
+          "width": 273.7281494140625,
+          "height": 111.0
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 22.0,
+          "width": 98.99993896484375,
+          "height": 83.0
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 22.0,
+          "width": 103.0,
+          "height": 83.0
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 157.0,
+          "width": 263.0,
+          "height": 48.0
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 507.794921875,
+          "width": 200.0,
+          "height": 205.0
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 524.7235107421875,
+          "width": 187.142822265625,
+          "height": 187.1429443359375
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 741.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5001220703125
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 741.4200439453125,
+          "width": 162.0,
+          "height": 190.0892333984375
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:110.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:123.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69458"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:741.42, width:171.70, height:212.50); artwork=(x:904.00, y:741.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:741.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:905.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        }
+      ]
+    },
+    {
+      "name": "camera-1080x2160-safe",
+      "mode": "ScreenSpaceCamera",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 2160,
+      "topInset": 120,
+      "bottomInset": 60,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 1980.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 140.0,
+          "width": 383.0,
+          "height": 85.0
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 133.4671630859375,
+          "width": 315.8939208984375,
+          "height": 74.2271728515625
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 230.0,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 243.3428955078125,
+          "width": 252.67886352539062,
+          "height": 70.7789306640625
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 151.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 226.0,
+          "width": 273.7281494140625,
+          "height": 111.0
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 141.9998779296875,
+          "width": 98.99993896484375,
+          "height": 83.0001220703125
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 141.9998779296875,
+          "width": 103.0,
+          "height": 83.0001220703125
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 276.9998779296875,
+          "width": 263.0,
+          "height": 48.0001220703125
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 537.794921875,
+          "width": 200.0,
+          "height": 205.0
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 554.7236328125,
+          "width": 187.142822265625,
+          "height": 187.142822265625
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 771.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 771.419921875,
+          "width": 162.0,
+          "height": 190.08935546875
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:230.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:243.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48.00012"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69434"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:771.42, width:171.70, height:212.50); artwork=(x:904.00, y:771.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:771.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:935.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        }
+      ]
+    },
+    {
+      "name": "camera-1080x2400-full",
+      "mode": "ScreenSpaceCamera",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 2400,
+      "topInset": 0,
+      "bottomInset": 0,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 2400.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 20.0,
+          "width": 383.0,
+          "height": 85.0
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 13.467041015625,
+          "width": 315.8939208984375,
+          "height": 74.227294921875
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 110.0,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 123.3427734375,
+          "width": 252.67886352539062,
+          "height": 70.779052734375
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 31.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 106.0,
+          "width": 273.7281494140625,
+          "height": 111.0
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 22.0,
+          "width": 98.99993896484375,
+          "height": 83.0
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 22.0,
+          "width": 103.0,
+          "height": 83.0
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 157.0,
+          "width": 263.0,
+          "height": 48.0
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 627.794921875,
+          "width": 200.0,
+          "height": 205.0001220703125
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 644.7235107421875,
+          "width": 187.142822265625,
+          "height": 187.1429443359375
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 861.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5001220703125
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 861.419921875,
+          "width": 162.0,
+          "height": 190.08935546875
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:110.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:123.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69434"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:861.42, width:171.70, height:212.50); artwork=(x:904.00, y:861.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:861.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:1025.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        }
+      ]
+    },
+    {
+      "name": "camera-1080x2400-safe",
+      "mode": "ScreenSpaceCamera",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 2400,
+      "topInset": 120,
+      "bottomInset": 60,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 2220.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 140.0,
+          "width": 383.0,
+          "height": 85.0
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 133.467041015625,
+          "width": 315.8939208984375,
+          "height": 74.2275390625
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 230.0,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 243.3427734375,
+          "width": 252.67886352539062,
+          "height": 70.779052734375
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 151.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 226.0,
+          "width": 273.7281494140625,
+          "height": 111.0
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 142.0,
+          "width": 98.99993896484375,
+          "height": 83.0
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 142.0,
+          "width": 103.0,
+          "height": 83.0
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 277.0,
+          "width": 263.0,
+          "height": 48.0
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 657.794921875,
+          "width": 200.0,
+          "height": 205.0
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 674.7236328125,
+          "width": 187.142822265625,
+          "height": 187.142822265625
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 891.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 891.4200439453125,
+          "width": 162.0,
+          "height": 190.0892333984375
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:230.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:243.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69458"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:891.42, width:171.70, height:212.50); artwork=(x:904.00, y:891.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:891.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:1055.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        }
+      ]
+    },
+    {
+      "name": "camera-1080x2640-full",
+      "mode": "ScreenSpaceCamera",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 2640,
+      "topInset": 0,
+      "bottomInset": 0,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 2640.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 20.0,
+          "width": 383.0,
+          "height": 85.0
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 13.46728515625,
+          "width": 315.8939208984375,
+          "height": 74.227294921875
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 110.0,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 123.343017578125,
+          "width": 252.67886352539062,
+          "height": 70.77880859375
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 31.000244140625,
+          "width": 107.0,
+          "height": 57.999755859375
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 106.0,
+          "width": 273.7281494140625,
+          "height": 111.0
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 22.0,
+          "width": 98.99993896484375,
+          "height": 83.0
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 22.0,
+          "width": 103.0,
+          "height": 83.0
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 157.0,
+          "width": 263.0,
+          "height": 48.0
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 747.7950439453125,
+          "width": 200.0,
+          "height": 205.0
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 764.7236328125,
+          "width": 187.142822265625,
+          "height": 187.142822265625
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 981.4200439453125,
+          "width": 171.70001220703125,
+          "height": 212.5
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 981.4200439453125,
+          "width": 162.0,
+          "height": 190.08935546875
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:110.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:123.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69434"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 57.99976"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 57.99976"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:981.42, width:171.70, height:212.50); artwork=(x:904.00, y:981.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:981.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:1145.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        }
+      ]
+    },
+    {
+      "name": "camera-1080x2640-safe",
+      "mode": "ScreenSpaceCamera",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 2640,
+      "topInset": 120,
+      "bottomInset": 60,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 2460.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 227.000244140625
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 140.0,
+          "width": 383.0,
+          "height": 85.0
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 133.46728515625,
+          "width": 315.8939208984375,
+          "height": 74.227294921875
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 230.0,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 243.343017578125,
+          "width": 252.67886352539062,
+          "height": 70.77880859375
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 151.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 226.0,
+          "width": 273.7281494140625,
+          "height": 111.0
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 142.0,
+          "width": 98.99993896484375,
+          "height": 83.0
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 142.0,
+          "width": 103.0,
+          "height": 83.0
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 277.0,
+          "width": 263.0,
+          "height": 48.0
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 777.7950439453125,
+          "width": 200.0,
+          "height": 204.9998779296875
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 794.7235107421875,
+          "width": 187.142822265625,
+          "height": 187.1429443359375
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 1011.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5001220703125
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 1011.419921875,
+          "width": 162.0,
+          "height": 190.08935546875
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:230.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:243.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69458"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:1011.42, width:171.70, height:212.50); artwork=(x:904.00, y:1011.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:1011.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:1175.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        }
+      ]
+    },
+    {
+      "name": "world-1080x1920-full",
+      "mode": "WorldSpace",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 1920,
+      "topInset": 0,
+      "bottomInset": 0,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 1920.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 19.9998779296875,
+          "width": 383.0,
+          "height": 85.0001220703125
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 13.4671630859375,
+          "width": 315.8939208984375,
+          "height": 74.227294921875
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 109.9998779296875,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 123.3427734375,
+          "width": 252.67886352539062,
+          "height": 70.779052734375
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 31.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 106.0,
+          "width": 273.7281494140625,
+          "height": 110.9998779296875
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 21.9998779296875,
+          "width": 98.99993896484375,
+          "height": 83.0001220703125
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 21.9998779296875,
+          "width": 103.0,
+          "height": 83.0001220703125
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 156.9998779296875,
+          "width": 263.0,
+          "height": 48.0001220703125
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 387.794921875,
+          "width": 200.0,
+          "height": 205.0001220703125
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 404.7235107421875,
+          "width": 187.142822265625,
+          "height": 187.142822265625
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 621.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 621.4200439453125,
+          "width": 162.0,
+          "height": 190.0892333984375
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:110.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:123.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48.00012"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69446"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:621.42, width:171.70, height:212.50); artwork=(x:904.00, y:621.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:621.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:785.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:1920.00)"
+        }
+      ]
+    },
+    {
+      "name": "world-1080x1920-safe",
+      "mode": "WorldSpace",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 1920,
+      "topInset": 120,
+      "bottomInset": 60,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 1740.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 139.9998779296875,
+          "width": 383.0,
+          "height": 85.0001220703125
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 133.4671630859375,
+          "width": 315.8939208984375,
+          "height": 74.227294921875
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 229.9998779296875,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 243.3427734375,
+          "width": 252.67886352539062,
+          "height": 70.779052734375
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 151.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 226.0,
+          "width": 273.7281494140625,
+          "height": 110.9998779296875
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 141.9998779296875,
+          "width": 98.99993896484375,
+          "height": 83.0001220703125
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 141.9998779296875,
+          "width": 103.0,
+          "height": 83.0001220703125
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 276.9998779296875,
+          "width": 263.0,
+          "height": 48.0001220703125
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 417.794921875,
+          "width": 200.0,
+          "height": 205.0001220703125
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 434.7235107421875,
+          "width": 187.142822265625,
+          "height": 187.142822265625
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 651.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 651.4200439453125,
+          "width": 162.0,
+          "height": 190.0892333984375
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:230.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:243.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48.00012"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69446"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:651.42, width:171.70, height:212.50); artwork=(x:904.00, y:651.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:651.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:815.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1740.00)"
+        }
+      ]
+    },
+    {
+      "name": "world-1080x2160-full",
+      "mode": "WorldSpace",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 2160,
+      "topInset": 0,
+      "bottomInset": 0,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 2160.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 20.0,
+          "width": 383.0,
+          "height": 85.0
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 13.467041015625,
+          "width": 315.8939208984375,
+          "height": 74.2275390625
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 110.0,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 123.3427734375,
+          "width": 252.67886352539062,
+          "height": 70.7789306640625
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 31.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 106.0,
+          "width": 273.7281494140625,
+          "height": 111.0
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 22.0,
+          "width": 98.99993896484375,
+          "height": 83.0
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 22.0,
+          "width": 103.0,
+          "height": 83.0
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 157.0,
+          "width": 263.0,
+          "height": 48.0
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 507.794921875,
+          "width": 200.0,
+          "height": 205.0
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 524.7235107421875,
+          "width": 187.142822265625,
+          "height": 187.1429443359375
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 741.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5001220703125
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 741.4200439453125,
+          "width": 162.0,
+          "height": 190.0892333984375
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:110.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:123.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69458"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:741.42, width:171.70, height:212.50); artwork=(x:904.00, y:741.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:741.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:905.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2160.00)"
+        }
+      ]
+    },
+    {
+      "name": "world-1080x2160-safe",
+      "mode": "WorldSpace",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 2160,
+      "topInset": 120,
+      "bottomInset": 60,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 1980.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 140.0,
+          "width": 383.0,
+          "height": 85.0
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 133.4671630859375,
+          "width": 315.8939208984375,
+          "height": 74.2271728515625
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 230.0,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 243.3428955078125,
+          "width": 252.67886352539062,
+          "height": 70.7789306640625
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 151.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 226.0,
+          "width": 273.7281494140625,
+          "height": 111.0
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 141.9998779296875,
+          "width": 98.99993896484375,
+          "height": 83.0001220703125
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 141.9998779296875,
+          "width": 103.0,
+          "height": 83.0001220703125
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 276.9998779296875,
+          "width": 263.0,
+          "height": 48.0001220703125
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 537.794921875,
+          "width": 200.0,
+          "height": 205.0
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 554.7236328125,
+          "width": 187.142822265625,
+          "height": 187.142822265625
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 771.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 771.419921875,
+          "width": 162.0,
+          "height": 190.08935546875
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:230.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:243.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48.00012"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69434"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:771.42, width:171.70, height:212.50); artwork=(x:904.00, y:771.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:771.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:935.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:1980.00)"
+        }
+      ]
+    },
+    {
+      "name": "world-1080x2400-full",
+      "mode": "WorldSpace",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 2400,
+      "topInset": 0,
+      "bottomInset": 0,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 2400.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 20.0,
+          "width": 383.0,
+          "height": 85.0
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 13.467041015625,
+          "width": 315.8939208984375,
+          "height": 74.227294921875
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 110.0,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 123.3427734375,
+          "width": 252.67886352539062,
+          "height": 70.779052734375
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 31.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 106.0,
+          "width": 273.7281494140625,
+          "height": 111.0
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 22.0,
+          "width": 98.99993896484375,
+          "height": 83.0
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 22.0,
+          "width": 103.0,
+          "height": 83.0
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 157.0,
+          "width": 263.0,
+          "height": 48.0
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 627.794921875,
+          "width": 200.0,
+          "height": 205.0001220703125
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 644.7235107421875,
+          "width": 187.142822265625,
+          "height": 187.1429443359375
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 861.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5001220703125
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 861.419921875,
+          "width": 162.0,
+          "height": 190.08935546875
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:110.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:123.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69434"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:861.42, width:171.70, height:212.50); artwork=(x:904.00, y:861.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:861.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:1025.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2400.00)"
+        }
+      ]
+    },
+    {
+      "name": "world-1080x2400-safe",
+      "mode": "WorldSpace",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 2400,
+      "topInset": 120,
+      "bottomInset": 60,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 2220.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 140.0,
+          "width": 383.0,
+          "height": 85.0
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 133.467041015625,
+          "width": 315.8939208984375,
+          "height": 74.2275390625
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 230.0,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 243.3427734375,
+          "width": 252.67886352539062,
+          "height": 70.779052734375
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 151.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 226.0,
+          "width": 273.7281494140625,
+          "height": 111.0
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 142.0,
+          "width": 98.99993896484375,
+          "height": 83.0
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 142.0,
+          "width": 103.0,
+          "height": 83.0
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 277.0,
+          "width": 263.0,
+          "height": 48.0
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 657.794921875,
+          "width": 200.0,
+          "height": 205.0
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 674.7236328125,
+          "width": 187.142822265625,
+          "height": 187.142822265625
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 891.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 891.4200439453125,
+          "width": 162.0,
+          "height": 190.0892333984375
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:230.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:243.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69458"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:891.42, width:171.70, height:212.50); artwork=(x:904.00, y:891.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:891.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:1055.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2220.00)"
+        }
+      ]
+    },
+    {
+      "name": "world-1080x2640-full",
+      "mode": "WorldSpace",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 2640,
+      "topInset": 0,
+      "bottomInset": 0,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 2640.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 0.0,
+          "width": 1080.0,
+          "height": 227.0
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 20.0,
+          "width": 383.0,
+          "height": 85.0
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 13.46728515625,
+          "width": 315.8939208984375,
+          "height": 74.227294921875
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 110.0,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 123.343017578125,
+          "width": 252.67886352539062,
+          "height": 70.77880859375
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 31.000244140625,
+          "width": 107.0,
+          "height": 57.999755859375
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 106.0,
+          "width": 273.7281494140625,
+          "height": 111.0
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 22.0,
+          "width": 98.99993896484375,
+          "height": 83.0
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 22.0,
+          "width": 103.0,
+          "height": 83.0
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 157.0,
+          "width": 263.0,
+          "height": 48.0
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 747.7950439453125,
+          "width": 200.0,
+          "height": 205.0
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 764.7236328125,
+          "width": 187.142822265625,
+          "height": 187.142822265625
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 981.4200439453125,
+          "width": 171.70001220703125,
+          "height": 212.5
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 981.4200439453125,
+          "width": 162.0,
+          "height": 190.08935546875
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:0.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:110.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:123.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69434"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 57.99976"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 57.99976"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:981.42, width:171.70, height:212.50); artwork=(x:904.00, y:981.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:981.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:1145.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:0.00, width:1080.00, height:2640.00)"
+        }
+      ]
+    },
+    {
+      "name": "world-1080x2640-safe",
+      "mode": "WorldSpace",
+      "pipeline": "Medium_PipelineAsset",
+      "error": "",
+      "width": 1080,
+      "height": 2640,
+      "topInset": 120,
+      "bottomInset": 60,
+      "passed": true,
+      "bounds": [
+        {
+          "name": "SafePlayfield",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 2460.0
+        },
+        {
+          "name": "Header",
+          "x": 0.0,
+          "y": 120.0,
+          "width": 1080.0,
+          "height": 227.000244140625
+        },
+        {
+          "name": "BalanceTextRect",
+          "x": 176.00001525878906,
+          "y": 140.0,
+          "width": 383.0,
+          "height": 85.0
+        },
+        {
+          "name": "BalanceGlyphs",
+          "x": 177.93499755859375,
+          "y": 133.46728515625,
+          "width": 315.8939208984375,
+          "height": 74.227294921875
+        },
+        {
+          "name": "TipPanel",
+          "x": 456.0,
+          "y": 230.0,
+          "width": 300.0,
+          "height": 107.0
+        },
+        {
+          "name": "TipGlyphs",
+          "x": 479.8022766113281,
+          "y": 243.343017578125,
+          "width": 252.67886352539062,
+          "height": 70.77880859375
+        },
+        {
+          "name": "GM",
+          "x": 610.0,
+          "y": 151.0,
+          "width": 107.0,
+          "height": 58.0
+        },
+        {
+          "name": "PayPal",
+          "x": 782.2718505859375,
+          "y": 226.0,
+          "width": 273.7281494140625,
+          "height": 111.0
+        },
+        {
+          "name": "Help",
+          "x": 835.0000610351562,
+          "y": 142.0,
+          "width": 98.99993896484375,
+          "height": 83.0
+        },
+        {
+          "name": "Settings",
+          "x": 946.0,
+          "y": 142.0,
+          "width": 103.0,
+          "height": 83.0
+        },
+        {
+          "name": "ProgressLabel",
+          "x": 151.00001525878906,
+          "y": 277.0,
+          "width": 263.0,
+          "height": 48.0
+        },
+        {
+          "name": "CashOutButton",
+          "x": 879.99658203125,
+          "y": 777.7950439453125,
+          "width": 200.0,
+          "height": 204.9998779296875
+        },
+        {
+          "name": "WalletVisualAt1.06",
+          "x": 891.4251708984375,
+          "y": 794.7235107421875,
+          "width": 187.142822265625,
+          "height": 187.1429443359375
+        },
+        {
+          "name": "TaskButton",
+          "x": 894.2965698242188,
+          "y": 1011.419921875,
+          "width": 171.70001220703125,
+          "height": 212.5001220703125
+        },
+        {
+          "name": "TaskVisual",
+          "x": 903.99658203125,
+          "y": 1011.419921875,
+          "width": 162.0,
+          "height": 190.08935546875
+        }
+      ],
+      "checks": [
+        {
+          "name": "Safe Playfield exact insets",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        },
+        {
+          "name": "Header aligns to safe top",
+          "passed": true,
+          "detail": "(x:0.00, y:120.00, width:1080.00, height:227.00)"
+        },
+        {
+          "name": "Utility shares safe top",
+          "passed": true,
+          "detail": "Utility under Safe Playfield"
+        },
+        {
+          "name": "GM keeps authored position after Canvas to Utility reparent",
+          "passed": true,
+          "detail": "anchoredPosition=(610.00, -31.00)"
+        },
+        {
+          "name": "Tip safely inside header",
+          "passed": true,
+          "detail": "(x:456.00, y:230.00, width:300.00, height:107.00)"
+        },
+        {
+          "name": "Tip / balance text container",
+          "passed": true,
+          "detail": "overlap 103 x 0"
+        },
+        {
+          "name": "Tip text contained",
+          "passed": true,
+          "detail": "(x:479.80, y:243.34, width:252.68, height:70.78)"
+        },
+        {
+          "name": "Tip text not truncated",
+          "passed": true,
+          "detail": "Font size 32, lines 2"
+        },
+        {
+          "name": "Tip does not intercept clicks",
+          "passed": true,
+          "detail": "All tip Graphics raycastTarget=false"
+        },
+        {
+          "name": "Tip / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 107"
+        },
+        {
+          "name": "Tip / Help",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / Settings",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Tip / GM",
+          "passed": true,
+          "detail": "overlap 107 x 0"
+        },
+        {
+          "name": "Tip / balance glyphs",
+          "passed": true,
+          "detail": "overlap 37.82892 x 0"
+        },
+        {
+          "name": "Tip / progress label",
+          "passed": true,
+          "detail": "overlap 0 x 48"
+        },
+        {
+          "name": "GM / balance glyphs",
+          "passed": true,
+          "detail": "overlap 0 x 56.69458"
+        },
+        {
+          "name": "GM / help",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / settings",
+          "passed": true,
+          "detail": "overlap 0 x 58"
+        },
+        {
+          "name": "GM / PayPal",
+          "passed": true,
+          "detail": "overlap 0 x 0"
+        },
+        {
+          "name": "Wallet / Task interaction",
+          "passed": true,
+          "detail": "overlap 171.7 x 0"
+        },
+        {
+          "name": "Wallet max pulse / Task artwork",
+          "passed": true,
+          "detail": "overlap 162 x 0"
+        },
+        {
+          "name": "Task Button fully contains visible artwork",
+          "passed": true,
+          "detail": "Button=(x:894.30, y:1011.42, width:171.70, height:212.50); artwork=(x:904.00, y:1011.42, width:162.00, height:190.09)"
+        },
+        {
+          "name": "Task Button contains visual Rect ApprovedSideIcon",
+          "passed": true,
+          "detail": "(x:904.00, y:1011.42, width:162.00, height:162.00)"
+        },
+        {
+          "name": "Task Button contains visual Rect Label",
+          "passed": true,
+          "detail": "(x:895.00, y:1175.97, width:170.00, height:38.25)"
+        },
+        {
+          "name": "GM within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        },
+        {
+          "name": "Help within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        },
+        {
+          "name": "Settings within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        },
+        {
+          "name": "PayPal within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        },
+        {
+          "name": "Task within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        },
+        {
+          "name": "CashOut within safe screen",
+          "passed": true,
+          "detail": "Safe area (x:0.00, y:120.00, width:1080.00, height:2460.00)"
+        }
+      ]
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "Assets/Resources/MainSkin/Assets/RecoveredUI/BalancePanel.prefab",
+      "sha256": "3547dffbd6b7d79f1f06beb57217cbb20379b751eef819207bcfa35dbc67cd92"
+    },
+    {
+      "path": "Assets/Resources/RecoveredUI/CashOutEntry.prefab",
+      "sha256": "151fa468c02f27c5182f8ee4afaba5496aed2deca1477bfcf1ab9f39249727ed"
+    },
+    {
+      "path": "Assets/Resources/RecoveredUI/DailyTasks/Entry.prefab",
+      "sha256": "9ea71cad6b66b20d2f48ac721519515954a890340d42b7eeddaa959ae4b3d7de"
+    },
+    {
+      "path": "Assets/Resources/RecoveredUI/MainCashOutStatus.prefab",
+      "sha256": "93d362f6137a160f7d1d7de190475e1b833b4ddbe003ae4c2fe32cfbbce32b15"
+    },
+    {
+      "path": "Assets/Resources/Whitebox/GameEntry.prefab",
+      "sha256": "6cd0851d2302de6f4f49a830a993e201f738ff24a85956051568ff6995865c33"
+    },
+    {
+      "path": "Assets/Whitebox/Editor/ApplyApprovedHeader.cs",
+      "sha256": "ea27d090a0cc213687690c07985b96a776114dcd3e5a40af9feb18e7d5452314"
+    },
+    {
+      "path": "Assets/Whitebox/Editor/ApprovedSideIconsAuthoring.cs",
+      "sha256": "4d75cf183a270815cc059355b727278b8656ea8a723b93106acc5d6e0a45271a"
+    },
+    {
+      "path": "Assets/Whitebox/Editor/BuildDailyTasks.cs",
+      "sha256": "8da874941cd645a9e8222d1ce03d616f938682d7b96aa9de5ace07817e1581db"
+    },
+    {
+      "path": "Assets/Whitebox/Editor/BuildMainCashOutEntry.cs",
+      "sha256": "9f779fee0706b769d459dc918b543821237f3433028f18978e4e62d65ab45477"
+    },
+    {
+      "path": "Assets/Whitebox/Editor/BuildMainCashOutStatus.cs",
+      "sha256": "8e2da8d9e1bf9bac3774a10c233304ec661ebed8628247a032d868effe6d55c6"
+    },
+    {
+      "path": "Assets/Whitebox/Editor/BuildMainUtility.cs",
+      "sha256": "eed5fc47cb7d7b673bc33295bdfa788a6dc635f670c03b951d3a89d16bc559d5"
+    },
+    {
+      "path": "Assets/Whitebox/Runtime/GameEntry.cs",
+      "sha256": "94f65f4408fda9a40a35d5f1fc3d20dd97b0eb260527a32d211c583cc11c0791"
+    },
+    {
+      "path": "Assets/Whitebox/Runtime/RecoveredCashOutEntry.cs",
+      "sha256": "5ce051d0c7985041282b4a7a78121c892b41433f00faba62a315870e843b1dfd"
+    }
+  ],
+  "scope": "Isolated production-prefab rendering in Unity 2022.3.62f3, no game initialization, SDK, network or saved progress changes. Not an APK/device test."
+}

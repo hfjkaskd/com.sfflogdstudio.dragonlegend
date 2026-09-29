@@ -12,6 +12,34 @@ using Object=UnityEngine.Object;
 
 public sealed class RecoveredBonusWindowTests
 {
+    [UnityTest]
+    public IEnumerator ShortRoundHidesUnusedSlotsAndReopeningRestoresThem()
+    {
+        var random=UnityEngine.Random.state;
+        var loader=new ConfigSnapshotLoader();yield return loader.Load("RecoveredConfig/Remote/cp_test.json");
+        var config=loader.Value;
+        config.Ronig.Ltoo=new List<int>{1};config.Ronig.Qoi=new List<int>{1};
+        config.Ronig.Jin=new List<int>{1};config.Ronig.Roo=new List<int>{4};config.Ronig.Rgkorp=new List<int>{2};
+        var rules=new RecoveredGameplayRules(config);
+        var player=new RecoveredPlayerProgress(rules,()=>{},new PlayerData());
+        var window=Object.Instantiate(Resources.Load<RecoveredBonusWindow>("RecoveredUI/BonusWindow"));
+        try {
+            window.Show(player,rules,new LocalAdFacade(),null,()=>1,false,0);
+            Assert.AreEqual(9,window.Selection.ActiveCardCount);
+            for(int i=0;i<12;i++)Assert.AreEqual(i<9,window.Card(i).gameObject.activeSelf);
+            window.Selection.Select(11);Assert.IsFalse(window.Selection.IsClicked);
+            for(int i=0;i<9;i++)Assert.IsTrue(window.Selection.Round.TryReveal(i,out _));
+            window.ShowFinger();Assert.IsNull(window.Finger,"Exhausted short pool must not hint at unavailable cards.");
+            config.Ronig.Rgkorp[0]=5;
+            window.Show(player,rules,new LocalAdFacade(),null,()=>1,false,0);
+            Assert.AreEqual(12,window.Selection.ActiveCardCount);
+            for(int i=0;i<12;i++){
+                Assert.IsTrue(window.Card(i).gameObject.activeSelf);
+                Assert.IsTrue(window.Card(i).Button.enabled);
+            }
+        }finally{Object.Destroy(window.gameObject);UnityEngine.Random.state=random;}
+    }
+
     private static RecoveredGameplayRules CashRules(int jump,bool characters=false)=>new RecoveredGameplayRules(new GoldenDragonAutoGenConfig {
         Qonrii=new QonriiPoro {Joqkpor=new List<int>{10000,5000,1000},JpOpp=new List<int>{1},JpQloim=new List<int>{2000,500}},
         Rgpggm=new RgpggmPoro {Qogt=new List<int>{10000}},
@@ -50,7 +78,8 @@ public sealed class RecoveredBonusWindowTests
             Assert.AreEqual(Vector2.zero,firstFinger.anchoredPosition);Assert.AreEqual(Vector3.one,firstFinger.localScale);
             for(int i=0;i<20;i++)yield return null; // Inspect the animated pose, not its transparent opening frame.
             Assert.AreEqual(12,window.CardCount);Assert.AreEqual("Bonus (11)",window.Card(7).name);
-            Assert.GreaterOrEqual(window.Selection.Round.Count,window.CardCount,"Native result pool may contain more rewards than visible cards");
+            Assert.AreEqual(Math.Min(window.Selection.Round.Count,window.CardCount),window.Selection.ActiveCardCount);
+            for(int i=0;i<window.CardCount;i++)Assert.AreEqual(i<window.Selection.ActiveCardCount,window.Card(i).gameObject.activeSelf);
             Assert.AreEqual("LUCKY DRAW CHANCES(<gradient=\"spin\">0/"+entry.Rules.GetBonusFreeTimes()+"</gradient>)",window.Chances.text);
             foreach(var component in window.GetComponentsInChildren<Component>(true))Assert.IsNotNull(component,"Missing native component binding");
             for(int i=0;i<12;i++){

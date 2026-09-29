@@ -33,7 +33,10 @@ namespace DragonLegend.Whitebox
             IsClicked=true;
             if(name=="ClaimBtn") {
                 view.PlaySound("click");
-                if(data.LimitSpinCount>=rules.GetLimitMaxSpinCount()&&rules.GetConfigType()!="default") {view.ShowLimitTip();return;}
+                if(data.LimitSpinCount>=rules.GetLimitMaxSpinCount()&&rules.GetConfigType()!="default") {
+                    // No ad was started, so the window must remain usable after the tip.
+                    IsClicked=false;view.ShowLimitTip();return;
+                }
                 ads.PlayRewardAd(Succeeded,()=>{if(!cancelled)IsClicked=false;},"extraspin","extraspin");
             }else if(name=="CloseBtn") {view.PlaySound("click");view.Hide();}
         }

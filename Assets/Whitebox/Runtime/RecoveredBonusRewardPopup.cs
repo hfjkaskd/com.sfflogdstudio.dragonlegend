@@ -74,8 +74,8 @@ namespace DragonLegend.Whitebox
             claim.BeforeShow(amount,completed);
             PlaySound("jump");
             rewardText.text=RecoveredCurrency.Format(amount,language,2);
-            advertisedText.text=string.Format("<sprite name=\"tc_btn_bofang\">CLAIMx{0}",claim.AdvertisedMultiplier);
-            plainText.text="Only "+RecoveredCurrency.Format(amount*claim.UnadvertisedMultiplier,language,2);
+            advertisedText.text=GameLocalization.Format("<sprite name=\"tc_btn_bofang\">CLAIMx{0}",language,claim.AdvertisedMultiplier);
+            plainText.text=GameLocalization.Format("Only {0}",language,RecoveredCurrency.Format(amount*claim.UnadvertisedMultiplier,language,2));
             plainText.gameObject.SetActive(true);plainReveal.Begin();
             if(cashOutTip.Initialize(progress,rules,isA,language))tipReveal.Begin();
             content.localScale=Vector3.one*fromScale;scaleElapsed=0;scalePhase=1;

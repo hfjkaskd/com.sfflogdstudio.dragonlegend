@@ -1,0 +1,332 @@
+--- a/Assets/Resources/MainSkin/Assets/RecoveredUI/BalancePanel.prefab
++++ b/Assets/Resources/MainSkin/Assets/RecoveredUI/BalancePanel.prefab
+@@ -843,8 +843,8 @@
+   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+   m_AnchorMin: {x: 0, y: 1}
+   m_AnchorMax: {x: 0, y: 1}
+-  m_AnchoredPosition: {x: 176, y: -38}
+-  m_SizeDelta: {x: 383, y: 105}
++  m_AnchoredPosition: {x: 176, y: -20}
++  m_SizeDelta: {x: 383, y: 85}
+   m_Pivot: {x: 0, y: 1}
+ --- !u!222 &222842968619709538
+ CanvasRenderer:
+@@ -901,12 +901,12 @@
+   m_faceColor:
+     serializedVersion: 2
+     rgba: 4294967295
+-  m_fontSize: 86
++  m_fontSize: 80
+   m_fontSizeBase: 42
+   m_fontWeight: 400
+   m_enableAutoSizing: 1
+   m_fontSizeMin: 30
+-  m_fontSizeMax: 86
++  m_fontSizeMax: 80
+   m_fontStyle: 0
+   m_HorizontalAlignment: 1
+   m_VerticalAlignment: 512
+--- a/Assets/Resources/RecoveredUI/CashOutEntry.prefab
++++ b/Assets/Resources/RecoveredUI/CashOutEntry.prefab
+@@ -139,6 +139,7 @@
+   m_Name: 
+   m_EditorClassIdentifier: 
+   button: {fileID: 4527675561910954274}
++  sideEntriesRoot: {fileID: 95739445092048387}
+   fingerTarget: {fileID: 5887025428631669424}
+   fingerPrefab: {fileID: 4327123525324647391, guid: 150db4a7596a59d4ab29592a88cfae26, type: 3}
+ --- !u!1 &1149090716649155197
+--- a/Assets/Resources/RecoveredUI/DailyTasks/Entry.prefab
++++ b/Assets/Resources/RecoveredUI/DailyTasks/Entry.prefab
+@@ -34,7 +34,7 @@
+   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+   m_AnchorMin: {x: 0.5, y: 0.5}
+   m_AnchorMax: {x: 0.5, y: 0.5}
+-  m_AnchoredPosition: {x: 40, y: -23}
++  m_AnchoredPosition: {x: 39.82353, y: -26.088236}
+   m_SizeDelta: {x: 95, y: 68}
+   m_Pivot: {x: 0.5, y: 0.5}
+ --- !u!222 &7205242441236570431
+@@ -109,7 +109,7 @@
+   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+   m_AnchorMin: {x: 0.5, y: 0.5}
+   m_AnchorMax: {x: 0.5, y: 0.5}
+-  m_AnchoredPosition: {x: -8, y: 5}
++  m_AnchoredPosition: {x: -8.176471, y: 1.9117647}
+   m_SizeDelta: {x: 125, y: 155}
+   m_Pivot: {x: 0.5, y: 0.5}
+ --- !u!222 &2121494645529321573
+@@ -184,7 +184,7 @@
+   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+   m_AnchorMin: {x: 0.5, y: 0.5}
+   m_AnchorMax: {x: 0.5, y: 0.5}
+-  m_AnchoredPosition: {x: 0, y: -88}
++  m_AnchoredPosition: {x: -0.1764706, y: -91.088234}
+   m_SizeDelta: {x: 200, y: 45}
+   m_Pivot: {x: 0.5, y: 0.5}
+ --- !u!222 &781461663605908777
+@@ -318,7 +318,7 @@
+   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+   m_AnchorMin: {x: 0.5, y: 0.5}
+   m_AnchorMax: {x: 0.5, y: 0.5}
+-  m_AnchoredPosition: {x: 5.882353, y: 32.794113}
++  m_AnchoredPosition: {x: 5.7058824, y: 29.705878}
+   m_SizeDelta: {x: 190.58823, y: 190.58823}
+   m_Pivot: {x: 0.5, y: 0.5}
+ --- !u!222 &5141638835121405202
+@@ -397,10 +397,10 @@
+   - {fileID: 622416375209562055}
+   m_Father: {fileID: 0}
+   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+-  m_AnchorMin: {x: 1, y: 0.5}
+-  m_AnchorMax: {x: 1, y: 0.5}
+-  m_AnchoredPosition: {x: -15, y: 356.83}
+-  m_SizeDelta: {x: 200, y: 205}
++  m_AnchorMin: {x: 1, y: 1}
++  m_AnchorMax: {x: 1, y: 1}
++  m_AnchoredPosition: {x: -14, y: -233.625}
++  m_SizeDelta: {x: 202, y: 250}
+   m_Pivot: {x: 1, y: 1}
+ --- !u!222 &6790452942364484221
+ CanvasRenderer:
+--- a/Assets/Resources/RecoveredUI/MainCashOutStatus.prefab
++++ b/Assets/Resources/RecoveredUI/MainCashOutStatus.prefab
+@@ -106,8 +106,8 @@
+   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+   m_AnchorMin: {x: 0.5, y: 1}
+   m_AnchorMax: {x: 0.5, y: 1}
+-  m_AnchoredPosition: {x: 251, y: -116.04309}
+-  m_SizeDelta: {x: 359.5136, y: 113.80737}
++  m_AnchoredPosition: {x: 66, y: -110}
++  m_SizeDelta: {x: 300, y: 107}
+   m_Pivot: {x: 0.5, y: 1}
+ --- !u!222 &6617352228382541663
+ CanvasRenderer:
+@@ -131,7 +131,7 @@
+   m_EditorClassIdentifier:
+   m_Material: {fileID: 0}
+   m_Color: {r: 1, g: 1, b: 1, a: 1}
+-  m_RaycastTarget: 1
++  m_RaycastTarget: 0
+   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+   m_Maskable: 1
+   m_OnCullStateChanged:
+@@ -179,10 +179,10 @@
+   m_Children: []
+   m_Father: {fileID: 2076599359973276530}
+   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+-  m_AnchorMin: {x: 0.5, y: 0.5}
+-  m_AnchorMax: {x: 0.5, y: 0.5}
+-  m_AnchoredPosition: {x: 0.0010829, y: -3.5999756}
+-  m_SizeDelta: {x: 359.52, y: 93.9325}
++  m_AnchorMin: {x: 0, y: 0}
++  m_AnchorMax: {x: 1, y: 1}
++  m_AnchoredPosition: {x: 0, y: 0}
++  m_SizeDelta: {x: -24, y: -16}
+   m_Pivot: {x: 0.5, y: 0.5}
+ --- !u!222 &4163245736819708876
+ CanvasRenderer:
+@@ -206,7 +206,7 @@
+   m_EditorClassIdentifier:
+   m_Material: {fileID: 0}
+   m_Color: {r: 1, g: 1, b: 1, a: 1}
+-  m_RaycastTarget: 1
++  m_RaycastTarget: 0
+   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+   m_Maskable: 1
+   m_OnCullStateChanged:
+@@ -240,12 +240,12 @@
+   m_faceColor:
+     serializedVersion: 2
+     rgba: 4294967295
+-  m_fontSize: 35
+-  m_fontSizeBase: 35
++  m_fontSize: 32
++  m_fontSizeBase: 32
+   m_fontWeight: 400
+   m_enableAutoSizing: 1
+   m_fontSizeMin: 18
+-  m_fontSizeMax: 35
++  m_fontSizeMax: 32
+   m_fontStyle: 0
+   m_HorizontalAlignment: 2
+   m_VerticalAlignment: 512
+--- a/Assets/Resources/Whitebox/GameEntry.prefab
++++ b/Assets/Resources/Whitebox/GameEntry.prefab
+@@ -5877,7 +5877,7 @@
+   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+   m_AnchorMin: {x: 0, y: 1}
+   m_AnchorMax: {x: 0, y: 1}
+-  m_AnchoredPosition: {x: 433, y: -149}
++  m_AnchoredPosition: {x: 610, y: -31}
+   m_SizeDelta: {x: 107, y: 58}
+   m_Pivot: {x: 0, y: 1}
+ --- !u!222 &1630704712898071530
+--- a/Assets/Whitebox/Editor/ApplyApprovedHeader.cs
++++ b/Assets/Whitebox/Editor/ApplyApprovedHeader.cs
+@@ -42,6 +42,7 @@
+             PrefabUtility.RecordPrefabInstancePropertyModifications(meters.transform);
+         });
+         Edit(UtilityPath, ApplyUtility);
++        Edit("Assets/Resources/RecoveredUI/MainCashOutStatus.prefab", BuildMainCashOutStatus.ApplyHeaderLayout);
+         Edit(EntryPath, ApplyGm);
+         ApplySceneGm();
+         AssetDatabase.SaveAssets();
+@@ -98,8 +99,8 @@
+         Place(badge.rectTransform, root.transform, 109, 87, 47, 47);
+         badge.sprite = originalBadge; badge.color = Color.white; badge.enabled = true; badge.raycastTarget = false; badge.preserveAspect = true;
+ 
+-        Place(balance.rectTransform, root.transform, 176, 38, 383, 105);
+-        StyleText(balance, 86, 30, goldMaterial, TextAlignmentOptions.Left);
++        Place(balance.rectTransform, root.transform, 176, 20, 383, 85);
++        StyleText(balance, 80, 30, goldMaterial, TextAlignmentOptions.Left);
+ 
+         var status = ImageNode(root.transform, "_ApprovedProgressPlate", Sprite("header-progress"));
+         Place(status.rectTransform, root.transform, 67, 145, 362, 72);
+@@ -248,7 +249,7 @@
+         var gm = root.GetComponent<RecoveredGmPanel>();
+         if (gm == null) throw new InvalidDataException("Missing existing GM controller.");
+         var button = gm.ToggleButton;
+-        Place((RectTransform)button.transform, root.transform, 433, 149, 107, 58);
++        Place((RectTransform)button.transform, root.transform, 610, 31, 107, 58);
+         var image = button.GetComponent<Image>();
+         image.sprite = Sprite("header-gm"); image.color = Color.white; image.type = Image.Type.Simple;
+         image.raycastTarget = true; button.targetGraphic = image;
+--- a/Assets/Whitebox/Editor/ApprovedSideIconsAuthoring.cs
++++ b/Assets/Whitebox/Editor/ApprovedSideIconsAuthoring.cs
+@@ -176,14 +176,14 @@
+             // TASK's existing root scale is .85. Match CashOut's displayed dimensions,
+             // then position above the original label rather than overlapping its text rectangle.
+             rect.sizeDelta=iconSize;
+-            rect.anchoredPosition=new Vector2(cashOffset.x*ratioX,
++            rect.anchoredPosition=new Vector2(label.anchoredPosition.x+cashOffset.x*ratioX,
+                 labelTop+3f+iconSize.y*.5f-rootRect.rect.center.y);
+             rect.localScale=Vector3.one; rect.localRotation=Quaternion.identity;
+             // Keep the existing TASK label after the icon in draw order.
+             rect.SetAsFirstSibling();
+             icon.sprite=LoadSprite("TaskScroll"); icon.material=null; icon.color=Color.white;
+             icon.type=Image.Type.Simple; icon.preserveAspect=false; icon.raycastTarget=false;
+-            // Preserve the original 200x205 Button/raycast rectangle without drawing a second badge.
++            // The authored Button bounds contain both the icon and label, without drawing a second badge.
+             image.sprite=null; image.material=null; image.color=new Color(1,1,1,0);
+             image.type=Image.Type.Simple; image.raycastTarget=true;
+             button.targetGraphic=icon; Persist(image); Persist(icon); Persist(button);
+--- a/Assets/Whitebox/Editor/BuildDailyTasks.cs
++++ b/Assets/Whitebox/Editor/BuildDailyTasks.cs
+@@ -115,12 +115,12 @@
+             var sprite=Sprite.Create(texture,pixels,new Vector2(.5f,.5f),100);sprite.name=name;AssetDatabase.CreateAsset(sprite,path);return sprite;}
+         var root=new GameObject("Task",typeof(RectTransform),typeof(Image),typeof(Button),typeof(RecoveredDailyTaskEntry));root.layer=5;
+         try {
+-            var r=(RectTransform)root.transform;r.anchorMin=r.anchorMax=new Vector2(1,.5f);r.pivot=new Vector2(1,1);r.sizeDelta=new Vector2(200,205);r.localScale=new Vector3(.85f,.85f,1);r.anchoredPosition=new Vector2(-15,356.83f);
++            var r=(RectTransform)root.transform;r.anchorMin=r.anchorMax=new Vector2(1,1);r.pivot=new Vector2(1,1);r.sizeDelta=new Vector2(202,250);r.localScale=new Vector3(.85f,.85f,1);r.anchoredPosition=new Vector2(-14,-233.625f);
+             var bg=root.GetComponent<Image>();bg.sprite=Make("TaskRing",new Rect(159,2,130,130));bg.preserveAspect=true;root.GetComponent<Button>().targetGraphic=bg;
+             void Art(string name,Sprite sprite,Vector2 size,Vector2 position,float rotation=0){var go=new GameObject(name,typeof(RectTransform),typeof(Image));go.transform.SetParent(root.transform,false);var t=(RectTransform)go.transform;t.sizeDelta=size;t.anchoredPosition=position;t.localEulerAngles=new Vector3(0,0,rotation);var image=go.GetComponent<Image>();image.sprite=sprite;image.raycastTarget=false;}
+-            Art("Book",Make("TaskBook",new Rect(291,2,102,128)),new Vector2(125,155),new Vector2(-8,5));
+-            Art("Pen",Make("TaskPen",new Rect(395,79,78,56)),new Vector2(95,68),new Vector2(40,-23),-90);
+-            var label=new GameObject("Label",typeof(RectTransform),typeof(TextMeshProUGUI));label.transform.SetParent(root.transform,false);var lr=(RectTransform)label.transform;lr.sizeDelta=new Vector2(200,45);lr.anchoredPosition=new Vector2(0,-88);
++            Art("Book",Make("TaskBook",new Rect(291,2,102,128)),new Vector2(125,155),new Vector2(-8.176471f,1.9117647f));
++            Art("Pen",Make("TaskPen",new Rect(395,79,78,56)),new Vector2(95,68),new Vector2(39.82353f,-26.088236f),-90);
++            var label=new GameObject("Label",typeof(RectTransform),typeof(TextMeshProUGUI));label.transform.SetParent(root.transform,false);var lr=(RectTransform)label.transform;lr.sizeDelta=new Vector2(200,45);lr.anchoredPosition=new Vector2(-.1764706f,-91.088234f);
+             var text=label.GetComponent<TextMeshProUGUI>();text.font=AssetDatabase.LoadAssetAtPath<GameObject>(Folder+"/Item.prefab").GetComponentInChildren<TMP_Text>().font;text.text="TASK";text.fontSize=32;text.fontStyle=FontStyles.Bold;text.color=new Color(1,1,.3f);text.alignment=TextAlignmentOptions.Center;text.raycastTarget=false;
+             var p=new SerializedObject(root.GetComponent<RecoveredDailyTaskEntry>());Set(p,"button",root.GetComponent<Button>());Set(p,"windowPrefab",AssetDatabase.LoadAssetAtPath<RecoveredDailyTaskWindow>(Folder+"/Window.prefab"));p.ApplyModifiedPropertiesWithoutUndo();PrefabUtility.SaveAsPrefabAsset(root,Folder+"/Entry.prefab");
+         }finally{Object.DestroyImmediate(root);}
+--- a/Assets/Whitebox/Editor/BuildMainCashOutEntry.cs
++++ b/Assets/Whitebox/Editor/BuildMainCashOutEntry.cs
+@@ -44,6 +44,7 @@
+             var rect=(RectTransform)art.transform;rect.anchorMin=old.anchorMin;rect.anchorMax=old.anchorMax;rect.pivot=old.pivot;rect.sizeDelta=old.sizeDelta;rect.anchoredPosition3D=old.anchoredPosition3D;rect.localRotation=old.localRotation;rect.localScale=old.localScale;
+             rect.SetSiblingIndex(old.GetSiblingIndex());art.layer=old.gameObject.layer;art.name=old.name;Object.DestroyImmediate(old.gameObject);
+             var settings=new SerializedObject(root.AddComponent<RecoveredCashOutEntry>());
++            settings.FindProperty("sideEntriesRoot").objectReferenceValue=root.transform.Find("Tubiao");
+             settings.FindProperty("button").objectReferenceValue=button.GetComponent<Button>();
+             settings.FindProperty("fingerPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RectTransform>("Assets/Resources/RecoveredUI/Finger.prefab");
+             settings.FindProperty("fingerTarget").objectReferenceValue=button.Find("finger");settings.ApplyModifiedPropertiesWithoutUndo();
+--- a/Assets/Whitebox/Editor/BuildMainCashOutStatus.cs
++++ b/Assets/Whitebox/Editor/BuildMainCashOutStatus.cs
+@@ -11,6 +11,18 @@
+ 
+ public static class BuildMainCashOutStatus
+ {
++    // Reserve the second header row between level progress and PayPal.
++    public static void ApplyHeaderLayout(GameObject root)
++    {
++        var panel=(RectTransform)root.transform.Find("CashOutTip");
++        panel.anchorMin=panel.anchorMax=new Vector2(.5f,1);panel.pivot=new Vector2(.5f,1);
++        panel.anchoredPosition=new Vector2(66,-110);panel.sizeDelta=new Vector2(300,107);
++        var label=panel.GetComponentInChildren<TMP_Text>(true);var rect=label.rectTransform;
++        rect.anchorMin=Vector2.zero;rect.anchorMax=Vector2.one;rect.pivot=new Vector2(.5f,.5f);
++        rect.anchoredPosition=Vector2.zero;rect.sizeDelta=new Vector2(-24,-16);
++        label.enableAutoSizing=true;label.fontSize=32;label.fontSizeMin=18;label.fontSizeMax=32;
++        foreach(var graphic in panel.GetComponentsInChildren<Graphic>(true))graphic.raycastTarget=false;
++    }
+     public static void Save()
+     {
+         const string output="Assets/Resources/RecoveredUI/MainCashOutStatus.prefab",temporary="Assets/Whitebox/Editor/MainCashOutStatusSource.prefab";
+@@ -35,7 +47,7 @@
+             settings.FindProperty("readyText").stringValue="You Can Cash Out Now!";
+             settings.FindProperty("remainingFormat").stringValue="Earn <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> To Withdraw <material=\"#003815_3\"><gradient=\"cash\">{1}</gradient></material>";
+             settings.FindProperty("delay").floatValue=12;settings.FindProperty("scaleDuration").floatValue=.5f;settings.FindProperty("holdDuration").floatValue=5;
+-            settings.ApplyModifiedPropertiesWithoutUndo();PrefabUtility.SaveAsPrefabAsset(root,output);
++            settings.ApplyModifiedPropertiesWithoutUndo();ApplyHeaderLayout(root);PrefabUtility.SaveAsPrefabAsset(root,output);
+         }finally{if(root!=null)PrefabUtility.UnloadPrefabContents(root);AssetDatabase.DeleteAsset(temporary);}
+         const string core="Assets/Resources/RecoveredUI/CoreRoundFlow.prefab";root=PrefabUtility.LoadPrefabContents(core);
+         try{
+--- a/Assets/Whitebox/Editor/BuildMainUtility.cs
++++ b/Assets/Whitebox/Editor/BuildMainUtility.cs
+@@ -25,7 +25,7 @@
+         }finally{Object.DestroyImmediate(root);}
+         const string path="Assets/Resources/Whitebox/GameEntry.prefab";root=PrefabUtility.LoadPrefabContents(path);
+         try {var p=new SerializedObject(root.GetComponent<GameEntry>());Set(p,"mainUtilityPrefab",AssetDatabase.LoadAssetAtPath<RecoveredMainUtility>(Folder+"/Entry.prefab"));p.ApplyModifiedPropertiesWithoutUndo();
+-            ((RectTransform)root.transform.Find("GmToggle")).anchoredPosition=new Vector2(112,-125);
++            ((RectTransform)root.transform.Find("GmToggle")).anchoredPosition=new Vector2(610,-31);
+             PrefabUtility.SaveAsPrefabAsset(root,path);}
+         finally{PrefabUtility.UnloadPrefabContents(root);}AssetDatabase.SaveAssets();
+     }
+--- a/Assets/Whitebox/Runtime/GameEntry.cs
++++ b/Assets/Whitebox/Runtime/GameEntry.cs
+@@ -42,7 +42,11 @@
+         public RecoveredSpinPlayfield Playfield { get; private set; }
+         private void ReleasePlayfield()
+         {
+-            if(MainUtility!=null){Destroy(MainUtility.gameObject);MainUtility=null;}
++            if(MainUtility!=null){
++                var gm=GetComponent<RecoveredGmPanel>();
++                if(gm!=null&&gm.ToggleButton.transform.parent==MainUtility.transform)gm.ToggleButton.transform.SetParent(transform,false);
++                Destroy(MainUtility.gameObject);MainUtility=null;
++            }
+             if(DailyTasks!=null){Destroy(DailyTasks.gameObject);DailyTasks=null;}
+             if(CoreAudio!=null){CoreAudio.Unbind();Destroy(CoreAudio.gameObject);CoreAudio=null;}
+             if(CoreRound!=null){CoreRound.Unbind();Destroy(CoreRound.gameObject);CoreRound=null;}
+@@ -284,8 +288,13 @@
+                 CollectEntry = Instantiate(collectEntryPrefab, transform, false);
+                 CollectEntry.Bind(PlayerProgress, Rules, transform, profile.isA, profile.languageType,CoreRound!=null?CoreRound.PopupRoot:transform);
+             }
+-            if(dailyTaskPrefab!=null){DailyTasks=Instantiate(dailyTaskPrefab,transform,false);DailyTasks.Bind(this);}
+-            if(mainUtilityPrefab!=null){MainUtility=Instantiate(mainUtilityPrefab,transform,false);MainUtility.Bind(this);}
++            if(dailyTaskPrefab!=null){DailyTasks=Instantiate(dailyTaskPrefab,CoreRound.CashOutEntry.SideEntriesRoot,false);DailyTasks.Bind(this);}
++            if(mainUtilityPrefab!=null){
++                // Header controls share the playfield safe area, including the local GM toggle.
++                MainUtility=Instantiate(mainUtilityPrefab,Playfield.transform,false);MainUtility.Bind(this);
++                var gm=GetComponent<RecoveredGmPanel>();
++                if(gm!=null)gm.ToggleButton.transform.SetParent(MainUtility.transform,false);
++            }
+             if(CoreRound!=null)CoreRound.Bind(this);
+             if(coreAudioPrefab!=null){CoreAudio=Instantiate(coreAudioPrefab,transform,false);CoreAudio.Bind(this);}
+             Ready?.Invoke(Rules);
+--- a/Assets/Whitebox/Runtime/RecoveredCashOutEntry.cs
++++ b/Assets/Whitebox/Runtime/RecoveredCashOutEntry.cs
+@@ -7,6 +7,7 @@
+     public sealed class RecoveredCashOutEntry : MonoBehaviour
+     {
+         [SerializeField] private Button button;
++        [SerializeField] private RectTransform sideEntriesRoot;
+         [SerializeField] private RectTransform fingerTarget;
+         [SerializeField] private RectTransform fingerPrefab;
+         private RectTransform finger;
+@@ -15,6 +16,7 @@
+         private RecoveredGameplayRules rules;
+         private Action open;
+         public Button Button=>button;
++        public RectTransform SideEntriesRoot=>sideEntriesRoot;
+         public RectTransform FingerTarget=>fingerTarget;
+         public RectTransform Finger=>finger;
+         public void Bind(Action show,RecoveredPlayerProgress progress,RecoveredGameplayRules config)

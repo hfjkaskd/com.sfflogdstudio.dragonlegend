@@ -7,6 +7,8 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredFreeWheelGame : MonoBehaviour
     {
         [SerializeField] private RectTransform icon;
+        [SerializeField] private Canvas rewardCanvas;
+        [SerializeField] private int rewardSortingOffset;
         [SerializeField] private RecoveredWheelWindow window;
         [SerializeField] private float scaleMultiplier, scaleDuration, windowDelay;
         private Vector3 initial, from;
@@ -19,7 +21,15 @@ namespace DragonLegend.Whitebox
         public RecoveredWheelWindow Window => window;
         public void Bind(RecoveredPlayerProgress player, RecoveredGameplayRules rules, IAdFacade ads,
             RecoveredCashFlightPresenter cash, Transform main, RecoveredSpinPlayfield playfield, bool isA, int language)
-        { window.Bind(player, rules, ads, cash, main, playfield, isA, language); }
+        {
+            var mainCanvas=main.GetComponentInParent<Canvas>();
+            // The branch preview shares the board position but must draw above its symbols.
+            rewardCanvas.overrideSorting=true;
+            rewardCanvas.sortingLayerID=mainCanvas.sortingLayerID;
+            rewardCanvas.sortingOrder=mainCanvas.sortingOrder+rewardSortingOffset;
+            rewardCanvas.worldCamera=mainCanvas.worldCamera;
+            window.Bind(player, rules, ads, cash, main, playfield, isA, language);
+        }
         public void Begin(Vector3 source, Action<float> completed)
         {
             if (IsRunning) throw new InvalidOperationException("Wheel entry is already running.");

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   profileId: US_Default
   countryCode: US
-  snapshotPath: RecoveredConfig/Remote/cp_default_1.json
+  snapshotPath: RecoveredConfig/Remote/cp_low_frequency_high_rewards.json
   cashPresentationEnabled: 1
   advertisementPresentationEnabled: 1
-  evidenceNote: Local US cash/ad test selection. Cached cp_default_1 is verified;
-    country routing is not yet verified.
+  evidenceNote: Low-frequency events with high-frequency rewards and five cashout tiers.
+    Default-mode spin recovery is retained; original snapshots remain available in GM.

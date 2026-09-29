@@ -10,6 +10,8 @@ namespace DragonLegend.Whitebox
         [SerializeField] private RecoveredCashFlightItem cashPrefab;
         [SerializeField] private RecoveredCashCollectionEffect collectionPrefab;
         [SerializeField] private Transform poolRoot;
+        [SerializeField] private Canvas mainFlightCanvas;
+        [SerializeField] private int mainFlightSortingOffset;
         [SerializeField] private int preload,itemCount;
         [SerializeField] private int scatterMin,scatterMax;
         [SerializeField] private float scatterWait,departureInterval;
@@ -34,6 +36,11 @@ namespace DragonLegend.Whitebox
         public void Bind(RecoveredRewardBranches branches,RecoveredBalancePanel balance,bool versionA)
         {
             Unbind();rewards=branches;title=balance;isA=versionA;
+            var main=GetComponentInParent<Canvas>();
+            mainFlightCanvas.overrideSorting=true;
+            mainFlightCanvas.sortingLayerID=main.sortingLayerID;
+            mainFlightCanvas.sortingOrder=main.sortingOrder+mainFlightSortingOffset;
+            mainFlightCanvas.worldCamera=main.worldCamera;
             cashPool=new ObjectPool<RecoveredCashFlightItem>(CreateCash,null,ReleaseCash,DestroyCash,true,preload);
             collectionPool=new ObjectPool<RecoveredCashCollectionEffect>(CreateEffect,null,ReleaseEffect,DestroyEffect,true,preload);
             var cash=new RecoveredCashFlightItem[preload];var collection=new RecoveredCashCollectionEffect[preload];
@@ -71,10 +78,15 @@ namespace DragonLegend.Whitebox
         public void Begin(float amount,Action completed,Transform topWindow,bool isMainWindow,Transform source=null)
         {
             if(!isMainWindow)title.MoveToWindow(topWindow);
+            // Reel covers and effects use world-renderer sorting, so sibling order
+            // alone cannot place main-view cash above them. Popup flights retain
+            // their own window's ordering and lifecycle.
+            var flightParent=isMainWindow?mainFlightCanvas.transform:topWindow;
+            var origin=isMainWindow&&source==null?topWindow:source;
             var batch=new Batch{amount=amount,completed=completed,items=new RecoveredCashFlightItem[itemCount]};batches.Add(batch);
             for(int i=0;i<itemCount;i++) {
                 var item=cashPool.Get();batch.items[i]=item;item.gameObject.SetActive(true);
-                item.Scatter(topWindow,source,new Vector2(UnityEngine.Random.Range(scatterMin,scatterMax),UnityEngine.Random.Range(scatterMin,scatterMax)));
+                item.Scatter(flightParent,origin,new Vector2(UnityEngine.Random.Range(scatterMin,scatterMax),UnityEngine.Random.Range(scatterMin,scatterMax)));
             }
             batch.wait=RecoveredReelWait.Delay(scatterWait,()=> {
                 batch.wait=null;

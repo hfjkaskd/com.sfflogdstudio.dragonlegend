@@ -49,8 +49,8 @@ namespace DragonLegend.Whitebox
             extraCount=rules.GetExtraFreeSpins();IsClicked=false;adCounts.Clear();
             gameObject.SetActive(true);SoundRequested?.Invoke("fsstart");
             countText.text=spinCount.ToString(CultureInfo.InvariantCulture);dragon.Play(0);
-            advertisedText.text=string.Format(CultureInfo.InvariantCulture,advertisedFormat,extraCount);
-            plainText.text=plainCaption;ShowFinger();
+            advertisedText.text=GameLocalization.Format(advertisedFormat,GameLocalization.CurrentLanguage,extraCount);
+            plainText.text=GameLocalization.Text(plainCaption);ShowFinger();
             content.localScale=Vector3.zero;scaleElapsed=0;scalePhase=1;
         }
         private void Claim()

@@ -7,6 +7,8 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredFreeLuckyGame : MonoBehaviour
     {
         [SerializeField] private RectTransform icon;
+        [SerializeField] private Canvas rewardCanvas;
+        [SerializeField] private int rewardSortingOffset;
         [SerializeField] private RecoveredBonusRewardPopup popup;
         [SerializeField] private float scaleMultiplier,scaleDuration,popupDelay;
         private RecoveredPlayerProgress progress;
@@ -30,7 +32,13 @@ namespace DragonLegend.Whitebox
             RecoveredCashFlightPresenter flights,Transform main,bool isA,int languageType)
         {
             progress=player;rules=config;ads=adFacade;cash=flights;mainWindow=main;versionA=isA;language=languageType;
-            var camera=main.GetComponentInParent<Canvas>().worldCamera;
+            var mainCanvas=main.GetComponentInParent<Canvas>();
+            var camera=mainCanvas.worldCamera;
+            // The pre-popup reward pulse must also render above world-space reels.
+            rewardCanvas.overrideSorting=true;
+            rewardCanvas.sortingLayerID=mainCanvas.sortingLayerID;
+            rewardCanvas.sortingOrder=mainCanvas.sortingOrder+rewardSortingOffset;
+            rewardCanvas.worldCamera=camera;
             foreach(var canvas in popup.GetComponentsInChildren<Canvas>(true))canvas.worldCamera=camera;
         }
         public void Begin(Vector3 source,Action<float> completed)

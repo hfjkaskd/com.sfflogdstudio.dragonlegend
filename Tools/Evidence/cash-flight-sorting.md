@@ -1,0 +1,9 @@
+# Main cash flight sorting repair
+
+The main UI Canvas uses sorting order 0, while reel covers use SpriteRenderer order 1 (the Free cover is black with alpha .65). Cash Image siblings inherited order 0, so SetAsLastSibling did not lift them above world-rendered covers.
+
+CashFlight.prefab now owns one shared MainFlightLayer Canvas, configured relative to the main Canvas at offset 50. This is above the board/effects and below popup group 300. Only main-window batches use it; source world position, popup ownership, pooling, reward amounts and credit/callback ordering remain unchanged. FlyCoinItem's image no longer intercepts raycasts. BuildCashFlight preserves the authored layer during rebuilds.
+
+Unity 2022.3.62f3 batch execution of RepairCashFlightDepth.Run passed. The isolated preview exercised the real presenter Begin path with 10 cash items and the actual FreeSymbolItem cover asset. No GameEntry/SDK or player save was loaded. On 38,039 cash-color pixels, mean RGB difference from the unobscured reference decreased from 32.02797 before to .00285 after. The order-300 popup still darkened the main cash (mean difference 61.36990). Main/popup parents, source location and non-interactive images passed assertions. before.png, after.png, reference.png, popup.png and report.json are in Artifacts/CashFlightDepth; batch log is Artifacts/CashFlightDepth-validation.log.
+
+The first two preview attempts placed the cash outside the camera frame; the preview fixture was corrected to use settled Canvas layout and explicit world-space sample positions. The production sorting fix did not change between those attempts and the passing run. This is an isolated renderer/layer verification, not a new APK or full gameplay regression. The temporary script is archived under Tools/Validation/CashFlightDepth and removed from Assets.

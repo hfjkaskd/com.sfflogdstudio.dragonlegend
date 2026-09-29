@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<test-run testcasecount="24" total="24" result="Passed" passed="24" failed="0" skipped="0" inconclusive="0" duration="1.1167208">
+  <test-suite type="TestSuite" id="1000" name="Gilded Dragon Odyssey" fullname="Gilded Dragon Odyssey" runstate="Runnable" testcasecount="542" result="Passed" start-time="2026-09-16 09:33:07Z" end-time="2026-09-16 09:33:08Z" duration="1.116721" total="24" passed="24" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1765" name="Whitebox.PlayModeTests.dll" fullname="C:/Projects/com.sfflogdstudio.dragonlegend/Library/ScriptAssemblies/Whitebox.PlayModeTests.dll" runstate="Runnable" testcasecount="542" result="Passed" start-time="2026-09-16 09:33:07Z" end-time="2026-09-16 09:33:08Z" duration="1.100848" total="24" passed="24" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="15856" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <test-suite type="TestFixture" id="1320" name="RecoveredFreeSpinEntryTests" fullname="RecoveredFreeSpinEntryTests" classname="RecoveredFreeSpinEntryTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-09-16 09:33:07Z" end-time="2026-09-16 09:33:07Z" duration="0.033243" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="ParameterizedMethod" id="1323" name="ExhaustedEntryReturnsBeforeInspectingSymbols" fullname="RecoveredFreeSpinEntryTests.ExhaustedEntryReturnsBeforeInspectingSymbols" classname="RecoveredFreeSpinEntryTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-09-16 09:33:07Z" end-time="2026-09-16 09:33:07Z" duration="0.020343" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1321" name="ExhaustedEntryReturnsBeforeInspectingSymbols(0)" fullname="RecoveredFreeSpinEntryTests.ExhaustedEntryReturnsBeforeInspectingSymbols(0)" methodname="ExhaustedEntryReturnsBeforeInspectingSymbols" classname="RecoveredFreeSpinEntryTests" runstate="Runnable" seed="1945253516" result="Passed" start-time="2026-09-16 09:33:07Z" end-time="2026-09-16 09:33:07Z" duration="0.014974" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1322" name="ExhaustedEntryReturnsBeforeInspectingSymbols(-1)" fullname="RecoveredFreeSpinEntryTests.ExhaustedEntryReturnsBeforeInspectingSymbols(-1)" methodname="ExhaustedEntryReturnsBeforeInspectingSymbols" classname="RecoveredFreeSpinEntryTests" runstate="Runnable" seed="1459454108" result="Passed" start-time="2026-09-16 09:33:07Z" end-time="2026-09-16 09:33:07Z" duration="0.000202" asserts="0">
+            <properties />
+          </test-case>
+        </test-suite>
+        <test-case id="1324" name="FreeEntryDebitsBeforeGenerationAndRequestsPresentationOnlyOnCompletion" fullname="RecoveredFreeSpinEntryTests.FreeEntryDebitsBeforeGenerationAndRequestsPresentationOnlyOnCompletion" methodname="FreeEntryDebitsBeforeGenerationAndRequestsPresentationOnlyOnCompletion" classname="RecoveredFreeSpinEntryTests" runstate="Runnable" seed="1966031483" result="Passed" start-time="2026-09-16 09:33:07Z" end-time="2026-09-16 09:33:07Z" duration="0.002250" asserts="0">
+          <properties />
+        </test-case>
+        <test-case id="1325" name="GenerationFailureDoesNotRefundRuntimeDebit" fullname="RecoveredFreeSpinEntryTests.GenerationFailureDoesNotRefundRuntimeDebit" methodname="GenerationFailureDoesNotRefundRuntimeDebit" classname="RecoveredFreeSpinEntryTests" runstate="Runnable" seed="1881785032" result="Passed" start-time="2026-09-16 09:33:07Z" end-time="2026-09-16 09:33:07Z" duration="0.002286" asserts="0">
+          <properties />
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1331" name="RecoveredFreeSpinGuaranteeIntegrationTests" fullname="RecoveredFreeSpinGuaranteeIntegrationTests" classname="RecoveredFreeSpinGuaranteeIntegrationTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-09-16 09:33:07Z" end-time="2026-09-16 09:33:08Z" duration="0.970444" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1332" name="SixOriginallyEmptyRoundsPayGuaranteedCoinsAndDisplaySixDollars" fullname="RecoveredFreeSpinGuaranteeIntegrationTests.SixOriginallyEmptyRoundsPayGuaranteedCoinsAndDisplaySixDollars" methodname="SixOriginallyEmptyRoundsPayGuaranteedCoinsAndDisplaySixDollars" classname="RecoveredFreeSpinGuaranteeIntegrationTests" runstate="Runnable" seed="1355353279" result="Passed" start-time="2026-09-16 09:33:07Z" end-time="2026-09-16 09:33:08Z" duration="0.968592" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <output><![CDATA[[BizzaGameAnalytics] user_properties_handed_off property_count=8
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1333" name="RecoveredFreeSpinGuaranteeTests" fullname="RecoveredFreeSpinGuaranteeTests" classname="RecoveredFreeSpinGuaranteeTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.026454" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="ParameterizedMethod" id="1342" name="ConsecutiveFreeRoundsEachProducePositiveCoinAwards" fullname="RecoveredFreeSpinGuaranteeTests.ConsecutiveFreeRoundsEachProducePositiveCoinAwards" classname="RecoveredFreeSpinGuaranteeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.006443" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1338" name="ConsecutiveFreeRoundsEachProducePositiveCoinAwards(4)" fullname="RecoveredFreeSpinGuaranteeTests.ConsecutiveFreeRoundsEachProducePositiveCoinAwards(4)" methodname="ConsecutiveFreeRoundsEachProducePositiveCoinAwards" classname="RecoveredFreeSpinGuaranteeTests" runstate="Runnable" seed="105247909" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.002743" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1339" name="ConsecutiveFreeRoundsEachProducePositiveCoinAwards(6)" fullname="RecoveredFreeSpinGuaranteeTests.ConsecutiveFreeRoundsEachProducePositiveCoinAwards(6)" methodname="ConsecutiveFreeRoundsEachProducePositiveCoinAwards" classname="RecoveredFreeSpinGuaranteeTests" runstate="Runnable" seed="1039847819" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.000705" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1340" name="ConsecutiveFreeRoundsEachProducePositiveCoinAwards(8)" fullname="RecoveredFreeSpinGuaranteeTests.ConsecutiveFreeRoundsEachProducePositiveCoinAwards(8)" methodname="ConsecutiveFreeRoundsEachProducePositiveCoinAwards" classname="RecoveredFreeSpinGuaranteeTests" runstate="Runnable" seed="2121620449" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.000607" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1341" name="ConsecutiveFreeRoundsEachProducePositiveCoinAwards(10)" fullname="RecoveredFreeSpinGuaranteeTests.ConsecutiveFreeRoundsEachProducePositiveCoinAwards(10)" methodname="ConsecutiveFreeRoundsEachProducePositiveCoinAwards" classname="RecoveredFreeSpinGuaranteeTests" runstate="Runnable" seed="293892867" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.000583" asserts="0">
+            <properties />
+          </test-case>
+        </test-suite>
+        <test-case id="1336" name="GuaranteeKeepsOrdinaryEventWeightsAndFreeSpinCounts" fullname="RecoveredFreeSpinGuaranteeTests.GuaranteeKeepsOrdinaryEventWeightsAndFreeSpinCounts" methodname="GuaranteeKeepsOrdinaryEventWeightsAndFreeSpinCounts" classname="RecoveredFreeSpinGuaranteeTests" runstate="Runnable" seed="1901224795" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.001913" asserts="0">
+          <properties />
+        </test-case>
+        <test-case id="1334" name="MissingJsonFieldRetainsTheOriginalZeroCoinOutcome" fullname="RecoveredFreeSpinGuaranteeTests.MissingJsonFieldRetainsTheOriginalZeroCoinOutcome" methodname="MissingJsonFieldRetainsTheOriginalZeroCoinOutcome" classname="RecoveredFreeSpinGuaranteeTests" runstate="Runnable" seed="1417872073" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.000414" asserts="0">
+          <properties />
+        </test-case>
+        <test-case id="1335" name="OriginalSnapshotsStayOptOutAndCurrentConfigurationRoundTrips" fullname="RecoveredFreeSpinGuaranteeTests.OriginalSnapshotsStayOptOutAndCurrentConfigurationRoundTrips" methodname="OriginalSnapshotsStayOptOutAndCurrentConfigurationRoundTrips" classname="RecoveredFreeSpinGuaranteeTests" runstate="Runnable" seed="732164271" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.002403" asserts="0">
+          <properties />
+        </test-case>
+        <test-case id="1337" name="ZeroDrawGetsOneCoinWithoutReducingNaturalWinsOrRedrawingBalls" fullname="RecoveredFreeSpinGuaranteeTests.ZeroDrawGetsOneCoinWithoutReducingNaturalWinsOrRedrawingBalls" methodname="ZeroDrawGetsOneCoinWithoutReducingNaturalWinsOrRedrawingBalls" classname="RecoveredFreeSpinGuaranteeTests" runstate="Runnable" seed="130390479" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.006775" asserts="0">
+          <properties />
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1343" name="RecoveredFreeSpinResultTests" fullname="RecoveredFreeSpinResultTests" classname="RecoveredFreeSpinResultTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.017563" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="ParameterizedMethod" id="1351" name="EffectBoardsMatchNativeRandomConsumptionAndPreserveActualRewards" fullname="RecoveredFreeSpinResultTests.EffectBoardsMatchNativeRandomConsumptionAndPreserveActualRewards" classname="RecoveredFreeSpinResultTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.004483" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1348" name="EffectBoardsMatchNativeRandomConsumptionAndPreserveActualRewards(51,0,0)" fullname="RecoveredFreeSpinResultTests.EffectBoardsMatchNativeRandomConsumptionAndPreserveActualRewards(51,0,0)" methodname="EffectBoardsMatchNativeRandomConsumptionAndPreserveActualRewards" classname="RecoveredFreeSpinResultTests" runstate="Runnable" seed="1406281117" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.002006" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1349" name="EffectBoardsMatchNativeRandomConsumptionAndPreserveActualRewards(72,6,7)" fullname="RecoveredFreeSpinResultTests.EffectBoardsMatchNativeRandomConsumptionAndPreserveActualRewards(72,6,7)" methodname="EffectBoardsMatchNativeRandomConsumptionAndPreserveActualRewards" classname="RecoveredFreeSpinResultTests" runstate="Runnable" seed="190409978" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.000519" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1350" name="EffectBoardsMatchNativeRandomConsumptionAndPreserveActualRewards(93,10,5)" fullname="RecoveredFreeSpinResultTests.EffectBoardsMatchNativeRandomConsumptionAndPreserveActualRewards(93,10,5)" methodname="EffectBoardsMatchNativeRandomConsumptionAndPreserveActualRewards" classname="RecoveredFreeSpinResultTests" runstate="Runnable" seed="82147372" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.000480" asserts="0">
+            <properties />
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1356" name="ExhaustedBallIndexShufflesExistingTypesAndPreservesResult" fullname="RecoveredFreeSpinResultTests.ExhaustedBallIndexShufflesExistingTypesAndPreservesResult" classname="RecoveredFreeSpinResultTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.006340" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1352" name="ExhaustedBallIndexShufflesExistingTypesAndPreservesResult(0)" fullname="RecoveredFreeSpinResultTests.ExhaustedBallIndexShufflesExistingTypesAndPreservesResult(0)" methodname="ExhaustedBallIndexShufflesExistingTypesAndPreservesResult" classname="RecoveredFreeSpinResultTests" runstate="Runnable" seed="414421796" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.002941" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1353" name="ExhaustedBallIndexShufflesExistingTypesAndPreservesResult(1)" fullname="RecoveredFreeSpinResultTests.ExhaustedBallIndexShufflesExistingTypesAndPreservesResult(1)" methodname="ExhaustedBallIndexShufflesExistingTypesAndPreservesResult" classname="RecoveredFreeSpinResultTests" runstate="Runnable" seed="123545581" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.000696" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1354" name="ExhaustedBallIndexShufflesExistingTypesAndPreservesResult(7)" fullname="RecoveredFreeSpinResultTests.ExhaustedBallIndexShufflesExistingTypesAndPreservesResult(7)" methodname="ExhaustedBallIndexShufflesExistingTypesAndPreservesResult" classname="RecoveredFreeSpinResultTests" runstate="Runnable" seed="11245034" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.000397" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1355" name="ExhaustedBallIndexShufflesExistingTypesAndPreservesResult(15)" fullname="RecoveredFreeSpinResultTests.ExhaustedBallIndexShufflesExistingTypesAndPreservesResult(15)" methodname="ExhaustedBallIndexShufflesExistingTypesAndPreservesResult" classname="RecoveredFreeSpinResultTests" runstate="Runnable" seed="1148688051" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.000397" asserts="0">
+            <properties />
+          </test-case>
+        </test-suite>
+        <test-case id="1357" name="FullBoardExcessPlacementYieldsWithoutDiscardingRequestedCount" fullname="RecoveredFreeSpinResultTests.FullBoardExcessPlacementYieldsWithoutDiscardingRequestedCount" methodname="FullBoardExcessPlacementYieldsWithoutDiscardingRequestedCount" classname="RecoveredFreeSpinResultTests" runstate="Runnable" seed="1368491042" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.001011" asserts="0">
+          <properties />
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1347" name="IncrementalResultMatchesNativePlacementAndRandomConsumption" fullname="RecoveredFreeSpinResultTests.IncrementalResultMatchesNativePlacementAndRandomConsumption" classname="RecoveredFreeSpinResultTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.003195" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1344" name="IncrementalResultMatchesNativePlacementAndRandomConsumption(17,0,0)" fullname="RecoveredFreeSpinResultTests.IncrementalResultMatchesNativePlacementAndRandomConsumption(17,0,0)" methodname="IncrementalResultMatchesNativePlacementAndRandomConsumption" classname="RecoveredFreeSpinResultTests" runstate="Runnable" seed="316195714" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.000909" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1345" name="IncrementalResultMatchesNativePlacementAndRandomConsumption(23,6,7)" fullname="RecoveredFreeSpinResultTests.IncrementalResultMatchesNativePlacementAndRandomConsumption(23,6,7)" methodname="IncrementalResultMatchesNativePlacementAndRandomConsumption" classname="RecoveredFreeSpinResultTests" runstate="Runnable" seed="1991007695" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.000154" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1346" name="IncrementalResultMatchesNativePlacementAndRandomConsumption(37,10,5)" fullname="RecoveredFreeSpinResultTests.IncrementalResultMatchesNativePlacementAndRandomConsumption(37,10,5)" methodname="IncrementalResultMatchesNativePlacementAndRandomConsumption" classname="RecoveredFreeSpinResultTests" runstate="Runnable" seed="1570905072" result="Passed" start-time="2026-09-16 09:33:08Z" end-time="2026-09-16 09:33:08Z" duration="0.000110" asserts="0">
+            <properties />
+          </test-case>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

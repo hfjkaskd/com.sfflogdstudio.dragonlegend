@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,7 +45,7 @@ namespace DragonLegend.Whitebox
             tipText.gameObject.SetActive(false); totalText.text = ""; continueButton.gameObject.SetActive(false);
             IsShown = true; gameObject.SetActive(true); artwork.PlayOnce(startClip, null);
             wait = RecoveredReelWait.Delay(startDelay, BeginCount, error => Failed?.Invoke(error));
-            tipText.text = string.Format(CultureInfo.InvariantCulture, tipFormat, initialSpinCount);
+            tipText.text = GameLocalization.Format(tipFormat, language(), initialSpinCount);
         }
         private void BeginCount()
         {

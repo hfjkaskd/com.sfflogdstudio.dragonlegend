@@ -11,6 +11,18 @@ using Object=UnityEngine.Object;
 
 public static class BuildMainCashOutStatus
 {
+    // Reserve the second header row between level progress and PayPal.
+    public static void ApplyHeaderLayout(GameObject root)
+    {
+        var panel=(RectTransform)root.transform.Find("CashOutTip");
+        panel.anchorMin=panel.anchorMax=new Vector2(.5f,1);panel.pivot=new Vector2(.5f,1);
+        panel.anchoredPosition=new Vector2(66,-110);panel.sizeDelta=new Vector2(300,107);
+        var label=panel.GetComponentInChildren<TMP_Text>(true);var rect=label.rectTransform;
+        rect.anchorMin=Vector2.zero;rect.anchorMax=Vector2.one;rect.pivot=new Vector2(.5f,.5f);
+        rect.anchoredPosition=Vector2.zero;rect.sizeDelta=new Vector2(-24,-16);
+        label.enableAutoSizing=true;label.fontSize=32;label.fontSizeMin=18;label.fontSizeMax=32;
+        foreach(var graphic in panel.GetComponentsInChildren<Graphic>(true))graphic.raycastTarget=false;
+    }
     public static void Save()
     {
         const string output="Assets/Resources/RecoveredUI/MainCashOutStatus.prefab",temporary="Assets/Whitebox/Editor/MainCashOutStatusSource.prefab";
@@ -35,7 +47,7 @@ public static class BuildMainCashOutStatus
             settings.FindProperty("readyText").stringValue="You Can Cash Out Now!";
             settings.FindProperty("remainingFormat").stringValue="Earn <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> To Withdraw <material=\"#003815_3\"><gradient=\"cash\">{1}</gradient></material>";
             settings.FindProperty("delay").floatValue=12;settings.FindProperty("scaleDuration").floatValue=.5f;settings.FindProperty("holdDuration").floatValue=5;
-            settings.ApplyModifiedPropertiesWithoutUndo();PrefabUtility.SaveAsPrefabAsset(root,output);
+            settings.ApplyModifiedPropertiesWithoutUndo();ApplyHeaderLayout(root);PrefabUtility.SaveAsPrefabAsset(root,output);
         }finally{if(root!=null)PrefabUtility.UnloadPrefabContents(root);AssetDatabase.DeleteAsset(temporary);}
         const string core="Assets/Resources/RecoveredUI/CoreRoundFlow.prefab";root=PrefabUtility.LoadPrefabContents(core);
         try{

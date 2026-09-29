@@ -39,10 +39,14 @@ public sealed class RecoveredFreeSpecialsTests
             }
             var oldCoin=pool.CoinAt(coinReel.SymbolAt(0));pool.ClearCoins(coinReel);
             Assert.AreEqual(5,pool.ActiveCoins);Assert.AreEqual(7,pool.ActiveBalls);Assert.IsTrue(coinReel.SymbolAt(0).Symbol.gameObject.activeSelf);
+            coinReel.SymbolAt(2).Cover.gameObject.SetActive(true);
             var reusedCoin=pool.CreateCoin(coinReel.SymbolAt(2),false);Assert.AreSame(oldCoin,reusedCoin);Assert.AreEqual(6,pool.CreatedCoins);
+            Assert.IsFalse(coinReel.SymbolAt(2).Cover.gameObject.activeSelf,"A reused coin must not inherit the previous ordinary symbol's dim overlay.");
             Assert.IsTrue(reusedCoin.Art.Player.IsPlaying("zcjb_chuxian"));Assert.IsFalse(reusedCoin.Reward.gameObject.activeSelf);
             var oldBall=pool.BallAt(ballReel.SymbolAt(0));pool.ClearBalls(ballReel);Assert.AreEqual(6,pool.ActiveBalls);
+            ballReel.SymbolAt(1).Cover.gameObject.SetActive(true);
             var reusedBall=pool.CreateBall(ballReel.SymbolAt(1),false);Assert.AreSame(oldBall,reusedBall);Assert.AreEqual(7,pool.CreatedBalls);
+            Assert.IsFalse(ballReel.SymbolAt(1).Cover.gameObject.activeSelf,"A reused ball must remain bright over the board.");
             Assert.AreEqual(1,pool.BallIndex);Assert.AreEqual(result.GetBall(0),reusedBall.BallType);
             Assert.AreEqual(6,pool.ActiveCoins);Assert.AreEqual(7,pool.ActiveBalls);
         } finally {Object.DestroyImmediate(root.gameObject);Random.state=state;}

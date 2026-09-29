@@ -434,55 +434,55 @@ public class AccountModule
     [Serializable]
     public class UserInfo
     {
-        [JsonProperty("SbmBac")]
+        [JsonProperty("cfBBbal")]
         public double Os_Bac; // 当前金额 balance - 巴西/印尼
 
-        [JsonProperty("SbmBaci")]
+        [JsonProperty("cfBBbalI")]
         public int Os_Baci; // 当前积分数 balance_int - 美国
 
-        [JsonProperty("SbmCon")]
+        [JsonProperty("cfBBcin")]
         public int Os_Con; // 当前金币数 coin
 
-        [JsonProperty("SbmCrc")]
+        [JsonProperty("cfBBcry")]
         public string Os_Crc; // 国家货币 currency
 
-        [JsonProperty("SbmCrcs")]
+        [JsonProperty("cfBBcrsy")]
         public string Os_Crcs; // 国家货币符号 currencySymbols
 
-        [JsonProperty("SbmCty")]
+        [JsonProperty("cfBBco")]
         public string Os_Cty; // 国家 country
 
-        [JsonProperty("SbmEwl")]
+        [JsonProperty("cfBBeWi")]
         public double Os_Ewl; // 可提现金额 enableWithdrawal
 
-        [JsonProperty("SbmImg")]
+        [JsonProperty("cfBBisR")]
         public int Os_Img; // 是否有消息未读，1是，0否
 
-        [JsonProperty("SbmLev")]
+        [JsonProperty("cfBBlv")]
         public int Os_Lev; // 当前关卡 level
 
-        [JsonProperty("SbmLgd")]
+        [JsonProperty("cfBBlDN")]
         public int Os_Lgd; // 用户连续登录天数 loginDay
 
-        [JsonProperty("SbmMny")]
+        [JsonProperty("cfBBtmy")]
         public double Os_Mny; // 用户真实的钱（货币）
 
-        [JsonProperty("SbmNcm")]
+        [JsonProperty("cfBBnR")]
         public bool Os_Ncm; // 是否是新手 newComer
 
-        [JsonProperty("SbmNnm")]
+        [JsonProperty("cfBBnN")]
         public string Os_Nnm; // 用户昵称 nickName
 
         [JsonProperty("SbmRol")]
         public double Os_Rol; // 用户的卷（货币）
 
-        [JsonProperty("SbmRti")]
+        [JsonProperty("cfBBrI")]
         public long Os_Rti; // 注册时间 registerTime
 
-        [JsonProperty("SbmRts")]
+        [JsonProperty("cfBBrTi")]
         public int Os_Rts; // 当前关卡 reachTimes
 
-        [JsonProperty("SbmTra")]
+        [JsonProperty("cfBBtA")]
         public double Os_Tra; // 可提现比例 taxRate
 
         public double GetBalance()
@@ -531,22 +531,22 @@ public class AccountModule
     [Serializable]
     public class OceanShineAdRevenueRequest
     {
-        [JsonProperty("SbmApid")]
+        [JsonProperty("cfBBapId")]
         public string Os_Apid; // 应用ID
 
-        [JsonProperty("SbmBtid")]
+        [JsonProperty("cfBBbtId")]
         public string Os_Btid; // 获取收益ID
 
-        [JsonProperty("SbmEcm")]
+        [JsonProperty("cfBBec")]
         public double Os_Ecm; // 广告ECPM
 
-        [JsonProperty("SbmSal")]
+        [JsonProperty("cfBBspe")]
         public string Os_Sal; // 特殊标识：ad_show / task_10000 / small
 
-        [JsonProperty("SbmUsid")]
+        [JsonProperty("cfBBusId")]
         public string Os_Usid; // 用户ID
 
-        [JsonProperty("SbmVn")]
+        [JsonProperty("cfBBvn")]
         public string Os_Vn; // 应用版本
 
 
@@ -562,18 +562,16 @@ public class AccountModule
     [Serializable]
     public class OceanShineAdRevenueResponse
     {
-        [JsonProperty("SbmBac")]
+        [JsonProperty("cfBBbal")]
         public int Os_Bac; // 获取的卷 --- 美国使用
 
-        [JsonProperty("SbmUso")]
+        [JsonProperty("cfBBuO")]
         public UserInfo Os_Uso; // 用户信息
 
-        [JsonProperty("SbmPrc")]
+        [JsonProperty("cfBBpI")]
         public double Os_Prc; // 获取的金额（当前国家）--- 巴西和印尼
 
-        [JsonProperty("SbmMul")]
-        public double Os_Mul; // 原基础上增加倍数，1为1倍，2为2倍，0.1为10%，0.05为5%
-        [JsonProperty("SbmCon")]
+        [JsonProperty("cfBBcin")]
         public int Os_Con; // 获取的金币-有可能为0->coin
 
         public double GetBalance()
@@ -694,57 +692,54 @@ public class AccountModule
     [Serializable]
     public class OceanShineApplyWithdrawalRequestReal
     {
-        [JsonProperty("SbmApid")]
+        [JsonProperty("cfBBapId")]
         public string Os_Apid; // 应用ID
 
-        [JsonProperty("SbmCp")]
+        [JsonProperty("cfBBCP")]
         public string Os_Cp; // CPF
 
-        [JsonProperty("SbmGdid")]
-        public int Os_Gdid; // 商品ID
 
-        [JsonProperty("SbmMid")]
+        [JsonProperty("cfBBmId")]
         public int Os_Mid; // 商品中的支付配置ID
 
-        // [JsonProperty("Mn")]
-        // public string Os_Mn; // money现金提现节点 或 task_任务ID
+        [JsonProperty("cfBBMn")]
+        public string Os_Mn; // task ID or empty
 
-        [JsonProperty("SbmPb")]
+        [JsonProperty("cfBBpbT")]
         public string Os_Pb; // Pix账号绑定类型 (P E C B)
 
-        [JsonProperty("SbmRa")]
+        [JsonProperty("cfBBA")]
         public string Os_Ra; // ReceiverAccount
 
-        [JsonProperty("SbmRe")]
+        [JsonProperty("cfBBE")]
         public string Os_Re; // ReceiverEmail
 
-        [JsonProperty("SbmRm")]
+        [JsonProperty("cfBBM")]
         public string Os_Rm; // ReceiverMobile
 
-        [JsonProperty("SbmRn")]
+        [JsonProperty("cfBBN")]
         public string Os_Rn; // ReceiverName
 
-        [JsonProperty("SbmSeid")]
+        [JsonProperty("cfBBseI")]
         public string Os_Seid; // 客户端UUID
 
-        [JsonProperty("SbmUsid")]
+        [JsonProperty("cfBBusId")]
         public string Os_Usid; // 用户ID
 
-        [JsonProperty("SbmVn")]
+        [JsonProperty("cfBBvn")]
         public string Os_Vn; // 应用版本
 
         // [JsonProperty("At")]
         // public string Os_At; // 现金或卷提现 applyType：money 或 rolll
 
-        [JsonProperty("bsm_trt")]  // -------------------------------------------多出来的API
-        public string Os_Trt; // 选择提现的比例
+
     }
 
     // 响应体数据模型类，包含了去提现请求的响应字段
     [Serializable]
     public class OceanShineApplyWithdrawalResponse
     {
-        [JsonProperty("SbmOdr")]
+        [JsonProperty("cfBBoR")]
         public string Os_Odr; // 订单号 orderNo
     }
 
@@ -758,9 +753,8 @@ public class AccountModule
             Os_Usid = PlayerPrefs.GetString(AccountModule.m_userIdKey),
             Os_Seid = DeviceInfoUtil.GetDeviceInfoDataForCloud().Os_Seid,
 
-            // Os_Mn = Os_Mn,
+            Os_Mn = Os_Mn,
             Os_Cp = _Os_Cp,
-            Os_Gdid = 0,
             Os_Mid = _Os_Mid,
             Os_Pb = _Os_Pb,
             Os_Ra = _Os_Ra,
@@ -768,7 +762,6 @@ public class AccountModule
             Os_Rm = _Os_Rm,
             Os_Rn = _Os_Rn,
             //Os_At = _Os_At,
-            Os_Trt = "0"
         };
         return request;
     }
@@ -795,43 +788,41 @@ public class AccountModule
     [Serializable]
     public class OceanShineApplyWithdrawalRequestFake
     {
-        [JsonProperty("SbmApid")]
+        [JsonProperty("cfBBapId")]
         public string Os_Apid; // 应用ID
 
-        [JsonProperty("SbmCp")]
+        [JsonProperty("cfBBCP")]
         public string Os_Cp; // CPF
 
-        [JsonProperty("SbmGdid")]
-        public int Os_Gdid; // 商品ID
 
-        [JsonProperty("SbmMid")]
+        [JsonProperty("cfBBmId")]
         public int Os_Mid; // 商品中的支付配置ID
 
-        [JsonProperty("SbmMn")]
+        [JsonProperty("cfBBMn")]
         public string Os_Mn; // money现金提现节点 或 task_任务ID
 
-        [JsonProperty("SbmPb")]
+        [JsonProperty("cfBBpbT")]
         public string Os_Pb; // Pix账号绑定类型 (P E C B)
 
-        [JsonProperty("SbmRa")]
+        [JsonProperty("cfBBA")]
         public string Os_Ra; // ReceiverAccount
 
-        [JsonProperty("SbmRe")]
+        [JsonProperty("cfBBE")]
         public string Os_Re; // ReceiverEmail
 
-        [JsonProperty("SbmRm")]
+        [JsonProperty("cfBBM")]
         public string Os_Rm; // ReceiverMobile
 
-        [JsonProperty("SbmRn")]
+        [JsonProperty("cfBBN")]
         public string Os_Rn; // ReceiverName
 
-        [JsonProperty("SbmSeid")]
+        [JsonProperty("cfBBseI")]
         public string Os_Seid; // 客户端UUID
 
-        [JsonProperty("SbmUsid")]
+        [JsonProperty("cfBBusId")]
         public string Os_Usid; // 用户ID
 
-        [JsonProperty("SbmVn")]
+        [JsonProperty("cfBBvn")]
         public string Os_Vn; // 应用版本
 
         // [JsonProperty("At")] // SportBallsMatch ApplyMoney 请求不定义该字段
@@ -850,7 +841,6 @@ public class AccountModule
 
             Os_Mn = _Os_Mn,
             Os_Cp = _Os_Cp,
-            Os_Gdid = 0,
             Os_Mid = _Os_Mid,
             Os_Pb = _Os_Pb,
             Os_Ra = _Os_Ra,
@@ -886,13 +876,13 @@ public class AccountModule
     [Serializable]
     public class OceanShineAppOtherConfigRequest
     {
-        [JsonProperty("SbmApid")]
+        [JsonProperty("cfBBapId")]
         public string Os_Apid; // 应用ID
 
-        [JsonProperty("SbmVn")]
+        [JsonProperty("vn")]
         public string Os_Vn; // 应用版本
 
-        [JsonProperty("Sbmcfn")]
+        [JsonProperty("cfBBapCf")]
         public string Os_Cfn; // 配置Key
     }
 
@@ -968,61 +958,61 @@ public class AccountModule
     [Serializable]
     public class OceanShineUserAttrsRequest
     {
-        [JsonProperty("SbmAgp")]
+        [JsonProperty("cfBBaG")]
         public string Os_Agp; // 设备当前归因广告组的名称
 
-        [JsonProperty("SbmAid")]
+        [JsonProperty("cfBBad")]
         public string Os_Aid; // 设备的唯一 Adjust ID
 
-        [JsonProperty("SbmApid")]
+        [JsonProperty("cfBBapId")]
         public string Os_Apid; // 应用ID
 
-        [JsonProperty("SbmCat")]
+        [JsonProperty("cfBBcM")]
         public double Os_Cat; // 安装成本 costAmount
 
-        [JsonProperty("SbmCcy")]
+        [JsonProperty("cfBBcCu")]
         public string Os_Ccy; // 成本相关的货币代码 costCurrency
 
-        [JsonProperty("SbmCkl")]
+        [JsonProperty("cfBBcLa")]
         public string Os_Ckl; // 安装被标记的点击标签 clickLabel
 
-        [JsonProperty("SbmCmp")]
+        [JsonProperty("cfBBcap")]
         public string Os_Cmp; // 设备当前归因 campaign
 
-        [JsonProperty("SbmCti")]
+        [JsonProperty("cfBBce")]
         public string Os_Cti; // 设备当前归因素材名称 creative
 
-        [JsonProperty("SbmCtm")]
+        [JsonProperty("cfBBcli")]
         public long Os_Ctm; // 客户端收到回调的时间 clientTime
 
-        [JsonProperty("SbmCty")]
+        [JsonProperty("cfBBcY")]
         public string Os_Cty; // 推广活动定价模型 costType
 
-        [JsonProperty("SbmDlu")]
+        [JsonProperty("cfBBdr")]
         public string Os_Dlu; // 投放参数 deepLinkUrl
 
-        [JsonProperty("SbmEvt")]
+        [JsonProperty("cfBBen")]
         public string Os_Evt; // 触发归因的事件 event
 
-        [JsonProperty("SbmFbr")]
+        [JsonProperty("cfBBfIe")]
         public string Os_Fbr; // 回调原始值 fbInstallReferrer
 
-        [JsonProperty("SbmGct")]
+        [JsonProperty("cfBBcfBBi")]
         public string Os_Gct; // Google 点击时间 ggClickTime
 
-        [JsonProperty("SbmNet")]
+        [JsonProperty("cfBBne")]
         public string Os_Net; // 归因渠道名称 network
 
-        [JsonProperty("SbmTrn")]
+        [JsonProperty("cfBBta")]
         public string Os_Trn; // 归因跟踪码 trackerName
 
-        [JsonProperty("SbmTrt")]
+        [JsonProperty("cfBBto")]
         public string Os_Trt; // 归因跟踪名称 trackerToken
 
-        [JsonProperty("SbmUsid")]
+        [JsonProperty("cfBBuId")]
         public string Os_Usid; // 用户ID
 
-        [JsonProperty("Vn")]
+        [JsonProperty("cfBBvn")]
         public string Vn; // 应用版本
     }
 
@@ -1031,25 +1021,25 @@ public class AccountModule
     {
         var _oceanShineUserAttrs = new Dictionary<string, object>
         {
-                { "SbmAgp", attribution.Adgroup },// 设备当前归因广告组的名称
-                { "SbmAid", PlayerPrefs.GetString(adJustAdidKey, "") },// 设备的唯一 Adjust ID
-                { "SbmApid", DeviceInfoUtil.GetDeviceInfoDataForCloud().Os_Apid },// 应用 ID
-                { "SbmCat", attribution.CostAmount ?? 0 },// 安装成本 - costAmount
-                { "SbmCcy", attribution.CostCurrency },// 成本相关的货币代码 - costCurrency
-                { "SbmCkl", "" },// 安装被标记的点击标签 - clickLabel
-                { "SbmCmp", attribution.Campaign },// 设备当前归因 - campaign
-                { "SbmCti", attribution.Creative },// 设备当前归因素材的名称 - creative
-                { "SbmCtm", DateTimeOffset.UtcNow.ToUnixTimeSeconds() },// 客户端收到回调的时间 - clientTime
-                { "SbmCty", attribution.CostType },// 推广活动定价模型 - costType
-                { "SbmDlu", "" },// 投放参数 - deepLinkUrl
-                { "SbmEvt", eventName },// 触发归因的事件 - event
-                { "SbmFbr", attribution.FbInstallReferrer },// 回调原始值 - fbInstallReferrer
-                { "SbmGct", "" },// Google 点击时间 - ggClickTime
-                { "SbmNet", attribution.Network },// 归因渠道名称 - network
-                { "SbmTrn", attribution.TrackerName }, // 归因跟踪码 - trackerName
-                { "SbmTrt", attribution.TrackerToken },// 归因跟踪名称 - trackerToken
-                { "SbmUsid", PlayerPrefs.GetString(AccountModule.m_userIdKey) },// 用户 ID
-                { "Vn", Application.version }// 应用版本号
+                { "cfBBaG", attribution.Adgroup },// 设备当前归因广告组的名称
+                { "cfBBad", PlayerPrefs.GetString(adJustAdidKey, "") },// 设备的唯一 Adjust ID
+                { "cfBBapId", DeviceInfoUtil.GetDeviceInfoDataForCloud().Os_Apid },// 应用 ID
+                { "cfBBcM", attribution.CostAmount ?? 0 },// 安装成本 - costAmount
+                { "cfBBcCu", attribution.CostCurrency },// 成本相关的货币代码 - costCurrency
+                { "cfBBcLa", "" },// 安装被标记的点击标签 - clickLabel
+                { "cfBBcap", attribution.Campaign },// 设备当前归因 - campaign
+                { "cfBBce", attribution.Creative },// 设备当前归因素材的名称 - creative
+                { "cfBBcli", DateTimeOffset.UtcNow.ToUnixTimeSeconds() },// 客户端收到回调的时间 - clientTime
+                { "cfBBcY", attribution.CostType },// 推广活动定价模型 - costType
+                { "cfBBdr", "" },// 投放参数 - deepLinkUrl
+                { "cfBBen", eventName },// 触发归因的事件 - event
+                { "cfBBfIe", attribution.FbInstallReferrer },// 回调原始值 - fbInstallReferrer
+                { "cfBBcfBBi", "" },// Google 点击时间 - ggClickTime
+                { "cfBBne", attribution.Network },// 归因渠道名称 - network
+                { "cfBBta", attribution.TrackerName }, // 归因跟踪码 - trackerName
+                { "cfBBto", attribution.TrackerToken },// 归因跟踪名称 - trackerToken
+                { "cfBBuId", PlayerPrefs.GetString(AccountModule.m_userIdKey) },// 用户 ID
+                { "cfBBvn", Application.version }// 应用版本号
         };
         return _oceanShineUserAttrs;
     }
@@ -1075,13 +1065,13 @@ public class AccountModule
     [Serializable]
     public class OceanShineGetAdRevenueReportIdRequest
     {
-        [JsonProperty("SbmApid")]
+        [JsonProperty("cfBBapId")]
         public string Os_Apid; // 应用ID
 
-        [JsonProperty("SbmUsid")]
+        [JsonProperty("cfBBusId")]
         public string Os_Usid; // 用户ID
 
-        [JsonProperty("SbmVn")]
+        [JsonProperty("cfBBvn")]
         public string Os_Vn; // 应用版本
     }
 
@@ -1089,11 +1079,10 @@ public class AccountModule
     [Serializable]
     public class OceanShineGetAdRevenueReportIdResponse
     {
-        [JsonProperty("SbmBtid")]
+        [JsonProperty("cfBBbtId")]
         public string Os_Btid; // 收益ID batch_id
 
-        [JsonProperty("SbmPfm")]
-        public string Os_Pfm; // 广告平台名称
+
     }
 
     public void Request_BatchId(Action<FailHttpResponse<OceanShineGetAdRevenueReportIdResponse>> callback = null)
@@ -1117,76 +1106,79 @@ public class AccountModule
     [Serializable]
     public class OceanShineUserLoginRequest
     {
-        [JsonProperty("SbmAnid")]
+        [JsonProperty("cfBBid")]
+        public int Id; // Optional target API field; default value, no business mapping.
+
+        [JsonProperty("cfBBarId")]
         public string Os_Anid; // 安卓ID
 
-        [JsonProperty("SbmApid")]
+        [JsonProperty("cfBBapId")]
         public string Os_Apid; // 应用ID
 
-        [JsonProperty("SbmAtd")]
+        [JsonProperty("cfBBa")]
         public int Os_Atd; // 调试模式
 
-        [JsonProperty("SbmBbd")]
+        [JsonProperty("cfBBba")]
         public string Os_Bbd; // 手机品牌
 
-        [JsonProperty("SbmCal")]
+        [JsonProperty("cfBBca")]
         public string Os_Cal; // 来源
 
-        [JsonProperty("SbmCtr")]
+        [JsonProperty("cfBBch")]
         public int Os_Ctr; // 当前小时值
 
-        [JsonProperty("SbmDtd")]
+        [JsonProperty("cfBBd")]
         public string Os_Dtd; // 屏幕密度
 
-        [JsonProperty("SbmDth")]
+        [JsonProperty("cfBBh")]
         public int Os_Dth; // 屏幕高
 
-        [JsonProperty("SbmDtw")]
+        [JsonProperty("cfBBw")]
         public int Os_Dtw; // 屏幕宽
 
-        [JsonProperty("SbmGaid")]
+        [JsonProperty("cfBBgad")]
         public string Os_Gaid; // GoogleId
 
-        [JsonProperty("SbmLag")]
+        [JsonProperty("cfBBla")]
         public string Os_Lag; // 语言
 
-        [JsonProperty("SbmMbl")]
+        [JsonProperty("cfBBmd")]
         public string Os_Mbl; // 设备型号
 
-        [JsonProperty("SbmNbt")]
+        [JsonProperty("cfBBne")]
         public string Os_Nbt; // 网络
 
-        [JsonProperty("SbmObv")]
+        [JsonProperty("cfBBov")]
         public string Os_Obv; // 系统版本
 
-        [JsonProperty("SbmRtt")]
+        [JsonProperty("cfBBr")]
         public int Os_Rtt; // 是否root
 
-        [JsonProperty("SbmSbi")]
+        [JsonProperty("cfBBsi")]
         public int Os_Sbi; // SIM卡
 
-        [JsonProperty("SbmSeid")]
+        [JsonProperty("cfBBseI")]
         public string Os_Seid; // 客户端UUID
 
-        [JsonProperty("SbmTry")]
+        [JsonProperty("cfBBco")]
         public string Os_Try; // 国家码
 
-        [JsonProperty("SbmTtz")]
+        [JsonProperty("cfBBtz")]
         public string Os_Ttz; // 时区
 
-        [JsonProperty("SbmUsid")]
+        [JsonProperty("cfBBusId")]
         public string Os_Usid; // 用户ID
 
-        [JsonProperty("SbmCpu")]
+        [JsonProperty("cfBBcpu")]
         public string Os_Cpu; // CPU架构
 
-        [JsonProperty("SbmUa")]
+        [JsonProperty("cfBBua")]
         public string Os_Ua; // 客户端
 
-        [JsonProperty("SbmVc")]
+        [JsonProperty("cfBBvc")]
         public int Os_Vc; // App版本号
 
-        [JsonProperty("SbmVn")]
+        [JsonProperty("cfBBvn")]
         public string Os_Vn; // App版本名
 
         /// <summary>
@@ -1268,19 +1260,17 @@ public class AccountModule
     [Serializable]
     public class OceanShineLoginResponse
     {
-        [JsonProperty("SbmAru")]
+        [JsonProperty("cfBBau")]
         public ActiveRule Os_Aru; // activeRule
 
-        [JsonProperty("SbmRdt")]
+        [JsonProperty("cfBBrA")]
         public string Os_Rdt; // 注册日期
 
-        [JsonProperty("SbmRti")]
+        [JsonProperty("cfBBrI")]
         public long Os_Rti; // 注册时间戳
 
-        [JsonProperty("SbmRw")]
-        public int Os_Rw; // 当前模式，0无模式(开发)，1审核模式，2投放模式
 
-        [JsonProperty("SbmUsid")]
+        [JsonProperty("cfBBusId")]
         public string Os_Usid; // 用户ID
 
         [Serializable]
@@ -1355,16 +1345,16 @@ public class AccountModule
     [Serializable]
     public class OceanShineFeedbackRequest
     {
-        [JsonProperty("SbmApid")]
+        [JsonProperty("cfBBapId")]
         public string Os_Apid; // 应用ID
 
-        [JsonProperty("SbmDes")]
+        [JsonProperty("cfBBdsc")]
         public string Os_Des; // 反馈描述
 
-        [JsonProperty("SbmUsid")]
+        [JsonProperty("cfBBusId")]
         public string Os_Usid; // 用户ID
 
-        [JsonProperty("SbmVn")]
+        [JsonProperty("cfBBvn")]
         public string Os_Vn; // 应用版本
     }
 
@@ -1399,13 +1389,13 @@ public class AccountModule
     [Serializable]
     public class OceanShineFeedbackListV2Request
     {
-        [JsonProperty("SbmApid")]
+        [JsonProperty("cfBBapId")]
         public string Os_Apid; // 应用ID
 
-        [JsonProperty("SbmUsid")]
+        [JsonProperty("cfBBusId")]
         public string Os_Usid; // 用户ID
 
-        [JsonProperty("SbmVn")]
+        [JsonProperty("cfBBvn")]
         public string Os_Vn; // 应用版本
     }
 
@@ -1423,43 +1413,43 @@ public class AccountModule
     [Serializable]
     public class OceanShineFeedbackListV2Response
     {
-        [JsonProperty("SbmMsl")]
+        [JsonProperty("cfBBmS")]
         public List<OceanShineFeedbackListV2ResponseData> Os_Msl; // 反馈信息列表
 
-        [JsonProperty("SbmUso")]
+        [JsonProperty("cfBBuO")]
         public UserInfo Os_Uso; // 用户信息部分
 
         [Serializable]
         public class OceanShineFeedbackListV2ResponseData
         {
-            [JsonProperty("SbmApid")]
+            [JsonProperty("cfBBapId")]
             public string Os_Apid; // 应用ID
 
-            [JsonProperty("SbmCda")]
+            [JsonProperty("cfBBcAt")]
             public string Os_Cda; // 提交时间 created_at
 
-            [JsonProperty("SbmCte")]
+            [JsonProperty("cfBBcTi")]
             public long Os_Cte; // 提交时间毫秒 created_time
 
-            [JsonProperty("SbmCtt")]
+            [JsonProperty("cfBBmS")]
             public string Os_Ctt; // 内容 msg/text
 
-            [JsonProperty("SbmId")]
+            [JsonProperty("cfBBid")]
             public long Os_Id; // 数据库ID
 
-            [JsonProperty("SbmTpe")]
+            [JsonProperty("cfBBty")]
             public long Os_Tpe; // 类型，1用户反馈，2后台回答
 
-            [JsonProperty("SbmUda")]
+            [JsonProperty("cfBBuAt")]
             public string Os_Uda; // 更新时间 updated_at
 
-            [JsonProperty("SbmUsid")]
+            [JsonProperty("cfBBusId")]
             public string Os_Usid; // 用户ID
 
-            [JsonProperty("SbmUte")]
+            [JsonProperty("cfBBuTi")]
             public long Os_Ute; // 更新时间毫秒 updated_time
 
-            [JsonProperty("SbmVn")]
+            [JsonProperty("cfBBvn")]
             public string Os_Vn; // 版本号
         }
 
@@ -1508,10 +1498,10 @@ public class AccountModule
     [Serializable]
     public class OceanShineUserReachReportRequest
     {
-        [JsonProperty("SbmApid")]
+        [JsonProperty("cfBBapId")]
         public string Os_Apid; // 应用ID
 
-        [JsonProperty("SbmUsid")]
+        [JsonProperty("cfBBusId")]
         public string Os_Usid; // 用户ID
     }
 
@@ -1519,28 +1509,28 @@ public class AccountModule
     [Serializable]
     public class OceanShineUserReachReportResponse
     {
-        [JsonProperty("SbmAcg")]
+        [JsonProperty("cfBBaO")]
         public NewcomerReward Os_Acg; // 新手奖励信息
 
-        [JsonProperty("SbmUso")]
+        [JsonProperty("cfBBuO")]
         public UserInfo Os_Uso; // 用户信息部分
 
         [Serializable]
         public class NewcomerReward
         {
-            [JsonProperty("SbmCom")]
+            [JsonProperty("cfBBcO")]
             public int Os_Com; // commonMerge
 
-            [JsonProperty("SbmNba")]
+            [JsonProperty("cfBBnBal")]
             public int Os_Nba; // 新手奖励积分数 new_balance
 
-            [JsonProperty("SbmNcc")]
+            [JsonProperty("cfBBnCo")]
             public int Os_Ncc; // 新手奖励金币 new_comer_coin
 
-            [JsonProperty("SbmRnw")]
+            [JsonProperty("cfBBnR")]
             public double Os_Rnw; // 新手奖励金额 newComerReward
 
-            [JsonProperty("SbmUsd")]
+            [JsonProperty("cfBBtS")]
             public double Os_Usd; // 转usd比例 toUsd
         }
     }
@@ -1605,66 +1595,60 @@ public class AccountModule
     [Serializable]
     public class OceanShineUserInfoRequest
     {
-        [JsonProperty("SbmApid")]
+        [JsonProperty("cfBBapId")]
         public string Os_Apid; // 应用ID
 
-        [JsonProperty("SbmUsid")]
+        [JsonProperty("cfBBusId")]
         public string Os_Usid; // 用户ID
     }
 
     [Serializable]
     public class OceanShineWithdrawalRecord
     {
-        [JsonProperty("SbmCp")]
+        [JsonProperty("cfBBCP")]
         public string Os_Cp; // CPF
 
-        [JsonProperty("SbmCrc")]
+        [JsonProperty("cfBBcry")]
         public string Os_Crc; // 货币码 currency
 
-        [JsonProperty("SbmCrcs")]
+        [JsonProperty("cfBBcrsy")]
         public string Os_Crcs; // 货币符号 currencySymbols
 
-        [JsonProperty("SbmDat")]
+        [JsonProperty("cfBBdate")]
         public string Os_Dat; // 提现时间 date
 
-        [JsonProperty("SbmDed")]
-        public double Os_Ded; // 扣除金额或现金提现时转roll金额
 
-        [JsonProperty("SbmId")]
+        [JsonProperty("cfBBid")]
         public long Os_Id; // 订单ID
 
-        [JsonProperty("SbmPb")]
+        [JsonProperty("cfBBpbT")]
         public string Os_Pb; // Pix账号绑定类型 P/E/C/B
 
-        [JsonProperty("SbmPrc")]
+        [JsonProperty("cfBBmo")]
         public double Os_Prc; // 金额 amount
 
-        [JsonProperty("SbmPym")]
+        [JsonProperty("cfBBpA")]
         public string Os_Pym; // 支付名称 payName
 
-        [JsonProperty("SbmRa")]
+        [JsonProperty("cfBBA")]
         public string Os_Ra; // 收款账户 ReceiverAccount
 
-        [JsonProperty("SbmRe")]
+        [JsonProperty("cfBBE")]
         public string Os_Re; // 收款人电子邮件 ReceiverEmail
 
-        [JsonProperty("SbmRm")]
+        [JsonProperty("cfBBM")]
         public string Os_Rm; // 收款人手机号码 ReceiverMobile
 
-        [JsonProperty("SbmRn")]
+        [JsonProperty("cfBBN")]
         public string Os_Rn; // 收款人姓名 ReceiverName
 
-        [JsonProperty("SbmRrm")]
+        [JsonProperty("cfBBrK")]
         public string Os_Rrm; // 提示信息 remarks
 
-        [JsonProperty("SbmSts")]
+        [JsonProperty("cfBBsS")]
         public int Os_Sts; // 状态：1进行中，2违规被拒，3成功，4失败
 
-        [JsonProperty("SbmTry")]
-        public int Os_Try; // 1现金提现，2roll提现
 
-        [JsonProperty("SbmTsm")]
-        public string Os_Tsm; // 提示信息（现金提现失败后）
     }
 
     /// <summary>
@@ -1690,13 +1674,13 @@ public class AccountModule
     [Serializable]
     public class OceanShineWithdrawalPageRequest
     {
-        [JsonProperty("SbmApid")]
+        [JsonProperty("cfBBapId")]
         public string Os_Apid; // 应用ID
 
-        [JsonProperty("SbmUsid")]
+        [JsonProperty("cfBBusId")]
         public string Os_Usid; // 用户ID
 
-        [JsonProperty("SbmVn")]
+        [JsonProperty("cfBBvn")]
         public string Os_Vn; // 应用版本
     }
 
@@ -1705,31 +1689,31 @@ public class AccountModule
     public class OceanShineWithdrawalPageResponse
     {
         // 用户信息部分
-        [JsonProperty("SbmUso")]
+        [JsonProperty("cfBBuO")]
         public UserInfo Os_Uso;
 
         // 提现规则
-        [JsonProperty("SbmWr")]
+        [JsonProperty("cfBBwR")]
         public List<WithdrawalRatio> Os_Wr;
 
         // 提现平台
-        [JsonProperty("SbmWwf")]
+        [JsonProperty("cfBBwO")]
         public List<WithdrawalPlatform> Os_Wwf;
 
         // 提现规则
         [Serializable]
         public class WithdrawalRatio
         {
-            [JsonProperty("SbmAdy")]
+            [JsonProperty("cfBBadF")]
             public int Os_Ady; // 提现档位 adFrequency
 
-            [JsonProperty("SbmBen")]
+            [JsonProperty("cfBBbeN")]
             public int Os_Ben; // 开始 begin
 
-            [JsonProperty("SbmEnd")]
+            [JsonProperty("cfBBenN")]
             public int Os_End; // 结束 end
 
-            [JsonProperty("SbmWro")]
+            [JsonProperty("cfBBRat")]
             public double Os_Wro; // 提现比例 withdrawRatio
         }
 
@@ -1737,25 +1721,25 @@ public class AccountModule
         [Serializable]
         public class WithdrawalPlatform
         {
-            [JsonProperty("SbmCn")]
+            [JsonProperty("cfBBin")]
             public string Os_Cn; // 支付平台图标 icon
 
             // [JsonProperty("bsm_gdl")] // SportBallsMatch Withdrawal 响应不定义该字段
             // public object Os_Gdl; // 保留旧字段声明，不参与反序列化
 
-            [JsonProperty("SbmMe")]
+            [JsonProperty("cfBBnm")]
             public string Os_Me; // 支付平台名称 name
 
-            [JsonProperty("SbmMid")]
+            [JsonProperty("cfBBmId")]
             public int Os_Mid; // 配置ID
 
-            [JsonProperty("SbmMlt")]
+            [JsonProperty("cfBBli")]
             public double Os_Mlt; // 最低提现值 minimumLimit
 
-            [JsonProperty("SbmEt")]
+            [JsonProperty("cfBBtx")]
             public string Os_Et; // 支付平台描述 text
 
-            [JsonProperty("SbmId")]
+            [JsonProperty("cfBBid")]
             public int Os_Id; // 平台ID
         }
     }
@@ -1810,13 +1794,13 @@ public class AccountModule
     [Serializable]
     public class Apid_Usid_Vn_Request
     {
-        [JsonProperty("SbmApid")]
+        [JsonProperty("cfBBapId")]
         public string Os_Apid; // 应用ID
 
-        [JsonProperty("SbmUsid")]
+        [JsonProperty("cfBBusId")]
         public string Os_Usid; // 用户ID
 
-        [JsonProperty("SbmVn")]
+        [JsonProperty("cfBBvn")]
         public string Os_Vn; // 应用版本
     }
 
@@ -1824,28 +1808,28 @@ public class AccountModule
     [Serializable]
     public class RoutineTaskLookAdMoneyResponse
     {
-        [JsonProperty("SbmAn")]
+        [JsonProperty("cfBBAn")]
         public int Os_An; // 广告次数
 
-        [JsonProperty("SbmCss")]
+        [JsonProperty("cfBBCss")]
         public string Os_Css; // 国家货币符号
 
-        [JsonProperty("SbmLn")]
+        [JsonProperty("cfBBLn")]
         public int Os_Ln; // 已看次数
 
-        [JsonProperty("SbmMrt")]
+        [JsonProperty("cfBBMrt")]
         public double Os_Mrt; // 卷转金额的比例
 
-        [JsonProperty("SbmMy")]
+        [JsonProperty("cfBBMy")]
         public double Os_My; // 可提现金额
 
-        [JsonProperty("SbmSr")]
+        [JsonProperty("cfBBSr")]
         public int Os_Sr; // 排序
 
-        [JsonProperty("SbmSs")]
+        [JsonProperty("cfBBSs")]
         public int Os_Ss; // 当前状态：1未达到条件，2可提现，3已提现
 
-        [JsonProperty("SbmTid")]
+        [JsonProperty("cfBBTid")]
         public int Os_Tid; // 任务ID
     }
 
@@ -1911,29 +1895,29 @@ public class AccountModule
     public class OceanShineUserInfoResponse
     {
         // 新手奖励信息
-        [JsonProperty("SbmAcg")]
+        [JsonProperty("cfBBaO")]
         public NewcomerReward Os_Acg;
 
         // 用户信息部分
-        [JsonProperty("SbmUso")]
+        [JsonProperty("cfBBuO")]
         public UserInfo Os_Uso;
 
         [Serializable]
         public class NewcomerReward
         {
-            [JsonProperty("SbmCom")]
+            [JsonProperty("cfBBcO")]
             public int Os_Com; // commonMerge
 
-            [JsonProperty("SbmNba")]
+            [JsonProperty("cfBBnBal")]
             public int Os_Nba; // 新手奖励积分数 new_balance
 
-            [JsonProperty("SbmNcc")]
+            [JsonProperty("cfBBnCo")]
             public int Os_Ncc; // 新手奖励金币 new_comer_coin
 
-            [JsonProperty("SbmRnw")]
+            [JsonProperty("cfBBnR")]
             public double Os_Rnw; // 新手奖励金额 newComerReward
 
-            [JsonProperty("SbmUsd")]
+            [JsonProperty("cfBBtS")]
             public double Os_Usd; // 转 USD 比例 toUsd
 
             public double GetBalance()
@@ -2035,11 +2019,11 @@ public class AccountModule
     public class OceanShineAdLogReportRequest
     {
         // 公共信息部分
-        [JsonProperty("SbmCnf")]
+        [JsonProperty("cfBBcN")]
         public CommonInfo Os_Cnf;
 
         // 扩展参数部分
-        [JsonProperty("SbmEpm")]
+        [JsonProperty("cfBBeR")]
         public ExtendParam Os_Epm;
 
         public OceanShineAdLogReportRequest()
@@ -2057,13 +2041,13 @@ public class AccountModule
         [Serializable]
         public class CommonInfo
         {
-            [JsonProperty("SbmApid")]
+            [JsonProperty("cfBBapId")]
             public string Os_Apid; // 应用ID
 
-            [JsonProperty("SbmUsid")]
+            [JsonProperty("cfBBusId")]
             public string Os_Usid; // 用户ID
 
-            [JsonProperty("SbmVn")]
+            [JsonProperty("cfBBvn")]
             public string Os_Vn; // 应用版本
 
             public void Clear()
@@ -2077,43 +2061,43 @@ public class AccountModule
         [Serializable]
         public class ExtendParam
         {
-            [JsonProperty("SbmAbd")]
+            [JsonProperty("cfBBad")]
             public string Os_Abd; // adType
 
-            [JsonProperty("SbmAdgp")]
+            [JsonProperty("cfBBaG")]
             public string Os_Adgp; // adgroup
 
-            [JsonProperty("SbmBtid")]
+            [JsonProperty("cfBBbtId")]
             public string Os_Btid; // batchId
 
-            [JsonProperty("SbmCid")]
+            [JsonProperty("cfBBcd")]
             public string Os_Cid; // codeId
 
-            [JsonProperty("SbmCmp")]
+            [JsonProperty("cfBBcap")]
             public string Os_Cmp; // campaign
 
-            [JsonProperty("SbmCtc")]
+            [JsonProperty("cfBBccr")]
             public string Os_Ctc; // currencyCode
 
-            [JsonProperty("SbmEcm")]
+            [JsonProperty("cfBBec")]
             public string Os_Ecm; // ecpm
 
-            [JsonProperty("SbmEvt")]
+            [JsonProperty("cfBBen")]
             public string Os_Evt; // event
 
-            [JsonProperty("SbmEvtM")]
+            [JsonProperty("cfBBenm")]
             public string Os_EvtM; // eventMsg
 
-            [JsonProperty("SbmMbc")]
+            [JsonProperty("cfBBmo")]
             public string Os_Mbc; // mediaCodeId
 
-            [JsonProperty("SbmMbp")]
+            [JsonProperty("cfBBml")]
             public string Os_Mbp; // mediaPlatform
 
-            [JsonProperty("SbmNbt")]
+            [JsonProperty("cfBBne")]
             public string Os_Nbt; // network
 
-            [JsonProperty("SbmPtf")]
+            [JsonProperty("cfBBpl")]
             public string Os_Ptf; // platform
 
             public void Clear()
@@ -2309,35 +2293,35 @@ public class AccountModule
     [Serializable]
     public class OceanShineAppEventReportRequest
     {
-        [JsonProperty("SbmCnf")]
+        [JsonProperty("cfBBcN")]
         public CommonInfo Os_Cnf; // 公共信息部分
 
-        [JsonProperty("SbmEpm")]
+        [JsonProperty("cfBBeR")]
         public ExtendParam Os_Epm; // 扩展参数部分
 
         [Serializable]
         public class CommonInfo
         {
-            [JsonProperty("SbmApid")]
+            [JsonProperty("cfBBapId")]
             public string Os_Apid; // 应用ID
 
-            [JsonProperty("SbmUsid")]
+            [JsonProperty("cfBBusId")]
             public string Os_Usid; // 用户ID
 
-            [JsonProperty("SbmVn")]
+            [JsonProperty("cfBBvn")]
             public string Os_Vn; // 应用版本
         }
 
         [Serializable]
         public class ExtendParam
         {
-            [JsonProperty("SbmBgd")]
+            [JsonProperty("cfBBpa")]
             public string Os_Bgd; // 页面ID
 
-            [JsonProperty("SbmEvt")]
+            [JsonProperty("cfBBen")]
             public string Os_Evt; // event
 
-            [JsonProperty("SbmEvtE")]
+            [JsonProperty("cfBBent")]
             public string Os_EvtE; // eventExt
         }
 

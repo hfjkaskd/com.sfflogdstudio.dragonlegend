@@ -1,0 +1,142 @@
+--- a/Assets/StreamingAssets/RecoveredConfig/Remote/cp_low_frequency_high_rewards.json
++++ b/Assets/StreamingAssets/RecoveredConfig/Remote/cp_low_frequency_high_rewards.json
+@@ -233,9 +233,9 @@
+       500
+     ],
+     "Riikin": [
+-      2,
+-      4,
+-      6
++      1,
++      2,
++      3
+     ],
+     "RiikinQloim": [
+       2000,
+--- a/Tools/build_hybrid_gameplay_config.py
++++ b/Tools/build_hybrid_gameplay_config.py
+@@ -12,7 +12,7 @@
+     "Ronig": ["QoinRgkorp", "RgokrpMin", "RgkorpMoj", "RgkorpKgiitr", "Jimp"],
+     "Qollgqr": ["Korrt", "QollgqrQloim", "QollgqrRgkorp"],
+     "Qonrii": ["InirQoing", "MorgQoing", "Rgr", "Joqkpor", "JpQloim",
+-               "Riikin", "RiikinQloim", "RonkMini", "RonkMoj", "RonkKgiitr", "JpOpp"],
++               "RiikinQloim", "RonkMini", "RonkMoj", "RonkKgiitr", "JpOpp"],
+     "Rrggiomg": ["LiqkiRgkorp", "GlorgMin", "GlorgMoj", "GlorgKgiitr",
+                  "KtgglRgkorp", "KtgglRgkorpKgiitr"],
+     "Gimrol": ["J3", "J4", "J5", "Lingg"],
+@@ -25,6 +25,9 @@
+ # Only claimed More WILD spins use the preserved high-mode WILD tables.
+ # Regular WILD tables and the ordinary five-charge grant remain unchanged.
+ MORE_WILD_FIELDS = ["MorgKilp1", "MorgKilp2", "MorgKilp3", "MorgKilp4", "MorgKilp5"]
++# Presentation thresholds only: $10/$20/$30 at the unchanged $10 bet.
++# Keep reel/event probabilities and reward/claim multipliers independent.
++LOW_FREQUENCY_WIN_THRESHOLDS = [1, 2, 3]
+ OUTPUT_NAME = "cp_low_frequency_high_rewards.json"
+ 
+ 
+@@ -37,6 +40,7 @@
+         hybrid["Qonrii"][field] = deepcopy(high["Qonrii"][field])
+     for field in MORE_WILD_FIELDS:
+         hybrid["Gimrol"][field] = deepcopy(high["Gimrol"][field])
++    hybrid["Qonrii"]["Riikin"] = LOW_FREQUENCY_WIN_THRESHOLDS.copy()
+     # Tier count, submit flags, six task stages and waits must stay aligned.
+     hybrid["Rgpggm"] = deepcopy(high["Rgpggm"])
+     return hybrid
+--- a/Tools/Evidence/hybrid-gameplay-configuration.md
++++ b/Tools/Evidence/hybrid-gameplay-configuration.md
+@@ -1,6 +1,6 @@
+ # 低频事件、高频奖励配置
+ 
+-初始调整：2026-09-15；MORE WILD 修正与复核：2026-09-16。适用工程：`C:/Projects/com.sfflogdstudio.dragonlegend`。
++初始调整：2026-09-15；MORE WILD 修正与复核、大奖门槛调整：2026-09-16。适用工程：`C:/Projects/com.sfflogdstudio.dragonlegend`。
+ 
+ ## 当前启动选择
+ 
+@@ -20,7 +20,7 @@
+ 
+ - 使用高频下注基数、连线赔表和结算除数 180，避免只改赔表却残留普通除数 30，导致相同盘面连线金额放大 6 倍。
+ - 使用高频金币、Bonus 金额、Bank、Jackpot、收藏、Lucky、转盘及已触发小游戏的奖金分布。`Ronig.Rgkorp` 实际是牌数量，仍取普通配置。
+-- 非 A 模式下注基数为 1000（显示 $10）；Big/Mega/Super Win 按 2/4/6 倍匹配，对应 $20/$40/$60。事件概率下降不代表所有金额触发的弹窗频率固定不变。
++- 非 A 模式下注基数为 1000（显示 $10）；Big/Mega/Super Win 门槛按用户要求降为 1/2/3 倍，对应 $10/$20/$30（原为 $20/$40/$60）。只调整 `Qonrii.Riikin`，普通盘面、特殊事件概率、奖励值和广告/普通领奖倍率均不变。判断仍为单次普通转动的连线金额加盘面金币，不计免费转累计奖金。大奖弹窗及相应领奖/任务计数机会随之增加。
+ - 五档提现金额：$500、$1,000、$3,000、$5,000、$10,000。整个 `Rgpggm` 段采用高频值，档位数量、开关、任务和等待时间一致。
+ - 日常任务奖励使用高频金额，任务目标仍为普通配置的 5/2/2/3/4/1 次。
+ 
+@@ -34,10 +34,10 @@
+ 
+ 生成规则核对：`python Tools/build_hybrid_gameplay_config.py --check`。
+ 
+-Unity 2022.3.62f3 批处理验证通过，退出码 0；规则验证明细保存在 `Tools/Evidence/hybrid-gameplay-validation.json`，最新日志在 `Artifacts/morewild-hybrid-validation.log`。
++2026-09-16 在 Unity 2022.3.62f3 编辑器执行新门槛验证，规则与边界检查通过。最新规则记录为 `Tools/Evidence/hybrid-gameplay-validation.json`，新旧门槛的同盘采样记录为 `Tools/Evidence/big-win-threshold-validation.json`；配置 SHA256 已同步至本次验证版本。
+ 
+ - 枚举原随机边界：Scatter 29/1000，免费转龙珠 499/1000；基础及普通 Wild 的 10 组权重和事件计数参数与普通配置一致；领取后的 5 组 MORE WILD 权重与原高频配置一致。
+-- 24 个固定中奖盘面的实际结算与高频配置一致；核对 Big/Mega/Super 的 $20/$40/$60 边界。
++- 24 个固定中奖盘面的实际结算与高频配置一致；核对 Big/Mega/Super 的 $10/$20/$30 边界。
+ - 五档提现记录在内存中创建成功，各档 7 个任务阶段均可访问。
+ - 实际调用基础转入口和结果生成逻辑连续执行 65 次，使用内存广告回调补转，超过 60 次后正常继续；累计计数为 999 时仍可补转。
+ - 编译包含既有测试程序集；两项普通补转/恢复测试已改为明确选择普通配置，避免默认入口变化影响测试前提。2026-09-16 另完成 25 项 MORE WILD、领取和转动规则测试，全部通过；未执行完整 UI 测试套件。
+@@ -45,3 +45,18 @@
+ 一次性验证脚本保存在 `Tools/Validation/HybridGameplayValidation.cs`；它不参与游戏构建。复核时临时复制到 `Assets/Whitebox/Editor/`，运行 `-executeMethod HybridGameplayValidation.Run`，完成后移除临时副本。验证不访问 SDK、网络或玩家持久存档。
+ 
+ 本次没有重新生成或安装 Android APK，首个提现门槛的实际基础转数需要新包重新实测。
++
++## 大奖门槛调整后的实际采样（2026-09-16）
++
++按用户要求将 BIG / MEGA / SUPER WIN 从 $20 / $40 / $60 降为 $10 / $20 / $30。生成器显式覆盖 `Qonrii.Riikin=[1,2,3]`，原版普通与高频快照保持原样。
++
++同一批 10,000 次低频基础转盘面，跳过新手引导、不领取 MORE WILD，逐盘按本盘连线奖金加金币奖金对比：
++
++| 门槛 | BIG | MEGA | SUPER | 合计 |
++| --- | ---: | ---: | ---: | ---: |
++| 原 $20 / $40 / $60 | 245 | 1 | 96 | 342（3.42%） |
++| 新 $10 / $20 / $30 | 942 | 204 | 138 | 1,284（12.84%） |
++
++本次抽样的大奖判定次数约为原来的 3.75 倍。两组使用完全相同的盘面和金额，只改变分类门槛。该结果是基础转采样，未执行免费转链、Bonus 小游戏、Jackpot、任务领取和广告翻倍，不代表完整会话中的每分钟弹窗次数；生产内部 System.Random 的时间种子使重复抽样可能略有差异。
++
++验证脚本 `Tools/Validation/BigWinThresholdValidation.cs` 依赖同目录 `HybridGameplayValidation.cs`。复核时临时复制两者到 Editor，并将 `Tools/Validation/BigWinThresholds/config-before.json` 复制到 `Artifacts/BigWinThresholds/config-before.json`，使用 Tools > Validation > Big Win Thresholds。验证完成后移除 Editor 临时副本。
+--- a/Tools/Evidence/hybrid-gameplay-validation.json
++++ b/Tools/Evidence/hybrid-gameplay-validation.json
+@@ -4,16 +4,16 @@
+     "SelectAt enumeration: Scatter 29/1000; free ball 499/1000",
+     "10 ordinary reel/WILD arrays and Wild/Bonus periods/MoreWild duration match ordinary; 5 claimed More WILD arrays match high",
+     "24 fixed winning boards match high settlement; first raw award=11.11111; divisor=180",
+-    "Big/Mega/Super actual thresholds and boundaries verified: $20/$40/$60 at $10 bet",
++    "Big/Mega/Super actual thresholds and boundaries verified: $10/$20/$30 at $10 bet",
+     "Five cashout tiers $500/$1000/$3000/$5000/$10000: in-memory reviews created and all 7 task stages accessed",
+     "65 actual base SpinEntry/result generations completed with in-memory ad replenishment; 60 and 999 gates pass"
+   ],
+   "validated_on": "2026-09-16",
+   "unity_version": "2022.3.62f3",
+-  "scope": "Unity runtime rules with in-memory player records and ad callbacks; not an APK/device test.",
++  "scope": "Executed in Unity Editor with actual runtime rules and in-memory player records/ad callbacks; no SDK, persistent data, or APK/device test.",
+   "config_sha256": {
+     "cp_default_1.json": "14bc5cf702d8e8d78c959b270baa1e4d1183b44f9b75750701cf41196a8e577c",
+     "cp_test.json": "5cba47a8ecedf4d2f680d0ac3bd724844526893dac8b2abbd03af03f717f3132",
+-    "cp_low_frequency_high_rewards.json": "d6cd5a0d56e286d8d22f8632c60fda2694775297d0cb0e9f3eea7b3aab34f9b6"
++    "cp_low_frequency_high_rewards.json": "ac9a3bcd8e8d9aea4434a57964c0b264119be80c96eb6a6ca623757c97a078b4"
+   }
+ }
+--- a/Tools/Validation/HybridGameplayValidation.cs
++++ b/Tools/Validation/HybridGameplayValidation.cs
+@@ -99,15 +99,15 @@
+                 Require(a.GetWinTotalLine() == b.GetWinTotalLine(), "Same collected line reward");
+                 cases++;
+             }
+-        Require(rules.GetBigWin(1999, 1000) == RecoveredSlotWinType.None, "Below $20 no BigWin");
+-        Require(rules.GetBigWin(2000, 1000) == RecoveredSlotWinType.Big, "$20 BigWin");
+-        Require(rules.GetBigWin(3999, 1000) == RecoveredSlotWinType.Big, "Below $40 still BigWin");
+-        Require(rules.GetBigWin(4000, 1000) == RecoveredSlotWinType.Mega, "$40 MegaWin");
+-        Require(rules.GetBigWin(5999, 1000) == RecoveredSlotWinType.Mega, "Below $60 still MegaWin");
+-        Require(rules.GetBigWin(6000, 1000) == RecoveredSlotWinType.Super, "$60 SuperWin");
++        Require(rules.GetBigWin(999, 1000) == RecoveredSlotWinType.None, "Below $10 no BigWin");
++        Require(rules.GetBigWin(1000, 1000) == RecoveredSlotWinType.Big, "$10 BigWin");
++        Require(rules.GetBigWin(1999, 1000) == RecoveredSlotWinType.Big, "Below $20 still BigWin");
++        Require(rules.GetBigWin(2000, 1000) == RecoveredSlotWinType.Mega, "$20 MegaWin");
++        Require(rules.GetBigWin(2999, 1000) == RecoveredSlotWinType.Mega, "Below $30 still MegaWin");
++        Require(rules.GetBigWin(3000, 1000) == RecoveredSlotWinType.Super, "$30 SuperWin");
+         Require(RecoveredCurrency.Format(2000, 0) == "$20.00", "Currency display conversion");
+         checks.Add(cases + " fixed winning boards match high settlement; first raw award=" + example + "; divisor=180");
+-        checks.Add("Big/Mega/Super actual thresholds and boundaries verified: $20/$40/$60 at $10 bet");
++        checks.Add("Big/Mega/Super actual thresholds and boundaries verified: $10/$20/$30 at $10 bet");
+     }
+     private static void CheckCashOut(RecoveredGameplayRules rules, RecoveredGameplayRules high)
+     {

@@ -28,7 +28,7 @@ public sealed class RecoveredCashOutItemTests
             data.GreenCount=150;item.Initialize(0,-1,2,(RectTransform)frame.transform,0);Assert.AreEqual(726,item.Fill.sizeDelta.x);
             item.RefreshPaymentType(4);StringAssert.StartsWith("tx_icon_04",item.Button.transform.Find("Img").GetComponent<UnityEngine.UI.Image>().sprite.name);
             var record=new PlayerCashOutData{id=0,type=3,step=0,count=27,time=100,isCashout=false};data.PlayerCashOutDatas.Add(record);
-            item.Initialize(0,0,1,(RectTransform)frame.transform,0);Assert.AreEqual("Spin 27/20 times",item.TaskText.text);Assert.AreEqual("Pending Review 00:00:02",item.TimeText.text);
+            item.Initialize(0,0,1,(RectTransform)frame.transform,0);Assert.AreEqual("Spin 27/20 times",item.TaskText.text);Assert.AreEqual("Pending Review 00:00:05",item.TimeText.text);
             var icon=item.Button.transform.Find("Img").GetComponent<UnityEngine.UI.Image>();StringAssert.StartsWith("tx_icon_03",icon.sprite.name);
             item.RefreshPaymentType(4);StringAssert.StartsWith("tx_icon_03",icon.sprite.name);
             Assert.IsFalse(item.Fill.parent.gameObject.activeSelf);Assert.IsTrue(item.TaskText.transform.parent.gameObject.activeSelf);
@@ -48,8 +48,8 @@ public sealed class RecoveredCashOutItemTests
         {
             Time.timeScale=1;Time.captureDeltaTime=.1f;var rules=Rules();int now=102;
             var data=new PlayerData();data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=0,type=1,step=0,time=100});item.Bind(new RecoveredPlayerProgress(rules,()=>Assert.Fail("No save"),data),rules,()=>now);
-            item.Initialize(0,-1,1,null,0);Assert.AreEqual("Pending Review 00:00:02",item.TimeText.text);int completed=0;item.CountdownCompleted+=()=>completed++;
-            Time.timeScale=0;for(int i=0;i<15;i++)yield return null;Assert.AreEqual("Pending Review 00:00:02",item.TimeText.text);Assert.AreEqual(0,completed);
+            item.Initialize(0,-1,1,null,0);Assert.AreEqual("Pending Review 00:00:05",item.TimeText.text);int completed=0;item.CountdownCompleted+=()=>completed++;
+            Time.timeScale=0;for(int i=0;i<15;i++)yield return null;Assert.AreEqual("Pending Review 00:00:05",item.TimeText.text);Assert.AreEqual(0,completed);
             Time.timeScale=1;item.gameObject.SetActive(false);for(int i=0;i<12;i++)yield return null;Assert.AreEqual("Pending Review 00:00:04",item.TimeText.text);
             item.TimeShow(-1);for(int i=0;i<45;i++)yield return null;Assert.AreEqual("Pending Review 00:00:00",item.TimeText.text);Assert.AreEqual(1,completed);
             item.TimeShow(1);item.TimeShow(0);for(int i=0;i<15;i++)yield return null;Assert.AreEqual(1,completed);

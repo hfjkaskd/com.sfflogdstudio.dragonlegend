@@ -67,8 +67,8 @@ namespace DragonLegend.Whitebox
             RecoveredCollectInfo info=null;var records=rules.GetCollectInfos();
             for(int i=0;i<records.Count;i++)if(records[i].id==id){info=records[i];break;}
             Claim.BeforeShow(info,rules,value=>{IsRunning=false;completed?.Invoke(value);});
-            claimText.text=Claim.AdvertisedMultiplier>1?string.Format(claimFormat,Claim.AdvertisedMultiplier):claimPlainFormat;
-            plainText.text=string.Format(plainFormat,RecoveredCurrency.Format((float)info.worth*Claim.UnadvertisedMultiplier,language,2));
+            claimText.text=Claim.AdvertisedMultiplier>1?GameLocalization.Format(claimFormat,language,Claim.AdvertisedMultiplier):GameLocalization.Text(claimPlainFormat,language);
+            plainText.text=GameLocalization.Format(plainFormat,language,RecoveredCurrency.Format((float)info.worth*Claim.UnadvertisedMultiplier,language,2));
             rewardText.text=RecoveredCurrency.Format(info.worth,language,2);
             Sprite sprite=null;
             for(int i=0;i<icons.Length;i++)if(icons[i].id==id){sprite=Resources.Load<Sprite>(icons[i].path);break;}

@@ -1,5 +1,15 @@
 # Free dragon-ball flight
 
+## Main-scene visibility correction — 2026-09-10
+
+The flight was already connected, but its world-mesh SortingGroup stayed at the stationary ball's order 0. SetAsLastSibling does not provide Canvas-style ordering for MeshRenderers, so the board/symbol presentation could cover the flying copy. FreeBall.prefab now supplies the existing SortingGroup reference and a flight sorting offset of 1. BeginFlight renders the borrowed ball at the destination canvas's layer/order plus that offset, with sortAtRoot enabled. Disable/pool return restores the original layer, order and sortAtRoot flag. The original stationary ball, native 0.3-second InOutSine Bezier, destination snapshot and reward routing remain unchanged.
+
+Unity 2022.3.62f3 PlayMode: all 10 tests in RecoveredFreeBallFlightTests, RecoveredFreeBallScanTests and RecoveredFreeBallTests passed (Artifacts/ball-flight-final.xml). The added full-scene test captures the flight midpoint and compares rendered pixels with the mesh shown/hidden, confirming more than 1,000 visibly changed pixels. Artifacts/current-main-ball-flight.png was visually inspected. Existing pool tests also verify sorting restoration on return.
+
+Broader RecoveredCoreBallBranchesTests had two failures at the Treasure branch (lines 113 and 141); both reproduced with the pre-change RecoveredFreeBall.cs from HEAD in the same isolated validation project (Artifacts/ball-branches-baseline.xml). They are not reported as passing or repaired by this visual change. No Android build was produced or installed.
+
+The following sections record the earlier recovery work and its status at that time.
+
 LongzhuItem.FlyLongZhu 0x23aecdc invokes spawn callback 0x23af10c synchronously.
 It borrows from PoolManager's dragon-ball pool (+0x90), parents the clone to
 the original ball's parent with worldPositionStays false, sets localScale .8,

@@ -36,14 +36,15 @@ public sealed class RecoveredMoreSpinIntegrationTests
             int granted=Mathf.Min(game.Rules.GetAddSpins(),game.Rules.GetMaxSpinCount());Assert.AreEqual(granted,game.PlayerProgress.SpinCount);
             for(int frame=0;frame<10;frame++)yield return null;Assert.IsFalse(window.gameObject.activeSelf);
             game.Playfield.SpinButton.Button.onClick.Invoke();Assert.AreEqual(granted-1,game.PlayerProgress.SpinCount);Assert.IsTrue(game.Playfield.Reels.IsRunning);
-            var previous=game.CoreRound;game.transform.Find("SelectUS").GetComponent<Button>().onClick.Invoke();
+            var previous=game.CoreRound;game.transform.Find("SelectBR").GetComponent<Button>().onClick.Invoke();
             deadline=Time.realtimeSinceStartup+10;while((game.CoreRound==null||game.CoreRound==previous)&&Time.realtimeSinceStartup<deadline)yield return null;
-            Assert.IsNotNull(game.CoreRound);Assert.AreNotEqual("default",game.Rules.GetConfigType(),"US snapshot exercises the native non-default cap.");
+            Assert.IsNotNull(game.CoreRound);Assert.AreEqual("RecoveredConfig/Remote/cp_default_1.json",game.CurrentProfile.snapshotPath);
+            Assert.AreNotEqual("default",game.Rules.GetConfigType(),"The explicit ordinary snapshot exercises the native non-default cap.");
             game.PlayerProgress.SetSpinCount(0);game.PlayerStore.Data.LimitSpinCount=game.Rules.GetLimitMaxSpinCount();
             window=game.CoreRound.MoreSpins;var tip=game.CoreRound.Tips;
             game.Playfield.SpinButton.Button.onClick.Invoke();for(int frame=0;frame<10;frame++)yield return null;
             window.ClaimButton.onClick.Invoke();Assert.IsFalse(game.Ads.Pending);Assert.IsTrue(tip.gameObject.activeSelf);
-            Assert.AreEqual("The ad isn't ready yet, please wait.",tip.Label.text);Assert.IsTrue(window.IsClicked);
+            Assert.AreEqual("The ad isn't ready yet, please wait.",tip.Label.text);Assert.IsFalse(window.IsClicked);
             camera=game.GetComponent<Canvas>().worldCamera;target=new RenderTexture(1080,1920,24);camera.targetTexture=target;
             capture=new Texture2D(1080,1920,TextureFormat.RGB24,false);Canvas.ForceUpdateCanvases();
             RenderPipeline.SubmitRenderRequest(camera,new RenderPipeline.StandardRequest{destination=target});RenderTexture.active=target;
@@ -51,7 +52,8 @@ public sealed class RecoveredMoreSpinIntegrationTests
             for(int frame=0;frame<20;frame++)yield return null;Assert.IsTrue(tip.gameObject.activeSelf);
             Time.timeScale=0;for(int frame=0;frame<40;frame++)yield return null;Assert.IsTrue(tip.gameObject.activeSelf);
             Time.timeScale=1;for(int frame=0;frame<25;frame++)yield return null;Assert.IsFalse(tip.gameObject.activeSelf);
-            Assert.IsTrue(window.IsClicked);window.CloseButton.onClick.Invoke();Assert.IsTrue(window.gameObject.activeSelf);
+            Assert.IsFalse(window.IsClicked);window.CloseButton.onClick.Invoke();
+            for(int frame=0;frame<10;frame++)yield return null;Assert.IsFalse(window.gameObject.activeSelf);
             previous=game.CoreRound;game.transform.Find("SelectUS").GetComponent<Button>().onClick.Invoke();
             deadline=Time.realtimeSinceStartup+10;while((game.CoreRound==null||game.CoreRound==previous)&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.CoreRound);game.PlayerStore.Data.LimitSpinCount=0;game.PlayerProgress.SetSpinCount(0);

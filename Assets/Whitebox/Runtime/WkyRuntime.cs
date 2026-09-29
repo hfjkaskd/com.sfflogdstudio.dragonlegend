@@ -21,6 +21,7 @@ namespace DragonLegend.Whitebox
             languageError = null;
             LanguageChanged = null;
             LanguageType = PlayerPrefs.GetString("SelectedLanguage", "en-US") == "pt-BR" ? 1 : 0;
+            GameLocalization.SetLanguage(LanguageType);
         }
 
         public static Task InitializeAsync()
@@ -65,6 +66,7 @@ namespace DragonLegend.Whitebox
             LanguageType = language;
             PlayerPrefs.SetString("SelectedLanguage", locale);
             PlayerPrefs.Save();
+            GameLocalization.SetLanguage(language);
             LanguageChanged?.Invoke(language);
         }
 

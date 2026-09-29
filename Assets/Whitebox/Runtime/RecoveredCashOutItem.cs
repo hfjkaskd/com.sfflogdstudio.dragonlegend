@@ -20,6 +20,7 @@ namespace DragonLegend.Whitebox
         private Func<int> utcNow;
         private RectTransform frame;
         private int id=-1;
+        private int language;
         private Countdown countdown;
         public Button Button=>button;
         public TMP_Text AmountText=>amountText;
@@ -37,7 +38,8 @@ namespace DragonLegend.Whitebox
         {foreach(var record in player.CashOutRecords)if(record.id==id)return record;return null;}
         public void Initialize(int index,int selected,int paymentType,RectTransform selectionFrame,int language)
         {
-            id=index;frame=selectionFrame;float target=rules.GetCashOutCash(id);
+            Cancel();
+            id=index;this.language=language;frame=selectionFrame;float target=rules.GetCashOutCash(id);
             amountText.text=RecoveredCurrency.Format(target,language,0);RefreshSelection(selected,frame);
             var record=Record();SetStyle(record==null?paymentType:record.type);
             if(record==null)
@@ -46,7 +48,7 @@ namespace DragonLegend.Whitebox
                 progressText.text=RecoveredCurrency.Format(player.GreenCount,language,2)+"/"+RecoveredCurrency.Format(target,language,0);
                 fill.sizeDelta=new Vector2(Mathf.Clamp01(player.GreenCount/target)*progressWidth,fill.rect.height);return;
             }
-            progress.gameObject.SetActive(false);task.gameObject.SetActive(true);taskTip.text=progressing;
+            progress.gameObject.SetActive(false);task.gameObject.SetActive(true);taskTip.text=GameLocalization.Text(progressing,language);
             if(record.step==1000)
             {
                 taskText.gameObject.SetActive(false);timeText.gameObject.SetActive(false);
@@ -54,10 +56,11 @@ namespace DragonLegend.Whitebox
                 return;
             }
             detailText.gameObject.SetActive(false);
+            taskText.gameObject.SetActive(true);timeText.gameObject.SetActive(true);
             int goal=record.isCashout?rules.GetSuccessTaskCount(id,record.step):rules.GetFailTaskCount(id,record.step);
             int count=record.count;
             if(record.step==6){count=player.CollectRecords.Count;goal=rules.GetCollectInfoCount();}
-            taskText.text=string.Format(taskFormats[record.step>=0&&record.step<6?record.step:6],count,goal);
+            taskText.text=GameLocalization.Format(taskFormats[record.step>=0&&record.step<6?record.step:6],language,count,goal);
             RefreshTime(true);
         }
         private void SetStyle(int type)
@@ -73,10 +76,10 @@ namespace DragonLegend.Whitebox
         {
             var record=Record();if(record==null||record.step==1000)return;
             int elapsed=unchecked(utcNow()-record.time);int remaining=unchecked(rules.GetWaitTime(id,record.step)-elapsed);
-            if(remaining<=0){timeText.text=initial?expiredInitial:expiredRefresh;return;}
-            FormatTime(elapsed);TimeShow(remaining);
+            if(remaining<=0){timeText.text=GameLocalization.Text(initial?expiredInitial:expiredRefresh,language);return;}
+            FormatTime(remaining);TimeShow(remaining);
         }
-        private void FormatTime(int seconds)=>timeText.text=string.Format(timeFormat,seconds/3600,seconds%3600/60,seconds%60);
+        private void FormatTime(int seconds)=>timeText.text=GameLocalization.Format(timeFormat,language,seconds/3600,seconds%3600/60,seconds%60);
         public void TimeShow(int seconds)
         {
             if(seconds<0)return;countdown?.Cancel();countdown=null;if(seconds==0)return;

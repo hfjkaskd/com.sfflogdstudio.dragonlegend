@@ -43,8 +43,8 @@ namespace DragonLegend.Whitebox
         {
             if (gameObject.activeSelf) return;
             gameObject.SetActive(true);
-            tips.text = string.Format(tipsFormat, claim.BeforeShow(isFree));
-            claimText.text = isFree ? freeText : adText;
+            tips.text = GameLocalization.Format(tipsFormat, GameLocalization.CurrentLanguage, claim.BeforeShow(isFree));
+            claimText.text = GameLocalization.Text(isFree ? freeText : adText);
             content.localScale = Vector3.zero; elapsed = 0; phase = 1;
         }
         private void AfterShow()

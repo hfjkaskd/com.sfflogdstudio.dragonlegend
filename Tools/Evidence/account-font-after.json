@@ -1,0 +1,4118 @@
+{
+    "phase": "after",
+    "font": "msyhbd SDF",
+    "family": "Microsoft YaHei",
+    "atlasFormat": "Alpha8",
+    "atlasAssetPath": "Assets/Resources/RecoveredUI/CashOutItemArt/msyhbd SDF.asset",
+    "error": "",
+    "passed": true,
+    "materialMatchesAtlas": true,
+    "asciiInitiallyComplete": true,
+    "dynamicAdded": true,
+    "dynamicPreservedJD": true,
+    "atlasWidth": 1024,
+    "atlasHeight": 1024,
+    "missingAscii": [],
+    "initialGlyphs": [
+        {
+            "character": "j",
+            "hash": "1CF921C2",
+            "error": "",
+            "present": true,
+            "glyph": 80,
+            "atlas": 0,
+            "x": 450,
+            "y": 360,
+            "width": 29,
+            "height": 95,
+            "inkPixels": 1284,
+            "alphaSum": 306579
+        },
+        {
+            "character": "d",
+            "hash": "94E7F190",
+            "error": "",
+            "present": true,
+            "glyph": 74,
+            "atlas": 0,
+            "x": 370,
+            "y": 81,
+            "width": 51,
+            "height": 74,
+            "inkPixels": 2038,
+            "alphaSum": 453975
+        }
+    ],
+    "renderedGlyphs": [
+        {
+            "character": "j",
+            "hash": "1CF921C2",
+            "error": "",
+            "present": true,
+            "glyph": 80,
+            "atlas": 0,
+            "x": 450,
+            "y": 360,
+            "width": 29,
+            "height": 95,
+            "inkPixels": 1284,
+            "alphaSum": 306579
+        },
+        {
+            "character": "d",
+            "hash": "94E7F190",
+            "error": "",
+            "present": true,
+            "glyph": 74,
+            "atlas": 0,
+            "x": 370,
+            "y": 81,
+            "width": 51,
+            "height": 74,
+            "inkPixels": 2038,
+            "alphaSum": 453975
+        }
+    ],
+    "frames": [
+        {
+            "image": "Artifacts/AccountFont/after-1080x1920-jd.png",
+            "height": 1920,
+            "name": {
+                "input": "jdjd",
+                "meshText": "jdjd​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            },
+            "email": {
+                "input": "jd@example.test",
+                "meshText": "jd@example.test​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "@",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "x",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "a",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "m",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "p",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "l",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "t",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "s",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "t",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            }
+        },
+        {
+            "image": "Artifacts/AccountFont/after-1080x1920-alphabet.png",
+            "height": 1920,
+            "name": {
+                "input": "abcdefghijklmnopqrstuvwxyz",
+                "meshText": "abcdefghijklmnopqrstuvwxyz​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "a",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "b",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "c",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "f",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "g",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "h",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "i",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "k",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "l",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "m",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "n",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "o",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "p",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "q",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "r",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "s",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "t",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "u",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "v",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "w",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "x",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "y",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "z",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            },
+            "email": {
+                "input": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+                "meshText": "ABCDEFGHIJKLMNOPQRSTUVWXYZ​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "A",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "B",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "C",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "D",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "E",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "F",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "G",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "H",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "I",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "J",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "K",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "L",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "M",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "N",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "O",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "P",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "Q",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "R",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "S",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "T",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "U",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "V",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "W",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "X",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "Y",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "Z",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            }
+        },
+        {
+            "image": "Artifacts/AccountFont/after-1080x1920-money-symbols.png",
+            "height": 1920,
+            "name": {
+                "input": "$20.00  $500  $1,234.56",
+                "meshText": "$20.00  $500  $1,234.56​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "$",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "2",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "0",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "0",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "0",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "$",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "5",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "0",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "0",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "$",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "1",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ",",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "2",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "3",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "4",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "5",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "6",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            },
+            "email": {
+                "input": "j d J D . @ + - _",
+                "meshText": "j d J D . @ + - _​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "J",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "D",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "@",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "+",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "-",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "_",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            }
+        },
+        {
+            "image": "Artifacts/AccountFont/after-1080x1920-ascii.png",
+            "height": 1920,
+            "name": {
+                "input": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNO",
+                "meshText": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNO​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "!",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "\"",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "#",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "$",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "%",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "&",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "'",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "(",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ")",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "*",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "+",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ",",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "-",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "/",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "0",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "1",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "2",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "3",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "4",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "5",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "6",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "7",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "8",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "9",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ":",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ";",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "<",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "=",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ">",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "?",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "@",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "A",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "B",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "C",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "D",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "E",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "F",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "G",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "H",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "I",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "J",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "K",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "L",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "M",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "N",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "O",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            },
+            "email": {
+                "input": "PQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
+                "meshText": "PQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "P",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "Q",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "R",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "S",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "T",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "U",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "V",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "W",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "X",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "Y",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "Z",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "[",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "\\",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "]",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "^",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "_",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "`",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "a",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "b",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "c",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "f",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "g",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "h",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "i",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "k",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "l",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "m",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "n",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "o",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "p",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "q",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "r",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "s",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "t",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "u",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "v",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "w",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "x",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "y",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "z",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "{",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "|",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "}",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "~",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            }
+        },
+        {
+            "image": "Artifacts/AccountFont/after-1080x1920-dynamic-unicode.png",
+            "height": 1920,
+            "name": {
+                "input": "José jd",
+                "meshText": "José jd​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "J",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "o",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "s",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "é",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            },
+            "email": {
+                "input": "jd.é@example.test",
+                "meshText": "jd.é@example.test​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "é",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "@",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "x",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "a",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "m",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "p",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "l",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "t",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "s",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "t",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            }
+        },
+        {
+            "image": "Artifacts/AccountFont/after-1080x2400-jd.png",
+            "height": 2400,
+            "name": {
+                "input": "jdjd",
+                "meshText": "jdjd​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            },
+            "email": {
+                "input": "jd@example.test",
+                "meshText": "jd@example.test​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "@",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "x",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "a",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "m",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "p",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "l",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "t",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "s",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "t",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            }
+        },
+        {
+            "image": "Artifacts/AccountFont/after-1080x2400-alphabet.png",
+            "height": 2400,
+            "name": {
+                "input": "abcdefghijklmnopqrstuvwxyz",
+                "meshText": "abcdefghijklmnopqrstuvwxyz​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "a",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "b",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "c",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "f",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "g",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "h",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "i",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "k",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "l",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "m",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "n",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "o",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "p",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "q",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "r",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "s",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "t",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "u",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "v",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "w",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "x",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "y",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "z",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            },
+            "email": {
+                "input": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+                "meshText": "ABCDEFGHIJKLMNOPQRSTUVWXYZ​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "A",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "B",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "C",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "D",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "E",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "F",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "G",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "H",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "I",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "J",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "K",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "L",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "M",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "N",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "O",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "P",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "Q",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "R",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "S",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "T",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "U",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "V",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "W",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "X",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "Y",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "Z",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            }
+        },
+        {
+            "image": "Artifacts/AccountFont/after-1080x2400-money-symbols.png",
+            "height": 2400,
+            "name": {
+                "input": "$20.00  $500  $1,234.56",
+                "meshText": "$20.00  $500  $1,234.56​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "$",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "2",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "0",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "0",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "0",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "$",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "5",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "0",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "0",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "$",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "1",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ",",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "2",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "3",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "4",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "5",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "6",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            },
+            "email": {
+                "input": "j d J D . @ + - _",
+                "meshText": "j d J D . @ + - _​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "J",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "D",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "@",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "+",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "-",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "_",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            }
+        },
+        {
+            "image": "Artifacts/AccountFont/after-1080x2400-ascii.png",
+            "height": 2400,
+            "name": {
+                "input": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNO",
+                "meshText": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNO​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "!",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "\"",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "#",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "$",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "%",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "&",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "'",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "(",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ")",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "*",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "+",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ",",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "-",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "/",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "0",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "1",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "2",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "3",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "4",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "5",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "6",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "7",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "8",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "9",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ":",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ";",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "<",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "=",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ">",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "?",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "@",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "A",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "B",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "C",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "D",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "E",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "F",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "G",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "H",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "I",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "J",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "K",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "L",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "M",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "N",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "O",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            },
+            "email": {
+                "input": "PQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
+                "meshText": "PQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "P",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "Q",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "R",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "S",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "T",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "U",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "V",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "W",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "X",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "Y",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "Z",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "[",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "\\",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "]",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "^",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "_",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "`",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "a",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "b",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "c",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "f",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "g",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "h",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "i",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "k",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "l",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "m",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "n",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "o",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "p",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "q",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "r",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "s",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "t",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "u",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "v",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "w",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "x",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "y",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "z",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "{",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "|",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "}",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "~",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            }
+        },
+        {
+            "image": "Artifacts/AccountFont/after-1080x2400-dynamic-unicode.png",
+            "height": 2400,
+            "name": {
+                "input": "José jd",
+                "meshText": "José jd​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "J",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "o",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "s",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "é",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": " ",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            },
+            "email": {
+                "input": "jd.é@example.test",
+                "meshText": "jd.é@example.test​",
+                "font": "msyhbd SDF Account validation",
+                "exactInput": true,
+                "characters": [
+                    {
+                        "character": "j",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "d",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "é",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "@",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "x",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "a",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "m",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "p",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "l",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": ".",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "t",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "e",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "s",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "t",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": true,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    },
+                    {
+                        "character": "​",
+                        "font": "msyhbd SDF Account validation",
+                        "visible": false,
+                        "hasGlyph": true,
+                        "materialMatchesAtlas": true,
+                        "atlas": 0
+                    }
+                ]
+            }
+        }
+    ]
+}

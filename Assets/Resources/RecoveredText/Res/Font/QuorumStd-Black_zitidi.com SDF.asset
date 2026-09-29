@@ -11,14 +11,15 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: QuorumStd-Black_zitidi.com SDF
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   hashCode: 996932362
   material: {fileID: 2100000, guid: a178f3ea856c4ff4194cfea352ce7c98, type: 2}
   materialHashCode: -1889312406
   m_Version: 1.1.0
   m_SourceFontFileGUID: 83a0c6f40746cee418b341acfcb6f545
-  m_SourceFontFile: {fileID: 12800000, guid: 83a0c6f40746cee418b341acfcb6f545, type: 3}
-  m_AtlasPopulationMode: 1
+  m_SourceFontFile_EditorRef: {fileID: 0}
+  m_SourceFontFile: {fileID: 0}
+  m_AtlasPopulationMode: 0
   m_FaceInfo:
     m_FaceIndex: 0
     m_FamilyName: ITC Quorum Std
@@ -2298,7 +2299,7 @@ MonoBehaviour:
     m_Width: 81
     m_Height: 638
   m_fontInfo:
-    Name:
+    Name: 
     PointSize: 0
     Scale: 0
     CharacterCount: 0
@@ -2330,10 +2331,11 @@ MonoBehaviour:
   m_FontFeatureTable:
     m_GlyphPairAdjustmentRecords: []
   fallbackFontAssets: []
-  m_FallbackFontAssetTable: []
+  m_FallbackFontAssetTable:
+  - {fileID: 11400000, guid: 4574b6a07d82de8439fceb4d1524f65f, type: 2}
   m_CreationSettings:
-    sourceFontFileName:
-    sourceFontFileGUID: 73588d9165a7c5a4e8befbf84c0b178c
+    sourceFontFileName: 
+    sourceFontFileGUID: 83a0c6f40746cee418b341acfcb6f545
     pointSizeSamplingMode: 0
     pointSize: 90
     padding: 9
@@ -2341,9 +2343,9 @@ MonoBehaviour:
     atlasWidth: 1024
     atlasHeight: 1024
     characterSetSelectionMode: 7
-    characterSequence:
-    referencedFontAssetGUID:
-    referencedTextAssetGUID:
+    characterSequence: 
+    referencedFontAssetGUID: 
+    referencedTextAssetGUID: 
     fontStyle: 0
     fontStyleModifier: 0
     renderMode: 4165

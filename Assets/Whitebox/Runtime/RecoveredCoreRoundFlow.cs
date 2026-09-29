@@ -60,6 +60,8 @@ namespace DragonLegend.Whitebox
         public void Bind(GameEntry context)
         {
             game=context;var field=game.Playfield;var reels=field.ModeView.FreeReels;
+            if(game.DailyTasks!=null)game.DailyTasks.WindowShowRequested+=PreparePopupDepth;
+            if(game.MainUtility!=null)game.MainUtility.WindowShowRequested+=PreparePopupDepth;
             cashOutEntry.Bind(OpenCashOutFromMain,game.PlayerProgress,game.Rules);
             topWithdrawButton=game.BalancePanel.WithdrawButton;
             topWithdrawButton.onClick.AddListener(OpenCashOutFromMain);
@@ -99,6 +101,8 @@ namespace DragonLegend.Whitebox
             game.BonusFlow.Window.CashOutTaskRefreshRequested+=player.RefreshCashOutTask;
             wheel.Window.CashOutTaskRefreshRequested+=player.RefreshCashOutTask;
             entry.CashOutTaskRefreshRequested+=player.RefreshCashOutTask;
+            game.SpinEntry.StartVisualsRequested+=CountWithdrawalSpin;
+            treasure.Window.MainAnimationRequested+=player.RefreshCashOutTask;
             treasure.Bind(player,rules,game.Ads,game.CashFlight,game.transform,profile.isA,profile.languageType,game.CollectEntry.Destination);
             lucky.Bind(player,rules,game.Ads,game.CashFlight,game.transform,profile.isA,profile.languageType);
             ConnectBranchPopupDepth(true);
@@ -126,6 +130,7 @@ namespace DragonLegend.Whitebox
             }
         }
         private int Language()=>game.CurrentProfile.languageType;
+        private void CountWithdrawalSpin()=>game.PlayerProgress.RefreshCashOutTask(0,1);
         private void ShowMoreWild(){PreparePopupDepth(moreWild);moreWild.Show(false);}
         private void ShowMoreSpins(){PreparePopupDepth(moreSpins);moreSpins.Show();}
         private void ShowMoreSpinLimit()=>tips.Show(moreSpinLimitMessage);
@@ -183,9 +188,11 @@ namespace DragonLegend.Whitebox
             }
             cashPromptWait=RecoveredReelWait.Until(()=>!cashPromptPending,()=>{cashPromptWait=null;FinishCoreRound();},Fail);
         }
-        private void OpenCashOut()
+        public void OpenCashOut()
         {
             if(game==null)return;
+            if(game.DailyTasks!=null)game.DailyTasks.WindowShowRequested-=PreparePopupDepth;
+            if(game.MainUtility!=null)game.MainUtility.WindowShowRequested-=PreparePopupDepth;
             if(cashOut==null)
             {
                 cashOut=Instantiate(cashOutPrefab,popupRoot,false);
@@ -264,6 +271,8 @@ namespace DragonLegend.Whitebox
             game.BonusFlow.Window.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
             wheel.Window.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
             entry.CashOutTaskRefreshRequested-=game.PlayerProgress.RefreshCashOutTask;
+            game.SpinEntry.StartVisualsRequested-=CountWithdrawalSpin;
+            treasure.Window.MainAnimationRequested-=game.PlayerProgress.RefreshCashOutTask;
             game.SpinEntry.GuideHideRequested-=firstSpinGuide.Hide;firstSpinGuide.Hide();
             game.SpinEntry.MoreSpinsRequested-=ShowMoreSpins;moreSpins.LimitTipRequested-=ShowMoreSpinLimit;
             moreSpins.Cancel();tips.Cancel();

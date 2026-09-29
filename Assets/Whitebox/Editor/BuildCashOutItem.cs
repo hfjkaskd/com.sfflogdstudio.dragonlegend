@@ -23,12 +23,15 @@ public static class BuildCashOutItem
         BuildTreasureCard.Map(map,"a495248e59fa6714793dae46034b0996",AssetDatabase.GetAssetPath(Shader.Find("TextMeshPro/Distance Field")));
         foreach(string name in new[]{"msyhbd SDF.asset","msyhbd Atlas Material.mat"})
         {
+            // Bootstrap missing assets only; preserve repaired atlases and added characters.
+            if(File.Exists(Folder+"/"+name))continue;
             string text=File.ReadAllText("ReferenceOriginal/Res/Font/"+name);
             foreach(var pair in map)text=text.Replace(pair.Key,pair.Value);
             File.WriteAllText(Folder+"/"+name,text);
             if(!File.Exists(Folder+"/"+name+".meta"))File.Copy("ReferenceOriginal/Res/Font/"+name+".meta",Folder+"/"+name+".meta");
         }
         AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
+        BuildCashOutFont.Save();
         foreach(var pair in new Dictionary<string,string>{{"822980e6139ec634894588a92a1e6156","tx_bak_01"},{"2d39f6264686a6f498145cd0c362bd38","tx_icon_01"},{"5ff2838999cac104081c5e1293a8d19a","tx_bar_03"},{"d1ad976336cb2664a93492918178644e","tx_bar_04"},{"30f6a4894c7dfb3418ff2598011fe030","tx_progressing02"}})
         {
             var files=Directory.GetFiles("Assets/Resources/RecoveredArt/IndividualSprites",pair.Value+"_*.png");

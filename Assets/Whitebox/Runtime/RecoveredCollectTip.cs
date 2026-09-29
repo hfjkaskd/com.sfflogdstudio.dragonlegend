@@ -27,7 +27,7 @@ namespace DragonLegend.Whitebox
             gameObject.SetActive(false);
             RecoveredTreasureCardRunner.Run(Reveal());
             int total=rules.GetCollectInfos().Count, count=player.CollectRecords.Count;
-            tips.text=string.Format(remainingFormat,unchecked(total-count));
+            tips.text=GameLocalization.Format(remainingFormat,language,unchecked(total-count));
             progressSlider.minValue=0;progressSlider.maxValue=1;
             progressSlider.value=(float)count/total;
             progressText.text=string.Format(progressFormat,count,total);

@@ -71,10 +71,14 @@ namespace DragonLegend.Whitebox.Recovered
         public List<int> Pigt; // original ARM64 field offset 0xD0
         public List<string> Ripg; // original ARM64 field offset 0xD8
         public List<int> Gtokg; // original ARM64 field offset 0xE0
+        // Optional authored thresholds as percentages of bet. Absent in original snapshots.
+        public List<int> BigWinBetPercent;
     }
     [Serializable]
     public sealed class RrggiomgPoro
     {
+        // Authored per-free-spin cash-coin floor. Missing in original snapshots means zero.
+        public int MinimumCoinsPerSpin;
         public List<int> GpinGqorrgrOmoinr; // original ARM64 field offset 0x10
         public List<int> GpinGqorrgrRonpom; // original ARM64 field offset 0x18
         public List<int> RrggGping; // original ARM64 field offset 0x20

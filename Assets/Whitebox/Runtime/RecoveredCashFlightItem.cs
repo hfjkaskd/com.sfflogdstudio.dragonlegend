@@ -27,6 +27,7 @@ namespace DragonLegend.Whitebox
         private void Awake()=>cachedTransform=transform;
         public void Initialize(bool isA)
         {
+            cachedTransform=transform;
             image.sprite=Resources.Load<Sprite>(isA?spriteA:spriteB);image.SetNativeSize();
         }
         public void Scatter(Transform parent,Transform source,Vector2 offset)

@@ -34,7 +34,7 @@ namespace DragonLegend.Whitebox
             }
             if(selected<0){IsScheduled=false;return;}
             float goal=rules.GetCashOutCash(selected);
-            label.text=goal<=player.GreenCount?readyText:string.Format(remainingFormat,
+            label.text=goal<=player.GreenCount?GameLocalization.Text(readyText,language):GameLocalization.Format(remainingFormat,language,
                 RecoveredCurrency.Format(goal-player.GreenCount,language,2),RecoveredCurrency.Format(goal,language,0));
             IsScheduled=true;RecoveredTreasureCardRunner.Run(Animate(generation));
         }

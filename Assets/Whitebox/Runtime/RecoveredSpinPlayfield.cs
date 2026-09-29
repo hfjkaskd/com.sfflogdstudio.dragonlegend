@@ -26,6 +26,7 @@ namespace DragonLegend.Whitebox
         public RecoveredMoreWildEntry MoreWildEntry=>moreWildEntry;
         [SerializeField] private RecoveredBaseReelController reels;
         [SerializeField] private RecoveredSymbolCatalog symbols;
+        [SerializeField] private RecoveredSymbolCatalog baseSymbols;
         [SerializeField] private float rewardDelay;
         [SerializeField] private float bonusCoinInterval;
         [SerializeField] private float wildColumnInterval;
@@ -116,7 +117,7 @@ namespace DragonLegend.Whitebox
                 jackpotMeters.Initialize(progress,rules,()=>Bet,languageType);
                 entry.JackpotAnimationsRequested+=jackpotMeters.PlayRewardAnim;
             }
-            reels.Initialize(symbols);
+            reels.Initialize(baseSymbols != null ? baseSymbols : symbols);
             wilds.Bind(reels,GetComponentInParent<Canvas>().sortingOrder);
             symbolEffects.Bind(reels,GetComponentInParent<Canvas>().sortingOrder);
             if(scatters!=null){scatters.Bind(reels,GetComponentInParent<Canvas>().sortingOrder);scatters.StopSoundRequested+=ScatterShowSound;}

@@ -45,10 +45,11 @@ namespace DragonLegend.Whitebox
         }
         public void RefreshAccount(int paymentType)
         {
-            if(gift){accountInput.text=player.GiftDeliveryAccount==null?giftPrompt:player.GiftDeliveryAccount.address??string.Empty;return;}
+            if(gift){accountInput.text=player.GiftDeliveryAccount==null?GameLocalization.Text(giftPrompt):player.GiftDeliveryAccount.address??string.Empty;return;}
             type=paymentType;
             foreach(var account in player.CashOutAccounts)if(account.type==type){accountInput.text=account.emailName;return;}
-            string provider=providerNames[type>=1&&type<=3?type-1:3];accountInput.text=promptPrefix+provider+promptSuffix;
+            string provider=providerNames[type>=1&&type<=3?type-1:3];
+            accountInput.text=GameLocalization.Format(promptPrefix+"{0}"+promptSuffix,GameLocalization.CurrentLanguage,provider);
         }
     }
 }

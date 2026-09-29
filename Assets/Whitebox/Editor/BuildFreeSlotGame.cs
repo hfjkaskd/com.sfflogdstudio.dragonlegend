@@ -18,7 +18,27 @@ public static class BuildFreeSlotGame
             var settings=new SerializedObject(root.GetComponent<RecoveredFreeSlotGame>());
             settings.FindProperty("icon").objectReferenceValue=iconRect;settings.FindProperty("window").objectReferenceValue=window.GetComponent<RecoveredLuckySpinWindow>();
             settings.FindProperty("scaleMultiplier").floatValue=1.5f;settings.FindProperty("scaleDuration").floatValue=.3f;settings.FindProperty("windowDelay").floatValue=.6f;
-            settings.ApplyModifiedPropertiesWithoutUndo();PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredUI/FreeSlotGame.prefab");AssetDatabase.SaveAssets();
+            settings.ApplyModifiedPropertiesWithoutUndo();ConfigureRewardLayer(root);
+            PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredUI/FreeSlotGame.prefab");AssetDatabase.SaveAssets();
         } finally {Object.DestroyImmediate(root);}
+    }
+    public static void ConfigureRewardLayer(GameObject root)
+    {
+        var settings=new SerializedObject(root.GetComponent<RecoveredFreeSlotGame>());
+        var icon=(RectTransform)settings.FindProperty("icon").objectReferenceValue;
+        var layer=root.transform.Find("RewardLayer");
+        if(layer==null)
+        {
+            var created=new GameObject("RewardLayer",typeof(RectTransform),typeof(Canvas));
+            created.layer=root.layer;created.transform.SetParent(root.transform,false);layer=created.transform;
+        }
+        var rect=(RectTransform)layer;
+        rect.anchorMin=Vector2.zero;rect.anchorMax=Vector2.one;
+        rect.offsetMin=rect.offsetMax=Vector2.zero;rect.localScale=Vector3.one;
+        icon.SetParent(layer,false);icon.GetComponent<Image>().raycastTarget=false;
+        var canvas=layer.GetComponent<Canvas>();canvas.overrideSorting=true;canvas.sortingOrder=50;
+        settings.FindProperty("rewardCanvas").objectReferenceValue=canvas;
+        settings.FindProperty("rewardSortingOffset").intValue=50;
+        settings.ApplyModifiedPropertiesWithoutUndo();
     }
 }

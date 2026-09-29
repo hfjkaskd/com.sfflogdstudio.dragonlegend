@@ -23,6 +23,57 @@ namespace DragonLegend.Whitebox
         public IReadOnlyList<PlayerCashOutData> CashOutRecords => data.PlayerCashOutDatas;
         public IReadOnlyList<Account> CashOutAccounts => data.PlayerAccount;
         public GiftAccount GiftDeliveryAccount => data.GiftAccount;
+        public IReadOnlyList<PlayerCashOutOrder> CashOutOrders => data.PlayerCashOutOrders;
+        public void SaveCashAccount(int type,string name,string email)
+        {
+            if(type<1||type>4)throw new ArgumentOutOfRangeException(nameof(type));
+            if(string.IsNullOrWhiteSpace(name)||string.IsNullOrWhiteSpace(email))throw new ArgumentException("Account fields are required.");
+            Account account=null;
+            foreach(var existing in data.PlayerAccount)if(existing.type==type){account=existing;break;}
+            if(account==null){account=new Account{type=type};data.PlayerAccount.Add(account);}
+            account.accountName=name.Trim();account.emailName=email.Trim();save();
+        }
+        public PlayerCashOutOrder PrepareCashOrder(int tier)
+        {
+            foreach(var order in data.PlayerCashOutOrders)if(order.index==tier)return order;
+            var created=new PlayerCashOutOrder{index=tier,orderId=Guid.NewGuid().ToString("N"),status="submitting"};
+            data.PlayerCashOutOrders.Add(created);save();return created;
+        }
+        public void MarkCashOrderPending(int tier,int type,int now)
+        {
+            PlayerCashOutData record=null;
+            foreach(var existing in data.PlayerCashOutDatas)if(existing.id==tier){record=existing;break;}
+            if(record==null){record=new PlayerCashOutData{id=tier,type=type,time=now};data.PlayerCashOutDatas.Add(record);}
+            record.step=1000;
+            foreach(var order in data.PlayerCashOutOrders)if(order.index==tier)order.status="pending";
+            save();
+        }
+        // Account confirmation enters the original task sequence (UIAccountView 239fd44).
+        // Local review acceptance is not a successful payment, so use the configured fail tasks.
+        public void BeginCashOutReview(int tier,int type,int now)
+        {
+            foreach(var existing in data.PlayerCashOutDatas)if(existing.id==tier)return;
+            int step=0;
+            if(rules.GetFailTaskCount(tier,0)<=0)step=rules.GetNextCashOutTaskStep(tier,0,false);
+            data.PlayerCashOutDatas.Add(new PlayerCashOutData{id=tier,type=type,step=step,time=now});
+            foreach(var order in data.PlayerCashOutOrders)if(order.index==tier)order.status="task_review";
+            save();
+        }
+        public void RestoreLegacyCashOutReviews()
+        {
+            bool changed=false;
+            foreach(var order in data.PlayerCashOutOrders)
+            {
+                if(order.status!="pending"||order.reviewVersion!=0)continue;
+                foreach(var record in data.PlayerCashOutDatas)
+                {
+                    if(record.id!=order.index||record.step!=1000||record.isCashout)continue;
+                    record.step=rules.GetFailTaskCount(record.id,0)>0?0:rules.GetNextCashOutTaskStep(record.id,0,false);
+                    record.count=0;order.status="task_review";order.reviewVersion=1;changed=true;break;
+                }
+            }
+            if(changed)save();
+        }
         // Captured-record callback 23a278c, invoked only after the owning flow succeeds.
         // Do not reselect by id: the native closure retains the original record object.
         public void ApplyCashOutTaskStep(PlayerCashOutData record,int nextStep,int unixSeconds)
@@ -277,6 +328,40 @@ namespace DragonLegend.Whitebox
                 }
             }
             save();
+            TasksChanged?.Invoke();
+        }
+        public event Action TasksChanged;
+        public PlayerTaskData FindTask(int id)
+        {
+            if(data.PlayerTaskDatas!=null)foreach(var task in data.PlayerTaskDatas)if(task.id==id)return task;
+            return null;
+        }
+        public void InitializeDailyTasks(DateTime localNow)
+        {
+            // GameStart 23879fc / LoadScene 2389e50: login first, then the default-only reset.
+            SetTaskData(6,1);
+            bool nextDay=localNow.Date>DateTimeOffset.FromUnixTimeSeconds(data.LoginTime).LocalDateTime.Date;
+            data.LoginTime=unchecked((int)new DateTimeOffset(localNow).ToUnixTimeSeconds());
+            if(nextDay&&rules.GetConfigType()=="default") {ClearDailyTasks();SetTaskData(6,1);}
+        }
+        // Native window countdown clears the list without awarding another login or saving here.
+        public void ClearDailyTasks(){data.PlayerTaskDatas.Clear();TasksChanged?.Invoke();}
+        public bool CanClaimTask(int id)
+        {
+            var task=FindTask(id);if(task==null)return false; // No progress record is not a completed task.
+            foreach(var info in rules.GetTaskInfos())if(info.id==id)return !task.isRecieve&&task.count>=info.taskAmount;
+            return false;
+        }
+        public bool TryClaimTask(int id,out float reward)
+        {
+            reward=0;
+            var task=FindTask(id);if(task==null||task.isRecieve)return false;
+            foreach(var info in rules.GetTaskInfos())if(info.id==id) {
+                if(task.count<info.taskAmount)return false;
+                task.isRecieve=true;reward=info.reward;
+                save();return true; // Receipt precedes UIRewardView; cash is credited by the flight.
+            }
+            return false;
         }
     }
 }

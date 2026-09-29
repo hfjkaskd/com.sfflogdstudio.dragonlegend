@@ -15,6 +15,7 @@ namespace DragonLegend.Whitebox
         [SerializeField] private string[] taskFormats;
         [SerializeField] private string needPrefix,needMiddle,readyText,timeFormat,refreshTimeFormat,expiredText;
         [SerializeField] private string incompleteText,waitPrefix,missingFormat;
+        [SerializeField] private string pendingOrderText;
         private RecoveredPlayerProgress player;private RecoveredGameplayRules rules;private Func<int> clock;
         private int id,type,language,remaining;private bool taskComplete,waitComplete;private Countdown countdown;
         public Button Button=>button;
@@ -29,25 +30,38 @@ namespace DragonLegend.Whitebox
         public event Action<PlayerCashOutData,int> TaskContinuationRequested;
         public event Action RefreshRequested;
         private void Awake()=>button.onClick.AddListener(Click);
+        private void OnApplicationFocus(bool focused)
+        {if(focused&&player!=null&&gameObject.activeInHierarchy)Initialize(id,type,language);}
         public void Bind(RecoveredPlayerProgress model,RecoveredGameplayRules config,Func<int> utcClock)
         {player=model;rules=config;clock=utcClock;}
         private PlayerCashOutData Record(){foreach(var record in player.CashOutRecords)if(record.id==id)return record;return null;}
         public void Initialize(int index,int paymentType,int currencyLanguage)
         {
+            Cancel();
             id=index;type=paymentType;language=currencyLanguage;
             var state=player.GetCashOutConditions(id,clock());taskComplete=state.TaskComplete;waitComplete=state.WaitComplete;remaining=state.RemainingSeconds;
             line1.gameObject.SetActive(false);line2.gameObject.SetActive(false);line3.gameObject.SetActive(false);line4.gameObject.SetActive(false);
             if(!state.HasRecord)
             {
-                detailText.text=state.ShowActionRow?readyText:needPrefix+RecoveredCurrency.Format(state.MissingCash,language,2)+needMiddle+RecoveredCurrency.Format(rules.GetCashOutCash(id),language,0);
+                detailText.text=state.ShowActionRow?GameLocalization.Text(readyText,language):GameLocalization.Format(needPrefix+"{0}"+needMiddle+"{1}",language,
+                    RecoveredCurrency.Format(state.MissingCash,language,2),RecoveredCurrency.Format(rules.GetCashOutCash(id),language,0));
                 line4.gameObject.SetActive(true);line3.gameObject.SetActive(state.ShowActionRow);return;
             }
-            if(state.RequiresOrderStatus)return; // Existing SDK handling remains outside this local panel.
+            if(state.RequiresOrderStatus)
+            {
+                foreach(var order in player.CashOutOrders)if(order.index==id&&order.status=="pending"){ShowOrderStatus(pendingOrderText);break;}
+                return;
+            }
             int step=Record().step;
-            taskText.text=string.Format(taskFormats[step>=0&&step<6?step:6],state.TaskCount,state.TaskGoal);
+            taskText.text=GameLocalization.Format(taskFormats[step>=0&&step<6?step:6],language,state.TaskCount,state.TaskGoal);
             taskCheck.SetActive(taskComplete);waitCheck.SetActive(waitComplete);
             line1.gameObject.SetActive(true);line2.gameObject.SetActive(true);line3.gameObject.SetActive(true);
-            if(remaining<=0)timeText.text=expiredText;else{FormatTime(remaining);TimeShow(remaining);}
+            if(remaining<=0)timeText.text=GameLocalization.Text(expiredText,language);else{FormatTime(remaining);TimeShow(remaining);}
+        }
+        public void ShowOrderStatus(string message)
+        {
+            Cancel();line1.gameObject.SetActive(false);line2.gameObject.SetActive(false);line3.gameObject.SetActive(false);
+            detailText.text=GameLocalization.Text(message,language);line4.gameObject.SetActive(true);
         }
         private void Click()
         {
@@ -56,23 +70,23 @@ namespace DragonLegend.Whitebox
             {
                 float target=rules.GetCashOutCash(id);
                 if(player.GreenCount>=target)AccountRequested?.Invoke(type,id);
-                else MissingCashRequested?.Invoke(string.Format(missingFormat,RecoveredCurrency.Format(target-player.GreenCount,language,2)));
+                else MissingCashRequested?.Invoke(GameLocalization.Format(missingFormat,language,RecoveredCurrency.Format(target-player.GreenCount,language,2)));
                 return;
             }
-            if(!taskComplete){TipRequested?.Invoke(incompleteText);return;}
-            if(!waitComplete){TipRequested?.Invoke(waitPrefix+string.Format(timeFormat,remaining/3600,remaining%3600/60,remaining%60));return;}
-            if(record.step==6){TipRequested?.Invoke(incompleteText);return;}
+            if(!taskComplete){TipRequested?.Invoke(GameLocalization.Text(incompleteText,language));return;}
+            if(!waitComplete){TipRequested?.Invoke(GameLocalization.Format(waitPrefix+"{0}",language,GameLocalization.Format(timeFormat,language,remaining/3600,remaining%3600/60,remaining%60)));return;}
+            if(record.step==6){TipRequested?.Invoke(GameLocalization.Text(incompleteText,language));return;}
             TaskContinuationRequested?.Invoke(record,rules.GetNextCashOutTaskStep(id,record.step,record.isCashout));
         }
         public void RefreshTime()
         {
             var record=Record();if(record==null||record.step==1000)return;
             remaining=unchecked(rules.GetWaitTime(id,record.step)+record.time-clock());
-            if(remaining<=0){timeText.text=expiredText;return;}
+            if(remaining<=0){timeText.text=GameLocalization.Text(expiredText,language);return;}
             // RefreshGoldTime's format uses minutes, seconds, hours, unlike InitUI.
-            timeText.text=string.Format(refreshTimeFormat,remaining%3600/60,remaining%60,remaining/3600);TimeShow(remaining);
+            timeText.text=GameLocalization.Format(refreshTimeFormat,language,remaining%3600/60,remaining%60,remaining/3600);TimeShow(remaining);
         }
-        private void FormatTime(int value)=>timeText.text=string.Format(timeFormat,value/3600,value%3600/60,value%60);
+        private void FormatTime(int value)=>timeText.text=GameLocalization.Format(timeFormat,language,value/3600,value%3600/60,value%60);
         public void TimeShow(int seconds)
         {if(seconds<0)return;Cancel();if(seconds==0)return;countdown=new Countdown(this,seconds);RecoveredReelStopLoop.Requeue(countdown);}
         public void Cancel(){countdown?.Cancel();countdown=null;}

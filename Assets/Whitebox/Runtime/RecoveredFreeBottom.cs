@@ -25,7 +25,7 @@ namespace DragonLegend.Whitebox
             bool isBase=mode==RecoveredSlotType.Base;
             main.SetActive(isBase);free.SetActive(!isBase);
         }
-        public void RefreshCount()=>count.text=string.Format(countFormat,player.FreeSpinCount);
+        public void RefreshCount()=>count.text=GameLocalization.Format(countFormat,GameLocalization.CurrentLanguage,player.FreeSpinCount);
         public void Unbind()
         {
             if(entry!=null)entry.PresentationRequested-=RefreshCount;

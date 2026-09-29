@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<test-run testcasecount="29" total="29" result="Passed" passed="29" failed="0" skipped="0" inconclusive="0" duration="0.0959438">
+  <test-suite type="TestSuite" id="1000" name="Gilded Dragon Odyssey" fullname="Gilded Dragon Odyssey" runstate="Runnable" testcasecount="533" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.095944" total="29" passed="29" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1753" name="Whitebox.PlayModeTests.dll" fullname="C:/Projects/com.sfflogdstudio.dragonlegend/Library/ScriptAssemblies/Whitebox.PlayModeTests.dll" runstate="Runnable" testcasecount="533" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.074824" total="29" passed="29" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="15856" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+      </properties>
+      <test-suite type="TestFixture" id="1684" name="RecoveredSymbolWinSelectionTests" fullname="RecoveredSymbolWinSelectionTests" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.047959" total="29" passed="29" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="ParameterizedMethod" id="1709" name="JsonPercentageFieldIsDeserializedAndTakesPriority" fullname="RecoveredSymbolWinSelectionTests.JsonPercentageFieldIsDeserializedAndTakesPriority" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.021109" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1707" name="JsonPercentageFieldIsDeserializedAndTakesPriority(&quot;{\&quot;Riikin\&quot;:[2,4,6],\&quot;BigWinBetPercent\&quot;:[20,50,100]}&quot;)" fullname="RecoveredSymbolWinSelectionTests.JsonPercentageFieldIsDeserializedAndTakesPriority(&quot;{\&quot;Riikin\&quot;:[2,4,6],\&quot;BigWinBetPercent\&quot;:[20,50,100]}&quot;)" methodname="JsonPercentageFieldIsDeserializedAndTakesPriority" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1538590173" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.016537" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1708" name="JsonPercentageFieldIsDeserializedAndTakesPriority(&quot;{\&quot;BigWinBetPercent\&quot;:[20,50,100]}&quot;)" fullname="RecoveredSymbolWinSelectionTests.JsonPercentageFieldIsDeserializedAndTakesPriority(&quot;{\&quot;BigWinBetPercent\&quot;:[20,50,100]}&quot;)" methodname="JsonPercentageFieldIsDeserializedAndTakesPriority" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="656200316" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000416" asserts="0">
+            <properties />
+          </test-case>
+        </test-suite>
+        <test-case id="1694" name="MinimumLineAwardPrecedesBonusAndZeroTotalSkipsSelection" fullname="RecoveredSymbolWinSelectionTests.MinimumLineAwardPrecedesBonusAndZeroTotalSkipsSelection" methodname="MinimumLineAwardPrecedesBonusAndZeroTotalSkipsSelection" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="120818075" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.004340" asserts="0">
+          <properties />
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1706" name="MissingOrEmptyJsonPercentageFieldRetainsLegacyThresholds" fullname="RecoveredSymbolWinSelectionTests.MissingOrEmptyJsonPercentageFieldRetainsLegacyThresholds" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.003178" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1703" name="MissingOrEmptyJsonPercentageFieldRetainsLegacyThresholds(&quot;{\&quot;Riikin\&quot;:[2,4,6]}&quot;)" fullname="RecoveredSymbolWinSelectionTests.MissingOrEmptyJsonPercentageFieldRetainsLegacyThresholds(&quot;{\&quot;Riikin\&quot;:[2,4,6]}&quot;)" methodname="MissingOrEmptyJsonPercentageFieldRetainsLegacyThresholds" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1614666621" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000466" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1704" name="MissingOrEmptyJsonPercentageFieldRetainsLegacyThresholds(&quot;{\&quot;Riikin\&quot;:[2,4,6],\&quot;BigWinBetPercent\&quot;:[]}&quot;)" fullname="RecoveredSymbolWinSelectionTests.MissingOrEmptyJsonPercentageFieldRetainsLegacyThresholds(&quot;{\&quot;Riikin\&quot;:[2,4,6],\&quot;BigWinBetPercent\&quot;:[]}&quot;)" methodname="MissingOrEmptyJsonPercentageFieldRetainsLegacyThresholds" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="514157959" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000177" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1705" name="MissingOrEmptyJsonPercentageFieldRetainsLegacyThresholds(&quot;{\&quot;Riikin\&quot;:[2,4,6],\&quot;BigWinBetPercent\&quot;:null}&quot;)" fullname="RecoveredSymbolWinSelectionTests.MissingOrEmptyJsonPercentageFieldRetainsLegacyThresholds(&quot;{\&quot;Riikin\&quot;:[2,4,6],\&quot;BigWinBetPercent\&quot;:null}&quot;)" methodname="MissingOrEmptyJsonPercentageFieldRetainsLegacyThresholds" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1391643001" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000130" asserts="0">
+            <properties />
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1691" name="NativeBigWinBoundaries" fullname="RecoveredSymbolWinSelectionTests.NativeBigWinBoundaries" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.002244" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1685" name="NativeBigWinBoundaries(19.99f,2,None)" fullname="RecoveredSymbolWinSelectionTests.NativeBigWinBoundaries(19.99f,2,None)" methodname="NativeBigWinBoundaries" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1184980383" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000332" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1686" name="NativeBigWinBoundaries(20,2,Big)" fullname="RecoveredSymbolWinSelectionTests.NativeBigWinBoundaries(20,2,Big)" methodname="NativeBigWinBoundaries" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1396774569" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000088" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1687" name="NativeBigWinBoundaries(39.99f,2,Big)" fullname="RecoveredSymbolWinSelectionTests.NativeBigWinBoundaries(39.99f,2,Big)" methodname="NativeBigWinBoundaries" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="2126737719" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000056" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1688" name="NativeBigWinBoundaries(40,2,Mega)" fullname="RecoveredSymbolWinSelectionTests.NativeBigWinBoundaries(40,2,Mega)" methodname="NativeBigWinBoundaries" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1463625602" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000047" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1689" name="NativeBigWinBoundaries(100,2,Super)" fullname="RecoveredSymbolWinSelectionTests.NativeBigWinBoundaries(100,2,Super)" methodname="NativeBigWinBoundaries" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1049427215" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000046" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1690" name="NativeBigWinBoundaries(0,0,Super)" fullname="RecoveredSymbolWinSelectionTests.NativeBigWinBoundaries(0,0,Super)" methodname="NativeBigWinBoundaries" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="883392116" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000049" asserts="0">
+            <properties />
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1701" name="PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers" fullname="RecoveredSymbolWinSelectionTests.PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.002467" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1695" name="PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers(199.99f,None)" fullname="RecoveredSymbolWinSelectionTests.PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers(199.99f,None)" methodname="PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="791935174" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000464" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1696" name="PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers(200,Big)" fullname="RecoveredSymbolWinSelectionTests.PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers(200,Big)" methodname="PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1741814861" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000089" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1697" name="PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers(499.99f,Big)" fullname="RecoveredSymbolWinSelectionTests.PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers(499.99f,Big)" methodname="PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="2039317382" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000057" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1698" name="PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers(500,Mega)" fullname="RecoveredSymbolWinSelectionTests.PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers(500,Mega)" methodname="PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="682189389" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000052" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1699" name="PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers(999.99f,Mega)" fullname="RecoveredSymbolWinSelectionTests.PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers(999.99f,Mega)" methodname="PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="984680958" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000048" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1700" name="PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers(1000,Super)" fullname="RecoveredSymbolWinSelectionTests.PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers(1000,Super)" methodname="PercentageBoundariesUseRawCentsAndOverrideLegacyMultipliers" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1074053062" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000049" asserts="0">
+            <properties />
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1719" name="PercentageSelectionAlsoClassifiesCoinOnlyWins" fullname="RecoveredSymbolWinSelectionTests.PercentageSelectionAlsoClassifiesCoinOnlyWins" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.002169" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1715" name="PercentageSelectionAlsoClassifiesCoinOnlyWins(199.99f,None)" fullname="RecoveredSymbolWinSelectionTests.PercentageSelectionAlsoClassifiesCoinOnlyWins(199.99f,None)" methodname="PercentageSelectionAlsoClassifiesCoinOnlyWins" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1930625618" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000430" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1716" name="PercentageSelectionAlsoClassifiesCoinOnlyWins(200,Big)" fullname="RecoveredSymbolWinSelectionTests.PercentageSelectionAlsoClassifiesCoinOnlyWins(200,Big)" methodname="PercentageSelectionAlsoClassifiesCoinOnlyWins" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1011861549" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000099" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1717" name="PercentageSelectionAlsoClassifiesCoinOnlyWins(500,Mega)" fullname="RecoveredSymbolWinSelectionTests.PercentageSelectionAlsoClassifiesCoinOnlyWins(500,Mega)" methodname="PercentageSelectionAlsoClassifiesCoinOnlyWins" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1200988593" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000072" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1718" name="PercentageSelectionAlsoClassifiesCoinOnlyWins(1000,Super)" fullname="RecoveredSymbolWinSelectionTests.PercentageSelectionAlsoClassifiesCoinOnlyWins(1000,Super)" methodname="PercentageSelectionAlsoClassifiesCoinOnlyWins" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="748616826" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000064" asserts="0">
+            <properties />
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1714" name="PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward" fullname="RecoveredSymbolWinSelectionTests.PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.002277" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1710" name="PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward(99.99f,None)" fullname="RecoveredSymbolWinSelectionTests.PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward(99.99f,None)" methodname="PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="153012423" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000613" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1711" name="PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward(100,Big)" fullname="RecoveredSymbolWinSelectionTests.PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward(100,Big)" methodname="PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="2009385858" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000116" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1712" name="PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward(400,Mega)" fullname="RecoveredSymbolWinSelectionTests.PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward(400,Mega)" methodname="PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1803565562" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000077" asserts="0">
+            <properties />
+          </test-case>
+          <test-case id="1713" name="PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward(900,Super)" fullname="RecoveredSymbolWinSelectionTests.PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward(900,Super)" methodname="PercentageSelectionClassifiesLinePlusCoinWithoutChangingEitherAward" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1073654871" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000068" asserts="0">
+            <properties />
+          </test-case>
+        </test-suite>
+        <test-case id="1702" name="PercentageThresholdsFollowTheCurrentBetAndPreserveFractionalThresholds" fullname="RecoveredSymbolWinSelectionTests.PercentageThresholdsFollowTheCurrentBetAndPreserveFractionalThresholds" methodname="PercentageThresholdsFollowTheCurrentBetAndPreserveFractionalThresholds" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="681556573" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000275" asserts="0">
+          <properties />
+        </test-case>
+        <test-case id="1692" name="ThresholdOrderExtraEntriesAndSignedOverflowRemainNative" fullname="RecoveredSymbolWinSelectionTests.ThresholdOrderExtraEntriesAndSignedOverflowRemainNative" methodname="ThresholdOrderExtraEntriesAndSignedOverflowRemainNative" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="549063376" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000237" asserts="0">
+          <properties />
+        </test-case>
+        <test-case id="1693" name="WinningPathsDeduplicateCellsInEncounterOrderAndUseLiveWildIdentity" fullname="RecoveredSymbolWinSelectionTests.WinningPathsDeduplicateCellsInEncounterOrderAndUseLiveWildIdentity" methodname="WinningPathsDeduplicateCellsInEncounterOrderAndUseLiveWildIdentity" classname="RecoveredSymbolWinSelectionTests" runstate="Runnable" seed="1256241110" result="Passed" start-time="2026-09-16 08:14:22Z" end-time="2026-09-16 08:14:22Z" duration="0.000562" asserts="0">
+          <properties />
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

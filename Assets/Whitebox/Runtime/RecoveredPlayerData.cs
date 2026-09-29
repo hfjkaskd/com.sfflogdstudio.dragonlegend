@@ -93,6 +93,7 @@ namespace DragonLegend.Whitebox.Recovered
         public string orderId;
         public int index;
         public string status;
+        public int reviewVersion;
 
     }
     [Serializable]

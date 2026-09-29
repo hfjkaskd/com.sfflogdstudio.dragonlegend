@@ -11,6 +11,7 @@ namespace DragonLegend.Whitebox
         [SerializeField] private CanvasGroup[] groups;
         [SerializeField] private Text toggleLabel;
         [SerializeField] private string closedCaption,openCaption;
+        [SerializeField] private string fontPath;
         public bool IsOpen {get;private set;}
         public Button ToggleButton=>toggle;
         private void OnEnable()
@@ -25,10 +26,14 @@ namespace DragonLegend.Whitebox
             foreach(var button in profileButtons)button.onClick.RemoveListener(Close);
         }
         private void Toggle()=>SetOpen(!IsOpen);
-        private void Close()=>SetOpen(false);
+        public void Close()=>SetOpen(false);
         private void SetOpen(bool value)
         {
             IsOpen=value;
+            if(value&&!string.IsNullOrEmpty(fontPath)){
+                var font=Resources.Load<Font>(fontPath);toggleLabel.font=font;
+                foreach(var group in groups)foreach(var label in group.GetComponentsInChildren<Text>(true))label.font=font;
+            }
             foreach(var group in groups){group.alpha=value?1:0;group.interactable=value;group.blocksRaycasts=value;}
             toggleLabel.text=value?openCaption:closedCaption;
         }

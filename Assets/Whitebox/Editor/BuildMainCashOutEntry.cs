@@ -44,6 +44,7 @@ public static class BuildMainCashOutEntry
             var rect=(RectTransform)art.transform;rect.anchorMin=old.anchorMin;rect.anchorMax=old.anchorMax;rect.pivot=old.pivot;rect.sizeDelta=old.sizeDelta;rect.anchoredPosition3D=old.anchoredPosition3D;rect.localRotation=old.localRotation;rect.localScale=old.localScale;
             rect.SetSiblingIndex(old.GetSiblingIndex());art.layer=old.gameObject.layer;art.name=old.name;Object.DestroyImmediate(old.gameObject);
             var settings=new SerializedObject(root.AddComponent<RecoveredCashOutEntry>());
+            settings.FindProperty("sideEntriesRoot").objectReferenceValue=root.transform.Find("Tubiao");
             settings.FindProperty("button").objectReferenceValue=button.GetComponent<Button>();
             settings.FindProperty("fingerPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RectTransform>("Assets/Resources/RecoveredUI/Finger.prefab");
             settings.FindProperty("fingerTarget").objectReferenceValue=button.Find("finger");settings.ApplyModifiedPropertiesWithoutUndo();

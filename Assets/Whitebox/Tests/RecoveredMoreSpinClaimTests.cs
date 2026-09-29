@@ -37,8 +37,13 @@ public sealed class RecoveredMoreSpinClaimTests
         var data=new PlayerData{LimitSpinCount=count};var player=new RecoveredPlayerProgress(rules,()=>{},data);
         var ads=new LocalAdFacade();var view=new View();var claim=new RecoveredMoreSpinClaim(rules,player,data,ads,view);
         claim.BeforeShow();claim.Click("ClaimBtn");Assert.AreEqual(blocked?1:0,view.Tips);Assert.AreEqual(!blocked,ads.Pending);
-        Assert.IsTrue(claim.IsClicked);claim.Click("CloseBtn");Assert.AreEqual(0,view.Hides,"Native latch remains set after the limit tip.");
+        Assert.AreEqual(!blocked,claim.IsClicked);
+        if(blocked) {
+            claim.Click("ClaimBtn");Assert.AreEqual(2,view.Tips);Assert.IsFalse(ads.Pending);
+            Assert.AreEqual(0,player.SpinCount,"Repeated limit clicks must not grant spins.");
+        }
+        claim.Click("CloseBtn");Assert.AreEqual(blocked?1:0,view.Hides);
         claim.Cancel();if(ads.Pending)ads.Complete(AdOutcome.Rewarded);Assert.AreEqual(0,player.SpinCount);
-        claim.BeforeShow();claim.Click("CloseBtn");Assert.AreEqual(1,view.Hides);
+        claim.BeforeShow();claim.Click("CloseBtn");Assert.AreEqual(blocked?2:1,view.Hides);
     }
 }

@@ -29,8 +29,8 @@ namespace DragonLegend.Whitebox
         private void Update()=>Recovery?.Advance(Time.deltaTime,Now());
         private void Display(int count,int? remaining)
         {
-            label.text=remaining.HasValue?string.Format(countdownFormat,count,
-                string.Format(timeFormat,remaining.Value%3600/60,remaining.Value%60)):string.Format(countFormat,count);
+            label.text=remaining.HasValue?GameLocalization.Format(countdownFormat,GameLocalization.CurrentLanguage,count,
+                string.Format(timeFormat,remaining.Value%3600/60,remaining.Value%60)):GameLocalization.Format(countFormat,GameLocalization.CurrentLanguage,count);
         }
         public void Unbind()
         {

@@ -11,6 +11,14 @@ using Object=UnityEngine.Object;
 
 public sealed class RecoveredFreeBottomTests
 {
+    private int previousLanguage;
+    [SetUp] public void UseEnglish()
+    {
+        previousLanguage=GameLocalization.CurrentLanguage;
+        GameLocalization.SetLanguage(0);
+    }
+    [TearDown] public void RestoreLanguage()=>GameLocalization.SetLanguage(previousLanguage);
+
     [UnityTest]
     public IEnumerator ProductionCounterReadsLiveCountAfterGenerationAndRebuildsForGM()
     {
@@ -22,6 +30,8 @@ public sealed class RecoveredFreeBottomTests
             GameEntry game=null;foreach(var root in scene.GetRootGameObjects()){var found=root.GetComponentInChildren<GameEntry>();if(found!=null)game=found;}
             float deadline=Time.realtimeSinceStartup+5;while(game.Playfield==null&&Time.realtimeSinceStartup<deadline)yield return null;
             Assert.IsNotNull(game.Playfield);var bottom=game.Playfield.FreeBottom;Assert.IsNotNull(bottom);
+            // SDK startup can resolve a device country after the fixture's SetUp.
+            GameLocalization.SetLanguage(0);
             // Isolate the counter from the complete loop, which now starts reels on this event.
             game.CoreRound.Unbind();
             Assert.IsTrue(bottom.Main.activeSelf);Assert.IsFalse(bottom.Free.activeSelf);

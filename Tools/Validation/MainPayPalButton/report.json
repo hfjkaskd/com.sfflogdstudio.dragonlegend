@@ -1,0 +1,20 @@
+{
+    "passed": true,
+    "buttonPreserved": true,
+    "targetGraphicPreserved": true,
+    "sceneUnchanged": true,
+    "resumePlayRequested": false,
+    "childRaycastsDisabled": true,
+    "oldCaptionHidden": true,
+    "persistentEvents": 0,
+    "left": 782.2718505859375,
+    "top": 106.0,
+    "right": 1056.0,
+    "width": 273.7281494140625,
+    "height": 111.0,
+    "rootSprite": "Assets/Resources/MainSkin/ApprovedHeader/MainPayPalFrame.asset",
+    "preview": "Artifacts/MainPayPalButton/header.png",
+    "closeup": "Artifacts/MainPayPalButton/button.png",
+    "error": "",
+    "completedUtc": "2026-09-15T12:23:55.6419194Z"
+}

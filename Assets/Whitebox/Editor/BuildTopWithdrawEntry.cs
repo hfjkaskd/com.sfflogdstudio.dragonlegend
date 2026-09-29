@@ -67,7 +67,7 @@ public static class BuildTopWithdrawEntry
         try {
             var toggle=(RectTransform)game.transform.Find("GmToggle");
             toggle.anchorMin=toggle.anchorMax=toggle.pivot=new Vector2(0,1);
-            toggle.anchoredPosition=new Vector2(8,-125);
+            toggle.anchoredPosition=new Vector2(112,-125);
             PrefabUtility.SaveAsPrefabAsset(game,gamePath);AssetDatabase.SaveAssets();
         } finally {PrefabUtility.UnloadPrefabContents(game);}
     }

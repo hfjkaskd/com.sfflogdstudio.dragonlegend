@@ -78,6 +78,8 @@ MonoBehaviour:
   rewardPresentation: {fileID: 2667886883316595068}
   flightDuration: 0.3
   flightArcRatio: 0.3
+  sortingGroup: {fileID: 839641768824617837}
+  flightSortingOffset: 1
 --- !u!114 &2667886883316595068
 MonoBehaviour:
   m_ObjectHideFlags: 0

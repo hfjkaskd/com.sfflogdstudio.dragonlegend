@@ -28,8 +28,11 @@ public static class BuildFreeReels
             motionSettings.FindProperty("reel").objectReferenceValue=mini.GetComponent<RecoveredReelView>();
             motionSettings.FindProperty("speedPixels").floatValue=5000;
             motionSettings.ApplyModifiedPropertiesWithoutUndo();
-            mini.AddComponent<SortingGroup>();
+            // Keep masked symbols above the playfield Canvas, matching Free special art.
+            mini.AddComponent<SortingGroup>().sortingOrder=1;
             var settings=new SerializedObject(mini.GetComponent<RecoveredReelView>());
+            // Free mode dims the original symbols; the Base cover replaces them with board art.
+            settings.FindProperty("symbolPrefab").objectReferenceValue=AssetDatabase.LoadAssetAtPath<RecoveredSymbolView>("Assets/Resources/RecoveredSymbols/FreeSymbolItem.prefab");
             // Native anchoredPosition starts at zero. SymbolItem anchors to the bottom
             // of the 172px-high node, so world geometry starts at -86px.
             settings.FindProperty("bottomPixels").floatValue=-layout.columns[0].reels[0].height*.5f;

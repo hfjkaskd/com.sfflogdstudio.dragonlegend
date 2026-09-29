@@ -22,6 +22,7 @@ public static class BuildMainModeView
         var rect=(RectTransform)host.transform;rect.sizeDelta=new Vector2(948,515);rect.anchoredPosition=new Vector2(-1.62f,-71);
         var reels=(RecoveredFreeReels)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<RecoveredFreeReels>("Assets/Resources/RecoveredSymbols/FreeReels.prefab"),host.transform);
         reels.transform.localScale=Vector3.one*100;host.SetActive(false);
+        foreach(var child in reels.GetComponentsInChildren<Transform>(true))child.gameObject.layer=host.layer;
         var effects=new GameObject("MainFireworks",typeof(RectTransform),typeof(Canvas));effects.layer=5;effects.transform.SetParent(field.transform,false);effects.transform.SetAsFirstSibling();
         var effectsRect=(RectTransform)effects.transform;effectsRect.anchorMin=Vector2.zero;effectsRect.anchorMax=Vector2.one;effectsRect.sizeDelta=Vector2.zero;
         var effectsCanvas=effects.GetComponent<Canvas>();effectsCanvas.overrideSorting=true;effectsCanvas.sortingOrder=-3;

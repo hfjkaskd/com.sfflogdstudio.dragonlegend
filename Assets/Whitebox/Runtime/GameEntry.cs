@@ -10,10 +10,16 @@ namespace DragonLegend.Whitebox
     public sealed class GameEntry : MonoBehaviour
     {
         [SerializeField] private LaunchProfile defaultProfile;
+        [SerializeField] private RecoveredDailyTaskEntry dailyTaskPrefab;
+        [SerializeField] private RecoveredMainUtility mainUtilityPrefab;
+        public RecoveredMainUtility MainUtility{get;private set;}
+        public RecoveredDailyTaskEntry DailyTasks{get;private set;}
         [SerializeField] private LaunchProfile alternativeProfile;
         [SerializeField] private Button selectDefault;
         [SerializeField] private Button selectAlternative;
         [SerializeField] private Text status;
+        [SerializeField] private StartupLoadingView loadingScreenPrefab;
+        private StartupLoadingView loadingScreen;
         [SerializeField] private RecoveredBalancePanel balancePanelPrefab;
         private RecoveredBalancePanel balancePanel;
         [SerializeField] private RecoveredSpinPlayfield playfieldPrefab;
@@ -36,6 +42,12 @@ namespace DragonLegend.Whitebox
         public RecoveredSpinPlayfield Playfield { get; private set; }
         private void ReleasePlayfield()
         {
+            if(MainUtility!=null){
+                var gm=GetComponent<RecoveredGmPanel>();
+                if(gm!=null&&gm.ToggleButton.transform.parent==MainUtility.transform)gm.ToggleButton.transform.SetParent(transform,false);
+                Destroy(MainUtility.gameObject);MainUtility=null;
+            }
+            if(DailyTasks!=null){Destroy(DailyTasks.gameObject);DailyTasks=null;}
             if(CoreAudio!=null){CoreAudio.Unbind();Destroy(CoreAudio.gameObject);CoreAudio=null;}
             if(CoreRound!=null){CoreRound.Unbind();Destroy(CoreRound.gameObject);CoreRound=null;}
             if (Background != null) { Destroy(Background.gameObject); Background = null; }
@@ -84,6 +96,7 @@ namespace DragonLegend.Whitebox
             (activeLoad as IDisposable)?.Dispose();
             activeLoad = null;
             loading = null;
+            if (loadingScreen != null) { Destroy(loadingScreen.gameObject); loadingScreen = null; }
             if (balancePanel != null) { balancePanel.Unbind(); Destroy(balancePanel.gameObject); balancePanel = null; }
             ReleasePlayfield();
             if (runtimeProfile != null) { Destroy(runtimeProfile); runtimeProfile = null; }
@@ -129,16 +142,61 @@ namespace DragonLegend.Whitebox
             RewardBranches = null;
             PlayerStore = null;
             CurrentProfile = null;
-            loading = StartCoroutine(Load(profile));
+            loading = StartCoroutine(LoadWithScreen(profile));
+        }
+        private IEnumerator LoadWithScreen(LaunchProfile profile)
+        {
+            if (loadingScreen != null) { Destroy(loadingScreen.gameObject); loadingScreen = null; }
+            if (loadingScreenPrefab != null)
+            {
+                loadingScreen = Instantiate(loadingScreenPrefab);
+                yield return loadingScreen.Prepare();
+            }
+            var operation = Load(profile);
+            try
+            {
+                while (true)
+                {
+                    bool more;
+                    object pending;
+                    try { more = operation.MoveNext(); pending = more ? operation.Current : null; }
+                    catch (Exception error)
+                    {
+                        Debug.LogException(error);
+                        status.text = GameLocalization.Text("Unable to start. Please restart the game.");
+                        if (loadingScreen != null) loadingScreen.ShowFailure("Unable to start. Please restart the game.");
+                        yield break;
+                    }
+                    if (!more) break;
+                    yield return pending;
+                }
+            }
+            finally { (operation as IDisposable)?.Dispose(); loading = null; }
+            // Failure paths set no completed screen stage and keep the error visible.
+            if (loadingScreen != null && startupComplete)
+            {
+                loadingScreen.SetStage("Ready", 1f);
+                yield return null;
+                Destroy(loadingScreen.gameObject);
+                loadingScreen = null;
+            }
+        }
+        private bool startupComplete;
+        private void SetLoadingStage(string message, float progress)
+        {
+            status.text = GameLocalization.Text(message);
+            if (loadingScreen != null) loadingScreen.SetStage(message, progress);
         }
         private IEnumerator Load(LaunchProfile profile)
         {
-            status.text = "Connecting...";
+            startupComplete = false;
+            SetLoadingStage("Connecting...", 0.1f);
             var sdkInitialization = WkyRuntime.InitializeAsync();
             while (!sdkInitialization.IsCompleted) yield return null;
             if (sdkInitialization.IsFaulted || sdkInitialization.IsCanceled)
             {
-                status.text = "Connection failed. Please restart the game.";
+                status.text = GameLocalization.Text("Connection failed. Please restart the game.");
+                if (loadingScreen != null) loadingScreen.ShowFailure("Connection failed. Please restart the game.");
                 if (sdkInitialization.Exception != null) Debug.LogException(sdkInitialization.Exception);
                 loading = null;
                 yield break;
@@ -146,7 +204,7 @@ namespace DragonLegend.Whitebox
             profile = Instantiate(profile);
             runtimeProfile = profile;
             profile.languageType = WkyRuntime.LanguageType;
-            status.text = "Loading configuration...";
+            SetLoadingStage("Loading configuration...", 0.4f);
             var loader = new ConfigSnapshotLoader();
             // Manually step the loader to report faults consistently on device and Editor.
             var operation = loader.Load(profile.snapshotPath);
@@ -158,7 +216,9 @@ namespace DragonLegend.Whitebox
                 try { more = operation.MoveNext(); pending = more ? operation.Current : null; }
                 catch (Exception error)
                 {
-                    status.text = "Configuration failed: " + error.Message;
+                    status.text = GameLocalization.Text("Unable to load configuration. Please restart the game.");
+                    Debug.LogException(error);
+                    if (loadingScreen != null) loadingScreen.ShowFailure("Unable to load configuration. Please restart the game.");
                     loading = null;
                     (operation as IDisposable)?.Dispose();
                     activeLoad = null;
@@ -169,6 +229,8 @@ namespace DragonLegend.Whitebox
             }
             (operation as IDisposable)?.Dispose();
             activeLoad = null;
+            SetLoadingStage("Preparing game...", 0.7f);
+            yield return null;
             CurrentProfile = profile;
             // Native Main creates its initial tween sequence before any popup can open.
             RecoveredTreasureCardRunner.EnsureCreated();
@@ -178,8 +240,10 @@ namespace DragonLegend.Whitebox
             PlayerStore.Load(OnPlayerLoaded);
             PlayerProgress = new RecoveredPlayerProgress(Rules, PlayerStore.Save, PlayerStore.Data);
             SpinResult = new RecoveredSpinResult(Rules, Settlement, PlayerProgress);
-            Ads=new LocalAdFacade(transport:new WkyAdTransport());
+            var adPlayer=PlayerProgress;
+            Ads=new LocalAdFacade(new RecoveredInterstitialPolicy(Rules,()=>profile.isA,()=>adPlayer.Level,onShown:()=>adPlayer.RefreshCashOutTask(1,1)),new WkyAdTransport());
             if(adControls!=null){adControls.Bind(null);adControls.gameObject.SetActive(false);}
+            Ads.RewardAdCompleted+=outcome=>{if(outcome==AdOutcome.Rewarded)adPlayer.RefreshCashOutTask(1,1);};
             SpinEntry = new RecoveredSpinEntry(Rules, PlayerStore.Data, PlayerProgress, SpinResult, PlayerStore.Save);
             RewardBranches = new RecoveredRewardBranches(Rules, PlayerProgress);
             FreeSpinResult = new RecoveredFreeSpinResult(Rules);
@@ -225,9 +289,17 @@ namespace DragonLegend.Whitebox
                 CollectEntry = Instantiate(collectEntryPrefab, transform, false);
                 CollectEntry.Bind(PlayerProgress, Rules, transform, profile.isA, profile.languageType,CoreRound!=null?CoreRound.PopupRoot:transform);
             }
+            if(dailyTaskPrefab!=null){DailyTasks=Instantiate(dailyTaskPrefab,CoreRound.CashOutEntry.SideEntriesRoot,false);DailyTasks.Bind(this);}
+            if(mainUtilityPrefab!=null){
+                // Header controls share the playfield safe area, including the local GM toggle.
+                MainUtility=Instantiate(mainUtilityPrefab,Playfield.transform,false);MainUtility.Bind(this);
+                var gm=GetComponent<RecoveredGmPanel>();
+                if(gm!=null)gm.ToggleButton.transform.SetParent(MainUtility.transform,false);
+            }
             if(CoreRound!=null)CoreRound.Bind(this);
             if(coreAudioPrefab!=null){CoreAudio=Instantiate(coreAudioPrefab,transform,false);CoreAudio.Bind(this);}
             Ready?.Invoke(Rules);
+            startupComplete = true;
         }
     }
 }

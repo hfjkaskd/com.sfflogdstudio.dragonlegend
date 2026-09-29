@@ -59,7 +59,10 @@ namespace DragonLegend.Whitebox
             progress.SetBankCount(unchecked(progress.BankCount + 1));
             WinResetRequested?.Invoke();
             JackpotAnimationsRequested?.Invoke();
-            if (progress.MoreWild > 0) progress.SetMoreWild(progress.MoreWild - 1);
+            // The current spin uses the stock before consumption, including the last charge.
+            // Persist/display the remaining stock without changing this spin's selected weights.
+            int moreWildForSpin = progress.MoreWild;
+            if (moreWildForSpin > 0) progress.SetMoreWild(moreWildForSpin - 1);
             if(configType!="default")SpinCountDisplayRequested?.Invoke();
             if (configType == "default" && progress.SpinCount == unchecked(rules.GetMaxSpinCount() - 1))
             {
@@ -67,7 +70,7 @@ namespace DragonLegend.Whitebox
                 data.LastSpinTime = unchecked((int)now);
                 CountdownRequested?.Invoke(rules.GetSpinCD(progress.Level));
             }
-            result.Begin(isGuide, bet, progress.MoreWild, data.BonusArea, onReelsReady);
+            result.Begin(isGuide, bet, moreWildForSpin, data.BonusArea, onReelsReady);
             return true;
         }
     }

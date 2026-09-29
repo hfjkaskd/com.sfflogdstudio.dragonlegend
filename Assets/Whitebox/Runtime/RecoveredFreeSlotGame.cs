@@ -7,6 +7,8 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredFreeSlotGame : MonoBehaviour
     {
         [SerializeField] private RectTransform icon;
+        [SerializeField] private Canvas rewardCanvas;
+        [SerializeField] private int rewardSortingOffset;
         [SerializeField] private RecoveredLuckySpinWindow window;
         [SerializeField] private float scaleMultiplier,scaleDuration,windowDelay;
         private RecoveredGameplayRules rules;
@@ -20,7 +22,15 @@ namespace DragonLegend.Whitebox
         public RecoveredLuckySpinWindow Window=>window;
         public void Bind(RecoveredPlayerProgress player,RecoveredGameplayRules config,IAdFacade ads,
             RecoveredCashFlightPresenter cash,Transform main,bool isA,int language)
-        {rules=config;window.Bind(player,config,ads,cash,main,isA,language);}
+        {
+            var mainCanvas=main.GetComponentInParent<Canvas>();
+            // The branch preview shares the board position but must draw above its symbols.
+            rewardCanvas.overrideSorting=true;
+            rewardCanvas.sortingLayerID=mainCanvas.sortingLayerID;
+            rewardCanvas.sortingOrder=mainCanvas.sortingOrder+rewardSortingOffset;
+            rewardCanvas.worldCamera=mainCanvas.worldCamera;
+            rules=config;window.Bind(player,config,ads,cash,main,isA,language);
+        }
         public void Begin(Vector3 source,Action<float> completed)
         {
             if(IsRunning)throw new InvalidOperationException("Slot entry is already running.");

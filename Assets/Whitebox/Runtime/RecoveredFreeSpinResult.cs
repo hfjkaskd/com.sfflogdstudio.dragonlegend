@@ -72,7 +72,9 @@ namespace DragonLegend.Whitebox
         {
             if (IsGenerating) throw new InvalidOperationException("A free result is already being generated.");
             if (symbolIds == null) throw new ArgumentNullException(nameof(symbolIds));
-            CoinAmount = rules.GetFreeCoinAmount();
+            // Keep the weighted draw; the configured floor adds real cash coins to
+            // an otherwise empty roll, paid by the regular scan/collection chain.
+            CoinAmount = Math.Max(rules.GetFreeCoinAmount(), rules.GetMinimumFreeCoinsPerSpin());
             BallAmount = rules.GetFreeBallAmount();
             for (int column = 0; column < 5; column++)
                 for (int row = 0; row < 3; row++)

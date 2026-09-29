@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "checks": [
+    "SelectAt enumeration: Scatter 29/1000; free ball 499/1000",
+    "10 ordinary reel/WILD arrays and Wild/Bonus periods/MoreWild duration match ordinary; 5 claimed More WILD arrays match high",
+    "24 fixed winning boards match high settlement; first raw award=11.11111; divisor=180",
+    "Big/Mega/Super percentage thresholds and boundaries verified: $2/$5/$10 at $10 bet",
+    "Five cashout tiers $500/$1000/$3000/$5000/$10000: in-memory reviews created and all 7 task stages accessed",
+    "65 actual base SpinEntry/result generations completed with in-memory ad replenishment; 60 and 999 gates pass"
+  ],
+  "validated_on": "2026-09-16",
+  "unity_version": "2022.3.62f3",
+  "scope": "Executed in Unity Editor with actual runtime rules and in-memory player records/ad callbacks; no SDK, persistent data, or APK/device test. This record contains the HybridGameplayValidation checks only; it does not assert that the NUnit or full UI test suite was run for this revision.",
+  "config_sha256": {
+    "cp_default_1.json": "14bc5cf702d8e8d78c959b270baa1e4d1183b44f9b75750701cf41196a8e577c",
+    "cp_test.json": "5cba47a8ecedf4d2f680d0ac3bd724844526893dac8b2abbd03af03f717f3132",
+    "cp_low_frequency_high_rewards.json": "a69681770cca3dd44d75ac02ba84fbe9981f272e20a6ed16737fdc53fda4bda6"
+  }
+}

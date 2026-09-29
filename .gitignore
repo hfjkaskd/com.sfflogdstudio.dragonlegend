@@ -9,3 +9,10 @@
 *.sln
 *.user
 /Artifacts/
+
+# Generated Android build state and obfuscation reports.
+/Assets/AddressableAssetsData/Android/
+/Assets/AddressableAssetsData/Android.meta
+/Assets/Obfuz/SymbolObfus/
+/Assets/Obfuz/SymbolObfus.meta
+/ProjectSettings/AndroidResolverDependencies.xml

@@ -16,8 +16,8 @@ namespace DragonLegend.Whitebox
         public TMP_Text Label=>label;
         public void SetText(int step,Action completed=null)
         {
-            if(step==1)currentText=firstSpinText;
-            else if(step==2)currentText=extraWildText;
+            if(step==1)currentText=GameLocalization.Text(firstSpinText);
+            else if(step==2)currentText=GameLocalization.Text(extraWildText);
             // Source does not cancel a previously started coroutine here.
             latest=StartCoroutine(Reveal(currentText,completed));
         }

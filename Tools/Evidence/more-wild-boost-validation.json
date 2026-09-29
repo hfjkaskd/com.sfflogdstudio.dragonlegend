@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "validated_on": "2026-09-16",
+  "unity_version": "2022.3.62f3",
+  "tests": {
+    "total": 25,
+    "passed": 25,
+    "failed": 0,
+    "result_file": "Artifacts/morewild-boost-tests.xml",
+    "new_cases": [
+      "MoreWildBoostTests.BusyEmptyAndAlreadyGeneratingRequestsDoNotConsumeBoostCharges",
+      "MoreWildBoostTests.EveryAdvertisedChargeBoostsOneAcceptedSpinIncludingTheLast",
+      "MoreWildBoostTests.ShippedHybridKeepsOrdinaryTablesAndOnlyUsesHighWildTablesDuringBoost"
+    ]
+  },
+  "grant": 5,
+  "boost_input_per_accepted_spin": [
+    5,
+    4,
+    3,
+    2,
+    1,
+    0
+  ],
+  "remaining_after_accepted_spin": [
+    4,
+    3,
+    2,
+    1,
+    0,
+    0
+  ],
+  "changed_config_fields": [
+    "Gimrol.MorgKilp1",
+    "Gimrol.MorgKilp2",
+    "Gimrol.MorgKilp3",
+    "Gimrol.MorgKilp4",
+    "Gimrol.MorgKilp5"
+  ],
+  "boost_source": "cp_test.json",
+  "ui": "Window tips {0} and entry {0}/{1} use GetMoreWild; entry numerator uses remaining stock.",
+  "config_sha256": {
+    "cp_default_1.json": "14bc5cf702d8e8d78c959b270baa1e4d1183b44f9b75750701cf41196a8e577c",
+    "cp_test.json": "5cba47a8ecedf4d2f680d0ac3bd724844526893dac8b2abbd03af03f717f3132",
+    "cp_low_frequency_high_rewards.json": "d6cd5a0d56e286d8d22f8632c60fda2694775297d0cb0e9f3eea7b3aab34f9b6"
+  },
+  "apk_built": false
+}

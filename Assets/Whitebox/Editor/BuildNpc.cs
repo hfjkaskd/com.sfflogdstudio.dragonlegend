@@ -7,6 +7,35 @@ using Object=UnityEngine.Object;
 
 public static class BuildNpc
 {
+    public static void SaveForeground()
+    {
+        const string path="Assets/Resources/RecoveredUI/Npc.prefab";
+        var root=PrefabUtility.LoadPrefabContents(path);
+        try{ConfigureForeground(root.transform.Find("PlayFire").gameObject);PrefabUtility.SaveAsPrefabAsset(root,path);AssetDatabase.SaveAssets();}
+        finally{PrefabUtility.UnloadPrefabContents(root);}
+        PersistForegroundOverride();
+        const string fieldPath="Assets/Resources/RecoveredUI/SpinPlayfield.prefab";
+        var field=PrefabUtility.LoadPrefabContents(fieldPath);
+        try{ConfigureForeground(field.GetComponentInChildren<RecoveredNpcPresentation>(true).transform.Find("PlayFire").gameObject);PrefabUtility.SaveAsPrefabAsset(field,fieldPath);AssetDatabase.SaveAssets();}
+        finally{PrefabUtility.UnloadPrefabContents(field);}
+        PersistForegroundOverride(fieldPath);
+    }
+    private static void PersistForegroundOverride(string path="Assets/Resources/RecoveredUI/Npc.prefab")
+    {
+        // This prefab has no parent Canvas in isolation. Unity clears overrideSorting
+        // on a root Canvas while authoring; it becomes a nested Canvas in GameEntry.
+        var yaml=File.ReadAllText(path);
+        yaml=System.Text.RegularExpressions.Regex.Replace(yaml,@"--- !u!223 &\d+\r?\n.*?(?=\r?\n--- !u!|\z)",m=>m.Value.Contains("m_SortingOrder: 2\n")||m.Value.Contains("m_SortingOrder: 2\r\n")?m.Value.Replace("m_OverrideSorting: 0","m_OverrideSorting: 1"):m.Value,System.Text.RegularExpressions.RegexOptions.Singleline);
+        File.WriteAllText(path,yaml);
+        AssetDatabase.ImportAsset(path,ImportAssetOptions.ForceSynchronousImport);
+    }
+    private static void ConfigureForeground(GameObject root)
+    {
+        root.layer=5;
+        var canvas=root.GetComponent<Canvas>();if(canvas==null)canvas=root.AddComponent<Canvas>();
+        // Free mini reels sort at 1. Fire/wind must composite after their dim overlays.
+        canvas.overrideSorting=true;canvas.sortingOrder=2;
+    }
     [Serializable] private class Reference {public RecoveredNpcConstraints program;}
     public static void Save()
     {
@@ -22,6 +51,7 @@ public static class BuildNpc
             dragon.name="SkeletonGraphic (ef_long) (1)";dragon.layer=0;
             ((RectTransform)dragon.transform).anchoredPosition=new Vector2(0,355);
             var fireParent=new GameObject("PlayFire",typeof(RectTransform));fireParent.transform.SetParent(root.transform,false);
+            ConfigureForeground(fireParent);
             var fireRect=(RectTransform)fireParent.transform;fireRect.anchorMin=Vector2.zero;fireRect.anchorMax=Vector2.one;
             fireRect.anchoredPosition=new Vector2(.0034179688f,335.14f);fireRect.sizeDelta=new Vector2(0,1149.72f);
             var fire=(GameObject)PrefabUtility.InstantiatePrefab(source,fireParent.transform);fire.layer=0;fire.name="SkeletonGraphic (ef_long)";
@@ -42,5 +72,6 @@ public static class BuildNpc
             controller.FindProperty("soundName").stringValue="dragon";controller.ApplyModifiedPropertiesWithoutUndo();
             PrefabUtility.SaveAsPrefabAsset(root,"Assets/Resources/RecoveredUI/Npc.prefab");AssetDatabase.SaveAssets();
         }finally{Object.DestroyImmediate(root);}
+        PersistForegroundOverride();
     }
 }

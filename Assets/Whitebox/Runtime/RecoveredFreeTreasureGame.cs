@@ -8,6 +8,8 @@ namespace DragonLegend.Whitebox
     public sealed class RecoveredFreeTreasureGame : MonoBehaviour
     {
         [SerializeField] private RectTransform icon;
+        [SerializeField] private Canvas rewardCanvas;
+        [SerializeField] private int rewardSortingOffset;
         [SerializeField] private RecoveredTreasureWindow window;
         [SerializeField] private RecoveredTreasureDeparture departure;
         [SerializeField] private Vector3 entryScale, arrivalScale;
@@ -23,6 +25,12 @@ namespace DragonLegend.Whitebox
         public void Bind(RecoveredPlayerProgress progress, RecoveredGameplayRules gameplayRules, IAdFacade ads,
             RecoveredCashFlightPresenter cash, Transform main, bool isA, int language, RectTransform collectionDestination)
         {
+            var mainCanvas=main.GetComponentInParent<Canvas>();
+            // The branch preview shares the board position but must draw above its symbols.
+            rewardCanvas.overrideSorting=true;
+            rewardCanvas.sortingLayerID=mainCanvas.sortingLayerID;
+            rewardCanvas.sortingOrder=mainCanvas.sortingOrder+rewardSortingOffset;
+            rewardCanvas.worldCamera=mainCanvas.worldCamera;
             player = progress; rules = gameplayRules;
             window.Bind(progress, gameplayRules, ads, cash, main, isA, language);
             departure.Bind(window, main, collectionDestination);

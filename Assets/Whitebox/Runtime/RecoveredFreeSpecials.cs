@@ -92,6 +92,9 @@ namespace DragonLegend.Whitebox
         {
             effect.SetParent(slot.transform,false);effect.localPosition=slotCenter;effect.localScale=Vector3.one*scale;
             effect.gameObject.SetActive(true);slot.Symbol.gameObject.SetActive(false);
+            // A pooled special replaces the ordinary symbol and its dim overlay.
+            // The next ordinary Show restores the cover from the reel's visual state.
+            slot.Cover.gameObject.SetActive(false);
         }
         public RecoveredFreeCoin CreateCoin(RecoveredSymbolView slot,bool initial)
         {

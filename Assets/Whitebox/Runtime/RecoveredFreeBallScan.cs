@@ -53,7 +53,7 @@ namespace DragonLegend.Whitebox
         }
         private void Arrived(RecoveredReelView reel,RecoveredFreeBall copy,RecoveredFreeBall original)
         {
-            copy.transform.SetParent(arrivalParent,false);npc.Show(1);
+            copy.AttachForActivation(arrivalParent);npc.Show(1);
             npcWait=RecoveredReelWait.Delay(npcDelay,()=>{
                 npcWait=null;copy.PlayActivation(type=>{
                     var position=copy.transform.position;reels.Specials.ReleaseFlightBall(copy);

@@ -29,14 +29,15 @@ namespace DragonLegend.Whitebox
         public int InterstitialCount { get; private set; }
         public event Action RewardAdStarted;
         public event Action<AdOutcome> RewardAdCompleted;
+        private readonly RecoveredInterstitialPolicy interstitialPolicy;
         private readonly IAdTransport transport;
         private int rewardRequest;
         private int interstitialRequest;
         public bool InterstitialPending { get; private set; }
         public event Action InterstitialStarted;
         public event Action<bool> InterstitialCompleted;
-        public LocalAdFacade(IAdTransport transport=null)
-        {this.transport=transport;}
+        public LocalAdFacade(RecoveredInterstitialPolicy policy=null, IAdTransport transport=null)
+        {interstitialPolicy=policy;this.transport=transport;}
 
         public void PlayRewardAd(Action successfulBack, Action failedBack, string posId, string sceneId)
         {
@@ -74,6 +75,7 @@ namespace DragonLegend.Whitebox
 
         public void PlayInterAd(string posId, string sceneId)
         {
+            if(interstitialPolicy!=null&&!interstitialPolicy.CanRequest())return;
             // The local transport cannot display two ads at once.
             if(Pending||InterstitialPending)return;
             Placement = posId; Scene = sceneId; InterstitialCount++;
@@ -96,6 +98,7 @@ namespace DragonLegend.Whitebox
             if(!InterstitialPending)return false;
             InterstitialPending=false;
             ++interstitialRequest;
+            if(shown)interstitialPolicy?.OnShown();
             InterstitialCompleted?.Invoke(shown);return true;
         }
     }

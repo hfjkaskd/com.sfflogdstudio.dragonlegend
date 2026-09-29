@@ -8,6 +8,40 @@ using UnityEngine.TestTools;
 
 public sealed class RecoveredBonusRoundTests
 {
+    [UnityTest]
+    public IEnumerator RealConfigRowsRemainSelectableRegardlessOfAuthoredCapacity()
+    {
+        var state=Random.state;
+        try {
+            foreach(var path in new[]{"Bundled/GoldenDragon.json","Bundled/GoldenDragon_default.json","Bundled/GoldenDragon_organic.json","Remote/cp_default.json","Remote/cp_default_1.json","Remote/cp_test.json"}) {
+                var loader=new ConfigSnapshotLoader();yield return loader.Load("RecoveredConfig/"+path);
+                var rules=new RecoveredGameplayRules(loader.Value);
+                for(int seed=0;seed<64;seed++) {
+                    Random.InitState(seed);int row=Random.Range(0,loader.Value.Ronig.Ltoo.Count);
+                    var c=loader.Value.Ronig;
+                    int expected=c.Ltoo[row]+c.Qoi[row]+c.Jin[row]+c.Roo[row]+c.Rgkorp[row];
+                    Random.InitState(seed);var round=new RecoveredBonusRound();round.Initialize(rules);
+                    Assert.AreEqual(expected,round.Count,path+" seed "+seed);
+                    Assert.IsFalse(round.TryReveal(-1,out _));Assert.IsFalse(round.TryReveal(round.Count,out _));Assert.AreEqual(0,round.ClickedCount);
+                    for(int i=round.Count-1;i>=0;i--)Assert.IsTrue(round.TryReveal(i,out _));
+                    Assert.AreEqual(expected,round.ClickedCount);
+                }
+            }
+        }finally{Random.state=state;}
+    }
+
+    [Test]
+    public void NineCardRowKeepsItsTwoCashRewardsWithoutPadding()
+    {
+        var round=new RecoveredBonusRound();
+        round.Initialize(Rules(1,1,1,4,2));
+        Assert.AreEqual(9,round.Count);
+        int cash=0;
+        for(int i=0;i<round.Count;i++)if(round.GetCard(i)==RecoveredBonusType.Reward)cash++;
+        Assert.AreEqual(2,cash);
+        Assert.IsFalse(round.TryReveal(11,out _));
+        Assert.AreEqual(0,round.ClickedCount);
+    }
     private static RecoveredGameplayRules Rules(int zhao, int cai, int jin, int bao, int reward)
         => new RecoveredGameplayRules(new GoldenDragonAutoGenConfig { Ronig=new RonigPoro {
             Ltoo=new List<int>{zhao}, Qoi=new List<int>{cai}, Jin=new List<int>{jin},

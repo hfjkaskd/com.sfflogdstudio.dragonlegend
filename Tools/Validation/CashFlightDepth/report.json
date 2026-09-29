@@ -1,0 +1,14 @@
+{
+    "passed": true,
+    "mainParent": true,
+    "sourcePreserved": true,
+    "popupParent": true,
+    "nonInteractive": true,
+    "canvasOrder": 50,
+    "coverOrder": 1,
+    "testedPixels": 38039,
+    "beforeError": 32.02797317504883,
+    "afterError": 0.002847953699529171,
+    "popupError": 61.369903564453128,
+    "error": ""
+}

@@ -6,7 +6,8 @@
     "Unity.TextMeshPro",
     "WKY_SDK",
     "UniTask",
-    "Bizza.Common.DeviceInfo"
+    "Bizza.Common.DeviceInfo",
+    "Obfuz.Runtime"
   ],
   "autoReferenced": true
 }

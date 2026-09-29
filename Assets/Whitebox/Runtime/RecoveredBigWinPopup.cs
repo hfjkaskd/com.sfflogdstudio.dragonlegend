@@ -87,12 +87,12 @@ namespace DragonLegend.Whitebox
             PlaySound(animation==0?"bigwinm":animation==1?"megawinm":"superwinm");
             dragon.Play(animation);
             rewardText.text = RecoveredCurrency.Format(amount, language, 2);
-            advertisedText.text = claim.FirstFreeAtShow ? "CLAIM" : claim.AdvertisedMultiplier <= 1 ?
-                "<sprite name=\"tc_btn_bofang\">CLAIM" : string.Format("<sprite name=\"tc_btn_bofang\">CLAIMx{0}", claim.AdvertisedMultiplier);
+            advertisedText.text = claim.FirstFreeAtShow ? GameLocalization.Text("CLAIM", language) : claim.AdvertisedMultiplier <= 1 ?
+                GameLocalization.Text("<sprite name=\"tc_btn_bofang\">CLAIM", language) : GameLocalization.Format("<sprite name=\"tc_btn_bofang\">CLAIMx{0}", language, claim.AdvertisedMultiplier);
             plainText.gameObject.SetActive(!claim.FirstFreeAtShow);
             if (!claim.FirstFreeAtShow)
             {
-                plainText.text = "Only " + RecoveredCurrency.Format(amount * claim.UnadvertisedMultiplier, language, 2);
+                plainText.text = GameLocalization.Format("Only {0}", language, RecoveredCurrency.Format(amount * claim.UnadvertisedMultiplier, language, 2));
                 plainReveal.Begin();
             }
             CashOutTaskRefreshRequested?.Invoke(3, 1);

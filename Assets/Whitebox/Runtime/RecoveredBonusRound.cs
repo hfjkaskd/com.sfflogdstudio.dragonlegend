@@ -47,7 +47,7 @@ namespace DragonLegend.Whitebox
         public bool TryReveal(int index, out Reveal result)
         {
             result = default;
-            if (clicked.Contains(index)) return false;
+            if (index<0 || index>=rewards.Count || clicked.Contains(index)) return false;
             var value = rewards[index];
             int group=-1, target=-1;
             for (int i=0; i<Patterns.Length && group<0; i++)

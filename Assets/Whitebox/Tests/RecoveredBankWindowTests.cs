@@ -102,7 +102,8 @@ public sealed class RecoveredBankWindowTests
             window.Show(()=>closed++);for(int i=0;i<12;i++)yield return null;
             window.Item(0).Button.onClick.Invoke();for(int i=0;i<160&&!window.Item(1).Ad.gameObject.activeSelf;i++)yield return null;
             for(int i=0;i<15;i++)yield return null;
-            Click(window.LeaveButton.gameObject);Assert.AreEqual(1,game.Ads.InterstitialCount);
+            Assert.AreEqual(1,game.PlayerProgress.Level);
+            Click(window.LeaveButton.gameObject);Assert.AreEqual(0,game.Ads.InterstitialCount,"Native minimum-level gate suppresses the interstitial without blocking bank close.");
             for(int i=0;i<10;i++)yield return null;Assert.AreEqual(2,closed);Assert.IsFalse(window.gameObject.activeSelf);
             int rounds=0;game.CoreRound.CoreRoundCompleted+=()=>rounds++;
             var reviewSounds=new List<string>();var audio=game.CoreAudio.Manager;

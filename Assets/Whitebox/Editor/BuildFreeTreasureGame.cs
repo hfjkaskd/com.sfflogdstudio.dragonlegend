@@ -47,8 +47,28 @@ public static class BuildFreeTreasureGame
             settings.FindProperty("arrivalScale").vector3Value = Vector3.one;
             settings.FindProperty("flightDuration").floatValue = .6f;
             settings.FindProperty("arcHeightRatio").floatValue = .3f; settings.ApplyModifiedPropertiesWithoutUndo();
+            ConfigureRewardLayer(root);
             PrefabUtility.SaveAsPrefabAsset(root, "Assets/Resources/RecoveredUI/FreeTreasureGame.prefab"); AssetDatabase.SaveAssets();
         }
         finally { Object.DestroyImmediate(root); AssetDatabase.DeleteAsset(Temporary); }
+    }
+    public static void ConfigureRewardLayer(GameObject root)
+    {
+        var settings=new SerializedObject(root.GetComponent<RecoveredFreeTreasureGame>());
+        var icon=(RectTransform)settings.FindProperty("icon").objectReferenceValue;
+        var layer=root.transform.Find("RewardLayer");
+        if(layer==null)
+        {
+            var created=new GameObject("RewardLayer",typeof(RectTransform),typeof(Canvas));
+            created.layer=root.layer;created.transform.SetParent(root.transform,false);layer=created.transform;
+        }
+        var rect=(RectTransform)layer;
+        rect.anchorMin=Vector2.zero;rect.anchorMax=Vector2.one;
+        rect.offsetMin=rect.offsetMax=Vector2.zero;rect.localScale=Vector3.one;
+        icon.SetParent(layer,false);icon.GetComponent<Image>().raycastTarget=false;
+        var canvas=layer.GetComponent<Canvas>();canvas.overrideSorting=true;canvas.sortingOrder=50;
+        settings.FindProperty("rewardCanvas").objectReferenceValue=canvas;
+        settings.FindProperty("rewardSortingOffset").intValue=50;
+        settings.ApplyModifiedPropertiesWithoutUndo();
     }
 }

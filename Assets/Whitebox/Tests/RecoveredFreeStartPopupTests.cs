@@ -13,6 +13,14 @@ using Object=UnityEngine.Object;
 
 public sealed class RecoveredFreeStartPopupTests
 {
+    private int previousLanguage;
+    [SetUp] public void UseEnglish()
+    {
+        previousLanguage=GameLocalization.CurrentLanguage;
+        GameLocalization.SetLanguage(0);
+    }
+    [TearDown] public void RestoreLanguage()=>GameLocalization.SetLanguage(previousLanguage);
+
     [UnityTest]
     public IEnumerator SourceCountFontButtonsAdBranchesAndAfterHideCompletion()
     {

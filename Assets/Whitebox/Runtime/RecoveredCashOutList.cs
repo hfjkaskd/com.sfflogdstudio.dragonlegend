@@ -44,6 +44,7 @@ namespace DragonLegend.Whitebox
         {
             selected=player.FindCashOutWindowSelection(out bool hide);if(hide)selectionFrame.gameObject.SetActive(false);
             dirty=true;if(selected>=0)bottom.Initialize(selected,type,language);
+            else if(shown.Length>0)bottom.Initialize(0,type,language);
         }
         public void RefreshPaymentType(int paymentType)
         {
@@ -51,6 +52,11 @@ namespace DragonLegend.Whitebox
             // Existing card event listeners include cached, still-active objects.
             foreach(var item in created)item.RefreshPaymentType(type);
             bottom.Initialize(selected,type,language);
+        }
+        public void FocusTier(int index)
+        {
+            if(shown==null||index<0||index>=shown.Length)return;
+            selected=index;dirty=true;bottom.Initialize(index,type,language);
         }
         private void Select(int index,RectTransform frame)
         {

@@ -7,6 +7,36 @@ using UnityEngine;
 
 public sealed class RecoveredBonusSelectionTests
 {
+    [Test]
+    public void ShortPoolUsesOnlyAvailableCardsAndFinishesAfterLastAnimation()
+    {
+        var random=UnityEngine.Random.state;
+        try {
+            var view=new View();var ads=new LocalAdFacade();
+            var selection=new RecoveredBonusSelection(Rules(3),ads,view,12);
+            selection.BeforeShow();Assert.AreEqual(3,selection.ActiveCardCount);
+            selection.Select(11);Assert.IsFalse(selection.IsClicked);Assert.AreEqual(0,view.Plays);
+            for(int i=0;i<3;i++){
+                selection.Select(i);Assert.IsFalse(selection.IsEnd);
+                view.Release();
+            }
+            Assert.IsTrue(selection.IsEnd);Assert.AreEqual(1,view.Hides);
+            Assert.IsFalse(ads.Pending);CollectionAssert.AreEqual(new[]{false,false,false},view.Ad);
+        }finally{UnityEngine.Random.state=random;}
+    }
+    [Test]
+    public void InvalidOrRepeatedPositionCannotLatchInputOrStartAnAd()
+    {
+        var random=UnityEngine.Random.state;
+        try {
+            var view=new View();var ads=new LocalAdFacade();var selection=new RecoveredBonusSelection(Rules(3),ads,view,3);
+            selection.BeforeShow();selection.Select(-1);selection.Select(3);
+            Assert.IsFalse(selection.IsClicked);Assert.IsFalse(ads.Pending);Assert.AreEqual(0,view.Plays);
+            selection.Select(2);view.Release();selection.Select(2);
+            Assert.IsFalse(selection.IsClicked);Assert.AreEqual(1,view.Plays);
+            selection.Select(1);Assert.AreEqual(2,view.Plays);
+        }finally{UnityEngine.Random.state=random;}
+    }
     private sealed class View:IRecoveredBonusSelectionView
     {
         public readonly List<string> Order=new List<string>();

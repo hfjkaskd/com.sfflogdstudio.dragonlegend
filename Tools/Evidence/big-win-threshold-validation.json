@@ -1,0 +1,125 @@
+{
+  "status": "PASS",
+  "error": "",
+  "scope": "10,000 consecutive BASE result generations, GuideStep=2, MoreWild=0, bet=1000 raw ($10). Persistent base Wild/Bonus counters and base-coin collection advance between samples; full bonus collection resets to zero. Same board and coin award are classified against both threshold sets. Includes this base board's line award and coin award only; excludes all later free spins, bonus minigame rewards, jackpots, task payouts, ad multipliers and elapsed-time/UI behavior. This is a base-spin sampling comparison, not a full player-session or popup-per-minute estimate.",
+  "randomnessCaveat": "UnityEngine.Random has fixed seed 16092026. Production RecoveredSlotBoard also creates System.Random() internally for Wild row/column order and guaranteed Bonus selection; its clock-based seed cannot be injected through RecoveredSpinResult. Repeated runs can therefore differ. These are sample frequencies, not exact theoretical probabilities. The old/new comparison is paired on exactly the same sampled amounts and does not redraw boards.",
+  "coinUnits": "Rules.GetCoinReward returns raw cents. Each final-board symbol id=9 is sampled once in column-major order, matching RecoveredBonusCoinSequence; sum is added directly to Settlement.GetWinTotalLine(), matching RecoveredSymbolWinSelection.TotalWin. Dollar reporting divides by 100, with no extra bet multiplier.",
+  "baselineSha256": "d6cd5a0d56e286d8d22f8632c60fda2694775297d0cb0e9f3eea7b3aab34f9b6",
+  "currentSha256": "ac9a3bcd8e8d9aea4434a57964c0b264119be80c96eb6a6ca623757c97a078b4",
+  "hybridValidationPassed": true,
+  "onlyBigWinThresholdChanged": true,
+  "allBoundariesPassed": true,
+  "pairedClassificationPassed": true,
+  "samples": 10000,
+  "unitySeed": 16092026,
+  "guideStep": 2,
+  "moreWild": 0,
+  "betRaw": 1000,
+  "positiveRewardSpins": 7294,
+  "coinBearingSpins": 4686,
+  "coinCount": 6978,
+  "scatterEntryBoards": 297,
+  "guaranteedWildBranches": 100,
+  "bonusCollectionResets": 435,
+  "positiveRewardRate": 0.7294,
+  "addedPopupRate": 0.09419999999999998,
+  "averageBaseRewardDollars": 5.249513327838886,
+  "averageLineRewardDollars": 1.3770833278388863,
+  "averageCoinRewardDollars": 3.8724299999999996,
+  "oldThresholds": {
+    "thresholdsDollars": "$20/$40/$60",
+    "none": 9658,
+    "big": 245,
+    "mega": 1,
+    "super": 96,
+    "any": 342,
+    "noneRate": 0.9658,
+    "bigRate": 0.0245,
+    "megaRate": 0.0001,
+    "superRate": 0.0096,
+    "anyRate": 0.0342
+  },
+  "newThresholds": {
+    "thresholdsDollars": "$10/$20/$30",
+    "none": 8716,
+    "big": 942,
+    "mega": 204,
+    "super": 138,
+    "any": 1284,
+    "noneRate": 0.8716,
+    "bigRate": 0.0942,
+    "megaRate": 0.0204,
+    "superRate": 0.0138,
+    "anyRate": 0.1284
+  },
+  "allBaseRewardDollars": {
+    "count": 10000,
+    "minimum": 0.0,
+    "p10": 0.0,
+    "p25": 0.0,
+    "p50": 1.3333332824707032,
+    "p75": 7.33,
+    "p90": 11.821000000000003,
+    "p95": 17.03366705322265,
+    "p99": 36.56020000000001,
+    "maximum": 162.0,
+    "mean": 5.249513324604031
+  },
+  "positiveBaseRewardDollars": {
+    "count": 7294,
+    "minimum": 0.1111111068725586,
+    "p10": 0.2222222137451172,
+    "p25": 0.7777777862548828,
+    "p50": 4.475555572509766,
+    "p75": 8.81,
+    "p90": 14.208999877929687,
+    "p95": 19.563499999999994,
+    "p99": 85.5,
+    "maximum": 162.0,
+    "mean": 7.197029510013753
+  },
+  "boundaries": [
+    {
+      "dollars": 0.0,
+      "expected": "NONE",
+      "current": "NONE"
+    },
+    {
+      "dollars": 9.989999771118164,
+      "expected": "NONE",
+      "current": "NONE"
+    },
+    {
+      "dollars": 10.0,
+      "expected": "BIG",
+      "current": "BIG"
+    },
+    {
+      "dollars": 19.989999771118164,
+      "expected": "BIG",
+      "current": "BIG"
+    },
+    {
+      "dollars": 20.0,
+      "expected": "MEGA",
+      "current": "MEGA"
+    },
+    {
+      "dollars": 29.989999771118164,
+      "expected": "MEGA",
+      "current": "MEGA"
+    },
+    {
+      "dollars": 30.0,
+      "expected": "SUPER",
+      "current": "SUPER"
+    },
+    {
+      "dollars": 60.0,
+      "expected": "SUPER",
+      "current": "SUPER"
+    }
+  ],
+  "validated_on": "2026-09-16",
+  "unity_version": "2022.3.62f3"
+}

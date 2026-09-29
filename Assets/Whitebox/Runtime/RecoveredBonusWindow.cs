@@ -103,11 +103,18 @@ namespace DragonLegend.Whitebox
             FingerRequested?.Invoke(target);
         }
         public void CancelFingerSequence(){hint?.Cancel();hint=null;}
-        public void InitializeCards(){foreach(var card in cards)card.Initialize();}
+        public void InitializeCards()
+        {
+            // Keep the authored slots; a short reward pool must not change row odds.
+            for(int i=0;i<cards.Length;i++){
+                cards[i].Initialize();
+                cards[i].gameObject.SetActive(i<selection.ActiveCardCount);
+            }
+        }
         public void SetCloseVisible(bool visible)=>closeButton.gameObject.SetActive(visible);
         public void SetCardEnabled(int index,bool enabled)=>cards[index].Button.enabled=enabled;
         public void ShowCardAd(int index,bool visible)=>cards[index].ShowAd(visible);
-        public void SetChances(int selected,int free)=>chances.text=string.Format(chanceFormat,selected,free);
+        public void SetChances(int selected,int free)=>chances.text=GameLocalization.Format(chanceFormat,language,selected,free);
         public void PlayCard(int index,RecoveredBonusRound.Reveal reveal,Action releaseInput)
         {
             if(reveal.type==RecoveredBonusType.Reward){cash.Begin(cards[index],rules,language,releaseInput);return;}
@@ -117,8 +124,8 @@ namespace DragonLegend.Whitebox
         }
         public void ShowFinger()
         {
-            if(selection.Round.ClickedCount==cards.Length)return;
-            int index;do{index=UnityEngine.Random.Range(0,cards.Length);}while(selection.Round.WasClicked(index));
+            if(selection.IsEnd || selection.Round.ClickedCount>=selection.ActiveCardCount)return;
+            int index;do{index=UnityEngine.Random.Range(0,selection.ActiveCardCount);}while(selection.Round.WasClicked(index));
             CancelFingerSequence();
             hint=RecoveredReelWait.Delay(hintInterval,()=>{
                 PresentFinger(cards[index].transform);

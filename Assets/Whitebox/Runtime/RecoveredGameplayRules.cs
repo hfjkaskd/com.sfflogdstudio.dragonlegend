@@ -22,13 +22,32 @@ namespace DragonLegend.Whitebox
         {
             data = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
+        // CheckInsertAd 236aff0: strict minimum level, then inclusive 0..999 roll.
+        public bool CheckInsertAd(int level)
+        {
+            var config=data.Qonrii;
+            if(level<=config.Lgtgl[0])return false;
+            int chance=level<config.Lgtgl[config.Lgtgl.Count-1]
+                ?config.InggrrRonpom[level-2]:config.InggrrRonpom[config.InggrrRonpom.Count-1];
+            return UnityEngine.Random.Range(0,1000)<=chance;
+        }
+        public int InsertCD()=>data.Qonrii.InggrrQP[0];
 
         public int GetWildSpinCD() => data.Gimrol.KilpGpinQP[0]; // 0x236b4c8
         public int GetMoreWild() => data.Gimrol.MorgKilpRimgg[0]; // 0x236b7a0
-        // 236ab70: reverse configured order, signed integer multiply BEFORE float conversion.
-        // A matching extra index returns None immediately instead of falling through.
         public RecoveredSlotWinType GetBigWin(float amount,int bet)
         {
+            // Percentage precision lets authored thresholds be lower than one whole bet.
+            var percentages=data.Qonrii.BigWinBetPercent;
+            if(percentages!=null&&percentages.Count>0)
+            {
+                for(int i=percentages.Count-1;i>=0;i--)
+                    if((long)percentages[i]*bet/100f<=amount)
+                        return i<3?(RecoveredSlotWinType)(i+1):RecoveredSlotWinType.None;
+                return RecoveredSlotWinType.None;
+            }
+            // Original 236ab70: retain signed int multiply before float conversion.
+            // A matching extra index returns None without falling through.
             var thresholds=data.Qonrii.Riikin;
             for(int i=thresholds.Count-1;i>=0;i--)
                 if((float)unchecked(thresholds[i]*bet)<=amount)
@@ -44,7 +63,7 @@ namespace DragonLegend.Whitebox
         {
             bonusCounts.Clear();
             var c = data.Ronig;
-            int index = UnityEngine.Random.Range(0, c.Ltoo.Count);
+            int index=UnityEngine.Random.Range(0,c.Ltoo.Count);
             bonusCounts.Add(c.Ltoo[index]);
             bonusCounts.Add(c.Qoi[index]);
             bonusCounts.Add(c.Jin[index]);
@@ -153,6 +172,7 @@ namespace DragonLegend.Whitebox
         public int RandomWildCount() => RandomListWeight(data.Gimrol.KilpGpinKgiitr); // 0x236b52c; returns INDEX
         public int GetSpinScatterAmount() => RandomListWeight(data.Rrggiomg.GpinGqorrgrRonpom); // 0x236bea8; returns INDEX
         public int GetFreeCoinAmount() => RandomListWeight(data.Rrggiomg.QoinOmoinrKgiitr); // 0x236bf98
+        public int GetMinimumFreeCoinsPerSpin() => data.Rrggiomg.MinimumCoinsPerSpin;
         public int GetFreeBallAmount() => RandomListWeight(data.Rrggiomg.RollOmoinrKgiitr); // 0x236bfbc
         // 0x236c01c: build one weight column across all four reward branches.
         public RecoveredFreeSpinReward GetFreeReward(int index)
@@ -196,6 +216,13 @@ namespace DragonLegend.Whitebox
                 taskInfos.Add(new RecoveredTaskInfo {id=config.Ip[i],taskAmount=config.RogkOmoinr[i],
                     reward=config.Rgkorp[i],jump=config.Jimp[i]});
             return taskInfos;
+        }
+        public string GetTaskDescription(int id,int count,int goal)
+            =>GetTaskDescription(id,count,goal,GameLocalization.CurrentLanguage);
+        public string GetTaskDescription(int id,int count,int goal,int language)
+        {
+            int index=data.Rogk.Ip.IndexOf(id);
+            return GameLocalization.Format(data.Rogk.Rogk[index],language,count,goal);
         }
 
         public IReadOnlyList<int> ReelWeights(int reel, int mode)

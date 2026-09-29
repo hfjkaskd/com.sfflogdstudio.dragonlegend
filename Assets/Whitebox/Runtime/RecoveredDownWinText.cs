@@ -22,7 +22,7 @@ namespace DragonLegend.Whitebox
         public Exception Error { get; private set; }
         public event Action<float> Changed;
         public void Bind(int languageType) { Cancel();language=languageType;Started(); }
-        public void Started() { label.text="GOOD LUCK"; }
+        public void Started() { label.text=GameLocalization.Text("GOOD LUCK",language); }
         // CheckPlayBonusAnim clears the accumulator/map, not DownWinCount or its label.
         // Native temp_down_win (+0x230) is distinct from tempDownWinCount (+0x1e8).
         public void BeginScan() { coinPresentationTotal=0;rewards.Clear(); }

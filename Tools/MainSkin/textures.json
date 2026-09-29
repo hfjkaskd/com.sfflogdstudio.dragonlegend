@@ -1,0 +1,86 @@
+[
+  {
+    "mode": "background",
+    "source": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/zjm_bg.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-404f8cbd-d774-498a-a482-4b1c770fc0e1.png",
+    "output": "Assets/Resources/MainSkin/Textures/background.png"
+  },
+  {
+    "mode": "board",
+    "source": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/zjm_bg_qipan.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-fc994935-e77d-4219-a4d7-5d3e6519984a.png",
+    "output": "Assets/Resources/MainSkin/Textures/board.png"
+  },
+  {
+    "mode": "top",
+    "source": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/zjm_bg_shang.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-2645e770-dd46-4fbf-8766-05bc1584c274.png",
+    "output": "Assets/Resources/MainSkin/Textures/top.png"
+  },
+  {
+    "mode": "dragon",
+    "source": "Assets/Resources/RecoveredArt/Res/Spine/long/ef_long.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-bf1a75c0-b6f6-41c3-b588-61288aeeeb86.png",
+    "output": "Assets/Resources/MainSkin/Textures/dragon.png"
+  },
+  {
+    "mode": "spin",
+    "source": "Assets/Resources/RecoveredArt/Res/Spine/spin/ef_slspineaniu.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-ff068b3b-27e3-46f1-aede-af70984038fb.png",
+    "output": "Assets/Resources/MainSkin/Textures/spin.png"
+  },
+  {
+    "mode": "bank",
+    "source": "Assets/Resources/RecoveredArt/Res/Spine/yinhang/ef_slyinhang.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-32224828-4281-49ef-b140-26a5e063c4e6.png",
+    "output": "Assets/Resources/MainSkin/Textures/bank.png"
+  },
+  {
+    "mode": "treasure",
+    "source": "Assets/Resources/RecoveredArt/Res/Spine/按钮/shoucang/ef_shoucangicon.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-bf4de95c-fd5a-4654-9447-3481a91e2d96.png",
+    "output": "Assets/Resources/MainSkin/Textures/treasure.png"
+  },
+  {
+    "mode": "grand",
+    "source": "Assets/Resources/RecoveredArt/Res/Spine/jackpot3小个/grand_icon/ef_grandicon.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-bbc951eb-de7e-4ec6-91fc-ad1ab83843c5.png",
+    "output": "Assets/Resources/MainSkin/Textures/grand.png"
+  },
+  {
+    "mode": "major",
+    "source": "Assets/Resources/RecoveredArt/Res/Spine/jackpot3小个/major_icon/ef_majoricon.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-e8c6d9aa-3bc5-4ea8-83a8-b4cd5a0dc8aa.png",
+    "output": "Assets/Resources/MainSkin/Textures/major.png"
+  },
+  {
+    "mode": "minor",
+    "source": "Assets/Resources/RecoveredArt/Res/Spine/jackpot3小个/minor_icon/ef_minoricon.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-f7c874f9-a0ea-47ab-b8eb-a80bae5f8f24.png",
+    "output": "Assets/Resources/MainSkin/Textures/minor.png"
+  },
+  {
+    "mode": "scatter",
+    "source": "Assets/Resources/RecoveredArt/Res/UI/font_img/scatter.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-b65913b6-3054-4032-8919-f6246410638a.png",
+    "output": "Assets/Resources/MainSkin/Textures/scatter.png"
+  },
+  {
+    "mode": "fish",
+    "source": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/yu.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-73a44538-2eeb-4d75-a6b5-8f57ef50bef0.png",
+    "output": "Assets/Resources/MainSkin/Textures/fish.png"
+  },
+  {
+    "mode": "fishblur",
+    "source": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/yu_m.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-73a44538-2eeb-4d75-a6b5-8f57ef50bef0.png",
+    "output": "Assets/Resources/MainSkin/Textures/fishblur.png"
+  },
+  {
+    "mode": "scatterblur",
+    "source": "Assets/Resources/RecoveredArt/Res/UI/zhujiemian/qizi/scatter_m.png",
+    "generated": "C:\\Users\\pc\\.codex\\generated_images\\01a08cb9-bacd-7211-96e0-abe0eb26bd8c\\exec-b65913b6-3054-4032-8919-f6246410638a.png",
+    "output": "Assets/Resources/MainSkin/Textures/scatterblur.png"
+  }
+]

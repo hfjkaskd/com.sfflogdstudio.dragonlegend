@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   rotationNode: {fileID: 8504609449932073841}
   effectClip: {fileID: 8172449657140353084}
-  symbolPrefab: {fileID: 114, guid: 14a827c76d50424dba26f9c4cd91d7b5, type: 3}
+  symbolPrefab: {fileID: 114, guid: f43b0e4dc3844867be2a7d15c1a7741a, type: 3}
   slotCount: 7
   itemHeightPixels: 172
   unitsPerPixel: 0.01
@@ -213,5 +213,5 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_SortAtRoot: 0

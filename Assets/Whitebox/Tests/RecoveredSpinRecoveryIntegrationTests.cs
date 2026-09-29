@@ -25,7 +25,12 @@ public sealed class RecoveredSpinRecoveryIntegrationTests
             yield return SceneManager.LoadSceneAsync("GameEntry",LoadSceneMode.Additive);scene=SceneManager.GetSceneByName("GameEntry");
             GameEntry game=null;foreach(var root in scene.GetRootGameObjects()){var found=root.GetComponentInChildren<GameEntry>();if(found!=null)game=found;}
             float deadline=Time.realtimeSinceStartup+10;while(game.CoreRound==null&&Time.realtimeSinceStartup<deadline)yield return null;
-            Assert.IsNotNull(game.CoreRound);var view=game.Playfield.SpinRecovery;
+            Assert.IsNotNull(game.CoreRound);
+            // Select the original ordinary fixture explicitly; startup now uses the hybrid.
+            var initialCore=game.CoreRound;game.transform.Find("SelectBR").GetComponent<Button>().onClick.Invoke();
+            deadline=Time.realtimeSinceStartup+10;while((game.CoreRound==null||game.CoreRound==initialCore)&&Time.realtimeSinceStartup<deadline)yield return null;
+            Assert.IsNotNull(game.CoreRound);Assert.AreEqual("RecoveredConfig/Remote/cp_default_1.json",game.CurrentProfile.snapshotPath);
+            var view=game.Playfield.SpinRecovery;
             Assert.IsFalse(view.Recovery.IsRunning);Assert.AreEqual(60,view.Label.fontSize);
             Assert.AreEqual("<gradient=\"spin\">SPIN "+game.PlayerProgress.SpinCount+"</gradient>",view.Label.text);
             var sounds=new System.Collections.Generic.List<string>();
@@ -44,7 +49,7 @@ public sealed class RecoveredSpinRecoveryIntegrationTests
             Assert.AreEqual(spinningCount,game.PlayerProgress.SpinCount);
             game.CoreRound.MoreSpins.CloseButton.onClick.Invoke();
             Assert.AreEqual("<gradient=\"spin\">SPIN "+game.PlayerProgress.SpinCount+"</gradient>",view.Label.text);
-            // Both shipped comparison snapshots are organic. Exercise the source default branch
+            // Exercise the default recovery branch independently from the selected ordinary fixture
             // through the actual loader using an explicitly synthetic, temporary test snapshot.
             var config=JsonUtility.FromJson<GoldenDragonAutoGenConfig>(File.ReadAllText(Path.Combine(Application.streamingAssetsPath,game.CurrentProfile.snapshotPath)));
             config.Qonrii.Ripg[0]="default";

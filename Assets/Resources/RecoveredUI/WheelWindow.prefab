@@ -57,8 +57,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dad06e1c22c15241b8bd93bf1077c3a, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 601330edf059f894dbfb4541361889cd, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
@@ -76,6 +76,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: dx
     parent: 0
     mode: 0
@@ -84,6 +86,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: bj
     parent: 0
     mode: 0
@@ -92,6 +96,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: yunz
     parent: 1
     mode: 0
@@ -100,6 +106,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: yunz2
     parent: 1
     mode: 0
@@ -108,6 +116,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: -1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: grbao
     parent: 1
     mode: 0
@@ -116,6 +126,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: lz
     parent: 1
     mode: 0
@@ -124,6 +136,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.66972333
     scaleY: 0.7419363
+    shearX: 0
+    shearY: 0
   - name: star01
     parent: 6
     mode: 1
@@ -132,6 +146,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star04
     parent: 6
     mode: 1
@@ -140,6 +156,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.25
     scaleY: 0.25
+    shearX: 0
+    shearY: 0
   - name: star06
     parent: 6
     mode: 1
@@ -148,6 +166,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star07
     parent: 6
     mode: 1
@@ -156,6 +176,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star08
     parent: 6
     mode: 1
@@ -164,6 +186,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star09
     parent: 6
     mode: 1
@@ -172,6 +196,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star10
     parent: 6
     mode: 1
@@ -180,6 +206,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star12
     parent: 6
     mode: 1
@@ -188,6 +216,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.45
     scaleY: 0.45
+    shearX: 0
+    shearY: 0
   - name: star13
     parent: 6
     mode: 1
@@ -196,6 +226,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.5
     scaleY: 0.5
+    shearX: 0
+    shearY: 0
   - name: star14
     parent: 6
     mode: 1
@@ -204,6 +236,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star15
     parent: 6
     mode: 1
@@ -212,6 +246,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star16
     parent: 6
     mode: 1
@@ -220,6 +256,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star17
     parent: 6
     mode: 1
@@ -228,6 +266,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: zi
     parent: 1
     mode: 0
@@ -236,6 +276,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: zisg
     parent: 20
     mode: 0
@@ -244,6 +286,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 2
     scaleY: 2
+    shearX: 0
+    shearY: 0
   slots:
   - bone: 2
     attachment: -1
@@ -381,11 +425,11 @@ MonoBehaviour:
     - {x: 0.3956044, y: 0.6466165}
     - {x: 0.47008547, y: 0.6466165}
     tint: {r: 0.57254905, g: 0.7529412, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -200.74922, y: -65}
@@ -398,20 +442,20 @@ MonoBehaviour:
     - {x: 0.3931624, y: 0.39849624}
     - {x: 0.3931624, y: 0.007518797}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices: []
     uv: []
     tint: {r: 1, g: 1, b: 1, a: 1}
     sequenceFrames: 1e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f0000003000000031000000
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -74, y: -32.993225}
@@ -424,11 +468,11 @@ MonoBehaviour:
     - {x: 0.8021978, y: 0.9586466}
     - {x: 0.84615386, y: 0.9586466}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -76.90404, y: -35.665638}
@@ -441,11 +485,11 @@ MonoBehaviour:
     - {x: 0.5775336, y: 0.99248123}
     - {x: 0.6019536, y: 0.99248123}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70579, y: -52.7059}
@@ -458,11 +502,11 @@ MonoBehaviour:
     - {x: 0.94993895, y: 0.8270677}
     - {x: 0.94993895, y: 0.5150376}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70576, y: -52.706127}
@@ -475,11 +519,11 @@ MonoBehaviour:
     - {x: 0.94993895, y: 0.8270677}
     - {x: 0.94993895, y: 0.5150376}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705883, y: -52.706142}
@@ -492,11 +536,11 @@ MonoBehaviour:
     - {x: 0.94993895, y: 0.8270677}
     - {x: 0.94993895, y: 0.5150376}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70573, y: -52.70602}
@@ -509,11 +553,11 @@ MonoBehaviour:
     - {x: 0.94993895, y: 0.8270677}
     - {x: 0.94993895, y: 0.5150376}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705944, y: -52.706066}
@@ -526,11 +570,11 @@ MonoBehaviour:
     - {x: 0.94993895, y: 0.8270677}
     - {x: 0.94993895, y: 0.5150376}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.706097, y: -52.705883}
@@ -543,11 +587,11 @@ MonoBehaviour:
     - {x: 0.94993895, y: 0.8270677}
     - {x: 0.94993895, y: 0.5150376}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705456, y: -52.70596}
@@ -560,11 +604,11 @@ MonoBehaviour:
     - {x: 0.94993895, y: 0.8270677}
     - {x: 0.94993895, y: 0.5150376}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705906, y: -52.706005}
@@ -577,11 +621,11 @@ MonoBehaviour:
     - {x: 0.94993895, y: 0.8270677}
     - {x: 0.94993895, y: 0.5150376}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70586, y: -52.705883}
@@ -594,11 +638,11 @@ MonoBehaviour:
     - {x: 0.94993895, y: 0.8270677}
     - {x: 0.94993895, y: 0.5150376}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705914, y: -52.70605}
@@ -611,11 +655,11 @@ MonoBehaviour:
     - {x: 0.94993895, y: 0.8270677}
     - {x: 0.94993895, y: 0.5150376}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705914, y: -52.706173}
@@ -628,11 +672,11 @@ MonoBehaviour:
     - {x: 0.94993895, y: 0.8270677}
     - {x: 0.94993895, y: 0.5150376}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70573, y: -52.70602}
@@ -645,11 +689,11 @@ MonoBehaviour:
     - {x: 0.94993895, y: 0.8270677}
     - {x: 0.94993895, y: 0.5150376}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.7057, y: -52.70593}
@@ -662,11 +706,11 @@ MonoBehaviour:
     - {x: 0.94993895, y: 0.8270677}
     - {x: 0.94993895, y: 0.5150376}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -28.254326, y: -26.75}
@@ -679,11 +723,11 @@ MonoBehaviour:
     - {x: 0.6043956, y: 0.96240604}
     - {x: 0.6520147, y: 0.96240604}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -28.254326, y: -26.75}
@@ -696,11 +740,11 @@ MonoBehaviour:
     - {x: 0.6043956, y: 0.96240604}
     - {x: 0.6520147, y: 0.96240604}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -35.696968, y: -8.810345}
@@ -713,11 +757,11 @@ MonoBehaviour:
     - {x: 0.3931624, y: 0.45864663}
     - {x: 0.3931624, y: 0.40601504}
     tint: {r: 0.2784314, g: 0.70980394, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -35.696968, y: -10.068966}
@@ -730,11 +774,11 @@ MonoBehaviour:
     - {x: 0.7875458, y: 0.78571427}
     - {x: 0.7875458, y: 0.7255639}
     tint: {r: 0.2784314, g: 0.70980394, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -35.696968, y: -10.068966}
@@ -747,11 +791,11 @@ MonoBehaviour:
     - {x: 0.7997558, y: 0.65037596}
     - {x: 0.7997558, y: 0.5902256}
     tint: {r: 0.2784314, g: 0.70980394, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -35.696968, y: -10.068966}
@@ -764,11 +808,11 @@ MonoBehaviour:
     - {x: 0.997558, y: 0.575188}
     - {x: 0.997558, y: 0.5150376}
     tint: {r: 0.2784314, g: 0.70980394, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -34.444443, y: -8.810345}
@@ -781,11 +825,11 @@ MonoBehaviour:
     - {x: 0.996337, y: 0.89097744}
     - {x: 0.996337, y: 0.83458644}
     tint: {r: 0.2784314, g: 0.70980394, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -23.171717, y: -10.068966}
@@ -798,11 +842,11 @@ MonoBehaviour:
     - {x: 0.995116, y: 0.9586466}
     - {x: 0.995116, y: 0.89849627}
     tint: {r: 0.2784314, g: 0.70980394, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -8.141414, y: -10.068966}
@@ -815,11 +859,11 @@ MonoBehaviour:
     - {x: 0.995116, y: 0.64285713}
     - {x: 0.995116, y: 0.58270675}
     tint: {r: 0.2784314, g: 0.70980394, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 3.131313, y: -10.068966}
@@ -832,11 +876,11 @@ MonoBehaviour:
     - {x: 0.7997558, y: 0.7180451}
     - {x: 0.7997558, y: 0.65789473}
     tint: {r: 0.2784314, g: 0.70980394, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 16.90909, y: -10.068966}
@@ -849,11 +893,11 @@ MonoBehaviour:
     - {x: 0.95238096, y: 0.7067669}
     - {x: 0.971917, y: 0.7067669}
     tint: {r: 0.2784314, g: 0.70980394, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 29.434343, y: -8.810345}
@@ -866,11 +910,11 @@ MonoBehaviour:
     - {x: 0.3931624, y: 0.5112782}
     - {x: 0.3931624, y: 0.46616542}
     tint: {r: 0.2784314, g: 0.70980394, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -90.8251, y: -50.845795}
@@ -883,11 +927,11 @@ MonoBehaviour:
     - {x: 0.93650794, y: 0.981203}
     - {x: 0.93650794, y: 0.83458644}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -190.90741, y: -50.845795}
@@ -900,11 +944,11 @@ MonoBehaviour:
     - {x: 0.63736266, y: 0.58270675}
     - {x: 0.6898657, y: 0.58270675}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -917,11 +961,11 @@ MonoBehaviour:
     - {x: 0.2771673, y: 0.9849624}
     - {x: 0.32967034, y: 0.9849624}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -934,11 +978,11 @@ MonoBehaviour:
     - {x: 0.33211234, y: 0.9849624}
     - {x: 0.3846154, y: 0.9849624}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -951,11 +995,11 @@ MonoBehaviour:
     - {x: 0.5750916, y: 0.81578946}
     - {x: 0.5750916, y: 0.65413535}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -968,11 +1012,11 @@ MonoBehaviour:
     - {x: 0.5750916, y: 0.9849624}
     - {x: 0.5750916, y: 0.8233083}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -985,11 +1029,11 @@ MonoBehaviour:
     - {x: 0.47252747, y: 0.5864662}
     - {x: 0.52503055, y: 0.5864662}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -1002,11 +1046,11 @@ MonoBehaviour:
     - {x: 0.52747256, y: 0.5864662}
     - {x: 0.5799756, y: 0.5864662}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -1019,11 +1063,11 @@ MonoBehaviour:
     - {x: 0.7655678, y: 0.7556391}
     - {x: 0.7655678, y: 0.59398496}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -1036,11 +1080,11 @@ MonoBehaviour:
     - {x: 0.5824176, y: 0.5864662}
     - {x: 0.63492066, y: 0.5864662}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -1053,11 +1097,11 @@ MonoBehaviour:
     - {x: 0.0024420025, y: 0.9849624}
     - {x: 0.054945055, y: 0.9849624}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -1070,11 +1114,11 @@ MonoBehaviour:
     - {x: 0.057387058, y: 0.9849624}
     - {x: 0.10989011, y: 0.9849624}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -1087,11 +1131,11 @@ MonoBehaviour:
     - {x: 0.11233211, y: 0.9849624}
     - {x: 0.16483517, y: 0.9849624}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -1104,11 +1148,11 @@ MonoBehaviour:
     - {x: 0.16727717, y: 0.9849624}
     - {x: 0.21978022, y: 0.9849624}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -1121,11 +1165,11 @@ MonoBehaviour:
     - {x: 0.22222222, y: 0.9849624}
     - {x: 0.2747253, y: 0.9849624}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -190.90741, y: -50.845795}
@@ -1138,11 +1182,11 @@ MonoBehaviour:
     - {x: 0.6923077, y: 0.58270675}
     - {x: 0.74481076, y: 0.58270675}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -190.90741, y: -50.845795}
@@ -1155,11 +1199,11 @@ MonoBehaviour:
     - {x: 0.74725276, y: 0.58270675}
     - {x: 0.7997558, y: 0.58270675}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -190.90741, y: -50.845795}
@@ -1172,11 +1216,11 @@ MonoBehaviour:
     - {x: 0.989011, y: 0.16917293}
     - {x: 0.989011, y: 0.007518797}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -190.90741, y: -50.845795}
@@ -1189,11 +1233,11 @@ MonoBehaviour:
     - {x: 0.989011, y: 0.33834586}
     - {x: 0.989011, y: 0.17669173}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -190.90741, y: -50.845795}
@@ -1206,15 +1250,15 @@ MonoBehaviour:
     - {x: 0.989011, y: 0.50751877}
     - {x: 0.989011, y: 0.34586465}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   npcConstraints:
     constraints: []
-    steps:
+    steps: 
   atlasPath: "RecoveredArt/Res/Spine/jackpot3\u5C0F\u4E2A/minor_icon/ef_minoricon"
 --- !u!111 &2051747996623615268
 Animation:
@@ -1243,8 +1287,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b59af1503b62e5844b3b54e8654c7e17, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   player: {fileID: 2051747996623615268}
   rig: {fileID: 3712580144873036477}
   idle: {fileID: 11400000, guid: 499ca5960b99cdb46afba27b95096f1b, type: 2}
@@ -1299,8 +1343,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62a3533becfc3714d914cca9a41c467b, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   icon: {fileID: 2031340326514944158}
   rewardText: {fileID: 7218808458221818145}
   greenRewardText: {fileID: 5557998887369496607}
@@ -1362,8 +1406,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dad06e1c22c15241b8bd93bf1077c3a, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 601330edf059f894dbfb4541361889cd, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
@@ -1381,6 +1425,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: dx
     parent: 0
     mode: 0
@@ -1389,6 +1435,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: bj
     parent: 0
     mode: 0
@@ -1397,6 +1445,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: zzhizhen
     parent: 1
     mode: 0
@@ -1405,6 +1455,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.9
     scaleY: 0.9
+    shearX: 0
+    shearY: 0
   - name: zz
     parent: 3
     mode: 0
@@ -1413,6 +1465,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: zhizhenzhong
     parent: 3
     mode: 0
@@ -1421,6 +1475,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: zhizhenzhonggl
     parent: 3
     mode: 0
@@ -1429,6 +1485,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: zhizhenzhongfc
     parent: 3
     mode: 0
@@ -1437,6 +1495,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: sg
     parent: 3
     mode: 0
@@ -1445,6 +1505,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 3.333
     scaleY: 3.333
+    shearX: 0
+    shearY: 0
   slots:
   - bone: 2
     attachment: -1
@@ -1494,11 +1556,11 @@ MonoBehaviour:
     - {x: 0.97619045, y: 0.49402392}
     - {x: 0.9970238, y: 0.49402392}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -14.78249, y: -82.33333}
@@ -1511,11 +1573,11 @@ MonoBehaviour:
     - {x: 0.9632937, y: 0.9920319}
     - {x: 0.9950397, y: 0.9920319}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -20.677965, y: -82}
@@ -1528,11 +1590,11 @@ MonoBehaviour:
     - {x: 0.9970238, y: 0.8884462}
     - {x: 0.9970238, y: 0.7131474}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -28.48588, y: -82.33333}
@@ -1545,11 +1607,11 @@ MonoBehaviour:
     - {x: 0.8105159, y: 0.9721116}
     - {x: 0.8680556, y: 0.9721116}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -35.627117, y: -82}
@@ -1562,11 +1624,11 @@ MonoBehaviour:
     - {x: 0.890873, y: 0.9402391}
     - {x: 0.96130955, y: 0.9402391}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -43.43503, y: -81.08333}
@@ -1579,11 +1641,11 @@ MonoBehaviour:
     - {x: 0.890873, y: 0.7051793}
     - {x: 0.9742063, y: 0.7051793}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -50.57627, y: -78.25}
@@ -1596,11 +1658,11 @@ MonoBehaviour:
     - {x: 0.86507934, y: 0.39043826}
     - {x: 0.86507934, y: 0.007968128}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -57.13842, y: -66.08333}
@@ -1613,11 +1675,11 @@ MonoBehaviour:
     - {x: 0.26587301, y: 0.9681275}
     - {x: 0.26587301, y: 0.5737052}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -59.29661, y: -49.5}
@@ -1630,11 +1692,11 @@ MonoBehaviour:
     - {x: 0.7956349, y: 0.7808765}
     - {x: 0.8888889, y: 0.7808765}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -60.87571, y: -32.33333}
@@ -1647,11 +1709,11 @@ MonoBehaviour:
     - {x: 0.7013889, y: 0.39442232}
     - {x: 0.7827381, y: 0.39442232}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -60.542374, y: -15.75}
@@ -1664,11 +1726,11 @@ MonoBehaviour:
     - {x: 0.5833333, y: 0.9442231}
     - {x: 0.65178573, y: 0.9442231}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -60.87571, y: -2.3333282}
@@ -1681,11 +1743,11 @@ MonoBehaviour:
     - {x: 0.65376985, y: 0.9402391}
     - {x: 0.71130955, y: 0.9402391}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -60.542374, y: 9.25}
@@ -1698,11 +1760,11 @@ MonoBehaviour:
     - {x: 0.26785713, y: 0.96015936}
     - {x: 0.31646827, y: 0.96015936}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -59.629948, y: 15.166672}
@@ -1715,11 +1777,11 @@ MonoBehaviour:
     - {x: 0.7132937, y: 0.78486055}
     - {x: 0.7569444, y: 0.78486055}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -59.29661, y: 21.75}
@@ -1732,11 +1794,11 @@ MonoBehaviour:
     - {x: 0.80853176, y: 0.9482072}
     - {x: 0.80853176, y: 0.7928287}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -59.629948, y: 26.416672}
@@ -1749,11 +1811,11 @@ MonoBehaviour:
     - {x: 0.7589286, y: 0.78486055}
     - {x: 0.7936508, y: 0.78486055}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -59.29661, y: 30.5}
@@ -1766,11 +1828,11 @@ MonoBehaviour:
     - {x: 0.86706346, y: 0.3864542}
     - {x: 0.89880955, y: 0.3864542}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -58.384182, y: 33.91667}
@@ -1783,11 +1845,11 @@ MonoBehaviour:
     - {x: 0.41170636, y: 0.98406374}
     - {x: 0.41170636, y: 0.8685259}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -56.805084, y: 38}
@@ -1800,11 +1862,11 @@ MonoBehaviour:
     - {x: 0.09325397, y: 0.98804784}
     - {x: 0.09325397, y: 0.8884462}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -57.13842, y: 41.41667}
@@ -1817,11 +1879,11 @@ MonoBehaviour:
     - {x: 0.9910714, y: 0.09561753}
     - {x: 0.9910714, y: 0.007968128}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -54.31356, y: 45.5}
@@ -1834,11 +1896,11 @@ MonoBehaviour:
     - {x: 0.9880952, y: 0.42231077}
     - {x: 0.9880952, y: 0.34661356}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -53.40113, y: 47.66667}
@@ -1851,11 +1913,11 @@ MonoBehaviour:
     - {x: 0.49900794, y: 0.93227094}
     - {x: 0.49900794, y: 0.8685259}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -50.57627, y: 51.75}
@@ -1868,11 +1930,11 @@ MonoBehaviour:
     - {x: 0.49503967, y: 0.9920319}
     - {x: 0.49503967, y: 0.9402391}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -43.43503, y: 53.91667}
@@ -1885,11 +1947,11 @@ MonoBehaviour:
     - {x: 0.5644841, y: 0.9920319}
     - {x: 0.5644841, y: 0.95219123}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -35.627117, y: 56.75}
@@ -1902,11 +1964,11 @@ MonoBehaviour:
     - {x: 0.9910714, y: 0.32669324}
     - {x: 0.9980159, y: 0.32669324}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -27.240118, y: 57.66667}
@@ -1919,11 +1981,11 @@ MonoBehaviour:
     - {x: 0.3184524, y: 0.7370518}
     - {x: 0.3234127, y: 0.7370518}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -18.186441, y: 60.5}
@@ -1936,11 +1998,11 @@ MonoBehaviour:
     - {x: 0.59325397, y: 0.98804784}
     - {x: 0.59325397, y: 0.9800797}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -7.3079133, y: 61.41667}
@@ -1953,11 +2015,11 @@ MonoBehaviour:
     - {x: 0.71130955, y: 0.4063745}
     - {x: 0.71130955, y: 0.40239045}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -73, y: -92}
@@ -1970,11 +2032,11 @@ MonoBehaviour:
     - {x: 0.49801588, y: 0.9442231}
     - {x: 0.49801588, y: 0.9402391}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -73.333336, y: -92.33333}
@@ -1987,11 +2049,11 @@ MonoBehaviour:
     - {x: 0.49801588, y: 0.9442231}
     - {x: 0.49801588, y: 0.9402391}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -9.466102, y: -80.75}
@@ -2004,11 +2066,11 @@ MonoBehaviour:
     - {x: 0.97619045, y: 0.49402392}
     - {x: 0.9970238, y: 0.49402392}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -14.78249, y: -82.33333}
@@ -2021,11 +2083,11 @@ MonoBehaviour:
     - {x: 0.9632937, y: 0.9920319}
     - {x: 0.9950397, y: 0.9920319}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -20.677965, y: -82}
@@ -2038,11 +2100,11 @@ MonoBehaviour:
     - {x: 0.9970238, y: 0.8884462}
     - {x: 0.9970238, y: 0.7131474}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -28.48588, y: -82.33333}
@@ -2055,11 +2117,11 @@ MonoBehaviour:
     - {x: 0.8105159, y: 0.9721116}
     - {x: 0.8680556, y: 0.9721116}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -35.627117, y: -82}
@@ -2072,11 +2134,11 @@ MonoBehaviour:
     - {x: 0.890873, y: 0.9402391}
     - {x: 0.96130955, y: 0.9402391}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -43.43503, y: -81.08333}
@@ -2089,11 +2151,11 @@ MonoBehaviour:
     - {x: 0.890873, y: 0.7051793}
     - {x: 0.9742063, y: 0.7051793}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -50.57627, y: -78.25}
@@ -2106,11 +2168,11 @@ MonoBehaviour:
     - {x: 0.86507934, y: 0.39043826}
     - {x: 0.86507934, y: 0.007968128}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -57.13842, y: -66.08333}
@@ -2123,11 +2185,11 @@ MonoBehaviour:
     - {x: 0.26587301, y: 0.9681275}
     - {x: 0.26587301, y: 0.5737052}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -59.29661, y: -49.5}
@@ -2140,11 +2202,11 @@ MonoBehaviour:
     - {x: 0.7956349, y: 0.7808765}
     - {x: 0.8888889, y: 0.7808765}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -60.87571, y: -32.33333}
@@ -2157,11 +2219,11 @@ MonoBehaviour:
     - {x: 0.7013889, y: 0.39442232}
     - {x: 0.7827381, y: 0.39442232}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -60.542374, y: -15.75}
@@ -2174,11 +2236,11 @@ MonoBehaviour:
     - {x: 0.5833333, y: 0.9442231}
     - {x: 0.65178573, y: 0.9442231}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -60.87571, y: -2.3333282}
@@ -2191,11 +2253,11 @@ MonoBehaviour:
     - {x: 0.65376985, y: 0.9402391}
     - {x: 0.71130955, y: 0.9402391}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -60.542374, y: 9.25}
@@ -2208,11 +2270,11 @@ MonoBehaviour:
     - {x: 0.26785713, y: 0.96015936}
     - {x: 0.31646827, y: 0.96015936}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -59.629948, y: 15.166672}
@@ -2225,11 +2287,11 @@ MonoBehaviour:
     - {x: 0.7132937, y: 0.78486055}
     - {x: 0.7569444, y: 0.78486055}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -59.29661, y: 21.75}
@@ -2242,11 +2304,11 @@ MonoBehaviour:
     - {x: 0.80853176, y: 0.9482072}
     - {x: 0.80853176, y: 0.7928287}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -59.629948, y: 26.416672}
@@ -2259,11 +2321,11 @@ MonoBehaviour:
     - {x: 0.7589286, y: 0.78486055}
     - {x: 0.7936508, y: 0.78486055}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -59.29661, y: 30.5}
@@ -2276,11 +2338,11 @@ MonoBehaviour:
     - {x: 0.86706346, y: 0.3864542}
     - {x: 0.89880955, y: 0.3864542}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -58.384182, y: 33.91667}
@@ -2293,11 +2355,11 @@ MonoBehaviour:
     - {x: 0.41170636, y: 0.98406374}
     - {x: 0.41170636, y: 0.8685259}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -56.805084, y: 38}
@@ -2310,11 +2372,11 @@ MonoBehaviour:
     - {x: 0.09325397, y: 0.98804784}
     - {x: 0.09325397, y: 0.8884462}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -57.13842, y: 41.41667}
@@ -2327,11 +2389,11 @@ MonoBehaviour:
     - {x: 0.9910714, y: 0.09561753}
     - {x: 0.9910714, y: 0.007968128}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -54.31356, y: 45.5}
@@ -2344,11 +2406,11 @@ MonoBehaviour:
     - {x: 0.9880952, y: 0.42231077}
     - {x: 0.9880952, y: 0.34661356}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -53.40113, y: 47.66667}
@@ -2361,11 +2423,11 @@ MonoBehaviour:
     - {x: 0.49900794, y: 0.93227094}
     - {x: 0.49900794, y: 0.8685259}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -50.57627, y: 51.75}
@@ -2378,11 +2440,11 @@ MonoBehaviour:
     - {x: 0.49503967, y: 0.9920319}
     - {x: 0.49503967, y: 0.9402391}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -43.43503, y: 53.91667}
@@ -2395,11 +2457,11 @@ MonoBehaviour:
     - {x: 0.5644841, y: 0.9920319}
     - {x: 0.5644841, y: 0.95219123}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -35.627117, y: 56.75}
@@ -2412,11 +2474,11 @@ MonoBehaviour:
     - {x: 0.9910714, y: 0.32669324}
     - {x: 0.9980159, y: 0.32669324}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -27.240118, y: 57.66667}
@@ -2429,11 +2491,11 @@ MonoBehaviour:
     - {x: 0.3184524, y: 0.7370518}
     - {x: 0.3234127, y: 0.7370518}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -18.186441, y: 60.5}
@@ -2446,11 +2508,11 @@ MonoBehaviour:
     - {x: 0.59325397, y: 0.98804784}
     - {x: 0.59325397, y: 0.9800797}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -7.3079133, y: 61.41667}
@@ -2463,11 +2525,11 @@ MonoBehaviour:
     - {x: 0.71130955, y: 0.4063745}
     - {x: 0.71130955, y: 0.40239045}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -73, y: -92}
@@ -2480,11 +2542,11 @@ MonoBehaviour:
     - {x: 0.49801588, y: 0.9442231}
     - {x: 0.49801588, y: 0.9402391}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -73.333336, y: -92.33333}
@@ -2497,11 +2559,11 @@ MonoBehaviour:
     - {x: 0.49801588, y: 0.9442231}
     - {x: 0.49801588, y: 0.9402391}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -135.74994, y: -147.74904}
@@ -2514,11 +2576,11 @@ MonoBehaviour:
     - {x: 0.32539684, y: 0.8605578}
     - {x: 0.5813492, y: 0.8605578}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -146.99994, y: -152}
@@ -2531,11 +2593,11 @@ MonoBehaviour:
     - {x: 0.6994048, y: 0.5458167}
     - {x: 0.6994048, y: 0.007968128}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -74.49994, y: -79.5}
@@ -2548,11 +2610,11 @@ MonoBehaviour:
     - {x: 0.9007937, y: 0.33864543}
     - {x: 0.9890873, y: 0.33864543}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -224.4422, y: -70.00589}
@@ -2565,11 +2627,11 @@ MonoBehaviour:
     - {x: 0.3234127, y: 0.56573707}
     - {x: 0.3234127, y: 0.007968128}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -238.80399, y: -73.15602}
@@ -2582,15 +2644,15 @@ MonoBehaviour:
     - {x: 0.17261904, y: 0.8804781}
     - {x: 0.17261904, y: 0.5737052}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   npcConstraints:
     constraints: []
-    steps:
+    steps: 
   atlasPath: RecoveredArt/Res/Spine/zhuanpanzz/ef_slzhuanpanzz
 --- !u!111 &8406278783465890534
 Animation:
@@ -2619,8 +2681,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1559611724bab9346874c5930eb40ff4, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   player: {fileID: 8406278783465890534}
   rig: {fileID: 8983420982736548915}
   poses:
@@ -2679,8 +2741,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62a3533becfc3714d914cca9a41c467b, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   icon: {fileID: 1705492129644349366}
   rewardText: {fileID: 4018548474383089191}
   greenRewardText: {fileID: 958737035589852929}
@@ -2715,7 +2777,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7875735447233763298}
   m_Father: {fileID: 3638022790266375532}
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2738,11 +2801,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062459691875423151}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -2771,8 +2834,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57530d527fb1416418b388e01fa3cbf0, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   template: {fileID: 2100000, guid: 57d98aa657b378f4baa6e49107f889d3, type: 2}
   effectFactor: 0.5
   width: 0.25
@@ -2820,6 +2883,157 @@ RectTransform:
   m_AnchoredPosition: {x: -189.50461, y: 189.50464}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2054337045074112543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7875735447233763298}
+  - component: {fileID: 7105103340878225436}
+  - component: {fileID: 1864772175520721328}
+  - component: {fileID: 6157797636326458081}
+  m_Layer: 5
+  m_Name: LocalizedArtworkText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7875735447233763298
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054337045074112543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4511520313957017664}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7105103340878225436
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054337045074112543}
+  m_CullTransparentMesh: 1
+--- !u!114 &1864772175520721328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054337045074112543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: FORTUNE WHEEL
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 31628181d58311344bb283c127fc9aba, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 9eb7f4af50b7cf84494752e71d67a11b, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 1
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 0.65, a: 1}
+    topRight: {r: 1, g: 1, b: 0.65, a: 1}
+    bottomLeft: {r: 1, g: 0.66, b: 0.05, a: 1}
+    bottomRight: {r: 1, g: 0.66, b: 0.05, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 108
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 59.4
+  m_fontSizeMax: 108
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6157797636326458081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054337045074112543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c6e2b029947480c9ed342a3585abed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpText: {fileID: 1864772175520721328}
+  legacyText: {fileID: 0}
+  key: art.fortune_wheel
+  englishFallback: FORTUNE WHEEL
 --- !u!1 &2236421598981411709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,8 +3089,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -2954,8 +3168,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -3085,8 +3299,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
@@ -3182,8 +3396,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -3352,8 +3566,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62a3533becfc3714d914cca9a41c467b, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   icon: {fileID: 3862542343869150064}
   rewardText: {fileID: 7363530043384398275}
   greenRewardText: {fileID: 6397562679804206506}
@@ -3413,8 +3627,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -3549,8 +3763,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dad06e1c22c15241b8bd93bf1077c3a, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 601330edf059f894dbfb4541361889cd, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
@@ -3568,6 +3782,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: dx
     parent: 0
     mode: 0
@@ -3576,6 +3792,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: bj
     parent: 0
     mode: 0
@@ -3584,6 +3802,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: zhuanpan
     parent: 1
     mode: 0
@@ -3592,6 +3812,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.9
     scaleY: 0.9
+    shearX: 0
+    shearY: 0
   - name: led
     parent: 3
     mode: 0
@@ -3600,6 +3822,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: sanjiao
     parent: 3
     mode: 0
@@ -3608,6 +3832,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: xx
     parent: 3
     mode: 0
@@ -3616,6 +3842,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: leda
     parent: 4
     mode: 0
@@ -3624,6 +3852,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: ledb
     parent: 4
     mode: 0
@@ -3632,6 +3862,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: led2
     parent: 3
     mode: 0
@@ -3640,6 +3872,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: leda2
     parent: 9
     mode: 0
@@ -3648,6 +3882,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: ledb2
     parent: 9
     mode: 0
@@ -3656,6 +3892,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: xxgl
     parent: 3
     mode: 0
@@ -3664,6 +3902,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: zpqq
     parent: 3
     mode: 0
@@ -3672,6 +3912,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 2
     scaleY: 2
+    shearX: 0
+    shearY: 0
   - name: longz
     parent: 1
     mode: 0
@@ -3680,6 +3922,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: longw2
     parent: 14
     mode: 0
@@ -3688,6 +3932,8 @@ MonoBehaviour:
     rotation: 98.19426
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: longw3
     parent: 15
     mode: 0
@@ -3696,6 +3942,8 @@ MonoBehaviour:
     rotation: -48.689373
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: longw4
     parent: 16
     mode: 0
@@ -3704,6 +3952,8 @@ MonoBehaviour:
     rotation: -38.07778
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: longw5
     parent: 17
     mode: 0
@@ -3712,6 +3962,8 @@ MonoBehaviour:
     rotation: -28.169083
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long2
     parent: 14
     mode: 0
@@ -3720,6 +3972,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long3
     parent: 14
     mode: 0
@@ -3728,6 +3982,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long4
     parent: 14
     mode: 0
@@ -3736,6 +3992,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long5
     parent: 14
     mode: 0
@@ -3744,6 +4002,8 @@ MonoBehaviour:
     rotation: -81.17965
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long6
     parent: 22
     mode: 0
@@ -3752,6 +4012,8 @@ MonoBehaviour:
     rotation: 39.436867
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long7
     parent: 23
     mode: 0
@@ -3760,6 +4022,8 @@ MonoBehaviour:
     rotation: 15.836279
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long8
     parent: 24
     mode: 0
@@ -3768,6 +4032,8 @@ MonoBehaviour:
     rotation: 5.786841
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long9
     parent: 25
     mode: 0
@@ -3776,6 +4042,8 @@ MonoBehaviour:
     rotation: 4.2539682
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: longtxu10
     parent: 14
     mode: 0
@@ -3784,6 +4052,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: longtxu11
     parent: 14
     mode: 0
@@ -3792,6 +4062,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: longy
     parent: 1
     mode: 0
@@ -3800,6 +4072,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: -1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: longw6
     parent: 29
     mode: 0
@@ -3808,6 +4082,8 @@ MonoBehaviour:
     rotation: 98.19426
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: longw7
     parent: 30
     mode: 0
@@ -3816,6 +4092,8 @@ MonoBehaviour:
     rotation: -48.689373
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: longw8
     parent: 31
     mode: 0
@@ -3824,6 +4102,8 @@ MonoBehaviour:
     rotation: -38.07778
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: longw9
     parent: 32
     mode: 0
@@ -3832,6 +4112,8 @@ MonoBehaviour:
     rotation: -28.169083
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long10
     parent: 29
     mode: 0
@@ -3840,6 +4122,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long11
     parent: 29
     mode: 0
@@ -3848,6 +4132,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long12
     parent: 29
     mode: 0
@@ -3856,6 +4142,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long13
     parent: 29
     mode: 0
@@ -3864,6 +4152,8 @@ MonoBehaviour:
     rotation: -81.17965
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long14
     parent: 37
     mode: 0
@@ -3872,6 +4162,8 @@ MonoBehaviour:
     rotation: 39.436867
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long15
     parent: 38
     mode: 0
@@ -3880,6 +4172,8 @@ MonoBehaviour:
     rotation: 15.836279
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long16
     parent: 39
     mode: 0
@@ -3888,6 +4182,8 @@ MonoBehaviour:
     rotation: 5.786841
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: long17
     parent: 40
     mode: 0
@@ -3896,6 +4192,8 @@ MonoBehaviour:
     rotation: 4.2539682
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: longtxu12
     parent: 29
     mode: 0
@@ -3904,6 +4202,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: longtxu13
     parent: 29
     mode: 0
@@ -3912,6 +4212,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   slots:
   - bone: 2
     attachment: -1
@@ -4193,11 +4495,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 259.3598, y: 394.87283}
@@ -4210,11 +4512,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 470.17926, y: 76.437836}
@@ -4227,11 +4529,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 393.78183, y: -297.83362}
@@ -4244,11 +4546,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 75.59485, y: -507.88806}
@@ -4261,11 +4563,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -298.85934, y: -431.3504}
@@ -4278,11 +4580,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -509.71747, y: -113.17572}
@@ -4295,11 +4597,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -432.89404, y: 260.8108}
@@ -4312,11 +4614,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -115.03184, y: 471.49268}
@@ -4329,11 +4631,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 259.3598, y: 394.87283}
@@ -4346,11 +4648,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 470.17926, y: 76.437836}
@@ -4363,11 +4665,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 393.78183, y: -297.83362}
@@ -4380,11 +4682,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 75.59485, y: -507.88806}
@@ -4397,11 +4699,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -298.85934, y: -431.3504}
@@ -4414,11 +4716,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -509.71747, y: -113.17572}
@@ -4431,11 +4733,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -432.89404, y: 260.8108}
@@ -4448,11 +4750,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 78.99101, y: 470.32532}
@@ -4465,11 +4767,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 396.09222, y: 256.63684}
@@ -4482,11 +4784,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 469.3211, y: -118.19276}
@@ -4499,11 +4801,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 255.69159, y: -434.10794}
@@ -4516,11 +4818,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -119.21608, y: -507.1846}
@@ -4533,11 +4835,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -435.32935, y: -293.96973}
@@ -4550,11 +4852,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -508.6281, y: 80.757}
@@ -4567,11 +4869,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -294.98798, y: 397.43762}
@@ -4584,11 +4886,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 0.7529412, b: 0.38039216, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 78.99101, y: 470.32532}
@@ -4601,11 +4903,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 396.09222, y: 256.63684}
@@ -4618,11 +4920,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 469.3211, y: -118.19276}
@@ -4635,11 +4937,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 255.69159, y: -434.10794}
@@ -4652,11 +4954,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -119.21608, y: -507.1846}
@@ -4669,11 +4971,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -435.32935, y: -293.96973}
@@ -4686,11 +4988,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -508.6281, y: 80.757}
@@ -4703,11 +5005,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -294.98798, y: 397.43762}
@@ -4720,11 +5022,11 @@ MonoBehaviour:
     - {x: 0.044733044, y: 0.9974227}
     - {x: 0.044733044, y: 0.9587629}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 90.67706, y: 108.24472}
@@ -4986,7 +5288,7 @@ MonoBehaviour:
     - {x: 0.21993579, y: 0.9561856}
     - {x: 0.22838283, y: 0.9561434}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 2200000023000000210000001f00000020000000240000002400000020000000210000001d0000001e0000001f0000000600000004000000050000005100000024000000250000002400000021000000230000002400000006000000070000005100000006000000240000001f000000240000001d000000240000000b0000001d000000240000000a0000000b0000000a00000007000000080000000a00000024000000070000001d0000000b0000001b0000001c0000001d0000001b0000000c0000001b0000000b0000001b000000190000001a0000000c000000190000001b000000190000000d000000180000000a0000000800000009000000190000000c0000000d0000000d0000000e000000180000000f000000170000000e000000180000000e000000170000000f00000016000000170000000f0000001000000016000000110000001500000010000000100000001500000016000000110000001400000015000000110000001200000014000000140000001200000013000000040000000600000051000000260000005100000025000000510000000300000004000000510000000000000003000000000000000200000003000000420000004a00000026000000260000004a00000051000000500000004a0000004f0000004a000000500000005100000043000000490000004200000042000000490000004a0000004300000044000000480000004400000047000000480000004300000048000000490000004a0000004b0000004e0000004d0000004e0000004b0000004b0000004c0000004d0000004a0000004e0000004f0000004500000046000000440000004400000046000000470000000000000051000000520000005400000000000000520000005400000052000000530000000000000001000000020000002900000039000000280000003d00000028000000390000003d000000390000003c000000280000003d000000270000003d00000040000000270000002700000040000000260000003a0000003b00000039000000390000003b0000003c0000004000000042000000260000003e0000003f0000003d0000003d0000003f000000400000004000000041000000420000002e0000002f0000002d0000002d0000002f0000002c0000002f000000300000002c0000002c000000300000002b00000030000000310000003200000030000000320000002b0000002b000000320000002a00000033000000340000003200000032000000350000002a0000003200000034000000350000002a0000003500000029000000360000003700000035000000370000003800000035000000350000003900000029000000350000003800000039000000
     counts: 02000000020000000200000002000000020000000300000002000000020000000200000002000000020000000200000001000000010000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000200000002000000030000000400000003000000030000000300000002000000020000000200000002000000020000000200000002000000020000000100000002000000020000000200000002000000020000000200000002000000020000000200000002000000030000000100000001000000020000000200000002000000030000000300000003000000030000000300000003000000030000000300000002000000010000000200000003000000030000000300000002000000020000000200000002000000
@@ -5424,7 +5726,7 @@ MonoBehaviour:
     - {x: 0.21993579, y: 0.9561856}
     - {x: 0.22838283, y: 0.9561434}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 2200000023000000210000001f00000020000000240000002400000020000000210000001d0000001e0000001f0000000600000004000000050000005100000024000000250000002400000021000000230000002400000006000000070000005100000006000000240000001f000000240000001d000000240000000b0000001d000000240000000a0000000b0000000a00000007000000080000000a00000024000000070000001d0000000b0000001b0000001c0000001d0000001b0000000c0000001b0000000b0000001b000000190000001a0000000c000000190000001b000000190000000d000000180000000a0000000800000009000000190000000c0000000d0000000d0000000e000000180000000f000000170000000e000000180000000e000000170000000f00000016000000170000000f0000001000000016000000110000001500000010000000100000001500000016000000110000001400000015000000110000001200000014000000140000001200000013000000040000000600000051000000260000005100000025000000510000000300000004000000510000000000000003000000000000000200000003000000420000004a00000026000000260000004a00000051000000500000004a0000004f0000004a000000500000005100000043000000490000004200000042000000490000004a0000004300000044000000480000004400000047000000480000004300000048000000490000004a0000004b0000004e0000004d0000004e0000004b0000004b0000004c0000004d0000004a0000004e0000004f0000004500000046000000440000004400000046000000470000000000000051000000520000005400000000000000520000005400000052000000530000000000000001000000020000002900000039000000280000003d00000028000000390000003d000000390000003c000000280000003d000000270000003d00000040000000270000002700000040000000260000003a0000003b00000039000000390000003b0000003c0000004000000042000000260000003e0000003f0000003d0000003d0000003f000000400000004000000041000000420000002e0000002f0000002d0000002d0000002f0000002c0000002f000000300000002c0000002c000000300000002b00000030000000310000003200000030000000320000002b0000002b000000320000002a00000033000000340000003200000032000000350000002a0000003200000034000000350000002a0000003500000029000000360000003700000035000000370000003800000035000000350000003900000029000000350000003800000039000000
     counts: 02000000020000000200000002000000020000000300000002000000020000000200000002000000020000000200000001000000010000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000200000002000000030000000400000003000000030000000300000002000000020000000200000002000000020000000200000002000000020000000100000002000000020000000200000002000000020000000200000002000000020000000200000002000000030000000100000001000000020000000200000002000000030000000300000003000000030000000300000003000000030000000300000002000000010000000200000003000000030000000300000002000000020000000200000002000000
@@ -5862,7 +6164,7 @@ MonoBehaviour:
     - {x: 0.6528362, y: 0.9561856}
     - {x: 0.66128325, y: 0.9561434}
     tint: {r: 1, g: 0.8, b: 0.54509807, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 2200000023000000210000001f00000020000000240000002400000020000000210000001d0000001e0000001f0000000600000004000000050000005100000024000000250000002400000021000000230000002400000006000000070000005100000006000000240000001f000000240000001d000000240000000b0000001d000000240000000a0000000b0000000a00000007000000080000000a00000024000000070000001d0000000b0000001b0000001c0000001d0000001b0000000c0000001b0000000b0000001b000000190000001a0000000c000000190000001b000000190000000d000000180000000a0000000800000009000000190000000c0000000d0000000d0000000e000000180000000f000000170000000e000000180000000e000000170000000f00000016000000170000000f0000001000000016000000110000001500000010000000100000001500000016000000110000001400000015000000110000001200000014000000140000001200000013000000040000000600000051000000260000005100000025000000510000000300000004000000510000000000000003000000000000000200000003000000420000004a00000026000000260000004a00000051000000500000004a0000004f0000004a000000500000005100000043000000490000004200000042000000490000004a0000004300000044000000480000004400000047000000480000004300000048000000490000004a0000004b0000004e0000004d0000004e0000004b0000004b0000004c0000004d0000004a0000004e0000004f0000004500000046000000440000004400000046000000470000000000000051000000520000005400000000000000520000005400000052000000530000000000000001000000020000002900000039000000280000003d00000028000000390000003d000000390000003c000000280000003d000000270000003d00000040000000270000002700000040000000260000003a0000003b00000039000000390000003b0000003c0000004000000042000000260000003e0000003f0000003d0000003d0000003f000000400000004000000041000000420000002e0000002f0000002d0000002d0000002f0000002c0000002f000000300000002c0000002c000000300000002b00000030000000310000003200000030000000320000002b0000002b000000320000002a00000033000000340000003200000032000000350000002a0000003200000034000000350000002a0000003500000029000000360000003700000035000000370000003800000035000000350000003900000029000000350000003800000039000000
     counts: 02000000020000000200000002000000020000000300000002000000020000000200000002000000020000000200000001000000010000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000200000002000000030000000400000003000000030000000300000002000000020000000200000002000000020000000200000002000000020000000100000002000000020000000200000002000000020000000200000002000000020000000200000002000000030000000100000001000000020000000200000002000000030000000300000003000000030000000300000003000000030000000300000002000000010000000200000003000000030000000300000002000000020000000200000002000000
@@ -6300,7 +6602,7 @@ MonoBehaviour:
     - {x: 0.6528362, y: 0.9561856}
     - {x: 0.66128325, y: 0.9561434}
     tint: {r: 1, g: 0.8, b: 0.54509807, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 2200000023000000210000001f00000020000000240000002400000020000000210000001d0000001e0000001f0000000600000004000000050000005100000024000000250000002400000021000000230000002400000006000000070000005100000006000000240000001f000000240000001d000000240000000b0000001d000000240000000a0000000b0000000a00000007000000080000000a00000024000000070000001d0000000b0000001b0000001c0000001d0000001b0000000c0000001b0000000b0000001b000000190000001a0000000c000000190000001b000000190000000d000000180000000a0000000800000009000000190000000c0000000d0000000d0000000e000000180000000f000000170000000e000000180000000e000000170000000f00000016000000170000000f0000001000000016000000110000001500000010000000100000001500000016000000110000001400000015000000110000001200000014000000140000001200000013000000040000000600000051000000260000005100000025000000510000000300000004000000510000000000000003000000000000000200000003000000420000004a00000026000000260000004a00000051000000500000004a0000004f0000004a000000500000005100000043000000490000004200000042000000490000004a0000004300000044000000480000004400000047000000480000004300000048000000490000004a0000004b0000004e0000004d0000004e0000004b0000004b0000004c0000004d0000004a0000004e0000004f0000004500000046000000440000004400000046000000470000000000000051000000520000005400000000000000520000005400000052000000530000000000000001000000020000002900000039000000280000003d00000028000000390000003d000000390000003c000000280000003d000000270000003d00000040000000270000002700000040000000260000003a0000003b00000039000000390000003b0000003c0000004000000042000000260000003e0000003f0000003d0000003d0000003f000000400000004000000041000000420000002e0000002f0000002d0000002d0000002f0000002c0000002f000000300000002c0000002c000000300000002b00000030000000310000003200000030000000320000002b0000002b000000320000002a00000033000000340000003200000032000000350000002a0000003200000034000000350000002a0000003500000029000000360000003700000035000000370000003800000035000000350000003900000029000000350000003800000039000000
     counts: 02000000020000000200000002000000020000000300000002000000020000000200000002000000020000000200000001000000010000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000200000002000000030000000400000003000000030000000300000002000000020000000200000002000000020000000200000002000000020000000100000002000000020000000200000002000000020000000200000002000000020000000200000002000000030000000100000001000000020000000200000002000000030000000300000003000000030000000300000003000000030000000300000002000000010000000200000003000000030000000300000002000000020000000200000002000000
@@ -6633,7 +6935,7 @@ MonoBehaviour:
     - {x: 0.90110254, y: 0.23829629}
     - {x: 0.9252389, y: 0.173229}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 1c0000001d000000340000001d0000001e00000034000000190000001a000000180000001a00000017000000180000001a0000001b000000170000001c000000350000001b0000001c00000034000000350000001b00000016000000170000001b000000350000001600000034000000150000003500000035000000150000001600000014000000120000001300000014000000150000001200000020000000210000001f00000021000000220000001f00000022000000230000001f0000001e0000001f0000003400000023000000360000001f0000002300000024000000360000002500000026000000240000001f0000003600000034000000260000003800000024000000240000003800000036000000380000003300000036000000360000003300000034000000330000003700000034000000330000000d000000370000000d0000000e00000037000000150000003400000011000000110000003400000037000000150000001100000012000000110000003700000010000000370000000f00000010000000370000000e0000000f00000026000000270000003800000027000000280000003800000038000000280000003300000029000000320000002800000028000000320000003300000033000000320000000b000000320000000a0000000b0000000b0000000c00000033000000330000000c0000000d00000032000000090000000a000000290000002a000000320000002b000000310000002a0000002a00000031000000320000000700000032000000310000003100000005000000060000003200000008000000090000003200000007000000080000000700000031000000060000002b0000002c000000310000002c0000002d00000031000000310000000200000003000000310000000400000005000000310000000300000004000000310000002d000000020000002d0000002e000000020000002e0000000100000002000000010000002f00000000000000010000002e0000002f0000002f0000003000000000000000
     counts: 010000000100000001000000010000000200000002000000020000000300000002000000020000000200000001000000020000000200000002000000020000000200000002000000020000000200000002000000020000000100000001000000010000000100000001000000010000000100000002000000020000000200000001000000020000000200000002000000020000000200000002000000020000000200000002000000010000000200000002000000010000000100000001000000010000000200000002000000020000000200000001000000020000000100000002000000
@@ -6889,7 +7191,7 @@ MonoBehaviour:
     - {x: 0.90110254, y: 0.23829629}
     - {x: 0.9252389, y: 0.173229}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 1c0000001d000000340000001d0000001e00000034000000190000001a000000180000001a00000017000000180000001a0000001b000000170000001c000000350000001b0000001c00000034000000350000001b00000016000000170000001b000000350000001600000034000000150000003500000035000000150000001600000014000000120000001300000014000000150000001200000020000000210000001f00000021000000220000001f00000022000000230000001f0000001e0000001f0000003400000023000000360000001f0000002300000024000000360000002500000026000000240000001f0000003600000034000000260000003800000024000000240000003800000036000000380000003300000036000000360000003300000034000000330000003700000034000000330000000d000000370000000d0000000e00000037000000150000003400000011000000110000003400000037000000150000001100000012000000110000003700000010000000370000000f00000010000000370000000e0000000f00000026000000270000003800000027000000280000003800000038000000280000003300000029000000320000002800000028000000320000003300000033000000320000000b000000320000000a0000000b0000000b0000000c00000033000000330000000c0000000d00000032000000090000000a000000290000002a000000320000002b000000310000002a0000002a00000031000000320000000700000032000000310000003100000005000000060000003200000008000000090000003200000007000000080000000700000031000000060000002b0000002c000000310000002c0000002d00000031000000310000000200000003000000310000000400000005000000310000000300000004000000310000002d000000020000002d0000002e000000020000002e0000000100000002000000010000002f00000000000000010000002e0000002f0000002f0000003000000000000000
     counts: 010000000100000001000000010000000200000002000000020000000300000002000000020000000200000001000000020000000200000002000000020000000200000002000000020000000200000002000000020000000100000001000000010000000100000001000000010000000100000002000000020000000200000001000000020000000200000002000000020000000200000002000000020000000200000002000000010000000200000002000000010000000100000001000000010000000200000002000000020000000200000001000000020000000100000002000000
@@ -7049,7 +7351,7 @@ MonoBehaviour:
     - {x: 0.87394977, y: 0.41011253}
     - {x: 0.8716918, y: 0.41451034}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 040000000200000003000000010000000200000005000000040000000500000002000000010000000500000017000000160000001700000005000000050000000600000016000000170000001900000001000000190000000000000001000000190000001a000000000000001700000018000000190000001500000016000000060000000700000009000000110000001400000007000000110000001400000015000000070000000900000007000000080000001400000011000000120000001400000012000000130000001500000006000000070000001100000009000000100000000b0000000c00000010000000100000000c0000000e0000000c0000000d0000000e0000000e0000000f000000100000000b000000100000000a0000000a0000001000000009000000
     counts: 010000000100000001000000010000000100000001000000030000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
@@ -7143,7 +7445,7 @@ MonoBehaviour:
     - {x: 0.87394977, y: 0.41011253}
     - {x: 0.8716918, y: 0.41451034}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 040000000200000003000000010000000200000005000000040000000500000002000000010000000500000017000000160000001700000005000000050000000600000016000000170000001900000001000000190000000000000001000000190000001a000000000000001700000018000000190000001500000016000000060000000700000009000000110000001400000007000000110000001400000015000000070000000900000007000000080000001400000011000000120000001400000012000000130000001500000006000000070000001100000009000000100000000b0000000c00000010000000100000000c0000000e0000000c0000000d0000000e0000000e0000000f000000100000000b000000100000000a0000000a0000001000000009000000
     counts: 010000000100000001000000010000000100000001000000030000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
@@ -7189,11 +7491,11 @@ MonoBehaviour:
     - {x: 0.86868685, y: 0.56958765}
     - {x: 0.997114, y: 0.56958765}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 010000000200000003000000010000000300000000000000
-    counts:
-    boneIndices:
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 170.7218, y: 337.7879}
@@ -7206,11 +7508,11 @@ MonoBehaviour:
     - {x: 0.86868685, y: 0.56958765}
     - {x: 0.997114, y: 0.56958765}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 010000000200000003000000010000000300000000000000
-    counts:
-    boneIndices:
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 359.33572, y: 117.76667}
@@ -7223,11 +7525,11 @@ MonoBehaviour:
     - {x: 0.86868685, y: 0.56958765}
     - {x: 0.997114, y: 0.56958765}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 010000000200000003000000010000000300000000000000
-    counts:
-    boneIndices:
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 337.94867, y: -170.41164}
@@ -7240,11 +7542,11 @@ MonoBehaviour:
     - {x: 0.86868685, y: 0.56958765}
     - {x: 0.997114, y: 0.56958765}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 010000000200000003000000010000000300000000000000
-    counts:
-    boneIndices:
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 117.76951, y: -360.0156}
@@ -7257,11 +7559,11 @@ MonoBehaviour:
     - {x: 0.86868685, y: 0.56958765}
     - {x: 0.997114, y: 0.56958765}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 010000000200000003000000010000000300000000000000
-    counts:
-    boneIndices:
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -169.80783, y: -338.28598}
@@ -7274,11 +7576,11 @@ MonoBehaviour:
     - {x: 0.86868685, y: 0.56958765}
     - {x: 0.997114, y: 0.56958765}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 010000000200000003000000010000000300000000000000
-    counts:
-    boneIndices:
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -360.40265, y: -118.04323}
@@ -7291,11 +7593,11 @@ MonoBehaviour:
     - {x: 0.86868685, y: 0.56958765}
     - {x: 0.997114, y: 0.56958765}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 010000000200000003000000010000000300000000000000
-    counts:
-    boneIndices:
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -337.27585, y: 170.73656}
@@ -7308,11 +7610,11 @@ MonoBehaviour:
     - {x: 0.86868685, y: 0.56958765}
     - {x: 0.997114, y: 0.56958765}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
     triangles: 010000000200000003000000010000000300000000000000
-    counts:
-    boneIndices:
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 159.00017, y: 414}
@@ -7325,11 +7627,11 @@ MonoBehaviour:
     - {x: 0.9163059, y: 0.7036083}
     - {x: 0.9163059, y: 0.66108245}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -200.99998, y: -455.5}
@@ -7342,11 +7644,11 @@ MonoBehaviour:
     - {x: 0.9163059, y: 0.7036083}
     - {x: 0.9163059, y: 0.66108245}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -456.49994, y: 159}
@@ -7359,11 +7661,11 @@ MonoBehaviour:
     - {x: 0.9163059, y: 0.7036083}
     - {x: 0.9163059, y: 0.66108245}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 413.00006, y: -201}
@@ -7376,11 +7678,11 @@ MonoBehaviour:
     - {x: 0.9163059, y: 0.7036083}
     - {x: 0.9163059, y: 0.66108245}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -200.9999, y: 414.5}
@@ -7393,11 +7695,11 @@ MonoBehaviour:
     - {x: 0.9163059, y: 0.7036083}
     - {x: 0.9163059, y: 0.66108245}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 158.99995, y: -455}
@@ -7410,11 +7712,11 @@ MonoBehaviour:
     - {x: 0.9163059, y: 0.7036083}
     - {x: 0.9163059, y: 0.66108245}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -455.99994, y: -201}
@@ -7427,11 +7729,11 @@ MonoBehaviour:
     - {x: 0.9163059, y: 0.7036083}
     - {x: 0.9163059, y: 0.66108245}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 413.50006, y: 159}
@@ -7444,11 +7746,11 @@ MonoBehaviour:
     - {x: 0.9163059, y: 0.7036083}
     - {x: 0.9163059, y: 0.66108245}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 137.51915, y: 392.51898}
@@ -7461,11 +7763,11 @@ MonoBehaviour:
     - {x: 0.965368, y: 0.65850514}
     - {x: 0.965368, y: 0.57216495}
     tint: {r: 1, g: 1, b: 1, a: 0.5529412}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -222.481, y: -476.98102}
@@ -7478,11 +7780,11 @@ MonoBehaviour:
     - {x: 0.965368, y: 0.65850514}
     - {x: 0.965368, y: 0.57216495}
     tint: {r: 1, g: 1, b: 1, a: 0.5529412}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -477.98096, y: 137.51898}
@@ -7495,11 +7797,11 @@ MonoBehaviour:
     - {x: 0.965368, y: 0.65850514}
     - {x: 0.965368, y: 0.57216495}
     tint: {r: 1, g: 1, b: 1, a: 0.5529412}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 391.51904, y: -222.48102}
@@ -7512,11 +7814,11 @@ MonoBehaviour:
     - {x: 0.965368, y: 0.65850514}
     - {x: 0.965368, y: 0.57216495}
     tint: {r: 1, g: 1, b: 1, a: 0.5529412}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -222.48091, y: 393.01898}
@@ -7529,11 +7831,11 @@ MonoBehaviour:
     - {x: 0.965368, y: 0.65850514}
     - {x: 0.965368, y: 0.57216495}
     tint: {r: 1, g: 1, b: 1, a: 0.5529412}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 137.51894, y: -476.48102}
@@ -7546,11 +7848,11 @@ MonoBehaviour:
     - {x: 0.965368, y: 0.65850514}
     - {x: 0.965368, y: 0.57216495}
     tint: {r: 1, g: 1, b: 1, a: 0.5529412}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -477.48096, y: -222.48102}
@@ -7563,11 +7865,11 @@ MonoBehaviour:
     - {x: 0.965368, y: 0.65850514}
     - {x: 0.965368, y: 0.57216495}
     tint: {r: 1, g: 1, b: 1, a: 0.5529412}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 392.01904, y: 137.51898}
@@ -7580,11 +7882,11 @@ MonoBehaviour:
     - {x: 0.965368, y: 0.65850514}
     - {x: 0.965368, y: 0.57216495}
     tint: {r: 1, g: 1, b: 1, a: 0.5529412}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -273.99994, y: -269.5}
@@ -7597,15 +7899,15 @@ MonoBehaviour:
     - {x: 0.6334776, y: 0.564433}
     - {x: 0.6334776, y: 0.0025773195}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   npcConstraints:
     constraints: []
-    steps:
+    steps: 
   atlasPath: RecoveredArt/Res/Spine/zhuanpandi/ef_slzhuanpandi
 --- !u!111 &3045785119877691438
 Animation:
@@ -7634,8 +7936,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1559611724bab9346874c5930eb40ff4, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   player: {fileID: 3045785119877691438}
   rig: {fileID: 7040984514296081374}
   poses:
@@ -7700,8 +8002,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -7779,8 +8081,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -7977,8 +8279,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10921d77bca20cc4c97c5cfea0ad68d3, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   window: {fileID: 3787681850103609480}
   content: {fileID: 3638022790266375532}
   rotor: {fileID: 1318389791965359020}
@@ -8123,8 +8425,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.65}
   m_RaycastTarget: 1
@@ -8153,8 +8455,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -8279,8 +8581,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dad06e1c22c15241b8bd93bf1077c3a, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 601330edf059f894dbfb4541361889cd, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
@@ -8298,6 +8600,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: dx
     parent: 0
     mode: 0
@@ -8306,6 +8610,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: bj
     parent: 0
     mode: 0
@@ -8314,6 +8620,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: yunz
     parent: 1
     mode: 0
@@ -8322,6 +8630,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: yunz2
     parent: 1
     mode: 0
@@ -8330,6 +8640,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: -1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: grbao
     parent: 1
     mode: 0
@@ -8338,6 +8650,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: lz
     parent: 1
     mode: 0
@@ -8346,6 +8660,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.8610546
     scaleY: 0.81003046
+    shearX: 0
+    shearY: 0
   - name: star01
     parent: 6
     mode: 1
@@ -8354,6 +8670,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star04
     parent: 6
     mode: 1
@@ -8362,6 +8680,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.25
     scaleY: 0.25
+    shearX: 0
+    shearY: 0
   - name: star06
     parent: 6
     mode: 1
@@ -8370,6 +8690,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star07
     parent: 6
     mode: 1
@@ -8378,6 +8700,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star08
     parent: 6
     mode: 1
@@ -8386,6 +8710,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star09
     parent: 6
     mode: 1
@@ -8394,6 +8720,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star10
     parent: 6
     mode: 1
@@ -8402,6 +8730,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star12
     parent: 6
     mode: 1
@@ -8410,6 +8740,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.45
     scaleY: 0.45
+    shearX: 0
+    shearY: 0
   - name: star13
     parent: 6
     mode: 1
@@ -8418,6 +8750,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.5
     scaleY: 0.5
+    shearX: 0
+    shearY: 0
   - name: star14
     parent: 6
     mode: 1
@@ -8426,6 +8760,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star15
     parent: 6
     mode: 1
@@ -8434,6 +8770,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star16
     parent: 6
     mode: 1
@@ -8442,6 +8780,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star17
     parent: 6
     mode: 1
@@ -8450,6 +8790,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: zi
     parent: 1
     mode: 0
@@ -8458,6 +8800,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: zisg
     parent: 20
     mode: 0
@@ -8466,6 +8810,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 2
     scaleY: 2
+    shearX: 0
+    shearY: 0
   slots:
   - bone: 2
     attachment: -1
@@ -8603,11 +8949,11 @@ MonoBehaviour:
     - {x: 0.48502994, y: 0.33587787}
     - {x: 0.48502994, y: 0.0050890585}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -263.96707, y: -88.915886}
@@ -8620,11 +8966,11 @@ MonoBehaviour:
     - {x: 0.0023952096, y: 0.8778626}
     - {x: 0.09101796, y: 0.8778626}
     tint: {r: 1, g: 0.7019608, b: 0.24705882, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -89.5, y: -25.993225}
@@ -8637,11 +8983,11 @@ MonoBehaviour:
     - {x: 0.96526945, y: 0.8829517}
     - {x: 0.96526945, y: 0.78625953}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -97.5, y: -33.34916}
@@ -8654,20 +9000,20 @@ MonoBehaviour:
     - {x: 0.96766466, y: 0.70229006}
     - {x: 0.9976048, y: 0.70229006}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices: []
     uv: []
     tint: {r: 1, g: 1, b: 1, a: 1}
     sequenceFrames: 1e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f0000003000000031000000
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70579, y: -52.7059}
@@ -8680,11 +9026,11 @@ MonoBehaviour:
     - {x: 0.9976048, y: 0.50127226}
     - {x: 0.9976048, y: 0.29007635}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70576, y: -52.706127}
@@ -8697,11 +9043,11 @@ MonoBehaviour:
     - {x: 0.9976048, y: 0.50127226}
     - {x: 0.9976048, y: 0.29007635}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705883, y: -52.706142}
@@ -8714,11 +9060,11 @@ MonoBehaviour:
     - {x: 0.9976048, y: 0.50127226}
     - {x: 0.9976048, y: 0.29007635}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70573, y: -52.70602}
@@ -8731,11 +9077,11 @@ MonoBehaviour:
     - {x: 0.9976048, y: 0.50127226}
     - {x: 0.9976048, y: 0.29007635}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705944, y: -52.706066}
@@ -8748,11 +9094,11 @@ MonoBehaviour:
     - {x: 0.9976048, y: 0.50127226}
     - {x: 0.9976048, y: 0.29007635}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.706097, y: -52.705883}
@@ -8765,11 +9111,11 @@ MonoBehaviour:
     - {x: 0.9976048, y: 0.50127226}
     - {x: 0.9976048, y: 0.29007635}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705456, y: -52.70596}
@@ -8782,11 +9128,11 @@ MonoBehaviour:
     - {x: 0.9976048, y: 0.50127226}
     - {x: 0.9976048, y: 0.29007635}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705906, y: -52.706005}
@@ -8799,11 +9145,11 @@ MonoBehaviour:
     - {x: 0.9976048, y: 0.50127226}
     - {x: 0.9976048, y: 0.29007635}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70586, y: -52.705883}
@@ -8816,11 +9162,11 @@ MonoBehaviour:
     - {x: 0.9976048, y: 0.50127226}
     - {x: 0.9976048, y: 0.29007635}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705914, y: -52.70605}
@@ -8833,11 +9179,11 @@ MonoBehaviour:
     - {x: 0.9976048, y: 0.50127226}
     - {x: 0.9976048, y: 0.29007635}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705914, y: -52.706173}
@@ -8850,11 +9196,11 @@ MonoBehaviour:
     - {x: 0.9976048, y: 0.50127226}
     - {x: 0.9976048, y: 0.29007635}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70573, y: -52.70602}
@@ -8867,11 +9213,11 @@ MonoBehaviour:
     - {x: 0.9976048, y: 0.50127226}
     - {x: 0.9976048, y: 0.29007635}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.7057, y: -52.70593}
@@ -8884,11 +9230,11 @@ MonoBehaviour:
     - {x: 0.9976048, y: 0.50127226}
     - {x: 0.9976048, y: 0.29007635}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -37.246418, y: -32.77778}
@@ -8901,11 +9247,11 @@ MonoBehaviour:
     - {x: 0.8982036, y: 0.6793893}
     - {x: 0.95688623, y: 0.6793893}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -37.246418, y: -32.77778}
@@ -8918,11 +9264,11 @@ MonoBehaviour:
     - {x: 0.8982036, y: 0.6793893}
     - {x: 0.95688623, y: 0.6793893}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -45, y: -10.661017}
@@ -8935,11 +9281,11 @@ MonoBehaviour:
     - {x: 0.55449104, y: 0.82951653}
     - {x: 0.55449104, y: 0.78625953}
     tint: {r: 1, g: 0.9019608, b: 0.5921569, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -45, y: -11.915255}
@@ -8952,11 +9298,11 @@ MonoBehaviour:
     - {x: 0.4958084, y: 0.83206105}
     - {x: 0.51856285, y: 0.83206105}
     tint: {r: 1, g: 0.9019608, b: 0.5921569, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -45, y: -11.915255}
@@ -8969,11 +9315,11 @@ MonoBehaviour:
     - {x: 0.96766466, y: 0.783715}
     - {x: 0.99041915, y: 0.783715}
     tint: {r: 1, g: 0.9019608, b: 0.5921569, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -45, y: -11.915255}
@@ -8986,11 +9332,11 @@ MonoBehaviour:
     - {x: 0.79401195, y: 0.99491096}
     - {x: 0.81676644, y: 0.99491096}
     tint: {r: 1, g: 0.9019608, b: 0.5921569, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -37.5, y: -11.915255}
@@ -9003,11 +9349,11 @@ MonoBehaviour:
     - {x: 0.72095805, y: 0.12722646}
     - {x: 0.7437126, y: 0.12722646}
     tint: {r: 1, g: 0.9019608, b: 0.5921569, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -22.5, y: -11.915255}
@@ -9020,11 +9366,11 @@ MonoBehaviour:
     - {x: 0.954491, y: 0.2697201}
     - {x: 0.9772455, y: 0.2697201}
     tint: {r: 1, g: 0.9019608, b: 0.5921569, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -7.5, y: -11.915255}
@@ -9037,11 +9383,11 @@ MonoBehaviour:
     - {x: 0.81916165, y: 0.99491096}
     - {x: 0.84191614, y: 0.99491096}
     tint: {r: 1, g: 0.9019608, b: 0.5921569, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 7.5, y: -11.915255}
@@ -9054,11 +9400,11 @@ MonoBehaviour:
     - {x: 0.96766466, y: 0.86513996}
     - {x: 0.99041915, y: 0.86513996}
     tint: {r: 1, g: 0.9019608, b: 0.5921569, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 22.5, y: -11.915255}
@@ -9071,11 +9417,11 @@ MonoBehaviour:
     - {x: 0.52095807, y: 0.83206105}
     - {x: 0.54371256, y: 0.83206105}
     tint: {r: 1, g: 0.9019608, b: 0.5921569, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 37.5, y: -9.406779}
@@ -9088,11 +9434,11 @@ MonoBehaviour:
     - {x: 0.49341318, y: 0.32824427}
     - {x: 0.49341318, y: 0.29007635}
     tint: {r: 1, g: 0.9019608, b: 0.5921569, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -90.8251, y: -63.36916}
@@ -9105,11 +9451,11 @@ MonoBehaviour:
     - {x: 0.08862276, y: 0.99491096}
     - {x: 0.08862276, y: 0.8829517}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9122,11 +9468,11 @@ MonoBehaviour:
     - {x: 0.8311377, y: 0.77862597}
     - {x: 0.8958084, y: 0.77862597}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9139,11 +9485,11 @@ MonoBehaviour:
     - {x: 0.4958084, y: 0.7811705}
     - {x: 0.56047904, y: 0.7811705}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9156,11 +9502,11 @@ MonoBehaviour:
     - {x: 0.79161674, y: 0.9236641}
     - {x: 0.79161674, y: 0.78625953}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9173,11 +9519,11 @@ MonoBehaviour:
     - {x: 0.56287426, y: 0.7811705}
     - {x: 0.62754494, y: 0.7811705}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9190,11 +9536,11 @@ MonoBehaviour:
     - {x: 0.6299401, y: 0.7811705}
     - {x: 0.6946108, y: 0.7811705}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9207,11 +9553,11 @@ MonoBehaviour:
     - {x: 0.697006, y: 0.7811705}
     - {x: 0.76167667, y: 0.7811705}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9224,11 +9570,11 @@ MonoBehaviour:
     - {x: 0.9952096, y: 0.14249364}
     - {x: 0.9952096, y: 0.0050890585}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9241,11 +9587,11 @@ MonoBehaviour:
     - {x: 0.9520958, y: 0.28498727}
     - {x: 0.9520958, y: 0.1475827}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9258,11 +9604,11 @@ MonoBehaviour:
     - {x: 0.7640719, y: 0.7811705}
     - {x: 0.8287425, y: 0.7811705}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9275,11 +9621,11 @@ MonoBehaviour:
     - {x: 0.093413174, y: 0.83206105}
     - {x: 0.15808383, y: 0.83206105}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9292,11 +9638,11 @@ MonoBehaviour:
     - {x: 0.3245509, y: 0.9745547}
     - {x: 0.3245509, y: 0.83715016}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9309,11 +9655,11 @@ MonoBehaviour:
     - {x: 0.16047904, y: 0.83206105}
     - {x: 0.2251497, y: 0.83206105}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9326,11 +9672,11 @@ MonoBehaviour:
     - {x: 0.2275449, y: 0.83206105}
     - {x: 0.29221556, y: 0.83206105}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9343,11 +9689,11 @@ MonoBehaviour:
     - {x: 0.29461077, y: 0.83206105}
     - {x: 0.35928145, y: 0.83206105}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9360,11 +9706,11 @@ MonoBehaviour:
     - {x: 0.55808383, y: 0.9745547}
     - {x: 0.55808383, y: 0.83715016}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9377,11 +9723,11 @@ MonoBehaviour:
     - {x: 0.36167663, y: 0.83206105}
     - {x: 0.42634732, y: 0.83206105}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9394,11 +9740,11 @@ MonoBehaviour:
     - {x: 0.42874253, y: 0.83206105}
     - {x: 0.49341318, y: 0.83206105}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9411,11 +9757,11 @@ MonoBehaviour:
     - {x: 0.7185629, y: 0.14249364}
     - {x: 0.7185629, y: 0.0050890585}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -240.94856, y: -63.36916}
@@ -9428,15 +9774,15 @@ MonoBehaviour:
     - {x: 0.7185629, y: 0.28498727}
     - {x: 0.7185629, y: 0.1475827}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   npcConstraints:
     constraints: []
-    steps:
+    steps: 
   atlasPath: "RecoveredArt/Res/Spine/jackpot3\u5C0F\u4E2A/grand_icon/ef_grandicon"
 --- !u!111 &6378735497043749021
 Animation:
@@ -9465,8 +9811,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b59af1503b62e5844b3b54e8654c7e17, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   player: {fileID: 6378735497043749021}
   rig: {fileID: 2098243703552009779}
   idle: {fileID: 11400000, guid: 8b491de919db65647a98036d72f95c36, type: 2}
@@ -9536,8 +9882,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -9566,8 +9912,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c72c7a3f3fe49aa44ae17742381e4d03, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   itemPrefab: {fileID: 114587765826080250, guid: 988fc3be16f8e364a8a903a9fd6a2ee6, type: 3}
   itemAnchors:
   - {fileID: 6180500705159972986}
@@ -9662,8 +10008,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dad06e1c22c15241b8bd93bf1077c3a, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 601330edf059f894dbfb4541361889cd, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
@@ -9681,6 +10027,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: dx
     parent: 0
     mode: 0
@@ -9689,6 +10037,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: bj
     parent: 0
     mode: 0
@@ -9697,6 +10047,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: yunz
     parent: 1
     mode: 0
@@ -9705,6 +10057,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: yunz2
     parent: 1
     mode: 0
@@ -9713,6 +10067,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: -1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: grbao
     parent: 1
     mode: 0
@@ -9721,6 +10077,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: lz
     parent: 1
     mode: 0
@@ -9729,6 +10087,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.66972333
     scaleY: 0.7419363
+    shearX: 0
+    shearY: 0
   - name: star01
     parent: 6
     mode: 1
@@ -9737,6 +10097,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star04
     parent: 6
     mode: 1
@@ -9745,6 +10107,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.25
     scaleY: 0.25
+    shearX: 0
+    shearY: 0
   - name: star06
     parent: 6
     mode: 1
@@ -9753,6 +10117,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star07
     parent: 6
     mode: 1
@@ -9761,6 +10127,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star08
     parent: 6
     mode: 1
@@ -9769,6 +10137,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star09
     parent: 6
     mode: 1
@@ -9777,6 +10147,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star10
     parent: 6
     mode: 1
@@ -9785,6 +10157,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star12
     parent: 6
     mode: 1
@@ -9793,6 +10167,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.45
     scaleY: 0.45
+    shearX: 0
+    shearY: 0
   - name: star13
     parent: 6
     mode: 1
@@ -9801,6 +10177,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.5
     scaleY: 0.5
+    shearX: 0
+    shearY: 0
   - name: star14
     parent: 6
     mode: 1
@@ -9809,6 +10187,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star15
     parent: 6
     mode: 1
@@ -9817,6 +10197,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.4
     scaleY: 0.4
+    shearX: 0
+    shearY: 0
   - name: star16
     parent: 6
     mode: 1
@@ -9825,6 +10207,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: star17
     parent: 6
     mode: 1
@@ -9833,6 +10217,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 0.3
     scaleY: 0.3
+    shearX: 0
+    shearY: 0
   - name: zi
     parent: 1
     mode: 0
@@ -9841,6 +10227,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 1
     scaleY: 1
+    shearX: 0
+    shearY: 0
   - name: zisg
     parent: 20
     mode: 0
@@ -9849,6 +10237,8 @@ MonoBehaviour:
     rotation: 0
     scaleX: 2
     scaleY: 2
+    shearX: 0
+    shearY: 0
   slots:
   - bone: 2
     attachment: -1
@@ -9986,11 +10376,11 @@ MonoBehaviour:
     - {x: 0.3968254, y: 0.6528302}
     - {x: 0.47008547, y: 0.6528302}
     tint: {r: 0.972549, g: 0.6392157, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -200.5, y: -65}
@@ -10003,11 +10393,11 @@ MonoBehaviour:
     - {x: 0.3943834, y: 0.4}
     - {x: 0.3943834, y: 0.00754717}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -77.70959, y: -35.320816}
@@ -10020,20 +10410,20 @@ MonoBehaviour:
     - {x: 0.7680098, y: 0.8301887}
     - {x: 0.7924298, y: 0.8301887}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices: []
     uv: []
     tint: {r: 1, g: 1, b: 1, a: 1}
     sequenceFrames: 1e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f0000003000000031000000
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -74.5, y: -32.493225}
@@ -10046,11 +10436,11 @@ MonoBehaviour:
     - {x: 0.8021978, y: 0.9735849}
     - {x: 0.84493285, y: 0.9735849}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70579, y: -52.7059}
@@ -10063,11 +10453,11 @@ MonoBehaviour:
     - {x: 0.94871795, y: 0.8301887}
     - {x: 0.94871795, y: 0.5169811}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70576, y: -52.706127}
@@ -10080,11 +10470,11 @@ MonoBehaviour:
     - {x: 0.94871795, y: 0.8301887}
     - {x: 0.94871795, y: 0.5169811}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705883, y: -52.706142}
@@ -10097,11 +10487,11 @@ MonoBehaviour:
     - {x: 0.94871795, y: 0.8301887}
     - {x: 0.94871795, y: 0.5169811}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70573, y: -52.70602}
@@ -10114,11 +10504,11 @@ MonoBehaviour:
     - {x: 0.94871795, y: 0.8301887}
     - {x: 0.94871795, y: 0.5169811}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705944, y: -52.706066}
@@ -10131,11 +10521,11 @@ MonoBehaviour:
     - {x: 0.94871795, y: 0.8301887}
     - {x: 0.94871795, y: 0.5169811}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.706097, y: -52.705883}
@@ -10148,11 +10538,11 @@ MonoBehaviour:
     - {x: 0.94871795, y: 0.8301887}
     - {x: 0.94871795, y: 0.5169811}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705456, y: -52.70596}
@@ -10165,11 +10555,11 @@ MonoBehaviour:
     - {x: 0.94871795, y: 0.8301887}
     - {x: 0.94871795, y: 0.5169811}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705906, y: -52.706005}
@@ -10182,11 +10572,11 @@ MonoBehaviour:
     - {x: 0.94871795, y: 0.8301887}
     - {x: 0.94871795, y: 0.5169811}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70586, y: -52.705883}
@@ -10199,11 +10589,11 @@ MonoBehaviour:
     - {x: 0.94871795, y: 0.8301887}
     - {x: 0.94871795, y: 0.5169811}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705914, y: -52.70605}
@@ -10216,11 +10606,11 @@ MonoBehaviour:
     - {x: 0.94871795, y: 0.8301887}
     - {x: 0.94871795, y: 0.5169811}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.705914, y: -52.706173}
@@ -10233,11 +10623,11 @@ MonoBehaviour:
     - {x: 0.94871795, y: 0.8301887}
     - {x: 0.94871795, y: 0.5169811}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.70573, y: -52.70602}
@@ -10250,11 +10640,11 @@ MonoBehaviour:
     - {x: 0.94871795, y: 0.8301887}
     - {x: 0.94871795, y: 0.5169811}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -52.7057, y: -52.70593}
@@ -10267,11 +10657,11 @@ MonoBehaviour:
     - {x: 0.94871795, y: 0.8301887}
     - {x: 0.94871795, y: 0.5169811}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -26.74068, y: -26.24359}
@@ -10284,11 +10674,11 @@ MonoBehaviour:
     - {x: 0.95115995, y: 0.71320754}
     - {x: 0.997558, y: 0.71320754}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -26.74068, y: -26.24359}
@@ -10301,11 +10691,11 @@ MonoBehaviour:
     - {x: 0.95115995, y: 0.71320754}
     - {x: 0.997558, y: 0.71320754}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -36.80198, y: -8.689655}
@@ -10318,11 +10708,11 @@ MonoBehaviour:
     - {x: 0.3943834, y: 0.46037737}
     - {x: 0.3943834, y: 0.40754718}
     tint: {r: 0.84313726, g: 0.5921569, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -36.80198, y: -9.931034}
@@ -10335,11 +10725,11 @@ MonoBehaviour:
     - {x: 0.64102566, y: 0.8981132}
     - {x: 0.64102566, y: 0.83773583}
     tint: {r: 0.84313726, g: 0.5921569, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -36.80198, y: -9.931034}
@@ -10352,11 +10742,11 @@ MonoBehaviour:
     - {x: 0.5995116, y: 0.9358491}
     - {x: 0.61904764, y: 0.9358491}
     tint: {r: 0.84313726, g: 0.5921569, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -36.80198, y: -9.931034}
@@ -10369,11 +10759,11 @@ MonoBehaviour:
     - {x: 0.5775336, y: 0.9773585}
     - {x: 0.5970696, y: 0.9773585}
     tint: {r: 0.84313726, g: 0.5921569, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -35.554455, y: -9.931034}
@@ -10386,11 +10776,11 @@ MonoBehaviour:
     - {x: 0.995116, y: 0.96603775}
     - {x: 0.995116, y: 0.9056604}
     tint: {r: 0.84313726, g: 0.5921569, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -24.326733, y: -9.931034}
@@ -10403,11 +10793,11 @@ MonoBehaviour:
     - {x: 0.996337, y: 0.8981132}
     - {x: 0.996337, y: 0.83773583}
     tint: {r: 0.84313726, g: 0.5921569, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -10.60396, y: -9.931034}
@@ -10420,11 +10810,11 @@ MonoBehaviour:
     - {x: 0.997558, y: 0.7811321}
     - {x: 0.997558, y: 0.72075474}
     tint: {r: 0.84313726, g: 0.5921569, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 3.1188118, y: -11.172414}
@@ -10437,11 +10827,11 @@ MonoBehaviour:
     - {x: 0.61050063, y: 0.8301887}
     - {x: 0.61050063, y: 0.76603776}
     tint: {r: 0.84313726, g: 0.5921569, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 15.594059, y: -9.931034}
@@ -10454,11 +10844,11 @@ MonoBehaviour:
     - {x: 0.61294264, y: 0.8301887}
     - {x: 0.63247865, y: 0.8301887}
     tint: {r: 0.84313726, g: 0.5921569, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: 29.316832, y: -8.689655}
@@ -10471,11 +10861,11 @@ MonoBehaviour:
     - {x: 0.3943834, y: 0.5169811}
     - {x: 0.3943834, y: 0.46792454}
     tint: {r: 0.84313726, g: 0.5921569, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -90.8251, y: -50.845795}
@@ -10488,11 +10878,11 @@ MonoBehaviour:
     - {x: 0.93528694, y: 0.98490566}
     - {x: 0.93528694, y: 0.83773583}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -190.90741, y: -50.845795}
@@ -10505,11 +10895,11 @@ MonoBehaviour:
     - {x: 0.63736266, y: 0.5849057}
     - {x: 0.6898657, y: 0.5849057}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -10522,11 +10912,11 @@ MonoBehaviour:
     - {x: 0.2771673, y: 0.98867923}
     - {x: 0.32967034, y: 0.98867923}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -10539,11 +10929,11 @@ MonoBehaviour:
     - {x: 0.33211234, y: 0.98867923}
     - {x: 0.3846154, y: 0.98867923}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -10556,11 +10946,11 @@ MonoBehaviour:
     - {x: 0.5750916, y: 0.8226415}
     - {x: 0.5750916, y: 0.6603774}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -10573,11 +10963,11 @@ MonoBehaviour:
     - {x: 0.5750916, y: 0.99245286}
     - {x: 0.5750916, y: 0.8301887}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -10590,11 +10980,11 @@ MonoBehaviour:
     - {x: 0.47252747, y: 0.58867925}
     - {x: 0.52503055, y: 0.58867925}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -10607,11 +10997,11 @@ MonoBehaviour:
     - {x: 0.52747256, y: 0.58867925}
     - {x: 0.5799756, y: 0.58867925}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -10624,11 +11014,11 @@ MonoBehaviour:
     - {x: 0.7655678, y: 0.75849056}
     - {x: 0.7655678, y: 0.5962264}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -10641,11 +11031,11 @@ MonoBehaviour:
     - {x: 0.5824176, y: 0.58867925}
     - {x: 0.63492066, y: 0.58867925}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -10658,11 +11048,11 @@ MonoBehaviour:
     - {x: 0.0024420025, y: 0.98867923}
     - {x: 0.054945055, y: 0.98867923}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -10675,11 +11065,11 @@ MonoBehaviour:
     - {x: 0.057387058, y: 0.98867923}
     - {x: 0.10989011, y: 0.98867923}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -10692,11 +11082,11 @@ MonoBehaviour:
     - {x: 0.11233211, y: 0.98867923}
     - {x: 0.16483517, y: 0.98867923}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -10709,11 +11099,11 @@ MonoBehaviour:
     - {x: 0.16727717, y: 0.98867923}
     - {x: 0.21978022, y: 0.98867923}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -193.40947, y: -50.845795}
@@ -10726,11 +11116,11 @@ MonoBehaviour:
     - {x: 0.22222222, y: 0.98867923}
     - {x: 0.2747253, y: 0.98867923}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -190.90741, y: -50.845795}
@@ -10743,11 +11133,11 @@ MonoBehaviour:
     - {x: 0.6923077, y: 0.5849057}
     - {x: 0.74481076, y: 0.5849057}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -190.90741, y: -50.845795}
@@ -10760,11 +11150,11 @@ MonoBehaviour:
     - {x: 0.74725276, y: 0.5849057}
     - {x: 0.7997558, y: 0.5849057}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -190.90741, y: -50.845795}
@@ -10777,11 +11167,11 @@ MonoBehaviour:
     - {x: 0.989011, y: 0.16981132}
     - {x: 0.989011, y: 0.00754717}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -190.90741, y: -50.845795}
@@ -10794,11 +11184,11 @@ MonoBehaviour:
     - {x: 0.989011, y: 0.33962265}
     - {x: 0.989011, y: 0.1773585}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   - vertices:
     - {x: -190.90741, y: -50.845795}
@@ -10811,15 +11201,15 @@ MonoBehaviour:
     - {x: 0.989011, y: 0.509434}
     - {x: 0.989011, y: 0.34716982}
     tint: {r: 1, g: 1, b: 1, a: 1}
-    sequenceFrames:
+    sequenceFrames: 
     setupIndex: 0
-    triangles:
-    counts:
-    boneIndices:
+    triangles: 
+    counts: 
+    boneIndices: 
     weights: []
   npcConstraints:
     constraints: []
-    steps:
+    steps: 
   atlasPath: "RecoveredArt/Res/Spine/jackpot3\u5C0F\u4E2A/major_icon/ef_majoricon"
 --- !u!111 &3992942129316251336
 Animation:
@@ -10848,8 +11238,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b59af1503b62e5844b3b54e8654c7e17, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   player: {fileID: 3992942129316251336}
   rig: {fileID: 676642114666717219}
   idle: {fileID: 11400000, guid: 840e6a4e286c99f48a076a2507a563a8, type: 2}
@@ -11052,8 +11442,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0052d835ad6cf5f41ba2c60d37b284c1, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8766516425348060688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11176,8 +11566,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0fd1a6f2478e23b488c2c71de7aefab4, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5573298891281598065 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3814753315356708961, guid: 44829ccb2cd180643814d2f9856bcd78, type: 3}

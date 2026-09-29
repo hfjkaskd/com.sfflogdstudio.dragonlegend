@@ -1,0 +1,634 @@
+{
+  "entries": [
+    {
+      "key": "button.claim",
+      "english": "CLAIM",
+      "portuguese": "RESGATAR"
+    },
+    {
+      "key": "button.claim_ad",
+      "english": "<sprite name=\"tc_btn_bofang\">CLAIM",
+      "portuguese": "<sprite name=\"tc_btn_bofang\">RESGATAR"
+    },
+    {
+      "key": "button.claim_double",
+      "english": "<sprite name=\"tc_btn_bofang\">CLAIMx2",
+      "portuguese": "<sprite name=\"tc_btn_bofang\">RESGATARx2"
+    },
+    {
+      "key": "button.claim_multiplier",
+      "english": "<sprite name=\"tc_btn_bofang\">CLAIMx{0}",
+      "portuguese": "<sprite name=\"tc_btn_bofang\">RESGATARx{0}"
+    },
+    {
+      "key": "button.cash_out",
+      "english": "CASH OUT",
+      "portuguese": "SACAR"
+    },
+    {
+      "key": "button.continue",
+      "english": "CONTINUE",
+      "portuguese": "CONTINUAR"
+    },
+    {
+      "key": "button.no_thanks",
+      "english": "NO,THANKS",
+      "portuguese": "NÃO, OBRIGADO"
+    },
+    {
+      "key": "button.open_ad",
+      "english": "<sprite name=\"tc_btn_bofang\"> OPEN",
+      "portuguese": "<sprite name=\"tc_btn_bofang\"> ABRIR"
+    },
+    {
+      "key": "button.start",
+      "english": "START",
+      "portuguese": "INICIAR"
+    },
+    {
+      "key": "button.spin",
+      "english": "SPIN",
+      "portuguese": "GIRAR"
+    },
+    {
+      "key": "button.get_now_ad",
+      "english": "<sprite name=\"tc_btn_bofang\">GET NOW",
+      "portuguese": "<sprite name=\"tc_btn_bofang\">OBTER"
+    },
+    {
+      "key": "button.submit",
+      "english": "SUBMIT",
+      "portuguese": "ENVIAR"
+    },
+    {
+      "key": "account.title",
+      "english": "Account Infomation",
+      "portuguese": "Dados da conta"
+    },
+    {
+      "key": "account.paypal_email",
+      "english": "Your Paypal Account(Email)",
+      "portuguese": "Sua conta PayPal (e-mail)"
+    },
+    {
+      "key": "account.paypal_prompt",
+      "english": "Please enter your paypal account",
+      "portuguese": "Informe sua conta PayPal"
+    },
+    {
+      "key": "account.full_name",
+      "english": "Your Full Name",
+      "portuguese": "Seu nome completo"
+    },
+    {
+      "key": "account.provider_prompt",
+      "english": "Please enter your {0} account",
+      "portuguese": "Informe sua conta {0}"
+    },
+    {
+      "key": "account.required",
+      "english": "Please enter your full name and account.",
+      "portuguese": "Informe seu nome completo e sua conta."
+    },
+    {
+      "key": "account.provider_placeholder",
+      "english": "Your {0} Account",
+      "portuguese": "Sua conta {0}"
+    },
+    {
+      "key": "account.provider_here",
+      "english": "Please enter your {0} account here.",
+      "portuguese": "Informe sua conta {0} aqui."
+    },
+    {
+      "key": "account.paypal_here",
+      "english": "Please enter your PayPal account here.",
+      "portuguese": "Informe sua conta PayPal aqui."
+    },
+    {
+      "key": "account.gift_prompt",
+      "english": "Please enter your account here.",
+      "portuguese": "Informe sua conta aqui."
+    },
+    {
+      "key": "reward.only",
+      "english": "Only {0}",
+      "portuguese": "Apenas {0}"
+    },
+    {
+      "key": "reward.watch_ad",
+      "english": "Watch ad to get extra rewards !",
+      "portuguese": "Veja um anúncio e ganhe mais!"
+    },
+    {
+      "key": "reward.good_luck",
+      "english": "GOOD LUCK",
+      "portuguese": "BOA SORTE"
+    },
+    {
+      "key": "reward.bank_need_spins",
+      "english": "Need more spins to trigger the rewards.",
+      "portuguese": "Gire mais para liberar as recompensas."
+    },
+    {
+      "key": "bonus.collect",
+      "english": "Collect",
+      "portuguese": "Colete"
+    },
+    {
+      "key": "bonus.to_win",
+      "english": "to win",
+      "portuguese": "para ganhar"
+    },
+    {
+      "key": "bonus.prizes",
+      "english": "the GRAND, MAJOR, and MINOR prizes respectively.",
+      "portuguese": "os prêmios GRAND, MAJOR e MINOR, respectivamente."
+    },
+    {
+      "key": "bonus.draw_chances",
+      "english": "LUCKY DRAW CHANCES(<gradient=\"spin\">{0}/{1}</gradient>)",
+      "portuguese": "CHANCES NO SORTEIO(<gradient=\"spin\">{0}/{1}</gradient>)"
+    },
+    {
+      "key": "bonus.draw_chances_preview",
+      "english": "LUCKY DRAW CHANCES(<gradient=\"spin\">4/5</gradient>)",
+      "portuguese": "CHANCES NO SORTEIO(<gradient=\"spin\">4/5</gradient>)"
+    },
+    {
+      "key": "cash_out.tab_cash",
+      "english": "CASH",
+      "portuguese": "DINHEIRO"
+    },
+    {
+      "key": "cash_out.tab_gift",
+      "english": "GIFT",
+      "portuguese": "PRESENTE"
+    },
+    {
+      "key": "cash_out.progressing",
+      "english": "Progressing",
+      "portuguese": "Em andamento"
+    },
+    {
+      "key": "cash_out.pending",
+      "english": "Withdrawal request pending.",
+      "portuguese": "Solicitação de saque pendente."
+    },
+    {
+      "key": "cash_out.failed",
+      "english": "Unable to submit. Please try again.",
+      "portuguese": "Não foi possível enviar. Tente novamente."
+    },
+    {
+      "key": "cash_out.gift_unavailable",
+      "english": "Gift delivery is not available yet.",
+      "portuguese": "A entrega de presentes ainda não está disponível."
+    },
+    {
+      "key": "cash_out.ready",
+      "english": "You Can Cash Out Now!",
+      "portuguese": "Você já pode sacar!"
+    },
+    {
+      "key": "cash_out.ready_sentence",
+      "english": "You can cash out now!",
+      "portuguese": "Você já pode sacar!"
+    },
+    {
+      "key": "cash_out.ready_amount",
+      "english": "You Can Cash Out <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> Now!",
+      "portuguese": "Você já pode sacar <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material>!"
+    },
+    {
+      "key": "cash_out.remaining",
+      "english": "Earn <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> more to withdrawl <material=\"#003815_3\"><gradient=\"cash\">{1}</gradient></material>.",
+      "portuguese": "Ganhe mais <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> para sacar <material=\"#003815_3\"><gradient=\"cash\">{1}</gradient></material>."
+    },
+    {
+      "key": "cash_out.main_remaining",
+      "english": "Earn <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> To Withdraw <material=\"#003815_3\"><gradient=\"cash\">{1}</gradient></material>",
+      "portuguese": "Ganhe <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> para sacar <material=\"#003815_3\"><gradient=\"cash\">{1}</gradient></material>"
+    },
+    {
+      "key": "cash_out.need_more",
+      "english": "Need {0} more to withdraw {1}",
+      "portuguese": "Faltam {0} para sacar {1}"
+    },
+    {
+      "key": "cash_out.wait",
+      "english": "Please wait for {0}",
+      "portuguese": "Aguarde {0}"
+    },
+    {
+      "key": "cash_out.review_timer",
+      "english": "Pending Review {0:D2}:{1:D2}:{2:D2}",
+      "portuguese": "Em análise {0:D2}:{1:D2}:{2:D2}"
+    },
+    {
+      "key": "cash_out.review_expired",
+      "english": "Pending Review 00:00:00",
+      "portuguese": "Em análise 00:00:00"
+    },
+    {
+      "key": "cash_out.review_expired_initial",
+      "english": "Pending Review00:00:00",
+      "portuguese": "Em análise 00:00:00"
+    },
+    {
+      "key": "cash_out.task_incomplete",
+      "english": "Please complete the task first",
+      "portuguese": "Conclua a tarefa primeiro"
+    },
+    {
+      "key": "cash_out.missing",
+      "english": "You might just earn <color=#32b555>{0}</color> more to withdraw",
+      "portuguese": "Ganhe mais <color=#32b555>{0}</color> para sacar"
+    },
+    {
+      "key": "cash_out.task_spin",
+      "english": "Spin {0}/{1} times",
+      "portuguese": "Gire {0}/{1} vezes"
+    },
+    {
+      "key": "cash_out.task_ads",
+      "english": "Watch {0}/{1} ads",
+      "portuguese": "Assista a {0}/{1} anúncios"
+    },
+    {
+      "key": "cash_out.task_jackpots",
+      "english": "Claim {0}/{1} Jackpots",
+      "portuguese": "Resgate {0}/{1} Jackpots"
+    },
+    {
+      "key": "cash_out.task_big_wins",
+      "english": "Claim {0}/{1} BigWins",
+      "portuguese": "Resgate {0}/{1} grandes prêmios"
+    },
+    {
+      "key": "cash_out.task_treasures",
+      "english": "Claim {0}/{1} Treasures",
+      "portuguese": "Resgate {0}/{1} tesouros"
+    },
+    {
+      "key": "cash_out.task_free_games",
+      "english": "Play {0}/{1} FreeGames",
+      "portuguese": "Jogue {0}/{1} rodadas grátis"
+    },
+    {
+      "key": "cash_out.task_collect",
+      "english": "Collect {0}/{1} Treasures",
+      "portuguese": "Colete {0}/{1} tesouros"
+    },
+    {
+      "key": "cash_out.task_spin_preview",
+      "english": "Spin 20/20 times.",
+      "portuguese": "Gire 20/20 vezes."
+    },
+    {
+      "key": "cash_out.task_spin_rich_preview",
+      "english": "Spin <color=#21bf19>20/20</color> times.",
+      "portuguese": "Gire <color=#21bf19>20/20</color> vezes."
+    },
+    {
+      "key": "cash_out.review_wait_preview",
+      "english": "Wait <color=#21bf19>24</color> hours for review.",
+      "portuguese": "Aguarde <color=#21bf19>24</color> horas pela análise."
+    },
+    {
+      "key": "collection.treasure",
+      "english": "TREASURE",
+      "portuguese": "TESOURO"
+    },
+    {
+      "key": "collection.remaining",
+      "english": "Collect <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> treasures to redeem the rewards.",
+      "portuguese": "Colete <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> tesouros para resgatar as recompensas."
+    },
+    {
+      "key": "daily_task.entry",
+      "english": "TASK",
+      "portuguese": "TAREFAS"
+    },
+    {
+      "key": "daily_task.reset_timer",
+      "english": "Task wiil be reset after {0:00}:{1:00}:{2:00}",
+      "portuguese": "As tarefas serão reiniciadas em {0:00}:{1:00}:{2:00}"
+    },
+    {
+      "key": "daily_task.reset_preview",
+      "english": "Task wiil be reset after 00:00:23",
+      "portuguese": "As tarefas serão reiniciadas em 00:00:23"
+    },
+    {
+      "key": "daily_task.spin_preview",
+      "english": "Spin to 10 times",
+      "portuguese": "Gire 10 vezes"
+    },
+    {
+      "key": "daily_task.big_win",
+      "english": "Win a Big Win {0}/{1} times.",
+      "portuguese": "Ganhe um grande prêmio {0}/{1} vezes."
+    },
+    {
+      "key": "daily_task.jackpot",
+      "english": "Hit a Jackpot {0}/{1} times.",
+      "portuguese": "Ganhe um Jackpot {0}/{1} vezes."
+    },
+    {
+      "key": "daily_task.free_game",
+      "english": "Trigger a Free Game {0}/{1} times.",
+      "portuguese": "Ative uma rodada grátis {0}/{1} vezes."
+    },
+    {
+      "key": "daily_task.spin",
+      "english": "Spin the Slots {0}/{1} times.",
+      "portuguese": "Gire os rolos {0}/{1} vezes."
+    },
+    {
+      "key": "daily_task.bonus_game",
+      "english": "Play Bonus Game for {0}/{1} times.",
+      "portuguese": "Jogue o jogo de bônus {0}/{1} vezes."
+    },
+    {
+      "key": "daily_task.login",
+      "english": "Login Game for {0}/{1} times.",
+      "portuguese": "Entre no jogo {0}/{1} vezes."
+    },
+    {
+      "key": "free_game.result",
+      "english": "IN <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> FREE SPINS",
+      "portuguese": "EM <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> GIROS GRÁTIS"
+    },
+    {
+      "key": "free_game.result_preview",
+      "english": "IN <material=\"#003815_3\"><gradient=\"cash\">6</gradient></material> FREE SPINS",
+      "portuguese": "EM <material=\"#003815_3\"><gradient=\"cash\">6</gradient></material> GIROS GRÁTIS"
+    },
+    {
+      "key": "free_game.extra_ad",
+      "english": "<sprite name=\"tc_btn_bofang\">FREE+{0}",
+      "portuguese": "<sprite name=\"tc_btn_bofang\">GRÁTIS+{0}"
+    },
+    {
+      "key": "free_game.watch_ad",
+      "english": "Watch an ad to get more free spins.",
+      "portuguese": "Veja um anúncio: mais giros grátis!"
+    },
+    {
+      "key": "free_game.count",
+      "english": "FREE SPIN <material=\"#1A1457_3\"><gradient=\"free\">{0}</gradient></material> TIMES",
+      "portuguese": "GIROS GRÁTIS: <material=\"#1A1457_3\"><gradient=\"free\">{0}</gradient></material>"
+    },
+    {
+      "key": "free_game.count_preview",
+      "english": "FREE SPIN <material=\"#1A1457_3\"><gradient=\"free\">5</gradient></material> TIMES",
+      "portuguese": "GIROS GRÁTIS: <material=\"#1A1457_3\"><gradient=\"free\">5</gradient></material>"
+    },
+    {
+      "key": "guide.first_spin",
+      "english": "Click SPIN and let the dragon breathe fire into your wins!",
+      "portuguese": "Toque em GIRAR e deixe o dragão incendiar suas vitórias!"
+    },
+    {
+      "key": "guide.first_spin_preview",
+      "english": "Click SPIN and let the dragon breathe fire into your wins! ",
+      "portuguese": "Toque em GIRAR e deixe o dragão incendiar suas vitórias!"
+    },
+    {
+      "key": "guide.extra_wild",
+      "english": "Tap here to unleash extra Wilds!",
+      "portuguese": "Toque aqui para liberar curingas extras!"
+    },
+    {
+      "key": "more_wild.title",
+      "english": "MORE WILD",
+      "portuguese": "MAIS CURINGAS"
+    },
+    {
+      "key": "more_wild.spins",
+      "english": "Get <sprite name=\"mw_wild_iocn\"> in next <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> SPINS",
+      "portuguese": "Ganhe <sprite name=\"mw_wild_iocn\"> nos próximos <material=\"#003815_3\"><gradient=\"cash\">{0}</gradient></material> GIROS"
+    },
+    {
+      "key": "more_wild.spins_preview",
+      "english": "Get <sprite name=\"mw_wild_iocn\"> in next <material=\"#003815_3\"><gradient=\"cash\">5</gradient></material> SPINS",
+      "portuguese": "Ganhe <sprite name=\"mw_wild_iocn\"> nos próximos <material=\"#003815_3\"><gradient=\"cash\">5</gradient></material> GIROS"
+    },
+    {
+      "key": "more_spin.watch_ad",
+      "english": "Watch an ad to get more spins.",
+      "portuguese": "Veja um anúncio: mais giros!"
+    },
+    {
+      "key": "spin.count",
+      "english": "<gradient=\"spin\">SPIN {0}</gradient>",
+      "portuguese": "<gradient=\"spin\">GIROS {0}</gradient>"
+    },
+    {
+      "key": "spin.countdown",
+      "english": "<gradient=\"spin\">SPIN {0}</gradient> <size=#48>{1}</size>",
+      "portuguese": "<gradient=\"spin\">GIROS {0}</gradient> <size=#48>{1}</size>"
+    },
+    {
+      "key": "spin.countdown_preview",
+      "english": "<gradient=\"spin\">SPIN 12</gradient> <size=#48>00:56</size>",
+      "portuguese": "<gradient=\"spin\">GIROS 12</gradient> <size=#48>00:56</size>"
+    },
+    {
+      "key": "lucky_spin.maximum",
+      "english": "WIN UP TO MAX $99.9",
+      "portuguese": "GANHE ATÉ R$99,90"
+    },
+    {
+      "key": "settings.on",
+      "english": "ON",
+      "portuguese": "SIM"
+    },
+    {
+      "key": "settings.off",
+      "english": "OFF",
+      "portuguese": "NÃO"
+    },
+    {
+      "key": "settings.how_to_play",
+      "english": "HOW TO PLAY",
+      "portuguese": "COMO JOGAR"
+    },
+    {
+      "key": "review.message",
+      "english": "Your review will help and motivate us a lot",
+      "portuguese": "Sua avaliação nos ajuda e nos motiva muito"
+    },
+    {
+      "key": "ad.not_ready",
+      "english": "The ad isn't ready yet, please wait.",
+      "portuguese": "O anúncio ainda não está pronto. Aguarde."
+    },
+    {
+      "key": "ad.failed",
+      "english": "Ad failed - please try again",
+      "portuguese": "Falha no anúncio. Tente novamente"
+    },
+    {
+      "key": "startup.loading",
+      "english": "Loading...",
+      "portuguese": "Carregando..."
+    },
+    {
+      "key": "startup.connecting",
+      "english": "Connecting...",
+      "portuguese": "Conectando..."
+    },
+    {
+      "key": "startup.ready",
+      "english": "Ready",
+      "portuguese": "Pronto"
+    },
+    {
+      "key": "startup.start_failed",
+      "english": "Unable to start. Please restart the game.",
+      "portuguese": "Não foi possível iniciar. Reinicie o jogo."
+    },
+    {
+      "key": "startup.connection_failed",
+      "english": "Connection failed. Please restart the game.",
+      "portuguese": "Falha na conexão. Reinicie o jogo."
+    },
+    {
+      "key": "privacy.policy",
+      "english": "Last Updated: June 2026\n\nWelcome to Golden Dragon Legend (\"the Game,\" \"we,\" \"our,\" or \"us\"). We value your privacy and are committed to protecting it. This Privacy Policy explains how information is collected, used, and protected when you use our mobile application.\n\nBy downloading or using Golden Dragon Legend, you agree to the practices described in this Privacy Policy.\n\n1.Information We Collect\n1.1 Personal Information\n \nGolden Dragon Legend does not require user registration. We do not collect personal information such as your name, email address, phone number, or contact details.\n\n1.2 Automatically Collected Information\n \nTo ensure the Game functions properly and delivers a smooth experience, we may automatically collect limited non-personal information, including:\n·Device type and model\n·Operating system version\n·App usage data (such as gameplay progress, session duration, and feature interactions)\n·Performance data (such as crash logs and error reports)\n\nThis information is used solely for internal purposes.\n\n2.How We Use Information\nThe information we collect is used to:\n·Operate and maintain the Game\n·Improve gameplay experience and performance\n·Identify and fix bugs or crashes\n·Optimize game balance and features\n·Ensure a stable and enjoyable user experience\n\n3.Data Sharing\n \nWe do not sell, trade, or share your information with third parties.\n\nAll data collected is used only within the Game and for internal operational purposes.\n\n4.Data Storage and Security\nWe take reasonable technical and organizational measures to protect collected information against unauthorized access, loss, or misuse.\n\nPlease note that no digital system can guarantee absolute security, but we strive to safeguard your data to the best of our ability.\n\n5.Children's Privacy\nGolden Dragon Legend is designed for general audiences and is not intended for children under the age of 13.\n\nWe do not knowingly collect personal information from children. If you believe that a child has provided information to us, please contact us so we can take appropriate action.\n\n6.Your Privacy Choices\nYou may control certain privacy-related settings directly through your device, such as system permissions and app usage preferences.\n\nSince Golden Dragon Legend does not collect personal data, there is no account-based information to access, modify, or delete.\n\n7.Changes to This Policy\nWe may update this Privacy Policy from time to time. Any changes will be effective immediately upon posting within the App or on the App Store listing.\n\n8.Contact Us\nIf you have questions or concerns about this Privacy Policy, please contact us at:\n\nEmail: jakbo.studio0109@gmail.com",
+      "portuguese": "Última atualização: junho de 2026\n\nBem-vindo ao Golden Dragon Legend (\"o Jogo\", \"nós\" ou \"nosso\"). Valorizamos sua privacidade e nos comprometemos a protegê-la. Esta Política de Privacidade explica como as informações são coletadas, usadas e protegidas quando você usa nosso aplicativo para dispositivos móveis.\n\nAo baixar ou usar o Golden Dragon Legend, você concorda com as práticas descritas nesta Política de Privacidade.\n\n1. Informações que coletamos\n1.1 Informações pessoais\n \nO Golden Dragon Legend não exige cadastro. Não coletamos informações pessoais, como nome, endereço de e-mail, número de telefone ou dados de contato.\n\n1.2 Informações coletadas automaticamente\n \nPara garantir o funcionamento adequado do Jogo e uma experiência fluida, podemos coletar automaticamente informações limitadas de caráter não pessoal, incluindo:\n·Tipo e modelo do dispositivo\n·Versão do sistema operacional\n·Dados de uso do aplicativo (como progresso no jogo, duração das sessões e interações com os recursos)\n·Dados de desempenho (como registros de falhas e relatórios de erros)\n\nEssas informações são usadas exclusivamente para fins internos.\n\n2. Como usamos as informações\nAs informações que coletamos são usadas para:\n·Operar e manter o Jogo\n·Melhorar a experiência de jogo e o desempenho\n·Identificar e corrigir erros ou falhas\n·Otimizar o equilíbrio e os recursos do jogo\n·Garantir uma experiência estável e agradável\n\n3. Compartilhamento de dados\n \nNão vendemos, comercializamos nem compartilhamos suas informações com terceiros.\n\nTodos os dados coletados são usados apenas dentro do Jogo e para fins operacionais internos.\n\n4. Armazenamento e segurança dos dados\nAdotamos medidas técnicas e organizacionais razoáveis para proteger as informações coletadas contra acesso não autorizado, perda ou uso indevido.\n\nNenhum sistema digital pode garantir segurança absoluta, mas nos esforçamos para proteger seus dados da melhor forma possível.\n\n5. Privacidade de crianças\nO Golden Dragon Legend foi desenvolvido para o público em geral e não se destina a crianças menores de 13 anos.\n\nNão coletamos intencionalmente informações pessoais de crianças. Se você acredita que uma criança nos forneceu informações, entre em contato para que possamos tomar as medidas adequadas.\n\n6. Suas opções de privacidade\nVocê pode controlar certas configurações relacionadas à privacidade diretamente no seu dispositivo, como permissões do sistema e preferências de uso de aplicativos.\n\nComo o Golden Dragon Legend não coleta dados pessoais, não há informações vinculadas a uma conta para acessar, modificar ou excluir.\n\n7. Alterações nesta política\nPodemos atualizar esta Política de Privacidade periodicamente. As alterações entrarão em vigor imediatamente após sua publicação no aplicativo ou na página da App Store.\n\n8. Fale conosco\nSe você tiver dúvidas ou preocupações sobre esta Política de Privacidade, entre em contato:\n\nE-mail: jakbo.studio0109@gmail.com"
+    },
+    {
+      "key": "startup.configuration",
+      "english": "Loading configuration...",
+      "portuguese": "Carregando configurações..."
+    },
+    {
+      "key": "startup.preparing",
+      "english": "Preparing game...",
+      "portuguese": "Preparando o jogo..."
+    },
+    {
+      "key": "daily_task.complete_first",
+      "english": "Need to complete the task first before claim the reward.",
+      "portuguese": "Conclua a tarefa antes de resgatar a recompensa."
+    },
+    {
+      "key": "art.help.pay_table",
+      "english": "PAY TABLE",
+      "portuguese": "TABELA DE PRÊMIOS"
+    },
+    {
+      "key": "art.help.free_game",
+      "english": "FREE GAME",
+      "portuguese": "RODADA GRÁTIS"
+    },
+    {
+      "key": "art.help.bonus_game",
+      "english": "BONUS GAME",
+      "portuguese": "JOGO DE BÔNUS"
+    },
+    {
+      "key": "art.help.collect_all",
+      "english": "Collect all coins to trigger the bonus game.",
+      "portuguese": "Colete todas as moedas para ativar o jogo de bônus."
+    },
+    {
+      "key": "art.help.scatter",
+      "english": "Land 3 SCATTER symbols to activate Free Spins.",
+      "portuguese": "Consiga 3 símbolos SCATTER para ativar os giros grátis."
+    },
+    {
+      "key": "art.help.orb",
+      "english": "The green orb triggers special rewards.",
+      "portuguese": "A esfera verde ativa recompensas especiais."
+    },
+    {
+      "key": "art.help.bonus_description",
+      "english": "Collect coins to trigger the Bonus game, which can award the Jackpot.",
+      "portuguese": "Colete moedas para ativar o jogo de bônus e ter a chance de ganhar o Jackpot."
+    },
+    {
+      "key": "art.settings",
+      "english": "SETTINGS",
+      "portuguese": "CONFIGURAÇÕES"
+    },
+    {
+      "key": "art.music",
+      "english": "MUSIC",
+      "portuguese": "MÚSICA"
+    },
+    {
+      "key": "art.sound",
+      "english": "SOUND",
+      "portuguese": "SOM"
+    },
+    {
+      "key": "art.lucky_bonus",
+      "english": "LUCKY BONUS",
+      "portuguese": "BÔNUS DA SORTE"
+    },
+    {
+      "key": "art.congratulations",
+      "english": "CONGRATULATIONS",
+      "portuguese": "PARABÉNS"
+    },
+    {
+      "key": "art.you_win",
+      "english": "YOU WIN",
+      "portuguese": "VOCÊ GANHOU"
+    },
+    {
+      "key": "art.daily_task",
+      "english": "DAILY TASK",
+      "portuguese": "TAREFAS DIÁRIAS"
+    },
+    {
+      "key": "art.lucky_reward",
+      "english": "LUCKY REWARD",
+      "portuguese": "PRÊMIO DA SORTE"
+    },
+    {
+      "key": "art.fortune_wheel",
+      "english": "FORTUNE WHEEL",
+      "portuguese": "ROLETA DA SORTE"
+    },
+    {
+      "key": "art.lucky_card",
+      "english": "LUCKY CARD",
+      "portuguese": "CARTA DA SORTE"
+    },
+    {
+      "key": "art.treasures",
+      "english": "TREASURES",
+      "portuguese": "TESOUROS"
+    },
+    {
+      "key": "art.review_us",
+      "english": "REVIEW US",
+      "portuguese": "AVALIE-NOS"
+    },
+    {
+      "key": "art.more_wild",
+      "english": "MORE WILD",
+      "portuguese": "MAIS CURINGAS"
+    },
+    {
+      "key": "art.spins",
+      "english": "SPINS",
+      "portuguese": "GIROS"
+    },
+    {
+      "key": "art.more_spins",
+      "english": "MORE SPINS",
+      "portuguese": "MAIS GIROS"
+    },
+    {
+      "key": "art.lucky_spin",
+      "english": "LUCKY SPIN",
+      "portuguese": "GIRO DA SORTE"
+    }
+  ]
+}
